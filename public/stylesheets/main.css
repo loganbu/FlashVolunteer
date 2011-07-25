@@ -1,0 +1,1157 @@
+/* Stylesheet */
+
+
+/* 
+======================================================
+>>Basic site styles
+======================================================
+*/
+
+* { 
+    margin:0; 
+    padding:0; 
+}
+
+
+html, body {
+    height: 100%;
+}
+
+html {
+    overflow-y: scroll; 
+
+}
+body { 
+    font-size:9pt; 
+    font-family: "lucida grande", tahoma, verdana, arial, sans-serif;
+    min-height: 100%;
+}
+
+.bn { border:0; }
+.fl { float:left; }
+.fr { float:right; }
+.cl { clear:left; }
+.clear { clear: both; }
+
+.emph {font-weight:bold;}
+
+.hidden {display:none;}
+
+
+.clearfix:after { content:"."; display:block; height:0; clear:both; visibility:hidden; }
+.clearfix {display:inline-block;}
+/* Hide from IE Mac \*/
+.clearfix {display:block;}
+/* End hide from IE Mac */
+
+
+/*
+======================================================
+>>Navigation
+
+Contains navigation list items for header and footer
+======================================================
+*/
+
+div.navtabs {
+	overflow:hidden;
+}
+.navtabs ul{ 
+    width: 840px;
+    margin-left: auto;
+    margin-right: auto;
+	padding: 8px 10px 7px 10px; 
+}
+
+.navtabs li{
+    display: inline;
+/*
+    padding: 0;
+	margin-right:5px;
+*/
+	cursor: pointer;    
+
+}
+
+.navtabs li a{
+    background: none;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+	padding: 8px 10px 7px 10px; 
+}
+
+
+
+
+#nav.ui-tabs-nav li {
+
+}
+
+/*
+======================================================
+>>Headers
+======================================================
+*/
+h1 { font-size: 24px; line-height: 36px; margin-bottom: 18px; }
+
+    h1.verification_warning {
+	    font-size: 60%;
+	    position:absolute;
+	    top: 10px;
+	    padding-left: 3px;
+	}
+
+	#title_block h1 {
+	    text-align: left;
+	    font-size: 16pt;
+	    margin: 10px 20px 10px 0px;
+	}
+
+	.fv-login-block h1{
+	    font-size:150%;
+	    letter-spacing:-1px;
+	    line-height:100%;   
+	}
+
+h2 { 
+    font-size: 110%; 
+	font-weight: bold;
+	margin: 10px 0 5px 0; 
+	line-height: 18px; 
+	margin-bottom: 18px; 
+}
+
+	#generic_dialog h2 {
+	    font-size:14px;
+	    font-weight:bold;
+	    display:block;
+	    padding:5px 10px;
+	    margin:0px;
+	    max-height:200px;
+	}
+
+	.staff_group h2 {
+	    font-size: 175%;
+	}
+
+
+h3 {
+    font-weight:bold;
+	margin: 10px 0 5px 0;
+    font-size: 110%;
+	display: inline;
+}
+
+.softmodule, .hardmodule {
+    position: relative;
+    padding: 0px 10px 10px;
+    text-align: left;
+    overflow: hidden;
+    width: 100%;
+}
+
+div.moduletitle{
+    text-align: left;
+    padding: 6px 6px 6px 8px;
+    margin: 10px -10px;
+    width: 100%;
+	font-size: 100%;
+	font-weight: lighter;
+}
+
+
+
+/*
+======================================================
+>>List Styles
+======================================================
+*/
+
+ol {}
+
+    #splash-right ol{
+        list-style-position: outside;
+    }
+	
+ul {
+    list-style: none;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+
+	ul.bullets {
+	    list-style: disc;
+	    text-align: left;
+	    padding: 0;
+	    margin: 0 0 25px 0;
+	}
+
+	#creationtips ul {
+	    padding-left: 10px;
+	}
+
+	ul.event_header {
+	    font-size: small;
+	    float:right;
+	}
+
+	#forum.nonembed ul {
+	    padding-bottom: 10px;
+	}
+	
+	.messages ul.message {
+		display:inline;
+	}
+	
+	#report_hours ul {
+		margin-left:15px;
+	}
+	
+	#eventdescription ul {
+		padding-top:5px;
+	}
+	
+li {
+    margin: 0;
+    padding: 6px 0 0 0;
+}
+
+	ul.bullets li {
+	    margin: 5px 0 5px 50px;
+	    list-style-type:disc;
+	}
+
+	li.tallerlistitem {
+	    margin: 11px 0 13px 0;
+	}
+
+
+	li.submiteventsearch {
+		text-align:right; 
+		padding-right: 10px;
+	}
+
+	#splash-right li{
+	    list-style-type:decimal;
+	    margin: 5px 0 0 15px;
+	    font-size: 9pt;
+	}
+
+	.shortevent ul li {
+	    margin-left: 15px;
+	}
+
+	#creationtips li {
+	    list-style-image:none;
+	    list-style-position:outside;
+	    list-style-type:disc;
+	    padding-top:10px;
+	}
+	
+	.messages li {
+	    margin-left: 15px;
+	}
+
+    ul.leftformlist input#searchterms,
+    ul.formlist input#searchterms {
+	   margin-top: 20px;
+	   height: 20px; 
+	   width: 180px;
+	   vertical-align:middle;
+        float:left;
+    }
+
+    ul.rightformlist {
+        float: right;
+        width: 49%;
+    }
+	.verifiableevent ul li {
+	    margin-left: 15px;
+	}
+
+	.event_operation_block li {
+	    height: 25px;
+	}
+
+	li#personstatement:before {
+	    content: open-quote
+	}
+	
+	li#personstatement:after {
+	    content: close-quote;
+	}
+	
+	#createvolunteer li {
+	    padding-top: 5px;
+	}
+
+	li.imagenameli {
+	    display: block;
+	    width: 85px;
+	    float: left;
+	    text-align: center;
+	    padding-left: 1px;
+	    padding-right: 1px;
+	    height: 140px;    
+	}
+	
+	li#verify_attendence{
+	    width: 100%;
+	    height: 120px;
+	}
+
+	.shortevent ul li {
+	    margin-left: 15px;
+	}
+	
+	#partners li {
+	    margin: 10px 10px;
+	    padding: 2px;
+	}
+
+	ul.event_header li {
+	    display:inline;
+	    padding-top:0px;
+	}
+	
+	ul.event_header li.title {
+	    vertical-align: 7px;
+	}
+
+	#message_settings li{
+	    padding-left: 15px;
+	    padding-bottom: 5px;    
+	}
+	
+	#person_search li.search_submit {
+		text-align:right; 
+		padding-right: 10px;
+	}	
+	
+	li.eic_li {
+		display:inline;
+	}
+
+	li.fv-login-block {
+	    height:100%;
+	    padding:20px;
+	}
+	
+	li.login_separator {
+	    padding: 95px 22px;
+	}
+
+	#footer #badges li{
+	    display: inline;
+		padding:8px;
+	}
+	
+	#footer #footer_copy li {
+	    text-align:right;
+	}
+    div#footer-navtabs li{
+    }
+/*
+======================================================
+>>Link Styles
+======================================================
+*/
+
+a:link { }
+a:hover { }
+a:active { }
+a:visited { }
+
+a.operation, 
+a {
+    font-weight: normal;
+    text-decoration: none;
+	outline: none;
+	cursor: pointer;
+}
+    a.event_name {
+        font-weight:bold;
+    }
+	
+	.moduletitle a {
+	    position:absolute;
+	    right:15px;
+	}
+
+	#footer #static_nav li a {
+	    padding: 15px 15px 14px 15px;
+	}
+	
+    a.operation {
+        padding-left: 3px;
+    }
+	
+	a.event_name {
+	    font-weight:bold;
+	}
+	
+	#generic_dialog div.dialog_header {
+		overflow: auto;
+		width: 98.5%
+	}
+	
+	#generic_dialog a.pagination_link{
+	   position: relative;
+	}
+	
+	#generic_dialog a.pagination_link.next{
+	    float: right;
+		right:5%;
+	}
+	
+	#generic_dialog a.pagination_link.prev{
+	    float: left;
+		left:5%;
+	}
+
+	.stat_viz td a {
+	  text-decoration: none;
+	  font-weight: normal;
+	  display:block;
+	}
+
+#active_neighborhoods th a:link, 
+#active_neighborhoods th a:visited,
+#active_volunteers th a:link, 
+#active_volunteers th a:visited {
+    font-weight: bold;
+}
+
+/*
+======================================================
+>>Images Styles
+======================================================
+*/
+img{
+    padding: 0;
+    margin: 0;
+}
+
+	img#beta {
+	    width: 35px;
+	
+	}
+
+	img#nameavatar {
+	    margin: 0 0 0 0px;
+	    width: 100%;
+	}
+
+	img.smallavatar {
+		margin: 0 auto auto auto;
+	    display: block;
+	    max-height: 80px;
+	    max-width: 85px;
+	}
+
+	#volavatar img.smallavatar {
+	    max-height: 50px;
+	    max-width: 50px;
+		margin: 10px 0px 0px 10px;
+	}
+
+	.message img.smallavatar {
+	    max-height: 60px;
+	    max-width: 60px;
+	}
+
+	.message td img.smallavatar {
+	    margin: 10px 0px 0px 10px;
+	}
+
+	.message td img.microavatar {
+	    margin: 5px 0px 0px 5px;
+	}
+
+    .message img.microavatar {
+        max-height: 40px;
+        max-width: 40px;
+    }
+	
+
+	img#fb-badge-img {
+	}
+	img#twitter-badge-img {
+	}
+
+	.person_list_ops img {
+		width: 15px;
+	}
+
+	ul.event_header img{
+	    height: 25px;
+	}
+	
+	img.staff_avatar {
+	    max-height:90px;
+	    max-width: 80px;
+	}
+    img#loadingDiv {
+	    height:12px;
+	}
+/*
+======================================================
+>>Form Styles
+======================================================
+*/
+
+/*
+label { font-weight: bold; }
+fieldset { padding:1.4em; margin: 0 0 1.5em 0; border: 1px solid #eee; }
+legend { font-weight: bold; font-size:1.2em; }
+input.text, input.title, textarea, select { margin:0.5em 0; border:1px solid #bbb; }
+input.text:focus, input.title:focus, textarea:focus, select:focus { border:1px solid #666; }
+input.text, input.title { width: 300px; padding:5px; }
+input.title { font-size:1.5em; }
+textarea { width: 390px; height: 250px; padding:5px; }
+*/
+
+input, button, a {
+	cursor: pointer;
+}
+
+input {
+    position: relative;
+    right: 0;  
+	margin: 5px 0px; 
+}
+
+	input#avataruploadinput {
+	    width: 150px;
+	}
+
+    ul.formlist input#search_past_events {
+        vertical-align:middle;
+    }
+
+	form input.text, 
+	form input.password {
+	    width: 95%;
+	    font-size:125%;
+	    letter-spacing:-1px;
+	    line-height:normal;
+	    padding:2px 5px;
+	}
+
+
+	
+	#generic_dialog .dialog_footer input {
+	    width: 100%;
+	    height:100%;
+	}
+
+button {}
+
+
+select {}
+
+	ul.formlist select {
+	    width: 90%;
+	    margin: 2%;
+	}
+
+	#createvolunteer select {
+	    width: 100%;
+	}
+	
+
+form {}
+	#eventmessagescreate form {
+	    margin-top: 20px;
+	}
+
+textarea {}
+	#emcreatebody textarea {
+	    height: 250px;
+	}
+	
+	form textarea {
+	    width: 98%;
+	    height: 5em;
+	    font-size: 110%;
+	    padding: 3px 5px;
+	}
+
+option {}
+	form select option {
+	    padding: 0px 10px;
+	    font-size: 110%;    
+	}
+
+
+/* for lists of operations. make the links & forms look the same */
+a.operation, 
+a:link, a:visited, a:active, a:hover, 
+a, 
+input.operation, input.operation_minimal {
+    font-weight: normal;
+    text-decoration: none;
+}
+
+#emcreatesubject input,
+#emcreatebody textarea {
+    width: 85%; 
+    float:right;
+}
+
+a.submit,
+button.submit,
+input.submit {
+    font-size:17px;
+    letter-spacing:-1px;
+    padding: 5px;
+}
+
+form input.text.error, 
+form input.password.error,
+.error {
+    padding: 0px;
+}
+
+
+
+
+/*
+======================================================
+>>Table Styles
+======================================================
+*/
+table {
+    font-size: 10pt;
+    text-align: left;
+}
+
+    .messages table {
+	    width: 97%;
+	}
+
+	#active_neighborhoods table,
+	#active_volunteers table {
+	    margin-top:10px;
+	    font-size: 9pt;
+	    border-collapse: collapse;
+	    border-spacing: 0px;
+	    text-align: center;
+	}	
+	
+	.stat_viz table {
+	    width: 100%;
+	    border-collapse:separate;
+	    border-spacing:3px;
+	}
+
+th, td {
+    padding: 2px;
+}
+
+th {
+    font-weight: bold;
+}
+
+	#active_neighborhoods thead th,
+	#active_volunteers thead th {
+	    padding: 0 4px;
+	}
+	
+	#active_neighborhoods tbody th,
+	#active_volunteers tbody th {
+	    text-align: left;
+	    border-top: 0px;
+	}
+
+	.messages th.sender {
+	    width: 30%;
+	    margin-right: 2%;
+	}
+	
+	.messages th.subject {
+	    width: 60%;
+	}
+
+
+td {}
+	.message td {
+		margin-left: 5px;
+	}
+
+	#volunteerstats td,
+	#active_neighborhoods td,
+	#active_volunteers td,
+	#neighborhoodstats td {   
+	    padding:3px 10px;
+	    font-weight: normal;
+	}
+
+	.message td.minfo {
+	    min-width: 105px;
+	    padding: 20px;
+	}
+	
+	#forum .message td.minfo {
+	    min-width: 95px;
+	    width: 95px;
+	    padding: 5px;
+	}
+	
+	.messages td.msubject{
+	    padding: 5px 20px 0px 0px;  
+	}   
+	
+	#forum .message td.msubject {
+	    padding: 5px 5px 5px 0px;   
+	}
+	
+	#forum .message td {
+	    vertical-align: top;
+	    text-align: left;
+	}
+
+	.stat_viz td {
+	    width: 25px;
+	    height: 35px;
+	    padding: 0px;
+	    text-align: center;
+	    margin: 0px;
+	}
+
+
+
+    #afg_opportunity_list td {
+        vertical-align: top;
+        padding: 10px 10px;
+    }
+	
+tr{}
+	tr.message {
+		margin-bottom:10px;
+	}
+
+
+	
+#active_neighborhoods thead th,
+#active_neighborhoods td,
+#active_volunteers thead th,
+#active_volunteers td {
+    text-align: center;
+}
+
+
+/*
+======================================================
+>>Div Styles
+======================================================
+*/
+
+div{
+    padding: 0;
+    margin: 0;
+}
+
+	div.actionlist {
+	    padding:5px 0px;
+	}
+	
+	div.shortevent {
+	    padding: 5px 0px;
+	    font-size: 9pt;
+	}
+	
+	div#eventdetails {
+	    padding-bottom: 28px;
+	}
+	
+	div.event_operation_block {
+	    margin-top: 15px;
+	}
+	
+	div#eventmap {
+	    padding-top: 14px;
+		position:relative;
+		left:-10px;
+	}
+	
+	div.pagination_entry {
+	    text-align: right;
+	    padding-bottom: 8px;
+	}
+	
+	div.faq-link-wrapper {
+	    text-align: right;  
+	    font-size: 7pt;
+	}
+	
+	div#slogan {
+	    font-size: 215%;
+	    font-family: serif;
+	    margin-top: 15px;
+	    font-weight:bold;
+	}
+	
+	li#verify_attendence div#right_verify {
+	    padding-left: 25px;
+	}
+	
+	li#verify_attendence div#left_verify {
+	    width: 100px;
+	}
+	
+	div.volunteer_summary_team{
+	    padding:5px;
+	    position:relative;
+	    float:left;
+	}
+	
+	div.volunteer_summary_desc {
+	    padding-bottom: 5px;
+	    padding-left: 5px;
+	}
+	
+	
+	div.volunteer_summary_pic {
+	    height: 80px;
+	}
+	
+	#volavatar div.volunteer_summary_pic {
+	    height: 60px;   
+	}
+	
+	div.volunteer_summary_name {
+	    font-size:90%;
+	    padding-bottom: 8px;
+	    text-align:center;
+	    overflow:hidden;
+	}
+	
+	div.spaced {
+	    margin-bottom: 20px;
+	    margin-top: 10px;
+	}
+	
+	#partners div.logo {
+	    margin-bottom: 5px;
+	}
+	
+	div#home-bottom {
+	    margin-top: 10px;
+	}
+	
+	div#home-top, 
+	div#home-bottom {
+	    height: 100%; 
+	    width: 100%;
+	}
+	
+	
+	.message div.subtext {
+	    font-size: x-small;
+	}
+	
+	.message div.additionalinfo {
+	    font-size: 65%;
+	}
+	
+	#forum div.morediv {
+	    display: none;
+	}
+	
+	#forum div.lessdiv {
+	    display: block;
+	}
+	
+	#forum div.subjectline {
+	    font-weight: bold;
+	    padding-bottom: 5px;    
+	}
+	
+	#forum.nonembed .message div.subtext {
+	    font-size: small;
+	}
+	
+	#forum.embed .message div.subtext {
+	    font-size: x-small;
+	}
+	
+	
+	#eventmessagescreate form div {
+	    margin-bottom: 20px;    
+	}
+	
+	div.person_list_ops {
+	    padding-left: 25px;
+	}
+	
+	div#footer_copy{
+	   padding: 4px 0 4px 0;
+	}
+	
+	.messages div.operations {
+	    margin-top: 5px;
+	}
+	
+	#active_neighborhoods div.small {
+	    font-size:smaller;
+	}
+	
+	div#generic_dialog {
+	    position:absolute;
+	    z-index:1000;
+	    top:175px;
+	    width:600px;
+	    margin-left: 110px;
+	}
+	
+	div#dialog_content {
+	    height: auto;
+	    overflow-x:hidden; 
+	    overflow-y:auto;
+	    margin: 10px;
+	}
+	
+	#generic_dialog div.dialog_header {
+	    padding:4px;
+	}
+	
+	#generic_dialog div.dialog_footer {
+	    height: 30px;
+	}
+	
+	div.staff_block {
+	    clear:both;
+	}
+	div.staff_pic {
+	    width: 80px;
+	    float:left;
+	}
+	div.staff_desc {
+	    float:left;
+	    padding-left: 10px;
+	}
+	div.staff_name {
+	    font-size:125%;
+	}
+	div.staff_role {
+	    font-style:italic;
+	}
+	div.staff_group {
+	    float:left;
+	    padding: 10px 30px 0 0;
+	}
+	div#recruitment {
+	    font-size: 125%;
+	}
+	
+	div#incentive_banner {
+	    width:100%;
+	    margin: 10px auto;
+	    width:840px;
+	}
+	
+	div#message_banner{
+	    width: 100%;
+	    font-weight: bold;
+	    font-size: 100%;
+	    margin-top: 15px;
+	    display:none;
+	}
+	
+	div#vol_interest_text {
+	    font-size: 115%;
+	    padding: 15px;
+	}
+	
+	div#vol_interest_choices {
+	    padding: 15px;
+	}
+	
+	
+	div.spacing_top {
+		height: 25px;
+	}
+	
+	
+	div#report_hours {
+		padding: 5px;	
+	}
+	
+	div#twitter_footer {
+		text-align:right;
+	}
+	
+	div.account_direction_block {
+	    padding: 25px;
+	    font-size:125%;
+	}
+	
+	div.account_direction_divert{
+	    width:25%;
+	}
+	
+	div.account_direction_primary{
+	    width:50%;
+	}   
+	
+	.fv-login-block div.detailed_directions{
+	    font-size:80%; 
+	}
+	
+	div.event_note {
+	    font-size: 120%;
+    }
+	
+/*
+======================================================
+>>Miscellaneous Styles
+======================================================
+*/
+
+
+span {}
+
+	span.verification_warning_wrapper {
+	    padding-right: 5px;
+	    width: 100%;
+	}
+
+	span.format_help {
+	    font-size: 7pt;
+	}
+
+	span.event_interest_level {
+	    font-size:135%;
+	    font-weight:bold;
+	}
+	
+	span#mindchange{
+	    font-size:90%;
+	}
+
+	.login_separator span {
+	    width:100%;
+	    font-size:125%;
+	}   
+
+label {}
+	#createvolunteer label {
+	    margin: 0 10px 2px 10px; 
+	}
+	
+	#vol_interest_choices label {
+	    padding: 5px;
+	    font-size: 125%;
+	    font-weight:bold;
+	}
+
+
+strong.error{padding: 15px}
+
+p { margin: 8px 0 0 0; }
+
+	p.enlarged {
+	    padding-bottom: 7px;
+	    font-size: 110%;
+	}
+	
+	#message_banner p {
+	    margin-left:auto;
+	    margin-right:auto;
+	    width:840px;
+	    padding: 10px 50px;
+	}
+
+.fv-login-block iframe {
+    width:100%;
+    height:240px;   
+}
+
+
+/******************************************************
+ * >> UNORGANIZED
+ * 
+ * TODO: INTEGRATE THE FOLLOWING INTO THE CSS SCHEME
+ * ****************************************************
+ */
+
+
+#mtaTwitter a img {
+    height: 48px;
+    width: 48px;
+    border: 1px solid #CCC;
+}
+
+#mtaTwitter ul {
+    position: relative;
+
+    list-style: none;
+    margin: 0;
+    padding: 0px;
+    font-family: Helvetica, sans-serif;
+}
+#mtaTwitter ul li { padding: 10px 10px;}
+#mtaTwitter ul li.first { }
+#mtaTwitter ul li.even { background-color: #EDEEFD; }
+#mtaTwitter ul li.first span { font-weight: normal; }
+#mtaTwitter ul li span { font-style: normal; }
+
+
+/*
+ * Timepickr stuff might not be necessary if ui.timepickr.css is included
+ */
+div.time-picker {
+  position: absolute;
+  height: 200px;
+  width:90px; /* needed for IE */
+  overflow: auto;
+  background: #fff;
+  border: 1px solid #000;
+  z-index: 99;
+  margin-top: 25px;
+}
+div.time-picker-12hours {
+  width:90px; /* needed for IE */
+}
+
+div.time-picker ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+div.time-picker li {
+  padding: 3px;
+  cursor: pointer;
+}
+div.time-picker li.selected {
+  background: #316AC5;
+  color: #fff;
+}
+
+
+
+.padding-bottom {
+	padding-bottom:6px;
+}
+
+.markItUpEditor {
+    width: 100%;
+}
+.markItUp {
+    width: 100%;
+}
+
+div#createevent div.markItUpHeader ul li {
+    padding-top: 3px;
+    margin-bottom: 0;
+}
+div#createevent div.markItUpHeader ul {
+   margin-bottom: 0;    
+   padding-bottom: 0;
+}
+.markItUpEditor {
+    height: 150px;
+}

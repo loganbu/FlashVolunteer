@@ -1,4 +1,20 @@
 Flashvolunteer::Application.routes.draw do
+  resources :orgs
+
+  resources :events
+
+  resources :neighborhoods
+
+  resources :sites
+
+  resources :users
+
+  match "privacy" => "home#privacy"
+  match "tou" => "home#tou"
+  match "about" => "home#about"
+  match "partners" => "home#partners"
+  match "help" => "home#help"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -48,7 +64,7 @@ Flashvolunteer::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  # root :to => "welcome#index"
+  root :to => "home#index"
 
   # See how all your routes lay out with "rake routes"
 

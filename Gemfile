@@ -29,3 +29,6 @@ gem 'sqlite3'
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+source :gemcutter
+gem 'sinatra', '1.0'

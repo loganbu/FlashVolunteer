@@ -1,0 +1,166 @@
+/* 
+======================================================
+>>Site structure (layout)
+
+Indentation structure mirrors site layout
+
+Please keep indentation structure
+======================================================
+*/
+
+div#container{
+    min-height: 100%; 
+    width:100%;
+}
+
+    div#top { 
+        height: 77px;
+        padding-top: 4px;
+    }
+        
+        div#logo-strip {
+            height: 77px;
+            width: 840px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+            div#logo {
+                width: 295px;
+                margin-top: 15px;
+            }
+            div#volunteerwelcome,
+			div#volunteerwelcome {
+                float:right;
+				text-align: right;
+            }
+            div.loggedout {
+                margin-top: 25px;
+				font-size: 125%;
+            }
+            div.loggedin {
+                margin-top: 13px;
+            }			
+    div.navtabs { 
+        width: 100%;
+        height: 30px;
+    }
+    
+     
+    div#content { 
+        width: 840px; 
+        margin: 0 auto; 
+        border: 0; 
+        padding-left: 20px; 
+    }    
+        div#bottom { 
+            width: 100%;
+            border-top: none;
+            height: 100%;
+            margin-top: 10px;
+        }
+            
+            div#columns {
+                position: relative;
+            }
+                #leftthird, #middlethird, #rightthird,
+                #leftthirdequi,#middlethirdequi,#rightthirdequi,
+                #lefthalf, #righthalf,
+                #left75, #right25,
+                #left25, #right75,
+                #middle100,
+				#left66, #right33 {
+                    float: left; 
+                    top:0;
+                    padding: 0 10px 0px 0;
+
+                }
+				
+				#left66, #lefthalf, #leftthird, #middlethird, 
+				#left75, #leftthirdequi,#middlethirdequi,#left25 {
+					margin-right: 20px;
+					
+				}
+				                    
+                /*the following is specific to the three column layout, 25% - 50% - 25% */
+                #leftthird {
+                    width: 185px;
+                }
+                
+                #middlethird{
+                    width: 390px;
+                }
+                
+                #rightthird {
+                    width: 185px;
+                }
+				
+                #right33 {
+                    width: 260px;
+                }
+				
+                #left66 {
+                    width: 500px;
+                }				
+	
+                /*the following is specific to the three column layout, 33% - 33% - 33% */
+                #leftthirdequi,#middlethirdequi,#rightthirdequi {
+                    width: 28%;
+                }
+                
+                /*the following is specific to the two equal column layout, 50% - 50% */
+				#righthalf,
+                #lefthalf {
+                    width: 47%;
+                }
+                
+                /*the following is specific to the two column layout where it is 75% left 25% right */
+                #left75 {
+                    width: 595px;
+                }
+                
+                #right25 {
+                    width: 185px;
+                }
+                
+                /*the following is specific to the two column layout wehre it is 25% left 75% right*/
+                #left25 {
+                    width: 185px;
+                }
+                
+                #right75 {
+                    width: 595px;
+                }
+                
+                /* following is for center whole layout */
+                #middle100 {
+                    width: 780px;
+                }
+			
+        div#clearfooter { 
+		  height: 130px; 
+		  margin-top:20px;
+		}
+
+/* NOTE: the footer is NOT in the container. See http://www.wickham43.net/footerfix.php */
+
+div#footer { 
+    width: 100%;
+    height: 130px;
+    margin: -130px auto 0 auto; 
+    text-align:center;
+}
+
+    div#footer_content {
+    	width: 840px;
+		margin: 0px auto; 
+		padding-top:10px;
+    }
+	    div#footer_copy{
+	    }
+		
+		div#badges {
+			margin:auto;
+			padding-top:5px;
+			padding-left:8px;
+		}
