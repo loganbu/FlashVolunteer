@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  theme 'flash_volunteer'
+  theme Flashvolunteer::Application.config.theme
 
   protect_from_forgery
 end

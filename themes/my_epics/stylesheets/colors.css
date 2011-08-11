@@ -1,0 +1,375 @@
+/*
+======================================================
+>>COLORS & BACKGROUNDS & STYLED BORDERS
+======================================================
+Teal Text: #4eA0A7
+Body text: #555
+Dark text: #333
+Green text: #aef396
+White text: #FFF
+Gray text: #C6C6C6
+Red text: #F00
+light blue: #B3D8DB
+}
+
+White background: #FFF
+black background: #000
+Gray background: #E6E6E6
+Dark background: #3b3b3b
+Green background: #2fb002
+Blue strip: #008c98
+*/
+
+
+/*
+======================================================
+>>Color
+======================================================
+*/
+
+/* default text */
+#tabs p,
+html, body {
+    color: #555;
+}
+
+
+/*********** HEADER *****************/
+
+/* header text */
+div#footer,
+div#top {
+    color: #cccccc;
+}
+
+
+
+/* header link */
+
+div#footer a,
+div#top a{
+    color: #DEDCB3;
+}
+
+/* navigation tabs */
+
+#footer div.navtabs li a,
+.navtabs li a{
+    color: #000;
+}
+
+/***********  BODY  *****************/
+
+/* heavy text */
+#faq-sections h3,
+#generic_dialog a.pagination_link,
+.event_note,
+#title_block h1,
+div.label,
+form input.text,
+form input.password,
+div#message_banner {
+    color: #333;
+}
+
+/* light text */
+
+.fv-login-block div.detailed_directions{
+    color:#777777;
+}
+
+
+/* extra light text */
+#active_neighborhoods div.small,
+span.format_help {
+    color: #C6C6C6;
+}
+
+/* section heading */
+
+#generic_dialog h2,
+div.hardmodule .moduletitle,
+div.moduletitle {
+    color: #fff;
+}
+
+/* section heading link text */
+div.moduletitle a{
+    color: #DDD;
+}
+
+/* attention text */
+div.form_error,
+div.error,
+a.verification_warning, 
+a.verification_warning:hover {
+    color: #C1BF96;
+}
+
+
+/* link text */
+div#slogan,
+a.operation, a:link, a:visited, a:active, a:hover, a, 
+input.operation, input.operation_minimal,
+.staff_group h2 {
+    color: #C1BF96;
+}
+
+
+
+/*********** FOOTER *****************/
+
+
+
+/*********** MISC *****************/
+
+
+
+.green{
+    color:#127818;
+}
+.yellow{
+    color:#9f9c0b;
+}   
+.red {
+    color:#aa1814;
+}
+
+
+.stat_viz td a {
+   color: inherit;
+}
+
+
+
+/*
+======================================================
+>>Background
+======================================================
+*/
+
+/* default text */
+div#generic_dialog,
+.ui-tabs-nav,
+html, body {
+    background-color: #fff;
+}
+
+
+/*********** HEADER *****************/
+
+/* header background */
+div#footer,
+div#top {
+    background-color: #425679;
+}
+
+/* nav tabs background */
+div.navtabs {
+    background: #DEDCB3;
+}
+
+/* nav tabs hover */
+.navtabs li.current,
+.navtabs li:hover,
+.navtabs li a.current,
+.navtabs li a:hover {
+    background-color: #C1BF96;
+}
+
+/* banner background text */
+
+div#message_banner{
+    background-color: #B2DCE0;
+}
+
+/***********  BODY  *****************/
+
+/* section header soft */
+#generic_dialog h2,
+div.moduletitle {
+    background-color: #008C98;
+}
+
+/* section header hard */
+div.hardmodule .moduletitle{
+    background-color: #666;
+}
+
+/* subtle highlight */
+
+div#report_hours,
+div.account_direction_divert,
+form textarea:focus,
+form input.text:focus, 
+form input.password:focus, 
+form input.textarea:focus,
+.event_note,
+tr.message.unread,
+table.zebra tr.odd
+ {
+    background-color: #E6F4F4;
+}
+
+
+
+/*********** MISC *****************/
+
+#generic_dialog .dialog_footer input:hover{
+    background-color: #ddd;
+}
+
+#generic_dialog div.dialog_footer,
+#generic_dialog div.dialog_header {
+    background:#efefef none repeat scroll 0 0;
+}
+
+
+.stat_viz td.ur {
+    background-color: #e2e2e2;
+}
+.stat_viz td.ul {
+    background-color: #c0e7b3;
+}
+.stat_viz td.lr {
+    background-color: #b2dce0;
+}
+.stat_viz td.ll {
+    background-color: #c4c4c4;
+}
+
+
+#dialog_content button, 
+#dialog_content input,
+.navtabs li#loadingContainer:hover,
+input.operation, input.operation_minimal, 
+a.operation, a.operation_minimal,
+table.zebra tr.even,
+.stat_viz td a {
+   background-color: inherit;
+}
+
+#afg_opportunity_list tr.published {
+    background-color: #00ff00;
+}
+#afg_opportunity_list tr.dismissed {
+    background-color: #f99;
+}
+
+#tabs #nav li {
+	background:none;
+}
+
+/*
+======================================================
+>>Border
+======================================================
+*/
+
+
+/*********** HEADER *****************/
+
+/*header strip */
+div#top {border-top: 4px solid #008c98;}
+div#footer {border-bottom: 4px solid #008c98;}
+
+
+/***********  BODY  *****************/
+
+
+/* subtle highlight */
+div#report_hours,
+div.account_direction_divert,
+form textarea:focus,
+form input.text:focus, 
+form input.password:focus, 
+form input.textarea:focus {
+    border:1px solid #008c98;
+}
+li.fv-login-block {
+    border:3px solid #008C98;
+}
+
+/* item separator */
+li#verify_attendence,
+#forum tr.message,
+tr.message,
+div.shortevent {
+    border-bottom: 1px solid #CCC;
+}
+
+form input.text,
+form input.password  {
+    border: 1px solid #CCC;
+}
+
+
+/* page title underline */
+#title_block h1 {
+    border-bottom: #b6e6a5 3px solid;
+}
+
+
+/* attention border */
+form input.text.error, 
+form input.password.error,
+.error {
+    border: 3px solid #ff6900;
+}
+
+
+
+
+/***********  DIALOG  *****************/
+
+div#generic_dialog {
+    border: 5px #aaa solid;
+}
+
+#generic_dialog div.dialog_header {
+    border-top: 3px solid #ddd;
+}
+
+#generic_dialog div.dialog_footer {
+    border-top: 3px solid #ddd;
+}
+
+/*********** MISC *****************/
+
+
+#afg_opportunity_list td {
+    border-bottom:3px dotted #AAAAAA;
+}
+
+#mailbox-tab-sections.ui-widget-content,
+div#tabs,
+div#tabs.ui-tabs li {
+	border:none;
+}
+div.moduletitle {
+    -moz-border-radius: 2px;
+    -webkit-border-radius:2px;
+}
+
+img,
+a,
+a.operation, 
+a:link, a:visited, a:active, a:hover, 
+input.operation, input.operation_minimal,
+.volunteer_summary_team input.operation, 
+.volunteer_summary_team a.operation,
+label.error,
+div.actionlist,
+#dialog_content button, 
+#dialog_content input,
+#nav.ui-widget-header {
+	border:none;
+}
+
+#nav .ui-state-active {
+    border-color: 3px solid #CCC;
+}
+
+.ui-widget-header {
+	background: none;
+}
