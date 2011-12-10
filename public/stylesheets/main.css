@@ -342,18 +342,63 @@ li {
 	li.login_separator {
 	    padding: 95px 22px;
 	}
-
+	#footer_follow{
+		display: inline;
+		padding: 8px;
+		font-size: 110%;
+		font-weight: bold;
+		font-style: italic;	
+		color: rgb(110,110,110);
+	}
+  #footer_divider{
+    background-image: url("../media/dot_border.png");
+    background-repeat: repeat-x;
+  }
+	#donate-badge-img{
+		display: inline;
+		padding: 8px;
+	}
 	#footer #badges li{
 	    display: inline;
-		padding:8px;
 	}
 	
 	#footer #footer_copy li {
 	    text-align:right;
+		
 	}
-    div#footer-navtabs li{
-    }
-/*
+  #footer-navtabs {
+		background-color: rgb(59,59,59);
+	}	
+	/*
+======================================================
+>>Events
+======================================================
+*/
+
+.event {padding-left:30px;}
+  #event_details
+   {
+   clear:both;
+  }
+#event_header{
+  font-size:150%;
+  padding-top:20px;
+  padding-bottom:10px;
+}
+#events{
+  width:25%;
+}
+#events #share li{
+  display: inline;
+}
+
+div#map {
+  height: 100%;
+  min-height: 600px;
+  padding-top:20px;
+}
+
+	/*
 ======================================================
 >>Link Styles
 ======================================================
@@ -1156,7 +1201,3 @@ div#createevent div.markItUpHeader ul {
     height: 150px;
 }
 
-div#map {
-    height: 100%;
-    min-height: 600px;
-}
