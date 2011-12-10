@@ -1,4 +1,6 @@
 Flashvolunteer::Application.routes.draw do
+  devise_for :users
+
   themes_for_rails
 
   root :to => "home#index"
@@ -9,8 +11,6 @@ Flashvolunteer::Application.routes.draw do
 
   resources :neighborhoods
 
-  resources :sites
-
   resources :users
 
   match "privacy" => "home#privacy"
@@ -18,7 +18,7 @@ Flashvolunteer::Application.routes.draw do
   match "about" => "home#about"
   match "partners" => "home#partners"
   match "help" => "home#help"
-
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

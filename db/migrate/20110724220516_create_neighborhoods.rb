@@ -2,7 +2,8 @@ class CreateNeighborhoods < ActiveRecord::Migration
   def self.up
     create_table :neighborhoods do |t|
       t.string :name
-      t.references :Site
+      t.float :latitude
+      t.float :longitude
       t.timestamps
     end
   end

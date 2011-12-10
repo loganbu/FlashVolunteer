@@ -31,6 +31,10 @@
     <%= f.label :end %><br />
     <%= f.datetime_select :end %>
   </div>
+  <div class="field">
+    <%= f.label :neighborhood %><br />
+    <%= collection_select(:post, :Neighborhood_id, Neighborhood.all, :id, :name) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

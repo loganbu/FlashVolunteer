@@ -1155,3 +1155,8 @@ div#createevent div.markItUpHeader ul {
 .markItUpEditor {
     height: 150px;
 }
+
+div#map {
+    height: 100%;
+    min-height: 600px;
+}

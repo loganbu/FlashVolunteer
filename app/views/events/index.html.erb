@@ -1,31 +1,15 @@
-<h1>Listing events</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>Created</th>
-    <th>Start</th>
-    <th>End</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @events.each do |event| %>
-  <tr>
-    <td><%= event.name %></td>
-    <td><%= event.description %></td>
-    <td><%= event.created %></td>
-    <td><%= event.start %></td>
-    <td><%= event.end %></td>
-    <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Event', new_event_path %>
+<div id="left25" class="fl">
+Event1<br/>
+Event1<br/>
+Event1<br/>
+Event1<br/>
+<%= @downtown.name %><br/>
+</div>
+<div id="right75" class="fr">
+    <div id="map"></div>
+</div>
+<script>
+$(document).ready(function() { 
+setMap('map', <%= @downtown.latitude %>, <%= @downtown.longitude %>, <%= @zoom %>); 
+});
+</script>

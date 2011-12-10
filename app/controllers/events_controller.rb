@@ -3,7 +3,10 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.all
-
+    
+    @downtown = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
+    @zoom = 11
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
