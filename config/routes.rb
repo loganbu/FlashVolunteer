@@ -3,7 +3,7 @@ Flashvolunteer::Application.routes.draw do
 
   themes_for_rails
 
-  root :to => "home#index"
+  root :to => "events#index"
 
   resources :orgs
 
