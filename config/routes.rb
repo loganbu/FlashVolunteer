@@ -12,7 +12,7 @@ Flashvolunteer::Application.routes.draw do
   resources :neighborhoods
 
   resources :events
-  match "events/in/:neighborhood" => "events#in"
+  match "events/in/:neighborhood" => "events#in", :as => 'events_neighborhood', :via => :get
   
   match "privacy" => "home#privacy"
   match "tou" => "home#tou"

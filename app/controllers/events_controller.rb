@@ -26,10 +26,16 @@ class EventsController < ApplicationController
   # GET /events/in/downtown.xml
   def in
     @neighborhood = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp(params[:neighborhood])==0 }
-    @zoom = 15
-    @events = @neighborhood.events
-    @mapCenter = @neighborhood
-        
+		
+		if !@neighborhood
+			redirect_to events_url
+			return
+		else
+			@zoom = 15
+			@events = @neighborhood.events
+			@mapCenter = @neighborhood
+		end
+		
     respond_to do |format|
       format.html # in.html.erb
       format.xml  { render :xml => @event }
