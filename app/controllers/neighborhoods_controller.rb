@@ -2,7 +2,7 @@ class NeighborhoodsController < ApplicationController
   # GET /neighborhoods
   # GET /neighborhoods.xml
   def index
-    @neighborhoods = Neighborhood.all
+    @neighborhoods = Neighborhood.find(:all, :order => "name")
 
     respond_to do |format|
       format.html # index.html.erb
