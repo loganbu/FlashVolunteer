@@ -35,6 +35,10 @@
     <%= f.label :neighborhood %><br />
     <%= collection_select(:event, :Neighborhood_id, Neighborhood.all, :id, :name) %>
   </div>
+  <div class="field">
+    <%= f.label :user %><br />
+    <%= collection_select(:event, :creator_id, User.all, :id, :email) %>
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

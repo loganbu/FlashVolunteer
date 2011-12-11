@@ -29,6 +29,10 @@
   <b>Neighborhood:</b>
   <%= @event.neighborhood.name %>
 </p>
+<p>
+  <b>Creator:</b>
+  <%= @event.user.email %>
+</p>
 
 
 <%= link_to 'Edit', edit_event_path(@event) %> |
