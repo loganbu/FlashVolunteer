@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :neighborhood %><br />
-    <%= collection_select(:post, :Neighborhood_id, Neighborhood.all, :id, :name) %>
+    <%= collection_select(:event, :Neighborhood_id, Neighborhood.all, :id, :name) %>
   </div>
   <div class="actions">
     <%= f.submit %>
