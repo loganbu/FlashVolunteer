@@ -1,4 +1,13 @@
 class EventsController < ApplicationController
+  before_filter :see_splash
+	
+	def see_splash
+		if !cookies['splash']
+			cookies['splash'] = true
+			redirect_to neighborhoods_url
+		end
+	end
+
   # GET /events
   # GET /events.xml
   def index
