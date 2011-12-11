@@ -1,45 +1,130 @@
-<%= form_for(@event) do |f| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+<div id="event">
+	<%= form_for(@event) do |f| %>
+		<% if @event.errors.any? %>
+			<div id="error_explanation">
+				<h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
 
-      <ul>
-      <% @event.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+				<ul>
+				<% @event.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+				<% end %>
+				</ul>
+			</div>
+		<% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :created %><br />
-    <%= f.date_select :created %>
-  </div>
-  <div class="field">
-    <%= f.label :start %><br />
-    <%= f.datetime_select :start %>
-  </div>
-  <div class="field">
-    <%= f.label :end %><br />
-    <%= f.datetime_select :end %>
-  </div>
-  <div class="field">
-    <%= f.label :neighborhood %><br />
-    <%= collection_select(:event, :Neighborhood_id, Neighborhood.all, :id, :name) %>
-  </div>
-  <div class="field">
-    <%= f.label :user %><br />
-    <%= collection_select(:event, :creator_id, User.all, :id, :email) %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+	<div class="field">
+		<%= f.label :name %><br />
+		<%= f.text_field :name %>
+	</div>
+	<div>
+		<label for="street_address">Address</label>
+		<input type="text" name="street_address"/>
+	</div>
+	<div>
+		<span class="leftspan">
+			<label for="zip">Zip Code</label>
+			<input type="text" name="zip" style="width: 310px"/>
+		</span>
+		<span class="rightspan">
+			<div class="field">
+				<%= f.label :neighborhood %><br />
+				<%= collection_select(:event, :Neighborhood_id, Neighborhood.all, :id, :name) %>
+			</div>
+		</span>
+	</div>
+
+	<div class="field">
+		<%= f.label :user %><br />
+		<%= collection_select(:event, :creator_id, User.all, :id, :email) %>
+	</div>
+		<div class="field">
+			<%= f.label :created %><br />
+			<%= f.date_select :created %>
+		</div>
+
+	<div>
+		<span class="leftspan">
+			<div class="field">
+				<%= f.label :end %><br />
+				<%= f.datetime_select :end %>
+			</div>
+
+		<!--			<label for="startdates">Start date</label>
+			<select name="startdates"> <!-- You can't reuse names 
+				<option value="Dec_12">Thursday, Dec. 12</option>
+				<option value="Dec_13">Friday, Dec. 13</option>
+				<option value="Dec_14">Saturday, Dec. 14</option>
+				<option value="Dec_15">Sunday, Dec. 15</option>
+			</select>
+
+		<span class="rightspan">
+		</span>
+			<label for="startdates">Start time</label>
+			<select name="starttimes">
+				<option value="1PM">1:00 PM</option>
+				<option value="2PM">2:00 PM</option>
+				<option value="3PM">3:00 PM</option>
+				<option value="4PM">4:00 PM</option>
+			</select>-->
+		</span>
+	</div>
+	<div>
+		<span class="leftspan">
+			<div class="field">
+				<%= f.label :end %><br />
+				<%= f.datetime_select :end %>
+			</div>
+		</span>
+		<!--
+		<span class="rightspan">
+		</span>-->
+	</div>
+
+	<div class="field">
+		<%= f.label :description %><br />
+		<%= f.text_area :description %>
+	</div>
+	
+	<div style="clear:both;"> </div>
+	
+	<div style="padding-top: 5px;">
+		<a href="">Add more event details</a>
+
+		<div id="badges" class="" style="float: left;">
+			<div id="promote" class="" style="float: left;">
+				Promote via:
+			</div>
+			<div style="float: left; padding-left: 8px;">
+				<span class="badge">
+					<a target="_blank" href="">
+						<%= image_tag("twitter_icon_32x32.png", 
+							:id=>"twitter-badge-img", 
+							:alt=>"Follow us on Twitter",
+							:onmousedown => "this.className='tw_down32'",
+							:onmouseover => "this.className='tw_hover32'",
+							:onmouseup   => "this.className='tw_normal32'",
+							:onmouseout  => "this.className='tw_normal32'")%>
+					</a>                     
+				</span>
+				<span class="badge">
+					<a target="_blank" href="">
+						<%= image_tag("facebook-icon_normal32.png",
+							:id=>"fb-badge-img",
+							:alt=>"Find us on Facebook",
+							:onmousedown => "this.className='fb_down32'",
+							:onmouseover => "this.className='fb_hover32'",
+							:onmouseup   => "this.className='fb_normal32'",
+							:onmouseout  => "this.className='fb_normal32'")%>
+					</a>
+				</span>
+			</div>          
+		</div>
+	</div>
+
+	<a href="neighborhoods.html">
+		<div id="splash_button" class="fr actions">
+			<%= f.submit %>
+		</div>
+	</a>
+	<% end %>
+</div><!--end content-->

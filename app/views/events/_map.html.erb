@@ -14,50 +14,51 @@
 			<%= image_tag("event_marker.png", :id => "map_marker") %>
 		</div>
 		<div id="event_right" class="event">
-				<ul id="event_list">
-					<li><%= link_to(event.name, event) %></li>
-					<li id="event_description"><%= event.description %></li>
-					<li id="event_contacts" ><%= link_to("Sign up", register_event_url(event), :method => :post) %> |  <%= link_to("Contact organizer", "mailto:" + event.user.email) %></a></li>
-						<div id="share">
-							<ul>
-								<li>Share:</li>
-								<li class="badge">
-									<a target="_blank" href="">
-										<%= image_tag("email-icon_normal20.png", 
-											:id => "iphone-badge-img",
-											:alt=>"Get our iPhone application",
-											:onmousedown => "this.className='email_down20'",
-											:onmouseover => "this.className='phone_hover20'",
-											:onmouseup   => "this.className='phone_normal20'",
-											:onmouseout  => "this.className='phone_normal20'") %>
-									</a>
-								</li>
-								<li class="badge">
-									<a target="_blank" href="">
-										<%= image_tag("twitter_icon_20x20.png", 
-											:id=>"twitter-badge-img", 
-											:alt=>"Follow us on Twitter",
-											:onmousedown => "this.className='tw_down20'",
-											:onmouseover => "this.className='tw_hover20'",
-											:onmouseup   => "this.className='tw_normal20'",
-											:onmouseout  => "this.className='tw_normal20'")%>
-									</a>                     
-								</li>
-								<li class="badge">
-									<a target="_blank" href="">
-										<%= image_tag("facebook-icon_normal20.png",
-											:id=>"fb-badge-img",
-											:alt=>"Find us on Facebook",
-											:onmousedown => "this.className='fb_down20'",
-											:onmouseover => "this.className='fb_hover20'",
-											:onmouseup   => "this.className='fb_normal20'",
-											:onmouseout  => "this.className='fb_normal20'")%>
-									</a>
-								</li>
+			<ul id="event_list">
+				<li><%= link_to(event.name, event) %></li>
+				<li id="event_description"><%= event.description %></li>
+				<li id="event_contacts" ><%= link_to("Sign up", register_event_url(event), :method => :post) %> 
+					|  <%= mail_to(event.user.email, "Contact organizer", :subject => "Questions regarding " + event.name)%></a></li>
+					<div class="share">
+						<ul>
+							<li>Share:</li>
+							<li class="badge">
+								<a target="_blank" href="">
+									<%= image_tag("email-icon_normal20.png", 
+										:id => "iphone-badge-img",
+										:alt=>"Get our iPhone application",
+										:onmousedown => "this.className='email_down20'",
+										:onmouseover => "this.className='phone_hover20'",
+										:onmouseup   => "this.className='phone_normal20'",
+										:onmouseout  => "this.className='phone_normal20'") %>
+								</a>
+							</li>
+							<li class="badge">
+								<a target="_blank" href="">
+									<%= image_tag("twitter_icon_20x20.png", 
+										:id=>"twitter-badge-img", 
+										:alt=>"Follow us on Twitter",
+										:onmousedown => "this.className='tw_down20'",
+										:onmouseover => "this.className='tw_hover20'",
+										:onmouseup   => "this.className='tw_normal20'",
+										:onmouseout  => "this.className='tw_normal20'")%>
+								</a>                     
+							</li>
+							<li class="badge">
+								<a target="_blank" href="">
+									<%= image_tag("facebook-icon_normal20.png",
+										:id=>"fb-badge-img",
+										:alt=>"Find us on Facebook",
+										:onmousedown => "this.className='fb_down20'",
+										:onmouseover => "this.className='fb_hover20'",
+										:onmouseup   => "this.className='fb_normal20'",
+										:onmouseout  => "this.className='fb_normal20'")%>
+								</a>
+							</li>
 
-							</ul> 
-						</div>                
-				</ul>
+						</ul> 
+					</div>                
+			</ul>
 		</div>
 	</div>
 	<% end %>

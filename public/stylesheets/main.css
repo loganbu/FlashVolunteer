@@ -482,7 +482,7 @@ li {
 #events{
   width:25%;
 }
-#events #share li{
+.share li{
   display: inline;
 }
 
