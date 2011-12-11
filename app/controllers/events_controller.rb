@@ -4,7 +4,7 @@ class EventsController < ApplicationController
   def index
     @events = Event.all
     
-    @downtown = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
+    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
     @zoom = 11
     
     respond_to do |format|
@@ -12,11 +12,26 @@ class EventsController < ApplicationController
       format.xml  { render :xml => @events }
     end
   end
+  
+  # GET /events/in/downtown
+  # GET /events/in/downtown.xml
+  def in
+    @neighborhood = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp(params[:neighborhood])==0 }
+    @zoom = 15
+    @events = @neighborhood.events
+    @mapCenter = @neighborhood
+        
+    respond_to do |format|
+      format.html # in.html.erb
+      format.xml  { render :xml => @event }
+    end
+  end
 
   # GET /events/1
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
+    
 
     respond_to do |format|
       format.html # show.html.erb
