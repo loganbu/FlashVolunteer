@@ -5,3 +5,7 @@ function gotoNeighborhood(selection) {
     var form = document.getElementById(selection);
     window.location = "/events/in/" + form[form.selectedIndex].text;
 }
+
+function submitForm(id) {
+   var form = document.forms[id].submit();
+}

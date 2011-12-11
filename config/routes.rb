@@ -1,5 +1,6 @@
 Flashvolunteer::Application.routes.draw do
   devise_for :users, :controllers => { :confirmations => "confirmations" } do
+		root :to => "events#index"
     put "confirm_account", :to => "confirmations#confirm_account"
   end
 
