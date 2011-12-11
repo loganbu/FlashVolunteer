@@ -7,10 +7,11 @@ Flashvolunteer::Application.routes.draw do
 
   resources :orgs
 
-  resources :events
-
   resources :neighborhoods
 
+  resources :events
+  match "events/in/:neighborhood" => "events#in"
+  
   resources :users
 
   match "privacy" => "home#privacy"

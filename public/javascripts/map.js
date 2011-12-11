@@ -5,6 +5,9 @@ function setMap(div, mapLatitude, mapLongitude, zoom) {
         mapTypeId: google.maps.MapTypeId.ROADMAP
     };
     return new google.maps.Map(document.getElementById(div), myOptions);
+}
+
+function addPoints(map, neighborhood) {
     $.ajax({
         url: '/neighborhoods.xml',
         dataType: 'xml'
