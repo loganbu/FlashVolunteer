@@ -17,7 +17,7 @@
 				<ul id="event_list">
 					<li><%= link_to(event.name, event) %></li>
 					<li id="event_description"><%= event.description %></li>
-					<li id="event_contacts" ><a href="javascript:open();">Sign up</a>  |  <a href="">Contact organizer</a></li>
+					<li id="event_contacts" ><%= link_to("Sign up", register_event_url(event), :method => :post) %> |  <%= link_to("Contact organizer", "mailto:" + event.user.email) %></a></li>
 						<div id="share">
 							<ul>
 								<li>Share:</li>

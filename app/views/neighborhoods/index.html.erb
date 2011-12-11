@@ -4,28 +4,27 @@
 			:id => "question-mark",
 			:border=>"0") %>
 	</div>
-	<div id="splash_top_option">
-		<div id="splash_question">
-			<li>Where do you want to volunteer?</li>
-		</div>
-		<div id="splash_dropdown">
-		
-			<%= collection_select(:neighborhood, :id, Neighborhood.all, :id, :name, {:include_blank => "Anywhere in Seattle" }) %>
-		</div>
+    <div id="splash_top_option">
+        <div id="splash_question">
+            <li>Where do you want to volunteer?</li>
+        </div>
+        <div id="splash_dropdown">
+        
+            <%= collection_select(:neighborhood, :id, Neighborhood.all, :id, :name, {:include_blank => "Anywhere in Seattle" }) %>
+        </div>
 
-	</div>
-	<% link_to("") do %>
-		<div id="splash_button" class="fr">
-			<ul>
-				<li>Continue</li>
-				<li>
-					<%= image_tag("half_progress.png", 
-						:id => "progress-bar",
-						:border=>"0") %>
-			</ul>
-		</div>
-	<% end %>
-	</a>
+    </div>
+    <% link_to("#", :onclick => "gotoNeighborhood('neighborhood_id')") do %>
+        <div id="splash_button" class="fr">
+            <ul>
+                <li>Continue</li>
+                <li>
+                    <%= image_tag("half_progress.png", 
+                        :id => "progress-bar",
+                        :border=>"0") %>
+            </ul>
+        </div>
+    <% end %>
 	<div id="splash_member_switch">
 		Do you want to create an event instead?  <%= link_to("Click here", :action=> "new", :controller => "events")%>
 	</div>
