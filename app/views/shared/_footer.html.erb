@@ -1,10 +1,77 @@
 <div id="footer">
 	<div id="footer-navtabs" class="navtabs">
 	    <ul>
-	        <li><a class="fv" href="/about">ABOUT</a></li>
-	        <li><a class="fv" href="/partners">PARTNERS</a></li>
-	        <li><a class="fv" href="/privacy">PRIVACY</a></li>
-	        <li><a class="fv" href="/tou">TERMS OF USE</a></li>
+			<li><%= link_to("PARTNERS", "partners", :class=>"fv") %></li>
+			<li><%= link_to("PRIVACY", "privacy", :class=>"fv") %></li>
+			<li><%= link_to("TERMS OF USE", "tou", :class=>"fv") %></li>
 	    </ul>
+	</div>
+	<div id="footer-divider">
+		<li>.................................................................................................................................................................................................................................</li>
+	</div>
+	<div id="footer_content">
+		<div id="badges" class="fl">
+			<div id="footer_follow" class="fl">
+				<li>Follow us:</li>
+			</div>
+			<ul>
+				<li class="badge" id="twitter-badge">
+					<a target="_blank" href="http://twitter.com/flashvolunteer">
+						<%= image_tag("twitter_icon_32x32.png", 
+							:id => "twitter-badge-img",
+							:alt=>"Follow us on Twitter",
+							:onmousedown => "this.className='tw_down32'",
+							:onmouseover => "this.className='tw_hover32'",
+							:onmouseup   => "this.className='tw_normal32'",
+							:onmouseout  => "this.className='tw_normal32'") %>
+					</a>                     
+				</li>
+				<li class="badge" id="fb-badge">
+					<a target="_blank" href="http://www.facebook.com/pages/Flash-Volunteer/75272433226">
+						<%= image_tag("facebook_icon_32x32.png", 
+							:id => "fb-badge-img",
+							:alt=>"Follow us on Twitter",
+							:onmousedown => "this.className='fb_down32'",
+							:onmouseover => "this.className='fb_hover32'",
+							:onmouseup   => "this.className='fb_normal32'",
+							:onmouseout  => "this.className='fb_normal32'") %>
+					</a>
+				</li>
+				<li class="badge" id="iphone-badge">
+					<a target="_blank" href="http://itunes.apple.com/us/app/flash-volunteer/id353017547">
+						<%= image_tag("phone_icon_32x32.png", 
+							:id => "iphone-badge-img",
+							:alt=>"Get our iPhone application",
+							:onmousedown => "this.className='phone_down32'",
+							:onmouseover => "this.className='phone_hover32'",
+							:onmouseup   => "this.className='phone_normal32'",
+							:onmouseout  => "this.className='phone_normal32'") %>				   
+					</a>
+				</li>
+			</ul>          
+		</div>
+		<div id="footer_copy" class="fr">
+			<div id="copy_text" class="fl">
+				<ul>
+					<li>Built by volunteers, for volunteers: <a target="_blank" href="http://code.google.com/p/flashvolunteer/">join the open source effort!</a></li>
+					<li>Flash Volunteer &copy; 2009, a 501(c)3 non-profit.</li>
+				</ul>
+			</div>
+			<div id="copy_badge">
+				<ul>
+					<li class="badge" id="donate-badge">
+						<a class="fv" href="donate">
+							<%= image_tag("donate.gif", 
+								:id => "donate-badge-img",
+								:onmousedown => "this.className='donate_down'",
+								:onmouseover => "this.className='donate_hover'",
+								:onmouseup   => "this.className='donate_normal'",
+								:onmouseout  => "this.className='donate_normal'") %>				   
+						</a>                     
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="clear"> </div>
 	</div>
 </div>
