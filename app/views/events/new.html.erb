@@ -1,5 +1,126 @@
-<h1>New event</h1>
+<div id="event">
+	<div id="title">Create an event </br></div>
+	<form id="newevent">
+	<div>
+		<label for="event_name">Event Name</label>
+		<input type="text" name="event_name" />
+	</div>
 
-<%= render('form') %>
+	<div>
+		<label for="street_address">Address</label>
+		<input type="text" name="street_address"/>
+	</div>
 
-<%= link_to 'Back', events_path %>
+	<div>
+		<span class="leftspan">
+			<label for="zip">Zip Code</label>
+			<input type="text" name="zip" style="width: 310px"/>
+		</span>
+		<span class="rightspan">
+			<label for="neighborhoods">Neighborhood</label>
+			<select name="neighborhoods">
+				<option selected="selected">Choose a neighborhood</option>
+				<option value="Ballard">Ballard</option>
+				<option value="Capitol Hill">Capitol Hill</option>
+				<option value="Downtown">Downtown</option>
+				<option value="Wallingford">Wallingford</option>
+			</select>
+		</span>
+	</div>
+
+	<div>
+		<label for="contact_email">Contact Email</label>
+		<input type="text" name="contact_email"/>
+	</div>
+
+	<div>
+		<span class="leftspan">
+			<label for="startdates">Start date</label>
+			<select name="startdates"> <!-- You can't reuse names -->
+				<option value="Dec_12">Thursday, Dec. 12</option>
+				<option value="Dec_13">Friday, Dec. 13</option>
+				<option value="Dec_14">Saturday, Dec. 14</option>
+				<option value="Dec_15">Sunday, Dec. 15</option>
+			</select>
+		</span>
+		<span class="rightspan">
+			<label for="startdates">Start time</label>
+			<select name="starttimes">
+				<option value="1PM">1:00 PM</option>
+				<option value="2PM">2:00 PM</option>
+				<option value="3PM">3:00 PM</option>
+				<option value="4PM">4:00 PM</option>
+			</select>
+		</span>
+	</div>
+
+	<div>
+		<span class="leftspan">
+			<label for="enddates">End date</label>
+			<select name="enddates"> <!-- You can't reuse names -->
+				<option value="Dec_12">Thursday, Dec. 12</option>
+				<option value="Dec_13">Friday, Dec. 13</option>
+				<option value="Dec_14">Saturday, Dec. 14</option>
+				<option value="Dec_15">Sunday, Dec. 15</option>
+			</select>
+		</span>
+		<span class="rightspan">
+			<label for="endtimes">End time</label>
+			<select name="endtimes">
+				<option value="1PM">1:00 PM</option>
+				<option value="2PM">2:00 PM</option>
+				<option value="3PM">3:00 PM</option>
+				<option value="4PM">4:00 PM</option>
+			</select>
+		</span>
+	</div>
+
+	<div>
+		<label for="event_description">Description</label>
+		<textarea name="event_description" style="width: 718px"></textarea>
+	</div>
+
+	</form>
+	
+	<div style="clear:both;"> </div>
+	
+	<div style="padding-top: 5px;">
+		<a href="">Add more event details</a>
+
+		<div id="badges" class="" style="float: left;">
+			<div id="promote" class="" style="float: left;">
+				Promote via:
+			</div>
+			<div style="float: left; padding-left: 8px;">
+				<span class="badge">
+					<a target="_blank" href="">
+						<%= image_tag("twitter_icon_32x32.png", 
+							:id=>"twitter-badge-img", 
+							:alt=>"Follow us on Twitter",
+							:onmousedown => "this.className='tw_down32'",
+							:onmouseover => "this.className='tw_hover32'",
+							:onmouseup   => "this.className='tw_normal32'",
+							:onmouseout  => "this.className='tw_normal32'")%>
+					</a>                     
+				</span>
+				<span class="badge">
+					<a target="_blank" href="">
+						<%= image_tag("facebook-icon_normal32.png",
+							:id=>"fb-badge-img",
+							:alt=>"Find us on Facebook",
+							:onmousedown => "this.className='fb_down32'",
+							:onmouseover => "this.className='fb_hover32'",
+							:onmouseup   => "this.className='fb_normal32'",
+							:onmouseout  => "this.className='fb_normal32'")%>
+					</a>
+				</span>
+			</div>          
+		</div>
+	</div>
+
+	<a href="neighborhoods.html">
+		<div id="splash_button" class="fr">
+			Publish Event
+		</div>
+	</a>
+</div><!--end content-->

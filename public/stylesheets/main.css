@@ -160,6 +160,99 @@ div.moduletitle{
 	font-weight: lighter;
 }
 
+/*
+======================================================
+>>New event page style
+======================================================
+*/
+
+#newevent div
+{
+	text-align: left;
+	clear: both;
+}
+#newevent input
+{
+  width: 727px;
+}
+#newevent label
+{
+	float: left;
+	width: 100px;
+}
+#newevent select
+{
+	width: 310px;
+	margin: 5px 0;
+}
+.leftspan
+{
+	clear:left;
+	width: 420px;
+	float: left
+}
+.rightspan
+{
+	clear:right;
+	width: 420px;
+	float: left;
+}
+#title
+{
+	text-align: left;
+	background-color: #31859C;
+	color: #FFF;
+	font-weight: bold;
+	padding-bottom: 2px;
+}
+#splash_button
+{
+	background-repeat: no-repeat;
+	width: 140px;
+	text-align: center;
+}
+
+
+/*
+======================================================
+>>Splash Page Styles
+======================================================
+*/
+
+	#splash_top{
+		background: #fff;
+		padding: 30px;
+		margin: 80px;
+		border: 5px rgb(49,133,156) solid;
+		min-height: 250px;
+	}
+	#splash_question{
+		font-size: 250%;
+		margin: 35px 0 0 120px;
+	}
+	#splash_dropdown{
+		width: 500px;
+		color: black;
+		padding-top: 40px;
+		padding-bottom: 30px;
+		margin: 0 0 0 120px;
+		font-size: 140%;
+	}
+	#splash_button{
+		clear:both;
+		font-size: 130%;
+		background-image: url("/images/button.png");
+		background-repeat: no-repeat;
+		width: 160px;
+    height: 60px;
+		padding: 10px;
+    color: black;
+  }
+	#splash_member_switch{
+		clear:both;
+		font-size: 110%;
+		
+	}
 
 
 /*
@@ -351,7 +444,7 @@ li {
 		color: rgb(110,110,110);
 	}
   #footer_divider{
-    background-image: url("../media/dot_border.png");
+    background-image: url("/public/imagesdot_border.png");
     background-repeat: repeat-x;
   }
 	#donate-badge-img{

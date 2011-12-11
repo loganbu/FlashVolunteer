@@ -1,23 +1,33 @@
-<h1>Listing neighborhoods</h1>
+<div id="splash_top">
+	<div id="splash_question_mark" class="fl">
+		<%= image_tag("question_mark.png", 
+			:id => "question-mark",
+			:border=>"0") %>
+	</div>
+	<div id="splash_top_option">
+		<div id="splash_question">
+			<li>Where do you want to volunteer?</li>
+		</div>
+		<div id="splash_dropdown">
+		
+			<%= collection_select(:neighborhood, :id, Neighborhood.all, :id, :name, {:include_blank => "Anywhere in Seattle" }) %>
+		</div>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+	</div>
+	<% link_to("") do %>
+		<div id="splash_button" class="fr">
+			<ul>
+				<li>Continue</li>
+				<li>
+					<%= image_tag("half_progress.png", 
+						:id => "progress-bar",
+						:border=>"0") %>
+			</ul>
+		</div>
+	<% end %>
+	</a>
+	<div id="splash_member_switch">
+		Do you want to create an event instead?  <%= link_to("Click here", :action=> "new", :controller => "events")%>
+	</div>
+</div>
 
-<% @neighborhoods.each do |neighborhood| %>
-  <tr>
-    <td><%= neighborhood.name %></td>
-    <td><%= link_to 'Show', neighborhood %></td>
-    <td><%= link_to 'Edit', edit_neighborhood_path(neighborhood) %></td>
-    <td><%= link_to 'Destroy', neighborhood, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Neighborhood', new_neighborhood_path %>
