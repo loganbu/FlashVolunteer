@@ -376,9 +376,10 @@ li {
 */
 
 .event {padding-left:30px;}
-  #event_details
+.event_details
    {
    clear:both;
+   margin-bottom: 10px;
   }
 #event_header{
   font-size:150%;

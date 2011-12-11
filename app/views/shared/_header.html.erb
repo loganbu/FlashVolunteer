@@ -10,9 +10,9 @@
 
 	<div id="header-navtabs" class="navtabs">
 		<ul>
-	        <li id="eventslink"><a class="fv" href="/events" id="l_events">EVENTS</a></li>
-			<li id="neighborhoodslink"><a class="fv" href="/neighborhoods" id="l_neighborhoods">NEIGHBORHOODS</a></li>
-			<li id="teamlink"><a class="fv" href="/users" id="l_friends">PEOPLE</a></li>
-			<li id="helplink"><a class="fv" href="/help" id="l_help">HELP</a></li>
+			<li><%= link_to("EVENTS", "events", :class=>"fv", :id=>"l_events") %></li>
+			<li><%= link_to("NEIGHBORHOODS", "neighborhoods", :class=>"fv", :id=>"l_neighborhoods") %></li>
+			<li><%= link_to("ABOUT", "about", :class=>"fv") %></li>
+			<li id="helplink"><%= link_to("HELP", "help", :class=>"fv", :id=>"l_help") %></li>
 		</ul>
 	</div>
