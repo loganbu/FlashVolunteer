@@ -1,39 +1,90 @@
-<p id="notice"><%= notice %></p>
+<div>
+<div id="lefthalf">
+	<!-- display event details -->
+	<div id="eventdetails" class="hardmodule">
+		<ul>
+			<li><h1><%= @event.name %></br></h1></li>
+			<li><%= @event.start %>-<%= @event.end %></b></li>
+			<li>_ADDRESS_ (<%= link_to(@event.neighborhood.name, neighborhoods_url) %>)</b></li>
+			<li id="event_contacts" ><%= link_to("Sign up", register_event_url(@event), :method => :post) %> 
+				|  <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%></a>
+				|  <%= link_to("Visit the event website", neighborhoods_url) %></a>
+			</li>
+			<div class="share">
+				<ul>
+					<li>Share:</li>
+					<li class="badge">
+						<a target="_blank" href="">
+							<%= image_tag("email-icon_normal20.png", 
+								:id => "iphone-badge-img",
+								:alt=>"Get our iPhone application",
+								:onmousedown => "this.className='email_down20'",
+								:onmouseover => "this.className='phone_hover20'",
+								:onmouseup   => "this.className='phone_normal20'",
+								:onmouseout  => "this.className='phone_normal20'") %>
+						</a>
+					</li>
+					<li class="badge">
+						<a target="_blank" href="">
+							<%= image_tag("twitter_icon_20x20.png", 
+								:id=>"twitter-badge-img", 
+								:alt=>"Follow us on Twitter",
+								:onmousedown => "this.className='tw_down20'",
+								:onmouseover => "this.className='tw_hover20'",
+								:onmouseup   => "this.className='tw_normal20'",
+								:onmouseout  => "this.className='tw_normal20'")%>
+						</a>                     
+					</li>
+					<li class="badge">
+						<a target="_blank" href="">
+							<%= image_tag("facebook-icon_normal20.png",
+								:id=>"fb-badge-img",
+								:alt=>"Find us on Facebook",
+								:onmousedown => "this.className='fb_down20'",
+								:onmouseover => "this.className='fb_hover20'",
+								:onmouseup   => "this.className='fb_normal20'",
+								:onmouseout  => "this.className='fb_normal20'")%>
+						</a>
+					</li>
+					<li>Add to your calendar</li>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
+				</ul> 
+			</div>                
+		</ul>
+	</div><!--end eventdetails-->
 
-<p>
-  <b>Description:</b>
-  <%= @event.description %>
-</p>
+	<!-- event description -->
+	<div id="eventdescription" class="hardmodule">
+		<div class="moduletitle">
+			<h3>Description</h3>
+		</div>
+		<ul>
+			<li><%= @event.description %></li>
+		</ul>	
+		<div id="eventmap" class="hardmodule">
+		</div><!--end eventmap-->
+	</div><!--end eventdescription-->
+	
+	<!-- displays special instructions -->
+	<div id="personupcomingevents" class="hardmodule">
+		<div class="moduletitle">
+			<h3>Special Instructions</h3>
+		</div>
+		<ul>
+			<li></li>
+		</ul>
+	</div><!--end special instructions-->
+</div>
 
-<p>
-  <b>Created:</b>
-  <%= @event.created %>
-</p>
+<div id="righthalf">
 
-<p>
-  <b>Start:</b>
-  <%= @event.start %>
-</p>
-
-<p>
-  <b>End:</b>
-  <%= @event.end %>
-</p>
-
-<p>
-  <b>Neighborhood:</b>
-  <%= @event.neighborhood.name %>
-</p>
-<p>
-  <b>Creator:</b>
-  <%= @event.user.email %>
-</p>
-
-
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+<div id="eventattendees" class="hardmodule">
+    <div class="moduletitle"><h3>Event organizers</h3></div>
+    <ul>   
+      <li>  
+            <ul class="imagenamelinklist">
+            </ul>
+        </li>
+    </ul>
+</div>
+</div>
