@@ -1,5 +1,7 @@
 Flashvolunteer::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :confirmations => "confirmations" } do
+    put "confirm_account", :to => "confirmations#confirm_account"
+  end
 
   themes_for_rails
 
@@ -12,8 +14,6 @@ Flashvolunteer::Application.routes.draw do
   resources :events
   match "events/in/:neighborhood" => "events#in"
   
-  resources :users
-
   match "privacy" => "home#privacy"
   match "tou" => "home#tou"
   match "about" => "home#about"
