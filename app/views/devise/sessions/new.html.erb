@@ -1,17 +1,32 @@
-<h2>Sign in</h2>
+<div id="splash_top">
+	<div class="fvaccount">
+		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+			<%= devise_error_messages! %>
+			Sign in <%= link_to("Sign up", new_user_registration_url)%> </br>
+			<input type="checkbox" name="account_type" value="personal"/> Personal
+			<input type="checkbox" name="account_type" value="organization"/> Organization <br/>
+			Use your Flash account: </br>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+		   <div><%= f.label :email %><br />
+		   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+		   <div><%= f.label :password %><br />
+		   <%= f.password_field :password %></div>
+		   
+			<%= link_to("Forgot your password", new_user_password_url)=%>
+			<% if devise_mapping.rememberable? -%>
+			<div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+			
+		<% end -%>
+		<a href="">
+			<div id="splash_button"><%= f.submit "Sign in" %></div>
+			<%= link_to("Don't have one yet?", new_user_registration_url)%></br><!--Need an account?-->
+		</a>
+	</div>
 
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render :partial => "devise/shared/links" %>
+	<div class="3rdparty_account">
+		Or sign in through a third party </br>
+		Connect this account to sign in to Flash Volunteer:
+	</div>
+	<% end -%>
+</div>

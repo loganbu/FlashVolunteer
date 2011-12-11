@@ -1,12 +1,31 @@
-<h2>Sign up</h2>
+<div id="splash_top">
+	<div class="fvaccount">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+			<%= devise_error_messages! %>
 
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+			Sign up <%= link_to("Sign in", new_user_session_url) %></br>
+			<input type="checkbox" name="account_type" value="personal"/> Personal
+			<input type="checkbox" name="account_type" value="organization"/> Organization <br/>
+			Use your Flash account: </br>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+		    <div><%= f.label :email %><br />
+		    <%= f.email_field :email %></div>
 
-  <div><%= f.submit "Sign up" %></div>
-<% end %>
+		    <div><%= f.label :password %><br />
+		    <%= f.password_field :password %></div>
+		   
+			Re-type Password <input type="text" name="re_pw" align=middle/><br/>
+			<input type="checkbox" name="account_type" value="orgniazation"/> I accept the <a href="">Terms of Use</a> and <a href="">Privacy Policy</a><br/>
+		<% end %>
+		<a href="">
+			<div id="splash_button"></div>
+			<%= link_to("Have one already?", new_user_registration_url)%></br><!--Need an account?-->
 
-<%= render :partial => "devise/shared/links" %>
+		</a>
+	</div>
+
+	<div class="3rdparty_account">
+		Or sign in through a third party </br>
+		Connect this account to sign in to Flash Volunteer:
+	</div>
+</div>
