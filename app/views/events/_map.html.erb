@@ -1,10 +1,13 @@
 <div id="events" class="fl">
-    <% if (@neighborhood != nil) %>
-        <div id="event_header">
-        <%= @neighborhood.name %>
-        </div>
-    <% end %>
+	<div id="event_header">
+		<% if (@neighborhood == nil) %>
+		<li>events near <%= link_to("Seattle", "/neighborhoods") %></li>
+		<% else %>
+		<li>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></li>
+		<% end %>
+	</div>
 
+		
 	<% @events.each do |event| %>
 	<div class="event_details">
 		<div id="event_left" class="fl">

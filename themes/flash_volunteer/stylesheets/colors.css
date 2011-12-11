@@ -34,6 +34,8 @@ html, body {
 }
 
 
+
+
 /*********** HEADER *****************/
 
 /* header text */
@@ -53,11 +55,13 @@ div#top a{
 
 /* navigation tabs */
 
-#footer div.navtabs li a,
 .navtabs li a{
     color: #FFF;
 }
 
+#footer-navtabs ul li a{
+	color: rgb(140,140,140);
+}
 /***********  BODY  *****************/
 
 /* heavy text */
