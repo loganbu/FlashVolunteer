@@ -13,7 +13,7 @@ Flashvolunteer::Application.configure do
 				:user_name => ENV['MAILER_USERNAME'], 
 				:password => ENV['MAILER_PASSWORD']
 		} 
-	config.action_mailer.default_url_options = { :host => "http://flash20.heroku.com" }
+	config.action_mailer.default_url_options = { :host => "flash20.heroku.com" }
 		
   # Settings specified here will take precedence over those in config/application.rb
 
