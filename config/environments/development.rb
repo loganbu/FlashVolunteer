@@ -10,7 +10,7 @@ Flashvolunteer::Application.configure do
 				:domain => "gmail.com", 
 				:enable_starttls_auto => true, 
 				:authentication       => "plain",
-				:user_name => ENV['MAILER_USERNAME'] 
+				:user_name => ENV['MAILER_USERNAME'],
 				:password => ENV['MAILER_PASSWORD']
 		} 
 
