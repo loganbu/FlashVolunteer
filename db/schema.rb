@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20111210065204) do
     t.date     "created"
     t.datetime "start"
     t.datetime "end"
-    t.integer  "Neighborhood_id"
+    t.integer  "neighborhood_id"
     t.integer  "creator_id"
     t.integer  "User_id"
     t.datetime "created_at"
