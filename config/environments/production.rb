@@ -10,8 +10,8 @@ Flashvolunteer::Application.configure do
 				:domain => "gmail.com", 
 				:enable_starttls_auto => true, 
 				:authentication       => "plain",
-				#:user_name => "gmail_account_from@gmail.com", 
-				#:password => "gmail_account_password" 
+				:user_name => ENV['MAILER_USERNAME'] 
+				:password => ENV['MAILER_PASSWORD']
 		} 
 		
   # Settings specified here will take precedence over those in config/application.rb
