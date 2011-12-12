@@ -28,7 +28,7 @@
 		<span class="rightspan">
 			<div class="field">
 				<%= f.label :neighborhood %><br />
-				<%= collection_select(:event, :Neighborhood_id, Neighborhood.all, :id, :name) %>
+				<%= collection_select(:event, :neighborhood_id, Neighborhood.all, :id, :name) %>
 			</div>
 		</span>
 	</div>
