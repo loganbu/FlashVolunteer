@@ -7,7 +7,10 @@ gem 'rails', '3.0.9'
 
 gem 'sqlite3'
 gem 'themes_for_rails'
-gem 'mongrel', ">= 1.2.0.pre2"
+group :development do
+    gem 'mongrel', ">= 1.2.0.pre2"
+end
+
 gem 'devise'
 gem 'geocoder' 
 gem 'jquery-rails', '>= 1.0.12'
