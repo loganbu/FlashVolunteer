@@ -6,7 +6,7 @@ class CreateEvents < ActiveRecord::Migration
       t.date :created
       t.datetime :start
       t.datetime :end
-      t.references :Neighborhood
+      t.references :neighborhood
       t.references "creator", :User
       t.timestamps
     end
