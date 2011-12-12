@@ -10,8 +10,8 @@ Flashvolunteer::Application.configure do
 				:domain => "gmail.com", 
 				:enable_starttls_auto => true, 
 				:authentication       => "plain",
-				#:user_name => "gmail_account_from@gmail.com", 
-				#:password => "gmail_account_password" 
+				#:user_name => "flashvolunteertest@gmail.com", 
+				#:password => "Flash Volunteer" 
 		} 
 
 	config.action_mailer.default_url_options = { :host => "localhost:3000" }
