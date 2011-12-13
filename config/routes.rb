@@ -1,14 +1,13 @@
 Flashvolunteer::Application.routes.draw do
-  devise_for :users, :controllers => { :confirmations => "confirmations" } do
+  devise_for :users, :controllers => { :confirmations => "users/confirmations", :registrations => "users/registrations" } do
 		root :to => "events#index"
-    put "confirm_account", :to => "confirmations#confirm_account"
+    put "confirm_account", :to => "users/confirmations#confirm_account"
+		get "users/sign_up/quick", :to => "users/registrations#quick", :as => "quick_new_user"
   end
 
   themes_for_rails
 
   root :to => "events#index"
-
-  resources :orgs
 
   resources :neighborhoods
 

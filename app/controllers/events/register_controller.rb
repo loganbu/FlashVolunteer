@@ -5,7 +5,7 @@ class Events::RegisterController < ApplicationController
     @event = Event.find(params[:id])
 		
 		if (!current_user)
-			redirect_to(new_user_registration_url)
+			redirect_to(quick_new_user_url)
 			return
 		end
 	

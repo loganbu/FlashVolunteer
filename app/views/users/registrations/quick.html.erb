@@ -1,0 +1,13 @@
+<div id="splash_top">
+	<div class="fvaccount">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signinform"}) do |f| %>
+		    <div><%= f.label :email %><br />
+		    <%= f.email_field :email %></div>
+
+			<input type="checkbox" name="account_type" value="orgniazation"/> I accept the <a href="">Terms of Use</a> and <a href="">Privacy Policy</a><br/>
+            <a href="#" onclick="submitForm('signinform')">
+                <div id="splash_button"></div>
+            </a>
+		<% end %>
+	</div>
+</div>
