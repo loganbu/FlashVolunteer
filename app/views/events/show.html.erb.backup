@@ -1,6 +1,6 @@
 <div>
 	<div>
-		<div id="lefthalf" class="hardmodule">
+		<div id="eventdetails" class="hardmodule fl">
 			<ul>
 				<li id="event_header"><%= @event.name %></br></h1></li>
 				<li><%= @event.start %>-<%= @event.end %></b></li>
@@ -17,10 +17,10 @@
 								<%= image_tag("email-icon_normal20.png", 
 									:id => "iphone-badge-img",
 									:alt=>"Get our iPhone application",
-									:onmousedown => "this.className='email_down32'",
-									:onmouseover => "this.className='phone_hover32'",
-									:onmouseup   => "this.className='phone_normal32'",
-									:onmouseout  => "this.className='phone_normal32'") %>
+									:onmousedown => "this.className='email_down20'",
+									:onmouseover => "this.className='phone_hover20'",
+									:onmouseup   => "this.className='phone_normal20'",
+									:onmouseout  => "this.className='phone_normal20'") %>
 							</a>
 						</li>
 						<li class="badge">
@@ -28,10 +28,10 @@
 								<%= image_tag("twitter_icon_20x20.png", 
 									:id=>"twitter-badge-img", 
 									:alt=>"Follow us on Twitter",
-									:onmousedown => "this.className='tw_down32'",
-									:onmouseover => "this.className='tw_hover32'",
-									:onmouseup   => "this.className='tw_normal32'",
-									:onmouseout  => "this.className='tw_normal32'")%>
+									:onmousedown => "this.className='tw_down20'",
+									:onmouseover => "this.className='tw_hover20'",
+									:onmouseup   => "this.className='tw_normal20'",
+									:onmouseout  => "this.className='tw_normal20'")%>
 							</a>                     
 						</li>
 						<li class="badge">
@@ -39,10 +39,10 @@
 								<%= image_tag("facebook-icon_normal20.png",
 									:id=>"fb-badge-img",
 									:alt=>"Find us on Facebook",
-									:onmousedown => "this.className='fb_down32'",
-									:onmouseover => "this.className='fb_hover32'",
-									:onmouseup   => "this.className='fb_normal32'",
-									:onmouseout  => "this.className='fb_normal32'")%>
+									:onmousedown => "this.className='fb_down20'",
+									:onmouseover => "this.className='fb_hover20'",
+									:onmouseup   => "this.className='fb_normal20'",
+									:onmouseout  => "this.className='fb_normal20'")%>
 							</a>
 						</li>
 						<li><%= link_to("Add to your calendar", export_event_url(@event))%> </li>
@@ -51,15 +51,42 @@
 				</div>                
 			</ul>
 		</div><!--end eventdetails-->
-		<div class="fr">
-			<div id="splash_button"><%= link_to("Sign up", register_event_url, :html => {:id => "righthalf"})%></div>
-			<div id="splash_button"><%= link_to("Edit event", edit_event_url, :html => {:id => "righthalf"})%></div>
-			<div id="splash_button"><%= link_to("Clone event", :html => {:id => "righthalf"})%></div>
+		<div class = "fr">
+			<div>
+			<a class="fv" href="donate">
+				<%= image_tag("donate.gif", 
+					:id => "donate-badge-img",
+					:onmousedown => "this.className='donate_down'",
+					:onmouseover => "this.className='donate_hover'",
+					:onmouseup   => "this.className='donate_normal'",
+					:onmouseout  => "this.className='donate_normal'") %>				   
+			</a>    
+			</div>			
+			<div>
+			<a class="fv" href="donate">
+				<%= image_tag("donate.gif", 
+					:id => "donate-badge-img",
+					:onmousedown => "this.className='donate_down'",
+					:onmouseover => "this.className='donate_hover'",
+					:onmouseup   => "this.className='donate_normal'",
+					:onmouseout  => "this.className='donate_normal'") %>				   
+			</a>                     	
+			</div>			
+			<div>			
+			<a class="fv" href="donate">
+				<%= image_tag("donate.gif", 
+					:id => "donate-badge-img",
+					:onmousedown => "this.className='donate_down'",
+					:onmouseover => "this.className='donate_hover'",
+					:onmouseup   => "this.className='donate_normal'",
+					:onmouseout  => "this.className='donate_normal'") %>				   
+			</a>  
+			</div>			
 		</div>
 	</div>
-	<div class="clear"></div>
+	
 	<div>
-		<div id="lefthalf">
+		<div class="fl">
 			
 			<!-- event description -->
 			<div id="eventdescription" class="hardmodule">
@@ -84,7 +111,7 @@
 			</div><!--end special instructions-->
 		</div>
 
-		<div id="righthalf">
+		<div class="fr">
 
 			<div id="eventattendees" class="hardmodule">
 				<div class="moduletitle"><h3>Event organizers</h3></div>

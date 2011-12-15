@@ -1,5 +1,5 @@
 <div id="event">
-	<%= form_for(@event) do |f| %>
+	<%= form_for(@event, :html => {:id => "newevent"}) do |f| %>
 		<% if @event.errors.any? %>
 			<div id="error_explanation">
 				<h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -13,7 +13,7 @@
 		<% end %>
 
 	<div class="field">
-		<%= f.label :name %><br />
+		<%= f.label :name, "Event Name" %>
 		<%= f.text_field :name %>
 	</div>
 	<div>
@@ -27,103 +27,81 @@
 		</span>
 		<span class="rightspan">
 			<div class="field">
-				<%= f.label :neighborhood %><br />
-				<%= collection_select(:event, :neighborhood_id, Neighborhood.all, :id, :name) %>
+				<%= collection_select(:event, :neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "Choose a neighborhood" }) %>
 			</div>
 		</span>
 	</div>
 
 	<div class="field">
-		<%= f.label :user %><br />
+		<%= f.label :user, "Contact email" %>
 		<%= collection_select(:event, :creator_id, User.all, :id, :email) %>
 	</div>
-		<div class="field">
-			<%= f.label :created %><br />
-			<%= f.date_select :created %>
-		</div>
 
 	<div>
-		<span class="leftspan">
+		<span class="">
 			<div class="field">
-				<%= f.label :end %><br />
-				<%= f.datetime_select :end %>
+				<%= f.label :start, "Start date", :html => {:style => "clear: left, width: 420 px, float: left"} %>
+				<%= f.datepicker(:start) %>
 			</div>
 
-		<!--			<label for="startdates">Start date</label>
-			<select name="startdates"> <!-- You can't reuse names 
-				<option value="Dec_12">Thursday, Dec. 12</option>
-				<option value="Dec_13">Friday, Dec. 13</option>
-				<option value="Dec_14">Saturday, Dec. 14</option>
-				<option value="Dec_15">Sunday, Dec. 15</option>
-			</select>
-
 		<span class="rightspan">
-		</span>
 			<label for="startdates">Start time</label>
 			<select name="starttimes">
 				<option value="1PM">1:00 PM</option>
 				<option value="2PM">2:00 PM</option>
 				<option value="3PM">3:00 PM</option>
 				<option value="4PM">4:00 PM</option>
-			</select>-->
+			</select>
 		</span>
 	</div>
 	<div>
-		<span class="leftspan">
+		<span class="">
 			<div class="field">
-				<%= f.label :end %><br />
-				<%= f.datetime_select :end %>
+				<%= f.label :end, "End date", :html => {:style => "clear: left, width: 420 px, float: left"}%>
+				<%= f.datepicker :end%>
 			</div>
 		</span>
-		<!--
-		<span class="rightspan">
-		</span>-->
+		<span class ="rightspan">
+		</span>
 	</div>
 
 	<div class="field">
-		<%= f.label :description %><br />
+		<%= f.label :description %>
 		<%= f.text_area :description %>
 	</div>
 	
 	<div style="clear:both;"> </div>
-	
-	<div style="padding-top: 5px;">
-		<a href="">Add more event details</a>
-
-		<div id="badges" class="" style="float: left;">
-			<div id="promote" class="" style="float: left;">
-				Promote via:
-			</div>
-			<div style="float: left; padding-left: 8px;">
-				<span class="badge">
-					<a target="_blank" href="">
-						<%= image_tag("twitter_icon_32x32.png", 
-							:id=>"twitter-badge-img", 
-							:alt=>"Follow us on Twitter",
-							:onmousedown => "this.className='tw_down32'",
-							:onmouseover => "this.className='tw_hover32'",
-							:onmouseup   => "this.className='tw_normal32'",
-							:onmouseout  => "this.className='tw_normal32'")%>
-					</a>                     
-				</span>
-				<span class="badge">
-					<a target="_blank" href="">
-						<%= image_tag("facebook-icon_normal32.png",
-							:id=>"fb-badge-img",
-							:alt=>"Find us on Facebook",
-							:onmousedown => "this.className='fb_down32'",
-							:onmouseover => "this.className='fb_hover32'",
-							:onmouseup   => "this.className='fb_normal32'",
-							:onmouseout  => "this.className='fb_normal32'")%>
-					</a>
-				</span>
-			</div>          
-		</div>
-	</div>
-
+	<div class="share">
+		<ul>
+			<li>Promote via:</li>
+			<li class="badge">
+				<a target="_blank" href="">
+					<%= image_tag("twitter_icon_32x32.png", 
+						:id=>"twitter-badge-img", 
+						:alt=>"Follow us on Twitter",
+						:onmousedown => "this.className='tw_down32'",
+						:onmouseover => "this.className='tw_hover32'",
+						:onmouseup   => "this.className='tw_normal32'",
+						:onmouseout  => "this.className='tw_normal32'")%>
+				</a>                     
+			</li>
+			<li class="badge">
+				<a target="_blank" href="">
+					<%= image_tag("facebook-icon_normal32.png",
+						:id=>"fb-badge-img",
+						:alt=>"Find us on Facebook",
+						:onmousedown => "this.className='fb_down32'",
+						:onmouseover => "this.className='fb_hover32'",
+						:onmouseup   => "this.className='fb_normal32'",
+						:onmouseout  => "this.className='fb_normal32'")%>
+				</a>
+			</li>
+			
+		</ul> 
+	</div> 	
 	<a href="neighborhoods.html">
 		<div id="splash_button" class="fr actions">
-			<%= f.submit %>
+			<%= f.submit :html => {:style => "width: 30px"}%>
 		</div>
 	</a>
 	<% end %>

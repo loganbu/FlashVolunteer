@@ -8,6 +8,21 @@ class EventsController < ApplicationController
 		end
 	end
 
+	def export
+		@event = Event.find(params[:id])
+		@calendar = Icalendar::Calendar.new
+		event = Icalendar::Event.new
+		event.start = @event.start.strftime("%Y%m%dT%H%M%S")
+		event.end = @event.end.strftime("%Y%m%dT%H%M%S")
+		event.summary = @event.name
+		event.description = @event.description
+		#event.location = @event.n
+		@calendar.add event
+		@calendar.publish
+		headers['Content-Type'] = "text/calendar; charset=UTF-8"
+		render :text => @calendar.to_ical
+	end
+ 
   # GET /events
   # GET /events.xml
   def index
