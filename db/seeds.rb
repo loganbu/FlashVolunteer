@@ -9,7 +9,7 @@ neighborhoods = Neighborhood.create([
 { :name => 'Ballard',                   :latitude => 47.683997, :longitude => -122.381086}, 
 { :name => 'Beacon Hill',               :latitude => 47.588626, :longitude => -122.309246}, 
 { :name => 'Bellevue',                  :latitude => 47.609805, :longitude => -122.201271}, 
-{ :name => 'Belltown',                  :latitude => 47.624562, :longitude => -122.345552}, 
+{ :name => 'Belltown',                  :latitude => 47.614360, :longitude => -122.3438686}, 
 { :name => 'Bothell',                   :latitude => 47.761107, :longitude => -122.205563}, 
 { :name => 'Boulevard Park',            :latitude => 0,         :longitude =>  0 }, 
 { :name => 'Burien',                    :latitude => 47.469816, :longitude => -122.343750}, 

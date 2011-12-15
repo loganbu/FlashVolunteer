@@ -17,18 +17,22 @@
 		<%= f.text_field :name %>
 	</div>
 	<div>
-		<label for="street_address">Address</label>
-		<input type="text" name="street_address"/>
+        <%= f.label :address %><br/>
+        <%= f.text_field :street %>
+	</div>
+	<div>
+        <%= f.label :city %><br/>
+        <%= f.text_field :city %>
 	</div>
 	<div>
 		<span class="leftspan">
-			<label for="zip">Zip Code</label>
-			<input type="text" name="zip" style="width: 310px"/>
+            <%= f.label :zip_code %><br/>
+            <%= f.text_field :zip, :width => 50 %>
 		</span>
 		<span class="rightspan">
 			<div class="field">
 				<%= f.label :neighborhood %><br />
-				<%= collection_select(:event, :neighborhood_id, Neighborhood.all, :id, :name) %>
+				<%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name) %>
 			</div>
 		</span>
 	</div>

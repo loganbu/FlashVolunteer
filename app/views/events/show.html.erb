@@ -5,7 +5,8 @@
 		<ul>
 			<li><h1><%= @event.name %></br></h1></li>
 			<li><%= @event.start %>-<%= @event.end %></b></li>
-			<li>_ADDRESS_ (<%= link_to(@event.neighborhood.name, neighborhoods_url) %>)</b></li>
+			<li><%= @event.geocode_address %></li>
+            <li> (<%= link_to(@event.neighborhood.name, neighborhoods_url) %>)</b></li>
 			<li id="event_contacts" ><%= link_to("Sign up", register_event_url(@event), :method => :post) %> 
 				|  <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%></a>
 				|  <%= link_to("Visit the event website", neighborhoods_url) %></a>

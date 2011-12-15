@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111210065204) do
+ActiveRecord::Schema.define(:version => 20111215024451) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,12 @@ ActiveRecord::Schema.define(:version => 20111210065204) do
     t.integer  "User_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "street"
+    t.string   "city"
+    t.integer  "zip"
+    t.float    "latitude"
+    t.float    "longitude"
+    t.string   "state",           :default => "WA"
   end
 
   create_table "neighborhoods", :force => true do |t|

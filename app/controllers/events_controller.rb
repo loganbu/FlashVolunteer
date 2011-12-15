@@ -38,7 +38,7 @@ class EventsController < ApplicationController
 		
     respond_to do |format|
       format.html # in.html.erb
-      format.xml  { render :xml => @event }
+      format.xml  { render :xml => @events }
     end
   end
 
@@ -47,9 +47,12 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     
-
     respond_to do |format|
-      format.html # show.html.erb
+			if params[:map]
+				format.html { render 'show.map.erb', :layout=>false }
+			else
+				format.html # show.html.erb
+			end
       format.xml  { render :xml => @event }
     end
   end

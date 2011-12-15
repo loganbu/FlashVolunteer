@@ -69,5 +69,6 @@
 <script>
 $(document).ready(function() { 
 setMap('map', <%= @mapCenter.latitude %>, <%= @mapCenter.longitude %>, <%= @zoom %>); 
+addPoints('<%= request.url %>' + '.xml');
 });
 </script>
