@@ -185,16 +185,22 @@ div.moduletitle{
 	width: 310px;
 	margin: 5px 0;
 }
+
 .leftspan
 {
-	clear:left;
-	width: 420px;
+	clear: left;
+	width: 47%;
 	float: left
 }
 .rightspan
 {
-	clear:right;
-	width: 420px;
+	clear: right;
+	width: 47%;
+	float: left;
+}
+.promotion
+{
+	display: inline;
 	float: left;
 }
 #title
@@ -463,6 +469,8 @@ li {
 		background-color: rgb(59,59,59);
 	}	
 	/*
+
+	/*
 ======================================================
 >>Events
 ======================================================
@@ -526,10 +534,7 @@ a {
     a.operation {
         padding-left: 3px;
     }
-	
-	a.event_name {
-	    font-weight:bold;
-	}
+
 	
 	#generic_dialog div.dialog_header {
 		overflow: auto;
