@@ -29,6 +29,11 @@ var showPopup = function(latlng) {
     });
 };
 
+function showPopupFromClick(lat, lng) {
+    var latLng = new google.maps.LatLng(lat, lng);
+    showPopup({ latLng: latLng});
+}
+
 function addPoints(urlSource) {
     $.ajax({
         url: urlSource,
