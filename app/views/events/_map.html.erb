@@ -9,7 +9,7 @@
 
 		
 	<% @events.each do |event| %>
-	<div class="event_details">
+	<div class="event_details" onclick="showPopupFromClick(<%= event.latitude %>, <%= event.longitude %>)">
 		<div id="event_left" class="fl">
 			<%= image_tag("event_marker.png", :id => "map_marker") %>
 		</div>

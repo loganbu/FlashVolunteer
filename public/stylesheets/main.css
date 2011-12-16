@@ -515,7 +515,12 @@ li {
    {
    clear:both;
    margin-bottom: 10px;
+   border: 1px solid #FFF;
   }
+.event_details:hover {
+  border: 1px solid #000; 
+  background: rgb(230, 244, 244);
+}
 #event_header{
   font-size:150%;
   padding-top:20px;

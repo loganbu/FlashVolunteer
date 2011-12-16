@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215024451) do
+ActiveRecord::Schema.define(:version => 20111216041522) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -31,6 +31,11 @@ ActiveRecord::Schema.define(:version => 20111215024451) do
     t.string   "state",           :default => "WA"
   end
 
+  create_table "events_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+  end
+
   create_table "neighborhoods", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
@@ -47,8 +52,6 @@ ActiveRecord::Schema.define(:version => 20111215024451) do
 
   create_table "users", :force => true do |t|
     t.string   "username"
-    t.string   "firstname"
-    t.string   "lastname"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email",                                 :default => "", :null => false
@@ -64,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20111215024451) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.string   "name"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
