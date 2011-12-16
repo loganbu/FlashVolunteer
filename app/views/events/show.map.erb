@@ -1,13 +1,13 @@
 <div>
-	<div>
+	<div style="padding-bottom:5px">
 		<ul id="event_list">
 			<li><%= link_to(@event.name, event_url(@event)) %></li>
-			<li><%= @event.street %><br/></li>
-			<li><%= @event.city %>, <%= @event.state %> <%= @event.state %></li>
-			<li id="event_contacts" ><%= link_to("Sign up", register_event_url(event), :method => :post) %> 
-				|  <%= mail_to(event.user.email, "Contact organizer", :subject => "Questions regarding " + event.name)%></a></li>        
+			<li><%= @event.street %>, <%= @event.city %>, <%= @event.state %></li>
+			<li id="event_contacts" ><%= link_to("Sign up", register_event_url(@event), :method => :post) %> 
+				|  <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%></a></li>        
 		</ul>
 	</div>
+	<hr style="padding-bottom:5px" />
 	<div class="share">
 		<ul>
 			<li>Share:</li>

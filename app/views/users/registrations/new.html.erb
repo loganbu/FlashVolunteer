@@ -1,16 +1,21 @@
 <div id="splash_top">
-	<div class="fvaccount fl">
+	<div class ="share" style ="padding-bottom: 10px">
+		<ul>
+			<li id = "splash_header">Sign up </li>
+			<li><%= link_to("Sign in", new_user_session_url) %></li><br />
+		</ul>
+	</div>
+	<hr style="padding-bottom: 20px"/>
+	<div class="fvaccount fl" id ="sign">
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signupform"}) do |f| %>
 			<%= devise_error_messages! %>
-			<div class ="share">
-				<ul>
-					<li id = "splash_header">Sign up </li>
-					<li><%= link_to("Sign in", new_user_session_url) %></br></br></li>
-				</ul>
-			</div>
+
 			<input type="checkbox" name="account_type" value="personal"/> Personal
-			<input type="checkbox" name="account_type" value="organization"/> Organization <br/></br>
-			Use your Flash account: </br>
+			<input type="checkbox" name="account_type" value="organization"/> Organization <br />
+			Create a Flash account: </br>
+
+		    <div><%= f.label :name %>
+		    <%= f.email_field :name %></div>
 
 		    <div><%= f.label :email %>
 		    <%= f.email_field :email %></div>

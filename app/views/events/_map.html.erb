@@ -1,13 +1,24 @@
 <div id="events" class="fl">
 	<div id="event_header">
 		<% if (@neighborhood == nil) %>
-		<li>events near <%= link_to("Seattle", "/neighborhoods") %></li>
+			<li>events near <%= link_to("Seattle", "/neighborhoods") %></li>
 		<% else %>
-		<li>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></li>
+			<li>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></li>
 		<% end %>
 	</div>
 
-		
+	<div>
+		<% if user_signed_in? %>
+			<div id="event_left" class="fl">
+				<%= image_tag("event_marker.png", :id => "map_marker") %>
+			</div>
+			<div id="event_right" class="event">
+				<li><%=link_to("Add an event", new_event_url) %></li>
+			</div>		
+		<% else %>
+		<% end %>		
+	</div>
+	
 	<% @events.each do |event| %>
 	<div class="event_details" onclick="showPopupFromClick(<%= event.latitude %>, <%= event.longitude %>)">
 		<div id="event_left" class="fl">
