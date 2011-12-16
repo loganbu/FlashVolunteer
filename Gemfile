@@ -9,6 +9,7 @@ gem 'sqlite3'
 gem 'themes_for_rails'
 
 gem 'devise'
+gem 'cancan'
 gem 'geocoder' 
 gem 'jquery-rails', '>= 1.0.12'
 gem 'tlsmail'

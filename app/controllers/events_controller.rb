@@ -1,15 +1,8 @@
 class EventsController < ApplicationController
   before_filter :see_splash, :only => [:index]
-  before_filter :require_organizer, :only => [:update, destroy]
-  before_filter :require_authenticated, :only => [:create]
-	
-	def see_splash
-		if !cookies['splash']
-			cookies['splash'] = true
-			redirect_to neighborhoods_url
-		end
-	end
+  load_and_authorize_resource
 
+	
 	def export
 		@event = Event.find(params[:id])
 		@calendar = Icalendar::Calendar.new
@@ -133,4 +126,13 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  private
+  
+	def see_splash
+		if !cookies['splash']
+			cookies['splash'] = true
+			redirect_to neighborhoods_url
+		end
+	end
 end

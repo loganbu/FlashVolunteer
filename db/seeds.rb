@@ -4,7 +4,21 @@
 # Examples:
 #
 #   Mayor.create(:name => 'Daley', :city => cities.first)
-neighborhoods = Neighborhood.create([               
+
+Role.delete_all()
+Role.create([
+{ :name => "SuperAdmin" },
+{ :name => "SiteAdmin" },
+{ :name => "Organization" },
+{ :name => "Volunteer" },
+])
+
+admin = User.find_or_create_by_email(:email => "admin@localhost.com", :password => ENV['ADMIN_PASSWORD'], :password_confirmation => ENV['ADMIN_PASSWORD'], :name=>"Admin")
+admin.roles << Role.find_by_name("SuperAdmin")
+
+
+Neighborhood.delete_all()
+Neighborhood.create([               
 { :name => 'Bainbridge Island',         :latitude => 47.629244, :longitude => -122.507858}, 
 { :name => 'Ballard',                   :latitude => 47.683997, :longitude => -122.381086}, 
 { :name => 'Beacon Hill',               :latitude => 47.588626, :longitude => -122.309246}, 
@@ -56,4 +70,3 @@ neighborhoods = Neighborhood.create([
 { :name => 'West Seattle',              :latitude => 47.576526, :longitude => -122.391901}, 
 { :name => 'White Center',              :latitude => 47.516675, :longitude => -122.354736} 
 ])
-

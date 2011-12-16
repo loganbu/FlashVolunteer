@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
   belongs_to :neighborhood, :foreign_key => "neighborhood_id"
   belongs_to :user, :foreign_key => "creator_id"
+  validates :neighborhood_id, :presence => true
 	has_and_belongs_to_many :participants, :class_name => "User", :join_table => "events_users", :uniq => true
 	
 	geocoded_by :geocode_address

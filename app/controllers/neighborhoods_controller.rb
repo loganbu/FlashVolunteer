@@ -1,4 +1,6 @@
 class NeighborhoodsController < ApplicationController
+  load_and_authorize_resource
+  
   # GET /neighborhoods
   # GET /neighborhoods.xml
   def index

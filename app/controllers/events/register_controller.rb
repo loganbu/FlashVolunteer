@@ -1,4 +1,8 @@
-class Events::RegisterController < ApplicationController
+class Events::RegisterController < ApplicationController    
+  skip_authorization_check
+
+  load_and_authorize_resource :only => :destroy
+
 
   # POST /events/1/register
   def create

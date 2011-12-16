@@ -33,6 +33,7 @@ GEM
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (2.1.2)
+    cancan (1.6.7)
     devise (1.5.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -98,6 +99,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  cancan
   devise
   geocoder
   icalendar

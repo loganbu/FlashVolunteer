@@ -1,7 +1,5 @@
 class HomeController < ApplicationController
+  skip_authorization_check
   def index
-    @users = User.all
-    @events = Event.all
-    @orgs = Org.all
   end
 end
