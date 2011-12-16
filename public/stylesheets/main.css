@@ -152,8 +152,6 @@ h3 {
     width: 100%;
 }
 
-
-
 div.moduletitle{
     text-align: left;
     padding: 6px 6px 6px 8px;
@@ -170,6 +168,15 @@ div.moduletitle{
 */
 .form_fields{
 	padding-bottom: 10px;
+}
+
+.subheader{
+	font-weight: bold;
+	font: 130%;
+	padding-bottom: 10px;
+}
+.formpadding{
+	padding-bottom: 3px;
 }
 
 #sign div

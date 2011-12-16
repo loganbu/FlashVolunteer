@@ -10,22 +10,20 @@
 		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signupform"}) do |f| %>
 			<%= devise_error_messages! %>
 
-			<input type="checkbox" name="account_type" value="personal"/> Personal
-			<input type="checkbox" name="account_type" value="organization"/> Organization <br />
-			Create a Flash account: </br>
+			<div class = "subheader">Create a Flash account: </div>
 
-		    <div><%= f.label :name %>
+		    <div class = "formpadding"><%= f.label :name %>
 		    <%= f.email_field :name %></div>
 
-		    <div><%= f.label :email %>
+		    <div class = "formpadding"><%= f.label :email %>
 		    <%= f.email_field :email %></div>
 
-		    <div><%= f.label :password %>
+		    <div class = "formpadding"><%= f.label :password %>
 		    <%= f.password_field :password %></div>
-		    <div><%= f.label :confirm_password %>
+		    <div class = "formpadding"><%= f.label :confirm_password %>
 		    <%= f.password_field :password %></div>
 
-			<input type="checkbox" name="account_type" value="orgniazation"/> I accept the <a href="">Terms of Use</a> and <a href="">Privacy Policy</a><br/>
+			<input type="checkbox" name="account_type" value="organization"/> I accept the <a href="">Terms of Use</a> and <a href="">Privacy Policy</a><br/>
 			<div class = "share">
 				<div class = "fl">
 					<%= link_to("Have one already?", user_session_url)%></br><!--Need an account?-->
@@ -40,7 +38,7 @@
 	</div>
 
 	<div class="3rdparty_account fr">
-		Or sign in through a third party </br></br>
+		<div class = "subheader">Or sign in through a third party </div>
 		Connect this account to sign in to Flash Volunteer:
 	</div>
 </div>

@@ -1,21 +1,23 @@
 <div id="splash_top">
+	<div class ="share" style ="padding-bottom: 10px">
+		<ul>
+			<li id = "splash_header">Sign in </li>
+			<li><%= link_to("Sign up", new_user_registration_url)%></li>
+		</ul>
+	</div>
+	<hr style="padding-bottom: 20px"/>
 	<div class="fvaccount fl" >
 		<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html=>{:name=>"signinform", :id =>"sign"}) do |f| %>
 			<%= devise_error_messages! %>
-			<div class ="share">
-				<ul>
-					<li id = "splash_header">Sign in </li>
-					<li><%= link_to("Sign up", new_user_registration_url)%></br></br></li>
-				</ul>
-			</div>
-			<input type="checkbox" name="account_type" value="personal"/> Personal
-			<input type="checkbox" name="account_type" value="organization"/> Organization <br/></br>
-			Use your Flash account: </br>
+<!--			<input type="checkbox" name="account_type" value="personal"/> Personal
+			<input type="checkbox" name="account_type" value="organization"/> Organization <br/></br>-->
+			<div class = "subheader">Use your Flash account: </div>
+			
 
-		   <div><%= f.label :email %>
+		   <div class = "formpadding"><%= f.label :email %>
 		   <%= f.email_field :email %></div>
 
-		   <div><%= f.label :password %>
+		   <div class = "formpadding"><%= f.label :password %>
 		   <%= f.password_field :password %></div>
 		   
 			<%= link_to("Forgot your password", new_user_password_url)=%>
@@ -36,7 +38,7 @@
 	</div>
 
 	<div class="3rdparty_account fr">
-		Or sign in through a third party </br></br>
+		<div class = "subheader">Or sign in through a third party </div>
 		Connect this account to sign in to Flash Volunteer:
 	</div>
 	<% end -%>
