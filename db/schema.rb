@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111215024451) do
+ActiveRecord::Schema.define(:version => 20111216010338) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(:version => 20111215024451) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "state",           :default => "WA"
+  end
+
+  create_table "events_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "event_id"
   end
 
   create_table "neighborhoods", :force => true do |t|

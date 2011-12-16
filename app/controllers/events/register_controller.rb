@@ -3,12 +3,14 @@ class Events::RegisterController < ApplicationController
   # POST /events/1/register
   def create
     @event = Event.find(params[:id])
-		
-		if (!current_user)
-			redirect_to(quick_new_user_url)
-			return
-		end
+      
+    if (!current_user)
+      redirect_to(quick_new_user_url)
+      return
+    end
 	
+    @event.participants << current_user
+    
     respond_to do |format|
       if true
         format.html { redirect_to(@event, :notice => 'Event was successfully registered.') }
