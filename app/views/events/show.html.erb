@@ -56,7 +56,6 @@
 		<div class="fr">
 			<div id="splash_button"><%= link_to("Sign up", register_event_url, :html => {:id => "righthalf"})%></div>
 			<div id="splash_button"><%= link_to("Edit event", edit_event_url, :html => {:id => "righthalf"})%></div>
-			<div id="splash_button"><%= link_to("Clone event", :html => {:id => "righthalf"})%></div>
 		</div>
 	</div>
 	<div class="clear"></div>
@@ -89,7 +88,25 @@
 		<div id="righthalf">
 
 			<div id="eventattendees" class="hardmodule">
-				<div class="moduletitle"><h3>Event organizers</h3></div>
+                    <% if current_user == @event.user %>
+                        <div class="moduletitle">
+                            <h3>Event attendees</h3>
+                        </div>
+                        <ul>
+                            <li><%= @event.participants.size %> participants plan to join</li>
+                        <% @event.participants.each do |p| %>
+                            <li><%= mail_to p.email, p.name%></li>
+                        <% end %>
+                        </ul>
+                    <% else %>
+                        <div class="moduletitle">
+                            <h3>Event Organizers</h3>
+                        </div>                        
+                        <ul>
+                            <li><%= mail_to @event.user.email, @event.user.name %></li>
+                        </ul>
+                    <% end %>
+                </div>
 				<ul>   
 				  <li>  
 						<ul class="imagenamelinklist">

@@ -1,5 +1,7 @@
 class EventsController < ApplicationController
-  before_filter :see_splash
+  before_filter :see_splash, :only => [:index]
+  before_filter :require_organizer, :only => [:update, destroy]
+  before_filter :require_authenticated, :only => [:create]
 	
 	def see_splash
 		if !cookies['splash']
