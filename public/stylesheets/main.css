@@ -114,6 +114,7 @@ h1 { font-size: 24px; line-height: 36px; margin-bottom: 18px; }
 	    line-height:100%;   
 	}
 
+	
 h2 { 
     font-size: 110%; 
 	font-weight: bold;
@@ -151,6 +152,8 @@ h3 {
     width: 100%;
 }
 
+
+
 div.moduletitle{
     text-align: left;
     padding: 6px 6px 6px 8px;
@@ -160,6 +163,53 @@ div.moduletitle{
 	font-weight: lighter;
 }
 
+/*
+======================================================
+>>User sign in / up page style
+======================================================
+*/
+.form_fields{
+	padding-bottom: 10px;
+}
+
+#sign div
+{
+	text-align: left;
+	clear: both;
+}
+
+#sign label
+{
+	float: left;
+	width: 70px;
+	text-align: right;
+	padding-right: 5px;
+}
+#sign select
+{
+	width: 40px;
+	margin: 5px 0;
+}
+
+#quick{
+	width: 500px;
+	color: black;
+	padding-top: 20px;
+	padding-bottom: 30px;
+	margin: 0 0 0 120px;
+}
+
+#quick label
+{
+	float: left;
+	width: 50px;
+	text-align: right;
+	padding-right: 5px;
+}
+
+#account_type{
+	width: 5px;
+}
 /*
 ======================================================
 >>New event page style
@@ -179,6 +229,8 @@ div.moduletitle{
 {
 	float: left;
 	width: 100px;
+	text-align: right;
+	padding-right: 5px;
 }
 #newevent select
 {
@@ -211,12 +263,6 @@ div.moduletitle{
 	font-weight: bold;
 	padding-bottom: 2px;
 }
-#splash_button
-{
-	background-repeat: no-repeat;
-	width: 140px;
-	text-align: center;
-}
 
 
 /*
@@ -225,40 +271,44 @@ div.moduletitle{
 ======================================================
 */
 
-	#splash_top{
-		background: #fff;
-		padding: 30px;
-		margin: 80px;
-		border: 5px rgb(49,133,156) solid;
-		min-height: 250px;
-	}
-	#splash_question{
-		font-size: 250%;
-		margin: 35px 0 0 120px;
-	}
-	#splash_dropdown{
-		width: 500px;
-		color: black;
-		padding-top: 40px;
-		padding-bottom: 30px;
-		margin: 0 0 0 120px;
-		font-size: 140%;
-	}
-	#splash_button{
-		clear:both;
-		font-size: 130%;
-		background-image: url("/images/button.png");
-		background-repeat: no-repeat;
-		width: 160px;
-    height: 60px;
-		padding: 10px;
-    color: black;
-  }
-	#splash_member_switch{
-		clear:both;
-		font-size: 110%;
-		
-	}
+
+#splash_top{
+	background: #fff;
+	padding: 30px;
+	margin: 80px;
+	border: 5px rgb(49,133,156) solid;
+	min-height: 250px;
+}
+#splash_header{
+	font-size: 250%;
+}
+#splash_question{
+	font-size: 250%;
+	margin: 35px 0 0 120px;
+}
+#splash_dropdown{
+	width: 500px;
+	color: black;
+	padding-top: 40px;
+	padding-bottom: 30px;
+	margin: 0 0 0 120px;
+	font-size: 140%;
+}
+#splash_button{
+	clear:both;
+	font-size: 130%;
+	background-image: url("/images/button.png");
+	background-repeat: no-repeat;
+	width: 160px;
+	height: 60px;
+	padding: 10px;
+	color: black;
+}
+#splash_member_switch{
+	clear:both;
+	font-size: 110%;
+	
+}
 
 
 /*

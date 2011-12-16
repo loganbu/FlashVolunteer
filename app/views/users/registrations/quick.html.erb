@@ -1,13 +1,40 @@
 <div id="splash_top">
-	<div class="fvaccount">
-		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signinform"}) do |f| %>
-		    <div><%= f.label :email %><br />
-		    <%= f.email_field :email %></div>
-
-			<input type="checkbox" name="account_type" value="orgniazation"/> I accept the <a href="">Terms of Use</a> and <a href="">Privacy Policy</a><br/>
-            <a href="#" onclick="submitForm('signinform')">
-                <div id="splash_button"></div>
-            </a>
-		<% end %>
+	<div id="splash_question_mark" class="fl">
+		<%= image_tag("question_mark.png", 
+			:id => "question-mark",
+			:border=>"0") %>
 	</div>
+    <div id="splash_top_option">
+        <div id="splash_question">
+            <li>A little more information...</li>
+        </div>
+		
+		<div id="quick">
+			<div class="form_fields">
+			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signinform"}) do |f| %>
+				<div><%= f.label :name %>
+				<%= f.email_field :name  %></div>
+				
+				<div><%= f.label :email %>
+				<%= f.email_field :email %></div>
+			<% end %>
+			</div>
+		</div>
+    </div>
+    <% link_to("#", :onclick => "submitForm('signinform')") do %>
+		<div>
+			<div id="splash_button" class="fr">
+				<ul>
+					<li>Continue</li>
+					<li>
+						<%= image_tag("half_progress.png", 
+							:id => "progress-bar",
+							:border=>"0") %></li>
+				</ul>
+			</div>
+			<div style = "clear: both; float: right">
+				<%= link_to("Sign in", user_session_url)%> | <%= link_to("Cancel", "#", :onclick => "history.back(1)")%> 
+			</div>
+        </div>
+    <% end %>
 </div>

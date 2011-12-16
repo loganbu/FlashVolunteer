@@ -1,31 +1,46 @@
 <div id="splash_top">
-	<div class="fvaccount">
-		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signinform"}) do |f| %>
+	<div class ="share" style ="padding-bottom: 10px">
+		<ul>
+			<li id = "splash_header">Sign up </li>
+			<li><%= link_to("Sign in", new_user_session_url) %></li><br />
+		</ul>
+	</div>
+	<hr style="padding-bottom: 20px"/>
+	<div class="fvaccount fl" id ="sign">
+		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signupform"}) do |f| %>
 			<%= devise_error_messages! %>
 
-			Sign up <%= link_to("Sign in", new_user_session_url) %></br>
 			<input type="checkbox" name="account_type" value="personal"/> Personal
-			<input type="checkbox" name="account_type" value="organization"/> Organization <br/>
-			Use your Flash account: </br>
+			<input type="checkbox" name="account_type" value="organization"/> Organization <br />
+			Create a Flash account: </br>
 
-		    <div><%= f.label :email %><br />
+		    <div><%= f.label :name %>
+		    <%= f.email_field :name %></div>
+
+		    <div><%= f.label :email %>
 		    <%= f.email_field :email %></div>
 
-		    <div><%= f.label :password %><br />
+		    <div><%= f.label :password %>
 		    <%= f.password_field :password %></div>
-		    <div><%= f.label :confirm_password %><br />
+		    <div><%= f.label :confirm_password %>
 		    <%= f.password_field :password %></div>
 
 			<input type="checkbox" name="account_type" value="orgniazation"/> I accept the <a href="">Terms of Use</a> and <a href="">Privacy Policy</a><br/>
-            <a href="#" onclick="submitForm('signinform')">
-                <div id="splash_button"></div>
-            </a>
-			<%= link_to("Have one already?", new_user_registration_url)%></br><!--Need an account?-->
+			<div class = "share">
+				<div class = "fl">
+					<%= link_to("Have one already?", user_session_url)%></br><!--Need an account?-->
+				</div>
+				<div class = "fr">
+					<a href="#" onclick="submitForm('signupform')">
+						<div id="splash_button">Sign up</div>
+					</a>
+				</div>
+			</div>
 		<% end %>
 	</div>
 
-	<div class="3rdparty_account">
-		Or sign in through a third party </br>
+	<div class="3rdparty_account fr">
+		Or sign in through a third party </br></br>
 		Connect this account to sign in to Flash Volunteer:
 	</div>
 </div>
