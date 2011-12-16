@@ -162,6 +162,31 @@ div.moduletitle{
 
 /*
 ======================================================
+>>User sign in / up page style
+======================================================
+*/
+#sign div
+{
+	text-align: left;
+	clear: both;
+}
+#sign input
+{
+	width:100px;
+}
+#newevent label
+{
+	float: left;
+	width: 70px;
+}
+#newevent select
+{
+	width: 40px;
+	margin: 5px 0;
+}
+
+/*
+======================================================
 >>New event page style
 ======================================================
 */
@@ -221,6 +246,12 @@ div.moduletitle{
 
 /*
 ======================================================
+>>Login Page Styles
+======================================================
+*/
+
+/*
+======================================================
 >>Splash Page Styles
 ======================================================
 */
@@ -231,6 +262,9 @@ div.moduletitle{
 		margin: 80px;
 		border: 5px rgb(49,133,156) solid;
 		min-height: 250px;
+	}
+	#splash_header{
+		font-size: 250%;
 	}
 	#splash_question{
 		font-size: 250%;
