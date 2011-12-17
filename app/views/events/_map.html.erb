@@ -25,13 +25,11 @@
 			<%= image_tag("event_marker.png", :id => "map_marker") %>
 		</div>
 		<div id="event_right" class="event">
-			<ul id="event_list">
-				<li><%= link_to(event.name, event) %></li>
-				<li id="event_description"><%= event.description %></li>
-				<li id="event_contacts" ><%= link_to("Sign up", register_event_url(event), :method => :post) %> 
-					|  <%= mail_to(event.user.email, "Contact organizer", :subject => "Questions regarding " + event.name)%></a></li>
+				<%= link_to(event.name, event) %><br/>
+				<%= event.description %><br/>
+				<%= link_to("Sign up", register_event_url(event), :method => :post) %> | 
+                    <%= mail_to(event.user.email, "Contact organizer", :subject => "Questions regarding " + event.name)%><br/>
                 <%= render('share', :locals => { :event => event }) %>
-			</ul>
 		</div>
 	</div>
 	<% end %>

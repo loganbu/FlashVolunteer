@@ -1,5 +1,5 @@
 <div id="event">
-	<%= form_for(@event, :html => {:id => "newevent"}) do |f| %>
+	<%= form_for(@event, :html => {:id => "newevent", :name => "event_form"}) do |f| %>
 		<% if @event.errors.any? %>
 			<div id="error_explanation">
 				<h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
@@ -12,75 +12,82 @@
 			</div>
 		<% end %>
 
-	<div class="field">
-		<%= f.label :name, "Event Name" %>
-		<%= f.text_field :name %>
-	</div>
-	<div>
-        <%= f.label :address %><br/>
-        <%= f.text_field :street %>
-	</div>
-	<div>
-        <%= f.label :city %><br/>
-        <%= f.text_field :city %>
-	</div>
-	<div>
-		<span class="leftspan">
-            <%= f.label :zip_code %><br/>
-            <%= f.text_field :zip, :width => 50 %>
-		</span>
-		<span class="rightspan">
-			<div class="field">
-				<%= f.label :neighborhood %><br />
-				<%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "Choose a neighborhood" }) %>
-			</div>
-		</span>
-	</div>
+        <div class="full">
+            <div class="fl">
+                <%= f.label :name, "Event Name"%>
+            </div>
+            <div class="fr">
+                <%= f.text_field :name%>
+            </div>
+        </div>
+        <div class="full clear">
+            <div class="fl">
+                <%= f.label :address, :for=>"event_street" %>
+            </div>
+            <div class="fr">
+                <%= f.text_field :street %>
+            </div>
+        </div>
+        <div class="full clear">
+            <div class="fl">
+                <%= f.label :zip, "Zip code"%>
+            </div>
+            <div class="fl">
+                <%= f.text_field :zip, :class=>"half"%>
+            </div>
+            <div class="fr">
+                <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "Choose a neighborhood" },  :class=>"half") %>
+            </div>
+        </div>
+        <div class="full clear">
+            <div class="fl">
+                <%= f.label :start, "Start time"%>
+            </div>
+            <div class="fl">
+                <%= f.datepicker(:start, :class=>"half")%>
+            </div>
+            <div class="fr">
+                <select name="starttimes" class="half">
+                    <option value="1PM">1:00 PM</option>
+                    <option value="2PM">2:00 PM</option>
+                    <option value="3PM">3:00 PM</option>
+                    <option value="4PM">4:00 PM</option>
+                </select>
+            </div>
+        </div>
 
-	<div class="field">
-		<%= f.label :user, "Contact email" %>
-		<%= collection_select(:event, :creator_id, User.all, :id, :email) %>
-	</div>
+        <div class="full clear">
+            <div class="fl">
+                <%= f.label :end, "End date"%>
+            </div>
+            <div class="fl">
+                <%= f.datepicker :end, :class=>"half"%>
+            </div>
+            <div class="fr">
+                <select name="starttimes" class="half">
+                    <option value="1PM">1:00 PM</option>
+                    <option value="2PM">2:00 PM</option>
+                    <option value="3PM">3:00 PM</option>
+                    <option value="4PM">4:00 PM</option>
+                </select>
+            </div>
+        </div>
 
-	<div>
-		<span class="">
-			<div class="field">
-				<%= f.label :start, "Start date", :html => {:style => "clear: left, width: 420 px, float: left"} %>
-				<%= f.datepicker(:start) %>
-			</div>
-
-		<span class="rightspan">
-			<label for="startdates">Start time</label>
-			<select name="starttimes">
-				<option value="1PM">1:00 PM</option>
-				<option value="2PM">2:00 PM</option>
-				<option value="3PM">3:00 PM</option>
-				<option value="4PM">4:00 PM</option>
-			</select>
-		</span>
-	</div>
-	<div>
-		<span class="">
-			<div class="field">
-				<%= f.label :end, "End date", :html => {:style => "clear: left, width: 420 px, float: left"}%>
-				<%= f.datepicker :end%>
-			</div>
-		</span>
-		<span class ="rightspan">
-		</span>
-	</div>
-
-	<div class="field">
-		<%= f.label :description %>
-		<%= f.text_area :description %>
-	</div>
-	
-	<div style="clear:both;"> </div>
-	<%= render('share', :locals => { :event => f }) %>
-	<a href="neighborhoods.html">
-		<div id="splash_button" class="fr actions">
-			<%= f.submit :html => {:style => "width: 30px"}%>
-		</div>
-	</a>
+        <div class="full clear">
+            <div class="fl">
+                <%= f.label :description %>
+            </div>
+            <div class="fr">
+                <%= f.text_area :description %>
+            </div>
+        </div>
+        
+        <div class="clear"></div>
+        
+        <% link_to("#", :onclick => "submitForm('event_form')") do %>
+            <div id="splash_button" class="fr">
+                <%= @event.new_record? ? "Create" : "Edit" %> Event
+            </div>
+        <% end %>
 	<% end %>
 </div><!--end content-->

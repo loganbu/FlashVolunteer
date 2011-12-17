@@ -223,39 +223,30 @@ div.moduletitle{
 ======================================================
 */
 
-#newevent div
-{
-	text-align: left;
-	clear: both;
-}
-#newevent input
-{
-  width: 727px;
-}
 #newevent label
 {
 	float: left;
-	width: 100px;
 	text-align: right;
-	padding-right: 5px;
+    width: 100px;
 }
-#newevent select
+#newevent input
 {
-	width: 310px;
-	margin: 5px 0;
+    margin-left: 5px;
+    width: 730px;
 }
-
-.leftspan
+#newevent .full
 {
-	clear: left;
-	width: 47%;
-	float: left
+    padding-top: 5px;
 }
-.rightspan
+#newevent .half
 {
-	clear: right;
-	width: 47%;
-	float: left;
+    margin-left: 8px;
+    width: 360px;
+}
+#newevent textarea
+{
+    margin-left: 5px;
+    width: 730px;
 }
 .promotion
 {
@@ -395,9 +386,6 @@ li {
 	    font-size: 9pt;
 	}
 
-	.shortevent ul li {
-	    margin-left: 15px;
-	}
 
 	#creationtips li {
 	    list-style-image:none;
@@ -458,8 +446,10 @@ li {
 	    height: 120px;
 	}
 
-	.shortevent ul li {
-	    margin-left: 15px;
+	.shortevent {
+	    border-bottom: 1px solid;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
 	}
 	
 	#partners{
@@ -518,9 +508,8 @@ li {
 	    display: inline;
 	}
 	
-	#footer #footer_copy li {
+	#footer #footer_copy {
 	    text-align:right;
-		
 	}
   #footer-navtabs {
 		background-color: rgb(59,59,59);
@@ -708,17 +697,6 @@ img{
 ======================================================
 */
 
-/*
-label { font-weight: bold; }
-fieldset { padding:1.4em; margin: 0 0 1.5em 0; border: 1px solid #eee; }
-legend { font-weight: bold; font-size:1.2em; }
-input.text, input.title, textarea, select { margin:0.5em 0; border:1px solid #bbb; }
-input.text:focus, input.title:focus, textarea:focus, select:focus { border:1px solid #666; }
-input.text, input.title { width: 300px; padding:5px; }
-input.title { font-size:1.5em; }
-textarea { width: 390px; height: 250px; padding:5px; }
-*/
-
 input, button, a {
 	cursor: pointer;
 }
@@ -726,7 +704,6 @@ input, button, a {
 input {
     position: relative;
     right: 0;  
-	margin: 5px 0px; 
 }
 
 	input#avataruploadinput {
@@ -779,15 +756,12 @@ textarea {}
 	}
 	
 	form textarea {
-	    width: 98%;
 	    height: 5em;
 	    font-size: 110%;
-	    padding: 3px 5px;
 	}
 
 option {}
 	form select option {
-	    padding: 0px 10px;
 	    font-size: 110%;    
 	}
 
@@ -962,11 +936,6 @@ div{
 
 	div.actionlist {
 	    padding:5px 0px;
-	}
-	
-	div.shortevent {
-	    padding: 5px 0px;
-	    font-size: 9pt;
 	}
 	
 	div#eventdetails {

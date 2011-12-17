@@ -377,3 +377,10 @@ div.actionlist,
 .ui-widget-header {
 	background: none;
 }
+.ui-datepicker-next {
+    float: right;
+}
+#ui-datepicker-div {
+    background: #E6F4F4;
+    padding: 5px;
+}

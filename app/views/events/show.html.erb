@@ -1,18 +1,15 @@
 <div>
 	<div>
 		<div id="lefthalf" class="hardmodule">
-			<ul>
-				<li id="event_header"><%= @event.name %></br></h1></li>
-				<li><%= @event.start %>-<%= @event.end %></b></li>
-				<li><%= @event.street %></li>
-                <li><%= @event.city %>, <%= @event.state %> <%= @event.zip %></li>
-                <li>(<%= link_to(@event.neighborhood.name, neighborhoods_url) %>)</li>
-				<li id="event_contacts" ><%= link_to("Sign up", register_event_url(@event), :method => :post) %> 
+            <h2><%= @event.name %></h2>
+            <%= @event.start %>-<%= @event.end %><br/>
+            <%= @event.street %><br/>
+            <%= @event.city %>, <%= @event.state %> <%= @event.zip %><br/>
+            (<%= link_to(@event.neighborhood.name, neighborhoods_url) %>)<br/>
+            <%= link_to("Sign up", register_event_url(@event), :method => :post) %> 
 					|  <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%></a>
-					|  <%= link_to("Visit the event website", neighborhoods_url) %></a>
-				</li>
-				<%= render('share', :locals => { :event => @event }) %>			
-                        </ul>
+					|  <%= link_to("Visit the event website", neighborhoods_url) %></a>			
+            <%= render('share', :locals => { :event => @event }) %>
 		</div><!--end eventdetails-->
 		<div class="fr">
 			<div id="splash_button"><%= link_to("Sign up", register_event_url, :html => {:id => "righthalf"})%></div>
@@ -21,7 +18,7 @@
             <% end %>
 		</div>
 	</div>
-	<div class="clear"></div>
+	<div class="clear" />
 	<div>
 		<div id="lefthalf">
 			
@@ -42,21 +39,17 @@
 				<div class="moduletitle">
 					<h3>Special Instructions</h3>
 				</div>
-				<ul>
-					<li></li>
-				</ul>
 			</div><!--end special instructions-->
 		</div>
 
 		<div id="righthalf">
-
 			<div id="eventattendees" class="hardmodule">
                     <% if current_user == @event.user %>
                         <div class="moduletitle">
                             <h3>Event attendees</h3>
                         </div>
                         <ul>
-                            <li><%= @event.participants.size %> participants plan to join</li>
+                            <li><%= @event.participants.size %> <%= pluralize(@event.participants.size, "participant") %> plan to join</li>
                         <% @event.participants.each do |p| %>
                             <li><%= mail_to p.email, p.name%></li>
                         <% end %>

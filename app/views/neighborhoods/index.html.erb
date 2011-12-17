@@ -16,13 +16,10 @@
     </div>
     <% link_to("#", :onclick => "gotoNeighborhood('neighborhood_id')") do %>
         <div id="splash_button" class="fr">
-            <ul>
-                <li>Continue</li>
-                <li>
-                    <%= image_tag("half_progress.png", 
-                        :id => "progress-bar",
-                        :border=>"0") %>
-            </ul>
+            Continue<br/>
+            <%= image_tag("half_progress.png", 
+                :id => "progress-bar",
+                :border=>"0") %>
         </div>
     <% end %>
 	<div id="splash_member_switch">

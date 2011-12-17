@@ -164,3 +164,24 @@ div#footer {
 			padding-top:5px;
 			padding-left:8px;
 		}
+.full {
+    width: 100%;
+}
+.ninety {
+    width: 90%;
+}
+.eighty {
+    width: 80%;
+}
+.half {
+    width: 50%;
+}
+.quarter {
+    width: 25%;
+}
+.third {
+    width: 33%;
+}
+.tenth {
+    width: 10%;
+}
