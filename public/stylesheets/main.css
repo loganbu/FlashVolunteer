@@ -1041,8 +1041,7 @@ div{
 	}
 	
 	#partners div.logo {
-	    padding: 2px;
-	    margin: 10px 10px;
+	    margin-top: 10px;
 	    margin-bottom: 5px;
 		text-align: bottom;
 	}
@@ -1137,6 +1136,7 @@ div{
 	div.staff_pic {
 	    width: 80px;
 	    float:left;
+		padding-bottom: 3px;
 	}
 	div.staff_desc {
 	    float:left;
