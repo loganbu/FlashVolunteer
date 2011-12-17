@@ -462,7 +462,7 @@ li {
 	    margin-left: 15px;
 	}
 	
-	#partners li {
+	#partners{
 	    margin: 10px 10px;
 	    padding: 2px;
 	}
@@ -1041,7 +1041,9 @@ div{
 	}
 	
 	#partners div.logo {
+	    margin-top: 10px;
 	    margin-bottom: 5px;
+		text-align: bottom;
 	}
 	
 	div#home-bottom {
@@ -1134,6 +1136,7 @@ div{
 	div.staff_pic {
 	    width: 80px;
 	    float:left;
+		padding-bottom: 3px;
 	}
 	div.staff_desc {
 	    float:left;
