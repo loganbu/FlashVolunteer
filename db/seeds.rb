@@ -13,6 +13,7 @@ Role.create([
 { :name => "Volunteer" },
 ])
 
+User.delete_all()
 admin = User.find_or_create_by_email(:email => "admin@localhost.com", :password => ENV['ADMIN_PASSWORD'], :password_confirmation => ENV['ADMIN_PASSWORD'], :name=>"Admin")
 admin.roles << Role.find_by_name("SuperAdmin")
 

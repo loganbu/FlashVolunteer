@@ -93,6 +93,7 @@ GEM
     tzinfo (0.3.31)
     warden (1.1.0)
       rack (>= 1.0)
+    will_paginate (3.0.2)
 
 PLATFORMS
   ruby
@@ -110,3 +111,4 @@ DEPENDENCIES
   sqlite3
   themes_for_rails
   tlsmail
+  will_paginate (~> 3.0)
