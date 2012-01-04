@@ -41,6 +41,7 @@ class EventsController < ApplicationController
 			redirect_to events_url
 			return
 		else
+      cookies['preferred_neighborhood'] = @neighborhood.id
 			@zoom = 15
       @events = Event.where(:neighborhood_id => @neighborhood.id).paginate(:page => params[:page], :per_page=>6)
 			@mapCenter = @neighborhood

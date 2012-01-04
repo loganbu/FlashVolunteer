@@ -11,7 +11,7 @@ Flashvolunteer::Application.routes.draw do
 
   root :to => "events#index"
 
-  resources :neighborhoods
+  resources :neighborhoods, :only => [:index]
 
   resources :events do
 		member do
