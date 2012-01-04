@@ -451,12 +451,16 @@ li {
         margin-bottom: 5px;
         padding-bottom: 5px;
 	}
-	
-	#partners{
-	    margin: 10px 10px;
-	    padding: 2px;
+    #partners td {
+        padding-right: 40px;
+    }
+	#partners tr.logos {
+        vertical-align: bottom;
 	}
-
+    #partners tr.logos td {        
+        padding-top: 20px;
+    }
+    
 	ul.event_header li {
 	    display:inline;
 	    padding-top:0px;
@@ -910,7 +914,6 @@ td {}
         padding: 10px 10px;
     }
 	
-tr{}
 	tr.message {
 		margin-bottom:10px;
 	}
@@ -1010,13 +1013,7 @@ div{
 	    margin-bottom: 20px;
 	    margin-top: 10px;
 	}
-	
-	#partners div.logo {
-	    margin-top: 10px;
-	    margin-bottom: 5px;
-		text-align: bottom;
-	}
-	
+		
 	div#home-bottom {
 	    margin-top: 10px;
 	}
