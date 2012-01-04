@@ -540,6 +540,8 @@ li {
 }
 #events{
   width:25%;
+  max-height: 620px;
+  overflow: auto;
 }
 .share li{
   display: inline;

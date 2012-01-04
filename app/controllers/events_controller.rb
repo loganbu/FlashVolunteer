@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.all
+    @events = Event.paginate(:page => params[:page], :per_page=>6)
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
     @zoom = 11
@@ -42,7 +42,7 @@ class EventsController < ApplicationController
 			return
 		else
 			@zoom = 15
-			@events = @neighborhood.events
+      @events = Event.where(:neighborhood_id => @neighborhood.id).paginate(:page => params[:page], :per_page=>6)
 			@mapCenter = @neighborhood
 		end
 		
@@ -72,7 +72,6 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     
-    @event.user = current_user
 
     respond_to do |format|
       format.html # new.html.erb
@@ -89,6 +88,8 @@ class EventsController < ApplicationController
   # POST /events.xml
   def create
     @event = Event.new(params[:event])
+    
+    @event.user = current_user
 
     respond_to do |format|
       if @event.save
