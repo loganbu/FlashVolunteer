@@ -42,7 +42,13 @@
 </div>
 <script>
 $(document).ready(function() { 
-setMap('map', <%= @mapCenter.latitude %>, <%= @mapCenter.longitude %>, <%= @zoom %>); 
-addPoints('<%= request.url %>' + '.xml');
+    setMap('map', <%= @mapCenter.latitude %>, <%= @mapCenter.longitude %>, <%= @zoom %>); 
+    var eventUrl = location.href.split("?")[0];
+    var page = getParameterByName('page');
+    var pageUrlPart = '';
+    if (page) {
+        pageUrlPart = '?page=' + page;
+    }
+    addPoints(eventUrl + '.xml' + pageUrlPart);
 });
 </script>
