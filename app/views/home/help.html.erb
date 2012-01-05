@@ -1,8 +1,3 @@
-<script type="text/javascript">
-function show(id) {
-    
-}
-</script>
 <div id="middle100">
 	<div id="brad_contact" class="hardmodule">
 		<div class="moduletitle">
@@ -19,137 +14,144 @@ function show(id) {
 		<div id="tabs">
 			<ul id="nav" class="tab-links">
 				<li>
-					<a href="#faq-what_is_fv" onclick="show('faq-what_is_fv')">What is Flash Volunteer?</a>
+					<a href="#faq-what_is_fv">What is Flash Volunteer?</a>
 				</li>
 				<li>
-					<a href="#faq-how_does_site_work"  onclick="show('faq-how_does_site_work')">How does the site work?</a>
+					<a href="#faq-how_does_site_work">How does the site work?</a>
 				</li>
 				<li>
-					<a href="#faq-what_is_fv_beta" onclick="show('faq-what_is_fv_beta')">What does it mean for Flash Volunteer to be in "beta"?</a>
+					<a href="#faq-what_is_fv_beta">What does it mean for Flash Volunteer to be in "beta"?</a>
 				</li>
 				<li>
-					<a href="#faq-how_to_find_events" onclick="show('faq-how_to_find_events')">How can I find events?</a>
+					<a href="#faq-how_to_find_events">How can I find events?</a>
 				</li>
 				<li>
-					<a href="#faq-costs_of_fv" onclick="show('faq-costs_of_fv')">Does it cost anything to use Flash Volunteer?</a>
+					<a href="#faq-costs_of_fv">Does it cost anything to use Flash Volunteer?</a>
 				</li>
 				<li>
-					<a href="#faq-how_to_sign_up_for_event" onclick="show('faq-how_to_sign_up_for_event')">How do I sign-up for an event?</a>
+					<a href="#faq-how_to_sign_up_for_event">How do I sign-up for an event?</a>
 				</li>
 				<li>
-					<a href="#faq-where_fv_gets_events" onclick="show('faq-where_fv_gets_events')">Where does Flash Volunteer get its volunteer events?</a>
+					<a href="#faq-where_fv_gets_events">Where does Flash Volunteer get its volunteer events?</a>
 				</li>
 				<li>
-					<a href="#faq-how_to_create_events" onclick="show('faq-how_to_create_events')">So, I can really create my own volunteer event?</a>
+					<a href="#faq-how_to_create_events">So, I can really create my own volunteer event?</a>
 				</li>
 				<li>
-					<a href="#faq-fv_mailbox_settings" onclick="show('faq-fv_mailbox_settings')">What's in my Flash Volunteer mailbox? Why is there no one in my Flash Team? How do I find other Flash Volunteers?</a>
+					<a href="#faq-fv_mailbox_settings">What's in my Flash Volunteer mailbox? Why is there no one in my Flash Team? How do I find other Flash Volunteers?</a>
 				</li>
 				<li>
-					<a href="#faq-what_about_inappropriate_events" onclick="show('faq-what_about_inappropriate_events')">What if I see an event that I think is inappropriate?</a>
+					<a href="#faq-what_about_inappropriate_events">What if I see an event that I think is inappropriate?</a>
 				</li>
 				<li>
-					<a href="#faq-what_about_flash_team" onclick="show('faq-what_about_flash_team')">What's my Flash Team all about?</a>
+					<a href="#faq-what_about_flash_team">What's my Flash Team all about?</a>
 				</li>
 				<li>
-					<a href="#faq-donations_to_fv" onclick="show('faq-donations_to_fv')">How does FV make money?</a>
+					<a href="#faq-donations_to_fv">How does FV make money?</a>
 				</li>
 				<li>
-					<a href="#faq-how_to_delete_account" onclick="show('faq-how_to_delete_account')">How can I delete my account on Flash Volunteer?</a>
+					<a href="#faq-how_to_delete_account">How can I delete my account on Flash Volunteer?</a>
 				</li>
 				<li>
-					<a href="#faq-where_recommended_events_from" onclick="show('faq-where_recommended_events_from')">Where do recommended events come from?</a>
+					<a href="#faq-where_recommended_events_from">Where do recommended events come from?</a>
 				</li>
 				<li>
-					<a href="#faq-how_to_add_to_team" onclick="show('faq-how_to_add_to_team')">How do I add other Flash Volunteers to my Flash Team?</a>
+					<a href="#faq-how_to_add_to_team">How do I add other Flash Volunteers to my Flash Team?</a>
 				</li>
 			</ul>
+            <script type="text/javascript">
+                $("#nav li a").click(function () {
+                    $("#faq-sections div").each(function() { $(this).hide(); });
+                    $($(this).attr("href")+"_").show();
+                });
+                
+            </script>
 			<div id="faq-sections">
-				<div id="faq-what_is_fv">
+				<div id="faq-what_is_fv_">
 					<h3>What is Flash Volunteer?</h3>
 					<p>
 						Flash Volunteer is a new web-based engagement portal for volunteer service in Seattle. It allows users to find volunteer opportunities, as well as create their own volunteer events to support causes in their own neighborhood. Flash Volunteer was built by volunteers for volunteers and we hope you will use it frequently.
 					</p>
 				</div>
-				<div id="faq-how_does_site_work" class="ui-tabs-hide">
+				<div id="faq-how_does_site_work_" class="ui-tabs-hide">
 					<h3>How does the site work?</h3>
 					<p>
 						After you create an account, Flash Volunteer allows you to manage all of your volunteer opportunities in one place. You can search for events, sign up for the ones you are interested in, invite your friends to join your Flash Team and even create your own volunteer events to address needs that are important to you and your neighbors. We also offer receipts, so you can get credit for service hours if you need them for school or work.
 					</p>
 				</div>
-				<div id="faq-what_is_fv_beta" class="ui-tabs-hide">
+				<div id="faq-what_is_fv_beta_" class="ui-tabs-hide">
 					<h3>What does it mean for Flash Volunteer to be in "beta"?</h3>
 					<p>
 						It means that we are still adding new features and fixing bugs. If you have any suggestions, send us feedback. Please be patient while we continue to improve Flash Volunteer!
 					</p>
 				</div>
-				<div id="faq-how_to_find_events" class="ui-tabs-hide">
+				<div id="faq-how_to_find_events_" class="ui-tabs-hide">
 					<h3>How can I find events?</h3>
 					<p>
 						You can find events through the event search, browsing through neighborhoods, and looking at your recommended events.
 					</p>
 				</div>
-				<div id="faq-costs_of_fv" class="ui-tabs-hide">
+				<div id="faq-costs_of_fv_" class="ui-tabs-hide">
 					<h3>Does it cost anything to use Flash Volunteer?</h3>
 					<p>
 						Nope! It's free for everyone. All you need to do is create an account and you are off and running.
 					</p>
 				</div>
-				<div id="faq-how_to_sign_up_for_event" class="ui-tabs-hide">
+				<div id="faq-how_to_sign_up_for_event_" class="ui-tabs-hide">
 					<h3>How do I sign-up for an event?</h3>
 					<p>
 						To get involved, just click the "I'm thinking about volunteering" button on the event page. This will get you started and allow you to either sign-up for the event or track it on your profile page.
 					</p>
 				</div>
-				<div id="faq-where_fv_gets_events" class="ui-tabs-hide">
+				<div id="faq-where_fv_gets_events_" class="ui-tabs-hide">
 					<h3>Where does Flash Volunteer get its volunteer events?</h3>
 					<p>
 						The majority of the events in the system are posted directly to Flash Volunteer by local nonprofits and Seattle residents. We also share events from <a href="http://www.allforgood.org">All for Good</a> to provide a wider variety of opportunities for our users. If you are interested in signing up for an event from All for Good, we will provide a direct link to the original post (so you can let the event host know you are interested) and also keep track of it for you in your Flash Volunteer account.
 					</p>
 				</div>
-				<div id="faq-how_to_create_events" class="ui-tabs-hide">
+				<div id="faq-how_to_create_events_" class="ui-tabs-hide">
 					<h3>So, I can really create my own volunteer event?</h3>
 					<p>
 						Yes, you can! Flash Volunteer was built to give citizens the tools they need to become more engaged with their fellow neighbors. Just <a href="/events">Create an event</a> and you are on your way!
 					</p>
 				</div>
-				<div id="faq-fv_mailbox_settings" class="ui-tabs-hide">
+				<div id="faq-fv_mailbox_settings_" class="ui-tabs-hide">
 					<h3>What's in my Flash Volunteer mailbox?</h3>
 					<p>
 						Your FV mailbox is where you can receive messages from event organizers, fellow volunteers and, occasionally, Flash Volunteer staff. You can adjust your message preferences in <a href="http://www.flashvolunteer.org/settings">your profile settings</a>.
 					</p>
 				</div>
-				<div id="faq-what_about_inappropriate_events" class="ui-tabs-hide">
+				<div id="faq-what_about_inappropriate_events_" class="ui-tabs-hide">
 					<h3>What if I see an event that I think is inappropriate?</h3>
 					<p>
 						To report inappropriate events, please click "Flag event as inappropriate" on the event page or send us an email at <a href="mailto:info@flashvolunteer.org">info@flashvolunteer.org</a>
 					</p>
 				</div>
-				<div id="faq-what_about_flash_team" class="ui-tabs-hide">
+				<div id="faq-what_about_flash_team_" class="ui-tabs-hide">
 					<h3>What's my Flash Team all about?</h3>
 					<p>
 						Your Flash Team is a way for you to stay connected to your neighbors, friends and fellow volunteers. Following an event, you can add the volunteers you just met to your Flash Team and stay connected between events. It's another way to help build community and strengthen ties between volunteers, neighbors and friends.
 					</p>
 				</div>
-				<div id="faq-donations_to_fv" class="ui-tabs-hide">
+				<div id="faq-donations_to_fv_" class="ui-tabs-hide">
 					<h3>How does FV make money?</h3>
 					<p>
 						FV is a registered 501(c)3 nonprofit and relies on donations and grants to keep things running smoothly. If you would like to support us by <a class="fv" href="http://flasvolunteer.org/static/donate">making a donation</a>. We're also <a href="http://code.google.com/p/flashvolunteer/">open source</a>, so if you would like to join the Flash Volunteer development team, please get in touch at <a href="mailto:info@flashvolunteer.org">info@flashvolunteer.org</a>
 					</p>
 				</div>
-				<div id="faq-how_to_delete_account" class="ui-tabs-hide">
+				<div id="faq-how_to_delete_account_" class="ui-tabs-hide">
 					<h3>How can I delete my account on Flash Volunteer?</h3>
 					<p>
 						Just click "edit profile" and then "delete account". We'll miss you.
 					</p>
 				</div>
-				<div id="faq-where_recommended_events_from" class="ui-tabs-hide">
+				<div id="faq-where_recommended_events_from_" class="ui-tabs-hide">
 					<h3>Recommended Events</h3>
 					<p>
 						Events are recommended based on the interest categories you have selected, as well as your home and work neighborhood. You can modify your interest categories and neighborhoods by <a class="fv" href="/settings">editing your profile</a>.
 					</p>
 				</div>
-				<div id="faq-how_to_add_to_team" class="ui-tabs-hide">
+				<div id="faq-how_to_add_to_team_" class="ui-tabs-hide">
 					<h3>Teammates</h3>
 					<p>
 						Find teammates by <a class="fv" href="/team">searching for other volunteers</a>, befriending people you've met at <a class="fv" href="/events">volunteer events</a>, and by confirming <a class="fv" href="/team">people who have added you as their Flash Friend</a> (if any have).
