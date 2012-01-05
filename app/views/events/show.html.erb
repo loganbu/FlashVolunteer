@@ -9,7 +9,7 @@
             <%= link_to("Sign up", register_event_url(@event), :method => :post) %> 
 					|  <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%></a>
 					|  <%= link_to("Visit the event website", neighborhoods_url) %></a>			
-            <%= render('share', :locals => { :event => @event }) %>
+            <%= render(:partial => 'share', :locals => { :event => @event }) %>
 		</div><!--end eventdetails-->
 		<div class="fr">
 			<div id="splash_button"><%= link_to("Sign up", register_event_url, :html => {:id => "righthalf"})%></div>

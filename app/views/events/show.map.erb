@@ -5,5 +5,5 @@
         <%= link_to("Sign up", register_event_url(@event), :method => :post) %> |
             <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%><br/>
 	</div>
-    <%= render('share', :locals => { :event => @event }) %>
+    <%= render(:partial => 'share', :locals => { :event => @event }) %>
 </div>
