@@ -12,7 +12,7 @@
             <%= render(:partial => 'share', :locals => { :event => @event }) %>
 		</div><!--end eventdetails-->
 		<div class="fr">
-			<div id="splash_button"><%= link_to("Sign up", register_event_url, :html => {:id => "righthalf"})%></div>
+			<div id="splash_button"><%= link_to("Sign up", register_event_url, :method=> :post, :html => {:id => "righthalf"})%></div>
             <% if can? :edit, @event %>
 			<div id="splash_button"><%= link_to("Edit event", edit_event_url, :html => {:id => "righthalf"})%></div>
             <% end %>
