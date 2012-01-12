@@ -12,7 +12,7 @@
     padding:0; 
 }
 
-
+#
 html, body {
     height: 100%;
 }
@@ -176,19 +176,13 @@ div.moduletitle{
 	padding-bottom: 10px;
 }
 .formpadding{
-	padding-bottom: 3px;
-}
-
-#sign div
-{
-	text-align: left;
-	clear: both;
+	padding-bottom: 5px;
 }
 
 #sign label
 {
 	float: left;
-	width: 70px;
+	width: 80px;
 	text-align: right;
 	padding-right: 5px;
 }
@@ -276,6 +270,10 @@ div.moduletitle{
 	margin: 80px;
 	border: 5px rgb(49,133,156) solid;
 	min-height: 250px;
+}
+.share {
+    border-bottom: 1px solid black;
+    margin-bottom: 10px;
 }
 #splash_header{
 	font-size: 250%;

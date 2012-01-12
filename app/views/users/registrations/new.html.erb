@@ -1,41 +1,36 @@
-<div id="splash_top">
-	<div class ="share" style ="padding-bottom: 10px">
-		<ul>
-			<li id="splash_header">Sign up </li>
-			<li><%= link_to("Sign in", new_user_session_url) %></li>
-		</ul>
-	</div>
-	<div class="fvaccount fl" id ="sign">
-		<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signupform"}) do |f| %>
-			<%= devise_error_messages! %>
+<% content_for :main_action do %>
+Sign up
+<% end %>
+<% content_for :link_action do 
+link_to("Sign in", new_user_session_url)
+end %>
+<%= content_for :content do %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signupform", :id=>"sign"}) do |f| %>
+        <div class = "subheader">Create a Flash account: </div>
 
-			<div class = "subheader">Create a Flash account: </div>
+        <div class="formpadding">
+            <%= f.label :name %>
+            <%= f.email_field :name %>
+        </div>
 
-		    <div class = "formpadding"><%= f.label :name %>
-		    <%= f.email_field :name %></div>
+        <div class="formpadding">
+            <%= f.label :email %>
+            <%= f.email_field :email %>
+        </div>
 
-		    <div class = "formpadding"><%= f.label :email %>
-		    <%= f.email_field :email %></div>
+        <div class="formpadding">
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+        </div>
+        
+        <div class = "formpadding">
+            <%= f.label :confirm_password %>
+            <%= f.password_field :password %>
+        </div>
 
-		    <div class = "formpadding"><%= f.label :password %>
-		    <%= f.password_field :password %></div>
-		    <div class = "formpadding"><%= f.label :confirm_password %>
-		    <%= f.password_field :password %></div>
-
-			<input type="checkbox" name="account_type" value="organization"/> I accept the <a href="">Terms of Use</a> and <a href="">Privacy Policy</a><br/>
-			<div class = "share">
-				<div class = "fl">
-					<%= link_to("Have one already?", user_session_url)%></br><!--Need an account?-->
-				</div>
-				<div class = "fr">
-					<a class="large_button" href="#" onclick="submitForm('signupform')">Sign up</a>
-				</div>
-			</div>
-		<% end %>
-	</div>
-
-	<div class="3rdparty_account fr">
-		<div class = "subheader">Or sign in through a third party </div>
-		Connect this account to sign in to Flash Volunteer:
-	</div>
-</div>
+        <div class="clear" style="padding-top: 10px"></div>
+        <input type="checkbox" name="account_type" value="organization"/> I accept the <%= link_to("Terms of Use", tou_url) %> and <%= link_to("Privacy Policy", privacy_url) %><br/>
+        <a class="large_button fr" href="#" onclick="submitForm('signupform')">Sign up</a>
+    <% end %>
+<% end %>
+<%= render :template => 'users/shared/form' %>
