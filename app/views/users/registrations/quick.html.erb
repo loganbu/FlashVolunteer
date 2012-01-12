@@ -12,29 +12,25 @@
 		<div id="quick">
 			<div class="form_fields">
 			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signinform"}) do |f| %>
-				<div><%= f.label :name %>
-				<%= f.email_field :name  %></div>
+				<div class="formpadding">
+                    <%= f.label :name %>
+                    <%= f.email_field :name  %>
+                </div>
 				
-				<div><%= f.label :email %>
-				<%= f.email_field :email %></div>
+				<div class="formpadding">
+                    <%= f.label :email %>
+                    <%= f.email_field :email %>
+                </div>
 			<% end %>
 			</div>
 		</div>
     </div>
-    <% link_to("#", :onclick => "submitForm('signinform')") do %>
-		<div>
-			<div id="splash_button" class="fr">
-				<ul>
-					<li>Continue</li>
-					<li>
-						<%= image_tag("half_progress.png", 
-							:id => "progress-bar",
-							:border=>"0") %></li>
-				</ul>
-			</div>
-			<div style = "clear: both; float: right">
-				<%= link_to("Sign in", user_session_url)%> | <%= link_to("Cancel", "#", :onclick => "history.back(1)")%> 
-			</div>
-        </div>
+    <% link_to("#", :onclick => "submitForm('signinform')", :class=>"large_button fr") do %>
+        Continue
     <% end %>
+    <div class="clear">
+        <div class="fr">
+            <%= link_to("Sign in", user_session_url)%> | <%= link_to("Cancel", "#", :onclick => "history.back(1)")%> 
+        </div>
+    </div>
 </div>

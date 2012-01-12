@@ -10,7 +10,7 @@ end %>
 
         <div class="formpadding">
             <%= f.label :name %>
-            <%= f.email_field :name %>
+            <%= f.text_field :name %>
         </div>
 
         <div class="formpadding">
@@ -23,13 +23,14 @@ end %>
             <%= f.password_field :password %>
         </div>
         
-        <div class = "formpadding">
-            <%= f.label :confirm_password %>
-            <%= f.password_field :password %>
+        <div class="formpadding">
+            <%= f.label :password_confirmation, "Confirm password" %>
+            <%= f.password_field :password_confirmation %>
         </div>
 
         <div class="clear" style="padding-top: 10px"></div>
-        <input type="checkbox" name="account_type" value="organization"/> I accept the <%= link_to("Terms of Use", tou_url) %> and <%= link_to("Privacy Policy", privacy_url) %><br/>
+        <div class="fl"><%= f.check_box(:terms_of_service) %></div> <label for="user_terms_of_service" style="padding-left: 5px">I accept the <%= link_to("Terms of Use", tou_url) %> and <%= link_to("Privacy Policy", privacy_url) %></label><br/>
+
         <a class="large_button fr" href="#" onclick="submitForm('signupform')">Sign up</a>
     <% end %>
 <% end %>
