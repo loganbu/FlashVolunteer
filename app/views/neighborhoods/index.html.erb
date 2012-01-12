@@ -13,14 +13,7 @@
         </div>
 
     </div>
-    <% link_to("#", :onclick => "gotoNeighborhood('neighborhood_id')") do %>
-        <div id="splash_button" class="fr">
-            Continue<br/>
-            <%= image_tag("half_progress.png", 
-                :id => "progress-bar",
-                :border=>"0") %>
-        </div>
-    <% end %>
+    <%= link_to("Continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "large_button") %>
 	<div id="splash_member_switch">
 		Do you want to create an event instead?  <%= link_to("Click here", :action=> "new", :controller => "events")%>
 	</div>

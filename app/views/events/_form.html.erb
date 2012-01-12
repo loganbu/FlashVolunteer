@@ -84,10 +84,8 @@
         
         <div class="clear"></div>
         
-        <% link_to("#", :onclick => "submitForm('event_form')") do %>
-            <div id="splash_button" class="fr">
-                <%= @event.new_record? ? "Create" : "Edit" %> Event
-            </div>
+        <% link_to("#", :onclick => "submitForm('event_form')", :class => "large_button") do %>
+            <%= @event.new_record? ? "Create" : "Edit" %> Event
         <% end %>
 	<% end %>
 </div><!--end content-->

@@ -294,13 +294,6 @@ div.moduletitle{
 }
 #splash_button{
 	clear:both;
-	font-size: 130%;
-	background-image: url("/images/button.png");
-	background-repeat: no-repeat;
-	width: 160px;
-	height: 60px;
-	padding: 10px;
-	color: black;
 }
 #splash_member_switch{
 	clear:both;
@@ -308,6 +301,19 @@ div.moduletitle{
 	
 }
 
+.large_button {
+    display: block;
+    font-weight: bold;
+	font-size: 160%;
+	background-image: url("/images/button.png");
+	background-repeat: no-repeat;
+	width: 160px;
+	height: 60px;
+    padding-top: 17px;
+    text-align: center;
+	margin: 10px;
+	color: white !important;
+}
 
 /*
 ======================================================
