@@ -231,6 +231,11 @@ div.moduletitle{
 {
     padding-top: 5px;
 }
+.padleft
+{
+	float: left;
+	margin-left: 8px;
+}
 #newevent .half
 {
     margin-left: 8px;
@@ -1284,40 +1289,6 @@ p { margin: 8px 0 0 0; }
 #mtaTwitter ul li.first span { font-weight: normal; }
 #mtaTwitter ul li span { font-style: normal; }
 
-
-/*
- * Timepickr stuff might not be necessary if ui.timepickr.css is included
- */
-div.time-picker {
-  position: absolute;
-  height: 200px;
-  width:90px; /* needed for IE */
-  overflow: auto;
-  background: #fff;
-  border: 1px solid #000;
-  z-index: 99;
-  margin-top: 25px;
-}
-div.time-picker-12hours {
-  width:90px; /* needed for IE */
-}
-
-div.time-picker ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-div.time-picker li {
-  padding: 3px;
-  cursor: pointer;
-}
-div.time-picker li.selected {
-  background: #316AC5;
-  color: #fff;
-}
-
-
-
 .padding-bottom {
 	padding-bottom:6px;
 }
@@ -1340,4 +1311,3 @@ div#createevent div.markItUpHeader ul {
 .markItUpEditor {
     height: 150px;
 }
-

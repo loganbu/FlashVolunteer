@@ -44,32 +44,19 @@
                 <%= f.label :start, "Start time"%>
             </div>
             <div class="fl">
-                <%= f.datepicker(:start, :class=>"half")%>
+                <input id="startdate" class="half" name="event[startdate]" value="<%= @event.start.strftime('%-m/%-d/%Y') %>" />
+                <script type="text/javascript">
+                $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
+                </script>
             </div>
-            <div class="fr">
-                <select name="starttimes" class="half">
-                    <option value="1PM">1:00 PM</option>
-                    <option value="2PM">2:00 PM</option>
-                    <option value="3PM">3:00 PM</option>
-                    <option value="4PM">4:00 PM</option>
-                </select>
+            <div class="fl padleft">
+                <%= f.time_select(:start, :minute_step => 15) %>
             </div>
-        </div>
-
-        <div class="full clear">
-            <div class="fl">
-                <%= f.label :end, "End date"%>
+            <div class="fl padleft">
+            until 
             </div>
-            <div class="fl">
-                <%= f.datepicker :end, :class=>"half"%>
-            </div>
-            <div class="fr">
-                <select name="starttimes" class="half">
-                    <option value="1PM">1:00 PM</option>
-                    <option value="2PM">2:00 PM</option>
-                    <option value="3PM">3:00 PM</option>
-                    <option value="4PM">4:00 PM</option>
-                </select>
+            <div class="fl padleft">
+                <%= f.time_select(:end, :minute_step => 15) %>
             </div>
         </div>
 
