@@ -12,6 +12,15 @@
 <body>
 <div id="container">
 	<%= render"shared/header" %>
+	<% if flash[:popup] %>
+		<div class="popup">
+			<div class="popupContent">
+	    		<h1>Success!</h1>
+	    	 	<p><%= flash[:popup] %></p>
+	    		<a class="fr large_button" onclick="closePopup();">Close</a>
+			</div>
+		</div>
+	<% end %>
 	<div id="content">
 		<div id="bottom">
 			<div id="columns">

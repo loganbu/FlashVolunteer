@@ -17,7 +17,8 @@ class Events::RegisterController < ApplicationController
     
     respond_to do |format|
       if true
-        format.html { redirect_to(@event, :notice => 'Event was successfully registered.') }
+        flash[:popup] = "We have successfully signed you up for " + @event.name + "! We'll send you an email reminder the day before and will notify the coordinator."
+        format.html { redirect_to(@event) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
