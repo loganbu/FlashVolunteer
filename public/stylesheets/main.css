@@ -1311,3 +1311,33 @@ div#createevent div.markItUpHeader ul {
 .markItUpEditor {
     height: 150px;
 }
+
+/* Generic popup */
+.popup {
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 99999999;
+	background-color: rgba(0, 0, 0, 0.2);
+	position: absolute;
+}
+	.popup .popupContent {
+		border: 3px rgb(49,133,156) solid;
+		background-color: White;
+		margin-left: 30%;
+		margin-top: 30%;
+		width: 500px;
+		position: absolute;
+		z-index: 99999999;
+		padding: 20px 20px 10px 20px;
+	}
+
+	.popup p {
+		font-size: larger;
+		margin-right: 20px;
+	}
+
+	.popup a {
+		font-weight: normal;
+	}
