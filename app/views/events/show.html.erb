@@ -5,7 +5,9 @@
     (<%= link_to(@event.neighborhood.name, neighborhoods_url) %>)<br/>
     <%= link_to("Sign up", register_event_url(@event), :method => :post) %> 
             |  <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%>
-            |  <%= link_to("Visit the event website", neighborhoods_url) %>
+            <% if @event.website != '' %>
+                 |  <%= link_to("Visit the event website", @event.website, :target=>"_blank") unless @event.website == '' %>
+            <% end %>
     <%= render(:partial => 'share', :locals => { :event => @event }) %>
 </div>
 <div class="fr">
