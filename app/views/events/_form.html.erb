@@ -44,7 +44,7 @@
                 <%= f.label :start, "Start time"%>
             </div>
             <div class="fl">
-                <input id="startdate" class="half" name="event[startdate]" value="<%= @event.start.strftime('%-m/%-d/%Y') %>" />
+                <input id="startdate" class="half" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
                 <script type="text/javascript">
                 $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
                 </script>
