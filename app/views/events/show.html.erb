@@ -36,23 +36,24 @@
 </div>
 <div id="righthalf">
     <div id="eventattendees" class="hardmodule">
-        <% if current_user == @event.user %>
+        <div class="moduletitle">
+            <h3>Event Organizers</h3>
+        </div>                        
+        <ul>
+            <li><%= mail_to @event.user.email, @event.user.name %></li>
+        </ul>
+
+    </div>
+    <% if @event.participants.count > 0 %>
+        <div id="eventattendees" class="hardmodule">
             <div class="moduletitle">
                 <h3>Event attendees</h3>
             </div>
             <ul>
-                <li><%= pluralize(@event.participants.size, "participant plans", "participants plan") %> to join</li>
             <% @event.participants.each do |p| %>
-                <li><%= mail_to p.email, p.name%></li>
+                <li><%= p.name %></li>
             <% end %>
             </ul>
-        <% else %>
-            <div class="moduletitle">
-                <h3>Event Organizers</h3>
-            </div>                        
-            <ul>
-                <li><%= mail_to @event.user.email, @event.user.name %></li>
-            </ul>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
 </div>
