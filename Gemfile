@@ -16,7 +16,7 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'tlsmail'
 gem 'jquery_datepicker'
 gem 'icalendar'
-
+gem 'newrelic_rpm'
 
 # Use unicorn as the web server
 # gem 'unicorn'
