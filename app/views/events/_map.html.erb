@@ -8,14 +8,13 @@
 	</div>
 
 	<div>
-		<% if user_signed_in? %>
+		<% if can? :create, Event %>
 			<div id="event_left"
 			     class="fl map-markerimg"
 			     style="background: url(/images/red_markers.png) 0px 20px"></div>
 			<div id="event_right" class="event">
 				<li><%=link_to("Add an event", new_event_url) %></li>
 			</div>		
-		<% else %>
 		<% end %>		
 	</div>
 	
