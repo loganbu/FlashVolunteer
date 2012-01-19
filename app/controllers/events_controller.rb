@@ -85,10 +85,26 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
 
+  def hackoutdatetime(startdate, hashSet)
+    # Because there is no good DateTime picker, we are using a stupid field in the :params
+    # for the start date... this needs to be removed for the update_attributes call below.
+    # Then, we need to update the year/month/date fields ourselves, as a string format.
+    startdate = Date.strptime(startdate, '%m/%d/%Y')
+    hashSet["start(1i)"]=startdate.year.to_s
+    hashSet["start(2i)"]=startdate.month.to_s
+    hashSet["start(3i)"]=startdate.day.to_s
+    hashSet["end(1i)"]=startdate.year.to_s
+    hashSet["end(2i)"]=startdate.month.to_s
+    hashSet["end(3i)"]=startdate.day.to_s
+    hashSet
+  end
+
   # POST /events
   # POST /events.xml
   def create
-    @event = Event.new(params[:event])
+    paramsToUse = hackoutdatetime(params[:startdate], params[:event])
+
+    @event = Event.new(paramsToUse)
     
     @event.user = current_user
 
@@ -107,9 +123,10 @@ class EventsController < ApplicationController
   # PUT /events/1.xml
   def update
     @event = Event.find(params[:id])
+    paramsToUse = hackoutdatetime(params[:startdate], params[:event])
 
     respond_to do |format|
-      if @event.update_attributes(params[:event])
+      if @event.update_attributes(paramsToUse)
         format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
         format.xml  { head :ok }
       else

@@ -8,22 +8,21 @@
 	</div>
 
 	<div>
-		<% if user_signed_in? %>
-			<div id="event_left" class="fl">
-				<%= image_tag("event_marker.png", :id => "map_marker") %>
-			</div>
+		<% if can? :create, Event %>
+			<div id="event_left"
+			     class="fl map-markerimg"
+			     style="background: url(/images/red_markers.png) 0px 20px"></div>
 			<div id="event_right" class="event">
 				<li><%=link_to("Add an event", new_event_url) %></li>
 			</div>		
-		<% else %>
 		<% end %>		
 	</div>
 	
-	<% @events.each do |event| %>
-	<div class="event_details" onclick="showPopupFromClick(<%= event.latitude %>, <%= event.longitude %>)">
-		<div id="event_left" class="fl">
-			<%= image_tag("event_marker.png", :id => "map_marker") %>
-		</div>
+	<% @events.each_with_index do |event, i| %>
+	<div class="event_details" onclick="Map.showPopup(<%= event.id %>);">
+		<div id="event_left"
+		     class="fl map-markerimg"
+		     style="background: url(/images/red_markers.png) 0px <%= -i*20 %>px"></div>
 		<div id="event_right" class="event">
 				<%= link_to(event.name, event) %><br/>
 				<%= event.description %><br/>
@@ -42,13 +41,13 @@
 </div>
 <script>
 $(document).ready(function() { 
-    setMap('map', <%= @mapCenter.latitude %>, <%= @mapCenter.longitude %>, <%= @zoom %>); 
+    Map.setMap('map', <%= @mapCenter.latitude %>, <%= @mapCenter.longitude %>, <%= @zoom %>); 
     var eventUrl = location.href.split("?")[0];
     var page = getParameterByName('page');
     var pageUrlPart = '';
     if (page) {
         pageUrlPart = '?page=' + page;
     }
-    addPoints(eventUrl + '.xml' + pageUrlPart);
+    Map.addPoints(eventUrl + '.xml' + pageUrlPart);
 });
 </script>

@@ -1,0 +1,7 @@
+/* Map css */
+
+.map-markerimg {
+	/* Image background will be added by server */
+	height: 20px;
+	width: 20px;
+}

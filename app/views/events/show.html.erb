@@ -1,11 +1,13 @@
 <div id="lefthalf" class="hardmodule">
     <h2><%= @event.name %></h2>
-    <%= @event.start %>-<%= @event.end %><br/>
+    <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
     <%= @event.street %><br/>
     (<%= link_to(@event.neighborhood.name, neighborhoods_url) %>)<br/>
     <%= link_to("Sign up", register_event_url(@event), :method => :post) %> 
             |  <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%>
-            |  <%= link_to("Visit the event website", neighborhoods_url) %>
+            <% if @event.website != '' %>
+                 |  <%= link_to("Visit the event website", @event.website, :target=>"_blank") unless @event.website == '' %>
+            <% end %>
     <%= render(:partial => 'share', :locals => { :event => @event }) %>
 </div>
 <div class="fr">
@@ -36,23 +38,24 @@
 </div>
 <div id="righthalf">
     <div id="eventattendees" class="hardmodule">
-        <% if current_user == @event.user %>
+        <div class="moduletitle">
+            <h3>Event Organizers</h3>
+        </div>                        
+        <ul>
+            <li><%= mail_to @event.user.email, @event.user.name %></li>
+        </ul>
+
+    </div>
+    <% if @event.participants.count > 0 %>
+        <div id="eventattendees" class="hardmodule">
             <div class="moduletitle">
                 <h3>Event attendees</h3>
             </div>
             <ul>
-                <li><%= pluralize(@event.participants.size, "participant plans", "participants plan") %> to join</li>
             <% @event.participants.each do |p| %>
-                <li><%= mail_to p.email, p.name%></li>
+                <li><%= p.name %></li>
             <% end %>
             </ul>
-        <% else %>
-            <div class="moduletitle">
-                <h3>Event Organizers</h3>
-            </div>                        
-            <ul>
-                <li><%= mail_to @event.user.email, @event.user.name %></li>
-            </ul>
-        <% end %>
-    </div>
+        </div>
+    <% end %>
 </div>

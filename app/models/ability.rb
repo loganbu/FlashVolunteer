@@ -17,7 +17,10 @@ class Ability
       can :manage, [Event, Neighborhood]
     elsif user.role? :organization or user.role? :volunteer
       # Organizations and Volunteers can only manage their own events
-      can :create, Event
+
+      # Only "confirmed" users can create events
+      can :create, Event if user.confirmed?
+
       can :manage, Event do |event|
         event.try(:user) == user
       end

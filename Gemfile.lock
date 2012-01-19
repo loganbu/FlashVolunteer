@@ -54,6 +54,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
+    newrelic_rpm (3.3.1)
     orm_adapter (0.0.5)
     polyglot (0.3.3)
     rack (1.2.4)
@@ -106,6 +107,7 @@ DEPENDENCIES
   icalendar
   jquery-rails (>= 1.0.12)
   jquery_datepicker
+  newrelic_rpm
   rails (= 3.0.9)
   sinatra (= 1.0)
   sqlite3

@@ -231,6 +231,11 @@ div.moduletitle{
 {
     padding-top: 5px;
 }
+.padleft
+{
+	float: left;
+	margin-left: 8px;
+}
 #newevent .half
 {
     margin-left: 8px;
@@ -1284,40 +1289,6 @@ p { margin: 8px 0 0 0; }
 #mtaTwitter ul li.first span { font-weight: normal; }
 #mtaTwitter ul li span { font-style: normal; }
 
-
-/*
- * Timepickr stuff might not be necessary if ui.timepickr.css is included
- */
-div.time-picker {
-  position: absolute;
-  height: 200px;
-  width:90px; /* needed for IE */
-  overflow: auto;
-  background: #fff;
-  border: 1px solid #000;
-  z-index: 99;
-  margin-top: 25px;
-}
-div.time-picker-12hours {
-  width:90px; /* needed for IE */
-}
-
-div.time-picker ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-div.time-picker li {
-  padding: 3px;
-  cursor: pointer;
-}
-div.time-picker li.selected {
-  background: #316AC5;
-  color: #fff;
-}
-
-
-
 .padding-bottom {
 	padding-bottom:6px;
 }
@@ -1341,3 +1312,32 @@ div#createevent div.markItUpHeader ul {
     height: 150px;
 }
 
+/* Generic popup */
+.popup {
+	left: 0px;
+	top: 0px;
+	width: 100%;
+	height: 100%;
+	z-index: 99999999;
+	background-color: rgba(0, 0, 0, 0.2);
+	position: absolute;
+}
+	.popup .popupContent {
+		border: 3px rgb(49,133,156) solid;
+		background-color: White;
+		margin-left: 30%;
+		margin-top: 30%;
+		width: 500px;
+		position: absolute;
+		z-index: 99999999;
+		padding: 20px 20px 10px 20px;
+	}
+
+	.popup p {
+		font-size: larger;
+		margin-right: 20px;
+	}
+
+	.popup a {
+		font-weight: normal;
+	}

@@ -14,7 +14,7 @@
 			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signinform"}) do |f| %>
 				<div class="formpadding">
                     <%= f.label :name %>
-                    <%= f.email_field :name  %>
+                    <%= f.text_field :name  %>
                 </div>
 				
 				<div class="formpadding">
