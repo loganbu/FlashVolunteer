@@ -2,11 +2,9 @@
 <html>
 <head>
   <title>Flashvolunteer</title>
-  <%= stylesheet_link_tag :all %>
-  <%= theme_stylesheet_link_tag 'colors' %>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag "application" %>
+  <%= javascript_include_tag "application" %>
   <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %>
-  <%= javascript_include_tag 'map.js' %>
   <%= csrf_meta_tag %>
 </head>
 <body>

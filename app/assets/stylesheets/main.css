@@ -312,7 +312,7 @@ div.moduletitle{
     display: block;
     font-weight: bold;
 	font-size: 160%;
-	background-image: url("/images/button.png");
+	background-image: url("/assets/button.png");
 	background-repeat: no-repeat;
 	width: 160px;
 	height: 60px;

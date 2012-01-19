@@ -30,7 +30,7 @@ Map.addPoints = function (urlSource) {
 
             // Create a custom marker icon
             var icon = new google.maps.MarkerImage(
-                "/images/red_markers.png",
+                "/assets/red_markers.png",
                 new google.maps.Size(20, 20), // Image size
                 new google.maps.Point(0, i*20), // Sprite origin
                 new google.maps.Point(10, 10) // Mark the item in the middle

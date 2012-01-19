@@ -5,8 +5,6 @@ Flashvolunteer::Application.routes.draw do
 		get "users/sign_up/quick", :to => "users/registrations#quick", :as => "quick_new_user"
   end
 
-  themes_for_rails
-
   root :to => "events#index"
 
   resources :neighborhoods, :only => [:index]
