@@ -42,3 +42,7 @@ gem 'newrelic_rpm'
 
 source :gemcutter
 gem 'sinatra', '1.0'
+
+group :production do
+    gem 'pg'
+end
