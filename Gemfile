@@ -1,12 +1,11 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.9'
+gem 'rails', '3.1.0'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'themes_for_rails'
 
 gem 'will_paginate', '~> 3.0'
 gem 'devise'
@@ -43,3 +42,7 @@ gem 'newrelic_rpm'
 
 source :gemcutter
 gem 'sinatra', '1.0'
+
+group :production do
+    gem 'pg'
+end

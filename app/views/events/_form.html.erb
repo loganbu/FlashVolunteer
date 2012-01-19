@@ -50,13 +50,13 @@
                 </script>
             </div>
             <div class="fl padleft">
-                <%= f.time_select(:start, :minute_step => 15) %>
+                <%= f.time_select(:start, :minute_step => 15, :ampm => true) %>
             </div>
             <div class="fl padleft">
             until 
             </div>
             <div class="fl padleft">
-                <%= f.time_select(:end, :minute_step => 15) %>
+                <%= f.time_select(:end, :minute_step => 15, :ampm => true) %>
             </div>
         </div>
 
@@ -78,9 +78,8 @@
         </div>
         
         <div class="clear"></div>
-        
-        <% link_to("#", :onclick => "submitForm('event_form')", :class => "large_button") do %>
+        <a href="#" onclick="submitForm('event_form')" class="large_button">
             <%= @event.new_record? ? "Create" : "Edit" %> Event
-        <% end %>
+        </a>
 	<% end %>
 </div><!--end content-->
