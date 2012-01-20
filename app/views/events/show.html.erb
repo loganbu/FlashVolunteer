@@ -8,7 +8,10 @@
             <% if @event.website != '' %>
                  |  <%= link_to("Visit the event website", @event.website, :target=>"_blank") unless @event.website == '' %>
             <% end %>
-    <%= render(:partial => 'share', :locals => { :event => @event }) %>
+    <div class="clear" style="padding-top: 10px">
+        <div class="fl"><%= render(:partial => 'share', :locals => { :event => @event }) %></div>
+        <div class="fr"><%= link_to("Add to your calendar", export_event_url(@event)) %></div>
+    </div>
 </div>
 <div class="fr">
     <%= link_to("Sign up", register_event_url, :method=> :post, :class => "large_button")%>
