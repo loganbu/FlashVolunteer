@@ -1,7 +1,6 @@
 class EventsController < ApplicationController
   before_filter :see_splash, :only => [:index]
   load_and_authorize_resource
-
 	
 	def export
 		@event = Event.find(params[:id])
@@ -21,7 +20,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.paginate(:page => params[:page], :per_page=>6)
+    @events = Event.upcoming.paginate(:page => params[:page], :per_page=>6)
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
     @zoom = 11
@@ -43,7 +42,7 @@ class EventsController < ApplicationController
 		else
       cookies['preferred_neighborhood'] = @neighborhood.id
 			@zoom = 15
-      @events = Event.where(:neighborhood_id => @neighborhood.id).paginate(:page => params[:page], :per_page=>6)
+      @events = Event.where(:neighborhood_id => @neighborhood.id).upcoming.paginate(:page => params[:page], :per_page=>6)
 			@mapCenter = @neighborhood
 		end
 		

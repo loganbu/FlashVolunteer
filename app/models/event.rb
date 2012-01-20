@@ -15,6 +15,9 @@ class Event < ActiveRecord::Base
 
     after_validation :geocode
 
+    scope :upcoming, lambda {
+        where("start >= ?", Date.today)
+    }
     def geocode_address
 	   return "#{self.street} #{self.city}, #{self.zip} #{self.state}"
     end
