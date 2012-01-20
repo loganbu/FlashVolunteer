@@ -14,7 +14,8 @@
     </div>
 </div>
 <div class="fr">
-    <%= link_to("Sign up", register_event_url, :method=> :post, :class => "large_button")%>
+    <%= link_to("Sign up", register_event_url, :method=> :post, :class => "orange_button")%>
+    <%= link_to("Already signed up", nil, :method=> :post, :class => "gray_button")%>
     <% if can? :edit, @event %>
         <%= link_to("Edit event", edit_event_url, :class => "large_button")%>
     <% end %>
