@@ -42,6 +42,7 @@ gem 'newrelic_rpm'
 
 source :gemcutter
 gem 'sinatra', '1.0'
+gem 'date_validator'
 
 group :production do
     gem 'pg'

@@ -36,6 +36,8 @@ GEM
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.0)
     cancan (1.6.7)
+    date_validator (0.6.2)
+      activemodel (>= 3.0.0, < 3.2.0)
     devise (1.5.2)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.0.3)
@@ -113,6 +115,7 @@ PLATFORMS
 
 DEPENDENCIES
   cancan
+  date_validator
   devise
   geocoder
   icalendar

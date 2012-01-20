@@ -22,6 +22,7 @@ Flashvolunteer::Application.routes.draw do
   match "about" => "home#about"
   match "partners" => "home#partners"
   match "help" => "home#help"
+  match "donate" => "home#donate"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
