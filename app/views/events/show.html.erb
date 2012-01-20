@@ -8,11 +8,19 @@
             <% if @event.website != '' %>
                  |  <%= link_to("Visit the event website", @event.website, :target=>"_blank") unless @event.website == '' %>
             <% end %>
-    <%= render(:partial => 'share', :locals => { :event => @event }) %>
+    <div class="clear" style="padding-top: 10px">
+        <div class="fl"><%= render(:partial => 'share', :locals => { :event => @event }) %></div>
+        <div class="fr"><%= link_to("Add to your calendar", export_event_url(@event)) %></div>
+    </div>
 </div>
 <div class="fr">
-    <%= link_to("Sign up", register_event_url, :method=> :post, :class => "orange_button")%>
-    <%= link_to("Already signed up", nil, :method=> :post, :class => "gray_button")%>
+    <% if (@event.user != current_user) %>
+        <% if (@event.participants.exists?(current_user)) %>
+            <%= link_to("Already signed up", "#", :class => "gray_button")%>
+        <% else %>
+            <%= link_to("Sign up", register_event_url, :method=> :post, :class => "orange_button")%>
+        <% end %>
+    <% end %>
     <% if can? :edit, @event %>
         <%= link_to("Edit event", edit_event_url, :class => "large_button")%>
     <% end %>
