@@ -5,7 +5,7 @@
                     <%= image_tag 'logo-smaller.png' %>
                 </a>
 			</div>
-            <div id="user_profile" class="fr" style="padding-top:20px, padding-bottom:20px, padding-left: 5px">
+            <div id="user_profile" class="fr">
 				<%= image_tag("default-profile-pic-32x32.png", 
 				:id => "blank-img") %>
             </div>
@@ -18,9 +18,9 @@
 		                <% end %>
 	                </div>
 	                <div class = "clear fr">
-		                <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
+		                <%= link_to('sign out', destroy_user_session_path, :method => :delete) %>
 		                <% else %>
-		                    <%= link_to('Log in', new_user_session_path, :class=>"fv", :id => "l_login") %> 
+		                    <%= link_to('log in', new_user_session_path, :class=>"fv", :id => "l_login") %> 
 		                    or <%= link_to('create an account', new_user_registration_path, :class=>"fv", :id=>"l_login") %>
 		                <% end %>
 	                </div>
