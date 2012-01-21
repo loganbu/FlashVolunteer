@@ -8,6 +8,7 @@ class Ability
     # evetyone can read event and neighborhood
     can :read, [Event, Neighborhood]
     can :in, [Event]
+    can :export, [Event]
     
     if user.role? :super_admin
       #super admins can do everything

@@ -1,26 +1,30 @@
 class EventsController < ApplicationController
   before_filter :see_splash, :only => [:index]
   load_and_authorize_resource
-	
-	def export
-		@event = Event.find(params[:id])
-		@calendar = Icalendar::Calendar.new
-		event = Icalendar::Event.new
-		event.start = @event.start.strftime("%Y%m%dT%H%M%S")
-		event.end = @event.end.strftime("%Y%m%dT%H%M%S")
-		event.summary = @event.name
-		event.description = @event.description
-		#event.location = @event.n
-		@calendar.add event
-		@calendar.publish
-		headers['Content-Type'] = "text/calendar; charset=UTF-8"
-		render :text => @calendar.to_ical
-	end
+    
+    def export
+        @event = Event.find(params[:id])
+        @calendar = Icalendar::Calendar.new
+        event = Icalendar::Event.new
+        event.start = @event.start.strftime("%Y%m%dT%H%M%S")
+        event.end = @event.end.strftime("%Y%m%dT%H%M%S")
+        event.summary = @event.name
+        event.description = @event.description
+        #event.location = @event.n
+        @calendar.add event
+        @calendar.publish
+        headers['Content-Type'] = "text/calendar; charset=UTF-8"
+        render :text => @calendar.to_ical
+    end
  
   # GET /events
   # GET /events.xml
   def index
     @events = Event.upcoming.paginate(:page => params[:page], :per_page=>6)
+
+    @events.all do |e|
+      e['user_participates'] = e.attending?(current_user)
+    end
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
     @zoom = 11
@@ -35,17 +39,17 @@ class EventsController < ApplicationController
   # GET /events/in/downtown.xml
   def in
     @neighborhood = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp(params[:neighborhood])==0 }
-		
-		if !@neighborhood
-			redirect_to events_url
-			return
-		else
+
+    if !@neighborhood
+      redirect_to events_url
+      return
+    else
       cookies['preferred_neighborhood'] = @neighborhood.id
-			@zoom = 15
+      @zoom = 15
       @events = Event.where(:neighborhood_id => @neighborhood.id).upcoming.paginate(:page => params[:page], :per_page=>6)
-			@mapCenter = @neighborhood
-		end
-		
+      @mapCenter = @neighborhood
+    end
+
     respond_to do |format|
       format.html # in.html.erb
       format.xml  { render :xml => @events }
@@ -56,13 +60,14 @@ class EventsController < ApplicationController
   # GET /events/1.xml
   def show
     @event = Event.find(params[:id])
+    @event['user_participates'] = @event.attending?(current_user)
     
     respond_to do |format|
-			if params[:map]
-				format.html { render 'show.map.erb', :layout=>false }
-			else
-				format.html # show.html.erb
-			end
+      if params[:map]
+          format.html { render 'show.map.erb', :layout=>false }
+      else
+          format.html # show.html.erb
+      end
       format.xml  { render :xml => @event }
     end
   end
@@ -98,8 +103,8 @@ class EventsController < ApplicationController
     hashSet
   end
 
-  # POST /events
-  # POST /events.xml
+  # POST /POST
+  # events /events.xml
   def create
     paramsToUse = hackoutdatetime(params[:startdate], params[:event])
 
@@ -149,10 +154,10 @@ class EventsController < ApplicationController
   
   private
   
-	def see_splash
-		if !cookies['splash']
-			cookies['splash'] = true
-			redirect_to neighborhoods_url
-		end
-	end
+    def see_splash
+        if !cookies['splash']
+            cookies['splash'] = true
+            redirect_to neighborhoods_url
+        end
+    end
 end

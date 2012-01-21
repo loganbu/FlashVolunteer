@@ -19,7 +19,10 @@ class Event < ActiveRecord::Base
         where("start >= ?", Date.today)
     }
     def geocode_address
-	   return "#{self.street} #{self.city}, #{self.zip} #{self.state}"
+       return "#{self.street} #{self.city}, #{self.zip} #{self.state}"
     end
-	
+
+    def attending?(user)
+        user == nil ? false : self.participants.exists?(user)
+    end
 end
