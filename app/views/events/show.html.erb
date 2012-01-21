@@ -40,12 +40,17 @@
         </div><!--end eventmap-->
     </div><!--end eventdescription-->
     
+    <% if @event.special_instructions? %>
     <!-- displays special instructions -->
-    <div id="personupcomingevents" class="hardmodule">
+    <div class="hardmodule">
         <div class="moduletitle">
             <h3>Special Instructions</h3>
         </div>
+        <ul>
+            <li><%= @event.special_instructions %></li>
+        </ul>    
     </div><!--end special instructions-->
+    <% end %>
 </div>
 <div id="righthalf">
     <div id="eventattendees" class="hardmodule">
