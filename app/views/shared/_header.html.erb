@@ -5,15 +5,26 @@
                     <%= image_tag 'logo-smaller.png' %>
                 </a>
 			</div>
+            <div id="user_profile" class="fr">
+				<%= image_tag("default-profile-pic-32x32.png", 
+				:id => "blank-img") %>
+            </div>
 			<div id="volunteerwelcome" class="loggedout">
-                <% if user_signed_in? %>
-                <% if current_user.name %>
-                Hey there, <%= current_user.name %> 
-                <% end %>
-                <%= link_to('Sign out', destroy_user_session_path, :method => :delete) %>
-                <% else %>
-                    <%= link_to('Log in', new_user_session_path, :class=>"fv", :id => "l_login") %> or <%= link_to('create an account', new_user_registration_path, :class=>"fv", :id=>"l_login") %>
-                <% end %>
+				<div class="fl" id="greeting">
+					<div class = "fr">
+		                <% if user_signed_in? %>
+		                <% if current_user.name %>
+		                Hey there, <%= current_user.name %> 
+		                <% end %>
+	                </div>
+	                <div class = "clear fr">
+		                <%= link_to('sign out', destroy_user_session_path, :method => :delete) %>
+		                <% else %>
+		                    <%= link_to('log in', new_user_session_path, :class=>"fv", :id => "l_login") %> 
+		                    or <%= link_to('create an account', new_user_registration_path, :class=>"fv", :id=>"l_login") %>
+		                <% end %>
+	                </div>
+                </div>
             </div>
 	    </div><!--end logo-strip-->
 	</div><!--end top-->

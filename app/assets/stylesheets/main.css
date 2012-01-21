@@ -86,7 +86,11 @@ div.navtabs {
 #nav.ui-tabs-nav li {
 
 }
-
+#user_profile{
+	padding-top:20px;
+	padding-bottom:20px; 
+	padding-left: 5px;
+}
 /*
 ======================================================
 >>Headers
@@ -346,6 +350,10 @@ div.moduletitle{
     text-align: center;
 	margin: 10px;
 	color: black !important;
+}
+
+#greeting{
+	padding-right: 8px;
 }
 /*
 ======================================================
