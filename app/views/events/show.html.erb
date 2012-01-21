@@ -3,8 +3,10 @@
     <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
     <%= @event.street %><br/>
     (<%= link_to(@event.neighborhood.name, neighborhoods_url) %>)<br/>
-    <%= link_to("Sign up", register_event_url(@event), :method => :post) %> 
-            |  <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%>
+    <% if !@event.attending?(current_user) %>
+    <%= link_to("Sign up", register_event_url(@event), :method => :post) %> | 
+    <% end %>
+    <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%>
             <% if @event.website != '' %>
                  |  <%= link_to("Visit the event website", @event.website, :target=>"_blank") unless @event.website == '' %>
             <% end %>
@@ -15,7 +17,7 @@
 </div>
 <div class="fr">
     <% if (@event.user != current_user) %>
-        <% if (@event.participants.exists?(current_user)) %>
+        <% if (@event.attending?(current_user)) %>
             <%= link_to("Already signed up", "#", :class => "gray_button")%>
         <% else %>
             <%= link_to("Sign up", register_event_url, :method=> :post, :class => "orange_button")%>
@@ -33,7 +35,7 @@
         </div>
         <ul>
             <li><%= @event.description %></li>
-        </ul>	
+        </ul>    
         <div id="eventmap" class="hardmodule">
         </div><!--end eventmap-->
     </div><!--end eventdescription-->
