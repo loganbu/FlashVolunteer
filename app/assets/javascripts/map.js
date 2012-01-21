@@ -26,11 +26,13 @@ Map.addPoints = function (urlSource) {
             latitude = $(this).find('latitude').text();
             longitude = $(this).find('longitude').text();
             name = $(this).find('name').text();
+            var attending=$(this).find('user-participates').text();
+            var imageStrip = attending ? "/assets/green_markers.png" : "/assets/red_markers.png"; 
             var latLng = new google.maps.LatLng(latitude, longitude);
 
             // Create a custom marker icon
             var icon = new google.maps.MarkerImage(
-                "/assets/red_markers.png",
+                imageStrip,
                 new google.maps.Size(20, 20), // Image size
                 new google.maps.Point(0, i*20), // Sprite origin
                 new google.maps.Point(10, 10) // Mark the item in the middle
