@@ -8,7 +8,9 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<div id="container">
+
+<div id="container" 
+    <%= @current_action == 'index' && @current_controller=='neighborhoods' ? "class='map_background'" : "" %> >
 	<%= render"shared/header" %>
 	<% if flash[:popup] %>
 		<div class="popup">

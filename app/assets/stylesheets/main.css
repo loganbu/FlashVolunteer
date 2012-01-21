@@ -270,7 +270,10 @@ div.moduletitle{
 >>Splash Page Styles
 ======================================================
 */
-
+.map_background {
+	background: url(/assets/seattle_map.PNG);
+	background-size: cover;
+}
 
 #splash_top{
 	background: #fff;
