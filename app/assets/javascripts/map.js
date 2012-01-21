@@ -27,7 +27,7 @@ Map.addPoints = function (urlSource) {
             longitude = $(this).find('longitude').text();
             name = $(this).find('name').text();
             var attending=$(this).find('user-participates').text();
-            var imageStrip = attending ? "/assets/green_markers.png" : "/assets/red_markers.png"; 
+            var imageStrip = attending == "true" ? "/assets/green_markers.png" : "/assets/red_markers.png"; 
             var latLng = new google.maps.LatLng(latitude, longitude);
 
             // Create a custom marker icon
