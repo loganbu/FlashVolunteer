@@ -19,13 +19,24 @@ end %>
     </div>
     <div class="clear" style="margin-top: 5px"></div>
     <% if devise_mapping.rememberable? -%>
-        <div>
-            <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+        <div class="formpadding">
+            <div style="padding-left: 85px">
+                <div class="fl">
+                    <%= f.check_box :remember_me %>
+                </div>
+                <div style="padding-left: 20px">
+                    <%= f.label :remember_me %>
+                </div>
+            </div>
         </div>
     <% end %>
-    <%= link_to("Forgot your password?", new_user_password_url)=%><br/>
+    <div style="clear: left; padding-left: 85px">
+        <%= link_to("Forgot your password?", new_user_password_url)%>
+    </div>
     
-    <a href="#" onclick="submitForm('signinform')" class="large_button fr">Sign in</a>
+    <div style="padding-left: 70px">
+        <a href="#" onclick="submitForm('signinform')" class="large_button">Sign in</a>
+    </div>
     <% end %>
 <% end %>
 <%= render :template => 'users/shared/form' %>

@@ -181,7 +181,10 @@ div.moduletitle{
 .formpadding{
 	padding-bottom: 5px;
 }
-
+#sign
+{
+	width: 300px;
+}
 #sign .formpadding label
 {
 	float: left;
