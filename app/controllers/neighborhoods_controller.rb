@@ -1,9 +1,11 @@
 class NeighborhoodsController < ApplicationController
+  include SessionsHelper
   load_and_authorize_resource
   
   # GET /neighborhoods
   # GET /neighborhoods.xml
   def index
+    store_url(new_event_url)
     @neighborhoods = Neighborhood.find(:all, :order => "name")
     @preferred_neighborhood = Neighborhood.where(:id => cookies['preferred_neighborhood']).first
     

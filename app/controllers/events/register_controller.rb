@@ -1,4 +1,5 @@
-class Events::RegisterController < ApplicationController    
+class Events::RegisterController < ApplicationController
+  include SessionsHelper
   skip_authorization_check
 
   load_and_authorize_resource :only => :destroy
@@ -8,8 +9,8 @@ class Events::RegisterController < ApplicationController
   def create
     @event = Event.find(params[:id])
       
-    if (!current_user)
-      redirect_to(quick_new_user_url)
+    if (!anyone_signed_in?)
+      send_to_quick_signup(event_url(@event))
       return
     end
 	

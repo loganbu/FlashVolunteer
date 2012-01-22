@@ -22,8 +22,8 @@ class EventsController < ApplicationController
   def index
     @events = Event.upcoming.paginate(:page => params[:page], :per_page=>6)
 
-    @events.all do |e|
-      e['user_participates'] = e.attending?(current_user)
+    @events.each_with_index do |event, i|
+      event['user_participates'] = event.attending?(current_user)
     end
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }

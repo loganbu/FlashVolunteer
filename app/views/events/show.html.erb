@@ -28,7 +28,7 @@
     <% end %>
 </div>
 <div class="clear"></div>
-<div id="lefthalf">
+<div id="left66">
     <div id="eventdescription" class="hardmodule">
         <div class="moduletitle">
             <h3>Description</h3>
@@ -40,14 +40,19 @@
         </div><!--end eventmap-->
     </div><!--end eventdescription-->
     
+    <% if @event.special_instructions? %>
     <!-- displays special instructions -->
-    <div id="personupcomingevents" class="hardmodule">
+    <div class="hardmodule">
         <div class="moduletitle">
             <h3>Special Instructions</h3>
         </div>
+        <ul>
+            <li><%= @event.special_instructions %></li>
+        </ul>    
     </div><!--end special instructions-->
+    <% end %>
 </div>
-<div id="righthalf">
+<div id="right33">
     <div id="eventattendees" class="hardmodule">
         <div class="moduletitle">
             <h3>Event Organizers</h3>
