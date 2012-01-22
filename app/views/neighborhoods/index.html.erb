@@ -9,20 +9,18 @@
             <li>Where do you want to volunteer?</li>
         </div>
         <div id="splash_dropdown">
-            <%= collection_select(:neighborhood,  :id, Neighborhood.all, :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "Anywhere in Seattle" }) %>
+            <%= collection_select(:neighborhood,  :id, Neighborhood.all, :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "King County" }) %>
         </div>
 
     </div>
     <%= link_to("Continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "large_button fr") %>
 	<div id="splash_member_switch">
-		Do you want to create an event instead?
         <% if can? :create, Event %>
-            <%= link_to("Click here", new_event_url)%>
+            <%= link_to("I want to create an event.", new_event_url)%>
         <% elsif user_signed_in? %>
             Confirm your e-mail address with the e-mail we sent.
         <% else %>
-            <%= link_to("Click here", new_user_session_url)%>
+            <%= link_to("I want to create an event.", new_user_session_url)%>
         <% end %>
 	</div>
 </div>
-

@@ -1,4 +1,4 @@
-<div id="lefthalf" class="hardmodule">
+<div id="left66" class="hardmodule">
     <h2><%= @event.name %></h2>
     <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
     <%= @event.street %><br/>
@@ -57,23 +57,31 @@
 <div id="right33">
     <div id="eventattendees" class="hardmodule">
         <div class="moduletitle">
-            <h3>Event Organizers</h3>
+            <h3>Event Organizers (1)</h3>
         </div>                        
         <ul>
             <li><%= mail_to @event.user.email, @event.user.name %></li>
         </ul>
 
     </div>
-    <% if @event.participants.count > 0 %>
         <div id="eventattendees" class="hardmodule">
             <div class="moduletitle">
-                <h3>Event attendees</h3>
+                <h3>Event attendees (<%= @event.participants.count %>)</h3>
             </div>
-            <ul>
-            <% @event.participants.each do |p| %>
-                <li><%= p.name %></li>
+            <% if @event.participants.count > 0 %>
+                <ul>
+                <% @event.participants.each do |p| %>
+                    <li><%= p.name %></li>
+                <% end %>
+                </ul>
+            <% else %>
+                <% if @event.user == current_user %>
+                    There are no users signed up yet
+                <% else %>
+                    There are no users signed up yet, but you can be the first!
+                
+                    <%= link_to("Sign up now!", register_event_url(@event), :method => :post) %>
+                <% end %>
             <% end %>
-            </ul>
         </div>
-    <% end %>
 </div>
