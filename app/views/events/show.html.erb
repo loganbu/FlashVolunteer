@@ -18,13 +18,15 @@
 <div class="fr">
     <% if (@event.user != current_user) %>
         <% if (@event.attending?(current_user)) %>
-            <%= link_to("Already signed up", "#", :class => "gray_button")%>
+            <%= link_to("already signed up", "#", :class => "gray_button")%>
         <% else %>
-            <%= link_to("Sign up", register_event_url, :method=> :post, :class => "orange_button")%>
+            <%= link_to("sign up", register_event_url, :method=> :post, :class => "orange_button")%>
         <% end %>
     <% end %>
     <% if can? :edit, @event %>
-        <%= link_to("Edit event", edit_event_url, :class => "large_button")%>
+        <%= link_to("edit event", edit_event_url, :class => "orange_button")%>
+        <!-- if user can :delete event.  also change the url for delete event-->
+        <%= link_to("delete event", edit_event_url, :class => "orange_button")%>
     <% end %>
 </div>
 <div class="clear"></div>
