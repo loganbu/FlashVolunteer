@@ -2,7 +2,7 @@
     <ul>
         <li>Share:</li>
         <li class="badge">
-            <%= mail_to(nil, image_tag("email-icon_normal20.png", :class => "email-badge-img", :alt => "E-Mail This Info"), :subject => "Come join me at " + event.name) %>              
+            <%= mail_to(nil, image_tag("email_icon_20x20.png", :class => "email-badge-img", :alt => "E-Mail This Info"), :subject => "Come join me at " + event.name) %>              
         </li>
         <li class="badge">
             <a target="_blank" href="<%= twitter_url(event) %>">
@@ -13,7 +13,7 @@
         </li>
         <li class="badge">
             <a target="_blank" href="<%= facebook_url(event) %>">
-                <%= image_tag("facebook-icon_normal20.png",
+                <%= image_tag("facebook_icon_20x20.png",
                     :class => "fb-badge-img",
                     :alt => "Find us on Facebook")%>
             </a>
