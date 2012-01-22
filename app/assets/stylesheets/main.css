@@ -556,9 +556,9 @@ li {
     background-image: url("/public/imagesdot_border.png");
     background-repeat: repeat-x;
   }
-	#donate-badge-img{
+	#donate-badge{
 		display: inline;
-		padding: 8px;
+		padding-left:8px;
 	}
 	#footer #badges li{
 	    display: inline;
