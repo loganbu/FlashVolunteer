@@ -62,16 +62,22 @@
         </ul>
 
     </div>
-    <% if @event.participants.count > 0 %>
         <div id="eventattendees" class="hardmodule">
             <div class="moduletitle">
                 <h3>Event attendees</h3>
             </div>
+            <% if @event.participants.count > 0 %>
             <ul>
             <% @event.participants.each do |p| %>
                 <li><%= p.name %></li>
             <% end %>
             </ul>
+            <% else %>
+            There are no users signed up yet, but you can be the first!
+            
+            <% if (@event.user != current_user) %>
+                <%= link_to("Sign up now!", register_event_url(@event), :method => :post) %>
+            <% end %>
+            <% end %>
         </div>
-    <% end %>
 </div>
