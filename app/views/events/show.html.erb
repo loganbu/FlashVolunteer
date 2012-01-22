@@ -55,7 +55,7 @@
 <div id="right33">
     <div id="eventattendees" class="hardmodule">
         <div class="moduletitle">
-            <h3>Event Organizers</h3>
+            <h3>Event Organizers (1)</h3>
         </div>                        
         <ul>
             <li><%= mail_to @event.user.email, @event.user.name %></li>
@@ -64,7 +64,7 @@
     </div>
         <div id="eventattendees" class="hardmodule">
             <div class="moduletitle">
-                <h3>Event attendees</h3>
+                <h3>Event attendees (<%= @event.participants.count %>)</h3>
             </div>
             <% if @event.participants.count > 0 %>
             <ul>
