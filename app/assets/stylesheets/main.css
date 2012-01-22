@@ -179,7 +179,7 @@ div.moduletitle{
 	padding-bottom: 10px;
 }
 .formpadding{
-	padding-bottom: 5px;
+	padding-bottom: 10px;
 }
 #sign
 {
@@ -236,7 +236,7 @@ div.moduletitle{
 }
 #newevent .full
 {
-    padding-top: 5px;
+    padding-top: 10px;
 }
 .padleft
 {
@@ -283,7 +283,6 @@ div.moduletitle{
 	padding: 30px;
 	margin: 80px;
 	border: 5px rgb(49,133,156) solid;
-	min-height: 250px;
 }
 .title_line {
     border-bottom: 1px solid black;
@@ -325,7 +324,7 @@ div.moduletitle{
 	background-image: url("/assets/button.png");
 	background-repeat: no-repeat;
 	width: 160px;
-	height: 60px;
+	height: 45px;
     padding-top: 17px;
     text-align: center;
 	margin: 10px;
