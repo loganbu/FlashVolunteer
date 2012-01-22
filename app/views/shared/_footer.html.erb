@@ -39,7 +39,7 @@
 				</li>
 				<li class="badge" id="iphone-badge">
 					<a target="_blank" href="http://itunes.apple.com/us/app/flash-volunteer/id353017547">
-						<%= image_tag("phone_icon_32x32.png", 
+						<%= image_tag("mobile_icon_32x32.png", 
 							:id => "iphone-badge-img",
 							:alt=>"Get our iPhone application",
 							:onmousedown => "this.className='phone_down32'",
@@ -56,14 +56,16 @@
                 Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit.<br/>
 			</div>
 			<div id="copy_badge" class="fr">
-				<ul>
-					<li class="badge" id="donate-badge">
-						<a class="fv" href="http://fundly.com/flashvolunteer2011">
-							<%= image_tag("fundly-featured.jpg", 
-								:id => "donate-badge-img") %>				   
-						</a>                     
-					</li>
-				</ul>
+				<li class="badge" id="donate-badge">
+					<a class="fv" href="http://fundly.com/flashvolunteer2011">
+						<%= image_tag("donate_normal.png", 
+						:alt=>"Donate to Flash Volunteer!",
+						:onmousedown => "this.className='donate_down'",
+						:onmouseover => "this.className='donate_over'",
+						:onmouseup   => "this.className='donate_normal'",
+						:onmouseout  => "this.className='donate_normal'") %>				   
+					</a>                     
+				</li>
 			</div>
 		</div>
 		<div class="clear"> </div>

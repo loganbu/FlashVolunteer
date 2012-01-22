@@ -5,7 +5,7 @@
 >>Facebook 16x16 image states
 ======================================================
 */
-.fb_normal16{background: url("/assets/facebook-icon_normal16.png")}
+.fb_normal16{background: url("/assets/facebook_icon_16x16.png")}
 .fb_down16{background: url("/assets/facebook-icon_down16.png")}
 .fb_hover16{background: url("/assets/facebook-icon_over16.png")}
 /* 
@@ -13,7 +13,7 @@
 >>Facebook 20x20 image states
 ======================================================
 */
-.fb_normal20{background: url("/assets/facebook-icon_normal20.png")}
+.fb_normal20{background: url("/assets/facebook_icon_20x20.png")}
 .fb_down20{background: url("/assets/facebook-icon_down20.png")}
 .fb_hover20{background: url("/assets/facebook-icon_over20.png")}
 /* 
@@ -21,7 +21,7 @@
 >>Facebook 32x32 image states
 ======================================================
 */
-.fb_normal32{background: url("/assets/facebook-icon_normal32.png")}
+.fb_normal32{background: url("/assets/facebook_icon_32x32.png")}
 .fb_down32{background: url("/assets/facebook-icon_down32.png")}
 .fb_hover32{background: url("/assets/facebook-icon_over32.png")}
 
@@ -30,57 +30,57 @@
 >>Twitter 16x16 image states
 ======================================================
 */
-.tw_normal16{background: url("/assets/facebook-icon_normal16.png")}
-.tw_down16{background: url("/assets/facebook-icon_down16.png")}
-.tw_hover16{background: url("/assets/facebook-icon_over16.png")}
+.tw_normal16{background: url("/assets/twitter_icon_16x16.png")}
+.tw_down16{background: url("/assets/twitter-icon_down16.png")}
+.tw_hover16{background: url("/assets/twitter-icon_over16.png")}
 /* 
 ======================================================
 >>Twitter 20x20 image states
 ======================================================
 */
-.tw_normal20{background: url("/assets/facebook-icon_normal20.png")}
-.tw_down20{background: url("/assets/facebook-icon_down20.png")}
-.tw_hover20{background: url("/assets/facebook-icon_over20.png")}
+.tw_normal20{background: url("/assets/twitter_icon_20x20.png")}
+.tw_down20{background: url("/assets/twitter-icon_down20.png")}
+.tw_hover20{background: url("/assets/twitter-icon_over20.png")}
 /* 
 ======================================================
 >>Twitter 32x32 image states
 ======================================================
 */
-.tw_normal32{background: url("/assets/facebook-icon_normal32.png")}
-.tw_down32{background: url("/assets/facebook-icon_down32.png")}
-.tw_hover32{background: url("/assets/facebook-icon_over32.png")}
+.tw_normal32{background: url("/assets/twitter_icon_32x32.png")}
+.tw_down32{background: url("/assets/twitter-icon_down32.png")}
+.tw_hover32{background: url("/assets/twitter-icon_over32.png")}
 
 /* 
 ======================================================
 >>Email 16x16 image states
 ======================================================
 */
-.email_normal16{background: url("/assets/facebook-icon_normal16.png")}
-.email_down16{background: url("/assets/facebook-icon_down16.png")}
-.email_hover16{background: url("/assets/facebook-icon_over16.png")}
+.email_normal16{background: url("/assets/email_icon_16x16.png")}
+.email_down16{background: url("/assets/email-icon_down16.png")}
+.email_hover16{background: url("/assets/email-icon_over16.png")}
 /* 
 ======================================================
 >>Email 20x20 image states
 ======================================================
 */
-.email_normal20{background: url("/assets/facebook-icon_normal20.png")}
-.email_down20{background: url("/assets/facebook-icon_down20.png")}
-.email_hover20{background: url("/assets/facebook-icon_over20.png")}
+.email_normal20{background: url("/assets/email_icon_20x20.png")}
+.email_down20{background: url("/assets/email-icon_down20.png")}
+.email_hover20{background: url("/assets/email-icon_over20.png")}
 /* 
 ======================================================
 >>Email 32x32 image states
 ======================================================
 */
-.email_normal32{background: url("/assets/facebook-icon_normal32.png")}
-.email_down32{background: url("/assets/facebook-icon_down32.png")}
-.email_hover32{background: url("/assets/facebook-icon_over32.png")}
+.email_normal32{background: url("/assets/email_icon_32x32.png")}
+.email_down32{background: url("/assets/email-icon_down32.png")}
+.email_hover32{background: url("/assets/email-icon_over32.png")}
 
 /* 
 ======================================================
 >>Phone 16x16 image states
 ======================================================
 */
-.phone_normal16{background: url("/assets/mobile-icon_normal16.png")}
+.phone_normal16{background: url("/assets/mobile_icon_16x16.png")}
 .phone_down16{background: url("/assets/mobile-icon_down16.png")}
 .phone_hover16{background: url("/assets/mobile-icon_over16.png")}
 /* 
@@ -88,7 +88,7 @@
 >>Phone 20x20 image states
 ======================================================
 */
-.phone_normal20{background: url("/assets/mobile-icon_normal20.png")}
+.phone_normal20{background: url("/assets/mobile_icon_20x20png")}
 .phone_down20{background: url("/assets/mobile-icon_down20.png")}
 .phone_hover20{background: url("/assets/mobile-icon_over20.png")}
 /* 
@@ -96,7 +96,7 @@
 >>Phone 32x32 image states
 ======================================================
 */
-.phone_normal32{background: url("/assets/mobile-icon_normal32.png")}
+.phone_normal32{background: url("/assets/mobile_icon_32x32.png")}
 .phone_down32{background: url("/assets/mobile-icon_down32.png")}
 .phone_hover32{background: url("/assets/mobile-icon_over32.png")}
 /* 
@@ -106,4 +106,4 @@
 */
 .donate_normal{background: url("/assets/donate_normal.png")}
 .donate_down{background: url("/assets/donate_down.png")}
-.donate_hover{background: url("/assets/donate_hover.png")}
+.donate_over{background: url("/assets/donate_over.png")}
