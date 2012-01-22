@@ -9,7 +9,7 @@
             <li>Where do you want to volunteer?</li>
         </div>
         <div id="splash_dropdown">
-            <%= collection_select(:neighborhood,  :id, Neighborhood.all, :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "Anywhere in Seattle" }) %>
+            <%= collection_select(:neighborhood,  :id, Neighborhood.all, :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "King County" }) %>
         </div>
 
     </div>
