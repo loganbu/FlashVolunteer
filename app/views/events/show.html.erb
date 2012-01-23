@@ -2,17 +2,17 @@
     <h2><%= @event.name %></h2>
     <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
     <%= @event.street %><br/>
-    (<%= link_to(@event.neighborhood.name, neighborhoods_url) %>)<br/>
+    <%= link_to(@event.neighborhood.name, neighborhoods_url) %><br/>
     <% if !@event.attending?(current_user) %>
-    <%= link_to("Sign up", register_event_url(@event), :method => :post) %> | 
+    <%= link_to("sign up", register_event_url(@event), :method => :post) %> | 
     <% end %>
-    <%= mail_to(@event.user.email, "Contact organizer", :subject => "Questions regarding " + @event.name)%>
+    <%= mail_to(@event.user.email, "email organizer", :subject => "Questions regarding " + @event.name)%>
             <% if @event.website != '' %>
-                 |  <%= link_to("Visit the event website", @event.website, :target=>"_blank") unless @event.website == '' %>
+                 |  <%= link_to("learn more about this", @event.website, :target=>"_blank") unless @event.website == '' %>
             <% end %>
     <div class="clear" style="padding-top: 10px">
         <div class="fl"><%= render(:partial => 'share', :locals => { :event => @event }) %></div>
-        <div class="fr"><%= link_to("Add to your calendar", export_event_url(@event)) %></div>
+        <div class="fr"><%= link_to("add to my calendar", export_event_url(@event)) %></div>
     </div>
 </div>
 <div class="fr">
@@ -33,7 +33,7 @@
 <div id="left66">
     <div id="eventdescription" class="hardmodule">
         <div class="moduletitle">
-            <h3>Description</h3>
+            <h3>description</h3>
         </div>
         <ul>
             <li><%= @event.description %></li>
@@ -46,7 +46,7 @@
     <!-- displays special instructions -->
     <div class="hardmodule">
         <div class="moduletitle">
-            <h3>Special Instructions</h3>
+            <h3>special instructions</h3>
         </div>
         <ul>
             <li><%= @event.special_instructions %></li>
@@ -57,7 +57,7 @@
 <div id="right33">
     <div id="eventattendees" class="hardmodule">
         <div class="moduletitle">
-            <h3>Event Organizers (1)</h3>
+            <h3>event organizers (1)</h3>
         </div>                        
         <ul>
             <li><%= mail_to @event.user.email, @event.user.name %></li>
@@ -66,7 +66,7 @@
     </div>
         <div id="eventattendees" class="hardmodule">
             <div class="moduletitle">
-                <h3>Event attendees (<%= @event.participants.count %>)</h3>
+                <h3>event attendees (<%= @event.participants.count %>)</h3>
             </div>
             <% if @event.participants.count > 0 %>
                 <ul>
@@ -76,11 +76,11 @@
                 </ul>
             <% else %>
                 <% if @event.user == current_user %>
-                    There are no users signed up yet
+                    there are no users signed up yet
                 <% else %>
-                    There are no users signed up yet, but you can be the first!
+                    there are no users signed up yet, but you can be the first!
                 
-                    <%= link_to("Sign up now!", register_event_url(@event), :method => :post) %>
+                    <%= link_to("sign up now!", register_event_url(@event), :method => :post) %>
                 <% end %>
             <% end %>
         </div>
