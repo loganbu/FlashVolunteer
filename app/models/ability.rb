@@ -21,6 +21,7 @@ class Ability
 
       # Only "confirmed" users can create events
       can :create, Event if user.confirmed?
+      can :contact, Event if user.confirmed?
 
       can :manage, Event do |event|
         event.try(:user) == user

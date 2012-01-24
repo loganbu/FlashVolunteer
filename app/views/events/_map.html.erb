@@ -26,10 +26,7 @@
 		<div id="event_right" class="event">
 				<%= link_to(event.name, event) %><br/>
 				<%= event.description %><br/>
-                <% if !event.attending?(current_user) %>
-				<%= link_to("sign up", register_event_url(event), :method => :post) %> | 
-                <% end %>
-                    <%= mail_to(event.user.email, "contact organizer", :subject => "Questions regarding " + event.name)%><br/>
+                <%= render(:partial => 'links', :locals => { :event => event }) %>
                 <%= render(:partial => 'share', :locals => { :event => event }) %>
 		</div>
 	</div>

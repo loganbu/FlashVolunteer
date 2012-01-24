@@ -3,8 +3,7 @@
         <%= link_to(@event.name, event_url(@event)) %><br/>
         <%= @event.street %><br/>
         (<%= @event.neighborhood.name %>)<br/>
-        <%= link_to("sign up", register_event_url(@event), :method => :post) %> |
-            <%= mail_to(@event.user.email, "contact organizer", :subject => "Questions regarding " + @event.name)%><br/>
+        <%= render(:partial => 'links', :locals => { :event => @event }) %>
 	</div>
     <%= render(:partial => 'share', :locals => { :event => @event }) %>
 </div>

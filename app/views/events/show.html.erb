@@ -3,13 +3,12 @@
     <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
     <%= @event.street %><br/>
     <%= link_to(@event.neighborhood.name, neighborhoods_url) %><br/>
-    <% if !@event.attending?(current_user) %>
-    <%= link_to("sign up", register_event_url(@event), :method => :post) %> | 
+
+
+    <%= render(:partial => 'links', :locals => { :event => @event }) %>
+    <% if @event.website != '' %>
+         |  <%= link_to("learn more about this", @event.website, :target=>"_blank") unless @event.website == '' %>
     <% end %>
-    <%= mail_to(@event.user.email, "email organizer", :subject => "Questions regarding " + @event.name)%>
-            <% if @event.website != '' %>
-                 |  <%= link_to("learn more about this", @event.website, :target=>"_blank") unless @event.website == '' %>
-            <% end %>
     <div class="clear" style="padding-top: 10px">
         <div class="fl"><%= render(:partial => 'share', :locals => { :event => @event }) %></div>
         <div class="fr"><%= link_to("add to my calendar", export_event_url(@event)) %></div>
@@ -46,7 +45,7 @@
     <div id="eventattendees" class="hardmodule">
         <div class="moduletitle">
             <h3>event organizers (1)</h3>
-        </div>                        
+        </div>       
         <ul>
             <li><%= mail_to @event.user.email, @event.user.name %></li>
         </ul>
