@@ -52,6 +52,6 @@ $(document).ready(function() {
 	<% else %>
     	var baseUrl = "<%= events_neighborhood_url @neighborhood.name %>";
 	<% end %>
-    Map.addPoints(baseUrl + '.xml' + pageUrlPart);
+    Map.addPoints(baseUrl + '.xml' + pageUrlPart, Map.showPopup);
 });
 </script>

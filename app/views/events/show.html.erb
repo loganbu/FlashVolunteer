@@ -33,11 +33,11 @@
         <div class="moduletitle">
             <h3>description</h3>
         </div>
+        <div id="eventmap" class="fr">
+        </div>
         <ul>
             <li><%= @event.description %></li>
         </ul>    
-        <div id="eventmap" class="hardmodule">
-        </div><!--end eventmap-->
     </div><!--end eventdescription-->
     
 </div>
@@ -88,3 +88,9 @@
         <% end %>
     </div>
 </div>
+<script type="text/javascript">
+$(document).ready(function() { 
+    Map.setMap('eventmap', <%= @event.latitude %>, <%= @event.longitude %>, <%= 14 %>); 
+    Map.addPoints("<%= event_url(@event) %>.xml", false);
+});
+</script>

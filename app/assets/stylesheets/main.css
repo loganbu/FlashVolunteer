@@ -1006,6 +1006,8 @@ div{
 	    padding-top: 14px;
 		position:relative;
 		left:-10px;
+		width: 200px;
+		height: 100px;
 	}
 	
 	div.pagination_entry {
