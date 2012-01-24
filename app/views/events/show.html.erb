@@ -25,8 +25,7 @@
     <% end %>
     <% if can? :edit, @event %>
         <%= link_to("edit event", edit_event_url, :class => "orange_button")%>
-        <!-- if user can :delete event.  also change the url for delete event-->
-        <%= link_to("delete event", edit_event_url, :class => "orange_button")%>
+        <%= link_to("delete event", event_url(@event), :method=>"delete", :class => "orange_button")%>
     <% end %>
 </div>
 <div class="clear"></div>
