@@ -3,6 +3,4 @@
     <%= link_to("sign up", register_event_url(event), :method => :post) %>
     <%= "|" unless !can_contact_organizer %>
 <% end %>
-<% if can_contact_organizer %>
-    <%= mail_to(event.user.email, "contact organizer", :subject => "Questions regarding " + event.name)%>
-<% end %>
+<%= mail_to(event.user.email, "contact organizer", :subject => "Questions regarding " + event.name, :encode=>"hex")%>

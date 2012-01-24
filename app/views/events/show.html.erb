@@ -48,11 +48,7 @@
         </div>       
         <ul>
             <li>
-                <% if can? :contact, Event %>
-                    <%= mail_to @event.user.email, @event.user.name %>
-                <% else %>
-                    <%= @event.user.name %>
-                <% end %>
+                <%= mail_to @event.user.email, @event.user.name,  :encode => "hex" %>
             </li>
         </ul>
 
