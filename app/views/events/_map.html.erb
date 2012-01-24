@@ -1,7 +1,7 @@
 <div id="events" class="fl">
 	<div id="event_header">
 		<% if (@neighborhood == nil) %>
-			<li>events near <%= link_to("you", "/neighborhoods") %></li>
+			<li>events near <%= link_to("King County", "/neighborhoods") %></li>
 		<% else %>
 			<li>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></li>
 		<% end %>
