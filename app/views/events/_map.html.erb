@@ -1,7 +1,7 @@
 <div id="events" class="fl">
 	<div id="event_header">
 		<% if (@neighborhood == nil) %>
-			<li>events near <%= link_to("Seattle", "/neighborhoods") %></li>
+			<li>events near <%= link_to("King County", "/neighborhoods") %></li>
 		<% else %>
 			<li>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></li>
 		<% end %>
@@ -13,7 +13,7 @@
 			     class="fl map-markerimg"
 			     style="background: url(/assets/red_markers.png) 0px 20px"></div>
 			<div id="event_right" class="event">
-				<li><%=link_to("Add an event", new_event_url) %></li>
+				<li><%=link_to("add an event", new_event_url) %></li>
 			</div>		
 		<% end %>		
 	</div>
@@ -27,9 +27,9 @@
 				<%= link_to(event.name, event) %><br/>
 				<%= event.description %><br/>
                 <% if !event.attending?(current_user) %>
-				<%= link_to("Sign up", register_event_url(event), :method => :post) %> | 
+				<%= link_to("sign up", register_event_url(event), :method => :post) %> | 
                 <% end %>
-                    <%= mail_to(event.user.email, "Contact organizer", :subject => "Questions regarding " + event.name)%><br/>
+                    <%= mail_to(event.user.email, "contact organizer", :subject => "Questions regarding " + event.name)%><br/>
                 <%= render(:partial => 'share', :locals => { :event => event }) %>
 		</div>
 	</div>

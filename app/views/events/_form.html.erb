@@ -41,7 +41,7 @@
         </div>
         <div class="full clear">
             <div class="fl">
-                <%= f.label :start, "Start time"%>
+                <%= f.label :start, "Event date"%>
             </div>
             <div class="fl">
                 <input id="startdate" class="half" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
@@ -62,7 +62,7 @@
 
         <div class="full clear">
             <div class="fl">
-                <%= f.label :website, "Website"%>
+                <%= f.label :website, "Event website"%>
             </div>
             <div class="fr">
                 <%= f.url_field :website %>
