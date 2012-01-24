@@ -47,7 +47,13 @@
             <h3>event organizers (1)</h3>
         </div>       
         <ul>
-            <li><%= mail_to @event.user.email, @event.user.name %></li>
+            <li>
+                <% if can? :contact, Event %>
+                    <%= mail_to @event.user.email, @event.user.name %>
+                <% else %>
+                    <%= @event.user.name %>
+                <% end %>
+            </li>
         </ul>
 
     </div>
