@@ -41,6 +41,20 @@
         </div><!--end eventmap-->
     </div><!--end eventdescription-->
     
+</div>
+<div id="right33">
+    <div id="eventattendees" class="hardmodule">
+        <div class="moduletitle">
+            <h3>event organizers (1)</h3>
+        </div>                        
+        <ul>
+            <li><%= mail_to @event.user.email, @event.user.name %></li>
+        </ul>
+
+    </div>
+</div>
+<div class="clear"></div>
+<div id="left66">
     <% if @event.special_instructions? %>
     <!-- displays special instructions -->
     <div class="hardmodule">
@@ -56,31 +70,22 @@
 <div id="right33">
     <div id="eventattendees" class="hardmodule">
         <div class="moduletitle">
-            <h3>event organizers (1)</h3>
-        </div>                        
-        <ul>
-            <li><%= mail_to @event.user.email, @event.user.name %></li>
-        </ul>
-
-    </div>
-        <div id="eventattendees" class="hardmodule">
-            <div class="moduletitle">
-                <h3>event attendees (<%= @event.participants.count %>)</h3>
-            </div>
-            <% if @event.participants.count > 0 %>
-                <ul>
-                <% @event.participants.each do |p| %>
-                    <li><%= p.name %></li>
-                <% end %>
-                </ul>
-            <% else %>
-                <% if @event.user == current_user %>
-                    there are no users signed up yet
-                <% else %>
-                    there are no users signed up yet, but you can be the first!
-                
-                    <%= link_to("sign up now!", register_event_url(@event), :method => :post) %>
-                <% end %>
-            <% end %>
+            <h3>event attendees (<%= @event.participants.count %>)</h3>
         </div>
+        <% if @event.participants.count > 0 %>
+            <ul>
+            <% @event.participants.each do |p| %>
+                <li><%= p.name %></li>
+            <% end %>
+            </ul>
+        <% else %>
+            <% if @event.user == current_user %>
+                there are no users signed up yet
+            <% else %>
+                there are no users signed up yet, but you can be the first!
+            
+                <%= link_to("sign up now!", register_event_url(@event), :method => :post) %>
+            <% end %>
+        <% end %>
+    </div>
 </div>
