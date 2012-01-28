@@ -106,9 +106,14 @@ class EventsController < ApplicationController
   # POST /POST
   # events /events.xml
   def create
-    paramsToUse = hackoutdatetime(params[:startdate], params[:event])
-
-    @event = Event.new(paramsToUse)
+    begin
+      paramsToUse = hackoutdatetime(params[:startdate], params[:event])
+      @event = Event.new(paramsToUse)
+    rescue ArgumentError
+      params[:event].delete('startdate')
+      @event = Event.new(params[:event])
+      @event.start = nil
+    end
     
     @event.user = current_user
 
