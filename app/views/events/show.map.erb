@@ -1,6 +1,6 @@
 <div>
 	<div class="shortevent">
-        <%= link_to(@event.name, event_url(@event)) %><br/>
+        <%= link_to(truncate(@event.name, :length=>30, :separator=>' '), event_url(@event)) %><br/>
         <%= @event.street %><br/>
         (<%= @event.neighborhood.name %>)<br/>
         <%= render(:partial => 'links', :locals => { :event => @event }) %>

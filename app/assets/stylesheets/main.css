@@ -407,9 +407,6 @@ ul {
 		margin-left:15px;
 	}
 	
-	#eventdescription ul {
-		padding-top:5px;
-	}
 	
 li {
     margin: 0;
@@ -1003,11 +1000,12 @@ div{
 	}
 	
 	div#eventmap {
-	    padding-top: 14px;
+		margin-left: 20px;
 		position:relative;
 		left:-10px;
 		width: 200px;
 		height: 100px;
+
 	}
 	
 	div.pagination_entry {
