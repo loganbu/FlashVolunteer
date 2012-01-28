@@ -25,9 +25,9 @@
              style="background: url(<%= event.attending?(current_user) ? "/assets/green_markers.png" : "/assets/red_markers.png" %>) 0px <%= -i*20 %>px"></div>
         <div id="event_right" class="event">
                 <%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
+                <%= event.start.strftime('%-m/%-d/%Y') unless !event.start %> <%= event.start.strftime('%l:%M%p') unless !event.start %>-<%= event.end.strftime('%l:%M%p') unless !event.end %><br/>
                 <%= truncate(event.description, :length=>100, :separator=>' ') %><br/>
                 <%= render(:partial => 'links', :locals => { :event => event }) %>
-                <%= render(:partial => 'share', :locals => { :event => event }) %>
         </div>
     </div>
     <% end %>
