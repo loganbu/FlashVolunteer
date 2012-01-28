@@ -2,6 +2,7 @@ class Event < ActiveRecord::Base
     belongs_to :neighborhood, :foreign_key => "neighborhood_id"
     belongs_to :user, :foreign_key => "creator_id"
     validates :neighborhood_id, :presence => { :message => "The event must have a neighborhood" }
+    validates :zip, :presence => { :message => "The event must have a zip code" }
     validates :name, :presence => { :message => "The event must have a title" }
     validates :street, :presence => { :message => "The event must have an address" }
     validates :start, :presence => { :message => "The event must have a start time" }

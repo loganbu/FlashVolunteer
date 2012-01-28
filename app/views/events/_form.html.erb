@@ -2,18 +2,18 @@
 	<%= form_for(@event, :html => {:id => "newevent", :name => "event_form"}) do |f| %>
 		<% if @event.errors.any? %>
 			<div id="error_explanation">
-				<h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-
 				<ul>
 				<% @event.errors.each do |attr,msg| %>
-				<li><%= msg %></li>
+                    <% if (attr == :start || attr == :end) %>
+        				<li><%= msg %></li>
+                    <% end %>
 				<% end %>
 				</ul>
 			</div>
 		<% end %>
 
         <div class="full">
-            <div class="fl">
+            <div class="label">
                 <%= f.label :name, "Event Name"%>
             </div>
             <div class="fr">
@@ -21,7 +21,7 @@
             </div>
         </div>
         <div class="full clear">
-            <div class="fl">
+            <div class="label">
                 <%= f.label :address, :for=>"event_street" %>
             </div>
             <div class="fr">
@@ -29,7 +29,7 @@
             </div>
         </div>
         <div class="full clear">
-            <div class="fl">
+            <div class="label">
                 <%= f.label :zip, "Zip code"%>
             </div>
             <div class="fl">
@@ -40,11 +40,18 @@
             </div>
         </div>
         <div class="full clear">
-            <div class="fl">
+            <div class="label">
                 <%= f.label :start, "Event date"%>
             </div>
             <div class="fl">
-                <input id="startdate" class="half" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
+                <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+                <div class="field_with_errors">
+                <% end %>
+                    <input id="startdate" class="half" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
+                <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+                </div>
+                <% end %>
+                
                 <script type="text/javascript">
                 $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
                 </script>
@@ -61,7 +68,7 @@
         </div>
 
         <div class="full clear">
-            <div class="fl">
+            <div class="label">
                 <%= f.label :website, "Event website"%>
             </div>
             <div class="fr">
@@ -69,7 +76,7 @@
             </div>
         </div>
         <div class="full clear">
-            <div class="fl">
+            <div class="label">
                 <%= f.label :description %>
             </div>
             <div class="fr">
@@ -77,7 +84,7 @@
             </div>
         </div>
         <div class="full clear">
-            <div class="fl">
+            <div class="label">
                 <%= f.label :special_instructions %>
             </div>
             <div class="fr">
