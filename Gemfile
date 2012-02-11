@@ -15,6 +15,7 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'tlsmail'
 gem 'jquery_datepicker'
 gem 'icalendar'
+gem 'sass-rails'
 
 
 # Use unicorn as the web server
