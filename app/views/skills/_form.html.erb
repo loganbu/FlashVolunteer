@@ -1,0 +1,5 @@
+<ul>
+    <% Skill.all.each do |s| %>
+        <li><label><%= check_box_tag("event[skill_ids][]", s.id, skills.include?(s)) %> <%= f.label s.name %></label></li>
+    <% end %>
+</ul>

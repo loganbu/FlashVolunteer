@@ -93,6 +93,7 @@
         </div>
         
         <div class="clear"></div>
+        <%= render(:partial => 'skills/form', :locals => { :f => f, :skills => @event.skills }) %>
         <div>            
             <a href="#" onclick="submitForm('event_form')" class="green_button">
             <%= @event.new_record? ? "Create" : "Edit" %> Event

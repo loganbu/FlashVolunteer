@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120121230552) do
+ActiveRecord::Schema.define(:version => 20120211203306) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,11 @@ ActiveRecord::Schema.define(:version => 20120121230552) do
     t.string   "state",                :default => "WA"
     t.string   "website"
     t.text     "special_instructions"
+  end
+
+  create_table "events_skills", :id => false, :force => true do |t|
+    t.integer "skill_id"
+    t.integer "event_id"
   end
 
   create_table "events_users", :id => false, :force => true do |t|
@@ -64,6 +69,10 @@ ActiveRecord::Schema.define(:version => 20120121230552) do
     t.integer "user_id"
   end
 
+  create_table "skills", :force => true do |t|
+    t.string "name"
+  end
+
   create_table "users", :force => true do |t|
     t.string   "username"
     t.datetime "created_at"
@@ -87,5 +96,10 @@ ActiveRecord::Schema.define(:version => 20120121230552) do
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_skills", :id => false, :force => true do |t|
+    t.integer "skill_id"
+    t.integer "user_id"
+  end
 
 end

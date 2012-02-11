@@ -17,6 +17,29 @@ User.delete_all()
 admin = User.find_or_create_by_email(:email => "admin@localhost.com", :password => ENV['ADMIN_PASSWORD'], :password_confirmation => ENV['ADMIN_PASSWORD'], :name=>"Admin")
 admin.roles << Role.find_by_name("SuperAdmin")
 
+Skill.delete_all()
+Skill.create([
+{ :name => "Advocacy & Human Rights" },
+{ :name => "Animals" },
+{ :name => "Arts & Culture" },
+{ :name => "Children & Youth" },
+{ :name => "Computers & Technology" },
+{ :name => "Disabled" },
+{ :name => "Disaster Relief" },
+{ :name => "Education & Literacy" },
+{ :name => "Environment" },
+{ :name => "Gay, Lesbian, Bi, & Transgender" },
+{ :name => "Health & Medicine" },
+{ :name => "Homeless & Housing" },
+{ :name => "Hunger" },
+{ :name => "Immigrants & Refugees" },
+{ :name => "Justice & Legal" },
+{ :name => "Media & Broadcasting" },
+{ :name => "Politics" },
+{ :name => "Senior Citizens" },
+{ :name => "Sports & Recreation" },
+{ :name => "Women" }
+])
 
 Neighborhood.delete_all()
 Neighborhood.create([               

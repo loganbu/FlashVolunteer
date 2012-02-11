@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   include ActiveModel::Validations
   validates_acceptance_of :terms_of_service, :on => :create, :message => "must be accepted"
   has_and_belongs_to_many :roles
+  has_and_belongs_to_many :skills
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
