@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   validates_acceptance_of :terms_of_service, :on => :create, :message => "must be accepted"
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
+  belongs_to :orgs
+  has_attached_file :avatar, :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", :path => ":attachment/:id/avatar.:extension"
+
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
@@ -10,7 +13,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :skills, :avatar
   
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)

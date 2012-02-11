@@ -32,10 +32,15 @@ GEM
     activesupport (3.1.0)
       multi_json (~> 1.0)
     arel (2.2.1)
+    aws-s3 (0.6.2)
+      builder
+      mime-types
+      xml-simple
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     builder (3.0.0)
     cancan (1.6.7)
+    cocaine (0.2.1)
     date_validator (0.6.2)
       activemodel (>= 3.0.0, < 3.2.0)
     devise (1.5.2)
@@ -60,6 +65,11 @@ GEM
     multi_json (1.0.4)
     newrelic_rpm (3.3.1)
     orm_adapter (0.0.5)
+    paperclip (2.6.0)
+      activerecord (>= 2.3.0)
+      activesupport (>= 2.3.2)
+      cocaine (>= 0.0.2)
+      mime-types
     pg (0.12.2)
     pg (0.12.2-x86-mingw32)
     polyglot (0.3.3)
@@ -108,12 +118,14 @@ GEM
     warden (1.1.0)
       rack (>= 1.0)
     will_paginate (3.0.2)
+    xml-simple (1.1.1)
 
 PLATFORMS
   ruby
   x86-mingw32
 
 DEPENDENCIES
+  aws-s3
   cancan
   date_validator
   devise
@@ -122,6 +134,7 @@ DEPENDENCIES
   jquery-rails (>= 1.0.12)
   jquery_datepicker
   newrelic_rpm
+  paperclip
   pg
   rails (= 3.1.0)
   sinatra (= 1.0)

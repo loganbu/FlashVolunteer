@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120211203306) do
+ActiveRecord::Schema.define(:version => 20120211231644) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -56,6 +56,9 @@ ActiveRecord::Schema.define(:version => 20120211203306) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "vision"
+    t.string   "mission"
+    t.text     "description"
   end
 
   create_table "roles", :force => true do |t|
@@ -91,6 +94,11 @@ ActiveRecord::Schema.define(:version => 20120211203306) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "name"
+    t.integer  "orgs_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
