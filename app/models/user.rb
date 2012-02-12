@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :skills
   belongs_to :orgs
   has_attached_file :avatar, :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", :path => ":attachment/:id/avatar.:extension"
+  has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :association_foreign_key => "follower_id", :uniq => true
 
 
   # Include default devise modules. Others available are:
