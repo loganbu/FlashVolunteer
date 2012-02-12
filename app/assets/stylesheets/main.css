@@ -597,6 +597,12 @@ li {
   display: inline;
 }
 
+.thirdparty li{
+    display: inline;
+    margin-right:5px;
+    margin-top:15px;
+}
+
 div#map {
   height: 100%;
   min-height: 600px;
