@@ -585,7 +585,7 @@ li {
 }
 #event_header{
   font-size:150%;
-  padding-top:20px;
+  padding-top:5px;
   padding-bottom:10px;
 }
 #events{
@@ -600,13 +600,11 @@ li {
 .thirdparty li{
     display: inline;
     margin-right:5px;
-    margin-top:15px;
 }
 
 div#map {
   height: 100%;
-  min-height: 600px;
-  padding-top: 20px;
+  min-height: 500px;
 }
 
     /*
@@ -638,6 +636,7 @@ a {
 
     #footer #static_nav li a {
         padding: 15px 15px 14px 15px;
+
     }
     
     a.operation {
