@@ -315,28 +315,13 @@ div.moduletitle{
     
 }
 
-.large_button {
+.green_button {
     display: block;
     font-weight: bold;
-    font-size: 160%;
-    background-image: url("/assets/button.png");
+    font-size: 110%;
+    background-image: url("/assets/greenButton.png");
     background-repeat: no-repeat;
-    width: 160px;
-    height: 45px;
-    padding-top: 17px;
-    text-align: center;
-    margin: 10px;
-    color: white !important;
-}
-
-.orange_button {
-    display: block;
-    font-size: 120%;
-    background-image: url("/assets/orange_button.png");
-    background-repeat: no-repeat;
-    width: 160px;
-    height: 30px;
-    padding-top: 6px;
+    padding: 7px 5px 7px 5px;
     text-align: center;
     margin: 10px;
     color: white !important;
@@ -344,12 +329,10 @@ div.moduletitle{
 
 .gray_button {
     display: block;
-     font-size: 120%;
-    background-image: url("/assets/gray_button.png");
+     font-size: 100%;
+    background-image: url("/assets/greyButton.png");
     background-repeat: no-repeat;
-    width: 160px;
-    height: 30px;
-    padding-top: 6px;
+    padding: 7px 5px 7px 5px;
     text-align: center;
     margin: 10px;
     color: black !important;
