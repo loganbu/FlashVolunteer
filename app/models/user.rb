@@ -4,7 +4,12 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
   belongs_to :orgs
-  has_attached_file :avatar, :storage => :s3, :s3_credentials => "#{Rails.root}/config/s3.yml", :path => ":attachment/:id/avatar.:extension"
+  has_attached_file :avatar, :storage => :s3, :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :bucket => ENV['AWS_BUCKET']
+    }, :path => ":attachment/:id/:style.:extension",
+    :styles => { :thumb => ["32x32#", :png], :profile => ["128x128#", :png]}
   has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :association_foreign_key => "follower_id", :uniq => true
 
 

@@ -1,0 +1,52 @@
+<h2>profile information</h2>
+<%= form_for(@user, :html => {:id => "form", :name => "user_form"}) do |f| %>
+    <div>
+        <div class="label">&nbsp;</div>
+        <div class="fl">
+            <%= image_tag current_user.avatar.url(:profile) %>
+        </div>
+        <div class="fl half">
+            <%= f.file_field :avatar %>
+        </div>
+    </div>
+    <div class="full clear">
+        <div class="label">
+            <%= f.label :name, "name"%>
+        </div>
+        <div class="fl half">
+            <%= f.text_field :name%>
+        </div>
+    </div>
+    <div class="full clear">
+        <div class="label">
+            <%= f.label :email, :for=>"email" %>
+        </div>
+        <div class="fl half">
+            <%= f.text_field :email %>
+        </div>
+    </div>
+    <div class="full clear">
+        <div class="label">
+            <%= f.label :birthday, "birthday"%>
+        </div>
+        <div class="fl half">
+            <input id="birthday" class="half" name="birthday" value="<%= @user.birthday.strftime('%-m/%-d/%Y') unless !@user.birthday %>" />
+
+            <script type="text/javascript">
+            $(document).ready(function() { $('#birthday').datepicker({dateFormat: 'm/d/yy'})});
+            </script>
+        </div>
+    </div>
+    <div class="full clear">
+        <div class="label">
+            <%= f.label :neighborhood, "volunteer" %>
+        </div>
+        <div class="fl half">
+            <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "anywhere in king county" },  :class=>"half") %>
+        </div>
+    </div>
+    <div class="clear"></div>
+    <a href="#" onclick="submitForm('user_form')" class="large_button">
+        Update
+    </a>
+<% end %>

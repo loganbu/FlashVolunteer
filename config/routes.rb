@@ -1,11 +1,15 @@
 Flashvolunteer::Application.routes.draw do
+
+
   devise_for :users, :controllers => { :confirmations => "users/confirmations", :registrations => "users/registrations", :sessions => "users/sessions", :passwords => "users/passwords" } do
-		root :to => "events#index"
+		root :to => "users#index"
     put "confirm_account", :to => "users/confirmations#confirm_account"
 		get "users/sign_up/quick", :to => "users/registrations#quick", :as => "quick_new_user"
   end
+  
+  resources :users, :only => [:index, :show, :edit, :update]
 
-  root :to => "events#index"
+  root :to => "users#index"
 
   resources :neighborhoods, :only => [:index]
 

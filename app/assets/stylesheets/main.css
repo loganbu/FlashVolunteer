@@ -222,19 +222,19 @@ div.moduletitle{
 >>New event page style
 ======================================================
 */
-#newevent .label
+#form .label
 {
     text-align: right;
     float: left;
-    padding-right: 7px;
+    padding-right: 6px;
     width: 100px;
 }
 
-#newevent input
+#form input
 {
     width: 730px;
 }
-#newevent .full
+#form .full
 {
     padding-top: 10px;
 }
@@ -243,11 +243,11 @@ div.moduletitle{
     float: left;
     margin-left: 10px;
 }
-#newevent .half
+#form .half
 {
     width: 360px;
 }
-#newevent textarea
+#form textarea
 {
     width: 730px;
 }
