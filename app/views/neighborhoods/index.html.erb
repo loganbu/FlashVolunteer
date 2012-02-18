@@ -13,7 +13,7 @@
         </div>
 
     </div>
-    <%= link_to("Continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "large_button fr") %>
+    <%= link_to("Continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "green_button fr") %>
 	<div id="splash_member_switch">
         <% if can? :create, Event %>
             I want to <%= link_to("create an event", new_event_url)%>
