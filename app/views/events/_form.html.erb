@@ -93,8 +93,10 @@
         </div>
         
         <div class="clear"></div>
-        <a href="#" onclick="submitForm('event_form')" class="green_button">
+        <div>            
+            <a href="#" onclick="submitForm('event_form')" class="green_button">
             <%= @event.new_record? ? "Create" : "Edit" %> Event
-        </a>
+            </a>
+        </div>
 	<% end %>
 </div><!--end content-->

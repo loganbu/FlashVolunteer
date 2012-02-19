@@ -325,6 +325,7 @@ div.moduletitle{
     text-align: center;
     margin: 10px;
     color: white !important;
+    width: 100px;
 }
 
 .gray_button {
