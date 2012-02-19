@@ -30,10 +30,10 @@
             <%= f.label :birthday, "birthday"%>
         </div>
         <div class="fl half">
-            <input id="birthday" class="half" name="birthday" value="<%= @user.birthday.strftime('%-m/%-d/%Y') unless !@user.birthday %>" />
+            <input id="user_birthday" class="half" name="user[birthday]" value="<%= @user.birthday.strftime('%-m/%-d/%Y') unless !@user.birthday %>" />
 
             <script type="text/javascript">
-            $(document).ready(function() { $('#birthday').datepicker({dateFormat: 'm/d/yy'})});
+            $(document).ready(function() { $('#user_birthday').datepicker({dateFormat: 'm/d/yy'})});
             </script>
         </div>
     </div>
@@ -45,6 +45,8 @@
             <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "anywhere in king county" },  :class=>"half") %>
         </div>
     </div>
+    <div class="clear"></div>
+    <%= render(:partial => 'skills/form', :locals => { :entity => "user", :f => f, :skills => @user.skills }) %>
     <div class="clear"></div>
     <a href="#" onclick="submitForm('user_form')" class="green_button">
         Update

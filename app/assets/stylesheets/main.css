@@ -1294,8 +1294,14 @@ div#createevent div.markItUpHeader ul {
    margin-bottom: 0;    
    padding-bottom: 0;
 }
-.markItUpEditor {
-    height: 150px;
+
+span.small_badge {
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 /* Generic popup */

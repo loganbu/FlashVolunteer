@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120218200718) do
+ActiveRecord::Schema.define(:version => 20120219004038) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -78,7 +78,8 @@ ActiveRecord::Schema.define(:version => 20120218200718) do
   end
 
   create_table "skills", :force => true do |t|
-    t.string "name"
+    t.string  "name"
+    t.integer "offset"
   end
 
   create_table "skills_events", :id => false, :force => true do |t|

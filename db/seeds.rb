@@ -19,26 +19,26 @@ admin.roles << Role.find_by_name("SuperAdmin")
 
 Skill.delete_all()
 Skill.create([
-{ :name => "Advocacy & Human Rights" },
-{ :name => "Animals" },
-{ :name => "Arts & Culture" },
-{ :name => "Children & Youth" },
-{ :name => "Computers & Technology" },
-{ :name => "Disabled" },
-{ :name => "Disaster Relief" },
-{ :name => "Education & Literacy" },
-{ :name => "Environment" },
-{ :name => "Gay, Lesbian, Bi, & Transgender" },
-{ :name => "Health & Medicine" },
-{ :name => "Homeless & Housing" },
-{ :name => "Hunger" },
-{ :name => "Immigrants & Refugees" },
-{ :name => "Justice & Legal" },
-{ :name => "Media & Broadcasting" },
-{ :name => "Politics" },
-{ :name => "Senior Citizens" },
-{ :name => "Sports & Recreation" },
-{ :name => "Women" }
+{ :name => "Advocacy | Human Rights",           :offset => 0 },
+{ :name => "Animals",                           :offset => 1 },
+{ :name => "Arts | Culture",                    :offset => 2 },
+{ :name => "Children | Youth",                  :offset => 3 },
+{ :name => "Computers | Technology",            :offset => 4 },
+{ :name => "Disabled",                          :offset => 5 },
+{ :name => "Disaster Relief",                   :offset => 6 },
+{ :name => "Education | Literacy",              :offset => 7 },
+{ :name => "Environment",                       :offset => 8 },
+{ :name => "Gay, Lesbian, Bi, | Transgender",   :offset => 9 },
+{ :name => "Health | Medicine",                 :offset => 10 },
+{ :name => "Homeless | Housing",                :offset => 11 },
+{ :name => "Hunger",                            :offset => 12 },
+{ :name => "Immigrants | Refugees",             :offset => 13 },
+{ :name => "Justice | Legal",                   :offset => 14 },
+{ :name => "Media | Broadcasting",              :offset => 15 },
+{ :name => "Politics",                          :offset => 16 },
+{ :name => "Senior Citizens",                   :offset => 17 },
+{ :name => "Sports | Recreation",               :offset => 18 },
+{ :name => "Women",                             :offset => 19 }
 ])
 
 Neighborhood.delete_all()
