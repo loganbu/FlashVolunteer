@@ -4,11 +4,12 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
+    @events = Event.joins(:participants).where('users.id' => @user.id)
 
     if current_user == nil
       redirect_to events_url
     else
-      render :action => "me"
+      render :action => "upcoming"
     end
   end
   # GET /users/1
@@ -41,5 +42,22 @@ class UsersController < ApplicationController
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
+  end
+
+  def upcoming
+    @user = User.find(params[:id])
+    @events = Event.joins(:participants).where('users.id' => @user.id)
+  end
+
+  def recommended
+    @user = User.find(params[:id])
+  end
+
+  def stats
+    @user = User.find(params[:id])
+  end
+
+  def team
+    @user = User.find(params[:id])
   end
 end

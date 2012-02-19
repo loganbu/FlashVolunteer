@@ -7,7 +7,16 @@ Flashvolunteer::Application.routes.draw do
 		get "users/sign_up/quick", :to => "users/registrations#quick", :as => "quick_new_user"
   end
   
-  resources :users, :only => [:index, :show, :edit, :update]
+  resources :users, :only => [:index, :show, :edit, :update] do
+    member do
+      get :upcoming, :as => "upcoming_events"
+      get :recommended, :as => "recommended_events"
+      get :stats
+      get :news
+      get :team
+    end
+    resources :orgs, :only => [:index], :controller => "users/organizations"
+  end
 
   root :to => "users#index"
 

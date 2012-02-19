@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
   belongs_to :orgs
+  has_and_belongs_to_many :admin_of, :class_name => "Org", :join_table => "orgs_admins", :uniq => true
   has_attached_file :avatar, :storage => :s3, :s3_credentials => {
       :access_key_id => ENV['AWS_ACCESS_KEY'],
       :secret_access_key => ENV['AWS_SECRET_KEY'],
