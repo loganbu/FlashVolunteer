@@ -1,10 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="span4">
+            <div class="logo">
+                <%= image_tag 'logo-smaller.png' %>
+            </div>
+        </div>
+        <div class="span4 offset4">
+            Howdy
+        </div>
+    </div>
+</div>
 <div class="navbar">
     <div class="navbar-inner">
         <div class="container">
-            <%= link_to("EVENTS", events_path) %>
-            <%= link_to("NEIGHBORHOODS", neighborhoods_path) %>
-            <%= link_to("ABOUT", about_path) %>
-            <%= link_to("HELP", help_path,) %>
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li><%= link_to("EVENTS", events_path) %></li>
+                    <li><%= link_to("NEIGHBORHOODS", neighborhoods_path) %></li>
+                    <li><%= link_to("ABOUT", about_path) %></li>
+                    <li><%= link_to("HELP", help_path,) %></li>
+                </ul>
+            </div>
         </div>
     </div>
 </div>

@@ -9,3 +9,4 @@
 //= require jquery_ujs
 //= require map
 //= require utility
+//= require bootstrap

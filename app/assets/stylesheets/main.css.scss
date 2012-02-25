@@ -1,0 +1,66 @@
+/*  To get the footer to stick to the bottom, set the HTML and body to 100%, and the
+    container to be min-height of 100%.  Then, then footer is below the page, so to
+    bring it back up, margin it to -130px
+*/
+#nonfooter {
+    min-height: 100%;
+}
+html, body {
+    height: 100%;
+}
+
+/**************
+ Header
+ **************/
+.header {
+    background-color: $header_background;
+    margin-bottom: 20px;
+    color: $header_text_color;
+}
+
+.logo {
+    padding: 20px;
+}
+
+
+/**************
+ Footer
+ **************/
+footer {
+    height: 130px;
+    margin: -130px auto 0 auto;
+    background-color: $header_background;
+    color: $header_text_color;
+    clear: both;
+}
+.footer-navbar-inner {
+    @extend .navbar-inner;
+    background-color: $header_background;
+    color: $header_text_color;
+}
+.followus {
+    font-weight: bold;
+    font-style: italic;
+}
+.copy {
+    text-align: right;
+}
+
+/**************
+ Typeography
+ **************/
+h3 {
+    color: white;
+    background-color: $heading_background;
+    padding: 2px 0px 2px 5px;
+    margin-bottom: 10px;
+    font-size: 13px;
+    @include border-radius(2px);
+}
+
+/**************
+ Navigation
+ **************/
+.navbar {
+    font-weight: bold;
+}

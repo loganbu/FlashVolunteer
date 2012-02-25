@@ -8,15 +8,13 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-    <div class="container">
+    <div id="nonfooter">
+      <div class="header">
         <%= render"shared/header" %>
-    </div>
-    <div class="container-fluid">
-        <div class="container-fluid">
-        </div>
-        <div class="container-fluid">
-
-        </div>
+      </div>
+      <div class="container">
+        <%= yield %>
+      </div>
     </div>
     <footer>
         <%= render"shared/footer" %>
