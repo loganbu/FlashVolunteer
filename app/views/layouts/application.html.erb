@@ -8,32 +8,18 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+    <div class="container">
+        <%= render"shared/header" %>
+    </div>
+    <div class="container-fluid">
+        <div class="container-fluid">
+        </div>
+        <div class="container-fluid">
 
-<div id="container" 
-    <%= @current_action == 'index' && @current_controller=='neighborhoods' ? "class='map_background'" : "" %> >
-	<%= render"shared/header" %>
-	<% if flash[:popup] %>
-		<div class="popup">
-			<div class="popupContent">
-	    		<h1>Success!</h1>
-	    	 	<p><%= flash[:popup] %></p>
-	    		<a class="fr green_button" onclick="closePopup();">Close</a>
-			</div>
-		</div>
-	<% end %>
-	<div id="content">
-		<div id="bottom">
-			<div id="columns">
-				<%= yield :title %>
-			</div>
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p>
-			<%= yield %>
-			<div class="clear"> </div>
-		</div>
-	</div>
-	<div id="clearfooter"></div>
-</div>
-<%= render"shared/footer" %>
+        </div>
+    </div>
+    <footer>
+        <%= render"shared/footer" %>
+    </footer>
 </body>
 </html>

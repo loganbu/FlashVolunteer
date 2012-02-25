@@ -16,6 +16,12 @@ gem 'tlsmail'
 gem 'jquery_datepicker'
 gem 'icalendar'
 
+group :assets do
+	gem 'sass-rails'
+	gem 'bootstrap-sass'
+	gem 'compass'
+end
+
 
 # Use unicorn as the web server
 # gem 'unicorn'
