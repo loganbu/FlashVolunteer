@@ -1,0 +1,33 @@
+
+<!-- 
+     ________
+    |        |
+    |  ? blah|
+    |______go|
+-->
+<% content_for :content do %>
+    <div class="row">
+        <div class="span2">
+            <%= image_tag("question_mark.png", 
+                :id => "question-mark",
+                :border=>"0") %>
+        </div>
+        <div class="span8">
+            <div class="row">&nbsp;</div>
+            <div class="row">&nbsp;</div> 
+            <span style="font-size: 250%;padding-top: 35px"><%= yield :question %></span>
+            <div class="row">&nbsp;</div>
+            <%= yield :below_question %>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="span2 offset6">
+            <%= yield :button %>
+        </div>
+    </div>
+    <div class="row">
+        <%= yield :below_button %>
+    </div>
+<% end %>
+<%= render(:template => 'shared/splash_frame') %>
