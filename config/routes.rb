@@ -14,10 +14,10 @@ Flashvolunteer::Application.routes.draw do
       get :stats
       get :news
       get :team
+      resource :privacy, :only => [:show, :update], :controller => "users/privacy", :as => "user_privacy_settings"
+      resource :notifications, :only => [:show, :update], :controller => "users/notifications"
     end
-    resources :orgs, :only => [:index], :controller => "users/organizations"
-    resources :notifications, :only => [:edit], :controller => "users/notifications"
-    resources :privacy, :only => [:edit], :controller => "users/privacy"
+    resources :orgs, :only => [:index, :update], :controller => "users/organizations"
   end
 
   root :to => "users#index"
