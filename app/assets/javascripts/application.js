@@ -10,3 +10,4 @@
 //= require bootstrap
 //= require map
 //= require utility
+//= require bootstrap

@@ -1,39 +1,26 @@
-	<div id="top">
-		<div id="logo-strip">
-			<div id="logo" class="fl">
-                <a class="fv" href="/">
-                    <%= image_tag 'logo-smaller.png' %>
-                </a>
-			</div>
-            <div id="user_profile" class="fr">
-            	<% if current_user != nil %>
-            		<%= photo_link(current_user.avatar, :thumb, user_url(current_user)) %>
-				<% end %>
+<div class="container">
+    <div class="row">
+        <div class="span4">
+            <div class="logo">
+                <%= image_tag 'logo-smaller.png' %>
             </div>
-			<div id="volunteerwelcome" class="loggedout">
-				<div class="fl" id="greeting">
-					<div class = "fr">
-		                <% if user_signed_in? %>
-		                <% if current_user.name %>
-		                hey there, <%= current_user.name %> 
-		                <% end %>
-	                </div>
-	                <div class = "clear fr">
-		                <%= link_to('sign out', destroy_user_session_path, :method => :delete) %>
-		                <% else %>
-		                    <%= link_to('sign in', new_user_session_path, :class=>"fv", :id => "l_login") %> 
-		                    or <%= link_to('create an account', new_user_registration_path, :class=>"fv", :id=>"l_login") %>
-		                <% end %>
-	                </div>
-                </div>
+        </div>
+        <div class="span4 offset4">
+            Howdy
+        </div>
+    </div>
+</div>
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li><%= link_to("EVENTS", events_path) %></li>
+                    <li><%= link_to("NEIGHBORHOODS", neighborhoods_path) %></li>
+                    <li><%= link_to("ABOUT", about_path) %></li>
+                    <li><%= link_to("HELP", help_path,) %></li>
+                </ul>
             </div>
-	    </div><!--end logo-strip-->
-	</div><!--end top-->
-	<div id="header-navtabs" class="navtabs">
-		<ul>
-			<li><%= link_to("EVENTS", events_path, :class=>"fv", :id=>"l_events") %></li>
-			<li><%= link_to("NEIGHBORHOODS", neighborhoods_path, :class=>"fv", :id=>"l_neighborhoods") %></li>
-			<li><%= link_to("ABOUT", about_path, :class=>"fv") %></li>
-			<li id="helplink"><%= link_to("HELP", help_path, :class=>"fv", :id=>"l_help") %></li>
-		</ul>
-	</div>
+        </div>
+    </div>
+</div>

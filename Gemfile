@@ -12,7 +12,12 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'tlsmail'
 gem 'jquery_datepicker'
 gem 'icalendar'
-gem 'sass-rails'
+group :assets do
+	gem 'sass-rails'
+	gem 'bootstrap-sass'
+	gem 'compass'
+end
+
 gem 'aws-sdk'
 gem 'aws-s3'
 gem "paperclip"

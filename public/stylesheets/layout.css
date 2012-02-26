@@ -1,0 +1,230 @@
+/* 
+======================================================
+>>Site structure (layout)
+
+Indentation structure mirrors site layout
+
+Please keep indentation structure
+======================================================
+*/
+/* line 11, ../../app/assets/stylesheets/layout.scss */
+div#container {
+  min-height: 100%;
+  width: 100%;
+}
+
+/* line 16, ../../app/assets/stylesheets/layout.scss */
+div#top {
+  height: 77px;
+  padding-top: 4px;
+}
+
+/* line 21, ../../app/assets/stylesheets/layout.scss */
+div#logo-strip {
+  height: 77px;
+  width: 840px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 28, ../../app/assets/stylesheets/layout.scss */
+div#logo {
+  width: 295px;
+  margin-top: 15px;
+}
+
+/* line 33, ../../app/assets/stylesheets/layout.scss */
+div#volunteerwelcome,
+div#volunteerwelcome {
+  float: right;
+  text-align: right;
+}
+
+/* line 37, ../../app/assets/stylesheets/layout.scss */
+div.loggedout {
+  margin-top: 25px;
+  font-size: 125%;
+}
+
+/* line 41, ../../app/assets/stylesheets/layout.scss */
+div.loggedin {
+  margin-top: 13px;
+}
+
+/* line 44, ../../app/assets/stylesheets/layout.scss */
+div.navtabs {
+  width: 100%;
+  height: 30px;
+}
+
+/* line 50, ../../app/assets/stylesheets/layout.scss */
+div#content {
+  width: 840px;
+  margin: 0 auto;
+  border: 0;
+  padding-left: 20px;
+}
+
+/* line 56, ../../app/assets/stylesheets/layout.scss */
+div#bottom {
+  width: 100%;
+  border-top: none;
+  height: 100%;
+  margin-top: 10px;
+}
+
+/* line 63, ../../app/assets/stylesheets/layout.scss */
+div#columns {
+  position: relative;
+}
+
+/* line 72, ../../app/assets/stylesheets/layout.scss */
+#leftthird, #middlethird, #rightthird,
+#leftthirdequi, #middlethirdequi, #rightthirdequi,
+#lefthalf, #righthalf,
+#left75, #right25,
+#left25, #right75,
+#middle100,
+#left66, #right33 {
+  float: left;
+  top: 0;
+  padding: 0 10px 0px 0;
+}
+
+/* line 80, ../../app/assets/stylesheets/layout.scss */
+#left66, #lefthalf, #leftthird, #middlethird,
+#left75, #leftthirdequi, #middlethirdequi, #left25 {
+  margin-right: 20px;
+}
+
+/*the following is specific to the three column layout, 25% - 50% - 25% */
+/* line 86, ../../app/assets/stylesheets/layout.scss */
+#leftthird {
+  width: 185px;
+}
+
+/* line 90, ../../app/assets/stylesheets/layout.scss */
+#middlethird {
+  width: 390px;
+}
+
+/* line 94, ../../app/assets/stylesheets/layout.scss */
+#rightthird {
+  width: 185px;
+}
+
+/* line 98, ../../app/assets/stylesheets/layout.scss */
+#right33 {
+  width: 285px;
+}
+
+/* line 102, ../../app/assets/stylesheets/layout.scss */
+#left66 {
+  width: 500px;
+}
+
+/*the following is specific to the three column layout, 33% - 33% - 33% */
+/* line 107, ../../app/assets/stylesheets/layout.scss */
+#leftthirdequi, #middlethirdequi, #rightthirdequi {
+  width: 28%;
+}
+
+/*the following is specific to the two equal column layout, 50% - 50% */
+/* line 113, ../../app/assets/stylesheets/layout.scss */
+#righthalf,
+#lefthalf {
+  width: 47%;
+}
+
+/*the following is specific to the two column layout where it is 75% left 25% right */
+/* line 118, ../../app/assets/stylesheets/layout.scss */
+#left75 {
+  width: 595px;
+}
+
+/* line 122, ../../app/assets/stylesheets/layout.scss */
+#right25 {
+  width: 185px;
+}
+
+/*the following is specific to the two column layout wehre it is 25% left 75% right*/
+/* line 127, ../../app/assets/stylesheets/layout.scss */
+#left25 {
+  width: 185px;
+}
+
+/* line 131, ../../app/assets/stylesheets/layout.scss */
+#right75 {
+  width: 595px;
+}
+
+/* following is for center whole layout */
+/* line 136, ../../app/assets/stylesheets/layout.scss */
+#middle100 {
+  width: 780px;
+}
+
+/* line 140, ../../app/assets/stylesheets/layout.scss */
+div#clearfooter {
+  height: 130px;
+  margin-top: 20px;
+}
+
+/* NOTE: the footer is NOT in the container. See http://www.wickham43.net/footerfix.php */
+/* line 147, ../../app/assets/stylesheets/layout.scss */
+div#footer {
+  width: 100%;
+  height: 130px;
+  margin: -130px auto 0 auto;
+  text-align: center;
+}
+
+/* line 154, ../../app/assets/stylesheets/layout.scss */
+div#footer_content {
+  width: 840px;
+  margin: 0px auto;
+  padding-top: 10px;
+}
+
+/* line 162, ../../app/assets/stylesheets/layout.scss */
+div#badges {
+  margin: auto;
+  padding-top: 5px;
+  padding-left: 8px;
+}
+
+/* line 167, ../../app/assets/stylesheets/layout.scss */
+.full {
+  width: 100%;
+}
+
+/* line 170, ../../app/assets/stylesheets/layout.scss */
+.ninety {
+  width: 90%;
+}
+
+/* line 173, ../../app/assets/stylesheets/layout.scss */
+.eighty {
+  width: 80%;
+}
+
+/* line 176, ../../app/assets/stylesheets/layout.scss */
+.half {
+  width: 50%;
+}
+
+/* line 179, ../../app/assets/stylesheets/layout.scss */
+.quarter {
+  width: 25%;
+}
+
+/* line 182, ../../app/assets/stylesheets/layout.scss */
+.third {
+  width: 33%;
+}
+
+/* line 185, ../../app/assets/stylesheets/layout.scss */
+.tenth {
+  width: 10%;
+}
