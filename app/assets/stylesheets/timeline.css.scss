@@ -60,6 +60,11 @@
     text-align: center;
 }
 
+.tl-separator h4
+{
+    line-height: 35px;
+}
+
 .tl-separator-line {
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     margin-top: 16px;
@@ -70,14 +75,14 @@
 
 .tl-item-beak
 {
-    border: 25px solid;
+    border: 16px solid;
     border-top-width: 10px;
     border-bottom-width: 10px;
 }
 
 .tl-item-beakcover 
 {   
-    border: 23px solid;
+    border: 14px solid;
     border-top-width: 8px;
     border-bottom-width: 8px;
     height: 0;
@@ -100,12 +105,12 @@
 .tl-rightcol .tl-item-beak
 {
     border-color: transparent rgba(0, 0, 0, 0.25) transparent transparent;
-    margin-left: -25px;
-    margin-top: 25px;
+    margin-left: -16px;
+    margin-top: 16px;
 }
 
 .tl-rightcol .tl-item-beakcover
 {
     border-color: transparent White transparent transparent;
-    left: -19px;
+    left: -10px;
 }

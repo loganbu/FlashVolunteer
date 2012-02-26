@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.find(params[:id])
-    
+    @events = Event.joins(:participants).where('users.id' => @user.id) if @user
+    @eventsJson = @events.to_json
+    logger.debug @eventsJson
+
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @event }
