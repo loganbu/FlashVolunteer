@@ -4,8 +4,8 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
-    @events = Event.joins(:participants).where('users.id' => @user.id)
-
+    @events = Event.joins(:participants).where('users.id' => @user.id) if @user
+    
     if current_user == nil
       redirect_to events_url
     else
