@@ -1,7 +1,7 @@
 <div class="share">
-    <ul class="unstyled">
+    <ul class="unstyled inline">
         <li><p>Share:</p></li>
-        <li class="badge" >
+        <li>
             <%= mail_to(nil, 
                 image_tag("email_icon_32x32.png", 
                     :class => "email-badge-img", 
@@ -14,7 +14,7 @@
                     :onmouseout  => "this.className='email_normal32'"), 
                 :subject => "Come join me at " + event.name) %>           
         </li>
-        <li class="badge">
+        <li>
             <a target="_blank" href="<%= twitter_url(event) %>">
                 <%= image_tag("twitter_icon_32x32.png", 
                     :id => "twitter-badge-img",
@@ -25,7 +25,7 @@
                     :onmouseout  => "this.className='tw_normal32'") %>
             </a>                     
         </li>
-        <li class="badge" >
+        <li>
             <a target="_blank" href="<%= facebook_url(event) %>">
                 <%= image_tag("facebook_icon_32x32.png", 
                     :id => "fb-badge-img",

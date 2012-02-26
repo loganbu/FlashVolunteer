@@ -26,8 +26,11 @@ html, body {
 /**************
  Buttons
  **************/
-.full {
+.block {
     display: block;
+}
+.full {
+    width: 90%;
 }
 
 /**************
@@ -60,8 +63,6 @@ html, body {
  .share {
     ul {
         li {
-            float: left;
-            margin-right: 5px;
             p {
                 margin-top: 5px;
             }
@@ -154,7 +155,12 @@ h3 {
     font-size: 13px;
     @include border-radius(2px);
 }
-
+.inline {
+    li {
+        float: left;
+        margin-right: 5px;
+    }
+}
 a:link, a:visited, a:active, a:hover, a {
     text-decoration: none;
 }
