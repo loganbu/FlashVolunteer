@@ -80,6 +80,13 @@ a:link, a:visited, a:active, a:hover, a {
 }
 
 /**************
+ Buttons
+ **************/
+.full {
+    display: block;
+}
+
+/**************
  Navigation
  **************/
 .navbar {
@@ -100,10 +107,15 @@ a:link, a:visited, a:active, a:hover, a {
 /**************
  Events
  **************/
- .map_big {
+ .map {
     width: 100%;
-    min-height: 600px;
     height: 100%;
+    .big {
+        min-height: 600px;
+    }
+    .small {
+        min-height: 133px;
+    }
     /* Bootstrap sets max-width of an image to 100%, google maps doesn't like this */
     img {
         max-width: none;
@@ -126,4 +138,16 @@ a:link, a:visited, a:active, a:hover, a {
     background-color: $background_color;
     border: 5px solid $content_link_text_color;
     padding: 20px;
+}
+
+.share {
+    ul {
+        li {
+            float: left;
+            margin-right: 5px;
+            p {
+                margin-top: 5px;
+            }
+        }
+    }
 }
