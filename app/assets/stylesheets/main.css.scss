@@ -39,6 +39,10 @@ html, body {
     &:hover {
         @extend .skill_selected;
     }
+    &:active {
+        @extend .skill_selected;
+        background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
+    }
 }
 .skill_selected {
     border: 1px solid $lightBlue !important;
