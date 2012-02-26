@@ -1,103 +1,99 @@
-<div id="event">
-	<%= form_for(@event, :html => {:id => "form", :name => "event_form"}) do |f| %>
-		<% if @event.errors.any? %>
-			<div id="error_explanation">
-				<ul>
-				<% @event.errors.each do |attr,msg| %>
-                    <% if (attr == :start || attr == :end) %>
-        				<li><%= msg %></li>
-                    <% end %>
-				<% end %>
-				</ul>
-			</div>
-		<% end %>
-
-        <div class="full">
-            <div class="label">
-                <%= f.label :name, "Event Name"%>
-            </div>
-            <div class="fr">
-                <%= f.text_field :name%>
-            </div>
+<%= form_for(@event, :html => {:id => "form", :name => "event_form"}) do |f| %>
+    <% if @event.errors.any? %>
+        <ul class="unstyled">
+        <% @event.errors.each do |attr,msg| %>
+            <% if (attr == :start || attr == :end) %>
+                <li><%= msg %></li>
+            <% end %>
+        <% end %>
+        </ul>
+    <% end %>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :name, "Event Name"%></div>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :address, :for=>"event_street" %>
-            </div>
-            <div class="fr">
-                <%= f.text_field :street %>
-            </div>
+        <div class="span10">
+            <%= f.text_field :name, :class=>"full"%>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :zip, "Zip code"%>
-            </div>
-            <div class="fl">
-                <%= f.text_field :zip, :class=>"half"%>
-            </div>
-            <div class="fr">
-                <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "Choose a neighborhood" },  :class=>"half") %>
-            </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :address, :for=>"event_street" %></div>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :start, "Event date"%>
+        <div class="span10">
+            <%= f.text_field :street, :class=>"full" %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :zip, "Zip code"%></div>
+        </div>
+        <div class="span5">
+            <%= f.text_field :zip, :class=>"full" %>
+        </div>
+        <div class="span5">
+            <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "Choose a neighborhood" }) %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :start, "Event date"%></div>
+        </div>
+        <div class="span5">
+            <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+            <div class="field_with_errors">
+            <% end %>
+                <input id="startdate" class="full" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
+            <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
             </div>
-            <div class="fl">
-                <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
-                <div class="field_with_errors">
-                <% end %>
-                    <input id="startdate" class="half" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
-                <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+            <% end %>
+            
+            <script type="text/javascript">
+            $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
+            </script>
+        </div>
+        <div class="span5">
+            <div class="row-fluid">
+                <div class="span4">
+                    <%= f.time_select(:start, :minute_step => 15, :ampm => true) %>
                 </div>
-                <% end %>
-                
-                <script type="text/javascript">
-                $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
-                </script>
-            </div>
-            <div class="fl padleft">
-                <%= f.time_select(:start, :minute_step => 15, :ampm => true) %>
-            </div>
-            <div class="fl padleft" style="padding-top: 3px">
-            until 
-            </div>
-            <div class="fl padleft">
-                <%= f.time_select(:end, :minute_step => 15, :ampm => true) %>
+                <div class="span2">
+                    <p>until</p>
+                </div>
+                <div class="span4">
+                    <%= f.time_select(:end, :minute_step => 15, :ampm => true) %>
+                </div>
             </div>
         </div>
-
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :website, "Event website"%>
-            </div>
-            <div class="fr">
-                <%= f.url_field :website %>
-            </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :website, "Event website"%></div>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :description %>
-            </div>
-            <div class="fr">
-                <%= f.text_area :description %>
-            </div>
+        <div class="span10">
+            <%= f.url_field :website, :class=>"full" %>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :special_instructions %>
-            </div>
-            <div class="fr">
-                <%= f.text_area :special_instructions %>
-            </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :description %></div>
         </div>
-        
-        <div class="clear"></div>
-        <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>
-        <div>            
-            <a href="#" onclick="submitForm('event_form')" class="green_button">
-            <%= @event.new_record? ? "Create" : "Edit" %> Event
-            </a>
+        <div class="span10">
+            <%= f.text_area :description, :class=>"full" %>
         </div>
-	<% end %>
-</div><!--end content-->
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :special_instructions %></div>
+        </div>
+        <div class="span10">
+            <%= f.text_area :special_instructions, :class=>"full" %>
+        </div>
+    </div>
+    <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>
+    <div>            
+        <a href="#" onclick="submitForm('event_form')" class="btn btn-primary">
+        <%= @event.new_record? ? "Create" : "Edit" %> Event
+        </a>
+    </div>
+<% end %>

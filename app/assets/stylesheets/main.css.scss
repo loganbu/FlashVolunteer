@@ -24,16 +24,6 @@ html, body {
 }
 
 /**************
- Buttons
- **************/
-.block {
-    display: block;
-}
-.full {
-    width: 90%;
-}
-
-/**************
  Events
  **************/
  .map {
@@ -126,6 +116,27 @@ label {
         font-size: 100%;
         margin-right: 10px;
     }
+}
+
+/**************
+ Input
+ **************/
+.block {
+    display: block;
+}
+.full {
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+    width: 100%;
+}
+input.full, textarea.full {
+    margin-left: -3px;
+}
+
+textarea {
+    height: 50px;
 }
 
 /**************

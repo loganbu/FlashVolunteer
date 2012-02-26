@@ -26,8 +26,10 @@
             <%= yield :button %>
         </div>
     </div>
-    <div class="row">
-        <%= yield :below_button %>
+    <div class="row-fluid">
+        <div class="span12">
+            <%= yield :below_button %>
+        </div>
     </div>
 <% end %>
 <%= render(:template => 'shared/splash_frame') %>
