@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.1.0' 
 
 gem 'sqlite3'
 
@@ -12,6 +12,7 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'tlsmail'
 gem 'jquery_datepicker'
 gem 'icalendar'
+gem 'sass-rails'
 gem 'aws-sdk'
 gem 'aws-s3'
 gem "paperclip"

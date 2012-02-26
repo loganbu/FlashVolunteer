@@ -1,1 +1,12 @@
-Timeline!
+<%= stylesheet_link_tag "timeline" %>
+
+<script>
+    Timeline = Timeline || {};
+    Timeline.currentData = <%= @eventsJson.html_safe %>;
+</script>
+<div class="row">
+    <div class="span8 timeline">
+    </div>
+    <div class="span4 timeline-nav">
+    </div>
+</div>
