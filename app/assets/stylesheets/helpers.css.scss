@@ -1,6 +1,12 @@
 @for $i from 1 to 10 {
     .padright-#{$i} { padding-right: 5px*$i; }
 }
+
 @for $i from 1 to 10 {
     .marginleft-#{$i} { margin-left: 5px*$i; }
+}
+
+.clear {
+    clear: both;
+    height: 0px;
 }

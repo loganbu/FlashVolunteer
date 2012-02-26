@@ -1,41 +1,26 @@
 <%= devise_error_messages! %>
-<div id="splash_top">
-    <div class="title_line">
-        <ul>
-            <li id="splash_header"><%= yield :main_action %></li>
-            <li><%= yield :link_action %></li>
-        </ul>
-    </div>
-    <div class="fvaccount fl" >
-        <%= yield :content %>
-    </div>
-    <div class="3rdparty_account fr">
-        <div class = "subheader">Or sign in through a third party </div>
-        Connect this account to sign in to Flash Volunteer:
-        <div class = "thirdparty">
-            <ul >
-                <li class="badge " >
-                    <%= image_tag("facebook_icon_32x32.png", 
-                            :onmousedown => "this.className='email_down32'",
-                            :onmouseover => "this.className='email_hover32'",
-                            :onmouseup   => "this.className='email_normal32'",
-                            :onmouseout  => "this.className='email_normal32'")%>  
-                </li>
-                 <li class="badge">
-                    <%= image_tag("Google.jpg")%>  
-                </li>
-                <li class="badge">
-                    <%= image_tag("Yahoo.png")%>  
-                </li>
-                <li class="badge">
-                    <%= image_tag("OpenID.png")%>  
-                </li>
-
-
-
-            </ul>
-        </div>
-    </div>
-    
-    <div class="clear"></div>
-    </div>
+<% content_for :title_content do %>
+    <span style="font-size: 250%"><%= yield :main_action %></span><%= yield :link_action %>
+<% end %>
+<% content_for :left_content do %>
+    <%= yield :form_content %>
+<% end %>
+<% content_for :right_content do %>
+    <h4>Or sign in through a third party</h4>
+    <p>Connect this account to sign in to Flash Volunteer:</p>
+    <ul class="unstyled inline">
+        <li>
+            <%= image_tag("facebook_icon_32x32.png")%>  
+        </li>
+         <li>
+            <%= image_tag("Google.jpg")%>  
+        </li>
+        <li>
+            <%= image_tag("Yahoo.png")%>  
+        </li>
+        <li>
+            <%= image_tag("OpenID.png")%>  
+        </li>
+    </ul>
+<% end %>
+<%= render(:template=>"shared/splash_two_column") %>

@@ -1,36 +1,34 @@
-<div id="splash_top">
-	<div id="splash_question_mark" class="fl">
-		<%= image_tag("question_mark.png", 
-			:id => "question-mark",
-			:border=>"0") %>
-	</div>
-    <div id="splash_top_option">
-        <div id="splash_question">
-            <li>a little more information...</li>
+<% content_for :question do %>
+    a little more information...
+<% end %>
+<% content_for :below_question do %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signinform"}) do |f| %>
+        <div class="row-fluid">
+            <div class="span1">
+                <%= f.label :name %>
+            </div>
+            <div class="span11">
+                <%= f.text_field :name  %>
+            </div>
         </div>
-		
-		<div id="quick">
-			<div class="form_fields">
-			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signinform"}) do |f| %>
-				<div class="formpadding">
-                    <%= f.label :name %>
-                    <%= f.text_field :name  %>
-                </div>
-				
-				<div class="formpadding">
-                    <%= f.label :email %>
-                    <%= f.email_field :email %>
-                </div>
-			<% end %>
-			</div>
-		</div>
-    </div>
-    <%= link_to("#", :onclick => "submitForm('signinform')", :class=>"green_button fr") do %>
+        <div class="row-fluid">
+            <div class="span1">
+                <%= f.label :email %>
+            </div>
+            <div class="span11">
+                <%= f.email_field :email %>
+            </div>
+        </div>
+    <% end %>
+<% end %>
+<% content_for :button do %>
+    <% link_to("#", :onclick => "submitForm('signinform')", :class=>"btn btn-primary") do %>
         Continue
     <% end %>
-    <div class="clear">
-        <div class="fr">
-            <%= link_to("Sign in", user_session_url)%> | <%= link_to("Cancel", "#", :onclick => "history.back(1)")%> 
-        </div>
+<% end %>
+<% content_for :below_button do %>
+    <div class="span2 offset6">
+        <%= link_to("Sign in", user_session_url)%> | <%= link_to("Cancel", "#", :onclick => "history.back(1)")%> 
     </div>
-</div>
+<% end %>
+<%= render(:template => 'shared/splash_with_question') %>
