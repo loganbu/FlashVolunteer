@@ -1,21 +1,21 @@
 /*
-Syntax error: Undefined variable: "$header_background".
-        on line 16 of F:/code/fvruby/app/assets/stylesheets/main.css.scss
+Syntax error: Undefined variable: "$content_text_color".
+        on line 7 of F:/code/fvruby/app/assets/stylesheets/main.css.scss
 
-11: 
-12: /**************
-13:  Header
-14:  **************/
-15: .header {
-16:     background-color: $header_background;
-17:     margin-bottom: 20px;
-18:     color: $header_text_color;
-19: }
-20: 
-21: .logo {
+2:     container to be min-height of 100%.  Then, then footer is below the page, so to
+3:     bring it back up, margin it to -130px
+4: */
+5: #nonfooter {
+6:     min-height: 100%;
+7:     color: $content_text_color;
+8: }
+9: html, body {
+10:     height: 100%;
+11:     background-color: $background_color;
+12: }
 
 Backtrace:
-F:/code/fvruby/app/assets/stylesheets/main.css.scss:16
+F:/code/fvruby/app/assets/stylesheets/main.css.scss:7
 C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/script/variable.rb:49:in `_perform'
 C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/script/node.rb:40:in `perform'
 C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:216:in `visit_prop'
@@ -54,9 +54,9 @@ C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:200:
 C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin.rb:81:in `update_stylesheets'
 C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin.rb:54:in `check_for_updates'
 C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin/rack.rb:51:in `call'
-C:/Ruby192/lib/ruby/gems/1.9.1/gems/warden-1.1.1/lib/warden/manager.rb:35:in `block in call'
-C:/Ruby192/lib/ruby/gems/1.9.1/gems/warden-1.1.1/lib/warden/manager.rb:34:in `catch'
-C:/Ruby192/lib/ruby/gems/1.9.1/gems/warden-1.1.1/lib/warden/manager.rb:34:in `call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/warden-1.1.0/lib/warden/manager.rb:35:in `block in call'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/warden-1.1.0/lib/warden/manager.rb:34:in `catch'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/warden-1.1.0/lib/warden/manager.rb:34:in `call'
 C:/Ruby192/lib/ruby/gems/1.9.1/gems/actionpack-3.1.0/lib/action_dispatch/middleware/best_standards_support.rb:17:in `call'
 C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.3.6/lib/rack/etag.rb:23:in `call'
 C:/Ruby192/lib/ruby/gems/1.9.1/gems/rack-1.3.6/lib/rack/conditionalget.rb:25:in `call'
@@ -93,4 +93,4 @@ C:/Ruby192/lib/ruby/1.9.1/webrick/server.rb:183:in `block in start_thread'
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Syntax error: Undefined variable: \"$header_background\".\A         on line 16 of F:/code/fvruby/app/assets/stylesheets/main.css.scss\A \A 11: \A 12: /**************\A 13:  Header\A 14:  **************/\A 15: .header {\A 16:     background-color: $header_background;\A 17:     margin-bottom: 20px;\A 18:     color: $header_text_color;\A 19: }\A 20: \A 21: .logo {"; }
+  content: "Syntax error: Undefined variable: \"$content_text_color\".\A         on line 7 of F:/code/fvruby/app/assets/stylesheets/main.css.scss\A \A 2:     container to be min-height of 100%.  Then, then footer is below the page, so to\A 3:     bring it back up, margin it to -130px\A 4: */\A 5: #nonfooter {\A 6:     min-height: 100%;\A 7:     color: $content_text_color;\A 8: }\A 9: html, body {\A 10:     height: 100%;\A 11:     background-color: $background_color;\A 12: }"; }

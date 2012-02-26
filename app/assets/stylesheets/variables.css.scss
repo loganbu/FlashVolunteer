@@ -1,6 +1,13 @@
 /* Common */
 $green: #2FB002;
+$lightBlue: #4EA0A7;
+$darkBlue: #31859C;
+$lightGray: #555555;
+
+
 $heading_background: #777;
+$background_color: white;
+
 
 /* Header/Footer */
 $header_background: #3B3B3B;
@@ -8,8 +15,10 @@ $header_link_text_color: #4EA0A7;
 $header_text_color: #CCC;
 
 /* Container */
-$content_text_color: #555;
-$content_link_text_color: #AEF396;
+$content_text_color: $lightGray;
+$content_link_text_color: $darkBlue;
+$content_alt_color: $darkBlue;
+$linkColor: $lightBlue;
 
 /* Bootstrap overrides */
 $baseFontFamily: "lucida grande", tahoma, verdana, arial, sans-serif;

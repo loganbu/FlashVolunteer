@@ -4,9 +4,11 @@
 */
 #nonfooter {
     min-height: 100%;
+    color: $content_text_color;
 }
 html, body {
     height: 100%;
+    background-color: $background_color;
 }
 
 /**************
@@ -20,6 +22,16 @@ html, body {
 
 .logo {
     padding: 20px;
+}
+
+#header_personal_text {
+    font-size: 125%;
+    margin-top: 25px;
+    text-align: right;
+    p {
+        font-size: 100%;
+        margin-right: 10px;
+    }
 }
 
 
@@ -63,9 +75,55 @@ h3 {
     @include border-radius(2px);
 }
 
+a:link, a:visited, a:active, a:hover, a {
+    text-decoration: none;
+}
+
 /**************
  Navigation
  **************/
 .navbar {
     font-weight: bold;
+}
+
+/**************
+ Badges
+ **************/
+.small_badge {
+    display: block;
+    float: left;
+    margin-right: 5px;
+    width: 20px;
+    height: 20px;
+}
+
+/**************
+ Events
+ **************/
+ .map_big {
+    width: 100%;
+    min-height: 600px;
+    height: 100%;
+    /* Bootstrap sets max-width of an image to 100%, google maps doesn't like this */
+    img {
+        max-width: none;
+    }
+ }
+ .event_with_marker {
+    .marker {
+        width: 20px;
+        height: 20px;
+    }
+    .details {
+        padding-left: 30px;    
+    }
+ }
+
+/**************
+ Splash Frame
+ **************/
+#splash_frame {
+    background-color: $background_color;
+    border: 5px solid $content_link_text_color;
+    padding: 20px;
 }

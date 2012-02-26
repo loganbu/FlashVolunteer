@@ -1,43 +1,34 @@
-<div id="events" class="fl">
-    <div id="event_header">
-        <% if (@neighborhood == nil) %>
-            <li>events near <%= link_to("King County", "/neighborhoods") %></li>
-        <% else %>
-            <li>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></li>
-        <% end %>
-    </div>
-
-    <div>
-        <% if can? :create, Event %>
-            <div id="event_left"
-                 class="fl map-markerimg"
-                 style="background: url(/assets/red_markers.png) 0px 40px"></div>
-            <div id="event_right" class="event">
-                <li><%=link_to("add an event", new_event_url) %></li>
-            </div>        
-        <% end %>        
-    </div>
-    
-    <% @events.each_with_index do |event, i| %>
-    <div class="event_details" onclick="Map.showPopup(<%= event.id %>);">
-        <div id="event_left"
-             class="fl map-markerimg"
-             style="background: url(<%= event.attending?(current_user) ? "/assets/green_markers.png" : "/assets/red_markers.png" %>) 0px <%= -i*20 %>px"></div>
-        <div id="event_right" class="event">
+<div class="row">
+    <div class="span3">
+        <div class="row">
+            <% if (@neighborhood == nil) %>
+                <h4>events near <%= link_to("King County", "/neighborhoods") %></h4>
+            <% else %>
+                <h4>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></h4>
+            <% end %>
+        </div>
+        <% @events.each_with_index do |event, i| %>
+        <div class="row event_with_marker" onclick="Map.showPopup(<%= event.id %>);">
+            <div class="pull-left marker"
+                 style="background: url(<%= event.attending?(current_user) ? "/assets/green_markers.png" : "/assets/red_markers.png" %>) 0px <%= -i*20 %>px">&nbsp;
+            </div>
+            <div class="details">
                 <%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
                 <%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %>
                 <%= event.start.strftime('%-m/%-d/%Y') unless !event.start %> <%= event.start.strftime('%l:%M%p') unless !event.start %>-<%= event.end.strftime('%l:%M%p') unless !event.end %><br/>
                 <%= truncate(event.description, :length=>100, :separator=>' ') %><br/>
                 <%= render(:partial => 'links', :locals => { :event => event }) %>
+            </div>
+        </div>
+        <% end %>
+        <div id="page">
+            <%= will_paginate @events %>
         </div>
     </div>
-    <% end %>
-    <div id="page">
-        <%= will_paginate @events %>
+    <div class="span9">
+        <div id="map" class="map_big">
+        </div>
     </div>
-</div> <!-- end events -->
-<div id="right75" class="fr">
-    <div id="map"></div>
 </div>
 <script>
 $(document).ready(function() { 
