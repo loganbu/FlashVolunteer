@@ -1,0 +1,6 @@
+<ul>
+    <% skill_form_name = entity.concat("[skill_ids][]") %>
+    <% Skill.all.each do |s| %>
+        <li><%= check_box_tag(skill_form_name, s.id, skills.include?(s)) %> <%= f.label s.name %></li>
+    <% end %>
+</ul>

@@ -6,9 +6,10 @@ class Ability
   def initialize(user)
     user ||= User.new # guest user (not logged in)
     # evetyone can read event and neighborhood
-    can :read, [Event, Neighborhood]
+    can :read, [Event, Neighborhood, User]
     can :in, [Event]
     can :export, [Event]
+
     
     if user.role? :super_admin
       #super admins can do everything
@@ -25,6 +26,9 @@ class Ability
       can :manage, Event do |event|
         event.try(:user) == user
       end
+    end
+    can :manage, User do |other|
+      other == user
     end
   end
   

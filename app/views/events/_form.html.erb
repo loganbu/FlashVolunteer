@@ -1,5 +1,5 @@
 <div id="event">
-	<%= form_for(@event, :html => {:id => "newevent", :name => "event_form"}) do |f| %>
+	<%= form_for(@event, :html => {:id => "form", :name => "event_form"}) do |f| %>
 		<% if @event.errors.any? %>
 			<div id="error_explanation">
 				<ul>
@@ -93,8 +93,11 @@
         </div>
         
         <div class="clear"></div>
-        <a href="#" onclick="submitForm('event_form')" class="large_button">
+        <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>
+        <div>            
+            <a href="#" onclick="submitForm('event_form')" class="green_button">
             <%= @event.new_record? ? "Create" : "Edit" %> Event
-        </a>
+            </a>
+        </div>
 	<% end %>
 </div><!--end content-->

@@ -2,13 +2,26 @@ class User < ActiveRecord::Base
   include ActiveModel::Validations
   validates_acceptance_of :terms_of_service, :on => :create, :message => "must be accepted"
   has_and_belongs_to_many :roles
+  has_and_belongs_to_many :skills
+  belongs_to :orgs
+  has_and_belongs_to_many :admin_of, :class_name => "Org", :join_table => "orgs_admins", :uniq => true
+  has_attached_file :avatar, :storage => :s3, :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :bucket => ENV['AWS_BUCKET']
+    }, :path => ":attachment/:id/:style.:extension",
+    :styles => { :thumb => ["32x32#", :png], :profile => ["128x128#", :png]},
+    :default_url => "/assets/default_user_:style.png"
+  has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :association_foreign_key => "follower_id", :uniq => true
+
+
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids
   
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)

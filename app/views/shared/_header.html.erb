@@ -6,8 +6,9 @@
                 </a>
 			</div>
             <div id="user_profile" class="fr">
-				<%= image_tag("default-profile-pic-32x32.png", 
-				:id => "blank-img") %>
+            	<% if current_user != nil %>
+            		<%= photo_link(current_user.avatar, :thumb, user_url(current_user)) %>
+				<% end %>
             </div>
 			<div id="volunteerwelcome" class="loggedout">
 				<div class="fl" id="greeting">

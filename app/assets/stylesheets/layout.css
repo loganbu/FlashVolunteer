@@ -69,7 +69,7 @@ div#container{
                 #left75, #right25,
                 #left25, #right75,
                 #middle100,
-				#left66, #right33 {
+				#left66, #right33, #left33, #right66 {
                     float: left; 
                     top:0;
                     padding: 0 10px 0px 0;
@@ -94,12 +94,20 @@ div#container{
                 #rightthird {
                     width: 185px;
                 }
-				
+                
                 #right33 {
                     width: 285px;
                 }
-				
+                
                 #left66 {
+                    width: 500px;
+                }
+                
+                #left33 {
+                    width: 285px;
+                }
+                
+                #right66 {
                     width: 500px;
                 }				
 	
@@ -141,6 +149,13 @@ div#container{
 		  height: 130px; 
 		  margin-top:20px;
 		}
+
+.left_split {
+}
+
+.right_split {
+    
+}
 
 /* NOTE: the footer is NOT in the container. See http://www.wickham43.net/footerfix.php */
 

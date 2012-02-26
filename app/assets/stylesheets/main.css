@@ -222,19 +222,19 @@ div.moduletitle{
 >>New event page style
 ======================================================
 */
-#newevent .label
+#form .label
 {
     text-align: right;
     float: left;
-    padding-right: 7px;
+    padding-right: 6px;
     width: 100px;
 }
 
-#newevent input
+#form input
 {
     width: 730px;
 }
-#newevent .full
+#form .full
 {
     padding-top: 10px;
 }
@@ -243,11 +243,11 @@ div.moduletitle{
     float: left;
     margin-left: 10px;
 }
-#newevent .half
+#form .half
 {
     width: 360px;
 }
-#newevent textarea
+#form textarea
 {
     width: 730px;
 }
@@ -315,41 +315,25 @@ div.moduletitle{
     
 }
 
-.large_button {
+.green_button {
     display: block;
     font-weight: bold;
-    font-size: 160%;
-    background-image: url("/assets/button.png");
+    font-size: 110%;
+    background-image: url("/assets/greenButton.png");
     background-repeat: no-repeat;
-    width: 160px;
-    height: 45px;
-    padding-top: 17px;
+    padding: 7px 5px 7px 5px;
     text-align: center;
     margin: 10px;
     color: white !important;
-}
-
-.orange_button {
-    display: block;
-    font-size: 120%;
-    background-image: url("/assets/orange_button.png");
-    background-repeat: no-repeat;
-    width: 160px;
-    height: 30px;
-    padding-top: 6px;
-    text-align: center;
-    margin: 10px;
-    color: white !important;
+    width: 100px;
 }
 
 .gray_button {
     display: block;
-     font-size: 120%;
-    background-image: url("/assets/gray_button.png");
+     font-size: 100%;
+    background-image: url("/assets/greyButton.png");
     background-repeat: no-repeat;
-    width: 160px;
-    height: 30px;
-    padding-top: 6px;
+    padding: 7px 5px 7px 5px;
     text-align: center;
     margin: 10px;
     color: black !important;
@@ -585,7 +569,7 @@ li {
 }
 #event_header{
   font-size:150%;
-  padding-top:20px;
+  padding-top:5px;
   padding-bottom:10px;
 }
 #events{
@@ -600,13 +584,11 @@ li {
 .thirdparty li{
     display: inline;
     margin-right:5px;
-    margin-top:15px;
 }
 
 div#map {
   height: 100%;
-  min-height: 600px;
-  padding-top: 20px;
+  min-height: 500px;
 }
 
     /*
@@ -638,6 +620,7 @@ a {
 
     #footer #static_nav li a {
         padding: 15px 15px 14px 15px;
+
     }
     
     a.operation {
@@ -1311,8 +1294,14 @@ div#createevent div.markItUpHeader ul {
    margin-bottom: 0;    
    padding-bottom: 0;
 }
-.markItUpEditor {
-    height: 150px;
+
+span.small_badge {
+    display: block;
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-right: 5px;
+    margin-bottom: 5px;
 }
 
 /* Generic popup */
