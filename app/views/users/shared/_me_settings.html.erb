@@ -1,0 +1,6 @@
+<% content_for :left_split do %>
+    <ul class="unstyled">
+        <li><%= link_to "PROFILE", edit_user_url(current_user) %></li>
+    </ul>
+<% end %>
+<%= render :template => 'shared/split_left' %>
