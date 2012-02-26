@@ -1,11 +1,14 @@
+<div style="margin-left: -10px">
 <% Skill.all.each_with_index do |s, i| %>
     <%= check_box_tag("#{entity}[skill_ids][#{i}]", s.id, skills.include?(s), :name=>"#{entity}[skill_ids][]", :class=>"hide") %> 
     <div class="skill_option <%= "skill_selected" if skills.include?(s) %>" id="skill_<%= s.id %>">
-        <a href="#" onclick="toggleImage(<%= s.id %>)">
-            <span class="large_badge" style="background:url('/assets/badges_medium.png') 0px <%= -36*s.offset %>px;">&nbsp;</span>
-        </a>
+
+        <label onclick="toggleImage(<%= s.id %>)" for="<%= "#{entity}_skill_ids_#{i}"%>">
+            <span class="large_badge" style="background:url('/assets/badges_large.png') 0px <%= -64*s.offset %>px;">&nbsp;</span>
+        </label>
     </div>
 <% end %>
+</div>
 <script type="text/javascript">
     function toggleImage(id) {
         $('#skill_'+id).toggleClass('skill_selected');

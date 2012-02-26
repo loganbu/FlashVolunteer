@@ -24,17 +24,25 @@ html, body {
 }
 .large_badge {
     @extend .small_badge;
-    width: 36px;
-    height: 36px;
+    width: 64px;
+    height: 64px;
     margin: 0px;
 }
 .skill_option {
     float: left;
     padding: 10px;
-    margin-right: 10px;
+    margin: 0px 10px 10px 0;
+    /* Since these are floating left, adding the 1px black border will cause
+       the items below to not clear left since there is 1px left.  Add a white
+       pixeled border to non-selected items to ensure it clears left */
+    border: 1px solid white;
+    &:hover {
+        @extend .skill_selected;
+    }
 }
 .skill_selected {
-    border: 1px solid black;
+    border: 1px solid $lightBlue !important;
+    background: none repeat scroll 0 0 $babyBlue;
 }
 
 /**************
