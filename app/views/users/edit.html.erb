@@ -30,20 +30,18 @@
             <div class="span2">
                 <%= f.label :birthday, "birthday", :class=>"full" %>
             </div>
-            <div class="span10">
-                <input id="user_birthday" class="half" name="user[birthday]" value="<%= @user.birthday.strftime('%-m/%-d/%Y') unless !@user.birthday %>" />
+            <div class="span4">
+                <input id="user_birthday" class="full" name="user[birthday]" value="<%= @user.birthday.strftime('%-m/%-d/%Y') unless !@user.birthday %>" />
 
                 <script type="text/javascript">
                 $(document).ready(function() { $('#user_birthday').datepicker({dateFormat: 'm/d/yy'})});
                 </script>
             </div>
-        </div>
-        <div class="row-fluid">
-            <div class="span2">
+            <div class="span1">
                 <%= f.label :neighborhood, "volunteer" %>
             </div>
-            <div class="span10">
-                <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "anywhere in king county" },  :class=>"half") %>
+            <div class="span5">
+                <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "anywhere in king county" },  :class=>"full") %>
             </div>
         </div>
         <div class="row-fluid">

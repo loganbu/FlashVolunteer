@@ -22,6 +22,20 @@ html, body {
     width: 20px;
     height: 20px;
 }
+.large_badge {
+    @extend .small_badge;
+    width: 36px;
+    height: 36px;
+    margin: 0px;
+}
+.skill_option {
+    float: left;
+    padding: 10px;
+    margin-right: 10px;
+}
+.skill_selected {
+    border: 1px solid black;
+}
 
 /**************
  Events

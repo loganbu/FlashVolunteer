@@ -16,6 +16,8 @@ Flashvolunteer::Application.routes.draw do
       get :team
     end
     resources :orgs, :only => [:index], :controller => "users/organizations"
+    resources :notifications, :only => [:edit], :controller => "users/notifications"
+    resources :privacy, :only => [:edit], :controller => "users/privacy"
   end
 
   root :to => "users#index"
