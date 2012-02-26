@@ -2,10 +2,10 @@
     Where do you want to volunteer?
 <% end %>
 <% content_for :below_question do %>
-    <%= collection_select(:neighborhood,  :id, Neighborhood.all, :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "Anywhere in King County" }) %>
+    <%= collection_select(:neighborhood,  :id, Neighborhood.all, :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "anywhere in King County" }) %>
 <% end %>
 <% content_for :button do %>
-    <%= link_to("Continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "btn pull-right") %>
+    <%= link_to("continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "btn pull-right") %>
 <% end %>
 <% content_for :below_button do %>
     <p>
