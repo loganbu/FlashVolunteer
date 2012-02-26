@@ -1,12 +1,14 @@
 <%= stylesheet_link_tag "timeline" %>
+<%= javascript_include_tag "timeline" %>
 
 <script>
-    Timeline = Timeline || {};
+    window.Timeline = window.Timeline || {};
     Timeline.currentData = <%= @eventsJson.html_safe %>;
 </script>
 <div class="row">
     <div class="span8 timeline">
     </div>
     <div class="span4 timeline-nav">
+        Here's the navvv
     </div>
 </div>
