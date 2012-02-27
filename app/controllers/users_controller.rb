@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
 
-  def index
-    @user = current_user
-    @events = Event.joins(:participants).where('users.id' => @user.id) if @user
-    
+  def index    
     if current_user == nil
       redirect_to events_url
     else
-      render :action => "upcoming"
+      redirect_to events_user_url(current_user)
     end
   end
   # GET /users/1

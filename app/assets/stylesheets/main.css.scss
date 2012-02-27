@@ -201,4 +201,17 @@ h3 {
 a:link, a:visited, a:active, a:hover, a {
     text-decoration: none;
 }
+ul {
+    ul.unstyled {
+        margin-left: 30px;
+    }
+}
 
+#link_list {
+    a {
+        color: $lightGray;
+    }
+    .link_active {
+        color: $green;
+    }
+}
