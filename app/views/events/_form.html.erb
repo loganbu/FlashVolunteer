@@ -91,20 +91,11 @@
         </div>
     </div>
     <div class="row-fluid">
-    <div>            
         <div class="span2">
             <div class="pull-right"><%= f.label :skills, "categories" %></div>
         </div>
         <div class="span10">
             <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>
-        <a href="#" onclick="submitForm('event_form')" class="btn btn-primary">
-        <%= @event.new_record? ? "Create" : "Edit" %> Event
-        </a>
-    </div>
-        </div>       
-    <a href="#" onclick="submitForm('event_form')" class="btn btn-primary">
-    <%= @event.new_record? ? "Create" : "Edit" %> Event
-    </a>
         </div>
     </div>
     <div class="pull-right">            
