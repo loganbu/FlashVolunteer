@@ -2,9 +2,9 @@
     <div class="span3">
         <div class="row">
             <% if (@neighborhood == nil) %>
-                <h4>events near <%= link_to("King County", "/neighborhoods") %></h4>
+                <h2>events near </br><%= link_to("King County", "/neighborhoods") %></h2>
             <% else %>
-                <h4>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></h4>
+                <h2>events near </br><%= link_to(@neighborhood.name, "/neighborhoods") %></h2>
             <% end %>
         </div>
         <% @events.each_with_index do |event, i| %>
