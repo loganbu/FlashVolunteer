@@ -19,19 +19,23 @@ Map.setMap = function (div, mapLatitude, mapLongitude, zoom) {
 Map.showMapFromElement = function(element, i, eventCallback) {
     var latitude = 0;
     var longitude = 0;
+    var iconSize = 30;
+    var iconHalfSize = iconSize/2;
+
     latitude = element.find('latitude').text();
     longitude = element.find('longitude').text();
     name = element.find('name').text();
     var attending=element.find('user-participates').text();
-    var imageStrip = attending == "true" ? "/assets/green_markers.png" : "/assets/red_markers.png"; 
+    var imageStrip = attending == "true" ? "/assets/mapStripSignedUp.png" : 
+        "/assets/mapStripAvail.png"; 
     var latLng = new google.maps.LatLng(latitude, longitude);
 
     // Create a custom marker icon
     var icon = new google.maps.MarkerImage(
         imageStrip,
-        new google.maps.Size(20, 20), // Image size
-        new google.maps.Point(0, i*20), // Sprite origin
-        new google.maps.Point(10, 10) // Mark the item in the middle
+        new google.maps.Size(iconSize, iconSize), // Image size
+        new google.maps.Point(0, i*iconSize), // Sprite origin
+        new google.maps.Point(iconHalfSize, iconHalfSize) // Mark the item in the middle
         );
     var marker = new google.maps.Marker({
         position: latLng,
