@@ -92,7 +92,7 @@
     </div>
     <div class="row-fluid">
         <div class="span2">
-            <div class="pull-right"><%= f.label :special_instructions, "categories" %></div>
+            <div class="pull-right"><%= f.label :skills, "categories" %></div>
         </div>
         <div class="span10">
             <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>

@@ -1,8 +1,11 @@
 class Users::OrganizationsController < ApplicationController
-  skip_authorization_check
-
-
+  load_and_authorize_resource :user
+  
   def index
     @user_orgs = User.find(params[:user_id]).admin_of.all
+  end
+
+  def update
+
   end
 end

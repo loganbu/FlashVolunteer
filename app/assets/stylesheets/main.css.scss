@@ -39,6 +39,10 @@ html, body {
     &:hover {
         @extend .skill_selected;
     }
+    &:active {
+        @extend .skill_selected;
+        background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
+    }
 }
 .skill_selected {
     border: 1px solid $lightBlue !important;
@@ -197,4 +201,17 @@ h3 {
 a:link, a:visited, a:active, a:hover, a {
     text-decoration: none;
 }
+ul {
+    ul.unstyled {
+        margin-left: 30px;
+    }
+}
 
+#link_list {
+    a {
+        color: $lightGray;
+    }
+    .link_active {
+        color: $green;
+    }
+}
