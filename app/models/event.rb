@@ -20,6 +20,13 @@ class Event < ActiveRecord::Base
     scope :upcoming, lambda {
         where("start >= ?", Date.today)
     }
+    scope :past, lambda {
+        where("start < ?", Date.today)
+    }
+    scope :attended_by, lambda { |user|
+        joins(:participants).where("users.id = ?", user.id)
+    }
+
     def geocode_address
        return "#{self.street} #{self.city}, #{self.zip} #{self.state}"
     end

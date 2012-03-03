@@ -24,7 +24,7 @@ function closePopup() {
 
 function addContentHandlers() {
     $("#link_list li a").click(function () {
-        $("#content_sections div").each(function() { $(this).hide(); });
+        $("#content_sections>div").each(function() { $(this).hide(); });
         $($(this).attr("href")+"_content").show();
         $("#link_list li a").each(function () { $(this).removeClass('link_active') } );
         $(this).addClass('link_active');
