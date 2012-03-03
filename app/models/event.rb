@@ -26,6 +26,9 @@ class Event < ActiveRecord::Base
     scope :attended_by, lambda { |user|
         joins(:participants).where("users.id = ?", user.id)
     }
+    scope :not_attended_by, lambda { |user|
+        joins(:participants).where("users.id != ?", user.id)
+    }
 
     def geocode_address
        return "#{self.street} #{self.city}, #{self.zip} #{self.state}"

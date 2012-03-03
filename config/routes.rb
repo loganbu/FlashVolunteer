@@ -11,13 +11,7 @@ Flashvolunteer::Application.routes.draw do
     member do
       # My events
       # past/upcoming/recommended
-      resource :events, :only => [:show], :controller => "users/events", :as => "events_user" do
-        collection do
-          get :past, :as => "past"
-          get :upcoming, :as => "upcoming"
-          get :recommended, :as => "recommended"
-        end
-      end
+      resource :events, :only => [:show], :controller => "users/events", :as => "events_user"
 
       resource :privacy, :only => [:show, :update], :controller => "users/privacy", :as => "user_privacy_settings"
       resource :notifications, :only => [:show, :update], :controller => "users/notifications"
