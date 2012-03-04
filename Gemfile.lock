@@ -59,6 +59,11 @@ GEM
       railties (~> 3.1)
       warden (~> 1.1.1)
     erubis (2.7.0)
+    factory_girl (2.6.1)
+      activesupport (>= 2.3.9)
+    factory_girl_rails (1.7.0)
+      factory_girl (~> 2.6.0)
+      railties (>= 3.0.0)
     fssm (0.2.8.1)
     geocoder (1.1.1)
     hike (1.2.1)
@@ -154,6 +159,7 @@ DEPENDENCIES
   compass
   date_validator
   devise
+  factory_girl_rails
   geocoder
   icalendar
   jquery-rails (>= 1.0.12)

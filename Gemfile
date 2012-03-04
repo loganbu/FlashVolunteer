@@ -18,6 +18,8 @@ group :assets do
 	gem 'compass'
 end
 
+gem 'factory_girl_rails'
+
 gem 'aws-sdk'
 gem 'aws-s3'
 gem "paperclip"
