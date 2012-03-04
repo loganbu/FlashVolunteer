@@ -92,3 +92,16 @@ Neighborhood.create([
 { :name => 'West Seattle',              :latitude => 47.576526, :longitude => -122.391901}, 
 { :name => 'White Center',              :latitude => 47.516675, :longitude => -122.354736} 
 ])
+
+
+
+
+# Test data for development
+if Rails.env.development?
+    unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
+    confirmed_user = FactoryGirl.create(:confirmed_user)
+    tech_user = FactoryGirl.create(:tech_user)
+    Event.delete_all()
+    FactoryGirl.create(:event, :in_wallingford, :in_one_week, :creator_id => confirmed_user.id)
+    FactoryGirl.create(:event, :in_belltown, :in_one_week, :creator_id => tech_user.id)
+end

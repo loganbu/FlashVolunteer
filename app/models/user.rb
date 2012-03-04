@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include ActiveModel::Validations
   validates_acceptance_of :terms_of_service, :on => :create, :message => "must be accepted"
+  validates :email, :presence => { :message => "Must have an e-mail" }
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
   belongs_to :orgs
