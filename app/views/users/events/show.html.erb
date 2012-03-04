@@ -10,13 +10,13 @@
 </div>
 <div class="clear" id="content_sections">
     <div id="past_content">
-        Past
+        <%= render(:partial => "events/event", :collection => @past, :as => :event) || "You have not signed up for any events" %>
     </div>
     <div class="hide" id="upcoming_content">
-        Upcoming
+        <%= render(:partial => "events/event", :collection => @upcoming, :as => :event) || "You have no upcoming events" %>
     </div>
     <div class="hide" id="recommended_content">
-        Recommended
+        <%= render(:partial => "events/event", :collection => @recommended, :as => :event) || "We have no recommended events for you" %>
     </div>
 </div>
 <% end %>

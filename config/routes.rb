@@ -1,7 +1,7 @@
 Flashvolunteer::Application.routes.draw do
 
 
-  devise_for :users, :controllers => { :confirmations => "users/confirmations", :registrations => "users/registrations", :sessions => "users/sessions", :passwords => "users/passwords" } do
+  devise_for :users, :module => "users" do
 		root :to => "users#index"
     put "confirm_account", :to => "users/confirmations#confirm_account"
 		get "users/sign_up/quick", :to => "users/registrations#quick", :as => "quick_new_user"
@@ -11,13 +11,7 @@ Flashvolunteer::Application.routes.draw do
     member do
       # My events
       # past/upcoming/recommended
-      resource :events, :only => [:show], :controller => "users/events", :as => "events_user" do
-        collection do
-          get :past, :as => "past"
-          get :upcoming, :as => "upcoming"
-          get :recommended, :as => "recommended"
-        end
-      end
+      resource :events, :only => [:show], :controller => "users/events", :as => "events_user"
 
       resource :privacy, :only => [:show, :update], :controller => "users/privacy", :as => "user_privacy_settings"
       resource :notifications, :only => [:show, :update], :controller => "users/notifications"

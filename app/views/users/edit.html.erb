@@ -52,9 +52,10 @@
                 <%= render(:partial => 'skills/form', :locals => { :entity => "user", :f => f, :skills => @user.skills }) %>
             </div>
         </div>
-        <a href="#" onclick="submitForm('user_form')" class="btn btn-primary">
+        <div class = "span2"></div>
+        <div class = "span8"><a href="#" onclick="submitForm('user_form')" class="btn btn-primary">
             Update
-        </a>
+        </a></div>
     <% end %>
 <% end %>
 <%= render(:partial => "users/shared/me_settings") %>

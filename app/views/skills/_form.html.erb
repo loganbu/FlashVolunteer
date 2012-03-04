@@ -3,7 +3,7 @@
     <%= check_box_tag("#{entity}[skill_ids][#{i}]", s.id, skills.include?(s), :name=>"#{entity}[skill_ids][]", :class=>"hide") %> 
     <div class="skill_option <%= "skill_selected" if skills.include?(s) %>" id="skill_<%= s.id %>">
 
-        <label onclick="toggleImage(<%= s.id %>)" for="<%= "#{entity}_skill_ids_#{i}"%>">
+        <label onclick="toggleImage(<%= s.id %>)" for="<%= "#{entity}_skill_ids_#{i}"%>" title="<%= s.name %>">
             <span class="large_badge" style="background:url('/assets/badges_large.png') 0px <%= -64*s.offset %>px;">&nbsp;</span>
         </label>
     </div>

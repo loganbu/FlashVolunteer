@@ -54,14 +54,70 @@
         </div>
         <div class="span5">
             <div class="row-fluid">
-                <div class="span4">
-                    <%= f.time_select(:start, :minute_step => 15, :ampm => true) %>
-                </div>
-                <div class="span2">
-                    <p>until</p>
-                </div>
-                <div class="span4">
-                    <%= f.time_select(:end, :minute_step => 15, :ampm => true) %>
+                <div class="span12">
+                    <div id="time_slider"></div>
+                    <div style="position: relative">
+                        <div id="time_start" style="position: absolute; width: 55px"></div>
+                        <div id="time_end" style="position: absolute; width: 55px"></div>
+                    </div>
+
+                    <input id="event_start_1i" type="hidden" name="event[start(1i)]" value="2012" />
+                    <input id="event_start_2i" type="hidden" name="event[start(2i)]" value="1" />
+                    <input id="event_start_3i" type="hidden" name="event[start(3i)]" value="1" />
+                    <input id="event_start_4i" type="hidden" name="event[start(4i)]" value="<%= @event.start ? @event.start.hour : 9 %>" />
+                    <input id="event_start_5i" type="hidden" name="event[start(5i)]" value="<%= @event.start ? @event.start.min : 0 %>" />
+
+                    <input id="event_end_1i" type="hidden" name="event[end(1i)]" value="2012" />
+                    <input id="event_end_2i" type="hidden" name="event[end(2i)]" value="1" />
+                    <input id="event_end_3i" type="hidden" name="event[end(3i)]" value="1" />
+                    <input id="event_end_4i" type="hidden" name="event[end(4i)]" value="<%= @event.end ? @event.end > @event.start ? 24 : @event.end.hour : 15 %>" />
+                    <input id="event_end_5i" type="hidden" name="event[end(5i)]" value="<%= @event.end ? @event.end.min : 0 %>" />
+
+
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            var minuteStep = 15;
+                            var maxValue = 24*4;
+                            var startHour = <%= @event.start ? @event.start.hour : 9 %>;
+                            var startMinute =  parseInt(<%= @event.start ? @event.start.min : 0 %> / minuteStep);
+                            var endHour = <%= @event.end ? @event.end.day != @event.start.day ? 24 : @event.end.hour : 15 %>;
+                            var endMinute = parseInt(<%= @event.end ? @event.end.min : 0 %> / minuteStep);
+
+                            var initialValues = [startHour*4+startMinute, endHour*4+endMinute];
+                            var setTimes = function(ui) {
+                                    var getValueOfHandle = function(displayElement, hourElement, minuteElement, index) {
+                                        var ampm = (ui.values[index] < 48) ? "AM" : "PM";
+                                        var saveHour = parseInt(ui.values[index]/4);
+                                        var displayHour = saveHour%12 || 12;
+                                        var saveMinute = (ui.values[index]%(60/minuteStep))*minuteStep;
+                                        var displayMinute = (saveMinute < 10) ? "0" + saveMinute : saveMinute;
+                                        displayElement.text(displayHour + ":" + displayMinute + " " + ampm);
+
+                                        hourElement.attr('value', saveHour);
+                                        minuteElement.attr('value', saveMinute);
+                                    }
+                                    getValueOfHandle($("#time_start"), $("#event_start_4i"), $("#event_start_5i"), 0);
+                                    getValueOfHandle($("#time_end"), $("#event_end_4i"),  $("#event_end_5i"), 1);
+                                }
+
+                            $('#time_slider').slider({
+                                max: maxValue,
+                                min: 0,
+                                range: true,
+                                values: initialValues,
+                                slide: function(ev, ui) {
+                                    var whichElement = (ui.value == ui.values[0]) ? $("#time_start") : $("#time_end");
+                                    setTimes(ui);
+                                    whichElement.css("left", ((ui.value/maxValue)*100-5) + "%");
+                                },
+                                create: function(event, ui) {
+                                    setTimes({values: initialValues});
+                                    $("#time_start").css("left", (initialValues[0]/maxValue)*100-5 + "%");
+                                    $("#time_end").css("left", (initialValues[1]/maxValue)*100-5 + "%");
+                                }
+                            });
+                        });
+                    </script>
                 </div>
             </div>
         </div>

@@ -36,9 +36,7 @@ Skill.create([
 { :name => "Justice | Legal",                   :offset => 14 },
 { :name => "Media | Broadcasting",              :offset => 15 },
 { :name => "Politics",                          :offset => 16 },
-{ :name => "Senior Citizens",                   :offset => 17 },
-{ :name => "Sports | Recreation",               :offset => 18 },
-{ :name => "Women",                             :offset => 19 }
+{ :name => "Sports | Recreation",               :offset => 17 }
 ])
 
 Neighborhood.delete_all()
