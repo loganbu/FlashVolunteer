@@ -1,3 +1,16 @@
+require "#{File.dirname(__FILE__)}/helpers/factory_helper"
+
+def add_random_neighborhood_info(e)
+    this_address_hash = random_neighborhood
+    e.street          = this_address_hash["address"]
+    e.zip             = this_address_hash["zip"]
+    e.neighborhood    = Neighborhood.find_by_name(this_address_hash["name"])
+end
+
+def add_random_skills_info(e)
+    e.skills = random_skills
+end
+
 FactoryGirl.define do
     factory :event do
         name            "Some default event name"
@@ -7,24 +20,19 @@ FactoryGirl.define do
 
 
         trait :one_week_old do
-            start   DateTime.now - 1.week
+            start   DateTime.now - about_a_week
         end
 
         trait :in_one_week do
-            start   DateTime.now + 1.week
+            start   DateTime.now + about_a_week
         end
 
-        trait :in_belltown do
-            street          "2900 1st Ave"
-            neighborhood    { Neighborhood.find_by_name("Belltown") }
-            zip             98121
+        # This will populate street/zip/neibhorhood in the after_build
+        after_build do |e|
+            add_random_neighborhood_info(e)
+            add_random_skills_info(e)
+            e.save!
         end
 
-        trait :in_wallingford do
-            street          "2101 N Northlake Way"
-            neighborhood    { Neighborhood.find_by_name("Wallingford")} 
-            zip             98103
-        end
-        
     end
 end

@@ -1,3 +1,5 @@
+require "#{File.dirname(__FILE__)}/helpers/factory_helper"
+
 FactoryGirl.define do 
     factory :user do
         password      ENV['ADMIN_PASSWORD']
