@@ -154,9 +154,10 @@
             <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>
         </div>
     </div>
-    <div class="pull-right">            
-        <a href="#" onclick="submitForm('event_form')" class="btn btn-primary">
-        <%= @event.new_record? ? "create" : "edit" %> event
-        </a>
+    <div class="row-fluid">
+        <div class = "span2">&nbsp;</div>
+        <div class = "span10">
+            <button type="submit" href="#" class="btn btn-primary pull-right"><%= @event.new_record? ? "create" : "edit" %> event</button>   
+        </div>
     </div>
 <% end %>
