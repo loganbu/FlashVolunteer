@@ -19,3 +19,6 @@ set DFImageMagick=
 set PATH=%DFImageMagick%;%PATH%
 set CPATH=%DFImageMagick%\include;%CPATH%
 set LIBRARY_PATH=%DFImageMagick%\lib;%LIBRARY_PATH%
+
+set FACEBOOK_API_KEY=
+set FACEBOOK_API_SECRET=
