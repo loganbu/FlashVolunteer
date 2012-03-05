@@ -11,8 +11,9 @@
     <ul class="unstyled inline">
         <li>
             <a href="blank">
-                <%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
-                <%= image_tag("facebook.png") %>
+                <a href="<%= user_omniauth_authorize_path(:facebook) %>">
+                    <%= image_tag("facebook.png") %>
+                </a>
             </a>
         </li>
         <li>
