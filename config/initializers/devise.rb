@@ -198,7 +198,7 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  config.omniauth :facebook, ENV['FACEBOOK_API_KEY'], ENV['FACEBOOK_API_SECRET'], :scope=>'email,create_event,rsvp_event,user_photos', :display=>'popup'
+  config.omniauth :facebook, ENV['FACEBOOK_API_KEY'], ENV['FACEBOOK_API_SECRET'], :scope=>'email,create_event,rsvp_event,user_photos', :display=>'page'
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
