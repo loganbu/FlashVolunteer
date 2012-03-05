@@ -18,7 +18,6 @@ group :assets do
 	gem 'compass'
 end
 
-gem 'factory_girl_rails'
 
 gem 'aws-sdk'
 gem 'aws-s3'
@@ -32,6 +31,10 @@ gem "rmagick"
 source :gemcutter
 gem 'sinatra', '1.0'
 gem 'date_validator'
+
+group :development do
+    gem 'factory_girl_rails'
+end
 
 group :production do
     gem 'pg'
