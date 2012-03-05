@@ -1,0 +1,8 @@
+<p>Welcome, <%= @resource.email %>!</p>
+
+<p>ADD INFO HERE <%= link_to 'Create your free account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>.</p>
+
+<p>Have questions, comments, or suggestions? Email us at <%= mail_to("info@flashvolunteer.org", "contact organizer", :subject => "Questions regarding Flash Volunteer", :encode=>"hex")%>.</p>
+<p>Sincerely,</p></br>
+<p>The Flash Volunteer team</p></br>
+<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
