@@ -31,6 +31,7 @@ GEM
       activesupport (= 3.1.0)
     activesupport (3.1.0)
       multi_json (~> 1.0)
+    addressable (2.2.7)
     arel (2.2.3)
     aws-s3 (0.6.2)
       builder
@@ -64,8 +65,13 @@ GEM
     factory_girl_rails (1.7.0)
       factory_girl (~> 2.6.0)
       railties (>= 3.0.0)
+    faraday (0.7.6)
+      addressable (~> 2.2)
+      multipart-post (~> 1.1)
+      rack (~> 1.1)
     fssm (0.2.8.1)
     geocoder (1.1.1)
+    hashie (1.2.0)
     hike (1.2.1)
     httparty (0.8.1)
       multi_json
@@ -84,8 +90,20 @@ GEM
     mime-types (1.17.2)
     multi_json (1.1.0)
     multi_xml (0.4.1)
+    multipart-post (1.1.5)
     newrelic_rpm (3.3.2)
     nokogiri (1.5.0-x86-mingw32)
+    oauth2 (0.5.2)
+      faraday (~> 0.7)
+      multi_json (~> 1.0)
+    omniauth (1.0.2)
+      hashie (~> 1.2)
+      rack
+    omniauth-facebook (1.2.0)
+      omniauth-oauth2 (~> 1.0.0)
+    omniauth-oauth2 (1.0.0)
+      oauth2 (~> 0.5.0)
+      omniauth (~> 1.0)
     orm_adapter (0.0.6)
     paperclip (2.7.0)
       activerecord (>= 2.3.0)
@@ -165,6 +183,7 @@ DEPENDENCIES
   jquery-rails (>= 1.0.12)
   jquery_datepicker
   newrelic_rpm
+  omniauth-facebook
   paperclip
   pg
   rails (= 3.1.0)
