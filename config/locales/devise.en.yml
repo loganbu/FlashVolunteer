@@ -55,7 +55,7 @@ en:
         subject: 'You&apos;ve signed up with Flash!'
       #user is a full member of FV
       welcome_instructions:
-        subject: 'Welcome to Flash!'
+        subject: 'Welcome -- come volunteer with us!'
       #24 hours before event is about to occur
       creator_event_warning_instructions:
         subject: 'Coming soon: a volunteer project you organized'
