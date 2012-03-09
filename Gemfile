@@ -12,6 +12,8 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'tlsmail'
 gem 'jquery_datepicker'
 gem 'icalendar'
+gem 'nokogiri', '~> 1.5.0'
+
 group :assets do
 	gem 'sass-rails'
 	gem 'bootstrap-sass'

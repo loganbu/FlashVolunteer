@@ -186,6 +186,7 @@ DEPENDENCIES
   jquery-rails (>= 1.0.12)
   jquery_datepicker
   newrelic_rpm
+  nokogiri (~> 1.5.0)
   omniauth-facebook
   omniauth-google-oauth2
   paperclip
