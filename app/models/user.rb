@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
+    log.info debug(access_token)
     if user = User.where(:email => data.email).first
       user
     else # Create a user with a stub password. 
@@ -44,6 +45,7 @@ class User < ActiveRecord::Base
   end
   def self.find_for_google_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
+    log.info debug(access_token)
     if user = User.where(:email => data.email).first
       user
     else # Create a user with a stub password. 
