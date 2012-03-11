@@ -12,6 +12,8 @@ gem 'jquery-rails', '>= 1.0.12'
 gem 'tlsmail'
 gem 'jquery_datepicker'
 gem 'icalendar'
+gem 'nokogiri', '= 1.5.0'
+
 group :assets do
 	gem 'sass-rails'
 	gem 'bootstrap-sass'
@@ -23,6 +25,7 @@ gem 'aws-sdk'
 gem 'aws-s3'
 gem "paperclip"
 gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
 
 # http://www.imagemagick.com/www/binary-releases.html#windows
 # http://stackoverflow.com/questions/4451213/ruby-1-9-2-how-to-install-rmagick-on-windows
