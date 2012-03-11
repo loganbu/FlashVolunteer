@@ -1,10 +1,37 @@
 <%= stylesheet_link_tag "timeline" %>
 <%= javascript_include_tag "timeline" %>
 
-<script>
+<script defer="defer">
+$(function () {
     window.Timeline = window.Timeline || {};
     Timeline.currentData = <%= @eventsJson.html_safe %>;
+
+    Timeline.shareHtmls = shareHtmls = [];
+    <% @events.each_with_index do |event, i| %>
+        shareHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/share", :locals => { :event => event }) %>';
+    <% end %>
+
+    Timeline.badgeHtmls = badgeHtmls = [];
+    <% @events.each_with_index do |event, i| %>
+        badgeHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "skills/strip", :locals => { :entity => event, :size => "small" }) %>';
+    <% end %>
+
+    Timeline.links = links = [];
+    <% @events.each_with_index do |event, i| %>
+        links[<%= i %>] = '<%= escape_javascript(link_to event.name, event_path(event)) %>';
+    <% end %>
+
+    Timeline.signUpBtns = signUpBtns = [];
+    <% @events.each_with_index do |event, i| %>
+        <% if event.attending?(current_user) %>
+            signUpBtns[<%= i %>] = '<%= escape_javascript(button_to("sign up", register_event_url, :method=> :post, :class => "btn btn-primary block"))  %>';
+        <% end %>
+    <% end %>
+
+    Timeline.buildTimeline();
+});
 </script>
+
 <div class="row">
     <div class="span8 timeline">
     </div>

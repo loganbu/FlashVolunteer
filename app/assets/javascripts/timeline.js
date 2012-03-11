@@ -4,7 +4,9 @@
     var months = ["January", "February", "March", "April", "May", "June", "July", "August",
         "September", "October", "November", "December"];
 
-    $(function () {
+    window.Timeline = window.Timeline || {};
+
+    Timeline.buildTimeline = function () {
         var container = $(".timeline");
 
         // Fill with realll data
@@ -14,6 +16,7 @@
         for (var i = 0; i < datas.length; i++) {
             var data = datas[i];
             data.date = new Date(data.start);
+            data.evIndex = i;
 
             // Add a separator if necessary
             if (i !== 0) {
@@ -50,7 +53,7 @@
                 data.el.appendTo(context.left);
             }
         }
-    });
+    };
 
     var createNewTimelineContext = function (container) {
         var obj = $('<div class="row"> \
@@ -70,14 +73,26 @@
     var beakHtml = '<div class="span1"><div class="tl-item-beak"></div><div class="tl-item-beakcover"></div></div>';
     var getItem = function (options) {
         var html = '<div class="tl-item row-fluid">';
+        var i = options.evIndex;
 
         if (!options.left) {
             html += beakHtml;
         }
 
+        var titleLink = Timeline.links[i],
+            skillsStrip = Timeline.badgeHtmls[i],
+            shareStrip = Timeline.shareHtmls[i],
+            date = options.date,
+            dateString = months[date.getMonth()] + " " + date.getDate() + ", " + date.getYear();
         html += '<div class="span11"> \
-                <div class="tl-item-contents"><h3>' + options.name + '</h3>' + options.description + '</div> \
-            </div>';
+                    <div class="tl-item-contents"> \
+                        ' + titleLink + ' <br /> \
+                        ' + dateString + '<br /> \
+                        ' + skillsStrip + '<br /> \
+                        ' + options.description + ' \
+                        ' + shareStrip + ' \
+                    </div> \
+                </div>';
 
         if (options.left) {
             html += beakHtml;
