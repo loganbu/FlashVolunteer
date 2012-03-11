@@ -50,9 +50,35 @@ en:
       success: 'Successfully authorized from %{kind} account.'
       failure: 'Could not authorize you from %{kind} because "%{reason}".'
     mailer:
+      #user has accessed website but not yet confirmed their account
       confirmation_instructions:
-        subject: 'Welcome to Flash'
+        subject: 'You&apos;ve signed up with Flash!'
+      #user is a full member of FV
+      welcome_instructions:
+        subject: 'Welcome -- come volunteer with us!'
+      #24 hours before event is about to occur
+      creator_event_warning_instructions:
+        subject: 'Coming soon: a volunteer project you organized'
+      #24 hours before event is about to occur
+      volunteer_event_warning_instructions:
+        subject: 'Coming soon: your next volunteer project'
+      #event cancelled notification to volunteers signed up
+      cancel_event_instructions:
+        subject: '*IMPORTANT* Event cancelled'
+      #creator's reminder to mark hours for event
+      creator_event_end_instructions:
+        subject: 'Great job with your event -- just one more thing'
+      #volutneer's reminder to mark hours for event
+      volunteer_event_end_instructions:
+        subject: 'Thanks for volunteering -- just one more thing'
+      #volunteers sign up notification 
+      volunteer_signup_notification:
+        subject: 'Volunteer signups for %{event_name}'
+      #volunteers cancelled attending event notification 
+      volunteer_cancel_notification:
+        subject:'A change in the volunteer roster for %{event_name}'
       reset_password_instructions:
         subject: 'Reset your account'
       unlock_instructions:
-        subject: 'Unlock Instructions'
+        subject: 'Unlock your account'
+        

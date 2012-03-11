@@ -11,12 +11,16 @@
     <ul class="unstyled inline">
         <li>
             <a href="blank">
+                <a href="<%= user_omniauth_authorize_path(:facebook) %>">
                     <%= image_tag("facebook.png") %>
+                </a>
             </a>
         </li>
         <li>
             <a href="blank">
-                <%= image_tag("Google.png") %>
+                <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>">
+                    <%= image_tag("Google.png") %>
+                </a>
             </a>
         </li>
         <li>

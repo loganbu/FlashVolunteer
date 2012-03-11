@@ -10,14 +10,9 @@
         <p><%= link_to "Edit profile", edit_user_url(current_user) %></p>
         <ul class="unstyled">
             <li><%= link_to "MY EVENTS", events_user_url(current_user) %></li>
-            <li><%= link_to "MY FLASHTEAM", recommended_events_user_url(current_user) %></li>
-            <% if (!current_user.admin_of.empty?) %>
-                <li><%= link_to "ORGANIZATION", user_orgs_url(current_user) %></li>
-            <% end %>
-            <ul class="unstyled">
-                <li>me</li>
-                <li>my team</li>
-            </ul>
+            <li><%= link_to "MY FLASH TEAM", events_user_url(current_user) %></li>
+            <li><%= link_to "MY ORGS", events_user_url(current_user) %></li>
+            <li><%= link_to "STATS", events_user_url(current_user) %></li>
         </ul>
     </div>
 <% end %>

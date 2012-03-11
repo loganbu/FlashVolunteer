@@ -13,16 +13,12 @@
                  style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp.png" : "/assets/mapStripAvail.png" %>) 0px <%= -i*30 %>px">&nbsp;
             </div>
             <div class="details">
-                <%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
-                <%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %>
-                <%= event.start.strftime('%-m/%-d/%Y') unless !event.start %> <%= event.start.strftime('%l:%M%p') unless !event.start %>-<%= event.end.strftime('%l:%M%p') unless !event.end %><br/>
-                <%= truncate(event.description, :length=>100, :separator=>' ') %><br/>
-                <%= render(:partial => 'links', :locals => { :event => event }) %>
+                <%= render :partial => "events/event", :locals => { :event => event, :description => true } %>
             </div>
         </div>
         <% end %>
         <div id="page">
-            <%= will_paginate @events %>
+            <%= will_paginate @events, :page_links => false %>
         </div>
     </div>
     <div class="span9">

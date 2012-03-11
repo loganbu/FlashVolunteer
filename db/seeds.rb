@@ -36,9 +36,7 @@ Skill.create([
 { :name => "Justice | Legal",                   :offset => 14 },
 { :name => "Media | Broadcasting",              :offset => 15 },
 { :name => "Politics",                          :offset => 16 },
-{ :name => "Senior Citizens",                   :offset => 17 },
-{ :name => "Sports | Recreation",               :offset => 18 },
-{ :name => "Women",                             :offset => 19 }
+{ :name => "Sports | Recreation",               :offset => 17 }
 ])
 
 Neighborhood.delete_all()
@@ -94,3 +92,16 @@ Neighborhood.create([
 { :name => 'West Seattle',              :latitude => 47.576526, :longitude => -122.391901}, 
 { :name => 'White Center',              :latitude => 47.516675, :longitude => -122.354736} 
 ])
+
+
+
+
+# Test data for development
+if Rails.env.development?
+    Random.new
+    unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
+    confirmed_user = FactoryGirl.create(:confirmed_user)
+    tech_user = FactoryGirl.create(:tech_user)
+    Event.delete_all()
+    FactoryGirl.create_list(:event, 15, :in_one_week, :creator_id => tech_user.id)
+end
