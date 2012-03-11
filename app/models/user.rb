@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids
@@ -33,4 +33,23 @@ class User < ActiveRecord::Base
     self.errors[:password] << 'you must provide a password' if password.blank?
     password == password_confirmation and !password.blank?  
   end
+
+  def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
+    data = access_token.extra.raw_info
+    image = access_token.info.image
+    if user = User.where(:email => data.email).first
+      user
+    else # Create a user with a stub password. 
+      User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name, :avatar=>image) 
+    end
+  end
+  def self.find_for_google_oauth(access_token, signed_in_resource=nil)
+    data = access_token.extra.raw_info
+    if user = User.where(:email => data.email).first
+      user
+    else # Create a user with a stub password. 
+      User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name) 
+    end
+  end
+
 end

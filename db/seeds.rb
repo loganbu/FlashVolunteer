@@ -98,10 +98,10 @@ Neighborhood.create([
 
 # Test data for development
 if Rails.env.development?
+    Random.new
     unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
     confirmed_user = FactoryGirl.create(:confirmed_user)
     tech_user = FactoryGirl.create(:tech_user)
     Event.delete_all()
-    FactoryGirl.create(:event, :in_wallingford, :in_one_week, :creator_id => confirmed_user.id)
-    FactoryGirl.create(:event, :in_belltown, :in_one_week, :creator_id => tech_user.id)
+    FactoryGirl.create_list(:event, 15, :in_one_week, :creator_id => tech_user.id)
 end

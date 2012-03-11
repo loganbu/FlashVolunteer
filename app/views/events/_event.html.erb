@@ -3,6 +3,6 @@
 <%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %>
 <%= event.start.strftime('%-m/%-d/%Y') unless !event.start %> <%= event.start.strftime('%l:%M%p') unless !event.start %>-<%= event.end.strftime('%l:%M%p') unless !event.end %><br/>
 <% if description %>
-<%= truncate(event.description, :length=>100, :separator=>' ') %><br/>
+<%= truncate(event.description, :length=>60, :separator=>' ') %><br/>
 <% end %>
 <%= render(:partial => 'events/links', :locals => { :event => event }) %>
