@@ -1,28 +1,19 @@
 <% content_for :left_split do %>
     <div>
-        <div class="fl">
-            <%= photo_link(current_user.avatar, :profile, user_url(current_user)) %>
-        </div>
-        <div class="fl">
-            <div><%= current_user.name %></div>
-            <div><%= link_to "Edit profile", edit_user_url(current_user) %></div>
-        </div>
-        <div class="clear">
-            <%= render :partial => "skills/strip", :locals => { :entity => current_user, :size => "small" } %>
-        </div>
+        <%= photo_link(current_user.avatar, :profile, user_url(current_user)) %>
+    </div>        
+    <div>
+        <%= render :partial => "skills/strip", :locals => { :entity => current_user, :size => "small" } %>
     </div>
-    <ul>
-        <li><%= link_to "UPCOMING EVENTS", upcoming_events_user_url(current_user) %></li>
-        <li><%= link_to "RECOMMENDED EVENTS", recommended_events_user_url(current_user) %></li>
-        <li><%= link_to "STATISTICS", stats_user_url(current_user) %></li>
-        <li><%= link_to "NEWS FEEDS", news_user_url(current_user) %></li>
-        <li><%= link_to "TEAM", team_user_url(current_user) %></li>
-        <% if (current_user.admin_of.empty?) %>
-            <li><%= link_to "ORGANIZATION", user_orgs_url(current_user) %></li>
-        <% end %>
-    </ul>
+    <div class="clear">
+        <p><%= current_user.name %></p>
+        <p><%= link_to "Edit profile", edit_user_url(current_user) %></p>
+        <ul class="unstyled">
+            <li><%= link_to "MY EVENTS", events_user_url(current_user) %></li>
+            <li><%= link_to "MY FLASH TEAM", events_user_url(current_user) %></li>
+            <li><%= link_to "MY ORGS", events_user_url(current_user) %></li>
+            <li><%= link_to "STATS", events_user_url(current_user) %></li>
+        </ul>
+    </div>
 <% end %>
-<% content_for :right_split do %>
-    <%= yield %>
-<% end %>
-<%= render :template => 'shared/split' %>
+<%= render :template => 'shared/split_left' %>

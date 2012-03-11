@@ -1,0 +1,10 @@
+<p>Hello, <%= @resource.email %>,</p>
+
+<p>We sincerely thank you for signing up for %(event_name), but unfortunately the organizer has cancelled the event. You are now free to <%= link_to 'sign up for something else', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>!</p>
+
+<p>If you have questions for the organizer, you can follow up on the <%= link_to("organization's page", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)) %>.</p>
+<p>Thanks again for volunteering!</p>
+<p>Sincerely,</p></br>
+<p>The Flash Volunteer team</p></br>
+<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+

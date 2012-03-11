@@ -1,0 +1,9 @@
+<p>Welcome, <%= @resource.email %>!</p>
+
+<p>You have created a profile on Flash Volunteer, but there is a lot more to explore! Search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
+<p> <%= link_to 'Get started now', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>.</p>
+
+<p>Have questions, comments, or suggestions? Email us at <%= mail_to("info@flashvolunteer.org", "contact organizer", :subject => "Questions regarding Flash Volunteer", :encode=>"hex")%>.</p>
+<p>Happy Volunteering!</p></br>
+<p>The Flash Volunteer team</p></br>
+<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>

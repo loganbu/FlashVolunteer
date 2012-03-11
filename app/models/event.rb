@@ -1,6 +1,7 @@
 class Event < ActiveRecord::Base
     belongs_to :neighborhood, :foreign_key => "neighborhood_id"
     belongs_to :user, :foreign_key => "creator_id"
+    validates :creator_id, :presence => { :message => "Somebody must create this event" }
     validates :neighborhood_id, :presence => { :message => "The event must have a neighborhood" }
     validates :zip, :presence => { :message => "The event must have a zip code" }
     validates :name, :presence => { :message => "The event must have a title" }
@@ -20,6 +21,16 @@ class Event < ActiveRecord::Base
     scope :upcoming, lambda {
         where("start >= ?", Date.today)
     }
+    scope :past, lambda {
+        where("start < ?", Date.today)
+    }
+    scope :attended_by, lambda { |user|
+        joins(:participants).where("users.id = ?", user.id)
+    }
+    scope :not_attended_by, lambda { |user|
+        joins(:participants).where("users.id != ?", user.id)
+    }
+
     def geocode_address
        return "#{self.street} #{self.city}, #{self.zip} #{self.state}"
     end

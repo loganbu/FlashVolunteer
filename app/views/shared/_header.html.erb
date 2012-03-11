@@ -12,7 +12,7 @@
                 <% else %>
                     <p class="pull-left">
                     hey there, <%= current_user.name %><br/>
-                    <%= link_to "sign out", destroy_user_session_path, :method=>:delete %>
+                    <%= link_to "settings", edit_user_url(current_user) %> | <%= link_to "sign out", destroy_user_session_path, :method=>:delete %>
                     </p>
                     <div class="pull-right" id="user_greeting_picture">
                         <%= photo_link(current_user.avatar, :thumb, user_url(current_user)) %>

@@ -1,0 +1,25 @@
+<% content_for :right_split do %>
+<h3>privacy</h3>
+<p>Who can see your upcoming events?</p>
+<div class="row-fluid">
+	<div class="span3">
+		<%= image_tag("default_user_profile.png") %>
+		everyone
+	</div>
+	<div class="span3">
+		<%= image_tag("default_user_profile.png") %>
+		flash team
+	</div>
+	<div class="span3">
+		<%= image_tag("default_user_profile.png") %>
+		just me
+	</div>
+</div>
+<div class="row-fluid">
+    <div class = "span2">&nbsp;</div>
+    <div class = "span10">
+        <button type="submit" href="#" class="btn btn-primary pull-right">save settings</button>   
+    </div>
+</div>
+<% end %>
+<%= render(:partial => "users/shared/me_settings") %>

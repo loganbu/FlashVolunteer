@@ -6,20 +6,32 @@
     <%= yield :form_content %>
 <% end %>
 <% content_for :right_content do %>
-    <h4>Or sign in through a third party</h4>
-    <p>Connect this account to sign in to Flash Volunteer:</p>
+    <h4>or sign in through a third party</h4>
+    <p>connect this account to sign in to Flash Volunteer:</p>
     <ul class="unstyled inline">
         <li>
-            <%= image_tag("facebook_icon_32x32.png")%>  
-        </li>
-         <li>
-            <%= image_tag("Google.jpg")%>  
-        </li>
-        <li>
-            <%= image_tag("Yahoo.png")%>  
+            <a href="blank">
+                <a href="<%= user_omniauth_authorize_path(:facebook) %>">
+                    <%= image_tag("facebook.png") %>
+                </a>
+            </a>
         </li>
         <li>
-            <%= image_tag("OpenID.png")%>  
+            <a href="blank">
+                <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>">
+                    <%= image_tag("Google.png") %>
+                </a>
+            </a>
+        </li>
+        <li>
+            <a href="blank">                        
+                <%= image_tag("Yahoo.png") %>
+            </a>
+        </li>
+        <li>
+            <a href="blank">                        
+                <%= image_tag("OpenID.png") %>
+            </a>
         </li>
     </ul>
 <% end %>

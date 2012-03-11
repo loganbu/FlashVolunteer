@@ -2,27 +2,23 @@
     <div class="span3">
         <div class="row">
             <% if (@neighborhood == nil) %>
-                <h4>events near <%= link_to("King County", "/neighborhoods") %></h4>
+                <h2>events near </br><%= link_to("King County", "/neighborhoods") %></h2>
             <% else %>
-                <h4>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></h4>
+                <h2>events near </br><%= link_to(@neighborhood.name, "/neighborhoods") %></h2>
             <% end %>
         </div>
         <% @events.each_with_index do |event, i| %>
         <div class="row event_with_marker" onclick="Map.showPopup(<%= event.id %>);">
             <div class="pull-left marker"
-                 style="background: url(<%= event.attending?(current_user) ? "/assets/green_markers.png" : "/assets/red_markers.png" %>) 0px <%= -i*20 %>px">&nbsp;
+                 style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp.png" : "/assets/mapStripAvail.png" %>) 0px <%= -i*30 %>px">&nbsp;
             </div>
             <div class="details">
-                <%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
-                <%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %>
-                <%= event.start.strftime('%-m/%-d/%Y') unless !event.start %> <%= event.start.strftime('%l:%M%p') unless !event.start %>-<%= event.end.strftime('%l:%M%p') unless !event.end %><br/>
-                <%= truncate(event.description, :length=>100, :separator=>' ') %><br/>
-                <%= render(:partial => 'links', :locals => { :event => event }) %>
+                <%= render :partial => "events/event", :locals => { :event => event, :description => true } %>
             </div>
         </div>
         <% end %>
         <div id="page">
-            <%= will_paginate @events %>
+            <%= will_paginate @events, :page_links => false %>
         </div>
     </div>
     <div class="span9">
