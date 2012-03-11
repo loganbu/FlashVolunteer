@@ -7,7 +7,7 @@ class NeighborhoodsController < ApplicationController
   def index
     store_url(new_event_url)
     @neighborhoods = Neighborhood.find(:all, :order => "name")
-    @preferred_neighborhood = Neighborhood.where(:id => cookies['preferred_neighborhood']).first
+    @preferred_neighborhood = Neighborhood.where(:id => preferred_neighborhood).first
     
     @preferred_neighborhood_id = @preferred_neighborhood ? @preferred_neighborhood.id : nil
     

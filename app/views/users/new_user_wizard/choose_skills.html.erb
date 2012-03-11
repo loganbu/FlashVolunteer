@@ -1,0 +1,11 @@
+<% content_for :question do %>
+    What are your skills and interests?
+<% end %>
+<%= content_for :below_question do %>
+        <%= render(:partial => 'skills/form', :locals => { :entity => "user", :f => @f, :skills => @user.skills }) %>
+<% end %>
+<% content_for :button do %>
+    <%= submit_tag("finish", :class => "btn pull-right") %>
+<% end %>
+<%= render(:template => 'shared/splash_with_question') %>
+
