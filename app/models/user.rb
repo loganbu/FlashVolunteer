@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   include ActiveModel::Validations
-  validates_acceptance_of :terms_of_service, :on => :create, :message => "must be accepted"
   validates :email, :presence => { :message => "Must have an e-mail" }
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
@@ -16,15 +15,19 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :association_foreign_key => "follower_id", :uniq => true
   belongs_to :neighborhood
 
-
+  attr_accessor :account_type
+  attr_accessor :terms_of_service
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids
+  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type
   
+  after_validation :create_associated_org
+
+
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
@@ -34,9 +37,16 @@ class User < ActiveRecord::Base
   end
 
   def password_match?
+
     self.errors[:password] << 'password not match' if password != password_confirmation
     self.errors[:password] << 'you must provide a password' if password.blank?
     password == password_confirmation and !password.blank?  
+  end
+
+  def create_associated_org
+    if (account_type && account_type == "organization")
+      self.org = Org.new()
+    end
   end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
