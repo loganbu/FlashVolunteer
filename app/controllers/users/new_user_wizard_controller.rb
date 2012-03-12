@@ -4,7 +4,6 @@ class Users::NewUserWizardController < Wicked::WizardController
 
     def show
         @user = current_user
-        logger.debug("Skills: " + @user.skills.length.to_s)
         case step
         when :choose_neighborhood
             skip_step if @user.neighborhood_id
@@ -23,5 +22,14 @@ class Users::NewUserWizardController < Wicked::WizardController
             @user.update_attributes(params[:user])
         end
         render_wizard @user
+    end
+
+
+    def finish_wizard_path
+        if (current_user.is_individual)
+            '/'
+        else
+            
+        end
     end
 end

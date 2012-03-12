@@ -20,6 +20,7 @@ Flashvolunteer::Application.routes.draw do
     end
 
     resources :new_user_wizard, :only => [:show, :update], :controller => "users/new_user_wizard"
+    resources :new_org_wizard, :only => [:show, :update], :controller => "orgs/new_org_wizard"
     root :to => "users#index"
 
     resources :neighborhoods, :only => [:index]
