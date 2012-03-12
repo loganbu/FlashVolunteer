@@ -1,39 +1,39 @@
 <div class="share">
     <ul class="unstyled inline">
+        <% 
+            #Support multiple sizes (16,20,32), default is large
+            size ||= :large
+
+            imgSize = "32x32"
+            case size
+            when :small
+                imgSize = "16x16"
+            when :medium
+                imgSize = "20x20"
+            end
+        %>
         <li><p>Share:</p></li>
         <li>
             <%= mail_to(nil, 
-                image_tag("email_icon_32x32.png", 
+                image_tag("email_icon_#{imgSize}.png", 
                     :class => "email-badge-img", 
                     :alt => "E-Mail This Info",
                     :id => "email-badge-img",
-                    :alt=>"Share via email",
-                    :onmousedown => "this.className='email_down32'",
-                    :onmouseover => "this.className='email_hover32'",
-                    :onmouseup   => "this.className='email_normal32'",
-                    :onmouseout  => "this.className='email_normal32'"), 
+                    :alt=>"Share via email"), 
                 :subject => "Come join me at " + event.name) %>           
         </li>
         <li>
             <a target="_blank" href="<%= twitter_url(event) %>">
-                <%= image_tag("twitter_icon_32x32.png", 
+                <%= image_tag("twitter_icon_#{imgSize}.png", 
                     :id => "twitter-badge-img",
-                    :alt=>"Share via Twitter",
-                    :onmousedown => "this.className='tw_down32'",
-                    :onmouseover => "this.className='tw_hover32'",
-                    :onmouseup   => "this.className='tw_normal32'",
-                    :onmouseout  => "this.className='tw_normal32'") %>
+                    :alt=>"Share via Twitter") %>
             </a>                     
         </li>
         <li>
             <a target="_blank" href="<%= facebook_url(event) %>">
-                <%= image_tag("facebook_icon_32x32.png", 
+                <%= image_tag("facebook_icon_#{imgSize}.png", 
                     :id => "fb-badge-img",
-                    :alt=>"Share via Facebook",
-                    :onmousedown => "this.className='fb_down32'",
-                    :onmouseover => "this.className='fb_hover32'",
-                    :onmouseup   => "this.className='fb_normal32'",
-                    :onmouseout  => "this.className='fb_normal32'") %>
+                    :alt=>"Share via Facebook") %>
             </a>
         </li>
     </ul> 

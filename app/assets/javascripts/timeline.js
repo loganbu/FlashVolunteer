@@ -4,16 +4,40 @@
     var months = ["January", "February", "March", "April", "May", "June", "July", "August",
         "September", "October", "November", "December"];
 
-    $(function () {
+    window.Timeline = window.Timeline || {};
+
+    var getMonthSepTitle = function (data) {
+        var date = data.date;
+        return months[date.getMonth()] + " " + date.getFullYear();
+    };
+
+    Timeline.buildTimeline = function () {
+        var datas = Timeline.currentData;
+        if (datas.length == 0) {
+            return;
+        }
+
         var container = $(".timeline");
+
+        // Top separator
+        var data = datas[0],
+            title;
+        data.date = new Date(data.start);
+        if (data.date > new Date()) {
+            title = "Upcoming";
+        } else {
+            title = getMonthSepTitle(data);
+        }
+        var sep = getSeparatorItem({ title: title });
+        sep.appendTo(container);
 
         // Fill with realll data
         var context = createNewTimelineContext(container),
-            month = -1,
-            datas = Timeline.currentData;
+            month = -1;
         for (var i = 0; i < datas.length; i++) {
-            var data = datas[i];
-            data.date = new Date(data.start);
+            data = datas[i];
+            data.date = data.date || new Date(data.start);
+            data.evIndex = i;
 
             // Add a separator if necessary
             if (i !== 0) {
@@ -28,7 +52,7 @@
 
                     month = data.date.getMonth();
 
-                    var sep = getSeparatorItem({ title: months[month] });
+                    var sep = getSeparatorItem({ title: getMonthSepTitle(data) });
                     sep.appendTo(container);
 
                     context = createNewTimelineContext(container);
@@ -50,7 +74,7 @@
                 data.el.appendTo(context.left);
             }
         }
-    });
+    };
 
     var createNewTimelineContext = function (container) {
         var obj = $('<div class="row"> \
@@ -67,17 +91,23 @@
         };
     };
 
-    var beakHtml = '<div class="span1"><div class="tl-item-beak"></div><div class="tl-item-beakcover"></div></div>';
+    var beakHtml = '<div class="span1 tl-item-beak"></div>';
     var getItem = function (options) {
         var html = '<div class="tl-item row-fluid">';
+        var i = options.evIndex;
 
         if (!options.left) {
             html += beakHtml;
         }
 
+        var shareStrip = Timeline.shareHtmls[i],
+            eventHtml = Timeline.eventHtmls[i];
         html += '<div class="span11"> \
-                <div class="tl-item-contents"><h3>' + options.name + '</h3>' + options.description + '</div> \
-            </div>';
+                    <div class="tl-item-contents"> \
+                        ' + eventHtml + ' \
+                        ' + shareStrip + ' \
+                    </div> \
+                </div>';
 
         if (options.left) {
             html += beakHtml;

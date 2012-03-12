@@ -11,7 +11,6 @@ html, body {
     background-color: $background_color;
 }
 
-
 /**************
  Badges
  **************/
@@ -76,6 +75,7 @@ html, body {
     }
  }
  .share {
+    display: table;
     ul {
         li {
             p {
@@ -83,6 +83,9 @@ html, body {
             }
         }
     }
+}
+.event-summary form {
+	margin-bottom: 0px;
 }
 
 /**************
