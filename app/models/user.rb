@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
     :styles => { :thumb => ["32x32#", :png], :profile => ["128x128#", :png]},
     :default_url => "/assets/default_user_:style.png"
   has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :association_foreign_key => "follower_id", :uniq => true
+  belongs_to :neighborhood
 
 
   # Include default devise modules. Others available are:

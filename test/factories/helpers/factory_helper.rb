@@ -17,7 +17,6 @@ def about_six_months
     return random_time(160..200)
 end
 
-
 # Not all neighborhoods are represented.  As they are filled in, removed the commented lines.
 $neighborhoods_with_addresses = [
 #{ :name => 'Bainbridge Island',         :latitude => 47.629244, :longitude => -122.507858}, 
@@ -81,4 +80,15 @@ end
 
 def random_skills
     Skill.find(:all, :order => 'random()', :limit=> Random.rand(5)+1)
+end
+
+$description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam euismod scelerisque justo et viverra. Vestibulum pretium luctus ligula et venenatis. Cras vitae metus erat, vitae varius libero. Fusce mattis neque quis metus tempor ut vulputate odio mattis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Aenean dapibus convallis sem, eu consequat eros scelerisque sit amet. Curabitur vestibulum ultricies nulla sed fermentum. Curabitur sit amet neque vitae erat tincidunt aliquet vel vitae nisi. Quisque ac mauris non est facilisis commodo ac at orci. Fusce posuere euismod aliquam. Pellentesque varius cursus bibendum. In dapibus velit id velit adipiscing ultricies. Duis malesuada rhoncus lorem, consequat luctus tellus pulvinar nec. Ut et arcu sed ligula pulvinar imperdiet. Nulla a sodales felis. Donec ultricies massa nec orci congue feugiat."
+$descriptions = [
+    $description,
+    $description[0..($description.length/2)],
+    $description[($description.length/2)..($description.length-1)],
+    "Really short description"
+]
+def random_description
+    $descriptions[Random.rand($descriptions.length)]
 end

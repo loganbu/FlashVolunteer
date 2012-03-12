@@ -13,7 +13,7 @@
                  style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp.png" : "/assets/mapStripAvail.png" %>) 0px <%= -i*30 %>px">&nbsp;
             </div>
             <div class="details">
-                <%= render :partial => "events/event", :locals => { :event => event, :description => true } %>
+                <%= render :partial => "events/event", :locals => { :event => event, :description => true, :showLinks => true } %>
             </div>
         </div>
         <% end %>

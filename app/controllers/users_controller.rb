@@ -8,11 +8,27 @@ class UsersController < ApplicationController
       redirect_to events_user_url(current_user)
     end
   end
+
   # GET /users/1
   # GET /users/1.xml
   def show
-    @user = User.find(params[:id])
-    @events = Event.includes(:skills).joins(:participants).where('users.id' => @user.id) if @user
+    @user = User.includes(:neighborhood).find(params[:id])
+
+    # user calculations
+    @nEventsCreated = Event.created_by(@user).count
+    @nEventsComingUp = Event.attended_by(@user).upcoming.count
+    @nEventsInPast = Event.attended_by(@user).past.count
+    @nFollowers = @user.followers.count
+
+    # events
+    @events = Event.includes(:skills).joins(:participants).where('users.id' => @user.id)
+    if !params[:page]
+      logger.info "Retrieving the next 10 upcoming events"
+      @events = @events.limit(10).order('start ASC').upcoming.where('start < ?', Time.now + 2.months)
+    else
+      logger.info "Retrieivng past events"
+      @events = @events.paginate(:page => params[:page]).past.order('start DESC')
+    end
     @eventsJson = @events.to_json(:include => :skills)
 
     respond_to do |format|
@@ -58,4 +74,5 @@ class UsersController < ApplicationController
   def team
     @user = User.find(params[:id])
   end
+
 end

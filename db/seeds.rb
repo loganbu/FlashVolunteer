@@ -103,5 +103,7 @@ if Rails.env.development?
     confirmed_user = FactoryGirl.create(:confirmed_user)
     tech_user = FactoryGirl.create(:tech_user)
     Event.delete_all()
-    FactoryGirl.create_list(:event, 15, :in_one_week, :creator_id => tech_user.id)
+    FactoryGirl.create_list(:event, 5, :in_one_week, :creator_id => confirmed_user.id, :participants => [tech_user])
+    FactoryGirl.create_list(:event, 3, :in_one_month, :creator_id => confirmed_user.id, :participants => [tech_user])
+    FactoryGirl.create_list(:event, 7, :in_two_months, :creator_id => confirmed_user.id, :participants => [tech_user])
 end
