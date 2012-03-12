@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
   
+  def should_show_wizard?
+    !neighborhood_id || !skills.length
+  end
+
   def password_match?
     self.errors[:password] << 'password not match' if password != password_confirmation
     self.errors[:password] << 'you must provide a password' if password.blank?

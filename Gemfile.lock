@@ -166,6 +166,9 @@ GEM
     uuidtools (2.1.2)
     warden (1.1.1)
       rack (>= 1.0)
+    wicked (0.0.2)
+      activesupport (>= 3.0.7)
+      rails (>= 3.0.7)
     will_paginate (3.0.3)
     xml-simple (1.1.1)
 
@@ -197,4 +200,5 @@ DEPENDENCIES
   sinatra (= 1.0)
   sqlite3
   tlsmail
+  wicked
   will_paginate (~> 3.0)

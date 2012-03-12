@@ -28,7 +28,7 @@ Skill.create([
 { :name => "Disaster Relief",                   :offset => 6 },
 { :name => "Education | Literacy",              :offset => 7 },
 { :name => "Environment",                       :offset => 8 },
-{ :name => "Gay, Lesbian, Bi, | Transgender",   :offset => 9 },
+{ :name => "GLBT",   							:offset => 9 },
 { :name => "Health | Medicine",                 :offset => 10 },
 { :name => "Homeless | Housing",                :offset => 11 },
 { :name => "Hunger",                            :offset => 12 },
