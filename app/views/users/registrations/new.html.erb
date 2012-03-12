@@ -77,7 +77,8 @@ end %>
         </div>
         <div class="row">&nbsp;</div>
         <div class="row-fluid">
-            <button type="submit" class="btn btn-primary pull-right" href="#">sign up</button>    
+            <button type="submit" id="sign_up" class="btn btn-primary pull-right" href="#">sign up</button>    
+            <button type="button" id="create_org" class="btn btn-primary pull-right" href="#" style="display: none">create group</button>    
         </div>
         <script type="text/javascript">
         $(document).ready(function() {
@@ -104,22 +105,13 @@ end %>
                                         }
                                       };
                 $.each(elementWithText, function(index, val) {
-                    val.element.addClass('defaultText');
-                    val.element.click(function() {
-                        $(this).removeClass('defaultText');
-                        if ($(this).val() == val.text) {
-                            $(this).val('');
-                        }
-                    });
-                    val.element.blur(function() {
-                        if ($(this).val() == '') {
-                            $(this).val(val.text);
-                            $(this).addClass('defaultText');
-                        }
-                    });
-                    val.element.val(val.text);
+                    setDefaultText(val.element, val.txt);
                 });
             };
+
+            $("#create_org").click(function() { 
+                window.location.href = "<%= new_org_wizard_path(:set_user_account) %>"
+            });
 
             var hideForOrg = function() {
                 $(".for_individual").each(function(index) {
@@ -130,6 +122,8 @@ end %>
                     $(this).attr('disabled', 'disabled')
                 });
                 toggleDefaultText(defaultTexts.orgs);
+                $("#sign_up").hide();
+                $("#create_org").show();
             };
 
             var showForUser = function() {
@@ -140,6 +134,8 @@ end %>
                     $(this).removeAttr('disabled')
                 });
                 toggleDefaultText(defaultTexts.individual);
+                $("#sign_up").show();
+                $("#create_org").hide();
             };
             
             $("#for_me").click(showForUser);

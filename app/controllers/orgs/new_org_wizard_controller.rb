@@ -1,10 +1,16 @@
 class Orgs::NewOrgWizardController < Wicked::WizardController
     skip_authorization_check
-    steps :set_contact_info, :set_mission, :set_website
+    steps :set_user_account, :set_contact_info, :set_mission, :set_website
 
     def show
-        @org = Org.find(current_user.orgs_id)
+        @user = current_user
+        if (current_user)
+            @org = Org.has_admin(current_user).first()
+        end
+        
         case step
+        when :set_user_account
+            skip_step if current_user
         when :set_contact_info
             
         when :set_mission
@@ -16,13 +22,21 @@ class Orgs::NewOrgWizardController < Wicked::WizardController
     end
 
     def update
-        @org = Org.find(current_user.orgs_id)
+        @user = current_user
+        if (current_user)
+            @org = Org.has_admin(current_user).first()
+        end
+
         case step
+        when :set_user_account
+            
         when :set_contact_info
-
+            @org.update_attributes(params[:org])
         when :set_mission
-
+            @org.update_attributes(params[:org])
         when :set_website
+            @org.update_attributes(params[:org])
+            @user.show_org_wizard = false
         end
         render_wizard @org
     end

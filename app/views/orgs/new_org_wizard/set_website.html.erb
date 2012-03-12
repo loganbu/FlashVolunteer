@@ -1,11 +1,20 @@
 <% content_for :question do %>
-    What are your skills and interests?
+    What is <%= @org.name %>'s website?
 <% end %>
-<%= content_for :below_question do %>
-        <%= render(:partial => 'skills/form', :locals => { :entity => "user", :f => @f, :skills => @user.skills }) %>
+<% content_for :below_question do %>
+    <div class="row-fluid">
+        <div class="span12">
+            <%= text_field(:org, :website, :id => "website_input", :class=>"full") %>
+        </div>
+    </div>
 <% end %>
 <% content_for :button do %>
-    <%= submit_tag("finish", :class => "btn pull-right") %>
+    <%= submit_tag("ask me more", :class => "btn btn-primary pull-right") %>
 <% end %>
+<%= content_for :form_template do 'orgs/new_org_wizard/question_with_form' end %>
 <%= render(:template => 'shared/splash_with_question') %>
-
+<script type="text/javascript">
+$(document).ready(function() {
+    setDefaultText($("#website_input"), "Enter group website here");
+});
+</script>

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   validates :email, :presence => { :message => "Must have an e-mail" }
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
-  belongs_to :orgs
+  belongs_to :org
   has_and_belongs_to_many :admin_of, :class_name => "Org", :join_table => "orgs_admins", :uniq => true
   has_attached_file :avatar, :storage => :s3, :s3_credentials => {
       :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -27,6 +27,13 @@ class User < ActiveRecord::Base
   
   after_validation :create_associated_org
 
+  scope :org_info, lambda { |org|
+      includes(:org).where("orgs.id = ?", org.id)
+  }
+
+  def is_individual
+    ((account_type) && account_type == "individual") || org.nil?
+  end
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
@@ -46,7 +53,9 @@ class User < ActiveRecord::Base
   def create_associated_org
     if (account_type && account_type == "organization")
       self.org = Org.new()
+      show_org_wizard = true
     end
+    show_org_wizard = false
   end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)

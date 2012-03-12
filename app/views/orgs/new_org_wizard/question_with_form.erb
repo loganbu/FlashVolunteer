@@ -1,0 +1,8 @@
+<% content_for :content do %>
+    <%= form_for @org,
+        :url => new_org_wizard_path,
+        :method => :put do |f| %>
+        <%= yield :form_content %>
+    <% end %>
+<% end %>
+<%= render(:template => 'shared/splash_frame') %>

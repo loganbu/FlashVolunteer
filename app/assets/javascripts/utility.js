@@ -20,8 +20,6 @@ function closePopup() {
        $(".popup").addClass("hidden");
 }
 
-
-
 function addContentHandlers() {
     $("#link_list li a").click(function () {
         $("#content_sections>div").each(function() { $(this).hide(); });
@@ -29,4 +27,22 @@ function addContentHandlers() {
         $("#link_list li a").each(function () { $(this).removeClass('link_active') } );
         $(this).addClass('link_active');
     });
+}
+
+function setDefaultText(element, defaultText) {
+    element.addClass('defaultText');
+    element.click(function() {
+        $(this).removeClass('defaultText');
+        if ($(this).val() == defaultText) {
+            $(this).val('');
+        }
+    });
+
+    element.blur(function() {
+        if ($(this).val() == '') {
+            $(this).val(defaultText);
+            $(this).addClass('defaultText');
+        }
+    });
+    element.val(defaultText);
 }

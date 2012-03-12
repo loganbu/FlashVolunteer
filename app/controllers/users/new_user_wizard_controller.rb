@@ -26,10 +26,10 @@ class Users::NewUserWizardController < Wicked::WizardController
 
 
     def finish_wizard_path
-        if (current_user.is_individual)
-            '/'
+        if (current_user.show_org_wizard)
+            new_org_wizard_path(:set_contact_info)
         else
-            
+            '/'
         end
     end
 end
