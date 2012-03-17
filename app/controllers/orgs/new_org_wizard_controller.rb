@@ -1,6 +1,6 @@
 class Orgs::NewOrgWizardController < Wicked::WizardController
     skip_authorization_check
-    steps :set_user_account, :set_contact_info, :set_mission, :set_website
+    steps :set_user_account, :sign_in, :sign_up, :set_contact_info, :set_mission, :set_website
 
     def show
         @user = current_user
@@ -10,6 +10,10 @@ class Orgs::NewOrgWizardController < Wicked::WizardController
         
         case step
         when :set_user_account
+            skip_step if current_user
+        when :sign_in
+            skip_step if current_user
+        when :sign_up
             skip_step if current_user
         when :set_contact_info
             
