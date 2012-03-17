@@ -70,8 +70,15 @@ html, body {
     padding: 5px 0px 5px 0px;
     ul{
         li{
-            font-weight: bold;
             margin-bottom: 10px;
+        }
+    }
+ }
+
+ .tabs{
+    ul{
+        li{
+            padding: 10px 16px 10px 0px;
         }
     }
  }
@@ -284,6 +291,9 @@ h3 {
     margin-bottom: 10px;
     font-size: 13px;
     @include border-radius(2px);
+}
+.bold{
+    font-weight: bold;
 }
 .inline {
     li {

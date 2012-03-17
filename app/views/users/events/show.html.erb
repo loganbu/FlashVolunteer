@@ -1,7 +1,7 @@
 <%= content_for :right_split do %>
-<h2>MY EVENTS</h2>
+<p class="bold">MY EVENTS</p>
 <p><%= link_to "Create new event", new_event_url %></p>
-<div>
+<div class="tabs bold">
     <ul class="unstyled inline" id="link_list">
         <li><a class="link_active" href="#past">PAST</a></li>
         <li><a href="#upcoming">UPCOMING</a></li>
@@ -10,13 +10,13 @@
 </div>
 <div class="clear" id="content_sections">
     <div id="past_content">
-        <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :showLinks => true }) || "You have not signed up for any events" %>
+        <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :showLinks => true }) || "You have not signed up for any events." %>
     </div>
     <div class="hide" id="upcoming_content">
-        <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :showLinks => true }) || "You have no upcoming events" %>
+        <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :showLinks => true }) || "You have no upcoming events." %>
     </div>
     <div class="hide" id="recommended_content">
-        <%= render(:partial => "events/event", :collection => @recommended, :as => :event, :locals => { :showLinks => true }) || "We have no recommended events for you" %>
+        <%= render(:partial => "events/event", :collection => @recommended, :as => :event, :locals => { :showLinks => true }) || "We have no recommended events for you." %>
     </div>
 </div>
 <% end %>

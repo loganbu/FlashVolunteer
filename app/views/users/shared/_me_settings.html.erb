@@ -1,5 +1,5 @@
 <% content_for :left_split do %>
-<div class="event">
+<div class="event bold">
     <ul class="unstyled">
         <li><%= link_to "PROFILE", edit_user_url(current_user) %></li>
         <li><%= link_to "NOTIFICATIONS", notifications_url(current_user) %></li>
@@ -7,4 +7,4 @@
     </ul>
 </div>
 <% end %>
-<%= render :template => 'shared/split_left' %>
+<%= render :template => 'shared/split_left_small' %>
