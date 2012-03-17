@@ -32,6 +32,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
+      format.mobile
     end
   end
   
@@ -53,6 +54,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html # in.html.erb
       format.xml  { render :xml => @events }
+      format.mobile
     end
   end
 
@@ -69,6 +71,7 @@ class EventsController < ApplicationController
           format.html # show.html.erb
       end
       format.xml  { render :xml => @event }
+      format.mobile
     end
   end
 
