@@ -8,7 +8,7 @@
             <% end %>
         </div>
         <% @events.each_with_index do |event, i| %>
-        <div class="row event_with_marker" onclick="Map.showPopup(<%= event.id %>);">
+        <div class="row event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
             <div class="pull-left marker"
                  style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp.png" : "/assets/mapStripAvail.png" %>) 0px <%= -i*30 %>px">&nbsp;
             </div>

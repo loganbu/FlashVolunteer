@@ -65,6 +65,17 @@ html, body {
         max-width: none;
     }
  }
+ 
+ .event{
+    padding: 5px 0px 5px 0px;
+    ul{
+        li{
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+    }
+ }
+
  .event_with_marker {
     .marker {
         width: 30px;
