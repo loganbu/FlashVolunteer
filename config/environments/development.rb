@@ -1,4 +1,8 @@
+
+
 Flashvolunteer::Application.configure do
+  require 'openssl'
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
     require 'tlsmail' 
         Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE) 
         ActionMailer::Base.delivery_method = :smtp 

@@ -2,10 +2,10 @@
     What are your skills and interests?
 <% end %>
 <%= content_for :below_question do %>
-    <%= render(:partial => 'skills/form', :locals => { :entity => "user", :f => @f, :skills => @user.skills }) %>
+    <%= render(:partial => 'skills/form', :locals => { :entity => "user", :skills => @user.skills }) %>
 <% end %>
 <% content_for :button do %>
-    <%= submit_tag("finish", :class=>"btn btn-primary pull-right") %>
+    <%= submit_tag("finish", :class => "btn btn-primary pull-right") %>
 <% end %>
 <%= content_for :form_template do 'users/new_user_wizard/question_with_form' end %>
 <%= render(:template => 'shared/splash_with_question') %>

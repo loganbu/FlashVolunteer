@@ -110,7 +110,7 @@ end %>
             };
 
             $("#create_org").click(function() { 
-                window.location.href = "<%= new_org_wizard_path(:set_user_account) %>"
+                window.location.href = "<%= new_org_wizard_path(:set_user_account) %>?org_email=" + escape($("#account_email").val()) + "&org_name=" + escape($("#account_name").val());
             });
 
             var hideForOrg = function() {

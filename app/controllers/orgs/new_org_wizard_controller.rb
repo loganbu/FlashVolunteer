@@ -1,8 +1,10 @@
 class Orgs::NewOrgWizardController < Wicked::WizardController
+    include SessionsHelper
     skip_authorization_check
-    steps :set_user_account, :sign_in, :sign_up, :set_contact_info, :set_mission, :set_website
+    steps :set_user_account, :set_contact_info, :set_mission, :set_website
 
     def show
+        return_to_here
         @user = current_user
         if (current_user)
             @org = Org.has_admin(current_user).first()
@@ -11,10 +13,9 @@ class Orgs::NewOrgWizardController < Wicked::WizardController
         case step
         when :set_user_account
             skip_step if current_user
-        when :sign_in
-            skip_step if current_user
-        when :sign_up
-            skip_step if current_user
+            session[:show_org_wizard] = true
+            session[:org_name] = params[:org_name]
+            session[:org_email] = params[:org_email]
         when :set_contact_info
             
         when :set_mission
@@ -40,8 +41,11 @@ class Orgs::NewOrgWizardController < Wicked::WizardController
             @org.update_attributes(params[:org])
         when :set_website
             @org.update_attributes(params[:org])
-            @user.show_org_wizard = false
         end
         render_wizard @org
+    end
+
+    def should_remove_returns_to?
+        false
     end
 end

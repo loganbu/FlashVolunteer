@@ -24,12 +24,11 @@ class Users::NewUserWizardController < Wicked::WizardController
         render_wizard @user
     end
 
+    def should_remove_returns_to?
+        false
+    end
 
     def finish_wizard_path
-        if (current_user.show_org_wizard)
-            new_org_wizard_path(:set_contact_info)
-        else
-            '/'
-        end
+        returns_to_url
     end
 end

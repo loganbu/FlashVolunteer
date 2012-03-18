@@ -25,15 +25,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type
   
-  after_validation :create_associated_org
-
   scope :org_info, lambda { |org|
       includes(:org).where("orgs.id = ?", org.id)
   }
-
-  def is_individual
-    ((account_type) && account_type == "individual") || org.nil?
-  end
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
@@ -50,30 +44,28 @@ class User < ActiveRecord::Base
     password == password_confirmation and !password.blank?  
   end
 
-  def create_associated_org
-    if (account_type && account_type == "organization")
-      self.org = Org.new()
-      show_org_wizard = true
-    end
-    show_org_wizard = false
+  def create_associated_org(org_email, org_name)
+    org = Org.new()
+    org_user = User.find_or_create_by_email(:email => org_email, :password => Devise.friendly_token[0,20], :name =>org_name)
+    org.admins << self
+    org.save!
+    org_user.org_id = org.id
+    org_user.save!
   end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
-    image = access_token.info.image
-    if user = User.where(:email => data.email).first
-      user
-    else # Create a user with a stub password. 
-      User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name, :avatar=>image) 
+    if !(user = User.where(:email => data.email).first)
+      user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name) 
     end
+    user
   end
   def self.find_for_google_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
-    if user = User.where(:email => data.email).first
-      user
-    else # Create a user with a stub password. 
-      User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name) 
+    if !(user = User.where(:email => data.email).first)
+      user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name) 
     end
+    user
   end
 
 end

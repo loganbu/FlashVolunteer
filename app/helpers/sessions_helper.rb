@@ -8,6 +8,10 @@ module SessionsHelper
     redirect_to quick_new_user_url
   end
 
+  def return_to_here()
+    store_location nil
+  end
+
   def send_to_signin(url)
     store_location(url)
     redirect_to new_user_session_url
@@ -32,7 +36,7 @@ module SessionsHelper
 
   private
     def store_location(url)
-      session[:return_to] = url ? url : request.fullpath
+      session[:return_to] = url || request.fullpath
     end
 
 end
