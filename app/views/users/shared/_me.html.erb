@@ -10,19 +10,12 @@
             <p><%= link_to "edit profile", edit_user_url(current_user) %></p>
         </div>
     </div>
-    <div class="clear event bold">
-        <ul class="unstyled">
-            <li><%= link_to "MY EVENTS", events_user_url(current_user) %></li>
-            <li><%= link_to "MY FLASH TEAM", events_user_url(current_user) %></li>
-            <li><%= link_to "MY ORGS", events_user_url(current_user) %></li>
-            <li><%= link_to "STATS", events_user_url(current_user) %></li>
-        </ul>
-    </div>
 </div>        
 <div>
     <%= render :partial => "skills/strip", :locals => { :entity => current_user, :size => "small" } %>
 </div>
-<div class="clear event bold">
+<div class="clear">&nbsp;</div>
+<div class="event bold">
     <ul class="unstyled">
         <li><%= link_to "MY EVENTS", events_user_url(current_user) %></li>
         <li><%= link_to "MY FLASH TEAM", events_user_url(current_user) %></li>
@@ -30,20 +23,5 @@
         <li><%= link_to "STATS", events_user_url(current_user) %></li>
     </ul>
 </div>
-
-	<div class="clear">&nbsp;</div>
-    <div>
-        <p><%= current_user.name %></p>
-        <p><%= link_to "Edit profile", edit_user_url(current_user) %></p>
-	</div>
-    <div class="clear">&nbsp;</div>
-    <div class="event bold">
-        <ul class="unstyled">
-            <li><%= link_to "MY EVENTS", events_user_url(current_user) %></li>
-            <li><%= link_to "MY FLASH TEAM", events_user_url(current_user) %></li>
-            <li><%= link_to "MY ORGS", events_user_url(current_user) %></li>
-            <li><%= link_to "STATS", events_user_url(current_user) %></li>
-        </ul>
-    </div>
 <% end %>
 <%= render :template => 'shared/split_left' %>
