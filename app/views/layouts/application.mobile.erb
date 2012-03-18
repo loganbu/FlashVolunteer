@@ -8,7 +8,18 @@
     <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %>
     <%= csrf_meta_tag %>
 </head>
-<body>HI
-  <%= yield %>
+<body>
+  <div>
+      <div class="header">
+        <%= render"shared/header" %>
+      </div>
+      <div class="container">
+        <%= yield %>
+      </div>
+      <div id="clearfooter">&nbsp;</div>
+    </div>
+    <footer>
+        <%= render"shared/footer" %>
+    </footer>
 </body>
 </html>
