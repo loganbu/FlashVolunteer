@@ -34,5 +34,15 @@ FactoryGirl.define do
                 e.save!
             end
         end
+
+        factory :org_user_account do
+            email       "flash@localhost.com"
+            name        "flash volunteer"
+        end
+        factory :org_admin do
+            email       "brad@localhost.com"
+            name        "brad wilke"
+            show_org_wizard true
+        end
     end
 end

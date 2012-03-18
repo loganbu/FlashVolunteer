@@ -8,7 +8,8 @@
         <li><a href="#recommended">RECOMMENDED</a></li>
     </ul>
 </div>
-<div class="clear" id="content_sections">
+<div class="clear">&nbsp;</div>
+<div id="content_sections">
     <div id="past_content">
         <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :showLinks => true }) || "You have not signed up for any events." %>
     </div>
