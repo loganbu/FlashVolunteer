@@ -331,6 +331,12 @@ ul {
     }
 }
 
+.border{
+    border-left: 1px solid $green;
+    padding: 0px 10px 0px 10px;
+}
+
+
 #link_list {
     a {
         color: $lightGray;
