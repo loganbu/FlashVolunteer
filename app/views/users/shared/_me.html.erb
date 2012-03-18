@@ -14,14 +14,16 @@
 <div>
     <%= render :partial => "skills/strip", :locals => { :entity => current_user, :size => "small" } %>
 </div>
+
 <div class="clear">&nbsp;</div>
-<div class="event bold">
+<div class="list_spacing bold">
     <ul class="unstyled">
         <li><%= link_to "MY EVENTS", events_user_url(current_user) %></li>
         <li><%= link_to "MY FLASH TEAM", events_user_url(current_user) %></li>
         <li><%= link_to "MY ORGS", events_user_url(current_user) %></li>
         <li><%= link_to "STATS", events_user_url(current_user) %></li>
     </ul>
+</div>
 </div>
 <% end %>
 <%= render :template => 'shared/split_left' %>
