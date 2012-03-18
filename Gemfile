@@ -26,6 +26,10 @@ gem 'aws-s3'
 gem "paperclip"
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
+gem 'wicked'
+gem 'mobylette'
+gem 'jquery_mobile_rails'
+
 
 # http://www.imagemagick.com/www/binary-releases.html#windows
 # http://stackoverflow.com/questions/4451213/ruby-1-9-2-how-to-install-rmagick-on-windows

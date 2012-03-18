@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.upcoming.paginate(:page => params[:page], :per_page=>6)
+    @events = Event.upcoming.paginate(:page => params[:page], :per_page=>5)
 
     @events.each_with_index do |event, i|
       event['user_participates'] = event.attending?(current_user)
@@ -32,6 +32,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @events }
+      format.mobile
     end
   end
   
@@ -53,6 +54,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html # in.html.erb
       format.xml  { render :xml => @events }
+      format.mobile
     end
   end
 
@@ -69,6 +71,7 @@ class EventsController < ApplicationController
           format.html # show.html.erb
       end
       format.xml  { render :xml => @event }
+      format.mobile
     end
   end
 

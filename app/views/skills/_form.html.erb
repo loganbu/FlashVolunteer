@@ -1,10 +1,34 @@
+<%
+	entity ||= "user"
+	skills ||= []
+	button_size ||= :large
+
+%>
 <div style="margin-left: -10px">
 <% Skill.all.each_with_index do |s, i| %>
     <%= check_box_tag("#{entity}[skill_ids][#{i}]", s.id, skills.include?(s), :name=>"#{entity}[skill_ids][]", :class=>"hide") %> 
-    <div class="skill_option <%= "skill_selected" if skills.include?(s) %>" id="skill_<%= s.id %>">
+    <%
+		button_pixels = 0
+		image_location = ''
+		button_class_type = ''
+		selected_class_type = ''
 
-        <label onclick="toggleImage(<%= s.id %>)" for="<%= "#{entity}_skill_ids_#{i}"%>" title="<%= s.name %>">
-            <span class="large_badge" style="background:url('/assets/badges_large.png') 0px <%= -64*s.offset %>px;">&nbsp;</span>
+		case button_size
+			when :medium
+    			button_pixels = 36
+    			image_location = '/assets/badges_medium.png'
+    			button_class_type = "medium_badge"
+    			selected_class_type = "skill_option_med"
+    		when :large
+    			button_pixels = 64
+    			image_location = '/assets/badges_large.png'
+    			button_class_type = "large_badge"
+    			selected_class_type = "skill_option"
+    	end
+    %>
+    <div class="<%=selected_class_type %> <%= "skill_selected" if skills.include?(s) %>" id="skill_<%= s.id %>">
+        <label onclick="toggleImage(<%= s.id %>)" for="<%= "#{entity}_skill_ids_#{i}"%>" title="<%= s.name %>">	
+        	<span class="<%=button_class_type%>" style="background:url(<%=image_location%>) 0px <%= -button_pixels*s.offset %>px;">&nbsp;</span>
         </label>
     </div>
 <% end %>

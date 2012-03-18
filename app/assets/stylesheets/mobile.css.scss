@@ -53,6 +53,7 @@ html, body {
     float: left;
     padding: 5px;
     margin: 0px 5px 5px 0;
+    margin: 0px 5px 5px 0;
     /* Since these are floating left, adding the 1px black border will cause
        the items below to not clear left since there is 1px left.  Add a white
        pixeled border to non-selected items to ensure it clears left */
@@ -330,12 +331,6 @@ ul {
         margin-left: 30px;
     }
 }
-
-.border{
-    border-left: 1px solid $green;
-    padding: 0px 10px 0px 10px;
-}
-
 
 #link_list {
     a {

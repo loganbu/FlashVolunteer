@@ -11,26 +11,26 @@
             </div>
         </div>
         <div class="row-fluid">
-            <div class="span2">
+            <div class="span1">
                 <div class="pull-right"><%= f.label :name, "name"%></div>
             </div>
-            <div class="span10">
+            <div class="span11">
                 <%= f.text_field :name, :class => "full" %>
             </div>
         </div>
         <div class="row-fluid">
-            <div class="span2">
+            <div class="span1">
                 <div class="pull-right"><%= f.label :email, "email", :for=>"email" %></div>
             </div>
-            <div class="span10">
+            <div class="span11">
                 <%= f.text_field :email, :class => "full" %>
             </div>
         </div>
         <div class="row-fluid">
-            <div class="span2">
+            <div class="span1">
                 <div class="pull-right"><%= f.label :birthday, "birthday", :class=>"full" %></div>
             </div>
-            <div class="span4">
+            <div class="span5">
                 <input id="user_birthday" class="full" name="user[birthday]" value="<%= @user.birthday.strftime('%-m/%-d/%Y') unless !@user.birthday %>" />
 
                 <script type="text/javascript">
@@ -45,18 +45,16 @@
             </div>
         </div>
         <div class="row-fluid">
-            <div class="span2">
+            <div class="span1">
                 <div class="pull-right"><%= f.label :categories, "categories", :for=>"email" %></div>
             </div>
-            <div class="span10">
+            <div class="span11">
                 <%= render(:partial => 'skills/form', :locals => { :entity => "user", :f => f, :skills => @user.skills }) %>
             </div>
         </div>
         <div class="row-fluid">
-            <div class = "span2">&nbsp;</div>
-            <div class = "span10">
+
                 <button type="submit" href="#" class="btn btn-primary pull-right">update</button>   
-            </div>
         </div>
     <% end %>
 <% end %>

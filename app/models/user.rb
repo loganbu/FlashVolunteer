@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
     :styles => { :thumb => ["32x32#", :png], :profile => ["128x128#", :png]},
     :default_url => "/assets/default_user_:style.png"
   has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :association_foreign_key => "follower_id", :uniq => true
+  belongs_to :neighborhood
 
 
   # Include default devise modules. Others available are:
@@ -28,6 +29,10 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
   
+  def should_show_wizard?
+    !neighborhood_id || !skills.length
+  end
+
   def password_match?
     self.errors[:password] << 'password not match' if password != password_confirmation
     self.errors[:password] << 'you must provide a password' if password.blank?

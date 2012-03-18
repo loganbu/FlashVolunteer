@@ -19,9 +19,12 @@ Flashvolunteer::Application.routes.draw do
         resources :orgs, :only => [:index, :update], :controller => "users/organizations"
     end
 
+    resources :new_user_wizard, :only => [:show, :update], :controller => "users/new_user_wizard"
     root :to => "users#index"
 
     resources :neighborhoods, :only => [:index]
+    
+    resources :people, :only => [:index]
 
     resources :events do
         member do
