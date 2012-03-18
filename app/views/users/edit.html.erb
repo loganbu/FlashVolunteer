@@ -2,11 +2,11 @@
     <h3>profile information</h3>
     <%= form_for(@user, :html => {:id => "form", :name => "user_form"}) do |f| %>
         <div class="row-fluid">
-            <div class="span1">&nbsp;</div>
+            <div class="span2">&nbsp;</div>
             <div class="span2">
                 <%= image_tag current_user.avatar.url(:profile) %>
             </div>
-            <div class="span9">
+            <div class="span8">
                 <%= f.file_field :avatar %>
             </div>
         </div>
