@@ -1,10 +1,9 @@
 class User < ActiveRecord::Base
   include ActiveModel::Validations
-  validates_acceptance_of :terms_of_service, :on => :create, :message => "must be accepted"
   validates :email, :presence => { :message => "Must have an e-mail" }
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
-  belongs_to :orgs
+  belongs_to :org
   has_and_belongs_to_many :admin_of, :class_name => "Org", :join_table => "orgs_admins", :uniq => true
   has_attached_file :avatar, :storage => :s3, :s3_credentials => {
       :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -16,15 +15,20 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :association_foreign_key => "follower_id", :uniq => true
   belongs_to :neighborhood
 
-
+  attr_accessor :account_type
+  attr_accessor :terms_of_service
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids
+  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type
   
+  scope :org_info, lambda { |org|
+      includes(:org).where("orgs.id = ?", org.id)
+  }
+
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
@@ -34,27 +38,34 @@ class User < ActiveRecord::Base
   end
 
   def password_match?
+
     self.errors[:password] << 'password not match' if password != password_confirmation
     self.errors[:password] << 'you must provide a password' if password.blank?
     password == password_confirmation and !password.blank?  
   end
 
+  def create_associated_org(org_email, org_name)
+    org = Org.new()
+    org_user = User.find_or_create_by_email(:email => org_email, :password => Devise.friendly_token[0,20], :name =>org_name)
+    org.admins << self
+    org.save!
+    org_user.org_id = org.id
+    org_user.save!
+  end
+
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
-    image = access_token.info.image
-    if user = User.where(:email => data.email).first
-      user
-    else # Create a user with a stub password. 
-      User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name, :avatar=>image) 
+    if !(user = User.where(:email => data.email).first)
+      user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name) 
     end
+    user
   end
   def self.find_for_google_oauth(access_token, signed_in_resource=nil)
     data = access_token.extra.raw_info
-    if user = User.where(:email => data.email).first
-      user
-    else # Create a user with a stub password. 
-      User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name) 
+    if !(user = User.where(:email => data.email).first)
+      user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name) 
     end
+    user
   end
 
 end

@@ -197,6 +197,13 @@ textarea {
     height: 50px;
 }
 
+/* Otherwise the radio buttons are not vertically aligned with the text */
+input[type="radio"] {
+    margin-top: .5*$baseLineHeight;
+}
+input[type="checkbox"] {
+    margin-top: .4*$baseLineHeight;
+}
 /**************
  JQuery
  **************/
@@ -343,4 +350,9 @@ ul {
     .link_active {
         color: $green;
     }
+}
+
+.defaultText {
+    font-style: italic;
+    color: $lightGray;
 }

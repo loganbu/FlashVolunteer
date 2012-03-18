@@ -1,4 +1,3 @@
-
 <% content_for :question do %>
     Where do you want to volunteer?
 <% end %>
@@ -8,4 +7,5 @@
 <% content_for :button do %>
     <%= submit_tag("continue", :class => "btn btn-primary pull-right") %>
 <% end %>
+<%= content_for :form_template do 'users/new_user_wizard/question_with_form' end %>
 <%= render(:template => 'shared/splash_with_question') %>

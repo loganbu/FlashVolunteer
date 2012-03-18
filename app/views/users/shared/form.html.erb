@@ -8,31 +8,6 @@
 <% content_for :right_content do %>
     <h4>or sign in through a third party</h4>
     <p>connect this account to sign in to Flash Volunteer:</p>
-    <ul class="unstyled inline">
-        <li>
-            <a href="blank">
-                <a href="<%= user_omniauth_authorize_path(:facebook) %>">
-                    <%= image_tag("facebook.png") %>
-                </a>
-            </a>
-        </li>
-        <li>
-            <a href="blank">
-                <a href="<%= user_omniauth_authorize_path(:google_oauth2) %>">
-                    <%= image_tag("Google.png") %>
-                </a>
-            </a>
-        </li>
-        <li>
-            <a href="blank">                        
-                <%= image_tag("Yahoo.png") %>
-            </a>
-        </li>
-        <li>
-            <a href="blank">                        
-                <%= image_tag("OpenID.png") %>
-            </a>
-        </li>
-    </ul>
+    <%= render(:partial => "users/shared/external_auth_strip") %>
 <% end %>
 <%= render(:template=>"shared/splash_two_column") %>

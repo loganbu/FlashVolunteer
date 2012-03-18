@@ -25,10 +25,10 @@ class Event < ActiveRecord::Base
         where("start < ?", Date.today)
     }
     scope :attended_by, lambda { |user|
-        joins(:participants).where("users.id = ?", user.id)
+        includes(:participants).where("users.id = ?", user.id)
     }
     scope :not_attended_by, lambda { |user|
-        joins(:participants).where("users.id != ?", user.id)
+        includes(:participants).where("users.id != ?", user.id)
     }
     scope :created_by, lambda { |user|
         where(:creator_id => user.id)

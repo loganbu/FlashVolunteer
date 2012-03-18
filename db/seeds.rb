@@ -99,11 +99,19 @@ Neighborhood.create([
 # Test data for development
 if Rails.env.development?
     Random.new
+    Org.delete_all()
+    Event.delete_all()
+
     unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
     confirmed_user = FactoryGirl.create(:confirmed_user)
     tech_user = FactoryGirl.create(:tech_user)
-    Event.delete_all()
+    brad = FactoryGirl.create(:org_admin)
+
+    flash_org = FactoryGirl.create(:org, :admins => [brad])
+    flash_org_user = FactoryGirl.create(:org_user_account, :org => flash_org)
+
     FactoryGirl.create_list(:event, 5, :in_one_week, :creator_id => confirmed_user.id, :participants => [tech_user])
     FactoryGirl.create_list(:event, 3, :in_one_month, :creator_id => confirmed_user.id, :participants => [tech_user])
     FactoryGirl.create_list(:event, 7, :in_two_months, :creator_id => confirmed_user.id, :participants => [tech_user])
+
 end
