@@ -21,6 +21,12 @@ html, body {
     width: 20px;
     height: 20px;
 }
+.medium_badge {
+    @extend .small_badge;
+    margin: 0px;
+    width: 36px;
+    height: 36px;
+}
 .large_badge {
     @extend .small_badge;
     width: 64px;
@@ -43,7 +49,22 @@ html, body {
         background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
     }
 }
-.skill_selected {
+.skill_option_med {
+    float: left;
+    padding: 5px;
+    margin: 0px 5px 5px 0;
+    /* Since these are floating left, adding the 1px black border will cause
+       the items below to not clear left since there is 1px left.  Add a white
+       pixeled border to non-selected items to ensure it clears left */
+    border: 1px solid white;
+    &:hover {
+        @extend .skill_selected;
+    }
+    &:active {
+        @extend .skill_selected;
+        background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
+    }
+}.skill_selected {
     border: 1px solid $lightBlue !important;
     background: none repeat scroll 0 0 $babyBlue;
 }

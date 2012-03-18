@@ -23,6 +23,8 @@ Flashvolunteer::Application.routes.draw do
     root :to => "users#index"
 
     resources :neighborhoods, :only => [:index]
+    
+    resources :people, :only => [:index]
 
     resources :events do
         member do
