@@ -42,7 +42,6 @@ FactoryGirl.define do
         factory :org_admin do
             email       "brad@localhost.com"
             name        "brad wilke"
-            show_org_wizard true
         end
     end
 end
