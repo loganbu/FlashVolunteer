@@ -8,6 +8,10 @@ class Org < ActiveRecord::Base
         includes(:admins).where("users.id = ?", user.id)
     }
 
+    scope :has_follower, lambda { |user|
+        includes(:followers).where("users.id = ?", user.id)
+    }
+
     def email
         User.org_info(self).first().email
     end
@@ -19,5 +23,11 @@ class Org < ActiveRecord::Base
     end
     def name=(other)
         User.org_info(self).first().name = other
+    end
+    def avatar
+        User.org_info(self).first.avatar
+    end
+    def avatar=(other)
+        User.org_info(self).first().avatar = other
     end
 end

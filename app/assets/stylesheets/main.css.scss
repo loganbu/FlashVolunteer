@@ -167,12 +167,46 @@ label {
 }
 
 #header_personal_text {
+    position: relative;
     font-size: 125%;
     margin-top: 25px;
     text-align: right;
     p {
         font-size: 100%;
         margin-right: 10px;
+    }
+}
+
+#account_pulldown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 300px;
+    background: white;
+    border: 1px solid black;
+    color: black;
+    text-align: left;
+    padding: 10px;
+    p {
+        margin-top: .3*$baseLineHeight;
+    }
+    .active_account, .inactive_account {
+        &:hover {
+            background-color: $babyBlue;
+            cursor: pointer;
+        }
+    }
+    .active_account {
+        margin-top: 5px;
+    }
+    .inactive_account {
+        .row-fluid {
+            padding-top: 5px;
+            &:first-child {
+                border-top: 1px solid $green;
+            }
+        }
     }
 }
 

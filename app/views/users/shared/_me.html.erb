@@ -10,7 +10,7 @@
             <p><%= link_to "edit profile", edit_user_url(current_user) %></p>
         </div>
     </div>
-</div>        
+</div>
 <div>
     <%= render :partial => "skills/strip", :locals => { :entity => current_user, :size => "small" } %>
 </div>
@@ -20,8 +20,8 @@
     <ul class="unstyled">
         <li><%= link_to "MY EVENTS", events_user_url(current_user) %></li>
         <li><%= link_to "MY FLASH TEAM", events_user_url(current_user) %></li>
-        <li><%= link_to "MY ORGS", events_user_url(current_user) %></li>
-        <li><%= link_to "MY STATS", events_user_url(current_user) %></li>
+        <li><%= link_to "MY ORGS", user_orgs_url(current_user) %></li>
+        <li><%= link_to "STATS", events_user_url(current_user) %></li>
     </ul>
 </div>
 
