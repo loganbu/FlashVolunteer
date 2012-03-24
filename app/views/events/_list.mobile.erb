@@ -1,7 +1,6 @@
 <div class="row-fluid">
     <% if (@neighborhood == nil) %>
         <h4>events near <%= link_to("King County", "/neighborhoods") %></h4>
-        <h4><%= link_to("see map view", "/neighborhoods") %></h4>
     <% else %>
         <h4>events near </br><%= link_to(@neighborhood.name, "/neighborhoods") %></h4>
         <h2>see map view </br><%= link_to(@neighborhood.name, "/neighborhoods") %></h2>
