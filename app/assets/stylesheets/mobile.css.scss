@@ -10,8 +10,6 @@
 /**************
  Events
  **************/
- 
-
  .share_logo_mobile{
     width: 500px;
  }
@@ -34,32 +32,23 @@
 
 .header_mobile {
     background-color: $header_background;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     color: $header_text_color;
 }
 
 
-.logo_mobile {
-    padding-right: 40px;
-    width: 100px;
-    text-align:left;
-
+.logo-mobile {
+    padding: 5px;
 }
-
-.nav-mobile {
-    font-size: 50%;
-    color: white;
-}
-
 
 
 #header_personal_text_mobile {
-    font-size: 35%;
+    font-size: 70%;
     margin-top: 25px;
     text-align: right;
    
     p {
-        font-size: 100%;
+        font-size: 70%;
         margin-right: 10px;
     }
 }
@@ -75,6 +64,10 @@
 /**************
  Navigation
  **************/
+.nav-mobile {
+    font-size: 100%;
+    color: white;
+}
 
 
 
@@ -89,7 +82,7 @@
 
 #splash_frame {
     background-color: $background_color;
-    border: 5px solid $content_link_text_color;
+    border: 2px solid $content_link_text_color;
     border-bottom: -10px;
 }
 
