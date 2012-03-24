@@ -4,20 +4,19 @@
 	showLinks ||= false
 %>
 <div class="event-summary">
-	<%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
+	<%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %>
+
+
+
+distance between you and <%= (event.geocode_address) %> is XXX miles away
+
+	<br/>
+
 
 	<div class="row-fluid">
 		<div class="span12">
-			<span><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></span>
-			<% if signUpButton %>
-				<span style="float:right"><%= button_to("sign up", register_event_url(event), :method=> :post, :class => "btn btn-primary block")  %></span>
-			<% end %>
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span12">
 			<span><%= event.start.strftime('%B, %-d %Y') %>,</span>
-			<span class="pull-right"><%= event.start.strftime('%l:%M%p') %> - <%= event.end.strftime('%l:%M%p') %></span>
+			<span><%= event.start.strftime('%l:%M%p') %> - <%= event.end.strftime('%l:%M%p') %></span>
 		</div>
 	</div>
 	<% if description != :none %>
@@ -42,4 +41,47 @@
 			<div class="span12"><%= render(:partial => 'events/links', :locals => { :event => event }) %></div>
 		</div>
 	<% end %>
+	Share:
+	
+
+
+			
+				 
+           
+             
+                        <a href="http://twitter.com/flashvolunteer", width=200%>
+                                <%= image_tag("twitter_icon_32x32.png", 
+                                    :id => "twitter-badge-img",
+                                    :alt=>"Follow us on Twitter",
+                                    :width=> "20") %>
+                        </a>
+                  
+                        <a href="http://www.facebook.com/pages/Flash-Volunteer/75272433226">
+                            <%= image_tag("facebook_icon_32x32.png", 
+                                :id => "fb-badge-img",
+                                :alt=>"Follow us on Facebook",
+                                :width=> "20") %>
+                        </a>
+                   
+                        <a href="http://itunes.apple.com/us/app/flash-volunteer/id353017547">                        
+                            <%= image_tag("mobile_icon_32x32.png",
+                                    :id => "iphone-badge-img",
+                                    :alt=>"Get our iPhone application",
+                                    :width=> "20") %>
+                        </a>
+              
+            
+     
+        
+   
+        <div class="span6 offset2 copy">
+
+
+
+
+
+
+
+		</div>
+
 </div>

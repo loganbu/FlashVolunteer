@@ -1,0 +1,40 @@
+
+<!-- 
+     ________
+    |        |
+    |  ? blah|
+    |______go|
+-->
+<% content_for :form_content do %>
+    <div class="row-fluid">
+        <div class="span2">
+            <%= image_tag("question_mark.png",
+                :width => "50px", 
+                :id => "question-mark",
+                :border=>"0") %>
+        </div>
+        <div class="span10">
+            <div class="row">&nbsp;</div>
+            
+            <span style="font-size: 8px;padding-top: 35px"><%= yield :question %></span>
+            <div class="row">&nbsp;</div>
+            <%= yield :below_question %>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    HERE 111
+    <div class="row">
+        <div class="span2 offset6">
+            <%= yield :button %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span12">
+            <%= yield :below_button %>
+        </div>
+    </div>
+<% end %>
+<%
+    template_to_use = (yield :form_template).empty? ? 'shared/splash_with_question_no_form' : (yield :form_template)
+%>
+<%= render(:template =>  template_to_use) %>
