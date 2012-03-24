@@ -2,7 +2,7 @@
     <div class="row">
         <div class="span4">
             <div class="logo">
-                <a href="/"><%= image_tag 'logo-smaller.png' %></a>
+                <a href="/"><%= image_tag 'logo_mobile.png' %></a>
             </div>
         </div>
         <div class="span8">
@@ -11,7 +11,7 @@
                     <%= link_to "sign in", new_user_session_path %> or <%= link_to "create an account", new_user_registration_path %>
                 <% else %>
                     <p class="pull-left">
-                    hey there, <%= current_user.name %><br/>
+                    hey, <%= current_user.name %><br/>
                     <%= link_to "settings", edit_user_url(current_user) %> | <%= link_to "sign out", destroy_user_session_path, :method=>:delete %>
                     </p>
                     <div class="pull-right" id="user_greeting_picture">
@@ -27,11 +27,8 @@
         <div class="container">
             <div class="nav-collapse">
                 <ul class="nav">
-                    <li><%= link_to("EVENTS", events_path) %></li>
-                    <li><%= link_to("PEOPLE", people_path) %></li>
-                    <li><%= link_to("NEIGHBORHOODS", neighborhoods_path) %></li>
-                    <li><%= link_to("ABOUT", about_path) %></li>
-                    <li><%= link_to("HELP", help_path,) %></li>
+                    <li><%= link_to("EVENT LIST", events_path) %></li>
+                    <li><%= link_to("MAP", people_path) %></li>
                 </ul>
             </div>
         </div>
