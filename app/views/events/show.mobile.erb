@@ -1,6 +1,5 @@
 <div class="row-fluid">
-
-    <h1>events near <%= @event.neighborhood.name %></h1>
+    
     <h1><%= @event.name %></h1>
     <p>
         <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>

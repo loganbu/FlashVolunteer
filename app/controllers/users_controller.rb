@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index    
     if current_user == nil
-      redirect_to neighborhoods_url
+      redirect_to events_url
     else
       redirect_to events_user_url(current_user)
     end

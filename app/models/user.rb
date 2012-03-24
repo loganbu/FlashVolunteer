@@ -67,8 +67,5 @@ class User < ActiveRecord::Base
     end
     user
   end
-  def current_location(access_token, signed_in_resource=nil)
-    code to find users location
-  end
 
 end
