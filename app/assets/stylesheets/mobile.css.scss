@@ -87,10 +87,10 @@
  **************/
 
 
-#splash_frame_mobile {
+#splash_frame {
     background-color: $background_color;
     border: 5px solid $content_link_text_color;
-    padding: 10px;
+    border-bottom: -10px;
 }
 
 /**************
