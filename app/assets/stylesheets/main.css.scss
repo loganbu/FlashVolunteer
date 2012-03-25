@@ -188,6 +188,7 @@ label {
     color: black;
     text-align: left;
     padding: 10px;
+    z-index: 9001; /* OVER 9,000! */
     p {
         margin-top: .3*$baseLineHeight;
     }
@@ -277,7 +278,16 @@ input[type="checkbox"] {
 .navbar {
     font-weight: bold;
 }
-
+.clickeater {
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: $green;
+    z-index: 9000;
+}
 
 /**************
  Pagination
