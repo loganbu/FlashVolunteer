@@ -1,0 +1,21 @@
+<% content_for :question do %>
+    Where do you want to volunteer?
+<% end %>
+<% content_for :below_question do %>
+    <%= collection_select(:neighborhood,  :id, Neighborhood.all, :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "anywhere in King County" }) %>
+<% end %>
+<% content_for :button do %>
+    <%= link_to("continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "btn btn-primary pull-right") %>
+<% end %>
+<% content_for :below_button do %>
+    <p>
+        <% if can? :create, Event %>
+            I want to <%= link_to("create an event", new_event_url)%>
+        <% elsif user_signed_in? %>
+            Confirm your e-mail address with the e-mail we sent.
+        <% else %>
+            I want to <%= link_to("create an event.", new_user_session_url)%>
+        <% end %>
+    </p>
+<% end %>
+<%= render(:template => 'shared/splash_with_question') %>

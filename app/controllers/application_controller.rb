@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
     before_filter :remove_returns_to
     protect_from_forgery
     check_authorization
-    respond_to_mobile_requests :skip_xhr_requests => false
+    respond_to_mobile_requests :skip_xhr_requests => false, :fall_back => :html
 
     rescue_from CanCan::AccessDenied do |exception|
         render :file => "app/views/shared/authfail.html.erb"
