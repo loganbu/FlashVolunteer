@@ -1,7 +1,7 @@
 <p>Hi, <%= @resource.email %>,</p>
 <p>This is a friendly reminder that you are signed up for %event_name on %event_date. If you no longer can attend, <%= link_to("please update your RSVP", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token))%>.</p>
 <p>In case it's been a while since you signed up, here's a refresher: %event_description.</p>
-<p>Have a blast, and we'll catch you on the flip side!</p>
+<p>Happy volunteering!</p>
 <p>Sincerely,</p></br>
 <p>The Flash Volunteer team</p></br>
 <p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
