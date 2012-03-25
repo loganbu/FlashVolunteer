@@ -6,8 +6,9 @@ class Orgs::NewOrgWizardController < Wicked::WizardController
     def show
         return_to_here
         @user = current_user
+        # if current_user for when the user hasn't signed in yet and we need to get their account
         if (current_user)
-            @org = Org.has_admin(current_user).first()
+            @org = Org.has_admin(@user).first()
         end
         
         case step
@@ -28,8 +29,9 @@ class Orgs::NewOrgWizardController < Wicked::WizardController
 
     def update
         @user = current_user
+        # if current_user for when the user hasn't signed in yet and we need to get their account
         if (current_user)
-            @org = Org.has_admin(current_user).first()
+            @org = Org.has_admin(@user).first()
         end
 
         case step

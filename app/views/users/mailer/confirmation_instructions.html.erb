@@ -1,6 +1,6 @@
 <p>Welcome, <%= @resource.email %>!</p>
 
-<p>You have checked out Flash Volunteer and perhaps signed up for an event, but there is a lot more to explore! <%= link_to 'Create your free account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %> to search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
+<p>It looks like you've checked out Flash Volunteer and maybe even signed up for an event, but there is a lot more to explore! <%= link_to 'Create your free account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %> to search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
 
 <p>Have questions, comments, or suggestions? Email us at <%= mail_to("info@flashvolunteer.org", "contact organizer", :subject => "Questions regarding Flash Volunteer", :encode=>"hex")%>.</p>
 

@@ -2,7 +2,7 @@ module ApplicationHelper
 
 def photo_link(entity, image, url)
     link_to url do
-        image_tag entity.url(image)
+        image_tag entity.url(image), :class=>"photo-#{image}"
     end 
 end
 

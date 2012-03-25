@@ -14,7 +14,7 @@
         <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :showLinks => true }) || "You have not signed up for any events." %>
     </div>
     <div class="hide" id="upcoming_content">
-        <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :showLinks => true }) || "You have no upcoming events." %>
+        <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :showLinks => true }) || "You have no upcoming events. Click #{link_to "recommended_events_url"} to see what we have to offer." %>
     </div>
     <div class="hide" id="recommended_content">
         <%= render(:partial => "events/event", :collection => @recommended, :as => :event, :locals => { :showLinks => true }) || "We have no recommended events for you." %>

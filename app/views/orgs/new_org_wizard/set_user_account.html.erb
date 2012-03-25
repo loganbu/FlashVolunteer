@@ -1,16 +1,16 @@
 <% content_for :question do %>
-    First we need an account for you...
+    First, we need an account for you...
 <% end %>
 <% content_for :below_question do %>
     <div class="row-fluid">
-        <p>Use a connected account to sign into Flash Volunteer. By connecting, you are accepting the <%= link_to("Terms of Use", tou_path) %> and <%= link_to("Privacy Policy", privacy_path) %>:</p>
+        <p>Use a connected account to sign in to Flash Volunteer. By connecting, you are accepting the <%= link_to("Terms of Use", tou_path) %> and <%= link_to("Privacy Policy", privacy_path) %>:</p>
         <%= render(:partial => "users/shared/external_auth_strip") %>
     </div>
 <% end %>
 <% content_for :below_button do %>
     <div class="row-fluid">
         <div class="span12">
-            <%= link_to "I don't want to connect to these partners",  new_user_registration_url %>
+            <%= link_to "I don't want to connect via these partners",  new_user_registration_url %>
         </div>
     </div>
 <% end %>

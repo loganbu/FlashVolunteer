@@ -6,7 +6,7 @@ gem 'sqlite3'
 
 gem 'will_paginate', '~> 3.0'
 gem 'devise'
-gem 'cancan'
+gem 'cantango'
 gem 'geocoder' 
 gem 'jquery-rails', '>= 1.0.12'
 gem 'tlsmail'
