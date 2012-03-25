@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312040405) do
+ActiveRecord::Schema.define(:version => 20120325174935) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -45,15 +45,6 @@ ActiveRecord::Schema.define(:version => 20120312040405) do
     t.float    "longitude"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "orgs", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "vision"
-    t.string   "mission"
-    t.text     "description"
-    t.string   "website"
   end
 
   create_table "orgs_admins", :id => false, :force => true do |t|
@@ -117,6 +108,12 @@ ActiveRecord::Schema.define(:version => 20120312040405) do
     t.integer  "neighborhood_id"
     t.date     "birthday"
     t.integer  "org_id"
+    t.boolean  "show_org_wizard"
+    t.string   "type"
+    t.string   "mission"
+    t.string   "vision"
+    t.text     "description"
+    t.text     "website"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
