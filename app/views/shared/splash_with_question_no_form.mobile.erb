@@ -1,0 +1,10 @@
+<!-- 
+     ________
+    |        |
+    |  ? blah|
+    |______go|
+-->
+<% content_for :content do %>    
+    <%= yield :form_content %>
+<% end %>
+<%= render(:template => 'shared/splash_frame') %>

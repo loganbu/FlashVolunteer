@@ -1,0 +1,10 @@
+<%= devise_error_messages! %>
+<% content_for :title_content do %>
+    <span style="font-size: 250%"><%= yield :main_action %></span><%= yield :link_action %>
+<% end %>
+<% content_for :left_content do %>
+    <%= yield :form_content %>
+<% end %>
+<% content_for :right_content do %>
+<% end %>
+<%= render(:template=>"shared/splash_two_column") %>
