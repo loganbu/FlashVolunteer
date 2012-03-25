@@ -103,6 +103,7 @@ html, body {
             padding: 10px 16px 10px 0px;
         }
     }
+
  }
 
  .event_with_marker {
@@ -168,9 +169,10 @@ label {
  **************/
 .header {
     background-color: $header_background;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     color: $header_text_color;
 }
+
 
 .logo {
     padding: 5px;
@@ -243,10 +245,10 @@ textarea {
 /**************
  Navigation
  **************/
+
 .navbar {
     font-weight: bold;
 }
-
 
 /**************
  Pagination
