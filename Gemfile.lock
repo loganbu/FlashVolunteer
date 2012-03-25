@@ -46,6 +46,12 @@ GEM
     bootstrap-sass (2.0.1)
     builder (3.0.0)
     cancan (1.6.7)
+    cantango (0.9.4.7)
+      cancan (>= 1.4)
+      hashie (>= 0.4)
+      rails (>= 3.0.1)
+      sugar-high (>= 0.6.0)
+      sweetloader (~> 0.1.0)
     chunky_png (1.2.5)
     cocaine (0.2.1)
     compass (0.11.7)
@@ -160,6 +166,11 @@ GEM
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     sqlite3 (1.3.5-x86-mingw32)
+    sugar-high (0.6.3)
+      activesupport (>= 3.0.1)
+    sweetloader (0.1.6)
+      activesupport (>= 3.0.1)
+      i18n
     thor (0.14.6)
     tilt (1.3.3)
     tlsmail (0.0.1)
@@ -183,7 +194,7 @@ DEPENDENCIES
   aws-s3
   aws-sdk
   bootstrap-sass
-  cancan
+  cantango
   compass
   date_validator
   devise

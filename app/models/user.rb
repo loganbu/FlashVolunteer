@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   validates :email, :presence => { :message => "Must have an e-mail" }
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
-  belongs_to :org
   has_and_belongs_to_many :admin_of, :class_name => "Org", :join_table => "orgs_admins", :uniq => true
   has_attached_file :avatar, :storage => :s3, :s3_credentials => {
       :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -24,10 +23,6 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type
-  
-  scope :org_info, lambda { |org|
-      includes(:org).where("orgs.id = ?", org.id)
-  }
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
@@ -45,12 +40,9 @@ class User < ActiveRecord::Base
   end
 
   def create_associated_org(org_email, org_name)
-    org = Org.new()
-    org_user = User.find_or_create_by_email(:email => org_email, :password => Devise.friendly_token[0,20], :name =>org_name)
+    org = Org.new(:email => org_email, :password => Devise.friendly_token[0,20], :name =>org_name)
     org.admins << self
     org.save!
-    org_user.org_id = org.id
-    org_user.save!
   end
 
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)

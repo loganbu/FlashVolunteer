@@ -16,8 +16,10 @@
                     </p>
                     <div class="pull-right" id="user_greeting_picture">
                         <%= photo_link(current_user.avatar, :thumb, user_url(current_user)) %>
+                        <a href="#" id="account_pulldown_link">^</a>
                     </div>
                 <% end %>
+                <%= render(:partial => "shared/account_pulldown") if current_user %>
             </div>
         </div>
     </div>
