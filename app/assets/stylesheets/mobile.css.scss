@@ -13,68 +13,16 @@ html, body {
 /**************
  Overwriting Twitter Bootstrap
  **************/
-.container-mobile{
-    @extend .container
+
+.container{
+    width: 240px;
+    padding: 0 5px;
 }
 
 /**************
  Badges
  **************/
-.small_badge {
-    display: block;
-    float: left;
-    margin-right: 5px;
-    width: 20px;
-    height: 20px;
-}
-.medium_badge {
-    @extend .small_badge;
-    margin: 0px;
-    width: 36px;
-    height: 36px;
-}
-.large_badge {
-    @extend .small_badge;
-    width: 64px;
-    height: 64px;
-    margin: 0px;
-}
-.skill_option {
-    float: left;
-    padding: 10px;
-    margin: 0px 10px 10px 0;
-    /* Since these are floating left, adding the 1px black border will cause
-       the items below to not clear left since there is 1px left.  Add a white
-       pixeled border to non-selected items to ensure it clears left */
-    border: 1px solid white;
-    &:hover {
-        @extend .skill_selected;
-    }
-    &:active {
-        @extend .skill_selected;
-        background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
-    }
-}
-.skill_option_med {
-    float: left;
-    padding: 5px;
-    margin: 0px 5px 5px 0;
-    margin: 0px 5px 5px 0;
-    /* Since these are floating left, adding the 1px black border will cause
-       the items below to not clear left since there is 1px left.  Add a white
-       pixeled border to non-selected items to ensure it clears left */
-    border: 1px solid white;
-    &:hover {
-        @extend .skill_selected;
-    }
-    &:active {
-        @extend .skill_selected;
-        background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
-    }
-}.skill_selected {
-    border: 1px solid $lightBlue !important;
-    background: none repeat scroll 0 0 $babyBlue;
-}
+
 
 /**************
  Events
@@ -94,62 +42,18 @@ html, body {
     }
  }
  
- .event{
-    padding: 3px 0px 3px 0px;
-    ul{
-        li{
-            margin-bottom: 10px;
-        }
-    }
- }
-
- .tabs{
-    ul{
-        li{
-            padding: 10px 16px 10px 0px;
-        }
-    }
-
- }
-
- .event_with_marker {
-    .marker {
-        width: 30px;
-        height: 30px;
-    }
-    .details {
-        padding-left: 30px;    
-    }
- }
- .share {
-    display: table;
-    ul {
-        li {
-            p {
-                margin-top: 5px;
-            }
-        }
-    }
-}
-.event-summary form {
-	margin-bottom: 0px;
-}
 
 /**************
  Footer
  **************/
 footer {
-    height: 30px;
+    height: 100px;
     margin: -30px auto 0 auto;
     background-color: $header_background;
     color: $header_text_color;
     clear: both;
 }
-.footer-navbar-inner {
-    @extend .navbar-inner;
-    background-color: $header_background;
-    color: $header_text_color;
-}
+
 .followus {
     font-weight: bold;
     font-style: italic;
@@ -163,12 +67,7 @@ footer {
     clear: both;
 }
 
-/**************
- Forms
- **************/
-label {
-    padding-top: 5px;
-}
+
 
 /**************
  Header
@@ -184,7 +83,7 @@ label {
     padding: 5px;
 }
 
-#header_personal_text {
+#header_personal_text_mobile {
     font-size: 70%;
     margin-top: 25px;
     text-align: right;
@@ -197,65 +96,19 @@ label {
 /**************
  Input
  **************/
-.block {
-    display: block;
-}
-.full {
-    margin-left: 0px;
-    margin-right: 0px;
-    padding-right: 0px;
-    padding-left: 0px;
-    width: 100%;
-}
-input.full, textarea.full {
-    margin-left: -3px;
-}
 
-textarea {
-    height: 50px;
-}
 
 /**************
  JQuery
  **************/
-.ui-datepicker {
-    background-color:$babyBlue;
-}
 
-.ui-slider {
-    $progressBarHeight: 1em;
-    position: relative;
-    text-align: left;
-    height: $progressBarHeight; 
-    .ui-slider-handle {
-        @include border-radius(4px);
-        margin-top: -$progressBarHeight*.25;
-        position: absolute; 
-        z-index: 2; 
-        width: .5em; 
-        height: $progressBarHeight*1.5; 
-        cursor: default;
-        background-color: $green;
-    }
-    .ui-slider-range { 
-        position: absolute;
-        margin-left: 5px;
-        z-index: 1; 
-        display: block; 
-        height: $progressBarHeight; 
-        border: 0; 
-        background-position: 0 0;
-        background-color: $lightBlue;
-    }
-}
+
 /**************
  Navigation
  **************/
 
-.navbar {
-    font-weight: bold;
-}
- .navbar-inner {
+
+.navbar-inner {
     padding-left:  5px;
     padding-right: 5px;
 }
@@ -263,48 +116,7 @@ textarea {
 /**************
  Pagination
  **************/
-.pagination {
-    text-align: center;
-    padding: 0.3em;
-    cursor: default;
-    a, span, em {
-        padding: 0.2em 0.5em;
-    }
-    .disabled {
-        color: #aaaaaa;
-        border: 2px solid white;
-    }
-    .current {
-        font-style: normal;
-        font-weight: bold;
-        color: #ff0084;
-    }
-    a {
-        line-height: $baseLineHeight;
-        border: 1px solid #dddddd;
-        color: $darkBlue;
-        text-decoration: none;
-        &:hover, &:focus {
-          border-color: $darkBlue;
-          background: $babyBlue;
-        }
-    }
-    .page_info {
-        color: #aaaaaa;
-        padding-top: 0.8em;
-    }
-    .previous_page, .next_page {
-        border-width: 2px;
-    }
-    .previous_page {
-        margin-right: 1em;
-        float: left;
-    }
-    .next_page {
-        margin-left: 1em;
-        float: right;
-    }
-}
+
 
 /**************
  Splash Frame
@@ -319,36 +131,9 @@ textarea {
  Typeography
  **************/
 h3 {
-    color: white;
-    background-color: $heading_background;
     padding: 2px 0px 2px 5px;
-    margin-bottom: 10px;
-    font-size: 10px;
+    margin-bottom: 4px;
+    font-size: 7px;
     @include border-radius(2px);
 }
-.bold{
-    font-weight: bold;
-}
-.inline {
-    li {
-        float: left;
-        margin-right: 5px;
-    }
-}
-a:link, a:visited, a:active, a:hover, a {
-    text-decoration: none;
-}
-ul {
-    ul.unstyled {
-        margin-left: 30px;
-    }
-}
 
-#link_list {
-    a {
-        color: $lightGray;
-    }
-    .link_active {
-        color: $green;
-    }
-}
