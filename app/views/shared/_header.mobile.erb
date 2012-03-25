@@ -1,17 +1,17 @@
-<div class="container-fluid">
-    <div class="row-fluid">
-        <div class="span2">
-            <div class="logo-mobile">
+<div class="container">
+    <div class="row">
+        <div class="span4">
+            <div class="logo">
                 <a href="/"><%= image_tag 'logo_mobile.png' %></a>
             </div>
         </div>
-        <div class="span2">
-            <div id="header_personal_text_mobile" class="pull-right">
+        <div class="span8">
+            <div id="header_personal_text" class="pull-right">
                 <% if !user_signed_in? %>
                     <%= link_to "sign in", new_user_session_path %> or <%= link_to "create an account", new_user_registration_path %>
                 <% else %>
                     <p class="pull-left">
-                    hey there, <%= current_user.name %><br/>
+                    hey, <%= current_user.name %><br/>
                     <%= link_to "settings", edit_user_url(current_user) %> | <%= link_to "sign out", destroy_user_session_path, :method=>:delete %>
                     </p>
                     <div class="pull-right" id="user_greeting_picture">
@@ -23,17 +23,13 @@
     </div>
 </div>
 <div class="navbar">
-    <div class="navbar-inner_mobile">
-        <div class="container-fluid">
-            <div class="nav-collapse.collapse">
-                <div class="nav-mobile">
-                    <div class="nav-mobile">
-                        <ul class="unstyled inline">
-                        <li><%= link_to("EVENTS LIST", events_path) %></li>
-                        <li><%= link_to("MAP", neighborhoods_path) %></li>
-                        </ul>
-                    </div>    
-                </div>
+    <div class="navbar-inner">
+        <div class="container">
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li><%= link_to("EVENT LIST", events_path) %></li>
+                    <li><%= link_to("MAP", people_path) %></li>
+                </ul>
             </div>
         </div>
     </div>
