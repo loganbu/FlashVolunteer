@@ -5,7 +5,7 @@ class Ability
   
   def initialize(user)
     user ||= User.new # guest user (not logged in)
-    # evetyone can read event and neighborhood
+    # everyone can read event and neighborhood
     can :read, [Event, Neighborhood, User]
     can :in, [Event]
     can :export, [Event]

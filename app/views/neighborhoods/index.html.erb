@@ -12,7 +12,7 @@
         <% if can? :create, Event %>
             I want to <%= link_to("create an event", new_event_url)%>
         <% elsif user_signed_in? %>
-            Confirm your e-mail address with the e-mail we sent.
+            Please confirm your e-mail address via the link in the message we sent.
         <% else %>
             I want to <%= link_to("create an event.", new_user_session_url)%>
         <% end %>
