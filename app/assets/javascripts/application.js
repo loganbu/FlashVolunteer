@@ -11,3 +11,4 @@
 //= require map
 //= require utility
 //= require bootstrap
+//= require onload
