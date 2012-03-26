@@ -371,6 +371,9 @@ h3 {
     font-size: 13px;
     @include border-radius(2px);
 }
+h2 {
+    font-size: 150%;
+}
 .bold{
     font-weight: bold;
 }

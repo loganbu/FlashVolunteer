@@ -9,6 +9,11 @@
 html, body {
     height: 100%;
     background-color: $background_color;
+    font-size: 70%;
+}
+h2{
+    font-size: 150%;
+    line-height: $baseLineHeight;
 }
 /**************
  Overwriting Twitter Bootstrap
@@ -17,6 +22,10 @@ html, body {
 .container{
     width: 240px;
     padding: 0 5px;
+}
+
+.font_normal{
+    font-size: 100%;
 }
 
 /**************
@@ -42,13 +51,21 @@ html, body {
     }
  }
  
-
+ .event_with_marker {
+    .marker {
+        width: 16px;
+        height: 16px;
+    }
+    .details {
+        padding-left: 16px;    
+    }
+ }
 /**************
  Footer
  **************/
 footer {
     height: 100px;
-    margin: -30px auto 0 auto;
+    margin: 0 auto 0 auto;
     background-color: $header_background;
     color: $header_text_color;
     clear: both;
@@ -62,8 +79,8 @@ footer {
     text-align: right;
 }
 #clearfooter {
-    height: 30px;
-    margin-top: 20px;
+    height: 0px;
+    margin-top: 0px;
     clear: both;
 }
 
@@ -83,12 +100,12 @@ footer {
     padding: 5px;
 }
 
-#header_personal_text_mobile {
-    font-size: 70%;
-    margin-top: 25px;
+#header_personal_text {
+    font-size: 60%;
+    margin-top: 4px;
     text-align: right;
     p {
-        font-size: 70%;
+        font-size: 60%;
         margin-right: 10px;
     }
 }
@@ -113,10 +130,28 @@ footer {
     padding-right: 5px;
 }
 
+.navbar .nav > li > a {
+  padding: 3px 10px 3px 2px;
+}
+
 /**************
  Pagination
  **************/
-
+.pagination {
+    padding: 0em;
+    a, span, em {
+        padding: 0em 0em;
+    } 
+    .page_info {
+        padding-top: 0em;
+    }
+    .previous_page {
+        margin-right: 0em;
+    }
+    .next_page {
+        margin-left: 0em;
+    }
+}
 
 /**************
  Splash Frame
