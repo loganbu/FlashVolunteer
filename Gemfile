@@ -41,7 +41,6 @@ gem 'date_validator'
 
 group :development do
     gem 'factory_girl_rails'
-    gem 'ruby-debug19'
     gem 'rails-footnotes'
 end
 
