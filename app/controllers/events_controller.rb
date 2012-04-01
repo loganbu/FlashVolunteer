@@ -21,7 +21,6 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     @events = Event.upcoming.paginate(:page => params[:page], :per_page=>5)
-
     @events.each_with_index do |event, i|
       event['user_participates'] = event.attending?(current_user)
     end

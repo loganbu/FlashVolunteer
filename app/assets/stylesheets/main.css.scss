@@ -114,6 +114,14 @@ html, body {
         }
     }
 }
+
+.event-title {
+    font-weight:bold;
+}
+.event-summary{
+    margin-bottom: 16px;
+}
+
 .event-summary form {
 	margin-bottom: 0px;
 }
@@ -366,6 +374,9 @@ h3 {
     margin-bottom: 10px;
     font-size: 13px;
     @include border-radius(2px);
+}
+h2 {
+    font-size: 150%;
 }
 .bold{
     font-weight: bold;
