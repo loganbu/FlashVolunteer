@@ -12,6 +12,28 @@ html, body {
 }
 
 /**************
+ Overwriting Twitter Bootstrap
+ **************/
+
+.container{
+    padding: 0px;
+}
+
+.container-padding{
+    padding: 0 5px;
+}
+
+.navbar-inner {
+    padding-left:  0px;
+    padding-right: 0px;
+}
+
+.navbar .nav > li > a {
+    padding-left: 0px;
+    padding-right: 30px;
+}
+
+/**************
  Badges
  **************/
 .small_badge {
@@ -172,7 +194,7 @@ label {
 }
 
 .logo {
-    padding: 20px;
+    padding: 20px 5px;
 }
 
 #header_personal_text {
@@ -364,6 +386,7 @@ input[type="checkbox"] {
     padding: 20px;
 }
 
+
 /**************
  Typeography
  **************/
@@ -377,6 +400,12 @@ h3 {
 }
 h2 {
     font-size: 150%;
+}
+.h2-padding{
+    padding-bottom: 20px; 
+}
+h1 {
+    padding-bottom: 20px;
 }
 .bold{
     font-weight: bold;

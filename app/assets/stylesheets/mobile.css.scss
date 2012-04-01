@@ -9,11 +9,11 @@
 html, body {
     height: 100%;
     background-color: $background_color;
-    font-size: 70%;
 }
 h2{
     font-size: 150%;
     line-height: $baseLineHeight;
+    padding-bottom: 12px;
 }
 /**************
  Overwriting Twitter Bootstrap
@@ -21,11 +21,24 @@ h2{
 
 .container{
     width: 240px;
+    padding: 0px;
+}
+
+.container-padding{
     padding: 0 5px;
 }
 
 .font_normal{
     font-size: 100%;
+}
+
+.navbar-inner {
+    padding-left:  0px;
+    padding-right: 0px;
+}
+
+.navbar .nav > li > a {
+  padding: 3px 10px 3px 0px;
 }
 
 /**************
@@ -65,7 +78,7 @@ h2{
  **************/
 footer {
     height: 100px;
-    margin: 0 auto 0 auto;
+    margin: 16px auto 0 auto;
     background-color: $header_background;
     color: $header_text_color;
     clear: both;
@@ -101,11 +114,9 @@ footer {
 }
 
 #header_personal_text {
-    font-size: 60%;
     margin-top: 4px;
     text-align: right;
     p {
-        font-size: 60%;
         margin-right: 10px;
     }
 }
@@ -124,15 +135,6 @@ footer {
  Navigation
  **************/
 
-
-.navbar-inner {
-    padding-left:  5px;
-    padding-right: 5px;
-}
-
-.navbar .nav > li > a {
-  padding: 3px 10px 3px 2px;
-}
 
 /**************
  Pagination
@@ -176,8 +178,4 @@ h1 {
     padding: 2px 0px 2px 0px;
     margin-bottom: 4px;
     font-size: 120%;
-}
-
-p{
-    font-size: 70%;
 }
