@@ -43,6 +43,12 @@ html, body {
     width: 20px;
     height: 20px;
 }
+.exsmall_badge {
+    @extend .small_badge;
+    margin-right: 3px;
+    width: 16px;
+    height: 16px;
+}
 .medium_badge {
     @extend .small_badge;
     margin: 0px;
