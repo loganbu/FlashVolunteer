@@ -3,6 +3,11 @@
     <div class="active_account">
         <%= render(:partial => "users/shared/user", :locals => { :user => current_user}) %>
     </div>
+    <% if current_user.id != original_user_logged_in %>
+        <div class="inactive_account">
+            <%= render(:partial => "users/shared/user", :locals => { :user => User.find(original_user_logged_in) }) %>
+        </div>
+    <% end %>
     <% if current_user.admin_of.count > 0 %>
         <div class="inactive_account">
             <%= render(:partial => "users/shared/user", :collection => current_user.admin_of) %>

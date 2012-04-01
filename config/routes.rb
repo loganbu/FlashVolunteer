@@ -15,6 +15,7 @@ Flashvolunteer::Application.routes.draw do
 
             resource :privacy, :only => [:show, :update], :controller => "users/privacy", :as => "user_privacy_settings"
             resource :notifications, :only => [:show, :update], :controller => "users/notifications"
+            get :switch
         end
         resources :orgs, :only => [:index, :update], :controller => "users/organizations"
     end
