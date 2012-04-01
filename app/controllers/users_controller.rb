@@ -9,6 +9,12 @@ class UsersController < ApplicationController
     end
   end
 
+  # GET /users/1/switch
+  def switch
+    @user = User.find(params[:id])
+    sign_in_and_redirect @user
+  end
+
   # GET /users/1
   # GET /users/1.xml
   def show

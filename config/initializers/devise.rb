@@ -201,12 +201,11 @@ Devise.setup do |config|
   config.omniauth :facebook, ENV['FACEBOOK_API_KEY'], ENV['FACEBOOK_API_SECRET'], :scope=>'email,create_event,rsvp_event,user_photos', :display=>'page'
   config.omniauth :google_oauth2, ENV['GOOGLE_API_KEY'], ENV['GOOGLE_API_SECRET'], { access_type: 'online', approval_prompt: '' }
 
-  # ==> Warden configuration
-  # If you want to use other strategies, that are not supported by Devise, or
-  # change the failure app, you can configure them inside the config.warden block.
-  #
-  # config.warden do |manager|
-  #   manager.intercept_401 = false
-  #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
-  # end
+
+  Warden::Manager.after_set_user do |user, auth, opts|
+    debugger
+    if user.type == "User"
+      original_user_logged_in=user
+    end
+  end
 end
