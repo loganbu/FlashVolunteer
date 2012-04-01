@@ -9,6 +9,8 @@
         <%= photo_link(user.avatar, image_size, user_url(current_user)) %>
     </div>
     <div class="span10">
+<%= link_to switch_user_url(user) do %>
         <p><%= user.name %></p>
+<% end %>
     </div>
 </div>
