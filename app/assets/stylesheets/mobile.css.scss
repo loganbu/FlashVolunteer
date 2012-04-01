@@ -9,7 +9,6 @@
 html, body {
     height: 100%;
     background-color: $background_color;
-    font-size: 70%;
 }
 h2{
     font-size: 150%;
@@ -115,11 +114,9 @@ footer {
 }
 
 #header_personal_text {
-    font-size: 60%;
     margin-top: 4px;
     text-align: right;
     p {
-        font-size: 60%;
         margin-right: 10px;
     }
 }
@@ -181,8 +178,4 @@ h1 {
     padding: 2px 0px 2px 0px;
     margin-bottom: 4px;
     font-size: 120%;
-}
-
-p{
-    font-size: 70%;
 }
