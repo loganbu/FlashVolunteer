@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
   load_and_authorize_resource
 
   def index    
@@ -12,7 +13,13 @@ class UsersController < ApplicationController
   # GET /users/1/switch
   def switch
     @user = User.find(params[:id])
-    sign_in_and_redirect @user
+    @original_user = User.find(original_user_logged_in)
+
+    if @user == @original_user || (@user.type == "Org" && Org.has_admin(@original_user).include?(@user))
+      sign_in_and_redirect @user
+    else
+      raise CanCan::AccessDenied
+    end
   end
 
   # GET /users/1
