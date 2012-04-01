@@ -23,8 +23,8 @@
                             end
                             %>
                     </div>
+                    <%= render(:partial => "shared/account_pulldown") if (current_user.id != original_user_logged_in || current_user.admin_of.count > 0) %>
                 <% end %>
-                <%= render(:partial => "shared/account_pulldown") if (current_user && (current_user.id != original_user_logged_in || current_user.admin_of.count > 0)) %>
             </div>
         </div>
     </div>
