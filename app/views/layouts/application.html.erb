@@ -4,7 +4,6 @@
   <title>Flashvolunteer</title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -22,5 +21,6 @@
         <%= render"shared/footer" %>
     </footer>
     <div class="clickeater">&nbsp;</div>
+    <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %>
 </body>
 </html>

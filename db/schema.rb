@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120325174935) do
+ActiveRecord::Schema.define(:version => 20120401180623) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -34,11 +34,6 @@ ActiveRecord::Schema.define(:version => 20120325174935) do
     t.text     "special_instructions"
   end
 
-  create_table "events_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "event_id"
-  end
-
   create_table "neighborhoods", :force => true do |t|
     t.string   "name"
     t.float    "latitude"
@@ -55,6 +50,12 @@ ActiveRecord::Schema.define(:version => 20120325174935) do
   create_table "orgs_followers", :id => false, :force => true do |t|
     t.integer "user_id"
     t.integer "org_id"
+  end
+
+  create_table "participations", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+    t.integer "hours_volunteered"
   end
 
   create_table "roles", :force => true do |t|
@@ -108,7 +109,6 @@ ActiveRecord::Schema.define(:version => 20120325174935) do
     t.integer  "neighborhood_id"
     t.date     "birthday"
     t.integer  "org_id"
-    t.boolean  "show_org_wizard"
     t.string   "type"
     t.string   "mission"
     t.string   "vision"

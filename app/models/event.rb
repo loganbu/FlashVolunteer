@@ -10,7 +10,8 @@ class Event < ActiveRecord::Base
     validates :start, :date => { :after => Time.now, :message=> "The event must begin in the future" }, :on => :create
     validates :end, :presence => { :message => "The event must have an end time" }, :date  => { :after => :start, :message=> "The event must end after the start time" }
     validates :description, :presence => { :message => "The event must have a description" }
-    has_and_belongs_to_many :participants, :class_name => "User", :join_table => "events_users", :uniq => true
+    has_many :participations
+    has_many :participants, :through => :participations, :source => :user
     has_and_belongs_to_many :skills, :join_table => "skills_events"
 
 
