@@ -1,32 +1,9 @@
 <div class="row">
-    <div class="span3">
-        <div class="row">
-            <% if (@neighborhood == nil) %>
-                <h2>events near </br><%= link_to("King County", "/neighborhoods") %></h2>
-            <% else %>
-                <h2>events near </br><%= link_to(@neighborhood.name, "/neighborhoods") %></h2>
-            <% end %>
-        </div>
-        <% @events.each_with_index do |event, i| %>
-        <div class="row event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
-            <div class="pull-left marker"
-                 style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp.png" : "/assets/mapStripAvail.png" %>) 0px <%= -i*30 %>px">&nbsp;
-            </div>
-            <div class="details">
-                <%= render :partial => "events/event", :locals => { :event => event, :description => true, :showLinks => true } %>
-            </div>
-        </div>
-        <% end %>
-        <div id="page">
-            <%= will_paginate @events, :page_links => false %>
-        </div>
-    </div>
-    <div class="span9">
-        <div class="map">
-            <div id="map" class="big"></div>
-        </div>
+    <div class="map">
+        <div id="map" class="big"></div>
     </div>
 </div>
+
 <script>
 $(document).ready(function() { 
     Map.setMap('map', <%= @mapCenter.latitude %>, <%= @mapCenter.longitude %>, <%= @zoom %>); 
