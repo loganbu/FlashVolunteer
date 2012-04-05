@@ -8,8 +8,6 @@
 Role.delete_all()
 Role.create([
 { :name => "SuperAdmin" },
-{ :name => "SiteAdmin" },
-{ :name => "Organization" },
 { :name => "Volunteer" },
 ])
 
@@ -101,6 +99,7 @@ if Rails.env.development?
     Random.new
     Org.delete_all()
     Event.delete_all()
+    volunteer_role = Role.find_by_name("Volunteer")
 
     unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
     confirmed_user = FactoryGirl.create(:confirmed_user)
@@ -109,6 +108,12 @@ if Rails.env.development?
 
     flash_org = FactoryGirl.create(:org)
     flash_org.admins << brad
+    flash_org.roles << volunteer_role
+
+    unconfirmed_user.roles << volunteer_role
+    confirmed_user.roles << volunteer_role
+    tech_user.roles << volunteer_role
+    brad.roles << volunteer_role
 
     FactoryGirl.create_list(:event, 5, :in_one_week, :creator_id => confirmed_user.id, :participants => [tech_user])
     FactoryGirl.create_list(:event, 3, :in_one_month, :creator_id => confirmed_user.id, :participants => [tech_user])

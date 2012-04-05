@@ -1,4 +1,6 @@
 class OrgsController < ApplicationController
+  load_and_authorize_resource
+
   # GET /orgs
   # GET /orgs.xml
   def index
@@ -14,6 +16,10 @@ class OrgsController < ApplicationController
   # GET /orgs/1.xml
   def show
     @org = Org.find(params[:id])
+
+    @past = Event.created_by(@org).past.paginate(:page => params[:page], :per_page => 6)
+    @upcoming =  Event.created_by(@org).upcoming.paginate(:page => params[:page], :per_page => 6)
+
 
     respond_to do |format|
       format.html # show.html.erb
