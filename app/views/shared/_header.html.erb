@@ -16,15 +16,15 @@
                     </p>
                     <div class="pull-right" id="user_greeting_picture">
                         <%= photo_link(current_user.avatar, :thumb, user_url(current_user)) %>
-                        <%= if current_user && (current_user.id != original_user_logged_in || current_user.admin_of.count > 0)
+                        <%= if current_user.id != original_user_logged_in || current_user.admin_of.count > 0
                                 link_to("#", :id=>"account_pulldown_link") do  
                                     "^"
                                 end
                             end
                             %>
                     </div>
+                    <%= render(:partial => "shared/account_pulldown") if (current_user.id != original_user_logged_in || current_user.admin_of.count > 0) %>
                 <% end %>
-                <%= render(:partial => "shared/account_pulldown") if (current_user && (current_user.id != original_user_logged_in || current_user && current_user.admin_of.count > 0)) %>
             </div>
         </div>
     </div>

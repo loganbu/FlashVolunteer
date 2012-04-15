@@ -12,6 +12,7 @@ end
 FactoryGirl.define do 
     factory :user do
         password      ENV['ADMIN_PASSWORD']
+        
 
         factory :confirmed_user do
             email         "confirmed@localhost.com"
@@ -27,6 +28,7 @@ FactoryGirl.define do
         factory :tech_user do
             email         "techuser@localhost.com"
             name          "Techy Person"
+            confirmed_at  DateTime.now
 
             after_build do |e|
                 add_random_neighborhood_info_to_user(e)
@@ -38,6 +40,7 @@ FactoryGirl.define do
         factory :org_admin do
             email       "brad@localhost.com"
             name        "brad wilke"
+            confirmed_at  DateTime.now
         end
     end
 end

@@ -1,3 +1,7 @@
+<%
+    links ||= "users/shared/user_profile_links"
+%>
+
 <% content_for :left_split do %>
 <div>
     <div class="row-fluid">
@@ -18,10 +22,7 @@
 <div class="clear">&nbsp;</div>
 <div class="list_spacing bold">
     <ul class="unstyled">
-        <li><%= link_to "MY EVENTS", events_user_url(current_user) %></li>
-        <li><%= link_to "MY FLASH TEAM", events_user_url(current_user) %></li>
-        <li><%= link_to "MY ORGS", user_orgs_url(current_user) %></li>
-        <li><%= link_to "STATS", events_user_url(current_user) %></li>
+        <%= render :partial => links %>
     </ul>
 </div>
 

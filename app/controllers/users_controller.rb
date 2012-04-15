@@ -5,6 +5,8 @@ class UsersController < ApplicationController
   def index    
     if current_user == nil
       redirect_to events_url
+    elsif current_user.type == "Org"
+      redirect_to events_org_url(current_user)
     else
       redirect_to events_user_url(current_user)
     end
