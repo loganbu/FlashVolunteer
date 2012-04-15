@@ -6,19 +6,6 @@
             </div>
         </div>
         <div class="span8">
-            <div id="header_personal_text" class="pull-right">
-                <% if !user_signed_in? %>
-                    <%= link_to "sign in", new_user_session_path %> or <%= link_to "create an account", new_user_registration_path %>
-                <% else %>
-                    <p class="pull-left">
-                    hey, <%= current_user.name %><br/>
-                    <%= link_to "settings", edit_user_url(current_user) %> | <%= link_to "sign out", destroy_user_session_path, :method=>:delete %>
-                    </p>
-                    <div class="pull-right" id="user_greeting_picture">
-                        <%= photo_link(current_user.avatar, :thumb, user_url(current_user)) %>
-                    </div>
-                <% end %>
-            </div>
         </div>
     </div>
 </div>
