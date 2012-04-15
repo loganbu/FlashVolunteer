@@ -17,9 +17,6 @@
 	<div class="row-fluid">
 		<div class="span12">
 			<span><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></span>
-			<% if signUpButton %>
-				<span style="float:right"><%= button_to("sign up", register_event_url(event), :method=> :post, :class => "btn btn-primary block")  %></span>
-			<% end %>
 		</div>
 	</div>
 	<% if description != :none %>
