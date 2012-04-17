@@ -65,11 +65,13 @@ Flashvolunteer::Application.routes.draw do
     resources :events do
         member do
             resource :register, :only => [:create, :destroy], :controller => "events/register", :as => "register_event"
+            resource :checkin, :only => [:show, :create], :controller => "events/checkin", :as => "checkin_event"
             get :export
         end
     end
     match "events/in/:neighborhood" => "events#in", :as => 'events_neighborhood', :via => :get
     match "demo" => "home#demo"
+    match "events/:id/checkin/confirm", :to => "events/checkin#confirm", :as => "confirm_event", :via => :get
 
     match "privacy" => "home#privacy"
     match "tou" => "home#tou"
