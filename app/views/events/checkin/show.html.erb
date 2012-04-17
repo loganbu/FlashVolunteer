@@ -1,1 +1,36 @@
-hi
+<div class="row-fluid">
+    <div class="span12">
+        <h1><%= @event.name %></h1>
+        <p>
+            <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
+            <%= @event.street %>, <%= link_to(@event.neighborhood.name, (events_url.concat("/in/").concat(@event.neighborhood.name))) %><br/>
+            <%= render(:partial => 'events/links', :locals => { :event => @event }) %>
+        </p>
+        <form action="<%= confirm_event_url(@event) %>" method="get">
+            <div class="row-fluid">
+                <div class="span1">
+                    <label for="name">name</label>
+                </div>
+                <div class="span8">
+                    <input type="text" class="full" />
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span1">
+                    <label for="email">email</label>
+                </div>
+                <div class="span8">
+                    <input type="text" class="full" />
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span1">
+                    &nbsp;
+                </div>
+                <div class="span8">
+                    <input type="submit" class="btn btn-primary pull-right" value="check in" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
