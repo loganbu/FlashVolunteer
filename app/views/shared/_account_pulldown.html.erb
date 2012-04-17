@@ -3,7 +3,7 @@
     <div class="active_account">
         <%= render(:partial => "users/shared/user", :locals => { :user => current_user}) %>
     </div>
-    <% if current_user.id != original_user_logged_in %>
+    <% if current_user.id != original_user_logged_in && original_user_logged_in != nil %>
         <div class="inactive_account">
             <%= render(:partial => "users/shared/user", :locals => { :user => User.find(original_user_logged_in) }) %>
         </div>
