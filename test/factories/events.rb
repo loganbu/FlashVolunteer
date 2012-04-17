@@ -17,7 +17,7 @@ end
 
 FactoryGirl.define do
     factory :event do
-        name            "Some default event name"
+        name            "Lorem ipsum dolor sit amet"
         self.end        { start + 1.hour }
         creator_id      { User.find_by_email("admin@localhost.com").id }
 

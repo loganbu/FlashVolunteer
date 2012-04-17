@@ -2,7 +2,6 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0' 
 
-gem 'sqlite3'
 
 gem 'will_paginate', '~> 3.0'
 gem 'devise'
@@ -42,6 +41,7 @@ gem 'date_validator'
 group :development do
     gem 'factory_girl_rails'
     gem 'rails-footnotes'
+    gem 'sqlite3'
 end
 
 group :production do
