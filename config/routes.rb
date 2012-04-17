@@ -69,6 +69,7 @@ Flashvolunteer::Application.routes.draw do
         end
     end
     match "events/in/:neighborhood" => "events#in", :as => 'events_neighborhood', :via => :get
+    match "demo" => "home#demo"
 
     match "privacy" => "home#privacy"
     match "tou" => "home#tou"
