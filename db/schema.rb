@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120401180623) do
+ActiveRecord::Schema.define(:version => 20120417035646) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(:version => 20120401180623) do
     t.string   "state",                :default => "WA"
     t.string   "website"
     t.text     "special_instructions"
+    t.string   "twitter_hashtags"
   end
 
   create_table "neighborhoods", :force => true do |t|
