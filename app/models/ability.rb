@@ -1,6 +1,5 @@
 class Ability
   include CanCan::Ability
-  include ApplicationHelper
   
   def initialize(user)
     user ||= User.new # guest user (not logged in)
