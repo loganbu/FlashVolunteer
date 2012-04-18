@@ -1,0 +1,6 @@
+<div class="row-fluid">
+    <div class="span12">
+        <h2>Thanks for signing in for <%= @event.name %></h2>
+        <%= render(:partial => 'events/share', :locals => { :event => @event }) %>
+    </div>
+</div>
