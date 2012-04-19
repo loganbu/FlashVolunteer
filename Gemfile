@@ -1,21 +1,20 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0' 
+gem 'rails', '3.2.0' 
 
-gem 'sqlite3'
 
 gem 'will_paginate', '~> 3.0'
 gem 'devise'
 gem 'cancan'
 gem 'geocoder' 
-gem 'jquery-rails', '>= 1.0.12'
+gem 'jquery-rails'
 gem 'tlsmail'
 gem 'jquery_datepicker'
 gem 'icalendar'
-gem 'nokogiri', '= 1.5.0'
+gem 'nokogiri'
 
 group :assets do
-	gem 'sass-rails'
+	gem 'sass-rails', '~> 3.2.3'
 	gem 'bootstrap-sass'
 	gem 'compass'
 end
@@ -42,6 +41,7 @@ gem 'date_validator'
 group :development do
     gem 'factory_girl_rails'
     gem 'rails-footnotes'
+    gem 'sqlite3'
 end
 
 group :production do
