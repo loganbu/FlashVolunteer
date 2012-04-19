@@ -2,46 +2,65 @@
 	description ||= :none
 	signUpButton ||= false
 	showLinks ||= false
+	type ||= :display
 %>
 <div class="event-summary">
-	<div class="event-title">
-		<%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
-	</div>
+	<div class="row-fluid">
+		<div class="<%= type == :display ? "span12" : "span10" %>">
+			<div class="event-title">
+				<%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
+			</div>
 
-	<div class="row-fluid">
-		<div class="span12">
-			<span><%= event.start.to_date.to_formatted_s(:rfc822) %>   |</span>
-			<span class="pull-center"><%= event.start.strftime('%l:%m%p') %> - <%= event.end.strftime('%l:%m%p') %></span>
-		</div>
-	</div>
-	<div class="row-fluid">
-		<div class="span12">
-			<span><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></span>
-			<% if signUpButton %>
-				<span style="float:right"><%= button_to("sign up", register_event_url(event), :method=> :post, :class => "btn btn-primary block")  %></span>
+			<div class="row-fluid">
+				<div class="span12">
+					<span><%= event.start.to_date.to_formatted_s(:rfc822) %>   |</span>
+					<span class="pull-center"><%= event.start.strftime('%l:%M%p') %> - <%= event.end.strftime('%l:%M%p') %></span>
+				</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span12">
+					<span><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></span>
+					<% if signUpButton %>
+						<span style="float:right"><%= button_to("sign up", register_event_url(event), :method=> :post, :class => "btn btn-primary block")  %></span>
+					<% end %>
+				</div>
+			</div>
+			<% if description != :none %>
+				<div class="row-fluid">
+					<div class="span12">
+						<%= 
+							length = 60;
+						    # Use this switch to support more sizes
+							case description
+								when :medium
+									length = 120
+								when :full
+									length = 0
+							end
+							truncate(event.description, :length=>length, :separator=>' ')
+						%>
+					</div>
+				</div>
+			<% end %>
+			<% if showLinks %>
+				<div class="row-fluid">
+					<div class="span12"><%= render(:partial => 'events/links', :locals => { :event => event }) %></div>
+				</div>
 			<% end %>
 		</div>
+		<% if type != :display %>
+		<div class="span2">
+			<%= 
+				case type
+					when :past
+						render(:partial => "events/actions_past", :locals => { :event => event })
+					when :upcoming
+						render(:partial => "events/actions_upcoming", :locals => { :event => event })
+					when :recommended
+						render(:partial => "events/actions_recommended", :locals => { :event => event })
+				end
+			%>
+		</div>
+		<% end %>
 	</div>
-	<% if description != :none %>
-		<div class="row-fluid">
-			<div class="span12">
-				<%= 
-					length = 60;
-				    # Use this switch to support more sizes
-					case description
-						when :medium
-							length = 120
-						when :full
-							length = 0
-					end
-					truncate(event.description, :length=>length, :separator=>' ')
-				%>
-			</div>
-		</div>
-	<% end %>
-	<% if showLinks %>
-		<div class="row-fluid">
-			<div class="span12"><%= render(:partial => 'events/links', :locals => { :event => event }) %></div>
-		</div>
-	<% end %>
 </div>
