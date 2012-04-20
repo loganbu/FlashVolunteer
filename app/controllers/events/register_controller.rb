@@ -12,8 +12,8 @@ class Events::RegisterController < ApplicationController
       send_to_quick_signup(event_url(@event))
       return
     end
-	
-    @event.participants << current_user
+
+    @event.participants << current_user if !@event.participants.include?(current_user)
     
     respond_to do |format|
       if true

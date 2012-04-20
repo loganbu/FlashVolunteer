@@ -40,6 +40,8 @@ Flashvolunteer::Application.routes.draw do
 
     resources :neighborhoods, :only => [:index]
 
+    # POST 
+    resources :participations, :only => [:update, :destroy]
     #
     # Index - Show all orgs?
     # Show - Timeline
