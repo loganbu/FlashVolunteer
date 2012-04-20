@@ -11,13 +11,13 @@
 <div class="clear">&nbsp;</div>
 <div id="content_sections">
     <div id="past_content">
-        <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :showLinks => true, :description => :medium }) || "You have not signed up for any events." %>
+        <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :showLinks => true, :description => :medium, :type => :past}) || "You have not signed up for any events." %>
     </div>
     <div class="hide" id="upcoming_content">
-        <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :showLinks => true, :description => :medium }) || "You have no upcoming events. Click #{link_to "recommended_events_url"} to see what we have to offer." %>
+        <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :showLinks => true, :description => :medium, :type => :upcoming }) || "You have no upcoming events. Click #{link_to "recommended_events_url"} to see what we have to offer." %>
     </div>
     <div class="hide" id="recommended_content">
-        <%= render(:partial => "events/event", :collection => @recommended, :as => :event, :locals => { :showLinks => true, :description => :medium }) || "We have no recommended events for you." %>
+        <%= render(:partial => "events/event", :collection => @recommended, :as => :event, :locals => { :showLinks => true, :description => :medium, :type => :recommended }) || "We have no recommended events for you." %>
     </div>
 </div>
 <% end %>
