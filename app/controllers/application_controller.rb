@@ -2,6 +2,11 @@ class ApplicationController < ActionController::Base
     include SessionsHelper
     include Mobylette::RespondToMobileRequests
 
+    mobylette_config do |config|
+      config[:fall_back] = false
+      config[:skip_xhr_requests] = true
+    end
+
     before_filter :remove_returns_to
     protect_from_forgery
     check_authorization
