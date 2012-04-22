@@ -10,6 +10,12 @@ class Ability
     can :export, [Event]
     can :switch, [User]
 
+    can :see_upcoming_events, [User] do |other|
+      raise other
+      privacy_settings = Privacy.find_by_user_id(user.id)
+      other == user || privacy_settings == nil || !privacy_settings.self?
+    end
+
     if user.role? :super_admin
       #super admins can do everything
       can :manage, :all

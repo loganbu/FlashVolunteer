@@ -49,9 +49,14 @@ $(function () {
         </ul>
     </div>
 </div>
+
+<% if can? :see_upcoming_events, @user %>
 <div class="row">
     <div class="span8 timeline">
     </div>
     <div class="span4 timeline-nav">
     </div>
 </div>
+<% else %>
+Sorry
+<% end %>
