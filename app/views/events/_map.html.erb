@@ -7,10 +7,17 @@
             <h2>events near</h2>
             <h1><%= link_to(@neighborhood.name, "/neighborhoods") %></h1>
         <% end %>
+<<<<<<< HEAD
         <% @events.each_with_index do |event, i| %>
         <% if (@events.count == 0) %>
             <p>There are no events in this location.  Try a different neighborhood.</p>
         <% else %>
+=======
+        <% if (@events.count == 0) %>
+            <p>There are no events in this location.  Try a different neighborhood.</p>
+        <% else %>
+            <% @events.each_with_index do |event, i| %>
+>>>>>>> wave2
             <div class="event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
                 <div class="pull-left marker"
                      style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp.png" : "/assets/mapStripAvail.png" %>) 0px <%= -i*30 %>px">&nbsp;
