@@ -29,7 +29,7 @@ class Event < ActiveRecord::Base
         includes(:participants).where("users.id = ?", user.id)
     }
     scope :not_attended_by, lambda { |user|
-        includes(:participants).where("(? NOT IN (SELECT participations.user_id FROM participations WHERE participations.event_id = events.id))", user.id)
+        includes(:participants).where("users.id != ?", user.id)
     }
     scope :created_by, lambda { |user|
         where(:creator_id => user.id)
