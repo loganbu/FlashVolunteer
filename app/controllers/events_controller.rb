@@ -20,7 +20,7 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.upcoming.paginate(:page => params[:page], :per_page=>5)
+    @events = Event.includes(:skills).upcoming.paginate(:page => params[:page], :per_page=>5)
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
     @zoom = 11
