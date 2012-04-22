@@ -18,15 +18,15 @@
     			button_pixels = 36
     			image_location = '/assets/badges_medium.png'
     			button_class_type = "medium_badge"
-    			selected_class_type = "selectable_option_med"
+    			selected_class_type = "skill_option_med"
     		when :large
     			button_pixels = 64
     			image_location = '/assets/badges_large.png'
     			button_class_type = "large_badge"
-    			selected_class_type = "selectable_option"
+    			selected_class_type = "skill_option"
     	end
     %>
-    <div class="<%=selected_class_type %> <%= "option_selected" if skills.include?(s) %>" id="skill_<%= s.id %>">
+    <div class="<%=selected_class_type %> <%= "skill_selected" if skills.include?(s) %>" id="skill_<%= s.id %>">
         <label onclick="toggleImage(<%= s.id %>)" for="<%= "#{entity}_skill_ids_#{i}"%>" title="<%= s.name %>">	
         	<span class="<%=button_class_type%>" style="background:url(<%=image_location%>) 0px <%= -button_pixels*s.offset %>px;">&nbsp;</span>
         </label>
@@ -35,6 +35,6 @@
 </div>
 <script type="text/javascript">
     function toggleImage(id) {
-        $('#skill_'+id).toggleClass('option_selected');
+        $('#skill_'+id).toggleClass('skill_selected');
     }
 </script>
