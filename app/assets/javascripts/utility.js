@@ -21,12 +21,20 @@ function closePopup() {
 }
 
 function addContentHandlers() {
-    $("#link_list li a").click(function () {
+    var showContent = function(id) {
         $("#content_sections>div").each(function() { $(this).hide(); });
-        $($(this).attr("href")+"_content").show();
+        $(id+"_content").show();
         $("#link_list li a").each(function () { $(this).removeClass('link_active') } );
-        $(this).addClass('link_active');
+        $(id+"_link").addClass('link_active');
+    };
+
+    $("#link_list li a").click(function () {
+        showContent($(this).attr('href'));
     });
+
+    if (location.hash != "") {
+        showContent(location.hash);
+    }
 }
 
 function setDefaultText(element, defaultText) {
