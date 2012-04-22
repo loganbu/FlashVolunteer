@@ -2,10 +2,7 @@
     container to be min-height of 100%.  Then, then footer is below the page, so to
     bring it back up, margin it to -130px
 */
-#nonfooter {
-    min-height: 100%;
-    color: $content_text_color;
-}
+
 html, body {
     height: 100%;
     background-color: $background_color;
@@ -20,8 +17,11 @@ h2{
  **************/
 
 .container{
-    width: 240px;
-}
+    width: 260px;
+    .container-padding{
+        padding: 0px 5px;
+    }
+ }
 
 .font_normal{
     font-size: 100%;
@@ -68,7 +68,7 @@ h2{
  **************/
 footer {
     height: 70px;
-    margin: 16px auto 0 auto;
+    margin: -70px auto 0 auto;
     background-color: $header_background;
     color: $header_text_color;
     clear: both;
@@ -79,7 +79,7 @@ footer {
 }
 
 #clearfooter {
-    height: 0px;
+    height: 70px;
     margin-top: 0px;
     clear: both;
 }

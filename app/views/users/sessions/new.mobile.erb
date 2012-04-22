@@ -1,9 +1,11 @@
 <% content_for :main_action do %>
 sign in
 <% end %>
+
 <% content_for :link_action do 
 link_to("sign up", new_user_registration_url)
 end %>
+
 <%= content_for :form_content do %>
     <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html=>{:name=>"signinform", :id =>"sign"}) do |f| %>
     <h4>use your Flash account: </h4>
@@ -46,8 +48,8 @@ end %>
     </div>
     <div class="row">&nbsp;</div>
     <div class="row-fluid">
-        <button type="submit" href="#" class="btn pull-right">sign in with 3rd party</button>
-        <button type="" href="#" class="btn btn-primary pull-right">sign in</button>   
+        <button type="submit" href="#" class="btn btn-primary pull-right">sign in </button>
+        <button type="" href="#" class="btn  pull-right">sign in with 3rd party</button>   
     </div>
     <% end %>
 <% end %>
