@@ -61,7 +61,7 @@ html, body {
     height: 64px;
     margin: 0px;
 }
-.skill_option {
+.selectable_option {
     float: left;
     padding: 10px;
     margin: 0px 10px 10px 0;
@@ -70,14 +70,14 @@ html, body {
        pixeled border to non-selected items to ensure it clears left */
     border: 1px solid white;
     &:hover {
-        @extend .skill_selected;
+        @extend .option_selected;
     }
     &:active {
-        @extend .skill_selected;
+        @extend .option_selected;
         background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
     }
 }
-.skill_option_med {
+.selectable_option_med {
     float: left;
     padding: 5px;
     margin: 0px 5px 5px 0;
@@ -86,13 +86,13 @@ html, body {
        pixeled border to non-selected items to ensure it clears left */
     border: 1px solid white;
     &:hover {
-        @extend .skill_selected;
+        @extend .option_selected;
     }
     &:active {
-        @extend .skill_selected;
+        @extend .option_selected;
         background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
     }
-}.skill_selected {
+}.option_selected {
     border: 1px solid $lightBlue !important;
     background: none repeat scroll 0 0 $babyBlue;
 }
