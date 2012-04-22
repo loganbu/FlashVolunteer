@@ -5,8 +5,8 @@
         <h2>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></h2>
     <% end %>
 </div>
-<% if (@events.each_with_index == nil) %>
-    <p>There are no events in this location.  Try a different neighborhood. %></p>
+<% if (@events.count == 0) %>
+    <p>There are no events in this location.  Try a different neighborhood.</p>
 <% else %>
     <% @events.each_with_index do |event, i| %>
     <div class="row-fluid event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
