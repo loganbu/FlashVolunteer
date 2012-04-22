@@ -17,8 +17,12 @@
             <%= render :partial => "events/event", :locals => { :event => event, :description => true, :showLinks => true } %>
         </div>
     </div>
+    <div class="details">
+        <%= render :partial => "events/event", :locals => { :event => event, :description => true, :showLinks => true } %>
+    </div>
     <% end %>
 <% end %>
+</div>
 <div id="page">
     <%= will_paginate @events, :page_links => false %>
 </div>
