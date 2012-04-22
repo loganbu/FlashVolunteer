@@ -21,10 +21,20 @@ h2{
 
 .container{
     width: 240px;
+    padding: 0px;
+}
+
+.container-padding{
+    padding: 0 5px;
 }
 
 .font_normal{
     font-size: 100%;
+}
+
+.navbar-inner {
+    padding-left:  0px;
+    padding-right: 0px;
 }
 
 .navbar .nav > li > a {
@@ -44,6 +54,7 @@ h2{
     height: 100%;
     .big {
         min-height: 300px;
+	max-width: 300px;
     }
     .small {
         min-height: 100px;
@@ -67,7 +78,7 @@ h2{
  Footer
  **************/
 footer {
-    height: 70px;
+    height: 100px;
     margin: 16px auto 0 auto;
     background-color: $header_background;
     color: $header_text_color;
@@ -75,9 +86,12 @@ footer {
 }
 
 .followus {
-    margin-left: 0px;
+    font-weight: bold;
+    font-style: italic;
 }
-
+.copy {
+    text-align: right;
+}
 #clearfooter {
     height: 0px;
     margin-top: 0px;
