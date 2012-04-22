@@ -4,9 +4,9 @@ class Users::EventsController < ApplicationController
   def show
     @user = User.find(params[:id])
 
-    @past = Event.attended_by(@user).past.paginate(:page => params[:page], :per_page => 6)
-    @upcoming =  Event.attended_by(@user).upcoming.paginate(:page => params[:page], :per_page => 6)
-    @recommended = Event.not_attended_by(@user).upcoming.paginate(:page => params[:page], :per_page=>6)
+    @past = Event.includes(:skills).attended_by(@user).past.paginate(:page => params[:page], :per_page => 5)
+    @upcoming =  Event.includes(:skills).attended_by(@user).upcoming.paginate(:page => params[:page], :per_page => 5)
+    @recommended = Event.includes(:skills).not_attended_by(@user).upcoming.paginate(:page => params[:page], :per_page=>5)
   end
 
   def update
