@@ -5,10 +5,6 @@
 	type ||= :display
 %>
 <div class="event-summary">
-	<div class="event-title">
-		<%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
-	</div>
-
 	<div class="row-fluid">
 		<div class="<%= type == :display ? "span12" : "span10" %>">
 			<div class="event-title">
@@ -53,31 +49,4 @@
 			<% end %>
 		</div>
 	</div>
-	<div class="row-fluid">
-		<div class="span12">
-			<span><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></span>
-		</div>
-	</div>
-	<% if description != :none %>
-		<div class="row-fluid">
-			<div class="span12">
-				<%= 
-					length = 60;
-				    # Use this switch to support more sizes
-					case description
-						when :medium
-							length = 120
-						when :full
-							length = 0
-					end
-					truncate(event.description, :length=>length, :separator=>' ')
-				%>
-			</div>
-		</div>
-	<% end %>
-	<% if showLinks %>
-		<div class="row-fluid">
-			<div class="span12"><%= render(:partial => 'events/links', :locals => { :event => event }) %></div>
-		</div>
-	<% end %>
 </div>
