@@ -4,7 +4,7 @@
 	showLinks ||= false
 	type ||= :display
 	
-	participation = event.participations.find_by_user_id(current_user.id)
+	participation = current_user ? event.participations.find_by_user_id(current_user.id) : nil
 	hours = participation != nil ? participation.hours_volunteered != nil ? participation.hours_volunteered : 0 : 0
 %>
 <div class="event-summary">
