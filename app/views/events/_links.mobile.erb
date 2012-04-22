@@ -1,5 +1,5 @@
 <% can_contact_organizer = can? :contact, Event %>
 <% if !event.attending?(current_user) %>
-    <%= link_to("sign up", register_event_url(event), :method => :post) %> |
+    <%= link_to("", register_event_url(event), :method => :post) %>  
 <% end %>
 <%= mail_to(event.user.email, "contact organizer", :subject => "Questions regarding " + event.name, :encode=>"hex")%>

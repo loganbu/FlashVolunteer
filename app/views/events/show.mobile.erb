@@ -15,7 +15,7 @@
         </div>
     </div>
 </div>
-<div class="row-fluid" style="padding-bottom: 20px">   
+<div class="row-fluid" style="padding-bottom: 10px">   
     <% if (@event.user != current_user) %>
        <% if (@event.attending?(current_user)) %>
            <%= link_to("already signed up", "#", :class => "btn btn-inverse block disabled")%>
@@ -63,7 +63,7 @@
             There are no volunteers signed up yet
         <% else %>
             There are no volunteers signed up yet, but you can be the first!
-            <%= link_to("sign up now!", register_event_url(@event), :method => :post) %>
+            <%= link_to("", register_event_url(@event), :method => :post) %>
         <% end %>
     <% end %>
 </div>
