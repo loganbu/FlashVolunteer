@@ -9,6 +9,7 @@ class Events::CheckinController < ApplicationController
     @checkin.save
     
     respond_to do |format|
+      format.mobile { redirect_to(confirm_event_url(@event)) } 
       format.html { redirect_to(confirm_event_url(@event)) } 
       format.xml  { render :xml => @event, :status => :created, :location => @event }
     end
