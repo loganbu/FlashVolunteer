@@ -31,6 +31,10 @@ h2{
   padding: 3px 10px 3px 0px;
 }
 
+label {
+  margin-bottom: 3px;
+}
+
 /**************
  Badges
  **************/
@@ -79,7 +83,7 @@ footer {
 }
 
 #clearfooter {
-    height: 71  px;
+    height: 71px;
     margin-top: 0px;
     clear: both;
 }

@@ -5,22 +5,20 @@
         <h2>events near <%= link_to(@neighborhood.name, "/neighborhoods") %></h2>
     <% end %>
 </div>
-<div>
-    <% if (@events.count == 0) %>
-        <p>There are no events in this location.  Try a different neighborhood.</p>
-    <% else %>
-        <% @events.each_with_index do |event, i| %>
-        <div class="row-fluid event_with_marker event" onclick="window.location='<%= event_url(event) %>';">
-            <div class="pull-left marker"
-                 style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp_mobile.png" : "/assets/mapStripAvail_mobile.png" %>) 0px <%= -i*16 %>px">&nbsp;
-            </div>
-            <div class="details">
-                <%= render :partial => "events/event", :locals => { :event => event, :description => true, :showLinks => true } %>
-            </div>
+<% if (@events.count == 0) %>
+    <p>There are no events in this location.  Try a different neighborhood.</p>
+<% else %>
+    <% @events.each_with_index do |event, i| %>
+    <div class="row-fluid event_with_marker event" onclick="window.location='<%= event_url(event) %>';">
+        <div class="pull-left marker"
+             style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp_mobile.png" : "/assets/mapStripAvail_mobile.png" %>) 0px <%= -i*16 %>px">&nbsp;
         </div>
-        <% end %>
+        <div class="details">
+            <%= render :partial => "events/event", :locals => { :event => event, :description => true, :showLinks => true } %>
+        </div>
+    </div>
     <% end %>
-</div>
+<% end %>
 <div id="page">
     <%= will_paginate @events, :page_links => false %>
 </div>
