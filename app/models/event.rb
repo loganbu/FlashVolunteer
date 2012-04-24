@@ -34,6 +34,9 @@ class Event < ActiveRecord::Base
     scope :created_by, lambda { |user|
         where(:creator_id => user.id)
     }
+    scope :in_neighborhood, lambda { |neighborhood|
+        where("neighborhood_id = ?", neighborhood)
+    }
 
     def geocode_address
        return "#{self.street} #{self.city}, #{self.zip} #{self.state}"

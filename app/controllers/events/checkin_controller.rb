@@ -5,10 +5,11 @@ class Events::CheckinController < ApplicationController
   # POST /events/1/checkin
   def create
     @event = Event.find(params[:id])
-      
+    @checkin = Checkin.new(params[:checkin])
+    @checkin.save
     
     respond_to do |format|
-      format.html { redirect_to(confirm_event_url, @event) } 
+      format.html { redirect_to(confirm_event_url(@event)) } 
       format.xml  { render :xml => @event, :status => :created, :location => @event }
     end
   end
@@ -16,10 +17,11 @@ class Events::CheckinController < ApplicationController
   # GET /events/1/checkin
   def show
     @event = Event.find(params[:id])
+    @checkin = Checkin.new
     
     respond_to do |format|
       format.html
-      format.xml  { head :ok }
+      format.xml  { render :xml => Checkin.all }
     end
   end
 

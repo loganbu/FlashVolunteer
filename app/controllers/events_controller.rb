@@ -20,7 +20,11 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
+    @neighborhood = Neighborhood.find_by_id(preferred_neighborhood)
     @events = Event.upcoming.paginate(:page => params[:page], :per_page=>5)
+    if (@neighborhood != nil)
+      @events = @events.in_neighborhood(preferred_neighborhood)
+    end
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
     @zoom = 11
@@ -37,6 +41,7 @@ class EventsController < ApplicationController
     @neighborhood = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp(params[:neighborhood])==0 }
 
     if !@neighborhood
+      cookies['preferred_neighborhood'] = nil
       redirect_to events_url
       return
     else
