@@ -1,10 +1,12 @@
+<%
+    size ||= :large
+    imgSize ||= "32x32"
+%>
+
 <div class="share">
     <ul class="unstyled inline">
         <% 
             #Support multiple sizes (16,20,32), default is large
-            size ||= :large
-
-            imgSize = "32x32"
             case size
             when :small
                 imgSize = "16x16"

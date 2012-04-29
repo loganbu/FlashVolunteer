@@ -1,8 +1,8 @@
 <div class="row-fluid">
-    <%= render('event_header') %>
+    <%= render( :partial => 'event_header', :locals => {:pageType => :mobile}) %>
 </div>
 <div class="row-fluid" style="padding-bottom: 20px">   
-    <%= render ('event_detail_options') %>
+    <%= render( :partial => 'event_detail_options') %>
 </div>
 
 <div class="row-fluid">
@@ -11,15 +11,15 @@
 </div>
 
 <div class="row-fluid">
-    <%= render ('event_special_instructions') %>
+    <%= render( :partial => 'event_special_instructions') %>
 </div>
 
 <div class="row-fluid">
-    <%= render ('event_organizers') %>
+    <%= render( :partial => 'event_organizers') %>
 </div>
 
-<div class="row-fluid" style="padding-bottom: 20px">
-    <%= render ('event_volunteer') %>
+<div class="row-fluid">
+    <%= render( :partial => 'event_volunteer') %>
 </div>
 
 <script type="text/javascript">
