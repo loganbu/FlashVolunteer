@@ -7,20 +7,20 @@
 <h3>board of directors</h3>
 <div class="row">
     <% [
-            Hash["name" => "holly wyrwich", "subtext" => "president"],
-            Hash["name" => "jennifer atkinson", "subtext" => "director"],
-            Hash["name" => "kenny lee", "subtext" => "director"],
-            Hash["name" => "hillary evans", "subtext" => "vice president"],
-            Hash["name" => "logan buesching", "subtext" => "director"],
-            Hash["name" => "brian nash", "subtext" => "director"],
-            Hash["name" => "adam hitch", "subtext" => "treasurer"],
-            Hash["name" => "melissa collett", "subtext" => "director"],
-            Hash["name" => "deidra ross", "subtext" => "director"],
-            Hash["name" => "janis lee", "subtext" => "secretary"],
-            Hash["name" => "joy wilke graf", "subtext" => "director"],
-            Hash["name" => "brad wilke", "subtext" => "ex officio"]
+            Hash["name" => "holly wyrwich", "subtext" => "president", "image" => "board/holly.jpg"],
+            Hash["name" => "jennifer atkinson", "subtext" => "director", "image" => "board/jennifer.jpg"],
+            Hash["name" => "kenny lee", "subtext" => "director", "image" => "default-profile-pic-small.png"],
+            Hash["name" => "hillary evans", "subtext" => "vice president", "image" => "board/hillary.jpg"],
+            Hash["name" => "logan buesching", "subtext" => "director", "image" => "default-profile-pic-small.png"],
+            Hash["name" => "brian nash", "subtext" => "director", "image" => "board/brian.png"],
+            Hash["name" => "adam hitch", "subtext" => "treasurer", "image" => "default-profile-pic-small.png"],
+            Hash["name" => "melissa collett", "subtext" => "director", "image" => "board/melissa.jpg"],
+            Hash["name" => "deidra ross", "subtext" => "director", "image" => "default-profile-pic-small.png"],
+            Hash["name" => "janis lee", "subtext" => "secretary", "image" => "board/janis.jpg"],
+            Hash["name" => "joy wilke graf", "subtext" => "director", "image" => "default-profile-pic-small.png"],
+            Hash["name" => "brad wilke", "subtext" => "ex officio", "image" => "board/Brad.png"],
        ].each_with_index do |person, i| %>
-     <%= render(:partial => "users/shared/user_span4", :locals => { :name => person["name"], :subtext => person["subtext"] }) %>
+     <%= render(:partial => "users/shared/user_span4", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>
      <% if(i%3 == 2) %>
         <div class="row">&nbsp;</div>
      <% end %>
@@ -43,17 +43,15 @@
 <div class="row">&nbsp;</div>
 <div class="row">
     <% [
-            Hash["name" => "brad wilke", "subtext" => "executive director"],
-            Hash["name" => "holly wyrwich", "subtext" => "marketing director"],
-            Hash["name" => "logan buesching", "subtext" => "development director"],
-            Hash["name" => "melissa collett", "subtext" => "engagement director"],
-            Hash["name" => "evita almassi", "subtext" => "social media director"],
-            Hash["name" => "janis lee", "subtext" => "development directory"],
+            Hash["name" => "brad wilke", "subtext" => "executive director", "image" => "board/Brad.png"],
+            Hash["name" => "holly wyrwich", "subtext" => "marketing director", "image" => "board/holly.jpg"],
+            Hash["name" => "logan buesching", "subtext" => "development director", "image" => "default-profile-pic-small.png"],
+            Hash["name" => "melissa collett", "subtext" => "engagement director", "image" => "board/melissa.jpg"],
+            Hash["name" => "janis lee", "subtext" => "development directory", "image" => "board/janis.jpg"],
             nil,
-            Hash["name" => "jennifer atkinson", "subtext" => "grant director"],
        ].each_with_index do |person, i| %>
        <% if (person) %>
-         <%= render(:partial => "users/shared/user_span4", :locals => { :name => person["name"], :subtext => person["subtext"] }) %>
+         <%= render(:partial => "users/shared/user_span4", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>
        <% else %>
              <div class="span4">&nbsp;</div>
        <% end %>
