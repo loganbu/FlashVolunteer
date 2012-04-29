@@ -20,7 +20,7 @@ h2{
  **************/
 
 .container{
-    width: 240px;
+    width: 260px;
 }
 
 .font_normal{
@@ -29,6 +29,10 @@ h2{
 
 .navbar .nav > li > a {
   padding: 3px 10px 3px 0px;
+}
+
+label {
+  margin-bottom: 3px;
 }
 
 /**************
@@ -67,8 +71,8 @@ h2{
  Footer
  **************/
 footer {
-    height: 70px;
-    margin: -70px auto 0 auto;
+    height: 71px;
+    margin: -71px auto 0 auto;
     background-color: $header_background;
     color: $header_text_color;
     clear: both;
@@ -79,7 +83,7 @@ footer {
 }
 
 #clearfooter {
-    height: 70px;
+    height: 71px;
     margin-top: 0px;
     clear: both;
 }

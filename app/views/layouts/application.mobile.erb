@@ -9,17 +9,17 @@
     <%= csrf_meta_tag %>
 </head>
 <body>
-  <div>
-      <div class="header">
-        <%= render"shared/header" %>
-      </div>
-      <div class="container">
-        <%= yield %>
-      </div>
-      <div id="clearfooter">&nbsp;</div>
+  <div id="nonfooter">
+    <div class="header">
+      <%= render"shared/header" %>
     </div>
-    <footer>
-        <%= render"shared/footer" %>
-    </footer>
+    <div class="container">
+      <%= yield %>
+    </div>
+    <div id="clearfooter">&nbsp;</div>
+  </div>
+  <footer>
+      <%= render"shared/footer" %>
+  </footer>
 </body>
 </html>
