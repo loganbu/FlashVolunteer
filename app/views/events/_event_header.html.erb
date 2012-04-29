@@ -1,0 +1,14 @@
+<h1><%= @event.name %></h1>
+<p>
+    <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
+    <%= @event.street %>, <%= link_to(@event.neighborhood.name, (events_url.concat("/in/").concat(@event.neighborhood.name))) %><br/>
+    <%= render(:partial => 'links', :locals => { :event => @event }) %>
+</p>
+<div class="row">
+    <div class="span4">
+        <%= render(:partial => 'share', :locals => { :event => @event }) %>
+    </div>
+    <div class="span4">
+        <div class="pull-right"><%= link_to("add to my calendar", export_event_url(@event)) %></div>
+    </div>
+</div>

@@ -1,33 +1,5 @@
 <div class="container container-padding">
-    <div class="row">
-        <div class="span4">
-            <div class="logo">
-                <a href="/"><%= image_tag 'logo-smaller.png' %></a>
-            </div>
-        </div>
-        <div class="span8">
-            <div id="header_personal_text" class="pull-right">
-                <% if !user_signed_in? %>
-                    <%= link_to "sign in", new_user_session_path %> or <%= link_to "create an account", new_user_registration_path %>
-                <% else %>
-                    <p class="pull-left">
-                    hey there, <%= current_user.name %><br/>
-                    <%= link_to "settings", edit_user_url(current_user) %> | <%= link_to "sign out", destroy_user_session_path, :method=>:delete %>
-                    </p>
-                    <div class="pull-right" id="user_greeting_picture">
-                        <%= photo_link(current_user.avatar, :thumb, user_url(current_user)) %>
-                        <%= if current_user.id != original_user_logged_in || current_user.admin_of.count > 0
-                                link_to("#", :id=>"account_pulldown_link") do  
-                                    "^"
-                                end
-                            end
-                            %>
-                    </div>
-                    <%= render(:partial => "shared/account_pulldown") if (current_user.id != original_user_logged_in || current_user.admin_of.count > 0) %>
-                <% end %>
-            </div>
-        </div>
-    </div>
+    <%= render('shared/account_info') %>
 </div>
 <div class="navbar">
     <div class="navbar-inner">
@@ -36,7 +8,7 @@
                 <ul class="nav">
                     <li><%= link_to("HOME", "/") %></li>
                     <li><%= link_to("EVENTS", events_path) %></li>
-                    <li><%= link_to("PEOPLE", people_path) %></li>
+                    <!--<li><%= link_to("PEOPLE", people_path) %></li>-->
                     <li><%= link_to("NEIGHBORHOODS", neighborhoods_path) %></li>
                     <li><%= link_to("ABOUT", about_path) %></li>
                     <li><%= link_to("HELP", help_path,) %></li>
