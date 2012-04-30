@@ -20,7 +20,8 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    @events = Event.upcoming.paginate(:page => params[:page], :per_page=>5)
+    per_page = params[:per_page] || 5
+    @events = Event.upcoming.paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
     @zoom = 11
@@ -42,7 +43,7 @@ class EventsController < ApplicationController
     else
       cookies['preferred_neighborhood'] = @neighborhood.id
       @zoom = 15
-      @events = Event.where(:neighborhood_id => @neighborhood.id).upcoming.paginate(:page => params[:page], :per_page=>6)
+      @events = Event.where(:neighborhood_id => @neighborhood.id).upcoming.paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
       @mapCenter = @neighborhood
     end
 
@@ -155,7 +156,7 @@ class EventsController < ApplicationController
   private
   
     def see_splash
-        if !cookies['splash']
+        if !cookies['splash'] && request.format == Mime::HTML
             cookies['splash'] = true
             redirect_to neighborhoods_url
         end
