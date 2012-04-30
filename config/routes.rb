@@ -10,6 +10,7 @@ Flashvolunteer::Application.routes.draw do
 
     get "users/search", :to => "users#search"
     get "neighborhoods/search", :to => "neighborhoods#search"
+    get "orgs/search", :to => "orgs#search"
     # 
     # Index - Show all users?
     # Show - Timeline
