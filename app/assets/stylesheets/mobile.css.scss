@@ -175,8 +175,12 @@ h3 {
     @include border-radius(2px);
 }
 
+h2 {
+    padding-bottom: 2px;
+}
+
 h1 {
     padding: 2px 0px 2px 0px;
     margin-bottom: 4px;
-    font-size: 120%;
+    font-size: 200%;
 }

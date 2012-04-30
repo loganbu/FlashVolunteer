@@ -3,7 +3,15 @@
 	signUpButton ||= false
 	showLinks ||= false
 	type ||= :display
+	isMobile ||= false
+	badgeSize ||= "small"
 %>
+
+<%if (isMobile== true)
+	badgeSize = "exsmall"
+%>
+<%end%>
+
 <div class="event-summary">
 	<div class="row-fluid">
 		<div class="<%= type == :display ? "span12" : "span10" %>">
@@ -19,7 +27,7 @@
 			</div>
 			<div class="row-fluid">
 				<div class="span12">
-					<span><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></span>
+					<span><%= render :partial => "skills/strip", :locals => { :entity => event, :size => badgeSize } %></span>
 					<% if signUpButton %>
 						<span style="float:right"><%= button_to("sign up", register_event_url(event), :method=> :post, :class => "btn btn-primary block")  %></span>
 					<% end %>
