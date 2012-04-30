@@ -8,6 +8,7 @@ Flashvolunteer::Application.routes.draw do
         post "users/sign_in/:provider", :to => "users/sessions#mobile"
     end
 
+    get "users/search", :to => "users#search"
     # 
     # Index - Show all users?
     # Show - Timeline
