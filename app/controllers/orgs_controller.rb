@@ -17,8 +17,8 @@ class OrgsController < ApplicationController
   def show
     @org = Org.find(params[:id])
 
-    @past = Event.created_by(@org).past.paginate(:page => params[:page], :per_page => 6)
-    @upcoming =  Event.created_by(@org).upcoming.paginate(:page => params[:page], :per_page => 6)
+    @past = Event.created_by(@org).past.paginate(:page => params[:page], :per_page => params[:per_page] || 5)
+    @upcoming =  Event.created_by(@org).upcoming.paginate(:page => params[:page], :per_page => params[:per_page] || 5)
 
 
     respond_to do |format|
@@ -86,4 +86,26 @@ class OrgsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def search
+    per_page = params[:per_page] || 5
+
+    email_array = params[:email] && params[:email].split(',') || []
+    categories_array = params[:categories] && params[:categories].split(',') || []
+    # This probably sucks at scale, need to test
+    name_array = params[:name] && params[:name].split(',').collect{ |x| "%" + x + "%"} || []
+
+    # begin with an an association that's always true
+    @orgs = Org.where("1=1").paginate(:page=>params[:page], :per_page => per_page)
+    
+    @orgs = email_array.length > 0 ? @orgs.where{email.eq_any email_array} : @orgs
+    @orgs = categories_array.length > 0 ? @orgs.joins(:skills).where{skills.id.eq_any categories_array} : @orgs
+    @orgs = name_array.length > 0 ? @orgs.where{name.matches_any name_array} : @orgs
+
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @orgs }
+    end
+  end
+
 end

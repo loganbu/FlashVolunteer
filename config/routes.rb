@@ -5,8 +5,13 @@ Flashvolunteer::Application.routes.draw do
         root :to => "users#index"
         put "confirm_account", :to => "users/confirmations#confirm_account"
         get "users/sign_up/quick", :to => "users/registrations#quick", :as => "quick_new_user"
+        post "users/sign_in/:provider", :to => "users/sessions#mobile"
     end
 
+    get "users/search", :to => "users#search"
+    get "neighborhoods/search", :to => "neighborhoods#search"
+    get "orgs/search", :to => "orgs#search"
+    get "events/search", :to => "events#search"
     # 
     # Index - Show all users?
     # Show - Timeline

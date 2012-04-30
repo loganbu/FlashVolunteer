@@ -9,6 +9,7 @@ class Ability
     can :in, [Event]
     can :export, [Event]
     can :switch, [User]
+    can :search, [Event, User, Neighborhood]
 
     if user.role? :super_admin
       #super admins can do everything

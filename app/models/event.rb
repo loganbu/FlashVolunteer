@@ -19,11 +19,13 @@ class Event < ActiveRecord::Base
 
     after_validation :geocode
 
-    scope :upcoming, lambda {
-        where("start >= ?", Date.today)
+    scope :upcoming, lambda { |days=false|
+        # Over 9000 days is probably long enough in the future. Otherwise, this app rocks, and I'll will "won't-fix" this bug.
+        where("start >= ? AND start <= ?", Date.today, Date.today + (days || 9001).days)
     }
-    scope :past, lambda {
-        where("start < ?", Date.today)
+    scope :past, lambda { |days=false|
+        # Over 9000 days is probably long enough in the past. Otherwise, this app rocks, and I'll will "won't-fix" this bug.
+        where("start < ? AND start >= ?", Date.today, Date.today - (days || 9001).days)
     }
     scope :attended_by, lambda { |user|
         includes(:participants).where("users.id = ?", user.id)
@@ -33,6 +35,9 @@ class Event < ActiveRecord::Base
     }
     scope :created_by, lambda { |user|
         where(:creator_id => user.id)
+    }
+    scope :hosted_by_org_user, lambda { |user_list|
+        where{creator_id.eq_any Org.joins(:admins).where{admins_users.id.eq_any user_list}.all}
     }
 
     def geocode_address

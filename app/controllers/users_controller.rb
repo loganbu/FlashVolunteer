@@ -48,7 +48,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @event }
+      format.xml  { render :xml => @user }
     end
   end
 
@@ -88,6 +88,24 @@ class UsersController < ApplicationController
 
   def team
     @user = User.find(params[:id])
+  end
+
+  def search
+    per_page = params[:per_page] || 5
+
+    email_array = params[:email] && params[:email].split(',') || []
+    categories_array = params[:categories] && params[:categories].split(',') || []
+
+    # begin with an an association that's always true
+    @users = User.where("1=1").paginate(:page=>params[:page], :per_page => per_page)
+    
+    @users = email_array.length > 0 ? @users.where{email.eq_any email_array} : @users
+    @users = categories_array.length > 0 ? @users.joins(:skills).where{skills.id.eq_any categories_array} : @users
+    
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @users }
+    end
   end
 
 end

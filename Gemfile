@@ -12,6 +12,7 @@ gem 'tlsmail'
 gem 'jquery_datepicker'
 gem 'icalendar'
 gem 'nokogiri'
+gem "squeel"
 
 group :assets do
 	gem 'sass-rails', '~> 3.2.3'
