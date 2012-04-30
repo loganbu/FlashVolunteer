@@ -1,33 +1,9 @@
 <div class="row">
     <div class="span8">
-        <h1><%= @event.name %></h1>
-        <p>
-            <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
-            <%= @event.street %>, <%= link_to(@event.neighborhood.name, (events_url.concat("/in/").concat(@event.neighborhood.name))) %><br/>
-            <%= render(:partial => 'links', :locals => { :event => @event }) %>
-        </p>
-        <div class="row">
-            <div class="span4">
-                <%= render(:partial => 'share', :locals => { :event => @event }) %>
-            </div>
-            <div class="span4">
-                <div class="pull-right"><%= link_to("add to my calendar", export_event_url(@event)) %></div>
-            </div>
-        </div>
+        <%= render(:partial => 'event_header') %>
     </div>
     <div class="span4">           
-        <% if (@event.user != current_user) %>
-           <% if (@event.attending?(current_user)) %>
-               <%= link_to("already signed up", "#", :class => "btn btn-inverse block disabled")%>
-           <% else %>
-               <%= link_to("sign up", register_event_url, :method=> :post, :class => "btn btn-primary block")%>
-           <% end %>
-       <% end %>
-       <% if can? :edit, @event %>
-           <%= link_to("edit event", edit_event_url, :class => "btn btn-primary block")%>
-           <div class="row">&nbsp;</div>
-           <%= link_to("delete event", event_url(@event), :method=>"delete", :class => "btn btn-primary block")%>
-       <% end %>
+        <%= render ('event_detail_options') %>
     </div>
 </div>
 <div class="row">
@@ -45,39 +21,16 @@
         </div>
     </div>
     <div class="span4">
-        <h3>event organizers (1)</h3>
-        <p>
-            <%= mail_to @event.user.email, @event.user.name,  :encode => "hex" %>
-        </p>
+        <%= render ('event_organizers') %>
     </div>
 </div>
 <div class="row">&nbsp;</div>
 <div class="row">
     <div class="span8">
-        <% if @event.special_instructions? %>
-            <h3>special instructions</h3>
-            <p>
-                <%= @event.special_instructions %>
-            </p>
-        <% end %>
-        &nbsp;
+        <%= render ('event_special_instructions') %>
     </div>
     <div class="span4">
-        <h3>event volunteers (<%= @event.participants.count %>)</h3>
-        <% if @event.participants.count > 0 %>
-            <ul class="unstyled">
-            <% @event.participants.each do |p| %>
-                <li><%= p.name %></li>
-            <% end %>
-            </ul>
-        <% else %>
-            <% if @event.user == current_user %>
-                there are no volunteers signed up yet
-            <% else %>
-                there are no volunteers signed up yet, but you can be the first!
-                <%= link_to("sign up now!", register_event_url(@event), :method => :post) %>
-            <% end %>
-        <% end %>
+        <%= render ('event_volunteer') %>
     </div>
 </div>
 

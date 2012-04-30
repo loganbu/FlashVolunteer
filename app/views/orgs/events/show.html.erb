@@ -10,10 +10,10 @@
 <div class="clear">&nbsp;</div>
 <div id="content_sections">
     <div id="past_content">
-        <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :showLinks => false, :description => :medium }) || "You have sponsered any events." %>
+        <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :show_links => false, :description => :medium }) || "You have sponsered any events." %>
     </div>
     <div class="hide" id="upcoming_content">
-        <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :showLinks => false, :description => :medium }) || "You have no upcoming events." %>
+        <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :show_links => false, :description => :medium }) || "You have no upcoming events." %>
     </div>
 </div>
 <% end %>

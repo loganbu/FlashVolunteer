@@ -70,7 +70,7 @@ html, body {
        pixeled border to non-selected items to ensure it clears left */
     border: 1px solid white;
     &:hover {
-        @extend .skill_selected;
+        @extend .skill_hover;
     }
     &:active {
         @extend .skill_selected;
@@ -86,15 +86,20 @@ html, body {
        pixeled border to non-selected items to ensure it clears left */
     border: 1px solid white;
     &:hover {
-        @extend .skill_selected;
+        @extend .skill_hover;
     }
     &:active {
         @extend .skill_selected;
         background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
     }
-}.skill_selected {
+}
+.skill_selected {
     border: 1px solid $lightBlue !important;
     background: none repeat scroll 0 0 $babyBlue;
+}
+.skill_hover {
+    border: 1px solid $lightGray !important;
+    background: none repeat scroll 0 0 lighten($lightGray, 50%);
 }
 
 /**************
@@ -390,6 +395,11 @@ input[type="checkbox"] {
     background-color: $background_color;
     border: 5px solid $content_link_text_color;
     padding: 20px;
+}
+
+.question_padding{
+    font-size: 250%;
+    padding-top: 35px;
 }
 
 
