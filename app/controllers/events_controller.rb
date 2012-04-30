@@ -152,6 +152,44 @@ class EventsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+
+  def search
+    per_page = params[:per_page] || 5
+    proximity = params[:proximity] || (params[:lat] || params[:long]) ? 5 : 100
+    
+    lat_long = (params[:lat] && params[:long]) ? [params[:lat].to_f, params[:long].to_f] : [47.618777, -122.33139]
+    @events = Event.where("1=1").paginate(:page=>params[:page], :per_page => per_page).near(lat_long, proximity)
+    
+    categories_array = params[:categories] && params[:categories].split(',') || []
+    hosted_by_org_user_array = params[:hosted_by_org_user] && params[:hosted_by_org_user].split(',') || []
+    created_by_array = params[:created_by] && params[:created_by].split(',') || []
+    participated_by_array = params[:participated_by] && params[:participated_by].split(',') || []
+
+    # This probably sucks at scale, need to test.  Makes "name=blah" into a SQL statement of LIKE %BLAH%
+    name_array = params[:name] && params[:name].split(',').collect{ |x| "%" + x + "%"} || []
+
+    if (params[:upcoming])
+      num_days_future = params[:upcoming].to_i > 0 && params[:upcoming].to_i
+      @events = @events.upcoming(num_days_future)
+    end
+    if (params[:past])
+      num_days_past = params[:past].to_i > 0 && params[:past].to_i
+      @events = @events.past(num_days_past)
+    end
+
+    # begin with an an association that's always true
+    @events = categories_array.length > 0 ? @events.joins(:skills).where{skills.id.eq_any categories_array} : @events
+    @events = name_array.length > 0 ? @events.where{name.matches_any name_array} : @events
+    @events = hosted_by_org_user_array.length > 0 ? @events.hosted_by_org_user(hosted_by_org_user_array) : @events
+    @events = created_by_array.length > 0 ? @events.where{creator_id.eq_any created_by_array} : @events
+    @events = participated_by_array.length > 0 ? @events.joins(:participants).where{participations.user_id.eq_any participated_by_array} : @events
+
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @events }
+    end
+  end
   
   private
   
