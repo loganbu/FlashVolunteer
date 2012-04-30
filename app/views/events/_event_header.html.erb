@@ -1,5 +1,5 @@
 <%
-	pageType ||= :webpage
+	page_type ||= :webpage
 %>
 
 <h1><%= @event.name %></h1>
@@ -10,7 +10,7 @@
 </p>
 <div class="row-fluid">
     <div class="span7">
-    	<% if pageType != :webpage %>
+    	<% if page_type != :webpage %>
         	<%= render(:partial => 'share', :locals => { :event => @event, :size => :small }) %>
 		<% else %>
         	<%= render(:partial => 'share', :locals => { :event => @event, :size => :large }) %>

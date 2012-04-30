@@ -14,7 +14,7 @@ $(function () {
     var eventHtmls = Timeline.eventHtmls = [];
     <% @events.each_with_index do |event, i| %>
         <% showSignUpButton = event.start > DateTime.now && !event.attending?(current_user) %>
-        eventHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/event", :locals => { :event => event, :description => :medium, :signUpButton => showSignUpButton }) %>';
+        eventHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/event", :locals => { :event => event, :description => :medium, :sign_up_button => showSignUpButton }) %>';
     <% end %>
 
     Timeline.buildTimeline();
