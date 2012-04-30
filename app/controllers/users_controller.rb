@@ -101,7 +101,6 @@ class UsersController < ApplicationController
     
     @users = email_array.length > 0 ? @users.where{email.eq_any email_array} : @users
     @users = categories_array.length > 0 ? @users.joins(:skills).where{skills.id.eq_any categories_array} : @users
-    @users = @users.paginate(:page => params[:page])
     
     respond_to do |format|
       format.html
