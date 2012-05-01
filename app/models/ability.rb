@@ -11,10 +11,9 @@ class Ability
     can :switch, [User]
     can :search, [Event, User, Neighborhood]
 
-    can :see_upcoming_events, [User] do |other|
-      raise other
-      privacy_settings = Privacy.find_by_user_id(user.id)
-      other == user || privacy_settings == nil || !privacy_settings.self?
+    can :see_events, [User] do |other|
+      privacy_settings = Privacy.find_by_user_id(other.id)
+      other == user || privacy_settings == nil || !privacy_settings.upcoming_events.self?
     end
 
     if user.role? :super_admin
