@@ -21,9 +21,9 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     per_page = params[:per_page] || 5
-    @events = Event.upcoming.paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
+    @events = Event.upcoming.near(@mapCenter).paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
     @zoom = 11
     
     respond_to do |format|
@@ -43,7 +43,7 @@ class EventsController < ApplicationController
     else
       cookies['preferred_neighborhood'] = @neighborhood.id
       @zoom = 15
-      @events = Event.where(:neighborhood_id => @neighborhood.id).upcoming.paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
+      @events = Event.near(@neighborhood).where(:neighborhood_id => @neighborhood.id).upcoming.paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
       @mapCenter = @neighborhood
     end
 
@@ -159,7 +159,7 @@ class EventsController < ApplicationController
     proximity = params[:proximity] || (params[:lat] || params[:long]) ? 5 : 100
     
     lat_long = (params[:lat] && params[:long]) ? [params[:lat].to_f, params[:long].to_f] : [47.618777, -122.33139]
-    @events = Event.where("1=1").paginate(:page=>params[:page], :per_page => per_page).near(lat_long, proximity)
+    @events = Event.where("1=1").near(lat_long, proximity)
     
     categories_array = params[:categories] && params[:categories].split(',') || []
     hosted_by_org_user_array = params[:hosted_by_org_user] && params[:hosted_by_org_user].split(',') || []
@@ -184,6 +184,7 @@ class EventsController < ApplicationController
     @events = hosted_by_org_user_array.length > 0 ? @events.hosted_by_org_user(hosted_by_org_user_array) : @events
     @events = created_by_array.length > 0 ? @events.where{creator_id.eq_any created_by_array} : @events
     @events = participated_by_array.length > 0 ? @events.joins(:participants).where{participations.user_id.eq_any participated_by_array} : @events
+    @events.paginate(:page=>params[:page], :per_page => per_page)
 
     respond_to do |format|
       format.html

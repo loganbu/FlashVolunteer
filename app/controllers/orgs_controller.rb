@@ -96,12 +96,13 @@ class OrgsController < ApplicationController
     name_array = params[:name] && params[:name].split(',').collect{ |x| "%" + x + "%"} || []
 
     # begin with an an association that's always true
-    @orgs = Org.where("1=1").paginate(:page=>params[:page], :per_page => per_page)
+    @orgs = Org.where("1=1")
     
     @orgs = email_array.length > 0 ? @orgs.where{email.eq_any email_array} : @orgs
     @orgs = categories_array.length > 0 ? @orgs.joins(:skills).where{skills.id.eq_any categories_array} : @orgs
     @orgs = name_array.length > 0 ? @orgs.where{name.matches_any name_array} : @orgs
-
+    @orgs = @orgs.paginate(:page=>params[:page], :per_page => per_page)
+    
     respond_to do |format|
       format.html
       format.xml  { render :xml => @orgs }
