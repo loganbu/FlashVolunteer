@@ -4,7 +4,9 @@ def add_random_neighborhood_info(e)
     this_address_hash = random_neighborhood
     e.street          = this_address_hash["address"]
     e.zip             = this_address_hash["zip"]
-    e.neighborhood    = Neighborhood.find_by_name(this_address_hash["name"])
+    e.neighborhood    = Neighborhood.find_by_name(this_address_hash["name"])            
+    Rails.logger.info(this_address_hash["name"])
+
 end
 
 def add_random_skills_info(e)

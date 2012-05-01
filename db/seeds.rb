@@ -82,7 +82,7 @@ Neighborhood.create([
 { :name => 'Sand Point',                :latitude => 47.678692, :longitude => -122.257048}, 
 { :name => 'Shoreline',                 :latitude => 47.755221, :longitude => -122.340832}, 
 { :name => 'South Park',                :latitude => 47.534472, :longitude => -122.310705}, 
-{ :name => 'South Whidbey Island',      :latitude => 47.998276, :longitude => -122.439503}, 
+{ :name => 'Whidbey Island',            :latitude => 47.998276, :longitude => -122.439503}, 
 { :name => 'Tukwila',                   :latitude => 47.475618, :longitude => -122.262383}, 
 { :name => 'University District',       :latitude => 47.657698, :longitude => -122.306368}, 
 { :name => 'Wallingford',               :latitude => 47.655526, :longitude => -122.326796}, 
@@ -115,8 +115,8 @@ if Rails.env.development?
     tech_user.roles << volunteer_role
     brad.roles << volunteer_role
 
-    FactoryGirl.create_list(:event, 5, :in_one_week, :creator_id => confirmed_user.id, :participants => [tech_user])
-    FactoryGirl.create_list(:event, 3, :in_one_month, :creator_id => confirmed_user.id, :participants => [tech_user])
-    FactoryGirl.create_list(:event, 7, :in_two_months, :creator_id => confirmed_user.id, :participants => [tech_user])
+    FactoryGirl.create_list(:event, 35, :in_one_week, :creator_id => confirmed_user.id, :participants => [tech_user])
+    FactoryGirl.create_list(:event, 33, :in_one_month, :creator_id => confirmed_user.id, :participants => [tech_user])
+    FactoryGirl.create_list(:event, 37, :in_two_months, :creator_id => confirmed_user.id, :participants => [tech_user])
 
 end
