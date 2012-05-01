@@ -8,5 +8,5 @@
 <% end %>
 
 <% entity.skills.each do |badge| %>
-    <a href="#" class="darken"><span class="<%=size%>_badge" style="background:url('/assets/badges_<%=size%>.png') 0px <%= -dimension*badge.offset %>px;" title="<%= badge.name %>">&nbsp;</span></a>
+    <span class="<%=size%>_badge" style="background:url('/assets/badges_<%=size%>.png') 0px <%= -dimension*badge.offset %>px;" title="<%= badge.name %>">&nbsp;</span>
 <% end %>
