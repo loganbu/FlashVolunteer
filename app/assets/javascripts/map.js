@@ -26,8 +26,8 @@ Map.showMapFromElement = function(element, i, eventCallback) {
     longitude = element.find('longitude').text();
     name = element.find('name').text();
     var attending=element.find('user-participates').text();
-    var imageStrip = attending == "true" ? "/assets/mapStripSignedUp.png" : 
-        "/assets/mapStripAvail.png"; 
+    var imageStrip = attending == "true" ? "/assets/mapStripSignedUp_medium.png" : 
+        "/assets/mapStripAvail_medium.png"; 
     var latLng = new google.maps.LatLng(latitude, longitude);
 
     // Create a custom marker icon

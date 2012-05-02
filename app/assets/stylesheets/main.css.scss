@@ -61,7 +61,7 @@ html, body {
     height: 64px;
     margin: 0px;
 }
-.skill_option {
+.selectable_option {
     float: left;
     padding: 10px;
     margin: 0px 10px 10px 0;
@@ -69,15 +69,15 @@ html, body {
        the items below to not clear left since there is 1px left.  Add a white
        pixeled border to non-selected items to ensure it clears left */
     border: 1px solid white;
-    &:hover {
-        @extend .skill_hover;
-    }
     &:active {
-        @extend .skill_selected;
-        background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
+        border: 1px solid $lightBlue !important;
+        background: none repeat scroll 0 0 darken($babyBlue, 15%) !important;
+    }
+    label {
+        cursor: pointer;
     }
 }
-.skill_option_med {
+.selectable_option_med {
     float: left;
     padding: 5px;
     margin: 0px 5px 5px 0;
@@ -85,21 +85,17 @@ html, body {
        the items below to not clear left since there is 1px left.  Add a white
        pixeled border to non-selected items to ensure it clears left */
     border: 1px solid white;
-    &:hover {
-        @extend .skill_hover;
-    }
     &:active {
-        @extend .skill_selected;
-        background: none repeat scroll 0 0 darken($babyBlue, 10%) !important;
+        border: 1px solid $lightBlue !important;
+        background: none repeat scroll 0 0 darken($babyBlue, 15%) !important;
+    }
+    label {
+        cursor: pointer;
     }
 }
-.skill_selected {
+.option_selected {
     border: 1px solid $lightBlue !important;
-    background: none repeat scroll 0 0 $babyBlue;
-}
-.skill_hover {
-    border: 1px solid $lightGray !important;
-    background: none repeat scroll 0 0 lighten($lightGray, 50%);
+    background: none repeat scroll 0 0 darken($babyBlue, 5%);
 }
 
 /**************
