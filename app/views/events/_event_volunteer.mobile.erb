@@ -1,0 +1,15 @@
+<h3>event volunteers (<%= @event.participants.count %>)</h3>
+<% if @event.participants.count > 0 %>
+    <ul class="unstyled">
+    <% @event.participants.each do |p| %>
+        <li><%= p.name %></li>
+    <% end %>
+    </ul>
+<% else %>
+    <% if @event.user == current_user %>
+        there are no volunteers signed up yet
+    <% else %>
+        there are no volunteers signed up yet, but you can be the first!
+        <%= link_to("sign up now!", register_event_url(@event), :method => :post) %>
+    <% end %>
+<% end %>
