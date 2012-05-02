@@ -4,7 +4,7 @@
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
 // the compiled file.
 //
-//= require jquery.mobile.min
+//= require jquery.mobile
 //= require bootstrap
 //= require map
 //= require utility

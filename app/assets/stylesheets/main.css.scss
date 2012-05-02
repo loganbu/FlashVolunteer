@@ -375,6 +375,165 @@ input[type="checkbox"] {
         float: right;
     }
 }
+
+/**************
+ JQuery Dropdown styling
+ **************/
+#neighborhood_list
+{   
+    margin: 0;
+    padding: 0;
+
+    h1:hover
+    {   
+        background: #1A4473;
+        cursor: pointer;
+    }
+    a
+    {   display: block;
+        background: #20548E;
+        padding: 5px 12px;
+        text-decoration: none;
+        border-right: 1px solid white;
+        width: 70px;
+        color: #EAFFED;
+        white-space: nowrap; 
+    }  
+    
+    
+    li
+    {   float: left;
+        list-style: none;
+        
+        ul
+        {   
+            margin: 0;
+                padding: 0;
+            position: absolute;
+            visibility: hidden;
+            height: 300px;
+            overflow-y: scroll;
+            border-top: 1px solid white;
+
+            li
+            {   
+                float: none;
+                display: inline;
+                a
+                {   width: auto;
+                    background: #9F1B1B;
+                    
+                    &:hover
+                    {   background: #7F1616;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /**************
  Photo
  **************/
