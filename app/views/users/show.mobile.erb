@@ -1,0 +1,62 @@
+<%= stylesheet_link_tag "timeline" %>
+<%= javascript_include_tag "timeline" %>
+
+<script defer="defer">
+$(function () {
+    window.Timeline = window.Timeline || {};
+    Timeline.currentData = <%= @eventsJson.html_safe %>;
+
+    var shareHtmls = Timeline.shareHtmls = [];
+    <% @events.each_with_index do |event, i| %>
+        shareHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/share", :locals => { :event => event, :size => :medium }) %>';
+    <% end %>
+
+    var eventHtmls = Timeline.eventHtmls = [];
+    <% @events.each_with_index do |event, i| %>
+        <% showSignUpButton = event.start > DateTime.now && !event.attending?(@user) %>
+        eventHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/event", :locals => { :event => event, :description => :medium, :sign_up_button => showSignUpButton }) %>';
+    <% end %>
+
+    Timeline.buildTimeline();
+});
+</script>
+
+
+<div class="row timeline-header">
+    <div class="span8">
+        <div class="row tlh-toprow">
+            <div class="span6 offset2"><span class="pull-left tlh-username"><h4><%= @user.name %></h4></span> <span><%= render :partial => "skills/strip", :locals => { :entity => @user, :size => "small" } %></span></div>
+        </div>
+        <div class="row tlh-bottomrow">
+            <div class="span2">
+                <div><%= image_tag @user.avatar.url(:profile), :class => "tlh-avatar" %></div>
+                <div><span class="tlh-followercount"><%= @nFollowers %></span> followers</div>
+            </div>
+            <div class="span6">
+                <% if @user.neighborhood %>
+                    <div>volunteers in <%= @user.neighborhood.name %></div>
+                <% end %>
+                <div>eventscreated:<%= @nEventsCreated %> comingup:<%= @nEventsComingUp %> pastevents:<%= @nEventsInPast %></div>
+            </div>
+        </div>
+    </div>
+    <div class="span4 event bold">
+        <ul class="unstyled">
+            <li><%= link_to "UPCOMING EVENTS", events_user_url(@user) %></li>    <!--NEED TO MAKE CORRECT LINK - NEED TO MAKE IT A SPECIFIC TAB OF THE PAGE-->
+            <li><%= link_to "RECOMMENDED EVENTS", events_user_url(@user) %></li> <!--NEED TO MAKE CORRECT LINK - NEED TO MAKE IT A SPECIFIC TAB OF THE PAGE-->
+            <li><%= link_to "MY FLASH TEAM'S EVENTS", events_user_url(@user) %></li>  <!--NEED TO MAKE CORRECT LINK - NEED TO MAKE IT A SPECIFIC TAB OF THE PAGE-->
+            <li><%= link_to "CREATE NEW EVENT", new_event_url %></li>
+        </ul>
+    </div>
+</div>
+
+<% if can? :see_events, @user %>
+<div class="row">
+    <div class="span8 timeline">
+    </div>
+    <div class="span4 timeline-nav">
+    </div>
+</div>
+<% else %>
+Sorry
+<% end %>

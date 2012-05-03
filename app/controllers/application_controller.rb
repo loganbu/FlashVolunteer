@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
     include Mobylette::RespondToMobileRequests
 
     mobylette_config do |config|
-        config[:fall_back] = false
         config[:skip_xhr_requests] = true
     end
 
