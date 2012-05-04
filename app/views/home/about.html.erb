@@ -20,7 +20,9 @@
             Hash["name" => "joy wilke graf", "subtext" => "director", "image" => "default-profile-pic-small.png"],
             Hash["name" => "brad wilke", "subtext" => "ex officio", "image" => "board/Brad.png"],
        ].each_with_index do |person, i| %>
-     <%= render(:partial => "users/shared/user_span4", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>
+        <div class="span4">
+            <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>
+        </div>
      <% if(i%3 == 2) %>
         <div class="row">&nbsp;</div>
      <% end %>
@@ -51,7 +53,7 @@
             nil,
        ].each_with_index do |person, i| %>
        <% if (person) %>
-         <%= render(:partial => "users/shared/user_span4", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>
+         <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>
        <% else %>
              <div class="span4">&nbsp;</div>
        <% end %>

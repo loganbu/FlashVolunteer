@@ -12,11 +12,6 @@ class HomeController < ApplicationController
   		format.html
   	end
   end
-  def about
-  	respond_to do |format|
-  		format.html
-  	end
-  end
   def partners
   	respond_to do |format|
   		format.html

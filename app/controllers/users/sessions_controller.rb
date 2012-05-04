@@ -8,6 +8,13 @@ class Users::SessionsController < Devise::SessionsController
         false
     end
 
+  def third_party
+    respond_to do |format|
+      format.html
+      format.mobile
+    end
+  end
+
   def mobile
     case params[:provider]
     when "facebook"
