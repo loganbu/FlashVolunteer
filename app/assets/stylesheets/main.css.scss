@@ -371,6 +371,55 @@ input[type="checkbox"] {
         float: right;
     }
 }
+
+/**************
+ JQuery Dropdown styling
+ **************/
+#neighborhood_list {   
+    margin: 0;
+    padding: 0;
+
+    h1:hover {   
+        cursor: pointer;
+    }
+
+    a {   
+        display: block;
+        text-decoration: none;
+    }  
+      
+    li {   
+        float: left;
+        list-style: none;
+        
+        ul {   
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            visibility: hidden;
+            height: 300px;
+            overflow-y: scroll;
+
+            li {   
+                float: none;
+                display: inline;
+
+                a {   
+                    padding: 5px 12px;
+                    width: auto;
+                    background: $babyBlue;
+                    
+                    &:hover {   
+                        background: $lightGray;
+                        color: $lightBlue;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
 /**************
  Photo
  **************/

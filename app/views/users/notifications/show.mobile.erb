@@ -1,0 +1,52 @@
+<% content_for :right_split do %>
+<h3>Notifications</h3>
+
+    <table class="table table-striped table-bordered" summary="Reasons for collection of all personal information.">
+        <tr>
+            <th>How we will notify you about Flash Volunteer...</th><th><%= image_tag("email_icon_16x16.png", 
+                                    :alt=>"How do you want to be emailed?") %></th>
+        </tr>
+        <tr>
+            <td>Flash Volunteer news updates (no more than once per week)</td><td><input type="checkbox" id="news_updates"/></td>
+        </tr>
+        <tr>
+            <td>Digest of upcoming recommended events (weekly)</td><td><input type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>If someone sends me a personal message</td><td><input type="checkbox" /></td>
+
+        </tr>
+        <tr>
+            <td>Reminder about an event I am volunteering at (24 hours notice)</td><td><input type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>Reminder about an event I am coordinating (24 hours notice)</td><td><input type="checkbox" /></td>
+
+        </tr>
+        <tr>
+            <td>If someone signs up for an event I am coordinating</td><td><input type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>When a message is posted for an event to which I am signed up</td><td><input type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>Reminder to give feedback on an event I attended</td><td><input type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>When a message is posted to a neighborhood in which I am interested:</td><td><input type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>Reminder to fill out volunteer attendance for an event I coordinated</td><td><input type="checkbox" /></td>
+        </tr>
+        <tr>
+            <td>If someone adds me to their Flash Team</td><td><input type="checkbox" /></td>
+        </tr>
+    </table>
+<div class="row-fluid">
+    <div class = "span2">&nbsp;</div>
+    <div class = "span10">
+        <button type="submit" href="#" class="btn btn-primary pull-right">save</button>   
+    </div>
+</div>
+<% end %>
+<%= render(:partial => "users/shared/me_settings") %>

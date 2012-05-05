@@ -1,0 +1,26 @@
+<%= content_for :right_split do %>
+<p class="bold">MY EVENTS</p>
+<p><%= link_to "Create a new organization", new_event_url %></p>
+<div class="tabs bold">
+    <ul class="unstyled inline" id="link_list">
+        <li><a class="link_active" href="#updates">UPDATES (0)</a></li>
+        <li><a href="#following">FOLLOWING (<%= @following.count %>)</a></li>
+        <li><a href="#admin">ADMIN (<%= @admin_of.count %>)</a></li>
+    </ul>
+</div>
+<div class="clear">&nbsp;</div>
+<div id="content_sections">
+    <div id="updates_content">
+    </div>
+    <div class="hide" id="following_content">
+        <%= render(:partial => "orgs/org", :collection => @following, :as => :event) || "You are not following any organizations" %>
+    </div>
+    <div class="hide" id="admin_content">
+        <%= render(:partial => "orgs/org", :collection => @admin_of, :as => :event) || "You are not an admin of any organization" %>
+    </div>
+</div>
+<% end %>
+<script type="text/javascript">
+    $(document).ready(function () { addContentHandlers(); });
+</script>
+<%= render :partial => 'users/shared/me' %>

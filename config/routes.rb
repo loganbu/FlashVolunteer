@@ -5,6 +5,8 @@ Flashvolunteer::Application.routes.draw do
         root :to => "users#index"
         put "confirm_account", :to => "users/confirmations#confirm_account"
         get "users/sign_up/quick", :to => "users/registrations#quick", :as => "quick_new_user"
+        get "users/sign_up/third_party", :to => "users/registrations#third_party", :as => "third_party_sign_up"
+        get "users/sign_in/third_party", :to => "users/sessions#third_party", :as => "third_party_sign_in"
         post "users/sign_in/:provider", :to => "users/sessions#mobile"
     end
 

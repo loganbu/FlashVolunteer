@@ -14,6 +14,7 @@ class NeighborhoodsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+      format.mobile
       format.xml  { render :xml => @neighborhoods }
     end
   end
