@@ -12,7 +12,8 @@ Role.create([
 ])
 
 User.delete_all()
-admin = User.find_or_create_by_email(:email => ENV['ADMIN_USERNAME'] || "admin@localhost.com", :password => ENV['ADMIN_PASSWORD'], :password_confirmation => ENV['ADMIN_PASSWORD'], :name=>"Admin")
+email = ENV['ADMIN_USERNAME'] && ENV['ADMIN_USERNAME'].dup
+admin = User.find_or_create_by_email(:email => email || "admin@localhost.com", :password => ENV['ADMIN_PASSWORD'], :password_confirmation => ENV['ADMIN_PASSWORD'], :name=>"Admin")
 admin.roles << Role.find_by_name("SuperAdmin")
 
 Skill.delete_all()
