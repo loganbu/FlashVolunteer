@@ -3,16 +3,31 @@ source 'http://rubygems.org'
 gem 'rails', '3.2.0' 
 
 
+# Pagination
 gem 'will_paginate', '~> 3.0'
+# Authentication
 gem 'devise'
+# Authorization
 gem 'cancan'
+# Geocoding
 gem 'geocoder' 
+# JQuery
 gem 'jquery-rails'
+# Not sure why directly gem'd
 gem 'tlsmail'
+# DatePicker
 gem 'jquery_datepicker'
+# Export to iCal
 gem 'icalendar'
+# Not sure why directly gem'd
 gem 'nokogiri'
+# Advanced querying for records
 gem "squeel"
+
+# Delayed Jobs
+gem 'delayed_job_active_record'
+gem 'foreman'
+gem 'hirefireapp'
 
 group :assets do
 	gem 'sass-rails', '~> 3.2.3'
@@ -46,6 +61,6 @@ group :development do
 end
 
 group :production do
-    gem 'pg'
+    gem 'mysql2'
     gem 'newrelic_rpm'
 end

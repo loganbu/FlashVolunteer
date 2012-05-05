@@ -9,7 +9,7 @@ Flashvolunteer::Application.configure do
         ActionMailer::Base.perform_deliveries = true 
         ActionMailer::Base.raise_delivery_errors = true 
         ActionMailer::Base.smtp_settings = { 
-                :address => "smtp.gmail.com", 
+                :address => ENV['MAILER_ADDRESS'] || "smtp.gmail.com", 
                 :port => "587", 
                 :domain => "gmail.com", 
                 :enable_starttls_auto => true, 
@@ -18,7 +18,7 @@ Flashvolunteer::Application.configure do
                 :password => ENV['MAILER_PASSWORD']
         } 
 
-    config.action_mailer.default_url_options = { :host => ENV['MAILER_PASSWORD'] || "localhost:3000" }
+    config.action_mailer.default_url_options = { :host => ENV['SITE_DOMAIN'] || "localhost:3000" }
 
     config.action_mailer.raise_delivery_errors = true 
     config.action_mailer.delivery_method = :file 
