@@ -18,9 +18,10 @@ Flashvolunteer::Application.configure do
                 :password => ENV['MAILER_PASSWORD']
         } 
 
-    config.action_mailer.default_url_options = { :host => "localhost:3000" }
+    config.action_mailer.default_url_options = { :host => ENV['MAILER_PASSWORD'] || "localhost:3000" }
 
     config.action_mailer.raise_delivery_errors = true 
+    config.action_mailer.delivery_method = :file 
 
         
   # Settings specified here will take precedence over those in config/application.rb

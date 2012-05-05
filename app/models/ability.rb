@@ -13,7 +13,7 @@ class Ability
 
     can :see_events, [User] do |other|
       privacy_settings = Privacy.find_by_user_id(other.id)
-      other == user || privacy_settings == nil || !privacy_settings.upcoming_events.self?
+      other == user || privacy_settings == nil || privacy_settings.upcoming_events.everyone?
     end
 
     if user.role? :super_admin
