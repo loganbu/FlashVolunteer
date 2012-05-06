@@ -195,6 +195,15 @@ footer {
 }
 
 /**************
+ Errors
+ **************/
+.alert {
+  text-shadow: 1px 1px 0 rgba(255,255,255,.5);
+  font-weight: bold;
+}
+
+
+/**************
  Forms
  **************/
 label {
@@ -266,10 +275,8 @@ label {
     display: block;
 }
 .full {
-    margin-left: 0px;
     margin-right: 0px;
     padding-right: 0px;
-    padding-left: 0px;
     width: 100%;
 }
 input.full, textarea.full {

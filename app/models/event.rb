@@ -40,6 +40,10 @@ class Event < ActiveRecord::Base
         where{creator_id.eq_any Org.joins(:admins).where{admins_users.id.eq_any user_list}.all}
     }
 
+    def duration
+        self.end-self.start
+    end
+
     def geocode_address
        return "#{self.street} #{self.city}, #{self.zip} #{self.state}"
     end
