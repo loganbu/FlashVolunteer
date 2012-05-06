@@ -1,7 +1,18 @@
 class User < ActiveRecord::Base
   include ActiveModel::Validations
-  validates :email, :presence => { :message => "You must specify an e-mail address" }
+  validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?, :message => "This e-mail address is already taken"
+  validates_format_of     :email, :with  => /\A[^@]+@[^@]+\z/, :allow_blank => true, :if => :email_changed?, :message => "You must specify a valid e-mail address"
+  validates               :email, :presence => { :message => "You must specify an e-mail address" }
+  
+
+
+  validates_presence_of     :password, :if => :password_required?, :message => "You must specify a password"
+  validates_confirmation_of :password, :if => :password_required?, :message => "Your passwords do not match"
+  validates_length_of       :password, :within => 6..128, :allow_blank => true, :message => "The password must be more than 6 characters"
+
   validates :name, :presence => { :message => "You must have a name" }
+
+
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :admin_of, :class_name => "Org", :join_table => "orgs_admins", :uniq => true
@@ -22,10 +33,10 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
+         :recoverable, :rememberable, :trackable, :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :terms_of_service, :name, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type
+  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
@@ -76,6 +87,15 @@ class User < ActiveRecord::Base
       Devise::Mailer.delay.unlock_instructions(self)
     else
       super
+    end
+  end
+
+  
+  def password_required?
+    if (password.nil? && password_confirmation.nil?)
+      return false
+    else
+      return true
     end
   end
 end
