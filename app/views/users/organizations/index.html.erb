@@ -8,11 +8,11 @@
 </div>
 <div class="clear">&nbsp;</div>
 <div id="content_sections">
-    <div class="hide" id="admin_content">
+    <div id="admin_content">
         <% if (@admin_of.count == 0) %>
             You are not an admin of any organization
         <% else %>
-            <%= render(:partial => "orgs/org", :collection => @admin_of, :as => :event) %>
+            <%= render(:partial => "orgs/org", :collection => @admin_of, :as => :org) %>
         <% end %>
     </div>
 </div>

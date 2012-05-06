@@ -168,6 +168,15 @@ class EventsController < ApplicationController
   end
 
 
+  # DELETE /events/instructions
+  def instructions
+    respond_to do |format|
+      format.html
+      format.xml  { head :ok }
+    end
+  end
+
+
   def search
     per_page = params[:per_page] || 5
     proximity = params[:proximity] || (params[:lat] || params[:long]) ? 5 : 100

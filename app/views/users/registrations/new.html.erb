@@ -33,7 +33,7 @@ end %>
                 <div class="pull-right"><%= f.label :name, "name"%></div>
             </div>
             <div class="span10">
-                <%= f.text_field :name, :class=>"full"  %>
+                <%= f.text_field :name, :class=>"full", :id => "account_name"  %>
             </div>
         </div>
 
@@ -42,7 +42,7 @@ end %>
                 <div class="pull-right"><%= f.label :email, "email" %></div>
             </div>
             <div class="span10">
-                <%= f.email_field :email, :class=>"full" %>
+                <%= f.email_field :email, :class=>"full", :id=>"account_email" %>
             </div>
         </div>
 
