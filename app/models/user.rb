@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   include ActiveModel::Validations
-  validates :email, :presence => { :message => "Must have an e-mail" }
+  validates :email, :presence => { :message => "You must specify an e-mail address" }
+  validates :name, :presence => { :message => "You must have a name" }
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :admin_of, :class_name => "Org", :join_table => "orgs_admins", :uniq => true
@@ -24,7 +25,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type
+  attr_accessible :terms_of_service, :name, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)

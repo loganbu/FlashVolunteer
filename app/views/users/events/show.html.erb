@@ -1,4 +1,15 @@
 <%= content_for :right_split do %>
+<% if flash[:error] %>
+    <div class="alert alert-error">  
+        <a class="close" data-dismiss="alert" href="#">x</a>
+        <h4 class="alert-heading">Error!</h4>
+        <p>
+            <ul>
+                <li><%= flash[:error] %></li>
+            </ul>
+        </p>
+    </div>
+<% end %>
 <p class="bold">MY EVENTS</p>
 <p><%= link_to "Create new event", new_event_url %></p>
 <div class="tabs bold">
