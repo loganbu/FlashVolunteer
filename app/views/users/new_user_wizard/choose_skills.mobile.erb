@@ -1,0 +1,12 @@
+<% content_for :question do %>
+    What are your skills and interests?
+<% end %>
+<%= content_for :below_question do %>
+    <%= render(:partial => 'skills/form', :locals => { :entity => "user", :skills => @user.skills }) %>
+<% end %>
+<% content_for :button do %>
+    <% button_name = session[:show_org_wizard] ? "ask me about my group" : "finish" %>
+    <%= submit_tag(button_name, :class => "btn btn-primary pull-right") %>
+<% end %>
+<%= content_for :form_template do 'users/new_user_wizard/question_with_form' end %>
+<%= render(:template => 'shared/splash_with_question') %>

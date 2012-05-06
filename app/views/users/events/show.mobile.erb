@@ -1,12 +1,10 @@
 <%= content_for :right_split do %>
 <p class="bold">MY EVENTS</p>
 <p><%= link_to "Create new event", new_event_url %></p>
-<div class="tabs bold">
-    <ul class="unstyled inline" id="link_list">
-        <li><a class="link_active" href="#past">PAST</a></li>
-        <li><a href="#upcoming">UPCOMING</a></li>
-        <li><a href="#recommended">RECOMMENDED</a></li>
-    </ul>
+<div class="tabs bold" id="link_list">
+        <p><a class="link_active" href="#past">PAST</a>    |  
+        <a href="#upcoming">UPCOMING</a>    |    
+        <a href="#recommended">RECOMMENDED</a></p>
 </div>
 <div class="clear">&nbsp;</div>
 <div id="content_sections">
