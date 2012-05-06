@@ -6,6 +6,10 @@ def photo_link(entity, image, url)
     end 
 end
 
+def qr_code(url, alt="QR Code", size=120)
+    image_tag "//chart.apis.google.com/chart?cht=qr&chl=#{url}&chs=#{size}x#{size}", :alt => alt, :width => size, :height => size
+end
+
 def original_user_logged_in
     session[:original_user]
 end

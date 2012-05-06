@@ -53,6 +53,14 @@ class EventsController < ApplicationController
     end
   end
 
+  def print
+    @event = Event.find(params[:id])
+    
+    respond_to do |format|
+      format.html { render 'print.html.erb', :layout => "blank" }
+    end
+  end
+
   # GET /events/1
   # GET /events/1.xml
   def show
