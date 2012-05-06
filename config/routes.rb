@@ -55,7 +55,7 @@ Flashvolunteer::Application.routes.draw do
     # Show - Timeline
     # Edit - Change profile
     # Update - Actualy update profile
-    resources :orgs, :only => [:index, :show, :edit, :update] do
+    resources :orgs do
         # Private parts, available to current signed-in org
         member do
             # Show organization past/upcoming events

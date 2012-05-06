@@ -51,7 +51,9 @@ class OrgsController < ApplicationController
 
     respond_to do |format|
       if @org.save
-        format.html { redirect_to(@org, :notice => 'Org was successfully created.') }
+        @org.admins << current_user
+        @org.save
+        format.html { redirect_to(user_orgs_url(current_user), :notice => 'Org was successfully created.') }
         format.xml  { render :xml => @org, :status => :created, :location => @org }
       else
         format.html { render :action => "new" }
