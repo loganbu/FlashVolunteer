@@ -1,10 +1,18 @@
 <%
 	page_type ||= :webpage
+    badge_size ||= "small"
 %>
 
 <h1><%= @event.name %></h1>
 <p>
-    <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
+    <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> | <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
+</p>
+<div class="row-fluid">
+    <div class="span12">
+        <span><%= render :partial => "skills/strip", :locals => { :entity => @event, :size => badge_size } %></span>
+    </div>
+</div>
+<p>
     <%= @event.street %>, <%= link_to(@event.neighborhood.name, (events_url.concat("/in/").concat(@event.neighborhood.name))) %><br/>
     <%= render(:partial => 'links', :locals => { :event => @event }) %>
 </p>

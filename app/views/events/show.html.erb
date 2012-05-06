@@ -21,7 +21,15 @@
         </div>
     </div>
     <div class="span4">
-        <%= render ('event_organizers') %>
+        <div>
+            <% if @event.hosted_by != nil %>
+                <h3>event contact</h3>
+                <%= @event.hosted_by %>
+            <% end %>
+        </div>
+        <div>
+            <%= render ('event_organizers') %>
+        </div>
     </div>
 </div>
 <div class="row">&nbsp;</div>

@@ -1,13 +1,4 @@
 <%= form_for(@event, :html => {:id => "form", :name => "event_form"}) do |f| %>
-    <% if @event.errors.any? %>
-        <ul class="unstyled">
-        <% @event.errors.each do |attr,msg| %>
-            <% if (attr == :start || attr == :end) %>
-                <li><%= msg %></li>
-            <% end %>
-        <% end %>
-        </ul>
-    <% end %>
     <div class="row-fluid">
         <div class="span2">
             <div class="pull-right"><%= f.label :name, "event name"%></div>
@@ -24,15 +15,15 @@
         <div class="span3">
             <div class="row-fluid">
                 <div class="span6">
-                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" checked="checked"/><label for="hosted_by_me">&nbsp;myself</label>
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" <%= "checked='checked'" if @event.hosted_by == nil %> /><label for="hosted_by_me">&nbsp;myself</label>
                 </div>
                 <div class="span6">
-                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone"/><label for="hosted_by_someone">&nbsp;someone else</label>
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone" <%= "checked='checked'" if @event.hosted_by != nil %>/><label for="hosted_by_someone">&nbsp;someone else</label>
                 </div>
             </div>
         </div>
         <div class="span7">
-            <%= f.text_field :hosted_by, :class=>"full hidden", :id => "someone_else"%>
+            <%= f.text_field :hosted_by, :class=>"full ".concat(@event.hosted_by == nil ? "hidden" : ""), :id => "someone_else"%>
         </div>
         <script type="text/javascript">
             $(document).ready(function() {
@@ -100,7 +91,7 @@
                     <input id="event_end_1i" type="hidden" name="event[end(1i)]" value="2012" />
                     <input id="event_end_2i" type="hidden" name="event[end(2i)]" value="1" />
                     <input id="event_end_3i" type="hidden" name="event[end(3i)]" value="1" />
-                    <input id="event_end_4i" type="hidden" name="event[end(4i)]" value="<%= @event.end ? @event.end > @event.start ? 24 : @event.end.hour : 15 %>" />
+                    <input id="event_end_4i" type="hidden" name="event[end(4i)]" value="<%= @event.end && @event.start ? @event.end > @event.start ? 24 : @event.end.hour : 15 %>" />
                     <input id="event_end_5i" type="hidden" name="event[end(5i)]" value="<%= @event.end ? @event.end.min : 0 %>" />
 
 
@@ -110,8 +101,25 @@
                             var maxValue = 24*4;
                             var startHour = <%= @event.start ? @event.start.hour : 9 %>;
                             var startMinute =  parseInt(<%= @event.start ? @event.start.min : 0 %> / minuteStep);
-                            var endHour = <%= @event.end ? @event.end.day != @event.start.day ? 24 : @event.end.hour : 15 %>;
-                            var endMinute = parseInt(<%= @event.end ? @event.end.min : 0 %> / minuteStep);
+                            <% 
+                                end_hour = 15
+                                if @event.end && @event.start
+                                    if @event.end.day != @event.start.day
+                                        end_hour = 24
+                                    else
+                                        end_hour = @event.end.hour
+                                    end
+                                end
+                            %>
+
+                            var endHour = <%= end_hour %>;
+                            <%
+                                end_minute = 0
+                                if @event.end && end_hour != 24
+                                    end_minute = @event.end.min
+                                end
+                            %>
+                            var endMinute = parseInt(<%= end_minute %> / minuteStep);
 
                             var initialValues = [startHour*4+startMinute, endHour*4+endMinute];
                             var setTimes = function(ui) {
