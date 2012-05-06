@@ -1,27 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Flashvolunteer</title>
+  <title>Flash Volunteer</title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="nonfooter">
-    <div class="header">
-      <%= render"shared/header" %>
-    </div>
-    <div class="container">
-      <%= yield %>
-    </div>
-    <%= render "shared/debug" if Rails.env.development? %>
-    <div id="clearfooter">&nbsp;</div>
-  </div>
-  <footer>
-      <%= render"shared/footer" %>
-  </footer>
-  <div class="clickeater">&nbsp;</div>
-  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %>  <!-- Analytics -->
+  <%= yield %>
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-10613308-2']);
