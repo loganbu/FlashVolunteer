@@ -1,10 +1,9 @@
 <%
 	entity ||= "user"
 	skills ||= []
-	button_size ||= :large
-
+	button_size ||= :small
 %>
-<div style="margin-left: -10px">
+
 <% Skill.all.each_with_index do |s, i| %>
     <%= check_box_tag("#{entity}[skill_ids][#{i}]", s.id, skills.include?(s), :name=>"#{entity}[skill_ids][]", :class=>"hide") %> 
     <%
@@ -19,11 +18,11 @@
     			image_location = '/assets/badges_medium.png'
     			button_class_type = "medium_badge"
     			selected_class_type = "selectable_option_med"
-    		when :large
-    			button_pixels = 64
-    			image_location = '/assets/badges_large.png'
-    			button_class_type = "large_badge"
-    			selected_class_type = "selectable_option"
+    		when :small
+    			button_pixels = 20
+    			image_location = '/assets/badges_small.png'
+    			button_class_type = "small_badge"
+    			selected_class_type = "selectable_option_small"
     	end
     %>
     <div class="<%=selected_class_type %> <%= "option_selected" if skills.include?(s) %>" id="skill_<%= s.id %>">
@@ -32,7 +31,6 @@
         </label>
     </div>
 <% end %>
-</div>
 <script type="text/javascript">
     function toggleImage(id) {
         $('#skill_'+id).toggleClass('option_selected');

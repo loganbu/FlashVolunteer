@@ -4,7 +4,6 @@
 	button_size ||= :large
 
 %>
-<div style="margin-left: -10px">
 <% Skill.all.each_with_index do |s, i| %>
     <%= check_box_tag("#{entity}[skill_ids][#{i}]", s.id, skills.include?(s), :name=>"#{entity}[skill_ids][]", :class=>"hide") %> 
     <%
@@ -32,7 +31,6 @@
         </label>
     </div>
 <% end %>
-</div>
 <script type="text/javascript">
     function toggleImage(id) {
         $('#skill_'+id).toggleClass('option_selected');
