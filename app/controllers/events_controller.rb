@@ -135,8 +135,15 @@ class EventsController < ApplicationController
   # PUT /events/1
   # PUT /events/1.xml
   def update
-    @event = Event.find(params[:id])
-    paramsToUse = hackoutdatetime(params[:startdate], params[:event])
+
+    begin
+      paramsToUse = hackoutdatetime(params[:startdate], params[:event])
+      @event = Event.new(paramsToUse)
+    rescue ArgumentError
+      params[:event].delete('startdate')
+      @event = Event.find(params[:id])
+      @event.start = nil
+    end
 
     respond_to do |format|
       if @event.update_attributes(paramsToUse)

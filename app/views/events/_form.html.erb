@@ -1,13 +1,4 @@
 <%= form_for(@event, :html => {:id => "form", :name => "event_form"}) do |f| %>
-    <% if @event.errors.any? %>
-        <ul class="unstyled">
-        <% @event.errors.each do |attr,msg| %>
-            <% if (attr == :start || attr == :end) %>
-                <li><%= msg %></li>
-            <% end %>
-        <% end %>
-        </ul>
-    <% end %>
     <div class="row-fluid">
         <div class="span2">
             <div class="pull-right"><%= f.label :name, "event name"%></div>
@@ -100,7 +91,7 @@
                     <input id="event_end_1i" type="hidden" name="event[end(1i)]" value="2012" />
                     <input id="event_end_2i" type="hidden" name="event[end(2i)]" value="1" />
                     <input id="event_end_3i" type="hidden" name="event[end(3i)]" value="1" />
-                    <input id="event_end_4i" type="hidden" name="event[end(4i)]" value="<%= @event.end ? @event.end > @event.start ? 24 : @event.end.hour : 15 %>" />
+                    <input id="event_end_4i" type="hidden" name="event[end(4i)]" value="<%= @event.end && @event.start ? @event.end > @event.start ? 24 : @event.end.hour : 15 %>" />
                     <input id="event_end_5i" type="hidden" name="event[end(5i)]" value="<%= @event.end ? @event.end.min : 0 %>" />
 
 
@@ -110,7 +101,7 @@
                             var maxValue = 24*4;
                             var startHour = <%= @event.start ? @event.start.hour : 9 %>;
                             var startMinute =  parseInt(<%= @event.start ? @event.start.min : 0 %> / minuteStep);
-                            var endHour = <%= @event.end ? @event.end.day != @event.start.day ? 24 : @event.end.hour : 15 %>;
+                            var endHour = <%= @event.end && @event.start ? @event.end.day != @event.start.day ? 24 : @event.end.hour : 15 %>;
                             var endMinute = parseInt(<%= @event.end ? @event.end.min : 0 %> / minuteStep);
 
                             var initialValues = [startHour*4+startMinute, endHour*4+endMinute];

@@ -1,2 +1,14 @@
+<% if @event.errors.any? %>
+    <div class="errors">
+        <ul class="unstyled">
+        <% @event.errors.each do |attr,msg| %>
+            <% if (attr == :start || attr == :end) %>
+                <li><%= msg %></li>
+            <% end %>
+        <% end %>
+        </ul>
+    </div>
+<% end %>
+
 <h3>edit an event</h3>
 <%= render 'form' %>
