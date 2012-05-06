@@ -10,6 +10,7 @@ class Ability
     can :export, [Event]
     can :switch, [User]
     can :search, [Event, User, Neighborhood]
+    can :instructions, [Event]
 
     can :see_events, [User] do |other|
       privacy_settings = Privacy.find_by_user_id(other.id)
