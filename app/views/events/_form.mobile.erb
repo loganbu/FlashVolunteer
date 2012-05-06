@@ -18,6 +18,36 @@
     </div>
     <div class="row-fluid">
         <div class="span2">
+            <div class="pull-right"><%= f.label :name, "hosted by"%></div>
+            <input type="text" style="visibility:hidden; width: 0px"/>
+        </div>
+        <div class="span3">
+            <div class="row-fluid">
+                <div class="span6">
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" checked="checked"/><label for="hosted_by_me">&nbsp;myself</label>
+                </div>
+                <div class="span6">
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone"/><label for="hosted_by_someone">&nbsp;someone else</label>
+                </div>
+            </div>
+        </div>
+        <div class="span7">
+            <%= f.text_field :hosted_by, :class=>"full hidden", :id => "someone_else"%>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#hosted_by_me").click(function() {
+                    $("#someone_else").hide();
+                    $("#someone_else").val("");
+                })
+                $("#hosted_by_someone").click(function() {
+                    $("#someone_else").show();
+                })
+            })
+        </script>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
             <div class="pull-right"><%= f.label :address, "address", :for=>"event_street" %></div>
         </div>
         <div class="span10">
