@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120505203828) do
+ActiveRecord::Schema.define(:version => 20120506060825) do
 
   create_table "checkins", :force => true do |t|
     t.string "email"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20120505203828) do
     t.string   "website"
     t.text     "special_instructions"
     t.string   "twitter_hashtags"
+    t.string   "hosted_by"
   end
 
   create_table "neighborhoods", :force => true do |t|
