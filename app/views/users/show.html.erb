@@ -42,9 +42,8 @@ $(function () {
     </div>
     <div class="span4 event bold">
         <ul class="unstyled">
-            <li><%= link_to "UPCOMING EVENTS", events_user_url(@user) %></li>    <!--NEED TO MAKE CORRECT LINK - NEED TO MAKE IT A SPECIFIC TAB OF THE PAGE-->
-            <li><%= link_to "RECOMMENDED EVENTS", events_user_url(@user) %></li> <!--NEED TO MAKE CORRECT LINK - NEED TO MAKE IT A SPECIFIC TAB OF THE PAGE-->
-            <li><%= link_to "MY FLASH TEAM'S EVENTS", events_user_url(@user) %></li>  <!--NEED TO MAKE CORRECT LINK - NEED TO MAKE IT A SPECIFIC TAB OF THE PAGE-->
+            <li><%= link_to "UPCOMING EVENTS", events_user_url(@user) +"#upcoming" %></li>
+            <li><%= link_to "RECOMMENDED EVENTS", events_user_url(@user) + "#recommended" %></li>
             <li><%= link_to "CREATE NEW EVENT", new_event_url %></li>
         </ul>
     </div>
