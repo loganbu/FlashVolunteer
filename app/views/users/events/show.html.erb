@@ -11,11 +11,15 @@
 <div class="clear">&nbsp;</div>
 <div id="content_sections">
     <div id="past_content">
-        <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :past}) || "You have not signed up for any events." %>
+        <% if(@past.count == 0) %>
+            You have not signed up for any events. <a href="#recommended" onclick="activateContentSection('#recommended')">See what we have to offer</a>
+        <% else %>
+            <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :upcoming }) %>
+        <% end %>
     </div>
     <div class="hide" id="upcoming_content">
         <% if(@upcoming.count == 0) %>
-            You have no upcoming events. <a href="#recommended" onclick="activateContentSection('#recommended')">See what what we have to offer</a>
+            You have no upcoming events. <a href="#recommended" onclick="activateContentSection('#recommended')">See what we have to offer</a>
         <% else %>
             <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :upcoming }) %>
         <% end %>

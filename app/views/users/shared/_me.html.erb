@@ -5,10 +5,10 @@
 <% content_for :left_split do %>
 <div>
     <div class="row-fluid">
-        <div class = "span8">
+        <div class = "span5">
             <%= photo_link(current_user.avatar, :profile, user_url(current_user)) %>
         </div>
-        <div class="span4">
+        <div class="span7">
             <br />
             <h2><%= current_user.name %></h2>
             <p><%= link_to "edit profile", edit_user_url(current_user) %></p>
