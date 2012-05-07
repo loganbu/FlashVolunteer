@@ -101,7 +101,7 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.18)
-    mobylette (2.1)
+    mobylette (2.3)
       actionpack (>= 3.0)
     multi_json (1.3.2)
     multi_xml (0.4.4)
@@ -216,7 +216,7 @@ DEPENDENCIES
   jquery-rails
   jquery_datepicker
   jquery_mobile_rails
-  mobylette
+  mobylette (~> 2.3)
   mysql2
   newrelic_rpm
   nokogiri
