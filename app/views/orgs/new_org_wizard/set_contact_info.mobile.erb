@@ -1,3 +1,17 @@
+<% if @org.errors.any? %>
+    <div class="alert alert-error">  
+        <a class="close" data-dismiss="alert" href="#">x</a>
+        <h4 class="alert-heading">Error!</h4>
+        <p>
+            <ul>
+            <% @org.errors.each do |attr,msg| %>
+                <li><%= msg %></li>
+            <% end %>
+            </ul>
+        </p>
+    </div>
+<% end %>
+
 <% content_for :question do %>
     Is this info about your group correct?
 <% end %>

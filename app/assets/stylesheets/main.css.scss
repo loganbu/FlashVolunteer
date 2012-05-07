@@ -39,13 +39,15 @@ html, body {
 .small_badge {
     display: block;
     float: left;
-    margin-right: 5px;
+    margin-left: 2px;
+    margin-right: 2px;
     width: 20px;
     height: 20px;
 }
 .exsmall_badge {
     @extend .small_badge;
-    margin-right: 3px;
+    margin-left: 1px;
+    margin-right: 1px;
     width: 16px;
     height: 16px;
 }
@@ -71,31 +73,23 @@ html, body {
     border: 1px solid white;
     &:active {
         border: 1px solid $lightBlue !important;
-        background: none repeat scroll 0 0 darken($babyBlue, 15%) !important;
+        background: none repeat scroll 0 0 0 0 darken($babyBlue, 15%) !important;
     }
     label {
         cursor: pointer;
     }
 }
 .selectable_option_med {
-    float: left;
+    @extend .selectable_option;
     padding: 5px;
-    margin: 0px 5px 5px 0;
-    /* Since these are floating left, adding the 1px black border will cause
-       the items below to not clear left since there is 1px left.  Add a white
-       pixeled border to non-selected items to ensure it clears left */
-    border: 1px solid white;
-    &:active {
-        border: 1px solid $lightBlue !important;
-        background: none repeat scroll 0 0 darken($babyBlue, 15%) !important;
-    }
-    label {
-        cursor: pointer;
-    }
+}
+.selectable_option_small {
+    @extend .selectable_option;
+    padding: 2px;
 }
 .option_selected {
     border: 1px solid $lightBlue !important;
-    background: none repeat scroll 0 0 darken($babyBlue, 5%);
+    background: none repeat scroll darken($babyBlue, 5%);
 }
 
 /**************

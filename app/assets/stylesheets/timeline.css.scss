@@ -89,29 +89,47 @@
 {
 }
 
-/* header */
+/****************
+ header 
+ ****************/
+.h1-override{
+    padding-bottom:5px;
+}
 
-.tlh-username
-{
+.tlh-username{
     padding-right: 10px;
-    padding-bottom: 10px;
-    font-size: larger;
 }
 
-.tlh-bottomrow
-{
+.t1h-skills{
+    margin-top:7px;
+}
+
+.tlh-bottomrow{
     background-color: rgba(0, 0, 0, .15);
+    padding: 10px;
+    width: 650px;
 }
 
-.tlh-avatar
-{
+.tlh-avatar{
     height: 128px;
     width: 128px;
-    margin-top: -27px;
+    margin-top: -50px;
+    margin-left: 16px;
 }
 
-.tlh-followercount
-{
+.tlh-followercount-align{
+    text-align: center;
+}
+
+.tlh-followercount{
     font-size: larger;
     font-weight: bold;
+}
+
+.t1h-stats{
+    background-color: #4EA0A7;
+    color:white;
+    text-align: center;
+    margin: 16px;
+    padding:3px;
 }
