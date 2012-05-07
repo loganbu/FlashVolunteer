@@ -10,6 +10,7 @@
 			        <label 
 			        	class="selectable_option <%= "option_selected" if @privacy.send(setting).send(level+'?') %>" 
 			        	id="<%= level %>_<%= setting %>" 
+			        	style= "cursor:pointer"
 			        	onclick="toggleImage(<%= level %>_<%= setting %>, 'options_<%= setting %>')"
 			        	for="privacy_<%= setting%>_<%= level %>">
         				<%= image_tag(level + ".png") %><br/>

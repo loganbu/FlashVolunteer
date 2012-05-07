@@ -29,8 +29,12 @@ class Ability
 
       # Only "confirmed" users can create events
       can :create, Event if user.confirmed?
+      can :create, Org if user.confirmed?
     end
     can :manage, User do |other|
+      other == user
+    end
+    can :manage, Org do |other|
       other == user
     end
   end

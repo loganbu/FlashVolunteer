@@ -42,7 +42,7 @@ gem "paperclip"
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
 gem 'wicked'
-gem 'mobylette'
+gem 'mobylette', '~> 2.3'
 gem 'jquery_mobile_rails'
 gem 'classy_enum'
 
