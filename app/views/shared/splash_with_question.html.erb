@@ -23,13 +23,15 @@
     </div>
     <div class="row-fluid">&nbsp;</div>
     <div class="row-fluid">
-        <div class="span9" style = "padding-top:8px">
+        <div class="span10" style = "padding-top:8px">
             <div class = "pull-right">
                 <%= yield :below_button %>
             </div>
         </div>
-        <div class="span3">
-            <%= yield :button %>
+        <div class="span2">
+            <div class="pull-left">
+                <%= yield :button %>
+            </div?>
         </div>
     </div>
 <% end %>
