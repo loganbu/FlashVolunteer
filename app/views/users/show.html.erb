@@ -40,9 +40,10 @@ $(function () {
             <div class="row-fluid tlh-bottomrow">
                 <div class="span3">
                     <div><%= image_tag @user.avatar.url(:profile), :class => "tlh-avatar" %></div>
-                    <div class="tlh-followercount-align">
+                    <!-- <div class="tlh-followercount-align">
                         <span class="tlh-followercount"><%= @nFollowers %></span> followers
                     </div>
+                    -->
                 </div>
                 <div class="span9">
                     <% if @user.neighborhood %>
@@ -50,15 +51,15 @@ $(function () {
                     <% end %>
                     <div class="row-fluid">
                         <div class = "span3 t1h-stats">
-                            <p>created:</p>
+                            <p>created</p>
                             <h4><%= @nEventsCreated %></h4>
                         </div>
                         <div class = "span3 t1h-stats">
-                            <p>upcoming:</p>
+                            <p>upcoming</p>
                             <h4><%= @nEventsComingUp %></h4>
                         </div>
                         <div class = "span3 t1h-stats">
-                            <p>past:</p>
+                            <p>past</p>
                             <h4><%= @nEventsInPast %></h4>
                         </div>
                     </div>
@@ -75,4 +76,14 @@ $(function () {
             <li><%= link_to "CREATE NEW EVENT", new_event_url %></li>
         </ul>
     </div>
+</div>
+
+<% if can? :see_events, @user %>
+<div class="row">
+    <div class="span8 timeline">
+    </div>
+    <div class="span4 timeline-nav">
+    </div>
+</div>
+<% end %>
 </div>
