@@ -13,6 +13,7 @@
 <p class="bold">MY EVENTS</p>
 <% if can? :create, Event %>
 <p><%= link_to "Create new event", new_event_url %></p>
+<br />
 <% end %>
 <div class="tabs bold">
     <ul class="unstyled inline" id="link_list">
