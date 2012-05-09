@@ -1,5 +1,5 @@
 <% content_for :question do %>
-    What is <%= @org.name %>'s website?
+    What is your group's website?
 <% end %>
 <% content_for :below_question do %>
     <div class="row-fluid">
@@ -9,7 +9,7 @@
     </div>
 <% end %>
 <% content_for :button do %>
-    <%= submit_tag("yes, ask me more", :class => "btn btn-primary pull-right") %>
+    <%= submit_tag("ask me more", :class => "btn btn-primary pull-right") %>
 <% end %>
 <%= content_for :form_template do 'orgs/new_org_wizard/question_with_form' end %>
 <%= render(:template => 'shared/splash_with_question') %>
