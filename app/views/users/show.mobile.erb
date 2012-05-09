@@ -71,11 +71,11 @@ $(function () {
         <% else %>
             <%= @user.name %> does not have a public profile. <!--If you know <%=@user.name %>, send a Flash Team request. -->
         <% end %>
-        <div class="hide" id="upcoming_content">
-        <% if(@user.upcoming.count == 0) %>
+        <div id="upcoming_content">
+        <% if(@upcoming_events.count == 0) %>
             <%@user.name%> has no upcoming events. 
         <% else %>
-            <%= render(:partial => "events/event", :collection => @user.upcoming, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :upcoming }) %>
+            <%= render(:partial => "events/event", :collection => @upcoming_events, :as => :event, :locals => { :show_links => false, :description => :medium }) %>
         <% end %>
     </div>
     </div>
