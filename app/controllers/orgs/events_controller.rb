@@ -5,6 +5,7 @@ class Orgs::EventsController < ApplicationController
   # GET /orgs/1/events.xml
   def show
     @org = Org.find(params[:id])
+    authorize_org_profile(@org)
 
     @past = Event.created_by(@org).past.paginate(:page => params[:page], :per_page => params[:per_page] || 5)
     @upcoming =  Event.created_by(@org).upcoming.paginate(:page => params[:page], :per_page => params[:per_page] || 5)

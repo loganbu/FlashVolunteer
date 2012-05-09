@@ -55,6 +55,7 @@ class UsersController < ApplicationController
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    authorize_user_profile(@user)
   end
 
   # PUT /events/1

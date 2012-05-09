@@ -5,6 +5,7 @@ class Orgs::StatsController < ApplicationController
   # GET /orgs/1/stats.xml
   def show
     @org = Org.find(params[:id])
+    authorize_org_profile(@org)
 
     respond_to do |format|
       format.html # show.html.erb

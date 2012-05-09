@@ -1,16 +1,30 @@
 class Ability
   include CanCan::Ability
-  include ApplicationHelper
   
   def initialize(user)
     user ||= User.new # guest user (not logged in)
+
+    alias_action :in, :export, :search, :instructions, :to => :read
+
     # everyone can read event and neighborhood
     can :read, [Event, Neighborhood, User]
-    can :in, [Event]
-    can :export, [Event]
-    can :switch, [User]
-    can :search, [Event, User, Neighborhood]
-    can :instructions, [Event]
+    can :switch, [User] # Switching does additional checks against session data that we can't do here
+
+    # Only "confirmed" users can create events/orgs
+    can :create, Event if user.confirmed?
+    can :create, Org if user.confirmed?
+    cannot :see_profile, [User, Org] # Assume the user isn't the same, the :manage below takes care of overriding this
+    
+    # Only the owning user is allowed to manager their own org/user profile
+    can :manage, User do |other|
+      other == user && user.type != "Org"
+    end
+    can :manage, Org do |other|
+      other == user && user.type == "Org"
+    end
+    can :manage, Event, do |event|
+      event.try(:user) == user
+    end
 
     can :see_events, [User] do |other|
       privacy_settings = Privacy.find_by_user_id(other.id)
@@ -18,24 +32,9 @@ class Ability
     end
 
     if user.role? :super_admin
-      #super admins can do everything
-      can :manage, :all
-      can :switch, User if Rails.env.development?
-    elsif user.role? :volunteer
-      # Organizations and Volunteers can only manage their own events
-      can :manage, Event do |event|
-        event.try(:user) == user
-      end
+        #super admins can do everything
+        can :manage, :all
+    end
 
-      # Only "confirmed" users can create events
-      can :create, Event if user.confirmed?
-      can :create, Org if user.confirmed?
-    end
-    can :manage, User do |other|
-      other == user
-    end
-    can :manage, Org do |other|
-      other == user
-    end
   end
 end

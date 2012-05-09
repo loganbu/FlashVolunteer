@@ -11,7 +11,22 @@ class ApplicationController < ActionController::Base
     check_authorization
 
     rescue_from CanCan::AccessDenied do |exception|
+        Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
         render :file => "app/views/shared/authfail.html.erb"
+    end
+
+    def authorize_user_profile(entity)
+        if (!entity || entity.type == "Org")
+            raise CanCan::AccessDenied
+        end
+        authorize! :profile, entity
+    end
+
+    def authorize_org_profile(entity)
+        if (!entity || entity.type != "Org")
+            raise CanCan::AccessDenied
+        end
+        authorize! :profile, entity
     end
 
 
