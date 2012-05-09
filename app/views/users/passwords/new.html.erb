@@ -5,7 +5,6 @@
 link_to("") end %>
 <%= content_for :form_content do %>
 	<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-	<%= devise_error_messages! %>
 
 	<p>enter the email address where you want us to send the link to reset your password. </p>
 

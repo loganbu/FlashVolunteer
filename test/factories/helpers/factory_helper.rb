@@ -30,7 +30,7 @@ $neighborhoods_with_addresses = [
             Hash["name" => "Central District",  "zip" => 98122, "address"=>"1404 E Yesler Way"],
             Hash["name" => "Columbia City",     "zip" => 98118, "address"=>"4865 Rainier Ave S"],
             Hash["name" => "Delridge",          "zip" => 98106, "address"=>"3861 Delridge Way SW"],
-            Hash["name" => "Downtown",          "zip" => 98101, "address"=>"1420 5th Ave"],
+            Hash["name" => "Downtown Seattle",  "zip" => 98101, "address"=>"1420 5th Ave"],
             Hash["name" => "Edmonds",           "zip" => 98020, "address"=>"111 5th Ave S"],
             Hash["name" => "First Hill",        "zip" => 98104, "address"=>"901 Madison Street"],
             Hash["name" => "Fremont",           "zip" => 98103, "address"=>"459 N 36th Street"],

@@ -3,9 +3,6 @@ include REXML
 namespace :fv do
     desc "Import data from Flash Volunteer, v1 XML data output"
     task :import_v1 => :environment do
-
-        User.delete_all()
-        Privacy.delete_all()
         keyed = Hash.new
         ['Auth', 'Neighborhood', 'Volunteer'].each do |file|
             keyed[file] = Hash.new
