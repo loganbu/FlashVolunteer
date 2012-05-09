@@ -1,16 +1,166 @@
-<%= @event.name %><br/>
--------------------
-<table>
-	<tr>
-		<th>Name</th>
-		<th>E-Mail</th>
-		<th>Start time</th>
-		<th>End time</th>
-	</tr>
-	<tr>
-		<td>________</td>
-		<td>________</td>
-		<td>________</td>
-		<td>________</td>
-	</tr>
-</table>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Flashvolunteer Signup Sheet</title>
+	<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+	<style type="text/css">
+		body { color: ;
+			font-family: 'Bree Serif', serif;}
+		
+		.align-right { float:right;; margin: 10 10 0 10; }
+		
+		.wrapper {width:8in}
+		
+		.title {color:green;}
+		
+		table {
+			width: 100%;
+			caption-side: top;
+		}
+		caption{
+			font-weight:bold; font-size:18px;
+			text-decoration:underline;
+		}
+		th {
+			text-align:left;
+			text-decoration:underline;
+		}
+		td {
+		 	padding: 10px;
+			border-bottom: 1px solid;
+		}
+		tr {
+			height:40px;
+		}
+	</style>
+</head>
+
+<body>
+<div class="wrapper">
+	<div class="title">
+		<div class="align-right">
+			<%= qr_code("link", "alt-text", 140) %><br>
+			<img src="logo.png" alt="Flashvolunteer" width=120 align=middle>
+		</div>
+		<h1><%= @event.name %></h1>
+		<h2><%= event.start.to_date.to_formatted_s(:rfc822) %>  |  <%= event.start.strftime('%l:%M%p') %> - <%= event.end.strftime('%l:%M%p') %></h2>		
+		<h3><%= @event.description %></h3>
+	</div>
+	<hr width=100%>
+	</div>
+	
+	<table class="participants">
+		<tr>
+			<th width=30%>Name</th>
+			<th width=30%>Email</th>
+			<th width=20%>Start Time</th>
+			<th width=20%>End Time</th>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+</div>
+</body>
+
+</html>
