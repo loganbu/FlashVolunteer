@@ -22,7 +22,7 @@ class Ability
     can :manage, Org do |other|
       other == user && user.type == "Org"
     end
-    can :manage, Event, do |event|
+    can :manage, Event do |event|
       event.try(:user) == user
     end
 
