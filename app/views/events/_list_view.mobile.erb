@@ -20,7 +20,7 @@
             <h1><%= link_to(@neighborhood.name, "#", :id => "list_link") %></h1>
         <% end %>
         <ul>
-            <% Neighborhood.all.each do |neighborhood| %>
+            <% Neighborhood.order("name asc").each do |neighborhood| %>
                 <li><%=link_to(neighborhood.name, events_neighborhood_url(neighborhood.name))%></li>
             <% end %>
         </ul>

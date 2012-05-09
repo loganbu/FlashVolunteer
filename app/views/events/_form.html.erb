@@ -53,7 +53,7 @@
             <%= f.text_field :zip, :class=>"full" %>
         </div>
         <div class="span5">
-            <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "choose a neighborhood" }) %>
+            <%= f.collection_select(:neighborhood_id, Neighborhood.order("name asc"), :id, :name, {:include_blank => "choose a neighborhood" }) %>
         </div>
     </div>
     <div class="row-fluid">

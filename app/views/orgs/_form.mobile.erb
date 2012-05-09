@@ -45,7 +45,7 @@
           <div class="pull-right"><%= f.label :neighborhood, "based in" %></div>
       </div>
       <div class="span10">
-          <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "anywhere in king county" },  :class=>"full") %>
+          <%= f.collection_select(:neighborhood_id, Neighborhood.order("name asc"), :id, :name, {:include_blank => "anywhere in king county" },  :class=>"full") %>
       </div>
   </div>
   <div class="row-fluid">
