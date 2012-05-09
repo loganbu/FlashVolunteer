@@ -1,4 +1,6 @@
+<% if @event.hosted_by == nil %>
 <h3>event organizers (1)</h3>
 <p>
     <%= mail_to @event.user.email, @event.user.name,  :encode => "hex" %>
 </p>
+<% end %>
