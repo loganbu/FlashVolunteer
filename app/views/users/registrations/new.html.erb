@@ -71,7 +71,7 @@ end %>
                     <%= f.check_box(:terms_of_service) %>
                 </div>
                 <div style="padding-left: 20px">
-                    <label for="user_terms_of_service" style="float: none;">I accept the <%= link_to("Terms of Use", tou_url) %> and <%= link_to("Privacy Policy", privacy_url) %></label>
+                    <label for="user_terms_of_service" style="float: none;">I accept the <%= link_to("Terms of Use", tou_url, :target => "_blank") %> and <%= link_to("Privacy Policy", privacy_url, :target => "_blank") %></label>
                 </div>
             </div>
         </div>
