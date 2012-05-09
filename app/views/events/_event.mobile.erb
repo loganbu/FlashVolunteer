@@ -4,17 +4,17 @@
 	show_links ||= false
 	type ||= :display
 	is_mobile ||= false
-	badge_size ||= "small"
+	badge_size ||= "exsmall"
 %>
 
 <%if (is_mobile== true)
-	badge_size = "exsmall"
+	badge_size = "exexsmall"
 %>
 <%end%>
 
 <div class="event-summary">
 	<div class="row-fluid">
-		<div class="<%= type == :display ? "span12" : "span10" %>">
+		<div class="<%= type == :display ? "span12" : "span9" %>">
 			<div class="event-title">
 				<%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
 			</div>
@@ -57,7 +57,7 @@
 			<% end %>
 		</div>
 		<% if type != :display %>
-		<div class="span2">
+		<div class="span3">
 			<%= 
 				case type
 					when :past

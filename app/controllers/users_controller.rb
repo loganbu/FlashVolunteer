@@ -37,6 +37,7 @@ class UsersController < ApplicationController
 
     # events
     @events = Event.includes(:skills).joins(:participants).where('users.id' => @user.id)
+    @upcoming_events = Event.attended_by(@user).upcoming
     if !params[:page]
       logger.info "Retrieving the next 10 upcoming events"
       @events = @events.limit(10).order('start ASC').upcoming.where('start < ?', Time.now + 2.months)

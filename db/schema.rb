@@ -13,11 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20120509042942) do
 
-  create_table "checkins", :force => true do |t|
-    t.string "email"
-    t.string "name"
-  end
-
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
     t.integer  "attempts",   :default => 0

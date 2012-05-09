@@ -13,7 +13,7 @@
 <% end %>
 
 <% content_for :question do %>
-    Is this info about your group correct?
+    Is this information about your group correct?
 <% end %>
 <% content_for :below_question do %>
     <div class="row-fluid">
@@ -34,7 +34,7 @@
     </div>
 <% end %>
 <% content_for :button do %>
-    <%= submit_tag("ask me more", :class => "btn btn-primary pull-right") %>
+    <%= submit_tag("yes, ask me more", :class => "btn btn-primary pull-right") %>
 <% end %>
 <%= content_for :form_template do 'orgs/new_org_wizard/question_with_form' end %>
 <%= render(:template => 'shared/splash_with_question') %>
