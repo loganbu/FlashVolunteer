@@ -22,7 +22,7 @@ class EventsController < ApplicationController
   def index
     per_page = params[:per_page] || 5
     
-    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 }
+    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown seattle")==0 }
     @events = Event.upcoming.near(@mapCenter).paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
     @zoom = 11
     
