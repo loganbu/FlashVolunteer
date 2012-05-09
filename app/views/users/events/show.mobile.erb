@@ -13,11 +13,12 @@
 <p class="bold">MY EVENTS</p>
 <% if can? :create, Event %>
 <p><%= link_to "Create new event", new_event_url %></p>
+<br />
 <% end %>
 <div class="tabs bold">
     <ul class="unstyled inline" id="link_list">
-        <li><a class="link_active" href="#past" id="past_link">PAST (<%= @past.count %>)</a></li>
-        <li><a href="#upcoming" id="upcoming_link">UPCOMING (<%= @upcoming.count %>)</a></li>
+        <li><a class="link_active" href="#past" id="past_link">PAST</a></li>
+        <li><a href="#upcoming" id="upcoming_link">UPCOMING</a></li>
         <li><a href="#recommended" id="recommended_link">RECOMMENDED</a></li>
     </ul>
 </div>
