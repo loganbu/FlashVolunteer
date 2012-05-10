@@ -34,6 +34,7 @@ class UsersController < ApplicationController
     @nEventsComingUp = Event.attended_by(@user).upcoming.count
     @nEventsInPast = Event.attended_by(@user).past.count
     @nFollowers = @user.followers.count
+    @nHoursVolunteered = Participation.where("user_id = ?", @user.id).sum(:hours_volunteered)
 
     # events
     @events = Event.includes(:skills).joins(:participants).where('users.id' => @user.id)
