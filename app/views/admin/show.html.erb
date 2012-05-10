@@ -1,0 +1,10 @@
+<% @stats.each do |key,val| %>
+    <h2><%= key %></h2>
+    <% if val.kind_of? Array %>
+        <% val.each do |arr_val| %>
+            <%= arr_val %><br/>
+        <% end %>
+    <% else %>
+        <%= val %>
+    <% end %>
+<% end %>
