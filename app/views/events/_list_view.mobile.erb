@@ -74,8 +74,8 @@
     }
 
     $(document).ready(function() {
-        $('#neighborhood_list > li').bind('mouseover', dropdown_menu_open);
-        $('#neighborhood_list > li').bind('mouseout',  dropdown_menu_timer);
+        $('#neighborhood_list > li').bind('dblclick', dropdown_menu_open);
+        $('#neighborhood_list > li').bind('focusout',  dropdown_menu_timer);
     });
 
     document.onclick = dropdown_menu_close;

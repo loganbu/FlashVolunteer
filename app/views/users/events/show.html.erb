@@ -28,7 +28,7 @@
         <% if(@past.count == 0) %>
             You have not signed up for any events. <a href="#recommended" onclick="activateContentSection('#recommended')">See what we have to offer</a>
         <% else %>
-            <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :upcoming }) %>
+            <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :past }) %>
         <% end %>
     </div>
     <div class="hide" id="upcoming_content">
