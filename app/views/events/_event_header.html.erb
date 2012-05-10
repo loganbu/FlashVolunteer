@@ -15,6 +15,9 @@
 <p>
     <%= @event.street %>, <%= link_to(@event.neighborhood.name, (events_url.concat("/in/").concat(@event.neighborhood.name))) %><br/>
     <%= render(:partial => 'links', :locals => { :event => @event }) %>
+<div class="row-fluid">
+        <div class="pull-left"><%= link_to("visit event website", @event.website, :target=>"_blank") %></div>
+</div>
 </p>
 <div class="row-fluid">
     <div class="span7">
