@@ -38,7 +38,7 @@
              style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp_#{markerSize}.png" : "/assets/mapStripAvail_#{markerSize}.png" %>) 0px <%= -i*dimension %>px">&nbsp;
         </div>
         <div class="details">
-            <%= render :partial => "events/event", :locals => { :event => event, :description => true, :show_links => true, :is_mobile => mobile } %>
+            <%= render :partial => "events/event", :locals => { :event => event, :description => true, :show_links => true } %>
         </div>
     </div>
     <% end %>
