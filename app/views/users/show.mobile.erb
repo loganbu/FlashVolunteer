@@ -52,17 +52,21 @@ $(function () {
                     <% if @user.neighborhood %>
                         <div><h4>volunteers in <%= link_to(@user.neighborhood.name, (events_url.concat("/in/").concat(@user.neighborhood.name))) %></h4></div>
                     <% end %>
-                    <div class="row-fluid">
-                        <div class = "span3 t1h-stats">
-                            <p>created:</p>
+                    <div class="row-fluid bold">
+                        <div class = "span2 t1h-stats">
+                            <p>hours</p>
+                            <h4><%= @nHoursVolunteered %></h4>
+                        </div>
+                        <div class = "span2 t1h-stats">
+                            <p>created</p>
                             <h4><%= @nEventsCreated %></h4>
                         </div>
-                        <div class = "span3 t1h-stats">
-                            <p>upcoming:</p>
+                        <div class = "span2 t1h-stats">
+                            <p>upcoming</p>
                             <h4><%= @nEventsComingUp %></h4>
                         </div>
-                        <div class = "span3 t1h-stats">
-                            <p>past:</p>
+                        <div class = "span2 t1h-stats">
+                            <p>past</p>
                             <h4><%= @nEventsInPast %></h4>
                         </div>
                     </div>
@@ -73,7 +77,7 @@ $(function () {
         <% end %>
         <div id="upcoming_content">
         <% if(@upcoming_events.count == 0) %>
-            <%@user.name%> has no upcoming events. 
+            <%=@user.name%> has no upcoming events. 
         <% else %>
             <%= render(:partial => "events/event", :collection => @upcoming_events, :as => :event, :locals => { :show_links => false, :description => :medium }) %>
         <% end %>
