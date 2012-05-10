@@ -50,17 +50,21 @@ $(function () {
                         <div><h4>volunteers in <%= link_to(@user.neighborhood.name, (events_url.concat("/in/").concat(@user.neighborhood.name))) %></h4></div>
                     <% end %>
                     <div class="row-fluid">
-                        <div class = "span3 t1h-stats">
+                        <div class = "span2 t1h-stats">
                             <p>created</p>
                             <h4><%= @nEventsCreated %></h4>
                         </div>
-                        <div class = "span3 t1h-stats">
+                        <div class = "span2 t1h-stats">
                             <p>upcoming</p>
                             <h4><%= @nEventsComingUp %></h4>
                         </div>
-                        <div class = "span3 t1h-stats">
+                        <div class = "span2 t1h-stats">
                             <p>past</p>
                             <h4><%= @nEventsInPast %></h4>
+                        </div>
+                        <div class = "span3 t1h-stats">
+                            <p>hours volunteered</p>
+                            <h4><%= @nHoursVolunteered %></h4>
                         </div>
                     </div>
                 </div>
