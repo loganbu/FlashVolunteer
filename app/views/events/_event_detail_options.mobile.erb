@@ -6,7 +6,7 @@
    <% end %>
 <% end %>
 <% if can? :edit, @event %>
-   <%= link_to("edit event", edit_event_url, :class => "btn btn-primary block")%>
+   <%= link_to("save", edit_event_url, :class => "btn btn-primary block")%>
    <div class="row">&nbsp;</div>
    <%= link_to("delete event", event_url(@event), :method=>"delete", :class => "btn btn-primary block")%>
 <% end %>
