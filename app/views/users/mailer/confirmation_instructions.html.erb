@@ -5,18 +5,18 @@
 <p>Your old account is still good as gold on the new site, but to keep our legal department at bay, you'll need to reconfirm you're you! (We think it's silly, too.)</p>
 
 <b>Your to-do list is short and easy.</b>
-<p><%= link_to 'Go to the Flash Volunteer site', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %> and click on the Facebook or Google icon to authenticate your account. A few clicks, and you're done – from then on, you can click on the same icon for quick-and-dirty sign-in to Flash Volunteer.</p>
+<p><%= link_to 'Go to the Flash Volunteer site', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %> and click on the Facebook or Google icon to authenticate your account. A few clicks, and you're done - from then on, you can click on the same icon for quick-and-dirty sign-in to Flash Volunteer.</p>
 
 <p>Easy, right? Now, go do it!</p>
 
 <p>Go ahead, I'll wait.</p>
 
-<p>If you don't have Facebook or Google credentials, or you're the type who doesn’t let different foods touch on your dinner plate, you can <%= link_to 'go to the Flash site', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>, enter your email address, and create a fresh password. That will be your new sign-in for Flash going forward.</p>
+<p>If you don't have Facebook or Google credentials, or you're the type who doesn't let different foods touch on your dinner plate, you can <%= link_to 'go to the Flash site', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>, enter your email address, and create a fresh password. That will be your new sign-in for Flash going forward.</p>
 
 <p>Thanks for your cooperation, and happy volunteering!</p>
 
 <p>Charlie X. Pants</p>
 <p>Flash Volunteer CEO (Champion of Excellent Onboarding)</p>
-<p><%= mail_to("support@flashvolunteer.org", "Contact me", :subject => "Questions regarding Flash Volunteer", :encode=>"hex")%></p>
+<p><%= mail_to('support@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
 <p>P.S. Have a few extra minutes? Explore the site! You can create a new profile picture, update your communications preferences, and sign up for an event. We're still moving over your data about past events you attended, so don't panic at the disco if something is missing.</p>

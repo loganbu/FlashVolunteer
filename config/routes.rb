@@ -89,5 +89,6 @@ Flashvolunteer::Application.routes.draw do
     match "partners" => "home#partners"
     match "help" => "home#help"
     match "donate" => "home#donate"
-  
+    match "newsletter" => "home#newsletter"
+    
 end
