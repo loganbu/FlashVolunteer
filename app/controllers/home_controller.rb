@@ -17,4 +17,12 @@ class HomeController < ApplicationController
   		format.html
   	end
   end
+
+  def newsletter
+    respond_to do |format|
+      format.html
+      format.xml  { head :ok }
+    end
+  end
+
 end
