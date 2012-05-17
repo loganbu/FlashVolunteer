@@ -3,15 +3,13 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?, :message => "This e-mail address is already taken"
   validates_format_of     :email, :with  => /\A[^@]+@[^@]+\z/, :allow_blank => true, :if => :email_changed?, :message => "You must specify a valid e-mail address"
   validates               :email, :presence => { :message => "You must specify an e-mail address" }
-  
-
 
   validates_presence_of     :password, :if => :password_required?, :message => "You must specify a password"
   validates_confirmation_of :password, :if => :password_required?, :message => "Your passwords do not match"
   validates_length_of       :password, :within => 6..128, :allow_blank => true, :message => "The password must be more than 6 characters"
 
   validates :name, :presence => { :message => "You must have a name" }
-
+  validates_acceptance_of :terms_of_service, :on => :create, :message => "must be accepted"
 
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
