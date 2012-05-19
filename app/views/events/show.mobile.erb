@@ -7,7 +7,7 @@
 
 <div class="row-fluid">
     <h3>description</h3>
-    <p><%= @event.description %></p>
+    <p><%= h(@event.description).gsub(/\n/, '<br/>').html_safe %></p>
 </div>
 
 <div class="row-fluid">
