@@ -59,7 +59,8 @@ class User < ActiveRecord::Base
   def self.find_for_oauth(access_token)
     data = access_token.extra.raw_info
     if !(user = User.where(:email => data.email).first)
-      user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name) 
+      user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name)
+      user.confirm!
     end
     user
   end
