@@ -3,9 +3,6 @@
 
 <p>Our spider senses tell us that you created an account with Flash Volunteer. Congratulations on an excellent decision! Before you can create an event or sign up for one, we just need to make sure we got your information down right (our handwriting is kind of messy). </p>
 
-<p>Your old account is still good as gold on the new site, but to keep our legal department at bay, you’ll need to reconfirm you’re you! (We think it’s silly, too.)
-</p>
-
 <p><%= link_to 'Yep, you got me', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>! </p>
 
 <p> Once you've <%= link_to 'confirmed with us', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>, you're ready to search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
