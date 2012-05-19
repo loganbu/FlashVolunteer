@@ -23,6 +23,26 @@
               </p>
           </div>
       <% end %>
+      <% if flash[:notice] %>
+          <div class="alert alert-success">  
+              <a class="close" data-dismiss="alert" href="#">x</a>
+              <p>
+                  <ul>
+                      <li><%= flash[:notice] %></li>
+                  </ul>
+              </p>
+          </div>
+      <% end %>
+      <% if flash[:warning] %>
+          <div class="alert">  
+              <a class="close" data-dismiss="alert" href="#">x</a>
+              <p>
+                  <ul>
+                      <li><%= flash[:warning] %></li>
+                  </ul>
+              </p>
+          </div>
+      <% end %>
       <%= yield %>
     </div>
     <%= render "shared/debug" if Rails.env.development? %>
