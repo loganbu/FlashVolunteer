@@ -5,8 +5,13 @@
 
 <p> <%= link_to 'Get started now', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>.</p>
 
-<p>Have questions, comments, or suggestions? Email us at <%= mail_to("info@flashvolunteer.org", "contact organizer", :subject => "Questions regarding Flash Volunteer", :encode=>"hex")%>.</p>
-<p>Happy Volunteering!</p></br>
-<p>The Flash Volunteer team</p></br>
+<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+
+<p>Happy Volunteering!</p>
+
+
+<p>Charlie X. Pants</p>
+<p>Flash Volunteer CEO </p>
+<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
 <p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>

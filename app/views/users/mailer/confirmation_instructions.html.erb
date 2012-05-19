@@ -7,13 +7,13 @@
 
 <p> Once you've <%= link_to 'confirmed with us', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>, you're ready to search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
 
-<p>Have questions, comments, or suggestions? Email us at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
 <p>Happy Volunteering!</p>
 
 
 <p>Charlie X. Pants</p>
 <p>Flash Volunteer CEO (Confirmation Excellence Owner)</p>
-<p><%= mail_to('support@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
 <p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
