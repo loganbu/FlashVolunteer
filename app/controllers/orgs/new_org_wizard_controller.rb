@@ -5,7 +5,7 @@ class Orgs::NewOrgWizardController < Wicked::WizardController
 
     def find_org()
         org = Org.find_by_name(session[:org_name])
-        if(@org = nil)
+        if(org == nil)
             org = Org.find_by_email(session[:org_email])
         end
         org
