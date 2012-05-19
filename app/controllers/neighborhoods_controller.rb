@@ -5,12 +5,10 @@ class NeighborhoodsController < ApplicationController
   # GET /neighborhoods
   # GET /neighborhoods.xml
   def index
-    store_url(new_event_url)
     @neighborhoods = Neighborhood.find(:all, :order => "name")
     @preferred_neighborhood = Neighborhood.where(:id => preferred_neighborhood).first
     
     @preferred_neighborhood_id = @preferred_neighborhood ? @preferred_neighborhood.id : nil
-    
 
     respond_to do |format|
       format.html # index.html.erb
@@ -27,8 +25,6 @@ class NeighborhoodsController < ApplicationController
 
     # begin with an an association that's always true
     @neighborhoods = Neighborhood.where("1=1").near(lat_long, proximity).paginate(:page=>params[:page], :per_page => per_page)
-
-
     
     respond_to do |format|
       format.html
