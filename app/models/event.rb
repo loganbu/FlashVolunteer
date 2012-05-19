@@ -21,11 +21,11 @@ class Event < ActiveRecord::Base
 
     scope :upcoming, lambda { |days=false|
         # Over 9000 days is probably long enough in the future. Otherwise, this app rocks, and I'll will "won't-fix" this bug.
-        where("start >= ? AND start <= ?", Date.today, Date.today + (days || 9001).days)
+        where("end >= ? AND end <= ?", Time.now, Time.now + (days || 9001).days)
     }
     scope :past, lambda { |days=false|
         # Over 9000 days is probably long enough in the past. Otherwise, this app rocks, and I'll will "won't-fix" this bug.
-        where("start < ? AND start >= ?", Date.today, Date.today - (days || 9001).days)
+        where("end < ? AND end >= ?", Time.now, Time.now - (days || 9001).days)
     }
     scope :attended_by, lambda { |user|
         includes(:participants).where("users.id = ?", user.id)
