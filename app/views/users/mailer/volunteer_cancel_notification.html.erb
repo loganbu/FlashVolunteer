@@ -1,9 +1,13 @@
 <p>Hello, <%= @resource.email %>,</p>
 
+
 <p>At least one volunteer has changed plans and won't be attending your event, %(event_name). You now have %(vol_count) volunteer(s) signed up.</p>
+
 <p>Go to the event page to view all the volunteers who have signed up, to send a message to your volunteers, or to update the event details.</p>
 
 <p>Have questions, comments, or suggestions? Email us at <%= mail_to("talk@flashvolunteer.org", "talk@flashvolunteer.org", :subject => "Questions regarding Flash Volunteer", :encode=>"hex")%>.</p>
+
+
 <p>Sincerely,</p></br>
 <p>The Flash Volunteer team</p></br>
 <p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
