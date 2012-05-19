@@ -1,0 +1,18 @@
+<% content_for :main_action do %>
+sign in
+<% end %>
+
+<% content_for :link_action do  %>
+<%= link_to("sign up", new_user_registration_url) %>
+<% end %>
+
+<%= content_for :form_content do %>
+	<h4>sign in through a third party</h4>
+	<p>connect this account to sign in to Flash Volunteer</p>
+
+	<%= render(:partial => "users/shared/external_auth_strip") %>
+    <div class="row">&nbsp;</div>
+    <p>made a mistake? <%= link_to("sign in", user_session_url)%> with your flash account instead.</p>
+<% end %>
+
+<%= render :template => 'users/shared/form' %>

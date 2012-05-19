@@ -1,0 +1,16 @@
+<div class="container container-padding">
+    <%= render(:partial => 'shared/account_info') %>
+</div>
+<div class="navbar">
+    <div class="navbar-inner">
+        <div class="container container-padding">
+            <div class="nav-collapse">
+                <ul class="nav">
+                    <li><%= link_to("EVENT LIST", events_path) %></li>
+                    <li><%= link_to("MAP", events_path(:show_map => "true")) %></li>
+                    <li><%= link_to("ABOUT", about_path) %></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

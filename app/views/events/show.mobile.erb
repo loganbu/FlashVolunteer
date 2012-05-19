@@ -1,0 +1,36 @@
+<div class="row-fluid">
+    <%= render( :partial => 'event_header', :locals => {:page_type => :mobile}) %>
+</div>
+<div class="row-fluid" style="padding-bottom: 20px">   
+    <%= render( :partial => 'event_detail_options') %>
+</div>
+
+<div class="row-fluid">
+    <h3>description</h3>
+    <p><%= h(@event.description).gsub(/\n/, '<br/>').html_safe %></p>
+</div>
+
+<div class="row-fluid">
+    <%= render( :partial => 'event_special_instructions') %>
+</div>
+
+<div>
+    <% if @event.hosted_by != nil %>
+    	<h3>event contact</h3>
+        <%= @event.hosted_by %>
+    <% end %>
+</div>
+<div class="row-fluid">
+    <%= render( :partial => 'event_organizers') %>
+</div>
+
+<div class="row-fluid">
+    <%= render( :partial => 'event_volunteer') %>
+</div>
+
+<script type="text/javascript">
+$(document).ready(function() { 
+    Map.setMap('eventmap', <%= @event.latitude %>, <%= @event.longitude %>, <%= 14 %>); 
+    Map.addPoints("<%= event_url(@event) %>.xml", false);
+});
+</script>

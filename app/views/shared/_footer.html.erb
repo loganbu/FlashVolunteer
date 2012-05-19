@@ -1,73 +1,34 @@
-<div id="footer">
-	<div id="footer-navtabs" class="navtabs">
-	    <ul>
-			<li><%= link_to("PARTNERS", partners_url, :class=>"fv") %></li>
-			<li><%= link_to("PRIVACY", privacy_url, :class=>"fv") %></li>
-			<li><%= link_to("TERMS OF USE", tou_url, :class=>"fv") %></li>
-	    </ul>
-	</div>
-	<div id="footer-divider">
-		.................................................................................................................................................................................................................................
-	</div>
-	<div id="footer_content">
-		<div id="badges" class="fl">
-			<div id="footer_follow" class="fl">
-				follow us:
-			</div>
-			<ul>
-				<li class="badge" id="twitter-badge">
-					<a target="_blank" href="http://twitter.com/flashvolunteer">
-						<%= image_tag("twitter_icon_20x20.png", 
-							:id => "twitter-badge-img",
-							:alt=>"Follow us on Twitter",
-							:onmousedown => "this.className='tw_down20'",
-							:onmouseover => "this.className='tw_hover20'",
-							:onmouseup   => "this.className='tw_normal20'",
-							:onmouseout  => "this.className='tw_normal20'") %>
-					</a>                     
-				</li>
-				<li class="badge" id="fb-badge">
-					<a target="_blank" href="http://www.facebook.com/pages/Flash-Volunteer/75272433226">
-						<%= image_tag("facebook_icon_20x20.png", 
-							:id => "fb-badge-img",
-							:alt=>"Follow us on Facebook",
-							:onmousedown => "this.className='fb_down20'",
-							:onmouseover => "this.className='fb_hover20'",
-							:onmouseup   => "this.className='fb_normal20'",
-							:onmouseout  => "this.className='fb_normal20'") %>
-					</a>
-				</li>
-				<li class="badge" id="iphone-badge">
-					<a target="_blank" href="http://itunes.apple.com/us/app/flash-volunteer/id353017547">
-						<%= image_tag("mobile_icon_20x20.png", 
-							:id => "iphone-badge-img",
-							:alt=>"Get our iPhone application",
-							:onmousedown => "this.className='phone_down20'",
-							:onmouseover => "this.className='phone_hover20'",
-							:onmouseup   => "this.className='phone_normal20'",
-							:onmouseout  => "this.className='phone_normal20'") %>				   
-					</a>
-				</li>
-			</ul>          
-		</div>
-		<div id="footer_copy" class="fr">
-			<div id="copy_text" class ="fl">
-                built by volunteers, for volunteers <br/>
-                Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit<br/>
-			</div>
-			<div id="copy_badge" class="fr">
-				<li class="badge" id="donate-badge">
-					<a class="fv" href="http://fundly.com/flashvolunteer2011">
-						<%= image_tag("donate_normal.png", 
-						:alt=>"Donate to Flash Volunteer!",
-						:onmousedown => "this.className='donate_down'",
-						:onmouseover => "this.className='donate_over'",
-						:onmouseup   => "this.className='donate_normal'",
-						:onmouseout  => "this.className='donate_normal'") %>				   
-					</a>                     
-				</li>
-			</div>
-		</div>
-		<div class="clear"> </div>
-	</div>
+<div class="container container-padding">
+    <div class="navbar">
+        <div class="footer-navbar-inner">
+            <div class="container">
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li><%= link_to("PARTNERS", partners_path) %></li>
+                        <li><%= link_to("PRIVACY", privacy_path) %></li>
+                        <li><%= link_to("TERMS OF USE", tou_path) %></li>
+                    </ul>
+                </div>
+            </div>
+            <p><font color="#585858">.....................................................................................................................................................................................................................................................................</font> </p>
+            <div class="row-fluid">
+                <div class="span3">
+                    <%= render( :partial => 'shared/flash_share', :locals => {:size => :medium}) %>
+                </div>
+                <div class="span9 copy">
+                    <div class="row-fluid">
+                        <div class="span9">
+                            <p>built by volunteers, for volunteers <br/>
+                            Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit<br/></p>
+                        </div>
+                        <div class="span3">
+                            <a href="http://fundly.com/flashvolunteer2011" class="pull-left">
+                                <%= image_tag("donate_normal_110x25.png", :alt=>"Donate to Flash Volunteer!") %>                   
+                            </a>         
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

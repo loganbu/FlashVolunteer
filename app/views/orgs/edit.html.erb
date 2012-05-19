@@ -1,6 +1,8 @@
-<h1>Editing org</h1>
+<% content_for :header do %>
+    organization profile
+<% end %>
+<% content_for :button do %>
+    update
+<% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @org %> |
-<%= link_to 'Back', orgs_path %>
+<%= render(:partial => "form") %>

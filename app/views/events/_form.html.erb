@@ -1,102 +1,209 @@
-<div id="event">
-	<%= form_for(@event, :html => {:id => "newevent", :name => "event_form"}) do |f| %>
-		<% if @event.errors.any? %>
-			<div id="error_explanation">
-				<ul>
-				<% @event.errors.each do |attr,msg| %>
-                    <% if (attr == :start || attr == :end) %>
-        				<li><%= msg %></li>
-                    <% end %>
-				<% end %>
-				</ul>
-			</div>
-		<% end %>
-
-        <div class="full">
-            <div class="label">
-                <%= f.label :name, "Event Name"%>
-            </div>
-            <div class="fr">
-                <%= f.text_field :name%>
-            </div>
+<%= form_for(@event, :html => {:id => "form", :name => "event_form"}) do |f| %>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :name, "event name"%></div>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :address, :for=>"event_street" %>
-            </div>
-            <div class="fr">
-                <%= f.text_field :street %>
-            </div>
+        <div class="span10">
+            <%= f.text_field :name, :class=>"full"%>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :zip, "Zip code"%>
-            </div>
-            <div class="fl">
-                <%= f.text_field :zip, :class=>"half"%>
-            </div>
-            <div class="fr">
-                <%= f.collection_select(:neighborhood_id, Neighborhood.all, :id, :name, {:include_blank => "Choose a neighborhood" },  :class=>"half") %>
-            </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :name, "hosted by"%></div>
+            <input type="text" style="visibility:hidden; width: 0px"/>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :start, "Event date"%>
-            </div>
-            <div class="fl">
-                <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
-                <div class="field_with_errors">
-                <% end %>
-                    <input id="startdate" class="half" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
-                <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+        <div class="span3">
+            <div class="row-fluid">
+                <div class="span6">
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" <%= "checked='checked'" if @event.hosted_by == nil %> /><label for="hosted_by_me">&nbsp;myself</label>
                 </div>
-                <% end %>
-                
-                <script type="text/javascript">
-                $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
-                </script>
-            </div>
-            <div class="fl padleft">
-                <%= f.time_select(:start, :minute_step => 15, :ampm => true) %>
-            </div>
-            <div class="fl padleft" style="padding-top: 3px">
-            until 
-            </div>
-            <div class="fl padleft">
-                <%= f.time_select(:end, :minute_step => 15, :ampm => true) %>
+                <div class="span6">
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone" <%= "checked='checked'" if @event.hosted_by != nil %>/><label for="hosted_by_someone">&nbsp;someone else</label>
+                </div>
             </div>
         </div>
+        <div class="span7">
+            <%= f.text_field :hosted_by, :class=>"full ".concat(@event.hosted_by == nil ? "hidden" : ""), :id => "someone_else"%>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $("#hosted_by_me").click(function() {
+                    $("#someone_else").hide();
+                    $("#someone_else").val("");
+                })
+                $("#hosted_by_someone").click(function() {
+                    $("#someone_else").show();
+                })
+            })
+        </script>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :address, "address", :for=>"event_street" %></div>
+        </div>
+        <div class="span10">
+            <%= f.text_field :street, :class=>"full" %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :zip, "zip code"%></div>
+        </div>
+        <div class="span5">
+            <%= f.text_field :zip, :class=>"full" %>
+        </div>
+        <div class="span5">
+            <%= f.collection_select(:neighborhood_id, Neighborhood.order("name asc"), :id, :name, {:include_blank => "choose a neighborhood" }) %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :start, "event date"%></div>
+        </div>
+        <div class="span5">
+            <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+            <div class="field_with_errors">
+            <% end %>
+                <input id="startdate" class="full" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
+            <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+            </div>
+            <% end %>
+            
+            <script type="text/javascript">
+            $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
+            </script>
+        </div>
+        <div class="span5">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div id="time_slider"></div>
+                    <div style="position: relative">
+                        <div id="time_start" style="position: absolute; width: 55px"></div>
+                        <div id="time_end" style="position: absolute; width: 55px"></div>
+                    </div>
 
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :website, "Event website"%>
-            </div>
-            <div class="fr">
-                <%= f.url_field :website %>
+                    <input id="event_start_1i" type="hidden" name="event[start(1i)]" value="2012" />
+                    <input id="event_start_2i" type="hidden" name="event[start(2i)]" value="1" />
+                    <input id="event_start_3i" type="hidden" name="event[start(3i)]" value="1" />
+                    <input id="event_start_4i" type="hidden" name="event[start(4i)]" value="<%= @event.start ? @event.start.hour : 9 %>" />
+                    <input id="event_start_5i" type="hidden" name="event[start(5i)]" value="<%= @event.start ? @event.start.min : 0 %>" />
+
+                    <input id="event_end_1i" type="hidden" name="event[end(1i)]" value="2012" />
+                    <input id="event_end_2i" type="hidden" name="event[end(2i)]" value="1" />
+                    <input id="event_end_3i" type="hidden" name="event[end(3i)]" value="1" />
+                    <input id="event_end_4i" type="hidden" name="event[end(4i)]" value="<%= @event.end && @event.start ? @event.end > @event.start ? 24 : @event.end.hour : 15 %>" />
+                    <input id="event_end_5i" type="hidden" name="event[end(5i)]" value="<%= @event.end ? @event.end.min : 0 %>" />
+
+
+                    <script type="text/javascript">
+                        $(document).ready(function() {
+                            var minuteStep = 15;
+                            var maxValue = 24*4;
+                            var startHour = <%= @event.start ? @event.start.hour : 9 %>;
+                            var startMinute =  parseInt(<%= @event.start ? @event.start.min : 0 %> / minuteStep);
+                            <% 
+                                end_hour = 15
+                                if @event.end && @event.start
+                                    if @event.end.day != @event.start.day
+                                        end_hour = 24
+                                    else
+                                        end_hour = @event.end.hour
+                                    end
+                                end
+                            %>
+
+                            var endHour = <%= end_hour %>;
+                            <%
+                                end_minute = 0
+                                if @event.end && end_hour != 24
+                                    end_minute = @event.end.min
+                                end
+                            %>
+                            var endMinute = parseInt(<%= end_minute %> / minuteStep);
+
+                            var initialValues = [startHour*4+startMinute, endHour*4+endMinute];
+                            var setTimes = function(ui) {
+                                    var getValueOfHandle = function(displayElement, hourElement, minuteElement, index) {
+                                        var ampm = (ui.values[index] < 48) ? "AM" : "PM";
+                                        var saveHour = parseInt(ui.values[index]/4);
+                                        var displayHour = saveHour%12 || 12;
+                                        var saveMinute = (ui.values[index]%(60/minuteStep))*minuteStep;
+                                        var displayMinute = (saveMinute < 10) ? "0" + saveMinute : saveMinute;
+                                        displayElement.text(displayHour + ":" + displayMinute + " " + ampm);
+
+                                        hourElement.attr('value', saveHour);
+                                        minuteElement.attr('value', saveMinute);
+                                    }
+                                    getValueOfHandle($("#time_start"), $("#event_start_4i"), $("#event_start_5i"), 0);
+                                    getValueOfHandle($("#time_end"), $("#event_end_4i"),  $("#event_end_5i"), 1);
+                                }
+
+                            $('#time_slider').slider({
+                                max: maxValue,
+                                min: 0,
+                                range: true,
+                                values: initialValues,
+                                slide: function(ev, ui) {
+                                    var whichElement = (ui.value == ui.values[0]) ? $("#time_start") : $("#time_end");
+                                    setTimes(ui);
+                                    whichElement.css("left", ((ui.value/maxValue)*100-5) + "%");
+                                },
+                                create: function(event, ui) {
+                                    setTimes({values: initialValues});
+                                    $("#time_start").css("left", (initialValues[0]/maxValue)*100-5 + "%");
+                                    $("#time_end").css("left", (initialValues[1]/maxValue)*100-5 + "%");
+                                }
+                            });
+                        });
+                    </script>
+                </div>
             </div>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :description %>
-            </div>
-            <div class="fr">
-                <%= f.text_area :description %>
-            </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :website, "event website"%></div>
         </div>
-        <div class="full clear">
-            <div class="label">
-                <%= f.label :special_instructions %>
-            </div>
-            <div class="fr">
-                <%= f.text_area :special_instructions %>
-            </div>
+        <div class="span10">
+            <%= f.url_field :website, :class=>"full" %>
         </div>
-        
-        <div class="clear"></div>
-        <div>            
-            <a href="#" onclick="submitForm('event_form')" class="green_button">
-            <%= @event.new_record? ? "Create" : "Edit" %> Event
-            </a>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :description, "description" %></div>
         </div>
-	<% end %>
-</div><!--end content-->
+        <div class="span10">
+            <%= f.text_area :description, :class=>"full" %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :special_instructions, "special instructions" %></div>
+        </div>
+        <div class="span10">
+            <%= f.text_area :special_instructions, :class=>"full" %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :twitter_hashtags, "hash tags" %></div>
+        </div>
+        <div class="span10">
+            <%= f.text_field :twitter_hashtags, :class=>"full" %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :skills, "categories" %></div>
+        </div>
+        <div class="span10">
+            <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>
+        </div>
+    </div>
+    <div class="row-fluid">
+        <div class = "span2">&nbsp;</div>
+        <div class = "span10">
+            <button type="submit" href="#" class="btn btn-primary pull-right"><%= @event.new_record? ? "create event" : "save" %></button>   
+        </div>
+    </div>
+<% end %>

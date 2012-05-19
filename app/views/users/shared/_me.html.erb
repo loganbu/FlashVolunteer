@@ -1,0 +1,30 @@
+<%
+    links ||= "users/shared/user_profile_links"
+%>
+
+<% content_for :left_split do %>
+<div>
+    <div class="row-fluid">
+        <div class = "span5">
+            <%= photo_link(current_user.avatar, :profile, user_url(current_user)) %>
+        </div>
+        <div class="span7">
+            <br />
+            <h2 style="word-wrap:break-word"><%= current_user.name %></h2>
+            <p><%= link_to "edit profile", edit_user_url(current_user) %></p>
+        </div>
+    </div>
+</div>
+<div>
+    <%= render :partial => "skills/strip", :locals => { :entity => current_user } %>
+</div>
+
+<div class="clear">&nbsp;</div>
+<div class="list_spacing bold">
+    <ul class="unstyled">
+        <%= render :partial => links %>
+    </ul>
+</div>
+
+<% end %>
+<%= render :template => 'shared/split_left' %>

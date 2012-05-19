@@ -1,82 +1,94 @@
 Flashvolunteer::Application.routes.draw do
-  devise_for :users, :controllers => { :confirmations => "users/confirmations", :registrations => "users/registrations", :sessions => "users/sessions", :passwords => "users/passwords" } do
-		root :to => "events#index"
-    put "confirm_account", :to => "users/confirmations#confirm_account"
-		get "users/sign_up/quick", :to => "users/registrations#quick", :as => "quick_new_user"
-  end
+    devise_for :users, :module => "users"
 
-  root :to => "events#index"
+    devise_scope :user do
+        root :to => "users#index"
+        put "confirm_account", :to => "users/confirmations#confirm_account"
+        get "users/sign_up/quick", :to => "users/registrations#quick", :as => "quick_new_user"
+        get "users/sign_up/third_party", :to => "users/registrations#third_party", :as => "third_party_sign_up"
+        get "users/sign_in/third_party", :to => "users/sessions#third_party", :as => "third_party_sign_in"
+        post "users/sign_in/:provider", :to => "users/sessions#mobile"
+    end
 
-  resources :neighborhoods, :only => [:index]
+    get "users/search", :to => "users#search"
+    get "neighborhoods/search", :to => "neighborhoods#search"
+    get "orgs/search", :to => "orgs#search"
+    get "events/search", :to => "events#search"
+    get "events/instructions", :to => "events#instructions"
+    # 
+    # Index - Show all users?
+    # Show - Timeline
+    # Edit - Change profile
+    # Update - Actually updating it
+    resources :users, :only => [:index, :show, :edit, :update] do
+        member do
+            # My events
+            # past/upcoming/recommended
+            resource :events, :only => [:show], :controller => "users/events", :as => "events_user"
 
-  resources :events do
-		member do
-			resource :register, :only => [:create, :destroy], :controller => "events/register", :as => "register_event"
-			get :export
-		end
-	end
-  match "events/in/:neighborhood" => "events#in", :as => 'events_neighborhood', :via => :get
-  
-  match "privacy" => "home#privacy"
-  match "tou" => "home#tou"
-  match "about" => "home#about"
-  match "partners" => "home#partners"
-  match "help" => "home#help"
-  match "donate" => "home#donate"
-  
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
+            # Change privacy settings
+            resource :privacy, :only => [:show, :update], :controller => "users/privacy", :as => "user_privacy_settings"
 
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+            # Change notification settings
+            resource :notifications, :only => [:show, :update], :controller => "users/notifications"
 
-  # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+            # Switch user login
+            get :switch
+        end
 
-  # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+        # 
+        # Show - List organizations you're part of
+        # Update - Remove?
+        resources :orgs, :only => [:index, :update], :controller => "users/organizations"
+    end
 
-  # Sample resource route with options:
-  #   resources :products do
-  #     member do
-  #       get 'short'
-  #       post 'toggle'
-  #     end
-  #
-  #     collection do
-  #       get 'sold'
-  #     end
-  #   end
+    resources :new_user_wizard, :only => [:show, :update], :controller => "users/new_user_wizard"
+    resources :new_org_wizard, :only => [:show, :update], :controller => "orgs/new_org_wizard"
+    root :to => "users#index"
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
-  #     resource :seller
-  #   end
+    resources :neighborhoods, :only => [:index]
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', :on => :collection
-  #     end
-  #   end
+    # POST 
+    resources :participations, :only => [:update, :destroy]
+    #
+    # Index - Show all orgs?
+    # Show - Timeline
+    # Edit - Change profile
+    # Update - Actualy update profile
+    resources :orgs do
+        # Private parts, available to current signed-in org
+        member do
+            # Show organization past/upcoming events
+            resource :events, :only => [:show], :controller => "orgs/events", :as => "events_org"
 
-  # Sample resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
+            # Show admins of the org
+            resource :stats, :only => [:show], :controller => "orgs/stats", :as => "org_stats"
 
-  # You can have the root of your site routed with "root"
-  # just remember to delete public/index.html.
+            # Show admins of the org
+            resource :admins, :only => [:show, :update], :controller => "orgs/admins", :as => "org_admins"
+        end
+    end
 
-  # See how all your routes lay out with "rake routes"
+    match "admin" => "admin#show", :as => 'admin', :via => 'get'
+    
+    # Search for people
+    resources :people, :only => [:index]
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id(.:format)))'
+    resources :events do
+        member do
+            resource :register, :only => [:create, :destroy], :controller => "events/register", :as => "register_event"
+            get :export
+            get :print
+        end
+    end
+    match "events/in/:neighborhood" => "events#in", :as => 'events_neighborhood', :via => :get
+
+    match "privacy" => "home#privacy"
+    match "tou" => "home#tou"
+    match "about" => "home#about"
+    match "partners" => "home#partners"
+    match "help" => "home#help"
+    match "donate" => "home#donate"
+    match "newsletter" => "home#newsletter"
+    
 end

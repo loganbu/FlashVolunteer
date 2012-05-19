@@ -1,0 +1,20 @@
+<% content_for :question do %>
+    What is your group's mission?
+<% end %>
+<% content_for :below_question do %>
+    <div class="row-fluid">
+        <div class="span12">
+            <%= text_field(:org, :mission, :id => "mission_input", :class=>"full") %>
+        </div>
+    </div>
+<% end %>
+<% content_for :button do %>
+    <%= submit_tag("ask me more", :class => "btn btn-primary pull-right") %>
+<% end %>
+<%= content_for :form_template do 'orgs/new_org_wizard/question_with_form' end %>
+<%= render(:template => 'shared/splash_with_question') %>
+<script type="text/javascript">
+$(document).ready(function() {
+    setDefaultText($("#mission_input"), "Enter your mission here");
+});
+</script>

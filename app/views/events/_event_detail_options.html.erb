@@ -1,0 +1,17 @@
+<% if (@event.user != current_user) %>
+    <% if (@event.attending?(current_user)) %>
+        <%= link_to("already signed up", "#", :class => "btn btn-inverse block disabled")%>
+        <div class="row">&nbsp;</div>
+    <% else %>
+        <%= link_to("sign up", register_event_url, :method=> :post, :class => "btn btn-primary block")%>
+        <div class="row">&nbsp;</div>
+    <% end %>
+<% end %>
+<% if can? :edit, @event %>
+    <%= link_to("edit event", edit_event_url, :class => "btn btn-primary block")%>
+    <div class="row">&nbsp;</div>
+    <%= link_to("delete event", event_url(@event), :method=>"delete", :class => "btn btn-primary block")%>
+    <div class="row">&nbsp;</div>
+    <%= link_to("print sign up sheet", print_event_url(@event), :method=>"get", :class => "btn btn-primary block")%>
+    <div class="row">&nbsp;</div>
+<% end %>

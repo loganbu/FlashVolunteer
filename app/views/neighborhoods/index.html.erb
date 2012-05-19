@@ -1,26 +1,21 @@
-<div id="splash_top">
-	<div id="splash_question_mark" class="fl">
-		<%= image_tag("question_mark.png", 
-			:id => "question-mark",
-			:border=>"0") %>
-	</div>
-    <div id="splash_top_option">
-        <div id="splash_question">
-            <li>Where do you want to volunteer?</li>
-        </div>
-        <div id="splash_dropdown">
-            <%= collection_select(:neighborhood,  :id, Neighborhood.all, :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "Anywhere in King County" }) %>
-        </div>
-
-    </div>
-    <%= link_to("Continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "green_button fr") %>
-	<div id="splash_member_switch">
+<% content_for :question do %>
+    Where do you want to volunteer?
+<% end %>
+<% content_for :below_question do %>
+    <%= collection_select(:neighborhood,  :id, Neighborhood.order("name asc"), :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "anywhere in King County" }) %>
+<% end %>
+<% content_for :button do %>
+    <%= link_to("continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "btn btn-primary pull-right") %>
+<% end %>
+<% content_for :below_button do %>
+    <p>
         <% if can? :create, Event %>
             I want to <%= link_to("create an event", new_event_url)%>
         <% elsif user_signed_in? %>
-            Confirm your e-mail address with the e-mail we sent.
+            Please confirm your e-mail address via the link in the message we sent.
         <% else %>
             I want to <%= link_to("create an event.", new_user_session_url)%>
         <% end %>
-	</div>
-</div>
+    </p>
+<% end %>
+<%= render(:template => 'shared/splash_with_question') %>

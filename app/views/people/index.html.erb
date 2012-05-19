@@ -1,0 +1,26 @@
+<% content_for :left_split do %>
+    <p>Select all  you want to filter by</p>
+        <%= render(:partial => 'skills/form', :locals => {:button_size => :medium}) %>      
+<% end %>  
+<% content_for :right_split do %>
+	<h3>search</h3>
+	<div class="tabs bold">
+	    <ul class="unstyled inline" id="link_list">
+	        <li><a class="link_active" href="#people" id="people_link">PEOPLE</a></li>
+	        <li><a href="#orgs" = "orgs_link">ORGS</a></li>
+	    </ul>
+	</div>
+	<div class="clear" id="content_sections">
+        <div class="hide" id="people_content">
+            People
+        </div>
+        <div class="hide" id="orgs_content">
+            Orgs
+        </div>
+	</div>
+<% end %>
+<script type="text/javascript">
+    $(document).ready(function () { addContentHandlers(); });
+</script>
+
+<%= render :template => 'shared/split_left' %>

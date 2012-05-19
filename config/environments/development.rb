@@ -1,11 +1,15 @@
+
+
 Flashvolunteer::Application.configure do
+  require 'openssl'
+  OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
     require 'tlsmail' 
         Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE) 
         ActionMailer::Base.delivery_method = :smtp 
         ActionMailer::Base.perform_deliveries = true 
         ActionMailer::Base.raise_delivery_errors = true 
         ActionMailer::Base.smtp_settings = { 
-                :address => "smtp.gmail.com", 
+                :address => ENV['MAILER_ADDRESS'] || "smtp.gmail.com", 
                 :port => "587", 
                 :domain => "gmail.com", 
                 :enable_starttls_auto => true, 
@@ -14,9 +18,10 @@ Flashvolunteer::Application.configure do
                 :password => ENV['MAILER_PASSWORD']
         } 
 
-    config.action_mailer.default_url_options = { :host => "localhost:3000" }
+    config.action_mailer.default_url_options = { :host => ENV['SITE_DOMAIN'] || "localhost:3000" }
 
     config.action_mailer.raise_delivery_errors = true 
+    config.action_mailer.delivery_method = :file 
 
         
   # Settings specified here will take precedence over those in config/application.rb
@@ -40,7 +45,7 @@ Flashvolunteer::Application.configure do
   # Only use best-standards-support built into browsers
   config.action_dispatch.best_standards_support = :builtin
   
-  config.log_level = :fatal
+  config.log_level = :debug
 
   # Do not compress assets
   config.assets.compress = false

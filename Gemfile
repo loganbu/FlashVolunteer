@@ -1,50 +1,66 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0'
+gem 'rails', '3.2.0' 
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
-
+# Pagination
 gem 'will_paginate', '~> 3.0'
+# Authentication
 gem 'devise'
+# Authorization
 gem 'cancan'
+# Geocoding
 gem 'geocoder' 
-gem 'jquery-rails', '>= 1.0.12'
+# JQuery
+gem 'jquery-rails'
+# Not sure why directly gem'd
 gem 'tlsmail'
+# DatePicker
 gem 'jquery_datepicker'
+# Export to iCal
 gem 'icalendar'
+# Not sure why directly gem'd
+gem 'nokogiri'
+# Advanced querying for records
+gem "squeel"
+
+# Delayed Jobs
+gem 'delayed_job_active_record'
+gem 'foreman'
+gem 'hirefireapp'
+
+group :assets do
+	gem 'sass-rails', '~> 3.2.3'
+	gem 'bootstrap-sass'
+	gem 'compass'
+end
 
 
-# Use unicorn as the web server
-# gem 'unicorn'
+gem 'aws-sdk'
+gem 'aws-s3'
+gem "paperclip"
+gem "omniauth-facebook"
+gem "omniauth-google-oauth2"
+gem 'wicked'
+gem 'mobylette', '~> 2.3'
+gem 'jquery_mobile_rails'
+gem 'classy_enum'
 
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger (ruby-debug for Ruby 1.8.7+, ruby-debug19 for Ruby 1.9.2+)
-# gem 'ruby-debug'
-# gem 'ruby-debug19', :require => 'ruby-debug'
-
-# Bundle the extra gems:
-# gem 'bj'
-# gem 'nokogiri'
-# gem 'sqlite3-ruby', :require => 'sqlite3'
-# gem 'aws-s3', :require => 'aws/s3'
-
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-# group :development, :test do
-#   gem 'webrat'
-# end
+# http://www.imagemagick.com/www/binary-releases.html#windows
+# http://stackoverflow.com/questions/4451213/ruby-1-9-2-how-to-install-rmagick-on-windows
+gem "rmagick" 
 
 source :gemcutter
 gem 'sinatra', '1.0'
 gem 'date_validator'
 
+group :development do
+    gem 'factory_girl_rails'
+    gem 'rails-footnotes'
+    gem 'sqlite3'
+end
+
 group :production do
-    gem 'pg'
+    gem 'mysql2'
     gem 'newrelic_rpm'
 end

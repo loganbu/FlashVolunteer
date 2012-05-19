@@ -1,0 +1,82 @@
+<%
+    mobile ||= false
+    markerSize ||= "medium"
+    dimension ||= 30
+%>
+
+<%if (mobile == true)
+    markerSize = "small"
+    dimension = 16%>
+<% end %>
+
+
+<div id = "neighborhood_list">
+    <li>
+        <% if (@neighborhood == nil) %>
+            <h2>events near </h2>
+            <h1><%= link_to("King County", "#", :id => "list_link") %></h1>
+        <% else %>
+            <h2>events near</h2>
+            <h1><%= link_to(@neighborhood.name, "#", :id => "list_link") %></h1>
+        <% end %>
+        <ul>
+            <% Neighborhood.order("name asc").each do |neighborhood| %>
+                <li><%=link_to(neighborhood.name, events_neighborhood_url(neighborhood.name))%></li>
+            <% end %>
+        </ul>
+    </li>
+</div>
+<div style = "clear:both"></div>
+
+
+<% if (@events.count == 0) %>
+    <p>There are no events in this location.  Try a different neighborhood.</p>
+<% else %>
+    <% @events.each_with_index do |event, i| %>
+    <div class="event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
+        <div class="pull-left marker"
+             style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp_#{markerSize}.png" : "/assets/mapStripAvail_#{markerSize}.png" %>) 0px <%= -i*dimension %>px">&nbsp;
+        </div>
+        <div class="details">
+            <%= render :partial => "events/event", :locals => { :event => event, :description => true, :show_links => true } %>
+        </div>
+    </div>
+    <% end %>
+<% end %>
+<div id="page">
+    <%= will_paginate @events, :page_links => false %>
+</div>
+
+<script type="text/javascript">
+    var timeout    = 500;
+    var closetimer = 0;
+    var ddmenuitem = 0;
+
+    function dropdown_menu_open() {  
+        dropdown_menu_canceltimer();
+        dropdown_menu_close();
+        ddmenuitem = $(this).find('ul').css('visibility', 'visible');
+    }
+
+    function dropdown_menu_close() {
+        if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');
+    }
+
+    function dropdown_menu_timer() {  
+        closetimer = window.setTimeout(dropdown_menu_close, timeout);
+    }
+
+    function dropdown_menu_canceltimer() {
+        if(closetimer) {
+            window.clearTimeout(closetimer);
+            closetimer = null;
+        }
+    }
+
+    $(document).ready(function() {
+        $('#neighborhood_list > li').bind('dblclick', dropdown_menu_open);
+        $('#neighborhood_list > li').bind('focusout',  dropdown_menu_timer);
+    });
+
+    document.onclick = dropdown_menu_close;
+</script>

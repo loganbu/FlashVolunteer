@@ -1,387 +1,63 @@
-<%= content_for :title do %>
-<div id="title_block">
-	<h1>about flash volunteer</h1>
+<h3>our vision</h3>
+<p>Everyone in Seattle engaged in regular volunteer service.</p>          
+<h3>our mission</h3>              
+<p>Flash Volunteer seeks to build community and increase volunteerism in Seattle through the creation of a sustainable, user-friendly online platform to connect, inspire and mobilize volunteers to effect meaningful change on a neighborhood level. </p>            
+<p>We are a 501(c)3 nonprofit organization and the code we are developing is open source.</p>         
+<h3>board of directors</h3>
+<div class="row">
+    <% [
+            Hash["name" => "holly wyrwich", "subtext" => "president", "image" => "board/holly.jpg"],
+            Hash["name" => "jennifer atkinson", "subtext" => "director", "image" => "board/jennifer.jpg"],
+            Hash["name" => "kenny lee", "subtext" => "director", "image" => "board/kenny.png"],
+            Hash["name" => "hillary evans", "subtext" => "vice president", "image" => "board/hillary.jpg"],
+            Hash["name" => "logan buesching", "subtext" => "director", "image" => "board/logan.jpg"],
+            Hash["name" => "brian nash", "subtext" => "director", "image" => "board/brian.png"],
+            Hash["name" => "adam hitch", "subtext" => "treasurer", "image" => "default-profile-pic-small.png"],
+            Hash["name" => "melissa collett", "subtext" => "director", "image" => "board/melissa.jpg"],
+            Hash["name" => "deidra ross", "subtext" => "director", "image" => "board/deidra.jpg"],
+            Hash["name" => "janis lee", "subtext" => "secretary", "image" => "board/janis.jpg"],
+            Hash["name" => "joy wilke graf", "subtext" => "director", "image" => "board/joy.jpg"],
+            Hash["name" => "brad wilke", "subtext" => "ex officio", "image" => "board/Brad.png"],
+       ].each_with_index do |person, i| %>
+        <div class="span4">
+            <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>
+        </div>
+     <% if(i%3 == 2) %>
+        <div class="row">&nbsp;</div>
+     <% end %>
+    <% end %>
 </div>
-<% end %>
-
-<div id="middle100">
-	<div id="vision" class="hardmodule">              
-		<div class="moduletitle">                  
-			<h3>our vision</h3>              
-		</div>            
-		<p>Everyone in Seattle engaged in regular volunteer service.</p>          
-	</div>              
-	<div class="hardmodule">              
-		<div class="moduletitle">                  
-			<h3>our mission</h3>              
-		</div>            
-		<p>Flash Volunteer seeks to build community and increase volunteerism in Seattle through the creation of a sustainable, 
-			user-friendly online platform to connect, inspire and mobilize volunteers to effect meaningful change on a neighborhood level. </p>            
-		<p>We are a 501(c)3 nonprofit organization.</p>            
-		<p>The source code we are developing is an open source <strong>project</strong>. 
-		<%=link_to("Join the effort!", "http://code.google.com/p/flashvolunteer/")%></p>          
-	</div>            
-	<div class="hardmodule">              
-		<div class="moduletitle">                  
-			<h3>board of directors</h3>              
-		</div>
-		<div class="staff_group">
-		<u1>
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("holly wyrwich", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">president</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li>
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("hillary evans", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">vice president</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li> 
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("adam hitch", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">treasurer</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li>            
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("janis lee", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">secretary</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li>
-			</ul>
-		</div class="staff_group">
-				<div class="staff_group">
-		<u1>
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("jennifer atkinson", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">director</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li>
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("logan buesching", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">director</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li> 
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("melissa collett", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">director</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li>            
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("joy wilke graf", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">director</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li>
-			</ul>
-		</div class="staff_group">
-				<div class="staff_group">
-		<u1>
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("kenny lee", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">director</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li>
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("brian nash", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">director</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li> 
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("deidra ross", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">director</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li>            
-			<li>
-				<div class="staff_block">
-					<div class="staff_pic">
-						<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("brad wilke", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">ex officio</div>
-						</div>
-					<div class="cl"></div>
-				</div>
-			</li>
-			</ul>
-		</div class="staff_group">1
-	</div>  
-	<div id="staff_list" class="hardmodule">      
-		<div class="moduletitle">          
-			<h3>our team </h3>      
-		</div>            
-		<div id="recruitment">          
-			Want to join our team? Send an email to <%=mail_to("info@flashvolunteer.org", "info@flashvolunteer.org")%>!      
-		</div>      
-		<div class="staff_group">              
-			<h2 style ="padding-bottom: 10px">operations</h2>              
-			<ul>                  
-				<li>
-					<div class="staff_block">
-						<div class="staff_pic">
-							<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("brad wilke", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">executive director</div>
-						</div>
-						<div class="cl"></div>
-					</div>
-				</li>                  
-				<li>
-					<div class="staff_block">
-						<div class="staff_pic">
-							<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("melissa collett", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">engagement director</div>
-						</div>
-						<div class="cl"></div>
-					</div>
-				</li>
-			</ul>
-		</div>          
-		<div class="staff_group">          
-			<h2 style ="padding-bottom: 10px">outreach</h2>              
-			<ul>                   
-				<li>
-					<div class="staff_block">
-						<div class="staff_pic">
-							<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("holly wyrwich", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">marketing director</div>
-						</div>
-						<div class="cl"></div>
-					</div>
-				</li>
-				<li>
-					<div class="staff_block">
-						<div class="staff_pic">
-							<a target="_blank" href="http://www.flashvolunteer.org/volunteers/38802/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("evita almassi", "http://www.flashvolunteer.org/volunteers/38802")%>
-							</div>
-							<div class="staff_role">social media director</div>
-						</div>
-						<div class="cl"></div>
-					</div>
-				</li>
-				<li>
-					<div class="staff_block">
-						<div class="staff_pic">
-							<a target="_blank" href="http://www.flashvolunteer.org/volunteers/38802/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("jennifer atkinson", "http://www.flashvolunteer.org/volunteers/38802")%>
-							</div>
-							<div class="staff_role">grant consultant</div>
-						</div>
-						<div class="cl"></div>
-					</div>
-				</li>
-			</ul>
-		</div>
-		<div class="staff_group">          
-			<h2 style ="padding-bottom: 10px">technical</h2>              
-			<ul>                   
-				<li>
-					<div class="staff_block">
-						<div class="staff_pic">
-							<a target="_blank" href="http://www.flashvolunteer.org/volunteers/22838/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("logan buesching", "http://www.flashvolunteer.org/volunteers/22838")%>
-							</div>
-							<div class="staff_role">development director</div>
-						</div>
-						<div class="cl"></div>
-					</div>
-				</li>
-				<li>
-					<div class="staff_block">
-						<div class="staff_pic">
-							<a target="_blank" href="http://www.flashvolunteer.org/volunteers/38802/avatar">
-								<%=image_tag("default-profile-pic-small.png", 
-											:class => "staff_avatar")%>
-							</a>
-						</div>
-						<div class="staff_desc">
-							<div class="staff_name">
-								<%=link_to("janis lee", "http://www.flashvolunteer.org/volunteers/38802")%>
-							</div>
-							<div class="staff_role">development director</div>
-						</div>
-						<div class="cl"></div>
-					</div>
-				</li>
-			</ul>
-		</div>
-	</div>      
+<div class="row">&nbsp;</div>
+<h3>our team</h3>
+<p>Want to join our team? Send an email to <%=mail_to("info@flashvolunteer.org", "info@flashvolunteer.org")%>!</p>
+<div class="row">
+    <div class="span4">
+        <h4>operations</h4>
+    </div>
+    <div class="span4">
+        <h4>outreach</h4>
+    </div>
+    <div class="span4">
+        <h4>technical</h4>
+    </div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <% [
+            Hash["name" => "brad wilke", "subtext" => "executive director", "image" => "board/Brad.png"],
+            Hash["name" => "holly wyrwich", "subtext" => "marketing director", "image" => "board/holly.jpg"],
+            Hash["name" => "logan buesching", "subtext" => "development director", "image" => "board/logan.jpg"],
+            nil,
+            Hash["name" => "melissa collett", "subtext" => "engagement director", "image" => "board/melissa.jpg"],
+            Hash["name" => "janis lee", "subtext" => "development directory", "image" => "board/janis.jpg"],
+       ].each_with_index do |person, i| %>
+       <% if (person) %>
+         <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>
+       <% else %>
+             <div class="span4">&nbsp;</div>
+       <% end %>
+     <% if(i%3 == 2) %>
+        <div class="row">&nbsp;</div>
+     <% end %>
+    <% end %>
 </div>

@@ -1,0 +1,23 @@
+<div class="row">
+    <div class="map">
+        <div id="map" class="big"></div>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() { 
+    Map.setMap('map', <%= @mapCenter.latitude %>, <%= @mapCenter.longitude %>, <%= @zoom %>); 
+    var eventUrl = location.href.split("?")[0];
+    var page = getParameterByName('page');
+    var pageUrlPart = '';
+    if (page) {
+        pageUrlPart = '?page=' + page;
+    }
+    <% if (@neighborhood == nil) %>
+        var baseUrl = "<%= events_url %>";
+    <% else %>
+        var baseUrl = "<%= events_neighborhood_url @neighborhood.name %>";
+    <% end %>
+    Map.addPoints(baseUrl + '.xml' + pageUrlPart, Map.showPopup);
+});
+</script>

@@ -1,47 +1,153 @@
 <% content_for :main_action do %>
-Sign up
+sign up
 <% end %>
 <% content_for :link_action do 
-link_to("Sign in", new_user_session_url)
+link_to("sign in", new_user_session_url)
 end %>
-<%= content_for :content do %>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signupform", :id=>"sign"}) do |f| %>
-        <div class = "subheader">Create a Flash account: </div>
-
-        <div class="formpadding">
-            <%= f.label :name %>
-            <%= f.text_field :name %>
-        </div>
-
-        <div class="formpadding">
-            <%= f.label :email %>
-            <%= f.email_field :email %>
-        </div>
-
-        <div class="formpadding">
-            <%= f.label :password %>
-            <%= f.password_field :password %>
-        </div>
-        
-        <div class="formpadding">
-            <%= f.label :password_confirmation, "Confirm password" %>
-            <%= f.password_field :password_confirmation %>
-        </div>
-
-        <div class="clear" style="margin-top: 10px"></div>
-        <div class="formpadding">
-            <div style="padding-left: 85px">
-                <div class="fl">
-                    <%= f.check_box(:terms_of_service) %>
-                </div>
-                <div style="padding-left: 20px">
-                    <label for="user_terms_of_service" style="float: none;">I accept the <%= link_to("Terms of Use", tou_url) %> and <%= link_to("Privacy Policy", privacy_url) %></label>
+<%= content_for :form_content do %>
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <h4>create a Flash account: </h4>
+        <div class="row">&nbsp;</div>
+        <div class="row-fluid">
+            <div class="span2">&nbsp;</div>
+            <div class="span8">
+                <div class="row-fluid">
+                    <div class="span1">
+                        <%= f.radio_button("account_type", "individual", :class=>"pull-left radio", :id=>"for_me", :checked=>true) %>
+                    </div>
+                    <div class="span5">
+                        <label for="for_me">for me</label> 
+                    </div>
+                    <div class="span1">
+                        <%= f.radio_button("account_type", "organization", :class=>"pull-left radio", :id=>"for_org") %>
+                    </div>
+                    <div class="span5">
+                        <label for="for_org">for my org</label> 
+                    </div>
                 </div>
             </div>
         </div>
-        <div style="padding-left: 70px">
-            <a class="green_button" href="#" onclick="submitForm('signupform')">Sign up</a>
+        <div class="row">&nbsp;</div>
+        <div class="row-fluid">
+            <div class="span2">
+                <div class="pull-right"><%= f.label :name, "name"%></div>
+            </div>
+            <div class="span10">
+                <%= f.text_field :name, :class=>"full", :id => "account_name"  %>
+            </div>
         </div>
+
+        <div class="row-fluid">
+            <div class="span2">
+                <div class="pull-right"><%= f.label :email, "email" %></div>
+            </div>
+            <div class="span10">
+                <%= f.email_field :email, :class=>"full", :id=>"account_email" %>
+            </div>
+        </div>
+
+        <div class="row-fluid for_individual">
+            <div class="span2">
+                <div class="pull-right"><%= f.label :password, "password" %></div>
+            </div>
+            <div class="span10">
+                <%= f.password_field :password, :class=>"full" %>
+            </div>
+        </div>
+        
+        <div class="row-fluid for_individual">
+            <div class="span2">
+                <div class="pull-right" style="text-align:right"><%= f.label :password_confirmation, "confirm password" %></div>
+            </div>
+            <div class="span10">
+                <%= f.password_field :password_confirmation, :class=>"full" %>
+            </div>
+        </div>
+        <div class="row for_individual">&nbsp;</div>
+        <div class="row-fluid for_individual">
+            <div class="span2">&nbsp;</div>
+            <div class="span10">
+                <div class="pull-left">
+                    <%= f.check_box(:terms_of_service) %>
+                </div>
+                <div style="padding-left: 20px">
+                    <label for="user_terms_of_service" style="float: none;">I accept the <%= link_to("Terms of Use", tou_url, :target => "_blank") %> and <%= link_to("Privacy Policy", privacy_url, :target => "_blank") %></label>
+                </div>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row-fluid">
+            <button type="submit" id="sign_up" class="btn btn-primary pull-right" href="#">sign up</button>    
+            <button type="button" id="create_org" class="btn btn-primary pull-right" href="#" style="display: none">create group</button>    
+        </div>
+        <script type="text/javascript">
+        $(document).ready(function() {
+            var defaultTexts = {
+                                    individual: {
+                                        name: "Your name",
+                                        email: "Your e-mail address"
+                                    },
+                                    orgs: {
+                                        name: "Your organization's name",
+                                        email: "Your organization's e-mail address"
+                                    }
+                               };
+
+            var toggleDefaultText = function(text) {
+                var elementWithText = {
+                                        email: {
+                                            element: $("#account_email"),
+                                            text: text.email
+                                        },
+                                        name: {
+                                            element: $("#account_name"),
+                                            text: text.name
+                                        }
+                                      };
+                $.each(elementWithText, function(index, val) {
+                    setDefaultText(val.element, val.txt);
+                });
+            };
+
+            $("#create_org").click(function() { 
+                window.location.href = "<%= new_org_wizard_path(:set_user_account) %>?org_email=" + escape($("#account_email").val()) + "&org_name=" + escape($("#account_name").val());
+            });
+
+            var hideForOrg = function() {
+                $(".for_individual").each(function(index) {
+                    $(this).hide();
+                });
+
+                $("input[type='password']").each(function(index) {
+                    $(this).attr('disabled', 'disabled')
+                });
+                toggleDefaultText(defaultTexts.orgs);
+                $("#sign_up").hide();
+                $("#create_org").show();
+            };
+
+            var showForUser = function() {
+                $(".for_individual").each(function(index) {
+                    $(this).show();
+                });
+                $("input[type='password']").each(function(index) {
+                    $(this).removeAttr('disabled')
+                });
+                toggleDefaultText(defaultTexts.individual);
+                $("#sign_up").show();
+                $("#create_org").hide();
+            };
+            
+            $("#for_me").click(showForUser);
+            $("#for_org").click(hideForOrg);
+            <% if (resource.account_type == "organization") %>
+                hideForOrg();
+                toggleDefaultText(defaultTexts.orgs);
+            <% else %>
+                toggleDefaultText(defaultTexts.individual);
+            <% end %>
+        });
+        </script>
     <% end %>
 <% end %>
 <%= render :template => 'users/shared/form' %>

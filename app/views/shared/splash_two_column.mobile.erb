@@ -1,0 +1,25 @@
+<!-- 
+     _________
+    |_________|
+    |    |    |
+    |____|____|
+-->
+<% content_for :content do %>
+<div class="row-fluid">
+    <div style="span12">
+        <div style="border-bottom: 1px solid">
+            <%= yield :title_content %>
+        </div>
+    </div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row-fluid">
+    <div class="span6">
+        <%= yield :left_content %>
+    </div>
+    <div class="span6">
+        <%= yield :right_content %>
+    </div>
+</div>
+<% end %>
+<%= render :template => 'shared/splash_frame' %>

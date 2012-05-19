@@ -1,8 +1,1 @@
-<div>
-    <div class="shortevent">
-        <%= link_to(truncate(@event.name, :length=>30, :separator=>' '), event_url(@event)) %><br/>
-	    <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
-        <%= @event.street %>, <%= @event.neighborhood.name %><br/>
-        <%= render(:partial => 'links', :locals => { :event => @event }) %>
-    </div>
-</div>
+<%= render :partial => "events/event", :locals => { :event => @event , :description => @event.description , :show_links => true } %>

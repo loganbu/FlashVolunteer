@@ -11,7 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120121230552) do
+ActiveRecord::Schema.define(:version => 20120509042942) do
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -32,11 +48,8 @@ ActiveRecord::Schema.define(:version => 20120121230552) do
     t.string   "state",                :default => "WA"
     t.string   "website"
     t.text     "special_instructions"
-  end
-
-  create_table "events_users", :id => false, :force => true do |t|
-    t.integer "user_id"
-    t.integer "event_id"
+    t.string   "twitter_hashtags"
+    t.string   "hosted_by"
   end
 
   create_table "neighborhoods", :force => true do |t|
@@ -47,10 +60,25 @@ ActiveRecord::Schema.define(:version => 20120121230552) do
     t.datetime "updated_at"
   end
 
-  create_table "orgs", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "orgs_admins", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "org_id"
+  end
+
+  create_table "orgs_followers", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "org_id"
+  end
+
+  create_table "participations", :force => true do |t|
+    t.integer "user_id"
+    t.integer "event_id"
+    t.integer "hours_volunteered"
+  end
+
+  create_table "privacies", :force => true do |t|
+    t.integer "user_id"
+    t.string  "upcoming_events", :default => "everyone"
   end
 
   create_table "roles", :force => true do |t|
@@ -61,6 +89,21 @@ ActiveRecord::Schema.define(:version => 20120121230552) do
 
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
+    t.integer "user_id"
+  end
+
+  create_table "skills", :force => true do |t|
+    t.string  "name"
+    t.integer "offset"
+  end
+
+  create_table "skills_events", :id => false, :force => true do |t|
+    t.integer "skill_id"
+    t.integer "event_id"
+  end
+
+  create_table "skills_users", :id => false, :force => true do |t|
+    t.integer "skill_id"
     t.integer "user_id"
   end
 
@@ -82,10 +125,27 @@ ActiveRecord::Schema.define(:version => 20120121230552) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "name"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.integer  "neighborhood_id"
+    t.date     "birthday"
+    t.integer  "org_id"
+    t.string   "type"
+    t.string   "mission"
+    t.string   "vision"
+    t.text     "description"
+    t.text     "website"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "users_followers", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "follower_id"
+  end
 
 end

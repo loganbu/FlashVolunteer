@@ -1,0 +1,17 @@
+<h1>Bulk submitting events</h1>
+<h3>Here's what you do</h3>
+<p>Looking to bulk upload some events so you don't have to fill out the form?  Good!  Here's how you do it</p>
+
+<p>1. You need to save this file under your Google account.  To do so, go to the menu and click File -> Make a Copy </p>
+<%= image_tag("instructions1.png", :id => "instructions1", :alt=>"step 1") %>
+
+<p>2. Create a distinctive name for your document (we suggest including your organization name and today's date), select Also Copy Document Collaborators, then click OK.</p>
+<%= image_tag("instructions3.png", :id => "instructions2", :alt=>"step 2") %>
+
+<p>3. In the new spreadsheet you've created, fill out the fields for each event; the shaded fields are required. (Hover over the column headings for extra help.)</p>
+<%= image_tag("instructions4.png", :id => "instructions3", :alt=>"step 3") %>
+
+<p>4. When you're done, copy the URL up there and paste it into <%= link_to("this form", "https://docs.google.com/spreadsheet/viewform?formkey=dEljVVdSanYwdkRLR2JLUDlyWGM3T0E6MQ") %>.</p>   
+<%= image_tag("instructions5.png", :id => "instructions4", :alt=>"step 4") %>
+
+<p>Clear as mud? Email us at <%= mail_to("support@flashvolunteer.org", "support@flashvolunteer.org", :subject => "Questions regarding bulk event updates", :encode=>"hex")%></p>

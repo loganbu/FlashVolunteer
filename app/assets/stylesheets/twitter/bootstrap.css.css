@@ -1,0 +1,60 @@
+/*
+Syntax error: File to import not found or unreadable: mixins.
+              Load paths:
+                F:/code/fvruby/app/assets/stylesheets
+                F:/code/fvruby/app/assets/stylesheets
+        on line 17 of ./twitter/bootstrap.css.scss
+
+12:  * Date: @DATE
+13:  */
+14: 
+15: // Core variables and mixins
+16: @import "variables"; // Modify this for custom colors, font-sizes, etc
+17: @import "mixins";
+18: 
+19: // CSS Reset
+20: @import "reset";
+21: 
+22: // Grid system and page structure
+
+Backtrace:
+./twitter/bootstrap.css.scss:17
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/import_node.rb:64:in `rescue in import'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/import_node.rb:42:in `import'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/import_node.rb:25:in `imported_file'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:149:in `rescue in visit_import'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:154:in `visit_import'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `map'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:53:in `visit_children'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:27:in `block in visit_children'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:39:in `with_environment'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:26:in `visit_children'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `block in visit'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:47:in `visit_root'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/base.rb:37:in `visit'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:18:in `visit'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/visitors/perform.rb:7:in `visit'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/tree/root_node.rb:20:in `render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/engine.rb:299:in `_render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/engine.rb:246:in `render'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:339:in `update_stylesheet'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:202:in `block in update_stylesheets'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:200:in `each'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:200:in `update_stylesheets'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin/compiler.rb:234:in `watch'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/plugin.rb:107:in `method_missing'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/exec.rb:431:in `watch_or_update'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/exec.rb:302:in `process_result'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/exec.rb:41:in `parse'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/lib/sass/exec.rb:21:in `parse!'
+C:/Ruby192/lib/ruby/gems/1.9.1/gems/sass-3.1.15/bin/sass:8:in `<top (required)>'
+C:/Ruby192/bin/sass:19:in `load'
+C:/Ruby192/bin/sass:19:in `<main>'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Syntax error: File to import not found or unreadable: mixins.\A               Load paths:\A                 F:/code/fvruby/app/assets/stylesheets\A                 F:/code/fvruby/app/assets/stylesheets\A         on line 17 of ./twitter/bootstrap.css.scss\A \A 12:  * Date: @DATE\A 13:  */\A 14: \A 15: // Core variables and mixins\A 16: @import \"variables\"; // Modify this for custom colors, font-sizes, etc\A 17: @import \"mixins\";\A 18: \A 19: // CSS Reset\A 20: @import \"reset\";\A 21: \A 22: // Grid system and page structure"; }

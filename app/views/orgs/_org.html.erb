@@ -1,3 +1,5 @@
-<h3><%= link_to org.name, :controller => "orgs", :action => "show", :id =>org %></h3>
-<br/>
-
+<div class="row-fluid">
+    <div class="span6">
+        <%= render(:partial => "users/shared/user", :locals => { :user => org }) %>
+    </div>
+</div>

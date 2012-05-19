@@ -1,0 +1,141 @@
+/* Bootstrap overrides */
+
+.container .row-fluid > [class*="span"] {
+  margin-left: 0px;
+}
+
+.tl-item .span1 {
+    width: 5.333333333%;
+}
+
+.tl-item .span11 {
+    width: 94.666666667%;
+}
+
+.tl-item .span12 {
+    width: 100%;
+}
+
+/********************
+ frame 
+ ********************/
+
+.tl-rightcol, .tl-leftcol {
+    margin-top: 20px;
+}
+
+.tl-leftcol {
+    border-right: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.tl-rightcol {
+    margin-left: 0px;
+}
+
+/* items */
+
+.tl-item {
+    margin-bottom: 20px;
+}
+
+.tl-leftcol > .tl-item {
+    margin-right: 0px;
+}
+
+.tl-rightcol > .tl-item {
+    margin-left: 0px;
+}
+
+.tl-item-contents, .tl-item-beak {
+}
+
+.tl-item-contents {
+    background-color: White;
+    border: 2px solid rgba(0, 0, 0, 0.25);
+    padding: 6px;
+}
+
+/***********************
+ Separator 
+ ***********************/
+
+.tl-separator {
+    height: 35px;
+    text-align: center;
+}
+
+.tl-separator h4
+{
+    line-height: 35px;
+}
+
+.tl-separator-line {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin-top: 16px;
+    height: 3px;
+}
+
+/******************** 
+ beak 
+ ********************/
+
+.tl-item-beak
+{
+	height: 4px;
+}
+.tl-item-beak::before
+{
+}
+
+.tl-leftcol .tl-item-beak
+{
+}
+
+.tl-rightcol .tl-item-beak
+{
+}
+
+/****************
+ header 
+ ****************/
+.h1-override{
+    padding-bottom:5px;
+}
+
+.tlh-username{
+    padding-right: 10px;
+}
+
+.t1h-skills{
+    margin-top:7px;
+}
+
+.tlh-bottomrow{
+    background-color: rgba(0, 0, 0, .15);
+    padding: 10px;
+    width: 650px;
+}
+
+.tlh-avatar{
+    height: 128px;
+    width: 128px;
+    margin-top: -50px;
+    margin-left: 16px;
+}
+
+.tlh-followercount-align{
+    text-align: center;
+}
+
+.tlh-followercount{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.t1h-stats{
+    background-color: #4EA0A7;
+    color:white;
+    text-align: center;
+    margin: 5px;
+    padding: 7px 7px;
+}

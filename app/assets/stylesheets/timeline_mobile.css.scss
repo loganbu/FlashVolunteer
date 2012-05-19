@@ -1,0 +1,46 @@
+/****************
+ timeline header 
+ ****************/
+.h1-override{
+    padding-bottom:0px;
+    padding-top:0px;
+}
+
+.tlh-username{
+    padding-right: 10px;
+}
+
+.t1h-skills{
+    margin-top:7px;
+}
+
+.tlh-bottomrow{
+    background-color: rgba(0, 0, 0, .15);
+    padding: 5px;
+    width: 165px;
+    margin-bottom: 10px;
+}
+
+.tlh-avatar{
+    height: 40px;
+    width: 40px;
+    margin-top: 0px;
+    margin-left: 0px;
+}
+
+.tlh-followercount-align{
+    text-align: center;
+}
+
+.tlh-followercount{
+    font-size: larger;
+    font-weight: bold;
+}
+
+.t1h-stats{
+    background-color: #4EA0A7;
+    color:white;
+    text-align: center;
+    margin: 5px 8px;
+    padding:5px;
+}

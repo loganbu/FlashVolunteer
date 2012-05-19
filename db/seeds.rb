@@ -8,15 +8,35 @@
 Role.delete_all()
 Role.create([
 { :name => "SuperAdmin" },
-{ :name => "SiteAdmin" },
-{ :name => "Organization" },
 { :name => "Volunteer" },
 ])
 
 User.delete_all()
-admin = User.find_or_create_by_email(:email => "admin@localhost.com", :password => ENV['ADMIN_PASSWORD'], :password_confirmation => ENV['ADMIN_PASSWORD'], :name=>"Admin")
+email = ENV['ADMIN_USERNAME'] && ENV['ADMIN_USERNAME'].dup
+admin = User.find_or_create_by_email(:email => email || "admin@localhost.com", :password => ENV['ADMIN_PASSWORD'], :password_confirmation => ENV['ADMIN_PASSWORD'], :name=>"Admin")
 admin.roles << Role.find_by_name("SuperAdmin")
 
+Skill.delete_all()
+Skill.create([
+{ :name => "Advocacy | Human Rights",           :offset => 0 },
+{ :name => "Animals",                           :offset => 1 },
+{ :name => "Arts | Culture",                    :offset => 2 },
+{ :name => "Children | Families",               :offset => 3 },
+{ :name => "Computers | Technology",            :offset => 4 },
+{ :name => "Disabilities | Elderly",            :offset => 5 },
+{ :name => "Disaster Relief",                   :offset => 6 },
+{ :name => "Education | Literacy",              :offset => 7 },
+{ :name => "Environment",                       :offset => 8 },
+{ :name => "GLBT",   							:offset => 9 },
+{ :name => "Health | Medicine",                 :offset => 10 },
+{ :name => "Homelessness | Housing",            :offset => 11 },
+{ :name => "Hunger",                            :offset => 12 },
+{ :name => "Immigrants | Refugees",             :offset => 13 },
+{ :name => "Justice | Legal",                   :offset => 14 },
+{ :name => "Media | Broadcasting",              :offset => 15 },
+{ :name => "Politics",                          :offset => 16 },
+{ :name => "Sports | Recreation",               :offset => 17 }
+])
 
 Neighborhood.delete_all()
 Neighborhood.create([               
@@ -32,7 +52,7 @@ Neighborhood.create([
 { :name => 'Central District',          :latitude => 47.607668, :longitude => -122.306328}, 
 { :name => 'Columbia City',             :latitude => 47.559866, :longitude => -122.2864991}, 
 { :name => 'Delridge',                  :latitude => 47.552634, :longitude => -122.382545}, 
-{ :name => 'Downtown',                  :latitude => 47.618777, :longitude => -122.33139}, 
+{ :name => 'Downtown Seattle',          :latitude => 47.618777, :longitude => -122.33139}, 
 { :name => 'Edmonds',                   :latitude => 47.810011, :longitude => -122.373104}, 
 { :name => 'First Hill',                :latitude => 47.609438, :longitude => -122.3232908}, 
 { :name => 'Fremont',                   :latitude => 47.665792, :longitude => -122.351303}, 
@@ -41,6 +61,7 @@ Neighborhood.create([
 { :name => 'Greenwood',                 :latitude => 47.704910, :longitude => -122.35199}, 
 { :name => 'International District',    :latitude => 47.606742, :longitude => -122.319803}, 
 { :name => 'Issaquah',                  :latitude => 47.530101, :longitude => -122.0326191}, 
+{ :name => 'Kent',                      :latitude => 47.380279, :longitude => -122.237419}, 
 { :name => 'Kirkland',                  :latitude => 47.681770, :longitude => -122.209682}, 
 { :name => 'Lake City',                 :latitude => 47.725411, :longitude => -122.278776}, 
 { :name => 'Lake Union',                :latitude => 47.632020, :longitude => -122.334137}, 
@@ -51,6 +72,7 @@ Neighborhood.create([
 { :name => 'Magnolia',                  :latitude => 47.656658, :longitude => -122.393961}, 
 { :name => 'Maple Leaf',                :latitude => 47.705603, :longitude => -122.314825}, 
 { :name => 'Mercer Island',             :latitude => 47.570210, :longitude => -122.221184}, 
+{ :name => 'Mountlake Terrace',         :latitude => 47.788028, :longitude => -122.311111}, 
 { :name => 'Northgate',                 :latitude => 47.720214, :longitude => -122.315083}, 
 { :name => 'Phinney Ridge',             :latitude => 47.670868, :longitude => -122.351618}, 
 { :name => 'Queen Anne',                :latitude => 47.635321, :longitude => -122.365036}, 
@@ -59,11 +81,13 @@ Neighborhood.create([
 { :name => 'Ravenna',                   :latitude => 47.683823, :longitude => -122.296371}, 
 { :name => 'Redmond',                   :latitude => 47.674805, :longitude => -122.117844}, 
 { :name => 'Renton',                    :latitude => 47.483971, :longitude => -122.216034}, 
+{ :name => 'Roosevelt',                 :latitude => 47.680877, :longitude => -122.317115}, 
 { :name => 'Sammamish',                 :latitude => 47.642662, :longitude => -122.066689}, 
 { :name => 'Sand Point',                :latitude => 47.678692, :longitude => -122.257048}, 
+{ :name => 'Seatac',                    :latitude => 47.434059, :longitude => -122.274261}, 
 { :name => 'Shoreline',                 :latitude => 47.755221, :longitude => -122.340832}, 
 { :name => 'South Park',                :latitude => 47.534472, :longitude => -122.310705}, 
-{ :name => 'South Whidbey Island',      :latitude => 47.998276, :longitude => -122.439503}, 
+{ :name => 'Whidbey Island',            :latitude => 47.998276, :longitude => -122.439503}, 
 { :name => 'Tukwila',                   :latitude => 47.475618, :longitude => -122.262383}, 
 { :name => 'University District',       :latitude => 47.657698, :longitude => -122.306368}, 
 { :name => 'Wallingford',               :latitude => 47.655526, :longitude => -122.326796}, 
@@ -71,3 +95,33 @@ Neighborhood.create([
 { :name => 'West Seattle',              :latitude => 47.576526, :longitude => -122.391901}, 
 { :name => 'White Center',              :latitude => 47.516675, :longitude => -122.354736} 
 ])
+
+
+
+
+# Test data for development
+if Rails.env.development?
+    Random.new
+    Org.delete_all()
+    Event.delete_all()
+    volunteer_role = Role.find_by_name("Volunteer")
+
+    unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
+    confirmed_user = FactoryGirl.create(:confirmed_user)
+    tech_user = FactoryGirl.create(:tech_user)
+    brad = FactoryGirl.create(:org_admin)
+
+    flash_org = FactoryGirl.create(:org)
+    flash_org.admins << brad
+    flash_org.roles << volunteer_role
+
+    unconfirmed_user.roles << volunteer_role
+    confirmed_user.roles << volunteer_role
+    tech_user.roles << volunteer_role
+    brad.roles << volunteer_role
+
+    FactoryGirl.create_list(:event, 35, :in_one_week, :creator_id => confirmed_user.id, :participants => [tech_user])
+    FactoryGirl.create_list(:event, 33, :in_one_month, :creator_id => confirmed_user.id, :participants => [tech_user])
+    FactoryGirl.create_list(:event, 37, :in_two_months, :creator_id => confirmed_user.id, :participants => [tech_user])
+
+end

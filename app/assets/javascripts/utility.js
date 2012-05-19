@@ -19,3 +19,40 @@ function getParameterByName(name) {
 function closePopup() {
        $(".popup").addClass("hidden");
 }
+
+function activateContentSection(section) {
+    $("#content_sections>div").each(function() { $(this).hide(); });
+    $(section+"_content").show();
+    $("#link_list li a").each(function () { $(this).removeClass('link_active') } );
+    $(section+"_link").addClass('link_active');
+}
+
+function addContentHandlers() {
+    $("#link_list li a").click(function () {
+        $("#content_sections>div").each(function() { $(this).hide(); });
+        $($(this).attr("href")+"_content").show();
+        $("#link_list li a").each(function () { $(this).removeClass('link_active') } );
+        $(this).addClass('link_active');
+    });
+    if (location.hash != "") {
+        activateContentSection(location.hash);
+    }
+}
+
+function setDefaultText(element, defaultText) {
+    element.addClass('defaultText');
+    element.click(function() {
+        $(this).removeClass('defaultText');
+        if ($(this).val() == defaultText) {
+            $(this).val('');
+        }
+    });
+
+    element.blur(function() {
+        if ($(this).val() == '') {
+            $(this).val(defaultText);
+            $(this).addClass('defaultText');
+        }
+    });
+    element.val(defaultText);
+}

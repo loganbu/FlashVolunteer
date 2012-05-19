@@ -1,19 +1,17 @@
 Flashvolunteer::Application.configure do
-    require 'tlsmail' 
-		Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE) 
+  
 		ActionMailer::Base.delivery_method = :smtp 
 		ActionMailer::Base.perform_deliveries = true 
 		ActionMailer::Base.raise_delivery_errors = true 
 		ActionMailer::Base.smtp_settings = { 
-				:address => "smtp.gmail.com", 
+				:address => ENV['MAILER_ADDRESS'], 
 				:port => "587", 
-				:domain => "gmail.com", 
-				:enable_starttls_auto => true, 
-				:authentication       => "plain",
+				:domain => "flashvolunteer.org", 
+				:authentication => "plain",
 				:user_name => ENV['MAILER_USERNAME'], 
 				:password => ENV['MAILER_PASSWORD']
 		} 
-	config.action_mailer.default_url_options = { :host => "flash20.heroku.com" }
+	config.action_mailer.default_url_options = { :host => "prod.flashvolunteer.org" }
 		
   # Settings specified here will take precedence over those in config/application.rb
 
