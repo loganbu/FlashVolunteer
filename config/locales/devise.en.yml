@@ -50,7 +50,7 @@ en:
     mailer:
       #user has accessed website but not yet confirmed their account
       confirmation_instructions:
-        subject: "You've signed up with Flash!"
+        subject: "Flash Volunteer account confirmation"
       #user is a full member of FV
       welcome_instructions:
         subject: 'Welcome -- come volunteer with us!'
