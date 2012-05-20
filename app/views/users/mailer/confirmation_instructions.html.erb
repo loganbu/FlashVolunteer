@@ -1,9 +1,15 @@
 <p>Welcome, <%= @resource.email %>,</p>
 
 
-<p>Our spider senses tell us that you created an account with Flash Volunteer. Congratulations on an excellent decision! Before you can create an event or sign up for one, we just need to make sure we got your information down right (our handwriting is kind of messy). </p>
+<p>Our spider senses tell us that you created an account with Flash Volunteer. Congratulations on an excellent decision! 
+<% if !@resource.confirmed? %>
+Before you can create an event or sign up for one, we just need to make sure we got your information down right (our handwriting is kind of messy). 
 
-<% if @resource.confirmed? %>
+<% end %>
+</p>
+
+
+<% if !@resource.confirmed? %>
 
 <p><%= link_to 'Yep, you got me', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>! </p>
 
