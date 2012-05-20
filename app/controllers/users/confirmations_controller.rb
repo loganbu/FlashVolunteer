@@ -3,7 +3,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
   def show
     @user = User.find_by_confirmation_token(params[:confirmation_token])
     # If the user entered a password through the 'create an account', then the encrypted password is set, and their e-mail is confirmed
-    if (@user != nil && @user.encrypted_password != '')
+    if (@user != nil)
       @user = User.confirm_by_token(@user.confirmation_token)
       @user.roles << Role.find_by_name("Volunteer")
       set_flash_message :notice, :confirmed
