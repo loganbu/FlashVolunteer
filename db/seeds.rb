@@ -75,6 +75,7 @@ Neighborhood.create([
 { :name => 'Mountlake Terrace',         :latitude => 47.788028, :longitude => -122.311111}, 
 { :name => 'Northgate',                 :latitude => 47.720214, :longitude => -122.315083}, 
 { :name => 'Phinney Ridge',             :latitude => 47.670868, :longitude => -122.351618}, 
+{ :name => 'Pioneer Square'             :latitude => 47.601692, :longitude => -122.332305},
 { :name => 'Queen Anne',                :latitude => 47.635321, :longitude => -122.365036}, 
 { :name => 'Rainier Beach',             :latitude => 47.517518, :longitude => -122.256374}, 
 { :name => 'Rainier Valley',            :latitude => 47.567261, :longitude => -122.27972}, 
