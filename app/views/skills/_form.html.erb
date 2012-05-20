@@ -29,6 +29,9 @@
         <label onclick="toggleImage(<%= s.id %>)" for="<%= "#{entity}_skill_ids_#{i}"%>" title="<%= s.name %>">	
             <span class="<%=button_class_type%>" style="background:url(<%=image_location%>) 0px <%= -button_pixels*s.offset %>px;">&nbsp;</span>
         </label>
+        <div style="clear: left">
+            <%= s.name %>
+        </div>
     </div>
 <% end %>
 <script type="text/javascript">
