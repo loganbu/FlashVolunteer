@@ -3,9 +3,16 @@
 
 <p>Our spider senses tell us that you created an account with Flash Volunteer. Congratulations on an excellent decision! Before you can create an event or sign up for one, we just need to make sure we got your information down right (our handwriting is kind of messy). </p>
 
+<% if @resource.confirmed? %>
+
 <p><%= link_to 'Yep, you got me', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>! </p>
 
-<p> Once you've <%= link_to 'confirmed with us', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>, you're ready to search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
+<p> Once you've <%= link_to 'confirmed with us', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>, 
+
+<% else %>
+<p> Now
+<% end %>
+you're ready to search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
 
 <p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
