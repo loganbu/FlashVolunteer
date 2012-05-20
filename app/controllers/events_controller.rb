@@ -110,6 +110,11 @@ class EventsController < ApplicationController
   # POST /POST
   # events /events.xml
   def create
+
+    if (params[:event][:website] && !(params[:event][:website].starts_with?("http://") || params[:event][:website].starts_with?("https://")))
+      params[:event][:website] = "http://" + params[:event][:website]
+    end
+
     begin
       paramsToUse = hackoutdatetime(params[:startdate], params[:event])
       @event = Event.new(paramsToUse)
@@ -118,7 +123,7 @@ class EventsController < ApplicationController
       @event = Event.new(params[:event])
       @event.start = nil
     end
-    
+
     @event.user = current_user
 
     respond_to do |format|
@@ -142,6 +147,11 @@ class EventsController < ApplicationController
     rescue ArgumentError
       paramsToUse = params[:event].delete('startdate')
       @event.start = nil
+    end
+
+
+    if (params[:event][:website] && !(params[:event][:website].starts_with?("http://") || params[:event][:website].starts_with?("https://")))
+      params[:event][:website] = "http://" + params[:event][:website]
     end
 
     respond_to do |format|
