@@ -15,10 +15,13 @@
 <p>
     <%= @event.street %>, <%= link_to(@event.neighborhood.name, (events_url.concat("/in/").concat(@event.neighborhood.name))) %><br/>
     <%= render(:partial => 'links', :locals => { :event => @event }) %>
+<% if @event.website != '' %>
 <div class="row-fluid">
-        <div class="pull-left"><%= link_to("visit event website", @event.website, :target=>"_blank") %></div>
+    <div class="pull-left"><%= link_to("visit event website", @event.website, :target=>"_blank") %></div>
 </div>
+<% end %>
 </p>
+<% if @event.upcoming? %>
 <div class="row-fluid">
     <div class="span7">
     	<% if page_type != :webpage %>
@@ -27,7 +30,9 @@
         	<%= render(:partial => 'share', :locals => { :event => @event, :size => :large }) %>
     	<% end %>
     </div>
+
     <div class="span5">
         <div class="pull-right"><%= link_to("add to my calendar", export_event_url(@event)) %></div>
     </div>
 </div>
+<% end %>
