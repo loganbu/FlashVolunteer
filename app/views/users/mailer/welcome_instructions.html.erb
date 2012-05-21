@@ -1,17 +1,20 @@
-<p>Welcome, <%= @resource.email %>!</p>
+<% content_for :email_content do%>
+	<p>Welcome, <%= @resource.email %>!</p>
+	<br />
 
+	<p>You have created a profile on Flash Volunteer, but there is much more to explore! Search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
 
-<p>You have created a profile on Flash Volunteer, but there is much more to explore! Search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
+	<p> <%= link_to 'Get started now', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>.</p>
 
-<p> <%= link_to 'Get started now', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>.</p>
+	<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+	<p>Happy Volunteering!</p>
+	<br />
 
-<p>Happy Volunteering!</p>
+	<p>Charlie X. Buttons</p>
+	<p>Flash Volunteer CEO </p>
+	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-
-<p>Charlie X. Buttons</p>
-<p>Flash Volunteer CEO </p>
-<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
-
-<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+	<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+<% end %>
+<%= render(:template => 'users/mailer/header')%>
