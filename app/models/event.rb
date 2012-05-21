@@ -51,4 +51,7 @@ class Event < ActiveRecord::Base
     def attending?(user)
         user == nil ? false : self.participants.exists?(user)
     end
+    def upcoming?()
+        self.end > Time.now
+    end
 end
