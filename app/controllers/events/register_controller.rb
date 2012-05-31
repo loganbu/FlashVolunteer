@@ -9,6 +9,7 @@ class Events::RegisterController < ApplicationController
     @event = Event.find(params[:id])
       
     if (!anyone_signed_in?)
+      session[:sign_up_for_event] = @event.id
       send_to_quick_signup(event_url(@event))
       return
     end

@@ -1,5 +1,8 @@
+<%
+    is_switcher ||= :true
+%>
 <div class="row-fluid">
     <div class="span6">
-        <%= render(:partial => "users/shared/user", :locals => { :user => org }) %>
+        <%= render(:partial => "users/shared/user", :locals => { :user => org, :switch => is_switcher }) %>
     </div>
 </div>

@@ -14,7 +14,7 @@
         <% if (@admin_of.count == 0) %>
             You are not an admin of any organization
         <% else %>
-            <%= render(:partial => "orgs/org", :collection => @admin_of, :as => :org) %>
+            <%= render(:partial => "orgs/org", :locals => { :is_switcher => :false }, :collection => @admin_of, :as => :org) %>
         <% end %>
     </div>
 </div>
