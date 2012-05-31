@@ -9,5 +9,24 @@ module Devise
               end
             end
         end
+
+        module Confirmable 
+          if Rails.env.production?
+            handle_asynchronously :send_confirmation_instructions
+          end
+        end 
+ 
+        module Recoverable 
+          if Rails.env.production?
+            handle_asynchronously :send_reset_password_instructions 
+          end
+        end 
+ 
+        module Lockable 
+          if Rails.env.production?
+            handle_asynchronously :send_unlock_instructions 
+          end
+        end 
+
     end
 end
