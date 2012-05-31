@@ -194,6 +194,7 @@ class EventsController < ApplicationController
     lat_long = (params[:lat] && params[:long]) ? [params[:lat].to_f, params[:long].to_f] : [47.618777, -122.33139]
     @events = Event.where("1=1").near(lat_long, proximity)
     
+    id_array = params[:id] && params[:id].split(',') || []
     categories_array = params[:categories] && params[:categories].split(',') || []
     hosted_by_org_user_array = params[:hosted_by_org_user] && params[:hosted_by_org_user].split(',') || []
     created_by_array = params[:created_by] && params[:created_by].split(',') || []
@@ -212,6 +213,7 @@ class EventsController < ApplicationController
     end
 
     # begin with an an association that's always true
+    @events = id_array.length > 0 ? @events.where{id.eq_any id_array} : @events
     @events = categories_array.length > 0 ? @events.joins(:skills).where{skills.id.eq_any categories_array} : @events
     @events = name_array.length > 0 ? @events.where{name.matches_any name_array} : @events
     @events = hosted_by_org_user_array.length > 0 ? @events.hosted_by_org_user(hosted_by_org_user_array) : @events

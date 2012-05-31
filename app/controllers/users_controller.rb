@@ -98,12 +98,14 @@ class UsersController < ApplicationController
   def search
     per_page = params[:per_page] || 5
 
+    id_array = params[:id] && params[:id].split(',') || []
     email_array = params[:email] && params[:email].split(',') || []
     categories_array = params[:categories] && params[:categories].split(',') || []
 
     # begin with an an association that's always true
     @users = User.where("1=1").paginate(:page=>params[:page], :per_page => per_page)
     
+    @users = id_array.length > 0 ? @users.where{id.eq_any id_array} : @users
     @users = email_array.length > 0 ? @users.where{email.eq_any email_array} : @users
     @users = categories_array.length > 0 ? @users.joins(:skills).where{skills.id.eq_any categories_array} : @users
     
