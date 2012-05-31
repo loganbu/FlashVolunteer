@@ -71,7 +71,7 @@
 <div class="row">
     <% [
            Hash["name" => "logan buesching", "subtext" => "development director", "image" => "board/logan_small.jpg"],
-            Hash["name" => "janis lee", "subtext" => "development directory", "image" => "board/janis_small.jpg"],
+            Hash["name" => "janis lee", "subtext" => "development director", "image" => "board/janis_small.jpg"],
        ].each_with_index do |person, i| %>
         <% if (person) %>
          <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>

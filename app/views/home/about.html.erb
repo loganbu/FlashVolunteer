@@ -49,7 +49,7 @@
             Hash["name" => "logan buesching", "subtext" => "development director", "image" => "board/logan.jpg"],
             nil,
             Hash["name" => "melissa collett", "subtext" => "engagement director", "image" => "board/melissa.jpg"],
-            Hash["name" => "janis lee", "subtext" => "development directory", "image" => "board/janis.jpg"],
+            Hash["name" => "janis lee", "subtext" => "development director", "image" => "board/janis.jpg"],
        ].each_with_index do |person, i| %>
        <% if (person) %>
          <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>

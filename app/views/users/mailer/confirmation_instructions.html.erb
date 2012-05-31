@@ -1,32 +1,29 @@
-<p>Welcome, <%= @resource.email %>,</p>
+<% content_for :email_content do%>
+	<p>Welcome, <%= @resource.email %>,</p>
+	<br />
 
+	<p>Our spider senses tell us that you created an account with Flash Volunteer. Congratulations on an excellent decision! 
+	<% if !@resource.confirmed? %>
+		Before you can create an event or sign up for one, we just need to make sure we got your information down right (our handwriting is kind of messy). 
+	<% end %>
+	</p>
 
-<p>Our spider senses tell us that you created an account with Flash Volunteer. Congratulations on an excellent decision! 
-<% if !@resource.confirmed? %>
-Before you can create an event or sign up for one, we just need to make sure we got your information down right (our handwriting is kind of messy). 
+	<% if !@resource.confirmed? %>
+		<p><%= link_to 'Yep, you got me', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>! </p>
+		<p> Once you've <%= link_to 'confirmed with us', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>, 
+	<% else %>
+	<p> Now
+	<% end %>
+	you're ready to search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
 
+	<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+	<br />
+
+	<p>Happy Volunteering!</p>
+	<p>Charlie X. Buttons</p>
+	<p>Flash Volunteer CEO (Confirmation Excellence Owner)</p>
+	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+
+	<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
 <% end %>
-</p>
-
-
-<% if !@resource.confirmed? %>
-
-<p><%= link_to 'Yep, you got me', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>! </p>
-
-<p> Once you've <%= link_to 'confirmed with us', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>, 
-
-<% else %>
-<p> Now
-<% end %>
-you're ready to search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
-
-<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
-
-<p>Happy Volunteering!</p>
-
-
-<p>Charlie X. Buttons</p>
-<p>Flash Volunteer CEO (Confirmation Excellence Owner)</p>
-<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
-
-<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+<%= render(:template => 'users/mailer/header')%>

@@ -1,17 +1,20 @@
-<p>Hi, <%= @resource.email %>,</p>
+<% content_for :email_content do%>
+	<p>Hi, <%= @resource.email %>,</p>
+	<br />
 
+	<p>We have you down for %event_duration hours of volunteering at %event_name on %event_date, and we want to make sure you get credit for your hard work!</p>
 
-<p>We have you down for %event_duration hours of volunteering at %event_name on %event_date, and we want to make sure you get credit for your hard work!</p>
+	<p>Take a minute to <%= link_to("enter your volunteer hours", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token))%>. If it turns out you didn't participate in this project, that's OK -- you should still <%= link_to("update your events page", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token))%>.</p>
 
-<p>Take a minute to <%= link_to("enter your volunteer hours", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token))%>. If it turns out you didn't participate in this project, that's OK -- you should still <%= link_to("update your events page", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token))%>.</p>
+	<p>Remember, Flash Volunteer makes it easy to track your volunteer time, whether you have school-mandated service, or your employer donates matching funds for volunteer hours. <%= link_to("Sign in", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)) %>.</p>
 
-<p>Remember, Flash Volunteer makes it easy to track your volunteer time, whether you have school-mandated service, or your employer donates matching funds for volunteer hours. <%= link_to("Sign in", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)) %>.</p>
+	<p>Happy Volunteering!</p>
+	<br />
 
-<p>Happy Volunteering!</p>
+	<p>Charlie X. Buttons</p>
+	<p>Flash Volunteer CEO </p>
+	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-
-<p>Charlie X. Buttons</p>
-<p>Flash Volunteer CEO </p>
-<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
-
-<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+	<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+<% end %>
+<%= render(:template => 'users/mailer/header')%>

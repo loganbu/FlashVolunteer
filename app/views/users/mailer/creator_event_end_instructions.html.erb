@@ -1,17 +1,20 @@
-<p>Hi, <%= @resource.email %>,</p>
+<% content_for :email_content do%>
+	<p>Hi, <%= @resource.email %>,</p>
+	<br />
 
+	<p>We hope your event, %event_name, went off without a hitch! Now you just need to do a bit of housekeeping.</p>
 
-<p>We hope your event, %event_name, went off without a hitch! Now you just need to do a bit of housekeeping.</p>
+	<p>Please sign in to Flash Volunteer to record the hours that your helpful volunteers completed. It only takes a few minutes, and we'll help you keep track of the volunteer hours your organization racks up! (While you're there, you can give your volunteers a virtual pat on the back, or post another event.)</p>
 
-<p>Please sign in to Flash Volunteer to record the hours that your helpful volunteers completed. It only takes a few minutes, and we'll help you keep track of the volunteer hours your organization racks up! (While you're there, you can give your volunteers a virtual pat on the back, or post another event.)</p>
+	<p>If you have insights about what would make Flash Volunteer more useful for your work, please share with us! Email <%= mail_to("talk@flashvolunteer.org", "talk@flashvolunteer.org", :subject => "Insights for Flash Volunteer", :encode=>"hex")%>. Thanks a bunch!</p>
 
-<p>If you have insights about what would make Flash Volunteer more useful for your work, please share with us! Email <%= mail_to("talk@flashvolunteer.org", "talk@flashvolunteer.org", :subject => "Insights for Flash Volunteer", :encode=>"hex")%>. Thanks a bunch!</p>
+	<p>Happy Volunteering!</p>
+	<br />
 
-<p>Happy Volunteering!</p>
+	<p>Charlie X. Buttons</p>
+	<p>Flash Volunteer CEO </p>
+	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-
-<p>Charlie X. Buttons</p>
-<p>Flash Volunteer CEO </p>
-<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
-
-<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+	<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+<% end %>
+<%= render(:template => 'users/mailer/header')%>
