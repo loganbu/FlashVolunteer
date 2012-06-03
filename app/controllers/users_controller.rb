@@ -111,7 +111,7 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @users }
+      format.xml  { render :xml => @users.to_xml(:methods => [:hours_volunteered, :categories]) }
     end
   end
 
