@@ -34,7 +34,7 @@ class EventsController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @events }
+      format.xml  { render :xml => Event.xml(@events) }
     end
   end
   
@@ -56,7 +56,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # in.html.erb
-      format.xml  { render :xml => @events }
+      format.xml  { render :xml => Event.xml(@events) }
     end
   end
 
@@ -81,7 +81,7 @@ class EventsController < ApplicationController
       else
           format.html # show.html.erb
       end
-      format.xml  { render :xml => @event }
+      format.xml  { render :xml => Event.xml(@event) }
     end
   end
 
@@ -94,7 +94,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @event }
+      format.xml  { render :xml => Event.xml(@event) }
     end
   end
 
@@ -238,7 +238,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @events }
+      format.xml  { render :xml => Event.xml(@events) }
     end
   end
   

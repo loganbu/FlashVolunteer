@@ -110,4 +110,8 @@ class User < ActiveRecord::Base
       return true
     end
   end
+
+  def self.xml(entity)
+    entity.to_xml(:methods => [:hours_volunteered, :categories])
+  end
 end

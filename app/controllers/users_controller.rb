@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @user }
+      format.xml  { render :xml => User.xml(@user) }
     end
   end
 
@@ -117,7 +117,7 @@ class UsersController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @users.to_xml(:methods => [:hours_volunteered, :categories]) }
+      format.xml  { render :xml => User.xml(@users)}
     end
   end
 
