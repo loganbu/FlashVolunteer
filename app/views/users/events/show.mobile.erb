@@ -13,6 +13,8 @@
 <p class="bold">MY EVENTS</p>
 <% if can? :create, Event %>
 <p><%= link_to "Create new event", new_event_url %></p>
+<%else%>
+<p>You need to confirm your account before you can start adding events. Check your personal inbox for the confirmation email from Charlie X. Buttons.</p>
 <br />
 <% end %>
 <div class="tabs bold">
