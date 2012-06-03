@@ -80,6 +80,7 @@ $(function () {
             <% if can? :create, Event %>
                 <li><%= link_to "CREATE NEW EVENT", new_event_url %></p>
             <% end %>   
+            <li><%= link_to "GIVE PROPS", new_prop_url(@user) %></li>
         </ul>
     </div>
 </div>

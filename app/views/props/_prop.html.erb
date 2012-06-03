@@ -1,0 +1,23 @@
+<%
+    case direction
+        when :received
+            direction_text = "Given by"
+            entity = prop.giver
+        when :given
+            direction_text = "Given to"
+            entity = prop.receiver
+    end
+%>
+<div class="row-fluid">
+    <div class="span12">
+        <% if entity %>
+            <%= direction_text %> <%= link_to entity.name, user_url(entity) %> on <%= prop.created_at.strftime("%m/%d/%y") %>
+        <% end %>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span12">
+        <%= prop.message %>
+    </div>
+</div>
+<div class="row-fluid">&nbsp;</div>
