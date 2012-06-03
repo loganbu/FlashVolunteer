@@ -44,6 +44,15 @@ class Event < ActiveRecord::Base
         self.end-self.start
     end
 
+    # For XML response
+    def attendees
+        participants.map{|s| s.id }.join(',')
+    end
+    # For XML response
+    def categories
+        skills.map{|s| s.id }.join(',')
+    end
+
     def geocode_address
        return "#{self.street} #{self.city}, #{self.zip} #{self.state}"
     end
@@ -53,5 +62,10 @@ class Event < ActiveRecord::Base
     end
     def upcoming?()
         self.end > Time.now
+    end
+
+
+    def self.xml(entity)
+        entity.to_xml(:methods => [:attendees, :categories])
     end
 end

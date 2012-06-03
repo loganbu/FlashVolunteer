@@ -11,31 +11,49 @@
 				<a href="#faq-how_does_site_work">How does the site work?</a>
 			</li>
 			<li>
-				<a href="#faq-how_to_find_events">How can I find events?</a>
-			</li>
-			<li>
-				<a href="#faq-costs_of_fv">Does it cost anything to use Flash Volunteer?</a>
-			</li>
-			<li>
-				<a href="#faq-how_to_sign_up_for_event">How do I sign-up for an event?</a>
-			</li>
-			<li>
 				<a href="#faq-where_fv_gets_events">Where does Flash Volunteer get its volunteer events?</a>
-			</li>
-				<li>
-				<a href="#faq-where_recommended_events_from">Where do recommended events come from?</a>
 			</li>
 			<li>
 				<a href="#faq-how_to_create_events">So, I can really create my own volunteer event?</a>
 			</li>
 			<li>
-				<a href="#faq-what_about_inappropriate_events">What if I see an event that I think is inappropriate?</a>
+				<a href="#faq-costs_of_fv">Does it cost anything to use Flash Volunteer?</a>
 			</li>
 			<li>
+				<a href="#faq-fv_making_money">So, how does Flash Volunteer make money?</a>
+			</li>
+			<li>
+				<a href="#faq-user_types">What types of users are there?</a>
+			</li>
+			<li>
+				<a href="#faq-ton_of_info">Do you need a ton of information from me for me to sign up for an event?</a>
+			</li>
+			<!--<li>
+				<a href="#faq-how_to_find_events">How can I find events?</a>
+			</li>-->
+			<li>
+				<a href="#faq-where_recommended_events_from">Where do recommended events come from?</a>
+			</li>
+			<li>
+				<a href="#faq-how_to_sign_up_for_event">How do I sign-up for an event?</a>
+			</li>
+			<li>
+				<a href="#faq-what_about_inappropriate_events">What if I see an event that I think is inappropriate?</a>
+			</li>
+			<!--<li>
 				<a href="#faq-what_about_flash_team">What's my Flash Team all about?</a>
 			</li>
 			<li>
-				<a href="#faq-how_to_add_to_team">How do I add other Flash Volunteers to my Flash Team?</a>
+				<a href="#faq-no_one_on_team">Why is there no one in my Flash Team? How do I find other Flash Volunteers?</a>
+			</li>-->
+			<li>
+				<a href="#faq-un-sign_up_for_event">Uh oh. My plans changed. Can I un-sign up for an event?</a>
+			</li>
+			<li>
+				<a href="#faq-know_when_event_attended">How does Flash Volunteer know when I've attended an event?</a>
+			</li>
+			<li>
+				<a href="#faq-changing_notifications">How do I change the notifications I receive from Flash Volunteer?</a>
 			</li>
 			<li>
 				<a href="#faq-how_to_delete_account">How can I delete my account on Flash Volunteer?</a>
@@ -65,6 +83,18 @@
 				After you create an account, Flash Volunteer allows you to manage all of your volunteer opportunities in one place. You can search for events, sign up for the ones you are interested in, invite your friends to join your Flash Team and even create your own volunteer events to address needs that are important to you and your neighbors. We also offer receipts, so you can get credit for service hours if you need them for school or work.
 			</p>
 		</div>
+		<div id="faq-where_fv_gets_events_" class="hide">
+			<h4>Where does Flash Volunteer get its volunteer events?</h4>
+			<p>
+				From you! Individual users and local nonprofits post events on Flash Volunteer. We also share events from <%= link_to('All for Good', 'http://www.allforgood.org/')%>. (If you see an All for Good event on Flash Volunteer, you'll also see a link to the original post, so you can let the event host know you are interested. Don't forget to sign up on Flash, so that you can track your volunteer projects all in one place! 
+			</p>
+		</div>
+		<div id="faq-how_to_create_events_" class="hide">
+			<h4>So, I can really create my own volunteer event?</h4>
+			<p>
+				Yes, you can! Flash Volunteer was built to give individuals the tools they need to become more engaged with their neighbors. Just <%= link_to('create an event', '/events')%> and you are on your way!
+			</p>
+		</div>
 		<div id="faq-how_to_find_events_" class="hide">
 			<h4>How can I find events?</h4>
 			<p>
@@ -83,18 +113,6 @@
 				To get involved, just click the "I'm thinking about volunteering" button on the event page. This will get you started and allow you to either sign-up for the event or track it on your profile page.
 			</p>
 		</div>
-		<div id="faq-where_fv_gets_events_" class="hide">
-			<h4>Where does Flash Volunteer get its volunteer events?</h4>
-			<p>
-				The majority of the events in the system are posted directly to Flash Volunteer by local nonprofits and Seattle residents. We also share events from <a href="http://www.allforgood.org">All for Good</a> to provide a wider variety of opportunities for our users. If you are interested in signing up for an event from All for Good, we will provide a direct link to the original post (so you can let the event host know you are interested) and also keep track of it for you in your Flash Volunteer account.
-			</p>
-		</div>
-		<div id="faq-how_to_create_events_" class="hide">
-			<h4>So, I can really create my own volunteer event?</h4>
-			<p>
-				Yes, you can! Flash Volunteer was built to give citizens the tools they need to become more engaged with their fellow neighbors. Just <a href="/events">Create an event</a> and you are on your way!
-			</p>
-		</div>
 		<div id="faq-what_about_inappropriate_events_" class="hide">
 			<h4>What if I see an event that I think is inappropriate?</h4>
 			<p>
@@ -110,13 +128,13 @@
 		<div id="faq-how_to_delete_account_" class="hide">
 			<h4>How can I delete my account on Flash Volunteer?</h4>
 			<p>
-				Just click "edit profile" and then "delete account". We'll miss you.
+				Just email <%= mail_to("support@flashvolunteer.org", "support@flashvolunteer.org", :subject => "Please remove my account", :encode=>"hex")%>. We'll miss you.
 			</p>
 		</div>
 		<div id="faq-where_recommended_events_from_" class="hide">
 			<h4>Recommended Events</h4>
 			<p>
-				Events are recommended based on the interest categories you have selected, as well as your home and work neighborhood. You can modify your interest categories and neighborhoods by <a class="fv" href="/settings">editing your profile</a>.
+				Events are recommended based on the interest categories you have selected, as well as your home and work neighborhood. You can modify your interest categories and neighborhoods by editing your profile.
 			</p>
 		</div>
 		<div id="faq-how_to_add_to_team_" class="hide">
@@ -125,10 +143,53 @@
 				Find teammates by <a class="fv" href="/team">searching for other volunteers</a>, befriending people you've met at <a class="fv" href="/events">volunteer events</a>, and by confirming <a class="fv" href="/team">people who have added you as their Flash Friend</a> (if any have).
 			</p>
 		</div>
-			<div id="faq-irs_designation_" class="hide">
+		<div id="faq-fv_making_money_" class="hide">
+			<h4>So, how does Flash Volunteer make money?</h4>
+			<p>
+				Flash Volunteer is a registered 501(c)3 nonprofit and receives donations and grants to keep things running smoothly. You can support us by <%=link_to('making a donation', "http://fundly.com/flashvolunteer2011")%>. We also rely on volunteers to make our operation go; if you would like to join the team, please get in touch at <%= mail_to("info@flashvolunteer.org", "info@flashvolunteer.org", :subject => "I want to join the team!", :encode=>"hex")%>.
+			</p>
+		</div>
+		<div id="faq-user_types_" class="hide">
+			<h4>What types of users are there?</h4>
+			<p>
+				There is just one type of user on Flash Volunteer – you! Each person has his or her individual account, and with it comes all the functionality of creating and signing up for events. If you represent an organization that holds events, you can create an organizational page. The page can create events<!--and have multiple administrators-->. (This is similar to the way that Facebook pages are set up, if you're familiar with that.) One user can also be an administrator on multiple pages. Kinda cool, huh?
+			</p>
+		</div>
+		<div id="faq-ton_of_info_" class="hide">
+			<h4>Do you need a ton of information from me for me to sign up for an event?</h4>
+			<p>
+				If you're in a rush, you can do a quick event signup, where you only provide your name and email address. Later, when you have time, you should create your account so that you can take advantage of all the features that Flash has to offer! (Don't worry, we'll send you a reminder to do this.)
+			</p>
+		</div>
+		<div id="faq-no_one_on_team_" class="hide">
+			<h4>Why is there no one in my Flash Team? How do I find other Flash Volunteers?</h4>
+			<p>
+				To start, you can search by cause or organization and find volunteers who share your interests. The more you volunteer, the more people you will meet, and the more potential teammates you have. Visit a person's profile page to invite him or her to your Flash Team. 
+			</p>
+		</div>
+		<div id="faq-un-sign_up_for_event_" class="hide">
+			<h4>Uh oh. My plans changed. Can I un-sign up for an event?</h4>
+			<p>
+				It's OK. Things change. Just visit the event page and change your RSVP. <!--The volunteer coordinator will receive a message from us that the head count has changed.-->
+			</p>
+		</div>
+		<div id="faq-know_when_event_attended_" class="hide">
+			<h4>How does Flash Volunteer know when I've attended an event?</h4>
+			<p>
+				<!--The volunteer coordinator at your project will be encouraged to record attendance on Flash Volunteer, but if you ARE the volunteer coordinator, or if you so inclined,--> You can record your volunteer hours yourself on your homepage when you sign in to the website. Make sure to check your stats on your profile page as you start to rack up the hours and projects! 
+			</p>
+		</div>
+		<div id="faq-changing_notifications_" class="hide">
+			<h4>How do I change the notifications I receive from Flash Volunteer?</h4>
+			<p>
+				We're still updating the site and this part is under contruction.  We'll let you know when it's updated, but if you don't want ANY emails at all, you can unsubscribe from the emails. Remember, clicking on unsubscribe will remove you from all emails that we send.
+				<!--Once you're signed in, click on Settings in the upper right corner of any page. You can edit your communications preferences there. From there, you can also edit your privacy settings.-->
+			</p>
+		</div>
+		<div id="faq-irs_designation_" class="hide">
 			<h4>What is Flash Volunteer's tax status?</h4>
 			<p>
-				Flash Volunteer is a registered 501(c) nonprofit. If you would like to view a copy of our IRS designation letter, please click <a href="/assets/images/FlashVolunteerIRS.pdf">here</a>.
+				Flash Volunteer is a registered 501(c) nonprofit. If you would like to view a copy of our IRS designation letter, <a href="/assets/FlashVolunteerIRS.pdf">click here</a>.
 			</p>
 		</div>
 	</div>

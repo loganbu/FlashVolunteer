@@ -18,4 +18,8 @@ def store_original_user_logged_in(other)
     session[:original_user] = other.id
 end
 
+def display_text_field(text)
+    h(text).gsub(/\n/, '<br/>').html_safe
+end
+
 end

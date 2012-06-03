@@ -178,7 +178,16 @@
     </div>
     <div class="row-fluid">
         <div class="span2">
-            <div class="pull-right"><%= f.label :twitter_hashtags, "hash tags" %></div>
+            &nbsp;
+        </div>
+        <div class="span10">
+            <i>Enter Twitter hashtags, including the # sign, for use by event attendees </i>
+        </div>
+        <br />
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :twitter_hashtags, "Twitter tags" %></div>
         </div>
         <div class="span10">
             <%= f.text_field :twitter_hashtags, :class=>"full" %>

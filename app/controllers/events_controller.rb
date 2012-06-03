@@ -2,21 +2,25 @@ class EventsController < ApplicationController
   before_filter :see_splash, :only => [:index]
   load_and_authorize_resource
     
-    def export
-        @event = Event.find(params[:id])
-        @calendar = Icalendar::Calendar.new
-        event = Icalendar::Event.new
-        event.start = @event.start.strftime("%Y%m%dT%H%M%S")
-        event.end = @event.end.strftime("%Y%m%dT%H%M%S")
-        event.summary = @event.name
-        event.description = @event.description
-        #event.location = @event.n
-        @calendar.add event
-        @calendar.publish
-        headers['Content-Type'] = "text/calendar; charset=UTF-8"
-        render :text => @calendar.to_ical
-    end
+  def export
+      @event = Event.find(params[:id])
+      @calendar = Icalendar::Calendar.new
+      event = Icalendar::Event.new
+      event.start = @event.start.strftime("%Y%m%dT%H%M%S")
+      event.end = @event.end.strftime("%Y%m%dT%H%M%S")
+      event.summary = @event.name
+      event.description = @event.description
+      #event.location = @event.n
+      @calendar.add event
+      @calendar.publish
+      headers['Content-Type'] = "text/calendar; charset=UTF-8"
+      render :text => @calendar.to_ical
+  end
  
+  def set_page_title
+    @title = @event.name if @event
+  end
+
   # GET /events
   # GET /events.xml
   def index
@@ -25,10 +29,12 @@ class EventsController < ApplicationController
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown seattle")==0 }
     @events = Event.upcoming.near(@mapCenter).paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
     @zoom = 11
+
+    @title="Volunteer Opportunities in King County"
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @events }
+      format.xml  { render :xml => Event.xml(@events) }
     end
   end
   
@@ -42,6 +48,7 @@ class EventsController < ApplicationController
       return
     else
       cookies['preferred_neighborhood'] = @neighborhood.id
+      @title = "Volunteer Opportunities in " + @neighborhood.name
       @zoom = 15
       @events = Event.near(@neighborhood).where(:neighborhood_id => @neighborhood.id).upcoming.paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
       @mapCenter = @neighborhood
@@ -49,7 +56,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html # in.html.erb
-      format.xml  { render :xml => @events }
+      format.xml  { render :xml => Event.xml(@events) }
     end
   end
 
@@ -66,13 +73,15 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     
+    set_page_title
+
     respond_to do |format|
       if params[:map]
           format.html { render 'show.map.erb', :layout=>false }
       else
           format.html # show.html.erb
       end
-      format.xml  { render :xml => @event }
+      format.xml  { render :xml => Event.xml(@event) }
     end
   end
 
@@ -81,16 +90,20 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     
+    set_page_title
 
     respond_to do |format|
       format.html # new.html.erb
-      format.xml  { render :xml => @event }
+      format.xml  { render :xml => Event.xml(@event) }
     end
   end
 
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+
+    set_page_title
+
   end
 
   def hackoutdatetime(startdate, hashSet)
@@ -150,6 +163,8 @@ class EventsController < ApplicationController
     end
 
 
+    set_page_title
+
     if (params[:event][:website] != '' && !(params[:event][:website].starts_with?("http://") || params[:event][:website].starts_with?("https://")))
       params[:event][:website] = "http://" + params[:event][:website]
     end
@@ -194,6 +209,7 @@ class EventsController < ApplicationController
     lat_long = (params[:lat] && params[:long]) ? [params[:lat].to_f, params[:long].to_f] : [47.618777, -122.33139]
     @events = Event.where("1=1").near(lat_long, proximity)
     
+    id_array = params[:id] && params[:id].split(',') || []
     categories_array = params[:categories] && params[:categories].split(',') || []
     hosted_by_org_user_array = params[:hosted_by_org_user] && params[:hosted_by_org_user].split(',') || []
     created_by_array = params[:created_by] && params[:created_by].split(',') || []
@@ -212,6 +228,7 @@ class EventsController < ApplicationController
     end
 
     # begin with an an association that's always true
+    @events = id_array.length > 0 ? @events.where{id.eq_any id_array} : @events
     @events = categories_array.length > 0 ? @events.joins(:skills).where{skills.id.eq_any categories_array} : @events
     @events = name_array.length > 0 ? @events.where{name.matches_any name_array} : @events
     @events = hosted_by_org_user_array.length > 0 ? @events.hosted_by_org_user(hosted_by_org_user_array) : @events
@@ -221,12 +238,11 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @events }
+      format.xml  { render :xml => Event.xml(@events) }
     end
   end
   
   private
-  
     def see_splash
         if !cookies['splash'] && request.format == Mime::HTML
             cookies['splash'] = true

@@ -1,20 +1,22 @@
 <% content_for :email_content do%>
-	<p>Welcome, <%= @resource.email %>!</p>
-	<br />
+	<p>Hello, <%= @resource.email %>!</p>
 
-	<p>You have created a profile on Flash Volunteer, but there is much more to explore! Search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
 
-	<p> <%= link_to 'Get started now', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>.</p>
+	<p>You signed up for an event on Flash Volunteer, and we want to truly welcome you into the family. But before you get to put your feet up on the coffee table or drink milk straight out of the carton, we need to learn a little more about you.  
+
+	<p>Create an account so that you can find events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about. Please come on in and make yourself comfortable!</p>
+
+	<p> <%= link_to "I'm in", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>.</p>
 
 	<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-	<p>Happy Volunteering!</p>
-	<br />
+	<p>Happy volunteering!</p>
+
 
 	<p>Charlie X. Buttons</p>
-	<p>Flash Volunteer CEO </p>
+	<p>Flash Volunteer CEO (Clan Entry Officer) </p>
 	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-	<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+	<p>This notification was sent to <%= @resource.email %> because it was entered on Flash Volunteer to sign up for an event. Click here to unsubscribe.</p>
 <% end %>
 <%= render(:template => 'users/mailer/header')%>

@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
         config[:skip_xhr_requests] = true
     end
 
-    before_filter :remove_returns_to
+    before_filter :remove_returns_to, :set_default_page_title
     protect_from_forgery
     check_authorization
 
@@ -29,6 +29,9 @@ class ApplicationController < ActionController::Base
         authorize! :profile, entity
     end
 
+    def set_default_page_title
+        @title = "Flash Volunteer"
+    end
 
     def after_sign_in_path_for(resource_or_scope)
         # The wicked gem will do an HTTP get for each step in the flow (even if skipped)

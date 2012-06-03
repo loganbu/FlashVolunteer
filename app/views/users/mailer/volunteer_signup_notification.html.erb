@@ -1,19 +1,20 @@
 <% content_for :email_content do%>
 	<p>Welcome, <%= @resource.email %>!</p>
-	<br />
 
-	<p>So far, %(vol_count) volunteer(s) have signed up for %(event_name). This is who joined today: [bullet]%(volunteer_name) [bullet] %(volunteer_name)</p>
-
+	<p>You're on your way to a great event! So far, <%event_attendee_count%> volunteer(s) have signed up for <%event_name%>. This is who joined today: </p>
+	<ul>
+		<li><%attendee_name%></li>
+		<li><%attendee_name%></li>
+	</ul>
 	<p>Go to the event page to view all the volunteers who have signed up, to send a message to your volunteers, or to update the event details.</p>
 
 	<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-	<p>Happy Volunteering!</p>
-	<br />
+	<p>Happy volunteering!</p>
 
 
 	<p>Charlie X. Buttons</p>
-	<p>Flash Volunteer CEO </p>
+	<p>Flash Volunteer CEO (Captain of Event Orientation) </p>
 	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
 	<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>

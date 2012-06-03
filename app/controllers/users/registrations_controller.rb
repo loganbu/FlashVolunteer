@@ -5,6 +5,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
     def quick
     end
 
+    def new
+        @title = "Create an account"
+        super
+    end
+
     def create
         super
         if (session[:sign_up_for_event])

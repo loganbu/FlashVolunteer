@@ -34,7 +34,20 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type
+  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type, :hours_volunteered
+
+  def hours_volunteered(event=nil)
+    if (event != nil)
+      Participation.where("user_id = ? AND event_id = ?", self.id, event.id).sum(:hours_volunteered)
+    else
+      Participation.where("user_id = ?", self.id).sum(:hours_volunteered)
+    end
+  end
+
+  # Comma-delimited string of skills, for the mobile API
+  def categories
+    skills.map{|s| s.id }.join(',')
+  end
 
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
@@ -71,5 +84,9 @@ class User < ActiveRecord::Base
     else
       return true
     end
+  end
+
+  def self.xml(entity)
+    entity.to_xml(:methods => [:hours_volunteered, :categories])
   end
 end

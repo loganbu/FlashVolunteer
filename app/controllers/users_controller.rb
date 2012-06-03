@@ -24,11 +24,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def set_page_title
+    @title = @user.name + "'s Flash Volunteer Profile" if @user
+  end
+
   # GET /users/1
   # GET /users/1.xml
   def show
     @user = User.includes(:neighborhood).find(params[:id])
 
+    set_page_title
     # user calculations
     @nEventsCreated = Event.created_by(@user).count
     @nEventsComingUp = Event.attended_by(@user).upcoming.count
@@ -50,7 +55,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @user }
+      format.xml  { render :xml => User.xml(@user) }
     end
   end
 
@@ -58,6 +63,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     authorize_user_profile(@user)
+    set_page_title
   end
 
   # PUT /events/1
@@ -65,7 +71,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     params[:user].delete('email')
-
+    set_page_title
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(@user, :notice => 'Event was successfully updated.') }
@@ -98,18 +104,20 @@ class UsersController < ApplicationController
   def search
     per_page = params[:per_page] || 5
 
+    id_array = params[:id] && params[:id].split(',') || []
     email_array = params[:email] && params[:email].split(',') || []
     categories_array = params[:categories] && params[:categories].split(',') || []
 
     # begin with an an association that's always true
     @users = User.where("1=1").paginate(:page=>params[:page], :per_page => per_page)
     
+    @users = id_array.length > 0 ? @users.where{id.eq_any id_array} : @users
     @users = email_array.length > 0 ? @users.where{email.eq_any email_array} : @users
     @users = categories_array.length > 0 ? @users.joins(:skills).where{skills.id.eq_any categories_array} : @users
     
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @users }
+      format.xml  { render :xml => User.xml(@users)}
     end
   end
 

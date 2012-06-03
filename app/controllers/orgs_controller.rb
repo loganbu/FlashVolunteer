@@ -12,6 +12,10 @@ class OrgsController < ApplicationController
     end
   end
 
+  def set_page_title
+    @title = @org.name if @org
+  end
+
   # GET /orgs/1
   # GET /orgs/1.xml
   def show
@@ -20,6 +24,8 @@ class OrgsController < ApplicationController
     @past = Event.created_by(@org).past.paginate(:page => params[:page], :per_page => params[:per_page] || 5)
     @upcoming =  Event.created_by(@org).upcoming.paginate(:page => params[:page], :per_page => params[:per_page] || 5)
 
+
+    set_page_title
 
     respond_to do |format|
       format.html # show.html.erb
@@ -32,6 +38,8 @@ class OrgsController < ApplicationController
   def new
     @org = Org.new
 
+    set_page_title
+
     respond_to do |format|
       format.html # new.html.erb
       format.mobile # show.html.erb
@@ -42,6 +50,8 @@ class OrgsController < ApplicationController
   # GET /orgs/1/edit
   def edit
     @org = Org.find(params[:id])
+
+    set_page_title
   end
 
   # POST /orgs
@@ -49,6 +59,7 @@ class OrgsController < ApplicationController
   def create
     @org = Org.new(params[:org])
 
+    set_page_title
     respond_to do |format|
       if @org.save
         @org.admins << current_user
@@ -66,7 +77,7 @@ class OrgsController < ApplicationController
   # PUT /orgs/1.xml
   def update
     @org = Org.find(params[:id])
-
+    set_page_title
     respond_to do |format|
       if @org.update_attributes(params[:org])
         format.html { redirect_to(@org, :notice => 'Org was successfully updated.') }
