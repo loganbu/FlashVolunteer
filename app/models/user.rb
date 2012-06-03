@@ -64,31 +64,6 @@ class User < ActiveRecord::Base
     end
     user
   end
-
-  def send_on_create_confirmation_instructions
-    if Rails.env.production?
-      Devise::Mailer.delay.confirmation_instructions(self)
-    else
-      super
-    end
-  end
-  
-  def send_reset_password_instructions
-    if Rails.env.production?
-      Devise::Mailer.delay.reset_password_instructions(self)
-    else
-      super
-    end
-  end
-
-  def send_unlock_instructions
-    if Rails.env.production?
-      Devise::Mailer.delay.unlock_instructions(self)
-    else
-      super
-    end
-  end
-
   
   def password_required?
     if (password.nil? && password_confirmation.nil?)

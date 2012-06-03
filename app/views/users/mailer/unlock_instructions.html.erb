@@ -1,18 +1,21 @@
-<p>Hello <%= @resource.email %>!</p>
+<% content_for :email_content do%>
+	<p>Hello <%= @resource.email %>!</p>
+	<br />
 
+	<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+	<p>Click the link below to unlock your account:</p>
+	<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
 
-<p>Click the link below to unlock your account:</p>
-<p><%= link_to 'Unlock my account', unlock_url(@resource, :unlock_token => @resource.unlock_token) %></p>
+	<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+	<p>Happy Volunteering!</p>
+	<br />
 
-<p>Happy Volunteering!</p>
+	<p>Charlie X. Buttons</p>
+	<p>Flash Volunteer CEO </p>
+	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-
-<p>Charlie X. Buttons</p>
-<p>Flash Volunteer CEO </p>
-<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
-
-<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+	<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+<% end %>
+<%= render(:template => 'users/mailer/header')%>

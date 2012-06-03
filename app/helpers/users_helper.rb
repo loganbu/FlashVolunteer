@@ -1,4 +1,5 @@
 module UsersHelper
+    include ApplicationHelper
     def devise_error_messages!    
       return "" if resource.errors.empty?
 
@@ -30,6 +31,7 @@ module UsersHelper
         respond_to do |format|
           format.html do
             if @user.persisted?
+              store_original_user_logged_in(@user)
               sign_in_and_redirect @user
             else
               redirect_to new_user_registration_url
@@ -37,6 +39,7 @@ module UsersHelper
           end
           format.mobile do
             if @user.persisted?
+              store_original_user_logged_in(@user)
               sign_in_and_redirect @user
             else
               redirect_to new_user_registration_url

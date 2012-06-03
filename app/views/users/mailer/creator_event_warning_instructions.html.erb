@@ -1,15 +1,18 @@
-<p>Hi, <%= @resource.email %>!</p>
+<% content_for :email_content do%>
+	<p>Hi, <%= @resource.email %>!</p>
+	<br />
 
+	<p>This is a friendly reminder that you're organizing %event_name on %event_date. </p>
 
-<p>This is a friendly reminder that you're organizing %event_name on %event_date. </p>
+	<p>Take a moment to review your signups and make sure there's no additional information that your volunteers might need. So far, %(vol_count) volunteer(s) have signed up. </p>
 
-<p>Take a moment to review your signups and make sure there's no additional information that your volunteers might need. So far, %(vol_count) volunteer(s) have signed up. </p>
+	<p>Happy Volunteering!</p>
+	<br />
 
-<p>Happy Volunteering!</p>
+	<p>Charlie X. Buttons</p>
+	<p>Flash Volunteer CEO </p>
+	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-
-<p>Charlie X. Buttons</p>
-<p>Flash Volunteer CEO </p>
-<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
-
-<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+	<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+<% end %>
+<%= render(:template => 'users/mailer/header')%>
