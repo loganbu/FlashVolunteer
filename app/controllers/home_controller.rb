@@ -24,5 +24,9 @@ class HomeController < ApplicationController
       format.xml  { head :ok }
     end
   end
-
+  def sadface
+    respond_to do |format|
+      format.html
+    end
+  end
 end
