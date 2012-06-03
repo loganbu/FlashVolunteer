@@ -4,9 +4,14 @@ class Users::SessionsController < Devise::SessionsController
     skip_authorization_check
 
 
-    def should_remove_returns_to?
-        false
-    end
+  def should_remove_returns_to?
+      false
+  end
+
+  def new
+      @title = "Sign in to your account"
+      super
+  end
 
   def third_party
     respond_to do |format|

@@ -2,21 +2,25 @@ class EventsController < ApplicationController
   before_filter :see_splash, :only => [:index]
   load_and_authorize_resource
     
-    def export
-        @event = Event.find(params[:id])
-        @calendar = Icalendar::Calendar.new
-        event = Icalendar::Event.new
-        event.start = @event.start.strftime("%Y%m%dT%H%M%S")
-        event.end = @event.end.strftime("%Y%m%dT%H%M%S")
-        event.summary = @event.name
-        event.description = @event.description
-        #event.location = @event.n
-        @calendar.add event
-        @calendar.publish
-        headers['Content-Type'] = "text/calendar; charset=UTF-8"
-        render :text => @calendar.to_ical
-    end
+  def export
+      @event = Event.find(params[:id])
+      @calendar = Icalendar::Calendar.new
+      event = Icalendar::Event.new
+      event.start = @event.start.strftime("%Y%m%dT%H%M%S")
+      event.end = @event.end.strftime("%Y%m%dT%H%M%S")
+      event.summary = @event.name
+      event.description = @event.description
+      #event.location = @event.n
+      @calendar.add event
+      @calendar.publish
+      headers['Content-Type'] = "text/calendar; charset=UTF-8"
+      render :text => @calendar.to_ical
+  end
  
+  def set_page_title
+    @title = @event.name if @event
+  end
+
   # GET /events
   # GET /events.xml
   def index
@@ -25,6 +29,8 @@ class EventsController < ApplicationController
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown seattle")==0 }
     @events = Event.upcoming.near(@mapCenter).paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
     @zoom = 11
+
+    @title="Volunteer Opportunities in King County"
     
     respond_to do |format|
       format.html # index.html.erb
@@ -42,6 +48,7 @@ class EventsController < ApplicationController
       return
     else
       cookies['preferred_neighborhood'] = @neighborhood.id
+      @title = "Volunteer Opportunities in " + @neighborhood.name
       @zoom = 15
       @events = Event.near(@neighborhood).where(:neighborhood_id => @neighborhood.id).upcoming.paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
       @mapCenter = @neighborhood
@@ -66,6 +73,8 @@ class EventsController < ApplicationController
   def show
     @event = Event.find(params[:id])
     
+    set_page_title
+
     respond_to do |format|
       if params[:map]
           format.html { render 'show.map.erb', :layout=>false }
@@ -81,6 +90,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     
+    set_page_title
 
     respond_to do |format|
       format.html # new.html.erb
@@ -91,6 +101,9 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+
+    set_page_title
+
   end
 
   def hackoutdatetime(startdate, hashSet)
@@ -149,6 +162,8 @@ class EventsController < ApplicationController
       @event.start = nil
     end
 
+
+    set_page_title
 
     if (params[:event][:website] != '' && !(params[:event][:website].starts_with?("http://") || params[:event][:website].starts_with?("https://")))
       params[:event][:website] = "http://" + params[:event][:website]
@@ -228,7 +243,6 @@ class EventsController < ApplicationController
   end
   
   private
-  
     def see_splash
         if !cookies['splash'] && request.format == Mime::HTML
             cookies['splash'] = true

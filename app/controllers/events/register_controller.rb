@@ -2,8 +2,6 @@ class Events::RegisterController < ApplicationController
   include SessionsHelper
   skip_authorization_check
 
-
-
   # POST /events/1/register
   def create
     @event = Event.find(params[:id])

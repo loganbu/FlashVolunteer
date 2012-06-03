@@ -24,11 +24,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def set_page_title
+    @title = @user.name + "'s Flash Volunteer Profile" if @user
+  end
+
   # GET /users/1
   # GET /users/1.xml
   def show
     @user = User.includes(:neighborhood).find(params[:id])
 
+    set_page_title
     # user calculations
     @nEventsCreated = Event.created_by(@user).count
     @nEventsComingUp = Event.attended_by(@user).upcoming.count
@@ -58,6 +63,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     authorize_user_profile(@user)
+    set_page_title
   end
 
   # PUT /events/1
@@ -65,7 +71,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     params[:user].delete('email')
-
+    set_page_title
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html { redirect_to(@user, :notice => 'Event was successfully updated.') }

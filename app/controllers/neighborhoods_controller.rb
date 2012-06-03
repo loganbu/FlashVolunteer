@@ -10,6 +10,8 @@ class NeighborhoodsController < ApplicationController
     
     @preferred_neighborhood_id = @preferred_neighborhood ? @preferred_neighborhood.id : nil
 
+    @title="Find Volunteering Opportunities"
+    
     respond_to do |format|
       format.html # index.html.erb
       format.mobile
