@@ -13,7 +13,7 @@
 			        	style= "cursor:pointer"
 			        	onclick="toggleImage(<%= level %>_<%= setting %>, 'options_<%= setting %>')"
 			        	for="privacy_<%= setting%>_<%= level %>">
-        				<%= image_tag(level + ".png") %><br/>
+        				<%= image_tag(level + "_small.png") %><br/>
 						<%= level %>
 						<%= radio_button("privacy", setting, level, :style=>"display: none") %>
         			</label>
