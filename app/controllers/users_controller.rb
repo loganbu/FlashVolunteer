@@ -101,6 +101,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # DELETE /user/:id/photo
+  def photo
+    @user = User.find(params[:id])
+    @user.avatar = nil
+    @user.save!
+    respond_to do |format|
+      format.html { redirect_to(:back, :notice => 'Your photo was removed') }
+      format.mobile { redirect_to(:back, :notice => 'Your photo was removed') }
+      format.xml { head :ok }
+    end
+  end
+
   def search
     per_page = params[:per_page] || 5
 

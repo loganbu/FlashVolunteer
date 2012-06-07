@@ -35,6 +35,8 @@ Flashvolunteer::Application.routes.draw do
             # Prop this user
             resources :props, :controller => "users/props" 
 
+            delete :photo
+
             # Switch user login
             get :switch
         end
