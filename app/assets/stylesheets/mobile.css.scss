@@ -45,7 +45,24 @@ label {
 /**************
  Badges
  **************/
-
+.selectable_option {
+    float: left;
+    padding: 7px;
+    margin: 0px 5px 5px 0;
+    width: 40px;
+    text-align: center;
+    /* Since these are floating left, adding the 1px black border will cause
+       the items below to not clear left since there is 1px left.  Add a white
+       pixeled border to non-selected items to ensure it clears left */
+    border: 1px solid white;
+    &:active {
+        border: 1px solid $lightBlue !important;
+        background: none repeat scroll 0 0 0 0 darken($babyBlue, 15%) !important;
+    }
+    label {
+        cursor: pointer;
+    }
+}
 
 /**************
  Events
@@ -194,6 +211,11 @@ Photo
 /**************
  Typeography
  **************/
+h4{
+    padding: 2px 0px 2px 5px;
+    margin-bottom: 4px;
+    font-size: 150%;
+}
 h3 {
     padding: 2px 0px 2px 5px;
     margin-bottom: 4px;
