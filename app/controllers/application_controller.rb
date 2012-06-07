@@ -6,17 +6,18 @@ class ApplicationController < ActionController::Base
         config[:skip_xhr_requests] = true
     end
 
-    before_filter :remove_returns_to, :set_default_page_title, :csrf_protect
+    before_filter :remove_returns_to, :set_default_page_title
     protect_from_forgery
+
     check_authorization
+
+    def verified_request?
+        session[:api] || super
+    end
 
     rescue_from CanCan::AccessDenied do |exception|
         Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
         render :file => "app/views/shared/authfail.html.erb"
-    end
-
-    def csrf_protect
-        self.allow_forgery_protection = false if session[:api]
     end
 
     def authorize_user_profile(entity)
