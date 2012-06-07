@@ -39,8 +39,11 @@ end
 gem 'aws-sdk'
 gem 'aws-s3'
 gem "paperclip"
+
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
+gem "omniauth-twitter"
+
 gem 'wicked'
 gem 'mobylette', '~> 2.3'
 gem 'jquery_mobile_rails'
