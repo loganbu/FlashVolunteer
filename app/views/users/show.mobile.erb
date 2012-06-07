@@ -85,10 +85,12 @@ $(function () {
     </div>
     <div class="span3 list_spacing bold" style="margin-top:48px">
         <ul class="unstyled">
+            <li><%= link_to "GIVE PROPS", new_prop_url(@user) %></li>
             <li><%= link_to "UPCOMING EVENTS", events_user_url(@user) +"#upcoming" %></li>
             <li><%= link_to "RECOMMENDED EVENTS", events_user_url(@user) + "#recommended" %></li>
-            <li><%= link_to "CREATE NEW EVENT", new_event_url %></li>
-            <li><%= link_to "GIVE PROPS", new_props_url(@user) %></li>
+            <% if can? :create, Event %>
+                <li><%= link_to "CREATE NEW EVENT", new_event_url %></p>
+            <% end %>  
         </ul>
     </div>
 </div>
