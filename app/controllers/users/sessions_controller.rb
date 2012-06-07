@@ -21,11 +21,14 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def mobile
+    session[:api] = true
     case params[:provider]
     when "facebook"
       self.facebook
     when "google"
       self.google
+    when "twitter"
+      self.twitter
     end
   end
 
@@ -47,9 +50,21 @@ class Users::SessionsController < Devise::SessionsController
     sign_in_with_third_party(auth_hash)
   end
 
+  def twitter
+    token = params[:token]
+    auth_hash = get_auth_hash(OmniAuth::Strategies::Twitter.new(ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET']),
+                              ENV['TWITTER_API_KEY'],
+                              ENV['TWITTER_API_SECRET'],
+                              params[:token])
+    sign_in_with_third_party(auth_hash)
+  end
+
   # POST /resource/sign_in
   def create
     super
+    if (params[:api])
+      session[:api] = true
+    end
     if (session[:sign_up_for_event])
         event = Event.find(session[:sign_up_for_event])
         if (event != nil)
