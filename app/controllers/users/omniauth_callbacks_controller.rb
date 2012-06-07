@@ -9,6 +9,10 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         sign_in_with_third_party(request.env["omniauth.auth"])
     end
 
+    def twitter
+        sign_in_with_third_party(request.env["omniauth.auth"])
+    end
+
     def should_remove_returns_to?
         false
     end
