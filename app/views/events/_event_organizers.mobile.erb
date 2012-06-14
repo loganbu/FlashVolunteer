@@ -1,10 +1,7 @@
 <% if @event.hosted_by == nil %>
 <div class="row-fluid">
-	<div class="span6">
+	<div class="span12">
 		<h3>event organizers (1)</h3>
-	</div>
-	<div class="span6" style="align:right">
-		<h3><%= mail_to @event.user.email, "contact organizers",  :encode => "hex" %></h3>
 	</div>
 </div>
 <p>
