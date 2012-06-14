@@ -234,7 +234,7 @@ class EventsController < ApplicationController
     @events = hosted_by_org_user_array.length > 0 ? @events.hosted_by_org_user(hosted_by_org_user_array) : @events
     @events = created_by_array.length > 0 ? @events.where{creator_id.eq_any created_by_array} : @events
     @events = participated_by_array.length > 0 ? @events.joins(:participants).where{participations.user_id.eq_any participated_by_array} : @events
-    @events.paginate(:page=>params[:page], :per_page => per_page)
+    @events = @events.paginate(:page=>params[:page], :per_page => per_page)
 
     respond_to do |format|
       format.html
