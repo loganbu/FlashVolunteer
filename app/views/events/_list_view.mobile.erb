@@ -9,8 +9,19 @@
     dimension = 16%>
 <% end %>
 
-
 <div id = "neighborhood_list">
+    <li>
+        <h2>events near</h2>
+        <% if (@neighborhood == nil) %>
+            <%= collection_select(:neighborhood,  :id, Neighborhood.order("name asc"), :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "anywhere in King County"}, :class=>"full", :onchange=> "gotoNeighborhood('neighborhood_id')") %>
+        <% else %>
+            <%= collection_select(:neighborhood,  :id, Neighborhood.order("name asc"), :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => @neighborhood.name}, :class=>"full", :onchange=> "gotoNeighborhood('neighborhood_id')") %>
+        <% end %>
+    </li>
+</div>
+<div style = "clear:both"></div>
+
+<!--<div id = "neighborhood_list">
     <li>
         <% if (@neighborhood == nil) %>
             <h2>events near </h2>
@@ -26,7 +37,7 @@
         </ul>
     </li>
 </div>
-<div style = "clear:both"></div>
+<div style = "clear:both"></div>-->
 
 <% if !user_signed_in? %>
 <p>You need to <%= link_to('sign in', new_user_session_url)%> to create an event.</p>
