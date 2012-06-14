@@ -4,7 +4,7 @@
 	button_size ||= :small
 %>
 
-<% Skill.all.each_with_index do |s, i| %>
+<% Skill.all.order("offset asc").each_with_index do |s, i| %>
     <%= check_box_tag("#{entity}[skill_ids][#{i}]", s.id, skills.include?(s), :name=>"#{entity}[skill_ids][]", :class=>"hide") %> 
     <%
 		button_pixels = 0

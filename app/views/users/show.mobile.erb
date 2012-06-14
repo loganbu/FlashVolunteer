@@ -53,24 +53,13 @@ $(function () {
                         <div><h4>volunteers in <%= link_to(@user.neighborhood.name, (events_url.concat("/in/").concat(@user.neighborhood.name))) %></h4></div>
                     <% end %>
                     <div class="row-fluid bold">
-                        <div class = "span2 t1h-stats">
-                            <p>hours</p>
-                            <h4><%= @nHoursVolunteered %></h4>
-                        </div>
-                        <div class = "span2 t1h-stats">
-                            <p>created</p>
-                            <h4><%= @nEventsCreated %></h4>
-                        </div>
-                        <div class = "span2 t1h-stats">
-                            <p>upcoming</p>
-                            <h4><%= @nEventsComingUp %></h4>
-                        </div>
-                        <div class = "span2 t1h-stats">
-                            <p>past</p>
-                            <h4><%= @nEventsInPast %></h4>
+                        <div class = "t1h-stats">
+                            <h4>hours: <%= @nHoursVolunteered %></h4>
+                            <h4>created: <%= @nEventsCreated %></h4>
+                            <h4>upcoming: <%= @nEventsComingUp %></h4>
+                            <h4>past: <%= @nEventsInPast %></h4>
                         </div>
                     </div>
-                
             </div>
         <% else %>
             <%= @user.name %> does not have a public profile. <!--If you know <%=@user.name %>, send a Flash Team request. -->
@@ -85,9 +74,12 @@ $(function () {
     </div>
     <div class="span3 list_spacing bold" style="margin-top:48px">
         <ul class="unstyled">
+            <li><%= link_to "GIVE PROPS", new_prop_url(@user) %></li>
             <li><%= link_to "UPCOMING EVENTS", events_user_url(@user) +"#upcoming" %></li>
             <li><%= link_to "RECOMMENDED EVENTS", events_user_url(@user) + "#recommended" %></li>
-            <li><%= link_to "CREATE NEW EVENT", new_event_url %></li>
+            <% if can? :create, Event %>
+                <li><%= link_to "CREATE NEW EVENT", new_event_url %></p>
+            <% end %>  
         </ul>
     </div>
 </div>

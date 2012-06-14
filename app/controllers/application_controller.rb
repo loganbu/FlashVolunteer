@@ -8,7 +8,12 @@ class ApplicationController < ActionController::Base
 
     before_filter :remove_returns_to, :set_default_page_title, :csrf_protect
     protect_from_forgery
+
     check_authorization
+
+    def verified_request?
+        session[:api] || super
+    end
 
     rescue_from CanCan::AccessDenied do |exception|
         Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"

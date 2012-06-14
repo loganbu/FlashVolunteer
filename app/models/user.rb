@@ -49,6 +49,10 @@ class User < ActiveRecord::Base
     skills.map{|s| s.id }.join(',')
   end
 
+  def props
+    Prop.received_by(self).count
+  end
+
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
@@ -87,6 +91,6 @@ class User < ActiveRecord::Base
   end
 
   def self.xml(entity)
-    entity.to_xml(:methods => [:hours_volunteered, :categories])
+    entity.to_xml(:methods => [:hours_volunteered, :categories, :props])
   end
 end

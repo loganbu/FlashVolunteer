@@ -32,6 +32,11 @@ Flashvolunteer::Application.routes.draw do
             # Change notification settings
             resource :notifications, :only => [:show, :update], :controller => "users/notifications"
 
+            # Prop this user
+            resources :props, :controller => "users/props" 
+
+            delete :photo
+
             # Switch user login
             get :switch
         end
