@@ -1,0 +1,23 @@
+<%
+    # @event = The event this message is intended for
+    # @host = The event host
+    # @attendee = The user this e-mail is being sent to
+    # @message = The message the host is sending
+%>
+<% content_for :email_content do%>
+    <p>Hello, <%= @attendee.name %>,</p>
+
+    <p>Just playing telephone here! This is a message from the organizer of <%= link_to @event.name, event_url(@event) %></p>
+
+    <p style="background: #EAFFEF; font-style: italic;">
+        <%= @message %>
+    </p>
+
+    <p>Happy volunteering!</p>
+    <p>Charlie X. Buttons</p>
+    <p>Flash Volunteer CEO (Clan Entry Officer) </p>
+    <p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+
+    <p>This notification was sent to <%= @attendee.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences.</p>
+<% end %>
+<%= render(:template => 'user_mailer/header')%>

@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :admin_of, :class_name => "Org", :join_table => "orgs_admins", :uniq => true
+
   has_attached_file :avatar, :storage => :s3, :s3_credentials => {
       :access_key_id => ENV['AWS_ACCESS_KEY'],
       :secret_access_key => ENV['AWS_SECRET_KEY'],
@@ -21,9 +22,14 @@ class User < ActiveRecord::Base
     }, :path => ":attachment/:id/:style.:extension",
     :styles => { :thumb => ["32x32#", :png], :profile => ["128x128#", :png]},
     :default_url => "/assets/default_user_:style.png"
+
   has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :association_foreign_key => "follower_id", :uniq => true
+
   has_many :participations
   has_many :events_participated, :through => :participations, :source => :event
+
+  has_many :user_notifications
+  has_many :notification_preferences, :through => :user_notifications, :source => :notification
   belongs_to :neighborhood
 
   attr_accessor :account_type
@@ -34,7 +40,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type, :hours_volunteered
+  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type, :hours_volunteered, :notification_preference_ids
 
   def hours_volunteered(event=nil)
     if (event != nil)

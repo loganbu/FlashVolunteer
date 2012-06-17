@@ -1,0 +1,26 @@
+<%
+	# @participation = The participation object
+    # @event = The event the user signed up for
+    # @user_signed_up = The user that signed up
+    # @host = The host of the event
+%>
+<% content_for :email_content do%>
+	<p>Welcome, <%= @host.name %>!</p>
+
+	<p>You're on your way to a great event!</p>
+	<p><%= @user_signed_up.name %> just signed up for your event.</p>
+
+	<p>Go to <%= link_to("the event page", event_url(@event)) %> to view all the volunteers who have signed up, to send a message to your volunteers, or to update the event details.</p>
+
+	<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+
+	<p>Happy volunteering!</p>
+
+
+	<p>Charlie X. Buttons</p>
+	<p>Flash Volunteer CEO (Captain of Event Orientation) </p>
+	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+
+	<p>This notification was sent to <%= @host.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>
+<% end %>
+<%= render(:template => 'user_mailer/header')%>
