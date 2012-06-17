@@ -1,7 +1,7 @@
 <div class="row-fluid">
     <div class="span12">
         <h3>event volunteers (<%= @event.participants.count %>) 
-            <% if can? :edit, Event %>
+            <% if can? :edit, @event %>
                 <span class="pull-right" style="padding-right: 10px">
                     <a href="javascript:revealModal('contact_users')" style="color:white">Contact Attendees</a>
                 </span>

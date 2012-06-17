@@ -15,15 +15,16 @@
         <div class="span3">
             <div class="row-fluid">
                 <div class="span6">
-                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" <%= "checked='checked'" if @event.hosted_by == nil %> /><label for="hosted_by_me">&nbsp;use mine</label>
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" <%= "checked='checked'" if @event.hosted_by_user %> />
+                    <label for="hosted_by_me">&nbsp;use mine</label>
                 </div>
                 <div class="span6">
-                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone" <%= "checked='checked'" if @event.hosted_by != nil %>/><label for="hosted_by_someone">&nbsp;use this instead</label>
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone" <%= "checked='checked'" if !@event.hosted_by_user %>/><label for="hosted_by_someone">&nbsp;use this instead</label>
                 </div>
             </div>
         </div>
         <div class="span7">
-            <%= f.text_field :hosted_by, :class=>"full ".concat(@event.hosted_by == nil ? "hidden" : ""), :id => "someone_else"%>
+            <%= f.text_field :hosted_by, :class=>"full ".concat(@event.hosted_by_user ? "hidden" : ""), :id => "someone_else"%>
         </div>
         <script type="text/javascript">
             $(document).ready(function() {

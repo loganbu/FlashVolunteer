@@ -162,7 +162,6 @@ class EventsController < ApplicationController
       @event.start = nil
     end
 
-
     set_page_title
 
     if (params[:event][:website] != '' && !(params[:event][:website].starts_with?("http://") || params[:event][:website].starts_with?("https://")))
