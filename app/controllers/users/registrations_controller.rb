@@ -6,7 +6,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
 
     def new
-        @title = "Create an account"
+        @title = "Create an account | Flash Volunteer"
         super
     end
 

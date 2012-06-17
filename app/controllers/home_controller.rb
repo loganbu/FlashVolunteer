@@ -3,13 +3,13 @@ class HomeController < ApplicationController
   def index
   end
   def tou
-    @title = "Terms Of Use"
+    @title = "Terms Of Use | Flash Volunteer"
   	respond_to do |format|
   		format.html
   	end
   end
   def privacy
-    @title = "Privacy Policy"
+    @title = "Privacy Policy | Flash Volunteer"
   	respond_to do |format|
   		format.html
   	end

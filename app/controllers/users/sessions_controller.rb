@@ -9,7 +9,7 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def new
-      @title = "Sign in to your account"
+      @title = "Sign in to your account | Flash Volunteer"
       super
   end
 
