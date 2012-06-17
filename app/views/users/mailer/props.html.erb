@@ -1,16 +1,18 @@
 <% content_for :email_content do%>
-	<p>Hello, <%= @resource.email %>!</p>
+	<p>Hello, <%user_name%>!</p>
 
 
-	<p><%event_organizer%> has given you props for your awesomeness.  You are awesome!</p>  
+	<p><%user_name%> has given you props for your awesomeness. You are awesome!</p> 
+	
+	<p><%props_message%></p> 
 
-	<p>Happy volunteering!</p>
+	<p>You can return the love [LINK TO PROFILE PAGE OF USER WHO GAVE THE PROPS], if you'd like. Happy volunteering!</p>
 
 
 	<p>Charlie X. Buttons</p>
-	<p>Flash Volunteer CEO (Clan Entry Officer) </p>
+	<p>Flash Volunteer CEO (Cheesy Emotions Officer) </p>
 	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
-	<p>This notification was sent to <%= @resource.email %> because it was entered on Flash Volunteer to sign up for an event. Click here to unsubscribe.</p>
+	<p>This notification was sent to <%= @resource.email %> because it is associated with your Flash Volunteer account. Click here [LINK TO COMMUNICATIONS PREFERENCE PAGE] to change your communications preferences.</p>
 <% end %>
 <%= render(:template => 'users/mailer/header')%>
