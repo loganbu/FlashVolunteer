@@ -3,7 +3,7 @@
 <h3>faq</h3>
 <div class="row-fluid">
 	<div class="span4" id="nav">
-		<ul class="unstyled">
+		<ul class="unstyled" id="help_nav_layout">
 			<li>
 				<a href="#faq-what_is_fv">What is Flash Volunteer?</a>
 			</li>
@@ -41,6 +41,10 @@
 				<a href="#faq-how_to_sign_up_for_event">How do I sign-up for an event?</a>
 			</li>
 			<li>
+				<a href="#faq-props">What are "props"?</a>
+			</li>
+
+			<li>
 				<a href="#faq-what_about_inappropriate_events">What if I see an event that I think is inappropriate?</a>
 			</li>
 			<!--<li>
@@ -71,7 +75,6 @@
             $("#faq-sections div").each(function() { $(this).hide(); });
             $($(this).attr("href")+"_").show();
         });
-
     </script>
 	<div class="span8" id="faq-sections">
 		<div id="faq-what_is_fv_">
@@ -120,6 +123,12 @@
 			<h4>How do I sign-up for an event?</h4>
 			<p>
 				To get involved, just click the "I'm thinking about volunteering" button on the event page. This will get you started and allow you to either sign-up for the event or track it on your profile page.
+			</p>
+		</div>
+		<div id="faq-props_" class="hide">
+			<h4>What are "props"?</h4>
+			<p>
+				Giving props is a way to show your appreciation for a fellow volunteer. You can visit someone's profile page to give props, and when you receive them, you'll find the warm-fuzzy messages on your profile page. Just click My Props in the left menu.
 			</p>
 		</div>
 		<div id="faq-what_about_inappropriate_events_" class="hide">
