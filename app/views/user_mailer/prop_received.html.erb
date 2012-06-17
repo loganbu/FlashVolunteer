@@ -11,11 +11,12 @@
         <%= @prop.message %>
     </p>
 
-	<p>Happy volunteering!</p>
+    <p><%= link_to("You can return the love", user_url(@prop.giver)) %>, if you'd like. Happy volunteering!</p>
+ 
 
 
 	<p>Charlie X. Buttons</p>
-	<p>Flash Volunteer CEO (Clan Entry Officer) </p>
+	<p>Flash Volunteer CEO (Cheesy Emotions Officer) </p>
 	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 
 	<p>This notification was sent to <%= @prop.receiver.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences.</p>
