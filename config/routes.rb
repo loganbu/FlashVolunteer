@@ -30,7 +30,7 @@ Flashvolunteer::Application.routes.draw do
             resource :privacy, :only => [:show, :update], :controller => "users/privacy", :as => "user_privacy_settings"
 
             # Change notification settings
-            resource :notifications, :only => [:show, :update], :controller => "users/notifications"
+            resource :notifications, :only => [:show, :update], :controller => "users/notifications", :as => "user_notification_settings"
 
             # Prop this user
             resources :props, :controller => "users/props" 
@@ -82,6 +82,7 @@ Flashvolunteer::Application.routes.draw do
     resources :events do
         member do
             resource :register, :only => [:create, :destroy], :controller => "events/register", :as => "register_event"
+            post :broadcast
             get :export
             get :print
         end

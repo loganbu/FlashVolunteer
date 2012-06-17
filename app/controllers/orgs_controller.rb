@@ -13,7 +13,7 @@ class OrgsController < ApplicationController
   end
 
   def set_page_title
-    @title = @org.name if @org
+    @title = @org.name.concat(" | Flash Volunteer") if @org
   end
 
   # GET /orgs/1

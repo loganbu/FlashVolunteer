@@ -21,5 +21,8 @@ end
 def display_text_field(text)
     h(text).gsub(/\n/, '<br/>').html_safe
 end
+def display_text_field_mailer(text)
+    text.gsub(/\n/, '<br/>').html_safe
+end
 
 end

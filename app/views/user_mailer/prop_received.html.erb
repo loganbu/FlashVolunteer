@@ -1,0 +1,22 @@
+<%
+    # @prop.receiver = person who received the prop
+    # @prop.giver = person who gave the prop
+    # @prop.message = the message given in the prop
+%>
+<% content_for :email_content do%>
+	<p>Hello, <%= @prop.receiver.name %>!</p>
+
+	<p><%= @prop.giver.name %> has given you props for your awesomeness.  You are awesome!</p>
+    <p style="background: #555555; font-style: italic;">
+        <%= @prop.message %>
+    </p>
+
+    <p><%= link_to("You can return the love", user_url(@prop.giver)) %>, if you'd like. Happy volunteering!</p>
+    <br />
+	<p>Charlie X. Buttons</p>
+	<p>Flash Volunteer CEO (Cheesy Emotions Officer) </p>
+	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+
+	<p>This notification was sent to <%= @prop.receiver.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences.</p>
+<% end %>
+<%= render(:template => 'user_mailer/header')%>

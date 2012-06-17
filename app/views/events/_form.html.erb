@@ -9,21 +9,22 @@
     </div>
     <div class="row-fluid">
         <div class="span2">
-            <div class="pull-right"><%= f.label :name, "hosted by"%></div>
+            <div class="pull-right"><%= f.label :name, "contact info"%></div>
             <input type="text" style="visibility:hidden; width: 0px"/>
         </div>
         <div class="span3">
             <div class="row-fluid">
                 <div class="span6">
-                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" <%= "checked='checked'" if @event.hosted_by == nil %> /><label for="hosted_by_me">&nbsp;myself</label>
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" <%= "checked='checked'" if @event.hosted_by_user %> />
+                    <label for="hosted_by_me">&nbsp;use mine</label>
                 </div>
                 <div class="span6">
-                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone" <%= "checked='checked'" if @event.hosted_by != nil %>/><label for="hosted_by_someone">&nbsp;someone else</label>
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone" <%= "checked='checked'" if !@event.hosted_by_user %>/><label for="hosted_by_someone">&nbsp;use this instead</label>
                 </div>
             </div>
         </div>
         <div class="span7">
-            <%= f.text_field :hosted_by, :class=>"full ".concat(@event.hosted_by == nil ? "hidden" : ""), :id => "someone_else"%>
+            <%= f.text_field :hosted_by, :class=>"full ".concat(@event.hosted_by_user ? "hidden" : ""), :id => "someone_else"%>
         </div>
         <script type="text/javascript">
             $(document).ready(function() {

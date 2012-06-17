@@ -1,6 +1,13 @@
 <div class="row-fluid">
     <div class="span12">
-        <h3>event volunteers (<%= @event.participants.count %>)</h3>
+        <h3>event volunteers (<%= @event.participants.count %>) 
+            <% if can? :edit, @event %>
+                <span class="pull-right" style="padding-right: 10px">
+                    <a href="javascript:revealModal('contact_users')" style="color:white">Contact Attendees</a>
+                </span>
+                <%= render(:partial => "contact_users") %>
+            <% end %>
+        </h3>
     </div>
 </div>
 <% if @event.participants.count > 0 %>

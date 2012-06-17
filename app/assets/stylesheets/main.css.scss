@@ -215,6 +215,18 @@ label {
 }
 
 /**************
+ Help
+ **************/
+#help_content_layout{
+}
+
+#help_nav_layout{
+    li{
+        margin-bottom: 8px;
+    }    
+}
+
+/**************
  Header
  **************/
 .header {
@@ -243,7 +255,7 @@ label {
     position: absolute;
     right: 0;
     top: 50px;
-    width: 300px;
+    width: 250px;
     background: white;
     border: 1px solid black;
     color: black;
@@ -396,10 +408,16 @@ input[type="checkbox"] {
 /**************
  JQuery Dropdown styling
  **************/
+#create_string{
+    margin-top:20px;
+}
 #neighborhood_list {   
     margin: 0;
     padding: 0;
 
+    h1{
+        padding-bottom:0px;
+    }
     h1:hover {   
         cursor: pointer;
     }

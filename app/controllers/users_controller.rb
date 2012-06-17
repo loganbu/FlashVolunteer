@@ -70,7 +70,12 @@ class UsersController < ApplicationController
   # PUT /events/1.xml
   def update
     @user = User.find(params[:id])
-    params[:user].delete('email')
+    if (params[:user])
+      params[:user].delete('email')
+    end
+    if (!params[:user][:skill_ids])
+      @user.skills = []
+    end
     set_page_title
     respond_to do |format|
       if @user.update_attributes(params[:user])

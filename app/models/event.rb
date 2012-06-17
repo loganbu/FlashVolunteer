@@ -40,6 +40,10 @@ class Event < ActiveRecord::Base
         where{creator_id.eq_any Org.joins(:admins).where{admins_users.id.eq_any user_list}.all}
     }
 
+    def hosted_by_user
+        self.hosted_by == nil || self.hosted_by == ""
+    end
+
     def duration
         self.end-self.start
     end

@@ -56,3 +56,15 @@ function setDefaultText(element, defaultText) {
     });
     element.val(defaultText);
 }
+
+function revealModal(id)
+{
+    window.onscroll = function () { document.getElementById(id).style.top = document.body.scrollTop; };
+    document.getElementById(id).style.display = "block";
+    document.getElementById(id).style.top = document.body.scrollTop;
+}
+ 
+function hideModal(id)
+{
+    document.getElementById(id).style.display = "none";
+}

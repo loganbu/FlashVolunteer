@@ -22,7 +22,8 @@
                     :alt => "E-Mail This Info",
                     :id => "email-badge-img",
                     :alt=>"Share via email"), 
-                :subject => "Come join me at " + event.name) %>           
+                :subject => "Come join me at " + event.name,
+                :body => 'Thought you might enjoy volunteering at this event I saw on Flash Volunteer. Check it out.' + link_to(event.name, event_url(@event))) %>           
         </li>
         <li>
             <a target="_blank" href="<%= twitter_url(event) %>">
