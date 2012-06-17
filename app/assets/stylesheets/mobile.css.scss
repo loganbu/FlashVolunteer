@@ -2,6 +2,10 @@
     container to be min-height of 100%.  Then, then footer is below the page, so to
     bring it back up, margin it to -130px
 */
+
+/**************
+ Typeography
+ **************/
 #nonfooter {
     min-height: 100%;
     color: $content_text_color;
@@ -15,6 +19,29 @@ h2{
     line-height: $baseLineHeight;
     padding-bottom: 12px;
 }
+
+h4{
+    padding: 2px 0px 2px 5px;
+    margin-bottom: 4px;
+    font-size: 150%;
+}
+h3 {
+    padding: 2px 0px 2px 5px;
+    margin-bottom: 4px;
+    font-size: 7px;
+    @include border-radius(2px);
+}
+
+h2 {
+    padding-bottom: 2px;
+}
+
+h1 {
+    padding: 2px 0px 2px 0px;
+    margin-bottom: 4px;
+    font-size: 200%;
+}
+
 /**************
  Overwriting Twitter Bootstrap
  **************/
@@ -98,6 +125,7 @@ label {
         }
     }
  }
+
 /**************
  Footer
  **************/
@@ -208,27 +236,15 @@ Photo
     margin-top: 15px;
     margin-bottom: 15px;
 }
+
 /**************
- Typeography
+ Help pages
  **************/
-h4{
-    padding: 2px 0px 2px 5px;
-    margin-bottom: 4px;
-    font-size: 150%;
-}
-h3 {
-    padding: 2px 0px 2px 5px;
-    margin-bottom: 4px;
-    font-size: 7px;
-    @include border-radius(2px);
-}
-
-h2 {
-    padding-bottom: 2px;
-}
-
-h1 {
-    padding: 2px 0px 2px 0px;
-    margin-bottom: 4px;
-    font-size: 200%;
-}
+ #help_layout{
+    h4{
+        padding-bottom:5px;
+    }
+    p{
+        padding: 2px px 2px 5px;
+    }
+ }
