@@ -1,7 +1,4 @@
 class CreateNotifications < ActiveRecord::Migration
-    class Notification < ActiveRecord::Base
-        
-    end
     def change
         create_table :notifications do |t|
             t.string :name
