@@ -27,15 +27,16 @@
     </li>
 </div>
 <div style = "clear:both"></div>
-
-<% if !user_signed_in? %>
-<p>You need to <%= link_to('sign in', new_user_session_url)%> to create an event.</p>
-<% elsif can? :create, Event %>
-<p><%= link_to "Create new event", new_event_url %></p>
-<%else%>
-<p>You need to confirm your account before you can start adding events. Check your personal inbox for the confirmation email from Charlie X. Buttons.</p>
-<br />
-<% end %>
+<div id="create_string">
+    <% if !user_signed_in? %>
+        <p>You need to <%= link_to('sign in', new_user_session_url)%> to create an event.</p>
+    <% elsif can? :create, Event %>
+        <p><%= link_to "Create new event", new_event_url %></p>
+    <%else%>
+        <p>You need to confirm your account before you can start adding events. Check your personal inbox for the confirmation email from Charlie X. Buttons.</p>
+    <br />
+    <% end %>
+</div>
 
 <% if (@events.count == 0) %>
     <p>There are no events in this location.  Try a different neighborhood.</p>
@@ -56,7 +57,7 @@
 </div>
 
 <script type="text/javascript">
-    var timeout    = 500;
+    var timeout    = 300;
     var closetimer = 0;
     var ddmenuitem = 0;
 
