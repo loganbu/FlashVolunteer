@@ -1,4 +1,6 @@
 class UserMailer < ActionMailer::Base
+    include ApplicationHelper
+
     default :from => "charlie@flashvolunteer.org"
 
     def prop_received(prop)
@@ -11,8 +13,8 @@ class UserMailer < ActionMailer::Base
         @event = event
         @host = event.user
         @attendee = user
-        @message = message
-        mail(:to => @user.email,
+        @message = display_text_field_mailer(message)
+        mail(:to => @attendee.email,
              :subject => "A message from #{@event.name}'s organizer")
     end
 

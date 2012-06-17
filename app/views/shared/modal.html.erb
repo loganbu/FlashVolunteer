@@ -2,9 +2,9 @@
      <div class="modalBackground">&nbsp;</div>
      <div class="modalContainer">
          <div class="modal">
-             <div class="modalTop"><a href="javascript:hideModal('modalDialog')">[X]</a></div>
+             <div class="modalTop"><a href="javascript:hideModal('<%= id %>')">[X]</a></div>
              <div class="modalBody">
-                 <%= yield %>
+                 <%= yield :dialog %>
              </div>
          </div>
      </div>

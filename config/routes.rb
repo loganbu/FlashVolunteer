@@ -82,6 +82,7 @@ Flashvolunteer::Application.routes.draw do
     resources :events do
         member do
             resource :register, :only => [:create, :destroy], :controller => "events/register", :as => "register_event"
+            post :broadcast
             get :export
             get :print
         end

@@ -180,6 +180,28 @@ class EventsController < ApplicationController
     end
   end
 
+  # POST /events/1
+  def broadcast
+    @event = Event.includes(:participants).find(params[:id])
+    message = params[:message]
+
+    @event.participants.includes(:notification_preferences).each do |p|
+      if (p.notification_preferences.where(:name => "organizer_broadcast").count > 0)
+        if Rails.env.production?
+          # send the e-mail
+          UserMailer.delay.organizer_broadcast(@event, p, message)
+        else
+          UserMailer.organizer_broadcast(@event, p, message).deliver
+        end
+      end
+    end
+
+    respond_to do |format|
+      format.html { redirect_to(:back, :notice => "An e-mail will be sent to the attendees with the specified message") }
+      format.xml { head :ok }
+    end
+  end
+
   # DELETE /events/1
   # DELETE /events/1.xml
   def destroy
