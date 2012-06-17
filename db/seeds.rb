@@ -100,8 +100,12 @@ Neighborhood.create([
 { :name => 'White Center',              :latitude => 47.516675, :longitude => -122.354736} 
 ])
 
-
-
+Notification.delete_all()
+Notification.create([
+{:name => "prop_received", :description=>"Props from a grateful Flash Volunteer"},
+{:name => "new_event_attendee", :description=>"Someone signs up for an event I'm coordinating"},
+{:name => "organizer_broadcast", :description=>"An event organizer wishes to contact me about an event I'm signed up for"}
+])
 
 # Test data for development
 if Rails.env.development?

@@ -1,8 +1,9 @@
 <% content_for :left_split do %>
 <div class="list_spacing bold">
     <ul class="unstyled">
-        <li><%= link_to "PROFILE", edit_user_url(current_user) %></li>
-        <li><%= link_to "PRIVACY", user_privacy_settings_url(current_user) %></li>
+        <li><%= link_to "PROFILE", edit_user_url(@user) %></li>
+        <li><%= link_to "PRIVACY", user_privacy_settings_url(@user) %></li>
+        <li><%= link_to "NOTIFICATIONS", user_notification_settings_url(@user) %></li>
     </ul>
 </div>
 <% end %>
