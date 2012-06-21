@@ -11,8 +11,8 @@
                     <!--<li><%= link_to("NEIGHBORHOODS", neighborhoods_path) %></li>-->
                     <li><%= link_to("ABOUT", about_path) %></li>
                     <li><%= link_to("HELP", help_path) %></li>
-                    <% if can? :manage, :admin %>
-                    <li><%= link_to("O M GEE, SUPER SECRET STUFF", admin_path) %></li>
+                    <% if can? :manage, :rails_admin %>
+                    <li><%= link_to("O M GEE, SUPER SECRET!", rails_admin_url) %></li>
                     <% end %>
                 </ul>
             </div>

@@ -1,4 +1,6 @@
 Flashvolunteer::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
+
     devise_for :users, :module => "users"
 
     devise_scope :user do
@@ -73,9 +75,7 @@ Flashvolunteer::Application.routes.draw do
             resource :admins, :only => [:show, :update], :controller => "orgs/admins", :as => "org_admins"
         end
     end
-
-    match "admin" => "admin#show", :as => 'admin', :via => 'get'
-    
+   
     # Search for people
     resources :people, :only => [:index]
 

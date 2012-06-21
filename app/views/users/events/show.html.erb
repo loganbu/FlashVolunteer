@@ -42,10 +42,6 @@
     </div>
     <div class="hide" id="recommended_content">
         <%= render(:partial => "events/event", :collection => @recommended, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :recommended }) || "We have no recommended events for you." %>
-        <!--<div id="page">
-            <%= will_paginate @recommended, :page_links => false %>
-        </div>
-        BEFORE USING THIS, WE NEED TO SEPARATE PAGE METHOD IN EVENTS_CONTROLLER-->
     </div>
 </div>
 <% end %>
