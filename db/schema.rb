@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120621022910) do
+ActiveRecord::Schema.define(:version => 20120621044134) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -133,7 +133,7 @@ ActiveRecord::Schema.define(:version => 20120621022910) do
     t.integer "user_id"
   end
 
-  create_table "user_notifications", :id => false, :force => true do |t|
+  create_table "user_notifications", :force => true do |t|
     t.integer "notification_id"
     t.integer "user_id"
   end
