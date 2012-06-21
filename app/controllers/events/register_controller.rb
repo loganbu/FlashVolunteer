@@ -34,8 +34,8 @@ class Events::RegisterController < ApplicationController
     @event.participants.delete(current_user)
 
     respond_to do |format|
-      format.html { redirect_to(users_url) }
-      format.mobile { redirect_to(users_url) }
+      format.html { redirect_to(:back) }
+      format.mobile { redirect_to(:back) }
       format.xml  { head :ok }
     end
   end

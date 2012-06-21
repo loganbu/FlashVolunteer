@@ -28,7 +28,7 @@
 <div id="content_sections">
     <div id="past_content">
         <% if(@past.count == 0) %>
-            You have not signed up for any events. <a href="#recommended" onclick="activateContentSection('#recommended')">Let us recommend something for you.</a>
+            You have not yet attended any events. <a href="#recommended" onclick="activateContentSection('#recommended')">Let us recommend something for you.</a>
         <% else %>
             <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :past }) %>
         <% end %>
