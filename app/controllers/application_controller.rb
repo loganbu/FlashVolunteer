@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
     before_filter :remove_returns_to, :set_default_page_title, :csrf_protect
     protect_from_forgery
 
-    check_authorization
+    check_authorization :unless => :rails_admin_controller?
 
     def verified_request?
         session[:api] || super
@@ -22,6 +22,10 @@ class ApplicationController < ActionController::Base
 
     def csrf_protect
         self.allow_forgery_protection = false if session[:api]
+    end
+
+    def rails_admin_controller?
+      false
     end
 
     def authorize_user_profile(entity)
