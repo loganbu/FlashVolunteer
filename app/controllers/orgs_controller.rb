@@ -21,8 +21,8 @@ class OrgsController < ApplicationController
   def show
     @org = Org.find(params[:id])
 
-    @past = Event.created_by(@org).past.paginate(:page => params[:page], :per_page => params[:per_page] || 5)
-    @upcoming =  Event.created_by(@org).upcoming.paginate(:page => params[:page], :per_page => params[:per_page] || 5)
+    @past = Event.created_by(@org).past.order("start asc").paginate(:page => params[:page], :per_page => params[:per_page] || 5)
+    @upcoming =  Event.created_by(@org).upcoming.order("start asc").paginate(:page => params[:page], :per_page => params[:per_page] || 5)
 
 
     set_page_title
