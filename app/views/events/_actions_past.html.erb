@@ -1,7 +1,7 @@
 <%= form_tag(participation_path(event), :method=>:put, :id => "record_hours#{event.id}") do %>
 <div class="row-fluid" id="remove_div<%= event.id %>">
     <div class="span12">
-       <%= link_to("remove", register_event_url(event), :id=>"remove#{event.id}", :method=> :delete, :class => "btn btn-primary block") %>
+       <%= link_to("i couldn't go", register_event_url(event), :id=>"remove#{event.id}", :method=> :delete, :class => "btn btn-primary block") %>
     </div>
 </div>
 <div class="row-fluid" id="hours_div<%= event.id %>" style="display:none">
