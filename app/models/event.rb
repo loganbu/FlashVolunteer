@@ -67,10 +67,14 @@ class Event < ActiveRecord::Base
     def attending?(user)
         user == nil ? false : self.participants.exists?(user)
     end
-    def upcoming?()
+
+    def upcoming?
         self.end > Time.now
     end
 
+    def past?
+        self.end < Time.now
+    end
 
     def self.xml(entity)
         entity.to_xml(:methods => [:attendees, :categories])
