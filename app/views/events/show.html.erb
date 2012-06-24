@@ -1,22 +1,33 @@
-<div class="row">
+<div class="row-fluid">
     <div class="span8">
         <%= render(:partial => 'event_header') %>
     </div>
     <div class="span4" style="padding-bottom: 20px">   
-        <%= render( :partial => 'event_detail_options') %>
-        <% if @event.past? %>
-            <%= render(:partial => 'action_record')%>
+        <% if flash[:error] %>
+            <div class="alert alert-error">  
+                <a class="close" data-dismiss="alert" href="#">x</a>
+                <h4 class="alert-heading">Error!</h4>
+                <p>
+                    <ul>
+                        <li><%= flash[:error] %></li>
+                    </ul>
+                </p>
+            </div>
         <% end %>
+        <% if @event.past? && @event.attending?(current_user) %>
+            <%= render(:partial => 'actions_record')%>
+        <% end %>
+        <%= render( :partial => 'event_detail_options') %>
     </div>
 </div>
-<div class="row">
+<div class="row-fluid">
     <div class="span8">
         <h3>description</h3>
-        <div class="row">
-            <div class="span5">
+        <div class="row-fluid">
+            <div class="span8">
                 <%= h(@event.description).gsub(/\n/, '<br/>').html_safe %>
             </div>
-            <div class="span3">
+            <div class="span4">
                 <div class="map">
                     <div id="eventmap" class="small"></div>
                 </div>
@@ -36,7 +47,7 @@
     </div>
 </div>
 <div class="row">&nbsp;</div>
-<div class="row">
+<div class="row-fluid">
     <div class="span8">
         <%= render ('event_special_instructions') %>
     </div>

@@ -1,4 +1,19 @@
-<%= form_tag(participation_path(event), :method=>:put) do %>
-    <p>i volunteered for <%= text_field_tag :hours_volunteered, @event.participations.find_by_user_id(current_user.id).hours_volunteered, :style => "margin-bottom: 0px" %> hrs.</p>
-    <button type="submit" href="#" class="btn btn-primary pull-right">submit hours</button>
-<%end%>
+<%= form_tag(participation_path(@event), :method=>:put) do %>
+    <% if current_user.hours_volunteered(@event) != 0 %>
+        <p>i volunteered for <%= current_user.hours_volunteered(@event) %> hrs.</p>
+    <% else %>
+    	<div class="row-fluid">
+    		<div class="span4">
+        		<p>i volunteered for </p>
+    		</div>
+    		<div class="span1">
+    			<%= text_field_tag :hours_volunteered, @event.participations.find_by_user_id(current_user.id).hours_volunteered, :style => "margin-bottom: 0px" %>
+    		</div>
+    		<div class="span2">
+    			<p> hrs. </p>
+    		</div>
+    		<div class="span4">
+       	 		<button type="submit" href="#" class="btn btn-primary pull-right">submit hours</button>
+    		</div>
+    <% end %>
+<% end %>

@@ -1,10 +1,13 @@
 <% can_contact_organizer = can? :contact, Event %>
-<% if !event.attending?(current_user) %>
-    <%= link_to("sign up", register_event_url(event), :method => :post) %>
-<% end %>
-<% if !event.attending?(current_user) && event.hosted_by_user %>
-|
-<% end %>
-<% if event.hosted_by_user %>
-<%= mail_to(event.user.email, "contact organizer", :subject => "Questions regarding " + event.name, :encode=>"hex")%>
+<% if current_user != event.user%>
+	<% if !event.attending?(current_user) %>
+	    <%= link_to("sign up", register_event_url(event), :method => :post) %>
+	<% end %>
+	<% if !event.attending?(current_user) && event.hosted_by_user %>
+	|
+	<% end %>
+
+	<% if event.hosted_by_user %>
+	<%= mail_to(event.user.email, "contact organizer", :subject => "Questions regarding " + event.name, :encode=>"hex")%>
+	<% end %>
 <% end %>
