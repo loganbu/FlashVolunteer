@@ -36,6 +36,9 @@ class Event < ActiveRecord::Base
     scope :created_by, lambda { |user|
         where(:creator_id => user.id)
     }
+    scope :involving, lambda { |user|
+        includes(:participants).where("users.id = ? or creator_id = ?", user.id, user.id)
+    }
     scope :hosted_by_org_user, lambda { |user_list|
         where{creator_id.eq_any Org.joins(:admins).where{admins_users.id.eq_any user_list}.all}
     }
