@@ -59,6 +59,10 @@ class User < ActiveRecord::Base
     Prop.received_by(self).count
   end
 
+  def avatar_url
+    avatar.url(:profile)
+  end
+
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
@@ -97,6 +101,6 @@ class User < ActiveRecord::Base
   end
 
   def self.xml(entity)
-    entity.to_xml(:methods => [:hours_volunteered, :categories, :props])
+    entity.to_xml(:methods => [:hours_volunteered, :categories, :props, :avatar_url])
   end
 end
