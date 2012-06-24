@@ -3,7 +3,7 @@ class AfgOpportunity < ActiveRecord::Base
     def self.rest_url
         distance = 20
         location = "Seattle,WA"
-        key = ENV['flashvolunteer']
+        key = ENV['AFG_API_KEY']
         num_results = 50
         type = "all"
         "http://www.allforgood.org/api/volopps?vol_loc=#{location}&vol_dist=#{distance}&key=#{key}&merge=1&num=#{num_results}&type=all&output=json"
