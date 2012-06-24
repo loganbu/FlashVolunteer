@@ -1,0 +1,4 @@
+<%= form_tag(participation_path(event), :method=>:put) do %>
+    <p>i volunteered for <%= text_field_tag :hours_volunteered, @event.participations.find_by_user_id(current_user.id).hours_volunteered, :style => "margin-bottom: 0px" %> hrs.</p>
+    <button type="submit" href="#" class="btn btn-primary pull-right">submit hours</button>
+<%end%>

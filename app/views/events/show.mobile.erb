@@ -3,6 +3,9 @@
 </div>
 <div class="row-fluid" style="padding-bottom: 20px">   
     <%= render( :partial => 'event_detail_options') %>
+    <% if @event.past? %>
+        <%= render(:partial => 'action_record')%>
+    <% end %>
 </div>
 
 <div class="row-fluid">

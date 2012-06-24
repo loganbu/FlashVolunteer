@@ -2,8 +2,11 @@
     <div class="span8">
         <%= render(:partial => 'event_header') %>
     </div>
-    <div class="span4">           
-        <%= render ('event_detail_options') %>
+    <div class="span4" style="padding-bottom: 20px">   
+        <%= render( :partial => 'event_detail_options') %>
+        <% if @event.past? %>
+            <%= render(:partial => 'action_record')%>
+        <% end %>
     </div>
 </div>
 <div class="row">
