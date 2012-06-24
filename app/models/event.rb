@@ -36,6 +36,9 @@ class Event < ActiveRecord::Base
     scope :created_by, lambda { |user|
         where(:creator_id => user.id)
     }
+    scope :involving, lambda { |user|
+        includes(:participants).where("users.id = ? or creator_id = ?", user.id, user.id)
+    }
     scope :hosted_by_org_user, lambda { |user_list|
         where{creator_id.eq_any Org.joins(:admins).where{admins_users.id.eq_any user_list}.all}
     }
@@ -64,10 +67,14 @@ class Event < ActiveRecord::Base
     def attending?(user)
         user == nil ? false : self.participants.exists?(user)
     end
-    def upcoming?()
+
+    def upcoming?
         self.end > Time.now
     end
 
+    def past?
+        self.end < Time.now
+    end
 
     def self.xml(entity)
         entity.to_xml(:methods => [:attendees, :categories])
