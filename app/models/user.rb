@@ -60,7 +60,11 @@ class User < ActiveRecord::Base
   end
 
   def avatar_url
-    avatar.url(:profile)
+    if avatar.file?
+      avatar.url(:profile)
+    else
+      nil
+    end
   end
 
   def role?(role)
