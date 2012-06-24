@@ -32,26 +32,21 @@ class UsersController < ApplicationController
   # GET /users/1.xml
   def show
     @user = User.includes(:neighborhood).find(params[:id])
-
+    limit = 20
     set_page_title
     # user calculations
     @nEventsCreated = Event.created_by(@user).count
-    @nEventsComingUp = Event.attended_by(@user).upcoming.count
-    @nEventsInPast = Event.attended_by(@user).past.count
-    @nFollowers = @user.followers.count
+    @nEventsComingUp = Event.involving(@user).upcoming.count
+    @nEventsInPast = Event.involving(@user).past.count
+    # @nFollowers = @user.followers.count
     @nHoursVolunteered = Participation.where("user_id = ?", @user.id).sum(:hours_volunteered)
 
-    # events
-    @events = Event.includes(:skills).joins(:participants).where('users.id' => @user.id)
-    @upcoming_events = Event.attended_by(@user).upcoming
-    if !params[:page]
-      logger.info "Retrieving the next 10 upcoming events"
-      @events = @events.limit(10).order('start ASC').upcoming.where('start < ?', Time.now + 2.months)
-    else
-      logger.info "Retrieivng past events"
-      @events = @events.paginate(:page => params[:page]).past.order('start DESC')
-    end
-    @eventsJson = @events.to_json(:include => :skills)
+    @events = { 
+                :upcoming => { :data => Event.includes(:skills).joins(:participants).involving(@user).upcoming.order("start ASC").limit(limit), :title => "Upcoming" },
+                :past => { :data => Event.includes(:skills).joins(:participants).involving(@user).past.order("start DESC").limit(limit), :title => "Past" }
+              }
+    @events[:past][:json] = @events[:past][:data].to_json
+    @events[:upcoming][:json] = @events[:upcoming][:data].to_json
 
     respond_to do |format|
       format.html # show.html.erb
