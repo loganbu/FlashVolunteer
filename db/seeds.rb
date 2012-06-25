@@ -95,7 +95,7 @@ Neighborhood.create([
 { :name => 'Tukwila',                   :latitude => 47.475618, :longitude => -122.262383}, 
 { :name => 'University District',       :latitude => 47.657698, :longitude => -122.306368}, 
 { :name => 'Wallingford',               :latitude => 47.655526, :longitude => -122.326796}, 
-{ :name => 'Wedgwood',                  :latitude => 47.686669, :longitude => -122.294891}, 
+{ :name => 'Wedgewood',                  :latitude => 47.686669, :longitude => -122.294891}, 
 { :name => 'West Seattle',              :latitude => 47.576526, :longitude => -122.391901}, 
 { :name => 'White Center',              :latitude => 47.516675, :longitude => -122.354736} 
 ])
