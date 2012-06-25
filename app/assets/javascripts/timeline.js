@@ -11,8 +11,8 @@
         return months[date.getMonth()] + " " + date.getFullYear();
     };
 
-    Timeline.buildTimeline = function () {
-        var datas = Timeline.currentData;
+    Timeline.buildTimeline = function (title, jsonData, shareHtmls, eventHtmls) {
+        var datas = jsonData;
         if (datas.length == 0) {
             return;
         }
@@ -23,11 +23,7 @@
         var data = datas[0],
             title;
         data.date = new Date(data.start);
-        if (data.date > new Date()) {
-            title = "Upcoming";
-        } else {
-            title = getMonthSepTitle(data);
-        }
+
         var sep = getSeparatorItem({ title: title });
         sep.appendTo(container);
 
@@ -65,12 +61,12 @@
             data.context = context;
             if (context.leftHeight > context.rightHeight) {
                 data.left = false;
-                data.el = getItem(data);
+                data.el = getItem(data, shareHtmls, eventHtmls);
                 data.el.appendTo(context.right);
             }
             else {
                 data.left = true;
-                data.el = getItem(data);
+                data.el = getItem(data, shareHtmls, eventHtmls);
                 data.el.appendTo(context.left);
             }
         }
@@ -92,7 +88,7 @@
     };
 
     var beakHtml = '<div class="span1 tl-item-beak"></div>';
-    var getItem = function (options) {
+    var getItem = function (options, shareHtmls, eventHtmls) {
         var html = '<div class="tl-item row-fluid">';
         var i = options.evIndex;
 
@@ -100,8 +96,8 @@
             html += beakHtml;
         }
 
-        var shareStrip = Timeline.shareHtmls[i],
-            eventHtml = Timeline.eventHtmls[i];
+        var shareStrip = shareHtmls[i],
+            eventHtml = eventHtmls[i];
         html += '<div class="span11"> \
                     <div class="tl-item-contents"> \
                         ' + eventHtml + ' \

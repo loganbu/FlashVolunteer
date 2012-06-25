@@ -1,32 +1,38 @@
-<%= form_tag(participation_path(event), :method=>:put, :id => "record_hours#{event.id}") do %>
-<div class="row-fluid" id="remove_div<%= event.id %>">
-    <div class="span12">
-       <%= link_to("i couldn't go", register_event_url(event), :id=>"remove#{event.id}", :method=> :delete, :class => "btn block") %>
-    </div>
-</div>
-<div class="row-fluid" id="hours_div<%= event.id %>" style="display:none">
-    <div class="span12">
-        i volunteered for <%= text_field_tag :hours_volunteered, event.participations.find_by_user_id(current_user.id).hours_volunteered, :class=>"full", :style => "margin-bottom: 0px" %> hrs.
-    </div>
-</div>
-<div class="row-fluid">&nbsp;</div>
-<div class="row-fluid" id="record_div<%= event.id %>">
-    <div class="span12">
-        <a href="#" id="record<%= event.id %>" class="btn btn-primary block ">i attended the event</a>
-    </div>
-</div>
-<div class="row-fluid" id="save_div<%= event.id %>" style="display:none">
-    <div class="span12">
-        <a href="#" id="submit_hours<%= event.id %>" class="btn btn-primary block">because i'm a superstar</a>
-        <script type="text/javascript">
-            $(document).ready(function() {
-                $("#submit_hours<%= event.id %>").click(function() {
-                    $("#record_hours<%= event.id %>").submit();
-                });
-            });
-        </script>
-    </div>
-</div>
+<% if event.attending?(@user) %>
+    <%= form_tag(participation_path(event), :method=>:put, :id => "record_hours#{event.id}") do %>
+    <% if current_user.hours_volunteered(event) != 0 %>
+        <p>i volunteered for <%= current_user.hours_volunteered(event) %> hrs.</p>
+    <% else %>
+        <div class="row-fluid" id="remove_div<%= event.id %>">
+            <div class="span12">
+               <%= link_to("i couldn't go", register_event_url(event), :id=>"remove#{event.id}", :method=> :delete, :class => "btn block") %>
+            </div>
+        </div>
+        <div class="row-fluid" id="hours_div<%= event.id %>" style="display:none">
+            <div class="span12">
+                i volunteered for <%= text_field_tag :hours_volunteered, event.participations.find_by_user_id(current_user.id).hours_volunteered, :class=>"full", :style => "margin-bottom: 0px" %> hrs.
+            </div>
+        </div>
+        <div class="row-fluid">&nbsp;</div>
+        <div class="row-fluid" id="record_div<%= event.id %>">
+            <div class="span12">
+                <a href="#" id="record<%= event.id %>" class="btn btn-primary block ">i attended the event</a>
+            </div>
+        </div>
+        <div class="row-fluid" id="save_div<%= event.id %>" style="display:none">
+            <div class="span12">
+                <a href="#" id="submit_hours<%= event.id %>" class="btn btn-primary block">because i'm a superstar</a>
+                <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#submit_hours<%= event.id %>").click(function() {
+                            $("#record_hours<%= event.id %>").submit();
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    <% end %>
+    <% end %>
 <% end %>
 <script type="text/javascript">
     $(document).ready(function() { 

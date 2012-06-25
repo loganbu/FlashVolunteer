@@ -1,9 +1,13 @@
 <% if (@event.user != current_user) %>
-   <% if (@event.attending?(current_user)) %>
-       <%= link_to("i cannot participate", register_event_url(@event), :method=> :delete, :class => "btn btn-primary block")%>
-   <% else %>
-       <%= link_to("sign up", register_event_url, :method=> :post, :class => "btn btn-primary block")%>
-   <% end %>
+    <% if (@event.attending?(current_user)) %>
+        <% if @event.past? %>
+            <%= link_to("i couldn't participate : [", register_event_url(@event), :method=> :delete, :class => "btn btn-primary block")%>
+        <% else %>
+            <%= link_to("i can no longer participate : [", register_event_url(@event), :method=> :delete, :class => "btn btn-primary block")%>
+        <%end%>
+    <% else %>
+        <%= link_to("sign up", register_event_url, :method=> :post, :class => "btn btn-primary block")%>
+    <% end %>
 <% end %>
 <% if can? :edit, @event %>
     <%= link_to("edit event", edit_event_url, :class => "btn btn-primary block")%>

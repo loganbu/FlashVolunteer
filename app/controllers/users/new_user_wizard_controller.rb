@@ -17,7 +17,7 @@ class Users::NewUserWizardController < Wicked::WizardController
         @user = current_user
         case step
         when :choose_neighborhood
-            @user.neighborhood_id = params[:neighborhood]
+            @user.neighborhood_id = params[:neighborhood][:id]
         when :choose_skills
             @user.update_attributes(params[:user])
         end

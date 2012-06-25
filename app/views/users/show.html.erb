@@ -3,21 +3,22 @@
 
 <script defer="defer">
 $(function () {
-    window.Timeline = window.Timeline || {};
-    Timeline.currentData = <%= @eventsJson.html_safe %>;
+    var shareHtmls = [];
+    var eventHtmls = [];
+    var eventJson = null;
+    <% @events.keys.each do |k| %>
+        eventJson = <%= @events[k][:json].html_safe %>;
+        <% @events[k][:data].each_with_index do |event, i| %>
+            shareHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/share", :locals => { :event => event, :size => :medium }) %>';
+        <% end %>
 
-    var shareHtmls = Timeline.shareHtmls = [];
-    <% @events.each_with_index do |event, i| %>
-        shareHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/share", :locals => { :event => event, :size => :medium }) %>';
+        <% @events[k][:data].each_with_index do |event, i| %>
+            <% showSignUpButton = event.start > DateTime.now && !event.attending?(@user) %>
+            eventHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/event", :locals => { :event => event, :description => :medium, :sign_up_button => showSignUpButton }) %>';
+        <% end %>
+
+        Timeline.buildTimeline("<%= @events[k][:title] %>", eventJson, shareHtmls, eventHtmls);
     <% end %>
-
-    var eventHtmls = Timeline.eventHtmls = [];
-    <% @events.each_with_index do |event, i| %>
-        <% showSignUpButton = event.start > DateTime.now && !event.attending?(current_user) %>
-        eventHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/event", :locals => { :event => event, :description => :medium, :sign_up_button => showSignUpButton }) %>';
-    <% end %>
-
-    Timeline.buildTimeline();
 });
 </script>
 
