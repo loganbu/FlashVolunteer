@@ -1,17 +1,21 @@
 <% if (@event.user != current_user) %>
     <% if (@event.attending?(current_user)) %>
-        <%= link_to("i cannot participate", register_event_url(@event), :method=> :delete, :class => "btn btn-primary block")%>
-        <div class="row">&nbsp;</div>
+        <% if @event.past? %>
+            <%= link_to("i couldn't participate : [", register_event_url(@event), :method=> :delete, :class => "btn btn-primary block")%>
+        <% else %>
+            <%= link_to("i can no longer participate : [", register_event_url(@event), :method=> :delete, :class => "btn btn-primary block")%>
+        <%end%>
+        <div class="row-fluid">&nbsp;</div>
     <% else %>
         <%= link_to("sign up", register_event_url, :method=> :post, :class => "btn btn-primary block")%>
-        <div class="row">&nbsp;</div>
+        <div class="row-fluid">&nbsp;</div>
     <% end %>
 <% end %>
 <% if can? :edit, @event %>
     <%= link_to("edit event", edit_event_url, :class => "btn btn-primary block")%>
-    <div class="row">&nbsp;</div>
+    <div class="row-fluid">&nbsp;</div>
     <%= link_to("delete event", event_url(@event), :method=>"delete", :class => "btn btn-primary block")%>
-    <div class="row">&nbsp;</div>
+    <div class="row-fluid">&nbsp;</div>
     <%= link_to("print sign up sheet", print_event_url(@event), :method=>"get", :class => "btn btn-primary block")%>
-    <div class="row">&nbsp;</div>
+    <div class="row-fluid">&nbsp;</div>
 <% end %>
