@@ -29,11 +29,11 @@
     </tr>
     <tr>
         <td><%= image_tag('no_time.png') %></td>
-        <td>No start/end time for this event</td>
+        <td>This event has start/end time</td>
     </tr>
     <tr>
         <td><%= image_tag('no_neighborhood.png') %></td>
-        <td>No neighborhood information (possibly weird address)</td>
+        <td>This event has some neighborhood information</td>
     </tr>
 </table>
 <hr/>
@@ -52,8 +52,8 @@
         <td><%= link_to "Create", create_event_afg_opportunity_url(o), :class=>"btn btn-primary", :method=>:put %></td>
         <td><%= link_to "Remove", hide_event_afg_opportunity_url(o), :class=>"btn btn-danger", :method=>:put %></td>
         <td>
-            <%= image_tag('no_time.png') if (o.start != o.end) %>
-            <%= image_tag('no_neighborhood.png') if (o.neighborhood_string != nil) %>
+            <label title="Time information available" class="pull-left"><%= image_tag('no_time.png', :alt => "Time information available") if (o.start != o.end) %></label>
+            <label title="Neighborhood information available" class="pull-left"><%= image_tag('no_neighborhood.png', :alt => "Neibhorhood information available") if (o.neighborhood_string != nil) %></label>
         </td>
     </tr>
 <% end %>

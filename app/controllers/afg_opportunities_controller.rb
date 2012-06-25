@@ -15,7 +15,7 @@ class AfgOpportunitiesController < ApplicationController
     @opportunity.imported = true
     @opportunity.save
 
-    if(@opportunity.neighborhood == nil)
+    if(@opportunity.neighborhood == nil && @opportunity.neighborhood_string != nil)
       flash[:warning] = "I don't know the neighborhood '#{@opportunity.neighborhood_string}'"
     end
 
