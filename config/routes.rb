@@ -17,6 +17,17 @@ Flashvolunteer::Application.routes.draw do
     get "orgs/search", :to => "orgs#search"
     get "events/search", :to => "events#search"
     get "events/instructions", :to => "events#instructions"
+
+    resources :afg_opportunities, :only => [:index] do 
+        member do
+            put :create_event
+            put :hide_event
+        end
+        collection do 
+            post :more
+        end
+    end
+
     # 
     # Index - Show all users?
     # Show - Timeline

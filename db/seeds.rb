@@ -100,7 +100,7 @@ Neighborhood.create([
 { :name => 'White Center',              :latitude => 47.516675, :longitude => -122.354736} 
 ])
 
-Notification.delete_all()
+Notification.delete_all
 Notification.create([
 {:name => "prop_received", :description=>"Props from a grateful Flash Volunteer"},
 {:name => "new_event_attendee", :description=>"Someone signs up for an event I'm coordinating"},
