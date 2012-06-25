@@ -65,6 +65,9 @@ class EventsController < ApplicationController
     
     respond_to do |format|
       format.html { render 'print.html.erb', :layout => "blank" }
+      format.pdf do 
+        render :pdf => "#{@event.name}"
+      end
     end
   end
 
