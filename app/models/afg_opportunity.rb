@@ -3,7 +3,7 @@ require 'active_support/time_with_zone'
 class AfgOpportunity < ActiveRecord::Base
 
     before_save :reverse_geocode
-    attr_accessor :geocoder_result, :street_string, :neighborhood_string, :zip_string
+    attr_accessor :geocoder_result
 
     scope :not_imported, lambda {
       where("imported = ?", false)
@@ -58,7 +58,6 @@ class AfgOpportunity < ActiveRecord::Base
                 if (self.geocoder_result.address_components_of_type(:street_number).count > 0)
                     self.street = "#{self.geocoder_result.address_components_of_type(:street_number)[0]['long_name']} #{self.geocoder_result.address_components_of_type(:route)[0]['long_name']}"
                 end
-
 
                 if(self.geocoder_result.address_components_of_type(:neighborhood).count > 0)
                     self.neighborhood_string = self.geocoder_result.address_components_of_type(:neighborhood)[0]['long_name']
