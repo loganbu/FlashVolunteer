@@ -52,8 +52,8 @@
         <td><%= link_to "Create", create_event_afg_opportunity_url(o), :class=>"btn btn-primary", :method=>:put %></td>
         <td><%= link_to "Remove", hide_event_afg_opportunity_url(o), :class=>"btn btn-danger", :method=>:put %></td>
         <td>
-            <%= image_tag('no_time.png') if (o.start == o.end) %>
-            <%= image_tag('no_neighborhood.png') if (o.neighborhood_string == nil) %>
+            <%= image_tag('no_time.png') if (o.start != o.end) %>
+            <%= image_tag('no_neighborhood.png') if (o.neighborhood_string != nil) %>
         </td>
     </tr>
 <% end %>
