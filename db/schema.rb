@@ -15,8 +15,9 @@ ActiveRecord::Schema.define(:version => 20120624202445) do
 
   create_table "afg_opportunities", :force => true do |t|
     t.string   "key"
-    t.boolean  "imported"
+    t.boolean  "imported",                   :default => false
     t.string   "title"
+    t.string   "latlong"
     t.string   "location_name"
     t.datetime "startDate"
     t.datetime "endDate"
@@ -24,6 +25,11 @@ ActiveRecord::Schema.define(:version => 20120624202445) do
     t.string   "xml_url"
     t.string   "skills"
     t.string   "city"
+    t.text     "description"
+    t.boolean  "reverse_geocoded",           :default => false
+    t.string   "street"
+    t.string   "neighborhood_string"
+    t.string   "zip"
   end
 
   create_table "delayed_jobs", :force => true do |t|
