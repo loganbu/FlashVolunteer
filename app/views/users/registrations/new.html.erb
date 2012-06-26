@@ -82,33 +82,6 @@ end %>
         </div>
         <script type="text/javascript">
         $(document).ready(function() {
-            var defaultTexts = {
-                                    individual: {
-                                        name: "Your name",
-                                        email: "Your e-mail address"
-                                    },
-                                    orgs: {
-                                        name: "Your organization's name",
-                                        email: "Your organization's e-mail address"
-                                    }
-                               };
-
-            var toggleDefaultText = function(text) {
-                var elementWithText = {
-                                        email: {
-                                            element: $("#account_email"),
-                                            text: text.email
-                                        },
-                                        name: {
-                                            element: $("#account_name"),
-                                            text: text.name
-                                        }
-                                      };
-                $.each(elementWithText, function(index, val) {
-                    setDefaultText(val.element, val.txt);
-                });
-            };
-
             $("#create_org").click(function() { 
                 window.location.href = "<%= new_org_wizard_path(:set_user_account) %>?org_email=" + escape($("#account_email").val()) + "&org_name=" + escape($("#account_name").val());
             });
@@ -121,7 +94,6 @@ end %>
                 $("input[type='password']").each(function(index) {
                     $(this).attr('disabled', 'disabled')
                 });
-                toggleDefaultText(defaultTexts.orgs);
                 $("#sign_up").hide();
                 $("#create_org").show();
             };
@@ -133,7 +105,6 @@ end %>
                 $("input[type='password']").each(function(index) {
                     $(this).removeAttr('disabled')
                 });
-                toggleDefaultText(defaultTexts.individual);
                 $("#sign_up").show();
                 $("#create_org").hide();
             };
@@ -142,9 +113,6 @@ end %>
             $("#for_org").click(hideForOrg);
             <% if (resource.account_type == "organization") %>
                 hideForOrg();
-                toggleDefaultText(defaultTexts.orgs);
-            <% else %>
-                toggleDefaultText(defaultTexts.individual);
             <% end %>
         });
         </script>
