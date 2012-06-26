@@ -265,7 +265,7 @@ label {
     p {
         margin-top: .3*$baseLineHeight;
     }
-    .active_account, .inactive_account {
+    .active_account {
         &:hover {
             background-color: $babyBlue;
             cursor: pointer;
@@ -276,6 +276,10 @@ label {
     }
     .inactive_account {
         .row-fluid {
+            &:hover {
+                background-color: $babyBlue;
+                cursor: pointer;
+            }
             padding-top: 5px;
             &:first-child {
                 border-top: 1px solid $green;
