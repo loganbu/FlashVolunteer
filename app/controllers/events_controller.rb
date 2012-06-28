@@ -211,7 +211,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to(:back) }
+      format.html { redirect_to(user_url(current_user)) }
       format.xml  { head :ok }
     end
   end
