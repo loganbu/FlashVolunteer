@@ -10,7 +10,6 @@ class Orgs::EventsController < ApplicationController
     @past = Event.created_by(@org).past.order("start asc").paginate(:page => params[:page], :per_page => params[:per_page] || 5)
     @upcoming =  Event.created_by(@org).upcoming.order("start asc").paginate(:page => params[:page], :per_page => params[:per_page] || 5)
 
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @org }
