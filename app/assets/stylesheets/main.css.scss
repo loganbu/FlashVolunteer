@@ -33,6 +33,13 @@ html, body {
     padding-right: 30px;
 }
 
+.add-on {
+    margin-left: 5px;
+    a {
+        cursor:text;    
+    }
+}
+
 /**************
  Badges
  **************/
@@ -362,7 +369,16 @@ input[type="checkbox"] {
     position: absolute;
     z-index: 9000;
 }
-
+#search-box-container {
+    margin-top: 10px;
+}
+#search-box {
+    line-height: 12px;
+    height: 12px;
+    margin: 0px;
+    border-right: 5px;
+    width: 200px;
+}
 /**************
  Pagination
  **************/
