@@ -13,7 +13,7 @@ class OrgsController < ApplicationController
   end
 
   def set_page_title
-    @title = @org.name.concat(" | Flash Volunteer") if @org
+    @title = (@org.name + " | Flash Volunteer") if (@org && @org.name)
   end
 
   # GET /orgs/1
@@ -80,7 +80,7 @@ class OrgsController < ApplicationController
     set_page_title
     respond_to do |format|
       if @org.update_attributes(params[:org])
-        format.html { redirect_to(@org, :notice => 'Org was successfully updated.') }
+        format.html { redirect_to(user_url(@org), :notice => 'Org was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

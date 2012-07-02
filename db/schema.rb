@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624202445) do
+ActiveRecord::Schema.define(:version => 20120702043140) do
 
   create_table "afg_opportunities", :force => true do |t|
     t.string   "key"
@@ -135,6 +135,13 @@ ActiveRecord::Schema.define(:version => 20120624202445) do
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "searches", :force => true do |t|
+    t.string  "query"
+    t.integer "users_found",  :default => 0
+    t.integer "orgs_found",   :default => 0
+    t.integer "events_found", :default => 0
   end
 
   create_table "skills", :force => true do |t|

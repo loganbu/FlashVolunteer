@@ -82,9 +82,10 @@ Flashvolunteer::Application.routes.draw do
             # Show admins of the org
             resource :stats, :only => [:show], :controller => "orgs/stats", :as => "org_stats"
 
-            # Show admins of the org
-            resource :admins, :only => [:show, :update], :controller => "orgs/admins", :as => "org_admins"
+            
         end
+        # Show admins of the org
+        resources :users, :only => [:index, :update, :destroy], :controller => "orgs/users"
     end
    
     # Search for people
@@ -99,6 +100,8 @@ Flashvolunteer::Application.routes.draw do
         end
     end
     match "events/in/:neighborhood" => "events#in", :as => 'events_neighborhood', :via => :get
+
+    post "search" => "search#show", :as => "search"
 
     match "privacy" => "home#privacy"
     match "tou" => "home#tou"

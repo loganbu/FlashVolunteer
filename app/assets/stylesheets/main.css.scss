@@ -33,6 +33,13 @@ html, body {
     padding-right: 30px;
 }
 
+.add-on {
+    margin-left: 5px;
+    a {
+        cursor:text;    
+    }
+}
+
 /**************
  Badges
  **************/
@@ -227,6 +234,17 @@ label {
 }
 
 /**************
+ Scoreboard
+ **************/
+.t1h-stats{
+    background-color: #4EA0A7;
+    color:white;
+    text-align: center;
+    margin: 5px;
+    padding: 7px 7px;
+}
+
+/**************
  Header
  **************/
 .header {
@@ -265,7 +283,7 @@ label {
     p {
         margin-top: .3*$baseLineHeight;
     }
-    .active_account, .inactive_account {
+    .active_account {
         &:hover {
             background-color: $babyBlue;
             cursor: pointer;
@@ -276,6 +294,10 @@ label {
     }
     .inactive_account {
         .row-fluid {
+            &:hover {
+                background-color: $babyBlue;
+                cursor: pointer;
+            }
             padding-top: 5px;
             &:first-child {
                 border-top: 1px solid $green;
@@ -358,7 +380,16 @@ input[type="checkbox"] {
     position: absolute;
     z-index: 9000;
 }
-
+#search-box-container {
+    margin-top: 10px;
+}
+#search-box {
+    line-height: 12px;
+    height: 12px;
+    margin: 0px;
+    border-right: 5px;
+    width: 200px;
+}
 /**************
  Pagination
  **************/
