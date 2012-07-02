@@ -17,10 +17,11 @@
                     <% end %>
                 </ul>
                 <div class="pull-right" id="search-box-container">
-                <%= form_tag search_url, :method=>:post, :class=>"pull-left", :style=>"margin:0px;padding:0px" do |f| %>
+                <%= form_tag search_url, :method=>:post, :id=>'search-form', :class=>"pull-left", :style=>"margin:0px;padding:0px" do |f| %>
                         <%= text_field_tag('search', '', :id=>"search-box") %>
                         <%= submit_tag("", :style=>"display:none") %>
-                        <% end %><span class="add-on pull-right"><i class="icon-white icon-search"></i></span>
+                        <a href="javascript:submitForm('search-form')"><span class="add-on pull-right"><i class="icon-white icon-search"></i></span></a>
+                <% end %>
                 </div>
             </div>
         </div>
