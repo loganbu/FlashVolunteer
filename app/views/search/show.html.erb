@@ -19,7 +19,7 @@
 <div class="clear">&nbsp;</div>
 <div id="content_sections">
     <% if @events.count == 0 && @users.count == 0 && @orgs.count == 0 %>
-        Sorry, can't find it.
+        Sorry, there are no results that match your term.  Short words (1 keyword) find more results.
     <% end %>
     <% if @events.count > 0 %>
         <div <%= 'class="hide"'.html_safe if active != :events %> id="events_content">
