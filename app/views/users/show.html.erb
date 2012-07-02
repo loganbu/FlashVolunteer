@@ -79,6 +79,9 @@ $(function () {
             <%if current_user != @user%>
                 <li><%= link_to "GIVE PROPS", new_prop_url(@user) %></li>
             <%end%>
+            <%if current_user.type == "Org" && @user.type != "Org" && !current_user.admins.include?(@user) %>
+                <li><%= link_to "MAKE ADMIN OF THIS ORG", org_user_url(current_user, @user), :method=>:put %></li>
+            <%end%>
             <li><%= link_to "UPCOMING EVENTS", events_user_url(@user) +"#upcoming" %></li>
             <li><%= link_to "RECOMMENDED EVENTS", events_user_url(@user) + "#recommended" %></li>
             <% if can? :create, Event %>

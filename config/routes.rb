@@ -82,9 +82,10 @@ Flashvolunteer::Application.routes.draw do
             # Show admins of the org
             resource :stats, :only => [:show], :controller => "orgs/stats", :as => "org_stats"
 
-            # Show admins of the org
-            resource :admins, :only => [:show, :update], :controller => "orgs/admins", :as => "org_admins"
+            
         end
+        # Show admins of the org
+        resources :users, :only => [:index, :update, :destroy], :controller => "orgs/users"
     end
    
     # Search for people

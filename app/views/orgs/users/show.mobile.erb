@@ -1,0 +1,5 @@
+<%= content_for :right_split do %>
+<p class="bold">Admins</p>
+<p>We're still working on the ability to add admins.  Keep up to date with what we are working on at <%=link_to("blog.flashvolunteer.org", "http://blog.flashvolunteer.org")%>!</p>
+<% end %>
+<%= render :partial => 'users/shared/me', :locals => { :links => "orgs/org_profile_links" } %>
