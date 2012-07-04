@@ -65,17 +65,19 @@ class UsersController < ApplicationController
   # PUT /events/1.xml
   def update
     @user = User.find(params[:id])
-    if (params[:user])
-      params[:user].delete('email')
-    end
+
     if (!params[:user][:skill_ids])
       @user.skills = []
     end
     set_page_title
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'Your profile was successfully updated.') }
-        format.mobile { redirect_to(@user, :notice => 'Your profile was successfully updated.') }
+        notice = "Your profile was successfully updated."
+        if (params[:user] && params[:user][:email] != @user.email)
+          notice.concat("  You need to confirm your new e-mail address before you can use it.  Instructions have been e-mailed to #{params[:user][:email]}")
+        end
+        format.html { redirect_to(@user, :notice => notice) }
+        format.mobile { redirect_to(@user, :notice => notice) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

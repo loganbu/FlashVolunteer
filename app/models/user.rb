@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :confirmable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type, :hours_volunteered, :notification_preference_ids
+  attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type, :hours_volunteered, :notification_preference_ids, :description
 
   def hours_volunteered(event=nil)
     if (event != nil)
