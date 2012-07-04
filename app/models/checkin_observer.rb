@@ -1,4 +1,4 @@
-class ParticipationObserver < ActiveRecord::Observer
+class CheckinObserver < ActiveRecord::Observer
 
     def after_create(checkin)
         if (!@checkin.event.participants.include?(@checkin.user))
