@@ -236,12 +236,27 @@ label {
 /**************
  Scoreboard
  **************/
-.t1h-stats{
-    background-color: #4EA0A7;
-    color:white;
-    text-align: center;
-    margin: 5px;
-    padding: 7px 7px;
+.scoreboard{
+    background-color: $lightGray;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.span_margin_override{
+    margin-left: 0px;
+}
+.scoreboard_content{
+    background-color: $lightBlue;
+    margin-right: 10px;
+    padding: 10px;
+    .neighborhood{
+        color:$white;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+    .stat{
+        color:black;
+        text-align: left;
+    }
 }
 
 /**************
@@ -480,7 +495,7 @@ input[type="checkbox"] {
                     background: $babyBlue;
                     
                     &:hover {   
-                        background: $lightGray;
+                        background: $Gray;
                         color: $lightBlue;
                     }
                 }
@@ -590,7 +605,7 @@ ul {
  
 #link_list {
     a {
-        color: $lightGray;
+        color: $Gray;
     }
     .link_active {
         color: $green;
@@ -599,5 +614,5 @@ ul {
 
 .defaultText {
     font-style: italic;
-    color: $lightGray;
+    color: $Gray;
 }
