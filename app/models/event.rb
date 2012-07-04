@@ -43,6 +43,10 @@ class Event < ActiveRecord::Base
         where{creator_id.eq_any Org.joins(:admins).where{admins_users.id.eq_any user_list}.all}
     }
 
+    def near_happening
+        Time.now > self.start-2.hours && Time.now < self.end+2.hours
+    end
+
     def hosted_by_user
         self.hosted_by == nil || self.hosted_by == ""
     end

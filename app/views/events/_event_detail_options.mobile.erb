@@ -5,8 +5,13 @@
         <% else %>
             <%= link_to("i can no longer participate : [", register_event_url(@event), :method=> :delete, :class => "btn btn-primary block")%>
         <%end%>
+        <div class="row-fluid">&nbsp;</div>
     <% else %>
         <%= link_to("sign up", register_event_url, :method=> :post, :class => "btn btn-primary block")%>
+    <% end %>
+    <% if (@event.near_happening) && current_user %>
+        <%= link_to("check in", checkin_user_url(current_user, @event), :method=>:put, :class => "btn btn-primary block") %>
+        <div class="row-fluid">&nbsp;</div>
     <% end %>
 <% end %>
 <% if can? :edit, @event %>

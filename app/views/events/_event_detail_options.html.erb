@@ -10,6 +10,10 @@
         <%= link_to("sign up", register_event_url, :method=> :post, :class => "btn btn-primary block")%>
         <div class="row-fluid">&nbsp;</div>
     <% end %>
+    <% if (@event.near_happening) && current_user %>
+        <%= link_to("check in", checkin_user_url(current_user, @event), :method=>:put, :class => "btn btn-primary block") %>
+        <div class="row-fluid">&nbsp;</div>
+    <% end %>
 <% end %>
 <% if can? :edit, @event %>
     <%= link_to("edit event", edit_event_url, :class => "btn btn-primary block")%>
