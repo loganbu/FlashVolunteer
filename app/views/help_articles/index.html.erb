@@ -3,24 +3,18 @@
 <h3>faq</h3>
 
 <div class="row-fluid">
-	<div class="span4" id="nav">
+	<div class="span4" id="link_list">
 		<ul class="unstyled" id="help_nav_layout">
-			<% @articles.each do |a| %>
+			<% @articles.each_with_index do |a,i| %>
 			<li>
-				<a href="#faq-<%= friendly_name(a.title) %>"><%= a.title %></a>
+				<a <%= "class='link_active'" if i == 0 %> id="<%= friendly_name(a.title) %>_link" href="#<%= friendly_name(a.title) %>"><%= a.title %></a>
 			</li>
 			<% end %>
 		</ul>
 	</div>
-    <script type="text/javascript">
-        $("#nav li a").click(function () {
-            $("#faq-sections div").each(function() { $(this).hide(); });
-            $($(this).attr("href")+"_").show();
-        });
-    </script>
-	<div class="span8" id="faq-sections">
+	<div class="span8" id="content_sections">
 		<% @articles.each_with_index do |a,i| %>
-		<div <%= "class='hide'" if i > 0 %> id="faq-<%= friendly_name(a.title) %>_">
+		<div <%= "class='hide'" if i >0 %> id="<%= friendly_name(a.title) %>_content">
 			<h4><%= a.title %></h4>
 			<p>
 				<%= display_text_field_safe(ERB.new(a.description).result(binding)) %> 
@@ -29,3 +23,6 @@
 		<% end %>
 	</div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () { addContentHandlers(); });
+</script>

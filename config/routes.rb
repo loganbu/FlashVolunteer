@@ -107,7 +107,7 @@ Flashvolunteer::Application.routes.draw do
     match "tou" => "home#tou"
     match "about" => "home#about"
     match "partners" => "home#partners"
-    match "help" => "help_articles#index"
+    match "help" => "help_articles#index", :as => "help_articles"
     match "donate" => "home#donate"
     match "newsletter" => "home#newsletter"
     match "sadface" => "home#sadface"
