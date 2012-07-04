@@ -52,6 +52,8 @@ Flashvolunteer::Application.routes.draw do
 
             # Switch user login
             get :switch
+
+            put "checkin/:event_id" => "users/checkin#create", :as => "checkin"
         end
 
         # 
