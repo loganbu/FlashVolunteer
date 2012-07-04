@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20120703041302) do
     t.string   "hosted_by"
   end
 
-  create_table "helps", :force => true do |t|
+  create_table "help_articles", :force => true do |t|
     t.string "title"
     t.text   "description"
   end
