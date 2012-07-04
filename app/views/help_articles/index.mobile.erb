@@ -1,21 +1,31 @@
-<% content_for :question do %>
-    Where do you want to volunteer?
-<% end %>
-<% content_for :below_question do %>
-    <%= collection_select(:neighborhood,  :id, Neighborhood.order("name asc"), :id, :name, { :selected => @preferred_neighborhood_id, :include_blank => "anywhere in King County"}, :class=>"full") %>
-<% end %>
-<% content_for :button do %>
-    <%= link_to("continue", "#", :onclick => "gotoNeighborhood('neighborhood_id')", :class => "btn btn-primary pull-right") %>
-<% end %>
-<% content_for :below_button do %>
-    <p>
-        <% if can? :create, Event %>
-            I want to <%= link_to("create an event", new_event_url)%>
-        <% elsif user_signed_in? %>
-            Please confirm your e-mail address via the link in the message we sent.
-        <% else %>
-            I want to <%= link_to("create an event.", new_user_session_url)%>
+<h3>need help? have a question?</h3>
+<p>Send an email to <a href="mailto:info@flashvolunteer.org">info@flashvolunteer.org</a>, and we'll get you answers!</p>
+<h3>faq</h3>
+
+<div class="row-fluid">
+    <div class="span4" id="nav">
+        <ul class="unstyled" id="help_nav_layout">
+            <% @articles.each do |a| %>
+            <li>
+                <a href="#faq-<%= friendly_name(a.title) %>"><%= a.title %></a>
+            </li>
+            <% end %>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        $("#nav li a").click(function () {
+            $("#faq-sections div").each(function() { $(this).hide(); });
+            $($(this).attr("href")+"_").show();
+        });
+    </script>
+    <div class="span8" id="faq-sections">
+        <% @articles.each_with_index do |a,i| %>
+        <div <%= "class='hide'" if i > 0 %> id="faq-<%= friendly_name(a.title) %>_">
+            <h4><%= a.title %></h4>
+            <p>
+                <%= display_text_field_safe(ERB.new(a.description).result(binding)) %> 
+            </p>
+        </div>
         <% end %>
-    </p>
-<% end %>
-<%= render(:template => 'shared/splash_with_question') %>
+    </div>
+</div>
