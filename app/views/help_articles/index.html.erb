@@ -1,0 +1,31 @@
+<h3>need help? have a question?</h3>
+<p>Send an email to <a href="mailto:info@flashvolunteer.org">info@flashvolunteer.org</a>, and we'll get you answers!</p>
+<h3>faq</h3>
+
+<div class="row-fluid">
+	<div class="span4" id="nav">
+		<ul class="unstyled" id="help_nav_layout">
+			<% @articles.each do |a| %>
+			<li>
+				<a href="#faq-<%= friendly_name(a.title) %>"><%= a.title %></a>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+    <script type="text/javascript">
+        $("#nav li a").click(function () {
+            $("#faq-sections div").each(function() { $(this).hide(); });
+            $($(this).attr("href")+"_").show();
+        });
+    </script>
+	<div class="span8" id="faq-sections">
+		<% @articles.each_with_index do |a,i| %>
+		<div <%= "class='hide'" if i > 0 %> id="faq-<%= friendly_name(a.title) %>_">
+			<h4><%= a.title %></h4>
+			<p>
+				<%= display_text_field_safe(ERB.new(a.description).result(binding)) %> 
+			</p>
+		</div>
+		<% end %>
+	</div>
+</div>

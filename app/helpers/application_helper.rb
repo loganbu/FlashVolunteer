@@ -6,6 +6,12 @@ def photo_link(entity, image, url)
     end 
 end
 
+def friendly_name(str) 
+    str.gsub(/[^\w\s_-]+/, '') 
+       .gsub(/(^|\b\s)\s+($|\s?\b)/, '\\1\\2') 
+       .gsub(/\s+/, '_') 
+end 
+
 def new_event_link
     if !user_signed_in?
         "<p>You need to #{link_to('sign in', new_user_session_url)} to create an event.</p>".html_safe
@@ -31,7 +37,7 @@ end
 def display_text_field(text)
     h(text).gsub(/\n/, '<br/>').html_safe
 end
-def display_text_field_mailer(text)
+def display_text_field_safe(text)
     text.gsub(/\n/, '<br/>').html_safe
 end
 
