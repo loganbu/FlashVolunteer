@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120702043140) do
+ActiveRecord::Schema.define(:version => 20120703041302) do
 
   create_table "afg_opportunities", :force => true do |t|
     t.string   "key"
@@ -69,6 +69,11 @@ ActiveRecord::Schema.define(:version => 20120702043140) do
     t.text     "special_instructions"
     t.string   "twitter_hashtags"
     t.string   "hosted_by"
+  end
+
+  create_table "help_articles", :force => true do |t|
+    t.string "title"
+    t.text   "description"
   end
 
   create_table "neighborhoods", :force => true do |t|

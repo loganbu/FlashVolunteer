@@ -13,7 +13,7 @@ class UserMailer < ActionMailer::Base
         @event = event
         @host = event.user
         @attendee = user
-        @message = display_text_field_mailer(message)
+        @message = display_text_field_safe(message)
         mail(:to => @attendee.email,
              :subject => "A message from #{@event.name}'s organizer")
     end
