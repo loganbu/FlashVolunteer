@@ -2,6 +2,7 @@
     active = :events
     active = :users if @events.count == 0
     active = :orgs if @events.count == 0 && @users.count == 0
+    active = :help_articles if @events.count == 0 && @users.count == 0 && @orgs.count == 0
     %>
 <div class="tabs bold">
     <ul class="unstyled inline" id="link_list">
@@ -14,11 +15,14 @@
         <% if @orgs.count > 0 %>
         <li><a <%= 'class="link_active"'.html_safe if active == :orgs %> href="#orgs" id="orgs_link">ORGANIZATIONS (<%= @orgs.count %>)</a></li>
         <% end %>
+        <% if @help_articles.count > 0 %>
+        <li><a <%= 'class="link_active"'.html_safe if active == :help_articles %> href="#help_articles" id="help_articles_link">HELP ARTICLES (<%= @help_articles.count %>)</a></li>
+        <% end %>
     </ul>
 </div>
 <div class="clear">&nbsp;</div>
 <div id="content_sections">
-    <% if @events.count == 0 && @users.count == 0 && @orgs.count == 0 %>
+    <% if @events.count == 0 && @users.count == 0 && @orgs.count == 0 && @help_articles.count == 0 %>
         Sorry, there are no results that match your term.  Short words (1 keyword) find more results.
     <% end %>
     <% if @events.count > 0 %>
@@ -40,6 +44,15 @@
             <div class="row-fluid">
                 <div class="span7">
                     <%= render(:partial => "orgs/org", :collection => @orgs, :as => :org) %>
+                </div>
+            </div>
+        </div>
+    <% end %>
+    <% if @help_articles.count > 0 %>
+        <div <%= 'class="hide"'.html_safe if active != :help_articles %> id="help_articles_content">
+            <div class="row-fluid">
+                <div class="span7">
+                    <%= render(:partial => "help_articles/help_article", :collection => @help_articles, :as => :help_article) %>
                 </div>
             </div>
         </div>
