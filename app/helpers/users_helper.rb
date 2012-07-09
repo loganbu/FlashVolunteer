@@ -26,7 +26,12 @@ module UsersHelper
     def sign_in_with_third_party(token_information)
         # You need to implement the method below in your model
         @user = User.find_for_oauth(token_information)
-        @user.create_associated_org(session[:org_email], session[:org_name]) if session[:show_org_wizard]
+        if session[:show_org_wizard]
+          if !@user.create_associated_org(session[:org_email], session[:org_name])
+            session[:show_org_wizard] = false
+            flash[:alert] = "Couldn't create organization - the e-mail address of the organization must be different than the e-mail address of your personal account"
+          end
+        end
 
         respond_to do |format|
           format.html do

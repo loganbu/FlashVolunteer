@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
   def create_associated_org(org_email, org_name)
     org = Org.new(:email => org_email, :password => Devise.friendly_token[0,20], :name =>org_name)
     org.admins << self
-    org.save!
+    return org.save
   end
 
   def self.find_for_oauth(access_token)
