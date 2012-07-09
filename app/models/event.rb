@@ -46,6 +46,13 @@ class Event < ActiveRecord::Base
     scope :hosted_by_org_user, lambda { |user_list|
         where{creator_id.eq_any Org.joins(:admins).where{admins_users.id.eq_any user_list}.all}
     }
+    scope :recommended_to, lambda { |user|
+        if (user.skills.count > 0)
+            not_attended_by(user).upcoming.joins(:skills).where{skills.id.eq_any user.skills}
+        else
+            not_attended_by(user).upcoming
+        end
+    }
 
     def near_happening
         Time.now > self.start-2.hours && Time.now < self.end+2.hours
