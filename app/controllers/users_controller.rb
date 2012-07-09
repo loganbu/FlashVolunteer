@@ -65,17 +65,19 @@ class UsersController < ApplicationController
   # PUT /events/1.xml
   def update
     @user = User.find(params[:id])
-    if (params[:user])
-      params[:user].delete('email')
-    end
+
     if (!params[:user][:skill_ids])
       @user.skills = []
     end
     set_page_title
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        format.html { redirect_to(@user, :notice => 'Your profile was successfully updated.') }
-        format.mobile { redirect_to(@user, :notice => 'Your profile was successfully updated.') }
+        notice = "Your profile was successfully updated."
+        if (params[:user] && params[:user][:email] != @user.email)
+          notice.concat("  You need to confirm your new e-mail address before you can use it.  Instructions have been e-mailed to #{params[:user][:email]}")
+        end
+        format.html { redirect_to(@user, :notice => notice) }
+        format.mobile { redirect_to(@user, :notice => notice) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -119,6 +121,7 @@ class UsersController < ApplicationController
     id_array = params[:id] && params[:id].split(',') || []
     email_array = params[:email] && params[:email].split(',') || []
     categories_array = params[:categories] && params[:categories].split(',') || []
+    team_array = params[:on_team] && params[:on_team].split(',') || []
 
     # begin with an an association that's always true
     @users = User.where("1=1")
@@ -126,6 +129,7 @@ class UsersController < ApplicationController
     @users = id_array.length > 0 ? @users.where{id.eq_any id_array} : @users
     @users = email_array.length > 0 ? @users.where{email.eq_any email_array} : @users
     @users = categories_array.length > 0 ? @users.joins(:skills).where{skills.id.eq_any categories_array} : @users
+    @users = team_array.length > 0 ? @users.joins(:followers).where{users_followers.follower_id.eq_any team_array} : @users
     @users = @users.paginate(:page=>params[:page], :per_page => per_page)
     
     respond_to do |format|

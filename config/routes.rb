@@ -48,12 +48,18 @@ Flashvolunteer::Application.routes.draw do
             # Prop this user
             resources :props, :controller => "users/props" 
 
+
             delete :photo
 
             # Switch user login
             get :switch
+
+
+            put "checkin/:event_id" => "users/checkin#create", :as => "checkin"
         end
 
+        resources :followers, :only => [:update, :destroy], :controller => "users/followers"
+        
         # 
         # Show - List organizations you're part of
         # Update - Remove?
@@ -81,8 +87,6 @@ Flashvolunteer::Application.routes.draw do
 
             # Show admins of the org
             resource :stats, :only => [:show], :controller => "orgs/stats", :as => "org_stats"
-
-            
         end
         # Show admins of the org
         resources :users, :only => [:index, :update, :destroy], :controller => "orgs/users"
@@ -107,7 +111,7 @@ Flashvolunteer::Application.routes.draw do
     match "tou" => "home#tou"
     match "about" => "home#about"
     match "partners" => "home#partners"
-    match "help" => "home#help"
+    match "help" => "help_articles#index", :as => "help_articles"
     match "donate" => "home#donate"
     match "newsletter" => "home#newsletter"
     match "sadface" => "home#sadface"
