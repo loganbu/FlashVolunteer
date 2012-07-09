@@ -121,6 +121,7 @@ class UsersController < ApplicationController
     id_array = params[:id] && params[:id].split(',') || []
     email_array = params[:email] && params[:email].split(',') || []
     categories_array = params[:categories] && params[:categories].split(',') || []
+    team_array = params[:on_team] && params[:on_team].split(',') || []
 
     # begin with an an association that's always true
     @users = User.where("1=1")
@@ -128,6 +129,7 @@ class UsersController < ApplicationController
     @users = id_array.length > 0 ? @users.where{id.eq_any id_array} : @users
     @users = email_array.length > 0 ? @users.where{email.eq_any email_array} : @users
     @users = categories_array.length > 0 ? @users.joins(:skills).where{skills.id.eq_any categories_array} : @users
+    @users = team_array.length > 0 ? @users.joins(:followers).where{users_followers.follower_id.eq_any team_array} : @users
     @users = @users.paginate(:page=>params[:page], :per_page => per_page)
     
     respond_to do |format|

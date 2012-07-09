@@ -23,7 +23,8 @@ class User < ActiveRecord::Base
     :styles => { :thumb => ["32x32#", :png], :profile => ["128x128#", :png]},
     :default_url => "/assets/default_user_:style.png"
 
-  has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :association_foreign_key => "follower_id", :uniq => true
+  has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :foreign_key => "user_id", :association_foreign_key => "follower_id", :uniq => true
+  has_and_belongs_to_many :following, :class_name => "User", :join_table => "users_followers", :foreign_key => "follower_id", :association_foreign_key => "user_id", :uniq => true
 
   has_many :participations
   has_many :events_participated, :through => :participations, :source => :event
@@ -57,6 +58,10 @@ class User < ActiveRecord::Base
 
   def props
     Prop.received_by(self).count
+  end
+
+  def team
+    following.map{|s| s.id }.join(',')
   end
 
   def avatar_url
@@ -104,7 +109,8 @@ class User < ActiveRecord::Base
     end
   end
 
+
   def self.xml(entity)
-    entity.to_xml(:methods => [:hours_volunteered, :categories, :props, :avatar_url])
+    entity.to_xml(:methods => [:hours_volunteered, :categories, :props, :avatar_url, :team])
   end
 end

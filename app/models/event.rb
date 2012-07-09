@@ -20,12 +20,16 @@ class Event < ActiveRecord::Base
     after_validation :geocode
 
     scope :upcoming, lambda { |days=false|
+        end_time = Time.now + (days || 9001).days unless days == 0
+        end_time = DateTime.now.end_of_day if days == 0
         # Over 9000 days is probably long enough in the future. Otherwise, this app rocks, and I'll will "won't-fix" this bug.
-        where("end >= ? AND end <= ?", Time.now, Time.now + (days || 9001).days)
+        where("end >= ? AND end <= ?", Time.now, end_time)
     }
     scope :past, lambda { |days=false|
+        end_time = Time.now - (days || 9001).days unless days == 0
+        end_time = DateTime.now.beginning_of_day if days == 0
         # Over 9000 days is probably long enough in the past. Otherwise, this app rocks, and I'll will "won't-fix" this bug.
-        where("end < ? AND end >= ?", Time.now, Time.now - (days || 9001).days)
+        where("end < ? AND end >= ?", Time.now, end_time)
     }
     scope :attended_by, lambda { |user|
         includes(:participants).where("users.id = ?", user.id)
