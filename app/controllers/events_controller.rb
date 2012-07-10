@@ -228,8 +228,13 @@ class EventsController < ApplicationController
 
   def search
     per_page = params[:per_page] || 5
-    proximity = params[:proximity] || (params[:lat] || params[:long]) ? 5 : 100
+    proximity = params[:proximity] || ((params[:lat] || params[:long]) ? 5 : 100)
     
+    Rails.logger.debug("+++++++++++")
+    Rails.logger.debug("+++++++++++")
+    Rails.logger.debug("+++++++++++")
+    Rails.logger.debug("+++++++++++")
+    Rails.logger.debug(proximity)
     lat_long = (params[:lat] && params[:long]) ? [params[:lat].to_f, params[:long].to_f] : [47.618777, -122.33139]
     @events = Event.where("1=1").near(lat_long, proximity)
     
