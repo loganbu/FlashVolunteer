@@ -41,6 +41,7 @@
     <tr>
         <th>Title</th>
         <th>Date</th>
+        <th>Neighborhood</th>
         <th></th>
         <th></th>
         <th>Attributes</th>
@@ -49,6 +50,7 @@
     <tr>
         <td><%= o.title %></td>
         <td><%= o.startDate.strftime('%m/%d/%y') %></td>
+        <td><%= o.neighborhood_string %></td>
         <td><%= link_to "Create", create_event_afg_opportunity_url(o), :class=>"btn btn-primary", :method=>:put %></td>
         <td><%= link_to "Remove", hide_event_afg_opportunity_url(o), :class=>"btn btn-danger", :method=>:put %></td>
         <td>
