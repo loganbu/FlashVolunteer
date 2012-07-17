@@ -34,5 +34,6 @@ class NeighborhoodsController < ApplicationController
     end
   end
 
-
+  def leaderboard
+  end
 end

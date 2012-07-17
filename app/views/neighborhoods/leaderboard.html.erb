@@ -1,0 +1,11 @@
+<% Neighborhood.all.sort_by(&:score).reverse.take(5).each do |n| %>
+    <h4><%= n.name %></h4>
+    <% Rails.logger.debug("++++++++++") %>
+    <% Rails.logger.debug(n.volunteer_hours) %>
+    <% Rails.logger.debug("^^^^^^^") %>
+    Score: <%= n.score %><br/>
+    Volunteers: <%= n.volunteers.count %><br/>
+    Hours: <%= n.volunteer_hours %><br/>
+    All Star: <%= (n.allstar && n.allstar.name) || "Nobody has set #{n.name} as their hometown" %><br/>
+    <hr/>
+<% end %>
