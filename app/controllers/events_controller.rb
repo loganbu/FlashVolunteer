@@ -243,6 +243,7 @@ class EventsController < ApplicationController
     hosted_by_org_user_array = params[:hosted_by_org_user] && params[:hosted_by_org_user].split(',') || []
     created_by_array = params[:created_by] && params[:created_by].split(',') || []
     participated_by_array = params[:participated_by] && params[:participated_by].split(',') || []
+    recommended_to = params[:recommended_to]
 
     # This probably sucks at scale, need to test.  Makes "name=blah" into a SQL statement of LIKE %BLAH%
     name_array = params[:name] && params[:name].split(',').collect{ |x| "%" + x + "%"} || []
@@ -263,6 +264,7 @@ class EventsController < ApplicationController
     @events = hosted_by_org_user_array.length > 0 ? @events.hosted_by_org_user(hosted_by_org_user_array) : @events
     @events = created_by_array.length > 0 ? @events.where{creator_id.eq_any created_by_array} : @events
     @events = participated_by_array.length > 0 ? @events.joins(:participants).where{participations.user_id.eq_any participated_by_array} : @events
+    @events = recommended_to != nil ? @events.recommended_to(User.find_by_id(recommended_to)) : @events
     @events = @events.paginate(:page=>params[:page], :per_page => per_page)
 
     respond_to do |format|
