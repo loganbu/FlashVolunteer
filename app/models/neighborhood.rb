@@ -2,7 +2,7 @@ class Neighborhood < ActiveRecord::Base
     reverse_geocoded_by :latitude, :longitude
 
     def participations
-		events.includes(:participations).map(&:participations).flatten
+		participations_source.includes(:participations).map(&:participations).flatten
     end
 
     def volunteer_hours
@@ -23,6 +23,10 @@ class Neighborhood < ActiveRecord::Base
 
     def allstar
     	User.in_neighborhood(self).sort_by(&:score).reverse.first
+    end
+
+    def participations_source
+        return User.in_neighborhood(self)
     end
 
     def events
