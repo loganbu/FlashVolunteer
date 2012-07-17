@@ -127,7 +127,7 @@ class EventsController < ApplicationController
   # events /events.xml
   def create
 
-    if (params[:event][:website] != '' && !(params[:event][:website].starts_with?("http://") || params[:event][:website].starts_with?("https://")))
+    if (params[:event][:website] != nil && params[:event][:website] != '' && !(params[:event][:website].starts_with?("http://") || params[:event][:website].starts_with?("https://")))
       params[:event][:website] = "http://" + params[:event][:website]
     end
 
