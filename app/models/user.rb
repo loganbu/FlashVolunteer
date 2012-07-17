@@ -43,6 +43,15 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :terms_of_service, :name, :email, :password, :password_confirmation, :remember_me, :avatar, :birthday, :neighborhood_id, :skill_ids, :account_type, :hours_volunteered, :notification_preference_ids, :description
 
+
+  scope :in_neighborhood, lambda { |neighborhood|
+    includes(:neighborhood).where("neighborhood_id = ?", neighborhood.id)
+  }
+
+  def score
+    participations.sum(&:hours_volunteered)*(0.3*participations.count)*(0.7*Event.includes(:user).created_by(self).count)
+  end
+
   def hours_volunteered(event=nil)
     if (event != nil)
       Participation.where("user_id = ? AND event_id = ?", self.id, event.id).sum(:hours_volunteered)

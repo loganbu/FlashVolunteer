@@ -115,5 +115,6 @@ Flashvolunteer::Application.routes.draw do
     match "donate" => "home#donate"
     match "newsletter" => "home#newsletter"
     match "sadface" => "home#sadface"
+    match "leaderboard" => "neighborhoods#leaderboard"
     
 end
