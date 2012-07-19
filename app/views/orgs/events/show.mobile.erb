@@ -1,6 +1,7 @@
 <%= content_for :right_split do %>
 <p class="bold">MY EVENTS</p>
-<p><%= link_to "Create new event", new_event_url %></p><p>Have a lot of events to post? Try <%= link_to "bulk upload", "https://docs.google.com/spreadsheet/ccc?key=0Ao5K4W67RyC1dER1NXZEdjVWYi1QWVFSbHF6UGVNUlE#gid=0" %>.</p>
+<%= new_event_link %>
+<p>Have a lot of events to post? Try <%= link_to "bulk upload", "https://docs.google.com/spreadsheet/ccc?key=0Ao5K4W67RyC1dER1NXZEdjVWYi1QWVFSbHF6UGVNUlE#gid=0" %>.</p>
 <br />
 <div class="tabs bold">
     <ul class="unstyled inline" id="link_list">

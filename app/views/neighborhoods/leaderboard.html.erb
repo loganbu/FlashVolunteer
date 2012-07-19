@@ -1,0 +1,18 @@
+<h1>Event-focused</h1>
+<% Neighborhood.all.sort_by(&:score_event).reverse.take(5).each do |n| %>
+    <h4><%= n.name %></h4>
+    Score: <%= n.score("event") %><br/>
+    Volunteers: <%= n.volunteers("event").count %><br/>
+    Hours: <%= n.volunteer_hours("event") %><br/>
+    All Star: <%= (n.allstar && n.allstar.name) || "Nobody has set #{n.name} as their hometown" %><br/>
+    <hr/>
+<% end %>
+<h1>User-focused</h1>
+<% Neighborhood.all.sort_by(&:score_user).reverse.take(5).each do |n| %>
+    <h4><%= n.name %></h4>
+    Score: <%= n.score("user") %><br/>
+    Volunteers: <%= n.volunteers("user").count %><br/>
+    Hours: <%= n.volunteer_hours("user") %><br/>
+    All Star: <%= (n.allstar && n.allstar.name) || "Nobody has set #{n.name} as their hometown" %><br/>
+    <hr/>
+<% end %>

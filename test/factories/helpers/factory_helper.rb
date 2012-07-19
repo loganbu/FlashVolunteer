@@ -64,7 +64,7 @@ $neighborhoods_with_addresses = [
             Hash["name" => "Tukwila",           "zip" => 98168, "address"=>"12424 42nd Ave S"],
             Hash["name" => "University District","zip" => 98105, "address"=>"4518 University Way NE"],
             Hash["name" => "Wallingford",       "zip" => 98103, "address"=>"2101 N Northlake Way"],
-            Hash["name" => "Wedgwood",          "zip" => 98115, "address"=>"8230 35th Ave NE"],
+            Hash["name" => "Wedgewood",          "zip" => 98115, "address"=>"8230 35th Ave NE"],
             Hash["name" => "West Seattle",      "zip" => 98116, "address"=>"3407 California Ave SW"],
             Hash["name" => "Whidbey Island",    "zip" => 98260, "address"=>"5237 Langley Road"],
             Hash["name" => "White Center",      "zip" => 98146, "address"=>"10829 8th Ave SW"],

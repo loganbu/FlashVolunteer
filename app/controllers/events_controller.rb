@@ -127,7 +127,7 @@ class EventsController < ApplicationController
   # events /events.xml
   def create
 
-    if (params[:event][:website] != '' && !(params[:event][:website].starts_with?("http://") || params[:event][:website].starts_with?("https://")))
+    if (params[:event][:website] != nil && params[:event][:website] != '' && !(params[:event][:website].starts_with?("http://") || params[:event][:website].starts_with?("https://")))
       params[:event][:website] = "http://" + params[:event][:website]
     end
 
@@ -211,7 +211,7 @@ class EventsController < ApplicationController
     @event.destroy
 
     respond_to do |format|
-      format.html { redirect_to(:back) }
+      format.html { redirect_to(user_url(current_user)) }
       format.xml  { head :ok }
     end
   end
@@ -228,8 +228,13 @@ class EventsController < ApplicationController
 
   def search
     per_page = params[:per_page] || 5
-    proximity = params[:proximity] || (params[:lat] || params[:long]) ? 5 : 100
+    proximity = params[:proximity] || ((params[:lat] || params[:long]) ? 5 : 100)
     
+    Rails.logger.debug("+++++++++++")
+    Rails.logger.debug("+++++++++++")
+    Rails.logger.debug("+++++++++++")
+    Rails.logger.debug("+++++++++++")
+    Rails.logger.debug(proximity)
     lat_long = (params[:lat] && params[:long]) ? [params[:lat].to_f, params[:long].to_f] : [47.618777, -122.33139]
     @events = Event.where("1=1").near(lat_long, proximity)
     
@@ -238,16 +243,17 @@ class EventsController < ApplicationController
     hosted_by_org_user_array = params[:hosted_by_org_user] && params[:hosted_by_org_user].split(',') || []
     created_by_array = params[:created_by] && params[:created_by].split(',') || []
     participated_by_array = params[:participated_by] && params[:participated_by].split(',') || []
+    recommended_to = params[:recommended_to]
 
     # This probably sucks at scale, need to test.  Makes "name=blah" into a SQL statement of LIKE %BLAH%
     name_array = params[:name] && params[:name].split(',').collect{ |x| "%" + x + "%"} || []
 
     if (params[:upcoming])
-      num_days_future = params[:upcoming].to_i > 0 && params[:upcoming].to_i
+      num_days_future = params[:upcoming].to_i
       @events = @events.upcoming(num_days_future)
     end
     if (params[:past])
-      num_days_past = params[:past].to_i > 0 && params[:past].to_i
+      num_days_past = params[:past].to_i
       @events = @events.past(num_days_past)
     end
 
@@ -258,6 +264,7 @@ class EventsController < ApplicationController
     @events = hosted_by_org_user_array.length > 0 ? @events.hosted_by_org_user(hosted_by_org_user_array) : @events
     @events = created_by_array.length > 0 ? @events.where{creator_id.eq_any created_by_array} : @events
     @events = participated_by_array.length > 0 ? @events.joins(:participants).where{participations.user_id.eq_any participated_by_array} : @events
+    @events = recommended_to != nil ? @events.recommended_to(User.find_by_id(recommended_to)) : @events
     @events = @events.paginate(:page=>params[:page], :per_page => per_page)
 
     respond_to do |format|

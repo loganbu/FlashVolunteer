@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120624202445) do
+ActiveRecord::Schema.define(:version => 20120704204138) do
 
   create_table "afg_opportunities", :force => true do |t|
     t.string   "key"
@@ -30,6 +30,11 @@ ActiveRecord::Schema.define(:version => 20120624202445) do
     t.string   "street"
     t.string   "neighborhood_string"
     t.string   "zip"
+  end
+
+  create_table "checkins", :force => true do |t|
+    t.integer "event_id"
+    t.integer "user_id"
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -69,6 +74,11 @@ ActiveRecord::Schema.define(:version => 20120624202445) do
     t.text     "special_instructions"
     t.string   "twitter_hashtags"
     t.string   "hosted_by"
+  end
+
+  create_table "help_articles", :force => true do |t|
+    t.string "title"
+    t.text   "description"
   end
 
   create_table "neighborhoods", :force => true do |t|
@@ -135,6 +145,14 @@ ActiveRecord::Schema.define(:version => 20120624202445) do
   create_table "roles_users", :id => false, :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "searches", :force => true do |t|
+    t.string  "query"
+    t.integer "users_found",         :default => 0
+    t.integer "orgs_found",          :default => 0
+    t.integer "events_found",        :default => 0
+    t.integer "help_articles_found", :default => 0
   end
 
   create_table "skills", :force => true do |t|

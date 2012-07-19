@@ -14,6 +14,9 @@
 				<a href="#faq-where_fv_gets_events">Where does Flash Volunteer get its volunteer events?</a>
 			</li>
 			<li>
+				<a href="#faq-how_to_search_events">Can I search for events? What else can I search for?</a>
+			</li>
+			<li>
 				<a href="#faq-how_to_create_events">So, I can really create my own volunteer event?</a>
 			</li>
 			<li>
@@ -95,6 +98,12 @@
 				From you! Individual users and local nonprofits post events on Flash Volunteer. We also share events from <%= link_to('All for Good', 'http://www.allforgood.org/')%>. (If you see an All for Good event on Flash Volunteer, you’ll also see a link to the original post, so you can let the event host know you are interested. Don’t forget to sign up on Flash, so that you can track your volunteer projects all in one place!) 
 			</p>
 		</div>
+		<div id="faq-how_to_search_events" class="hide">
+			<h4>Can I search for events? What else can I search for?</h4>
+			<p>
+				We have a convenient search bar in the top right corner of every page. The best method is to search one keyword at a time. You can search for event titles, user names or email addresses, and organization names or email addresses. The search bar can also deliver frequently asked questions, like this one!  
+			</p>
+		</div>
 		<div id="faq-how_to_create_events_" class="hide">
 			<h4>So, I can really create my own volunteer event?</h4>
 			<p>
@@ -104,7 +113,7 @@
 		<div id="faq-confirm_email_account_" class="hide">
 			<h4>I just created an account, now I can't sign in or create an event. What's up?</h4>
 			<p>
-				Did you confirm your email address? When you signed in for the first time, you should have received a mail from us, asking you to confirm your email address. Once you click the confirmation link in that email, you should be good to go. If you're still experiencing troubles, email us at <%= mail_to("info@flashvolunteer.org", "info@flashvolunteer.org", :subject => "I can't create an event", :encode=>"hex") %>, and we'll get on our team on it! 
+				Did you confirm your email address? When you signed in for the first time, you should have received a mail from us, asking you to confirm your email address. Once you click the confirmation link in that email, you should be good to go. You can <%= link_to 'resend the e-mail', new_user_confirmation_url %> if you deleted it. If you're still experiencing troubles, email us at <%= mail_to("info@flashvolunteer.org", "info@flashvolunteer.org", :subject => "I can't create an event", :encode=>"hex") %>, and we'll get on our team on it! 
 			</p>
 		</div>
 		<div id="faq-how_to_find_events_" class="hide">

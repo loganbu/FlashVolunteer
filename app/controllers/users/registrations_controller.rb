@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def create
         super
-        if (session[:sign_up_for_event])
+        if (session[:sign_up_for_event] && current_user != nil)
             event = Event.find(session[:sign_up_for_event])
             if (event != nil)
                 event.participants << current_user if !event.participants.include?(current_user)
