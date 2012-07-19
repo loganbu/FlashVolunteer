@@ -116,7 +116,6 @@ if Rails.env.development?
 
     unconfirmed_user = FactoryGirl.create(:unconfirmed_user)
     confirmed_user = FactoryGirl.create(:confirmed_user)
-    tech_user = FactoryGirl.create(:tech_user)
     brad = FactoryGirl.create(:org_admin)
 
     flash_org = FactoryGirl.create(:org)
@@ -125,11 +124,8 @@ if Rails.env.development?
 
     unconfirmed_user.roles << volunteer_role
     confirmed_user.roles << volunteer_role
-    tech_user.roles << volunteer_role
     brad.roles << volunteer_role
 
-    FactoryGirl.create_list(:event, 35, :in_one_week, :creator_id => confirmed_user.id, :participants => [tech_user])
-    FactoryGirl.create_list(:event, 33, :in_one_month, :creator_id => confirmed_user.id, :participants => [tech_user])
-    FactoryGirl.create_list(:event, 37, :in_two_months, :creator_id => confirmed_user.id, :participants => [tech_user])
+    FactoryGirl.create_list(:event, 25, :in_one_week, :creator_id => confirmed_user.id)
 
 end
