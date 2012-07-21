@@ -69,10 +69,21 @@ $neighborhoods_with_addresses = [
             Hash["name" => "Whidbey Island",    "zip" => 98260, "address"=>"5237 Langley Road"],
             Hash["name" => "White Center",      "zip" => 98146, "address"=>"10829 8th Ave SW"],
                             ]
+# Not all neighborhoods are represented.  As they are filled in, removed the commented lines.
+$downtown = [
+            Hash["name" => "Belltown",          "zip" => 98121, "address"=>"90 Blanchard Street"],
+            Hash["name" => "Capitol Hill",      "zip" => 98122, "address"=>"619 E Pine Street"],
+            Hash["name" => "Central District",  "zip" => 98122, "address"=>"1404 E Yesler Way"],
+            Hash["name" => "Downtown Seattle",  "zip" => 98101, "address"=>"1420 5th Ave"],
+            Hash["name" => "First Hill",        "zip" => 98104, "address"=>"901 Madison Street"],
+            Hash["name" => "Queen Anne",        "zip" => 98109, "address"=>"2121 Queen Anne Ave N"],
+            Hash["name" => "Wallingford",       "zip" => 98103, "address"=>"2101 N Northlake Way"],
+                            ]
+
 
 
 def random_neighborhood
-    $neighborhoods_with_addresses[Random.rand($neighborhoods_with_addresses.length)]
+    $downtown.sample
 end
 
 def random_skills

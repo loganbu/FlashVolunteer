@@ -1,0 +1,74 @@
+users:
+    -   name:     Confirmed user
+        email:    confirmed@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Techy Person
+        email:    techuser@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Alice
+        email:    alice@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Brandon
+        email:    brandon@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Charlie
+        email:    charlie@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Diedra
+        email:    diedra@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Elliott
+        email:    Elliott@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Frank
+        email:    Frank@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Greg
+        email:    Greg@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Helen
+        email:    Helen@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Ike
+        email:    Ike@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    James
+        email:    James@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Karen
+        email:    Karen@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:    Lori
+        email:    Lori@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+
+    -   name:     Unconfirmed user
+        email:    unconfirmed@localhost.com
+        password: <%= ENV['ADMIN_PASSWORD'] %>
