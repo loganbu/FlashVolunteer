@@ -195,7 +195,7 @@ if Rails.env.development?
         event.user = possible_participants.delete(possible_participants.sample)
         event.end = event.start + Random.rand(1..5)
         event.description = random_description
-        event.participants = possible_participants.sample(Random.rand(0..possible_participants.count))
+        event.participants = possible_participants.sample(Random.rand(0..5))
         event.skills = Skill.all.sample(Random.rand(1..10))
         event.neighborhood = Neighborhood.find_by_name(neighborhood_info["name"])
         event.zip = neighborhood_info["zip"]
