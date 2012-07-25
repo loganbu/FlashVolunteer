@@ -52,9 +52,11 @@ module UsersHelper
           end
           format.xml  do
             if @user.persisted?
-                head :ok
+              store_original_user_logged_in(@user)
+              sign_in(@user)
+              render :xml => User.xml(@user)
             else
-                head :unauthorized
+              head :unauthorized
             end
           end
         end
