@@ -49,7 +49,7 @@ gem "omniauth-twitter"
 gem 'wicked'
 gem 'mobylette', '~> 2.3'
 gem 'jquery_mobile_rails'
-gem 'classy_enum'
+gem 'classy_enum', '~> 2.0.3'
 
 source :gemcutter
 gem 'sinatra', '1.0'
