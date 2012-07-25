@@ -56,7 +56,7 @@
     <% end %>
 <% end %>
 <% if (@events.count == 0) %>
-    <p>There are no events in this location.  See events in <%= link_to("other neighborhoods", "/events") %>.</p>
+    <p>There are no events in this location.  Try <%= link_to("broadening your search", "/events") %>.</p>
 <% else %>
     <% @events.each_with_index do |event, i| %>
     <div class="event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
