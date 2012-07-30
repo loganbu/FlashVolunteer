@@ -20,6 +20,11 @@ class Users::RegistrationsController < Devise::RegistrationsController
             session[:sign_up_for_event] = nil
         end
         store_original_user_logged_in(resource)
+
+        respond_to do |format|
+            format.xml  { render :xml => User.xml(@user) }
+            return
+        end
     end
 
     def should_remove_returns_to?
