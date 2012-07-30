@@ -43,7 +43,7 @@
         <div <%= 'class="hide"'.html_safe if active != :orgs %> id="orgs_content">
             <div class="row-fluid">
                 <div class="span7">
-                    <%= render(:partial => "orgs/org", :collection => @orgs, :as => :org) %>
+                    <%= render(:partial => "orgs/org", :collection => @orgs, :as => :org, :locals => { :is_switcher => :false }) %>
                 </div>
             </div>
         </div>
