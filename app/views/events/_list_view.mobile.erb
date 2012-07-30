@@ -9,7 +9,7 @@
     dimension = 16%>
 <% end %>
 
-<div id = "neighborhood_list">
+<!--<div id = "neighborhood_list">
     <li>
         <h2>events near</h2>
         <% if (@neighborhood == nil) %>
@@ -21,7 +21,7 @@
 </div>
 <div style = "clear:both"></div>
 
-<!--<div id = "neighborhood_list">
+<div id = "neighborhood_list">
     <li>
         <% if (@neighborhood == nil) %>
             <h2>events near </h2>
@@ -51,6 +51,20 @@
         </div>
         <div class="details">
             <%= render :partial => "events/event", :locals => { :event => event, :description => true, :show_links => true } %>
+        </div>
+    </div>
+    <% end %>
+<% end %>
+<% if (@events.count == 0) %>
+    <p>There are no events in this location.  Try <%= link_to("broadening your search", "/events") %>.</p>
+<% else %>
+    <% @events.each_with_index do |event, i| %>
+    <div class="event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
+        <div class="pull-left marker"
+             style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp_#{markerSize}.png" : "/assets/mapStripAvail_#{markerSize}.png" %>) 0px <%= -i*dimension %>px">&nbsp;
+        </div>
+        <div class="details">
+            <%= render :partial => "events/event", :locals => { :event => event, :description => true, :show_links => true, :is_mobile => mobile } %>
         </div>
     </div>
     <% end %>

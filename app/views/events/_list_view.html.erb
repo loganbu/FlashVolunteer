@@ -14,7 +14,7 @@
     <li>
         <% if (@neighborhood == nil) %>
             <h2>events near </h2>
-            <h1><%= link_to("King County", "#", :id => "list_link") %></h1>
+            <h1><%= link_to("King County", "#", :id => "list_link") %></h1>               
         <% else %>
             <h2>events near</h2>
             <h1><%= link_to(@neighborhood.name, "#", :id => "list_link") %></h1>
@@ -32,7 +32,7 @@
 </div>
 
 <% if (@events.count == 0) %>
-    <p>There are no events in this location.  Try a different neighborhood.</p>
+    <p>There are no events in this location.  Try <%= link_to("broadening your search", "/events") %>.</p>
 <% else %>
     <% @events.each_with_index do |event, i| %>
     <div class="event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
