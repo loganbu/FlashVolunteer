@@ -22,4 +22,6 @@
     <div class="row-fluid">&nbsp;</div>
     <%= link_to("print sign up sheet", print_event_url(@event), :method=>"get", :class => "btn btn-primary block")%>
     <div class="row-fluid">&nbsp;</div>
+    <span><a href="javascript:revealModal('contact_users')" class="btn btn-primary block">contact attendees</a>    </span>
+    <%= render(:partial => "contact_users") %>
 <% end %>
