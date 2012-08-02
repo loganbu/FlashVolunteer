@@ -90,6 +90,9 @@ Flashvolunteer::Application.routes.draw do
         end
         # Show admins of the org
         resources :users, :only => [:index, :update, :destroy], :controller => "orgs/users"
+        collection do
+            post :register
+        end
     end
    
     # Search for people

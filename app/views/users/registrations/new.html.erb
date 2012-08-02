@@ -5,7 +5,6 @@ sign up
 link_to("sign in", new_user_session_url)
 end %>
 <%= content_for :form_content do %>
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
         <h4>create a Flash account: </h4>
         <div class="row">&nbsp;</div>
         <div class="row-fluid">
@@ -13,109 +12,43 @@ end %>
             <div class="span8">
                 <div class="row-fluid">
                     <div class="span1">
-                        <%= f.radio_button("account_type", "individual", :class=>"pull-left radio", :id=>"for_me", :checked=>true) %>
+                        <input name="user[account_type]" class="pull-left radio" id="for_individual_radio" type="radio" value="organization" checked="checked"/>
                     </div>
                     <div class="span5">
-                        <label for="for_me">for me</label> 
+                        <label for="for_individual_radio">for me</label> 
                     </div>
                     <div class="span1">
-                        <%= f.radio_button("account_type", "organization", :class=>"pull-left radio", :id=>"for_org") %>
+                        <input name="user[account_type]" class="pull-left radio" id="for_org_radio" type="radio" value="user" />
                     </div>
                     <div class="span5">
-                        <label for="for_org">for my org</label> 
+                        <label for="for_org_radio">for my org</label> 
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row">&nbsp;</div>
-        <div class="row-fluid">
-            <div class="span2">
-                <div class="pull-right"><%= f.label :name, "name"%></div>
-            </div>
-            <div class="span10">
-                <%= f.text_field :name, :class=>"full", :id => "account_name"  %>
-            </div>
+        <div id="for_individual">
+    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+        <%= render(:partial => "form", :locals => { :f => f, :button => "sign up"}) %>
+    <% end %>
         </div>
-
-        <div class="row-fluid">
-            <div class="span2">
-                <div class="pull-right"><%= f.label :email, "email" %></div>
-            </div>
-            <div class="span10">
-                <%= f.email_field :email, :class=>"full", :id=>"account_email" %>
-            </div>
-        </div>
-
-        <div class="row-fluid for_individual">
-            <div class="span2">
-                <div class="pull-right"><%= f.label :password, "password" %></div>
-            </div>
-            <div class="span10">
-                <%= f.password_field :password, :class=>"full" %>
-            </div>
-        </div>
-        
-        <div class="row-fluid for_individual">
-            <div class="span2">
-                <div class="pull-right" style="text-align:right"><%= f.label :password_confirmation, "confirm password" %></div>
-            </div>
-            <div class="span10">
-                <%= f.password_field :password_confirmation, :class=>"full" %>
-            </div>
-        </div>
-        <div class="row for_individual">&nbsp;</div>
-        <div class="row-fluid for_individual">
-            <div class="span2">&nbsp;</div>
-            <div class="span10">
-                <div class="pull-left">
-                    <%= f.check_box(:terms_of_service) %>
-                </div>
-                <div style="padding-left: 20px">
-                    <label for="user_terms_of_service" style="float: none;">I accept the <%= link_to("Terms of Use", tou_url, :target => "_blank") %> and <%= link_to("Privacy Policy", privacy_url, :target => "_blank") %></label>
-                </div>
-            </div>
-        </div>
-        <div class="row">&nbsp;</div>
-        <div class="row-fluid">
-            <button type="submit" id="sign_up" class="btn btn-primary pull-right" href="#">sign up</button>    
-            <button type="button" id="create_org" class="btn btn-primary pull-right" href="#" style="display: none">create group</button>    
+        <div id="for_org">
+    <%= form_for(@org, :url => register_orgs_url) do |f| %>
+        <%= render(:partial => "form", :locals => { :f => f, :button => "create org"}) %>
+    <% end %>
         </div>
         <script type="text/javascript">
         $(document).ready(function() {
-            $("#create_org").click(function() { 
-                window.location.href = "<%= new_org_wizard_path(:set_user_account) %>?org_email=" + escape($("#account_email").val()) + "&org_name=" + escape($("#account_name").val());
+            $("#for_org").hide();
+            $("#for_individual_radio").click(function() {
+                $("#for_org").hide(); 
+                $("#for_individual").show(); 
             });
 
-            var hideForOrg = function() {
-                $(".for_individual").each(function(index) {
-                    $(this).hide();
-                });
-
-                $("input[type='password']").each(function(index) {
-                    $(this).attr('disabled', 'disabled')
-                });
-                $("#sign_up").hide();
-                $("#create_org").show();
-            };
-
-            var showForUser = function() {
-                $(".for_individual").each(function(index) {
-                    $(this).show();
-                });
-                $("input[type='password']").each(function(index) {
-                    $(this).removeAttr('disabled')
-                });
-                $("#sign_up").show();
-                $("#create_org").hide();
-            };
-            
-            $("#for_me").click(showForUser);
-            $("#for_org").click(hideForOrg);
-            <% if (resource.account_type == "organization") %>
-                hideForOrg();
-            <% end %>
+            $("#for_org_radio").click(function() { 
+                $("#for_individual").hide(); 
+                $("#for_org").show();
+            });
         });
         </script>
-    <% end %>
 <% end %>
 <%= render :template => 'users/shared/form' %>

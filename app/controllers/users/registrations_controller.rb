@@ -7,10 +7,12 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     def new
         @title = "Create an account | Flash Volunteer"
+        @org = Org.new
         super
     end
 
     def create
+        @org = Org.new
         super
         if (session[:sign_up_for_event] && current_user != nil)
             event = Event.find(session[:sign_up_for_event])

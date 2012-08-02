@@ -64,10 +64,27 @@ class OrgsController < ApplicationController
       if @org.save
         @org.admins << current_user
         @org.save
-        format.html { redirect_to(user_orgs_url(current_user), :notice => 'Org was successfully created.') }
+        format.html { redirect_to(user_orgs_url(current_user), :notice => 'Organization was successfully created.') }
         format.xml  { render :xml => @org, :status => :created, :location => @org }
       else
         format.html { render :action => "new" }
+        format.xml  { render :xml => @org.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def register
+    @org = Org.new(params[:org])
+
+    set_page_title
+    respond_to do |format|
+      if @org.save
+        sign_in(@org)
+        format.html { redirect_to(new_org_wizard_path(:set_mission), :notice => 'Organization was successfully created.') }
+        format.xml  { render :xml => @org, :status => :created, :location => @org }
+      else
+        flash[:error] = (@org.errors.messages.values.collect{|m| "#{m.first} and "}.join())[0..-5]
+        format.html { redirect_to(new_user_registration_url, :error => 'Failed to create organization') }
         format.xml  { render :xml => @org.errors, :status => :unprocessable_entity }
       end
     end
@@ -80,7 +97,7 @@ class OrgsController < ApplicationController
     set_page_title
     respond_to do |format|
       if @org.update_attributes(params[:org])
-        format.html { redirect_to(user_url(@org), :notice => 'Org was successfully updated.') }
+        format.html { redirect_to(user_url(@org), :notice => 'Organization was successfully updated.') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

@@ -1,5 +1,6 @@
 <%
     links ||= "users/shared/user_profile_links"
+    edit_link ||= edit_user_url(current_user)
 %>
 
 <% content_for :left_split do %>
@@ -11,7 +12,7 @@
         <div class="span7">
             <br />
             <h2 style="word-wrap:break-word"><%= current_user.name %></h2>
-            <p><%= link_to "edit profile", edit_user_url(current_user) %></p>
+            <p><%= link_to "edit profile", edit_link %></p>
         </div>
     </div>
 </div>

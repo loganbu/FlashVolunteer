@@ -22,4 +22,4 @@
 <script type="text/javascript">
     $(document).ready(function () { addContentHandlers(); });
 </script>
-<%= render :partial => 'users/shared/me', :locals => { :links => "orgs/org_profile_links" } %>
+<%= render :partial => 'users/shared/me', :locals => { :links => "orgs/org_profile_links", :edit_link => edit_org_url(current_user) } %>

@@ -3,7 +3,8 @@ module UsersHelper
     def devise_error_messages!    
       return "" if resource.errors.empty?
 
-      messages = resource.errors.full_messages.map { |msg| content_tag(:li, msg) }.join
+      Rails.logger.info( resource.errors.inspect)
+      messages = resource.errors.messages.values.map { |msg| content_tag(:li, msg.first) unless !msg.first }.join
       sentence = I18n.t("errors.messages.not_saved",
                         :count => resource.errors.count,
                         :resource => resource.class.model_name.human.downcase)
