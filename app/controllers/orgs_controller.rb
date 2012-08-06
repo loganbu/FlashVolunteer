@@ -8,7 +8,7 @@ class OrgsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @orgs }
+      format.xml  { render :xml => Org.xml(@orgs) }
     end
   end
 
@@ -29,7 +29,7 @@ class OrgsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.xml  { render :xml => @org }
+      format.xml  { render :xml => Org.xml(@org) }
     end
   end
 
@@ -43,7 +43,7 @@ class OrgsController < ApplicationController
     respond_to do |format|
       format.html # new.html.erb
       format.mobile # show.html.erb
-      format.xml  { render :xml => @org }
+      format.xml  { render :xml => Org.xml(@org) }
     end
   end
 
@@ -65,7 +65,7 @@ class OrgsController < ApplicationController
         @org.admins << current_user
         @org.save
         format.html { redirect_to(user_orgs_url(current_user), :notice => 'Organization was successfully created.') }
-        format.xml  { render :xml => @org, :status => :created, :location => @org }
+        format.xml  { render :xml => Org.xml(@org), :status => :created, :location => @org }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @org.errors, :status => :unprocessable_entity }
@@ -81,7 +81,7 @@ class OrgsController < ApplicationController
       if @org.save
         sign_in(@org)
         format.html { redirect_to(new_org_wizard_path(:set_mission), :notice => 'Organization was successfully created.') }
-        format.xml  { render :xml => @org, :status => :created, :location => @org }
+        format.xml  { render :xml => Org.xml(@org), :status => :created, :location => @org }
       else
         flash[:error] = (@org.errors.messages.values.collect{|m| "#{m.first} and "}.join())[0..-5]
         format.html { redirect_to(new_user_registration_url, :error => 'Failed to create organization') }
@@ -136,7 +136,7 @@ class OrgsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.xml  { render :xml => @orgs }
+      format.xml  { render :xml => Org.xml(@orgs) }
     end
   end
 
