@@ -249,7 +249,6 @@ class EventsController < ApplicationController
     end
     if (params.key? :past)
       num_days_past = (params[:past] && params[:past].to_i) || false
-      num_days_past = params[:past].to_i
       @events = @events.past(num_days_past)
     end
 
