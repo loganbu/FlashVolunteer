@@ -243,11 +243,12 @@ class EventsController < ApplicationController
     # This probably sucks at scale, need to test.  Makes "name=blah" into a SQL statement of LIKE %BLAH%
     name_array = params[:name] && params[:name].split(',').collect{ |x| "%" + x + "%"} || []
 
-    if (params[:upcoming])
-      num_days_future = params[:upcoming].to_i
+    if (params.key? :upcoming)
+      num_days_future = (params[:upcoming] && params[:upcoming].to_i) || nil
       @events = @events.upcoming(num_days_future)
     end
-    if (params[:past])
+    if (params.key? :past)
+      num_days_past = (params[:past] && params[:past].to_i) || nil
       num_days_past = params[:past].to_i
       @events = @events.past(num_days_past)
     end
