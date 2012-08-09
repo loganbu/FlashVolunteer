@@ -13,7 +13,7 @@
     </div>
 </div>
 <p>
-    <%= @event.street %>, <%= link_to(@event.neighborhood.name, (events_url.concat("/in/").concat(@event.neighborhood.name))) unless !@event.name %><br/>
+    <%= @event.street %>, <%= link_to(@event.neighborhood.name, (events_url.concat("/in/").concat(@event.neighborhood.name))) unless !@event.neighborhood %><br/>
     <%= render(:partial => 'links', :locals => { :event => @event }) %>
 <% if @event.website != '' %>
 <div class="row-fluid">
