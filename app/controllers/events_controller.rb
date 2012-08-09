@@ -244,11 +244,11 @@ class EventsController < ApplicationController
     name_array = params[:name] && params[:name].split(',').collect{ |x| "%" + x + "%"} || []
 
     if (params.key? :upcoming)
-      num_days_future = (params[:upcoming] && params[:upcoming].to_i) || nil
+      num_days_future = (params[:upcoming] && params[:upcoming].to_i) || false
       @events = @events.upcoming(num_days_future)
     end
     if (params.key? :past)
-      num_days_past = (params[:past] && params[:past].to_i) || nil
+      num_days_past = (params[:past] && params[:past].to_i) || false
       num_days_past = params[:past].to_i
       @events = @events.past(num_days_past)
     end
