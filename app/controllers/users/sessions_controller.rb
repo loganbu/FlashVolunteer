@@ -42,8 +42,10 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def google
+    session[:api] = true
     token = params[:token]
-    auth_hash = get_auth_hash(OmniAuth::Strategies::GoogleOauth2.new(ENV['GOOGLE_API_KEY'], session[:api] ? ENV['GOOGLE_CLIENT_API_SECRET'] : ENV['GOOGLE_API_SECRET']),
+    strategy = OmniAuth::Strategies::GoogleOauth2.new(ENV['GOOGLE_API_KEY'], session[:api] ? ENV['GOOGLE_CLIENT_API_SECRET'] : ENV['GOOGLE_API_SECRET'])
+    auth_hash = get_auth_hash(strategy,
                               ENV['GOOGLE_API_KEY'],
                               session[:api] ? ENV['GOOGLE_CLIENT_API_SECRET'] : ENV['GOOGLE_API_SECRET'],
                               params[:token])
@@ -78,8 +80,7 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def get_auth_hash(strategy, key, secret, code)
-    client = OAuth2::Client.new(key, secret, strategy.options.client_options)
-    strategy.access_token = client.get_token(:headers => { :code => code })
+    strategy.access_token = strategy.client.auth_code.get_token(code)
     strategy.auth_hash
   end
 

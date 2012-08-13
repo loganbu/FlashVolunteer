@@ -37,6 +37,7 @@ group :assets do
 	gem 'compass'
 end
 
+gem 'debugger', group: [:development, :test]
 
 gem 'aws-sdk'
 gem 'aws-s3'
