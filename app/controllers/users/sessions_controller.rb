@@ -33,31 +33,17 @@ class Users::SessionsController < Devise::SessionsController
   end
 
   def facebook
-    token = params[:token]
-    auth_hash = get_auth_hash(OmniAuth::Strategies::Facebook.new(ENV['FACEBOOK_API_KEY'], ENV['FACEBOOK_API_SECRET']),
-                              ENV['FACEBOOK_API_KEY'],
-                              ENV['FACEBOOK_API_SECRET'],
-                              params[:token])
+    auth_hash = get_auth_hash(OmniAuth::Strategies::Facebook.new(ENV['FACEBOOK_API_KEY'], ENV['FACEBOOK_API_SECRET']), params[:token])
     sign_in_with_third_party(auth_hash)
   end
 
   def google
-    session[:api] = true
-    token = params[:token]
-    strategy = OmniAuth::Strategies::GoogleOauth2.new(ENV['GOOGLE_API_KEY'], session[:api] ? ENV['GOOGLE_CLIENT_API_SECRET'] : ENV['GOOGLE_API_SECRET'])
-    auth_hash = get_auth_hash(strategy,
-                              ENV['GOOGLE_API_KEY'],
-                              session[:api] ? ENV['GOOGLE_CLIENT_API_SECRET'] : ENV['GOOGLE_API_SECRET'],
-                              params[:token])
+    auth_hash = get_auth_hash(OmniAuth::Strategies::GoogleOauth2.new(ENV['GOOGLE_API_KEY'], ENV['GOOGLE_API_SECRET']), params[:token])
     sign_in_with_third_party(auth_hash)
   end
 
   def twitter
-    token = params[:token]
-    auth_hash = get_auth_hash(OmniAuth::Strategies::Twitter.new(ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET']),
-                              ENV['TWITTER_API_KEY'],
-                              ENV['TWITTER_API_SECRET'],
-                              params[:token])
+    auth_hash = get_auth_hash(OmniAuth::Strategies::Twitter.new(ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET']), params[:token])
     sign_in_with_third_party(auth_hash)
   end
 
@@ -79,7 +65,7 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
-  def get_auth_hash(strategy, key, secret, code)
+  def get_auth_hash(strategy, code)
     strategy.access_token = strategy.client.auth_code.get_token(code)
     strategy.auth_hash
   end
