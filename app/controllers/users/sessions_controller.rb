@@ -43,9 +43,9 @@ class Users::SessionsController < Devise::SessionsController
 
   def google
     token = params[:token]
-    auth_hash = get_auth_hash(OmniAuth::Strategies::GoogleOauth2.new(ENV['GOOGLE_API_KEY'], ENV['GOOGLE_API_SECRET']),
+    auth_hash = get_auth_hash(OmniAuth::Strategies::GoogleOauth2.new(ENV['GOOGLE_API_KEY'], session[:api] ? ENV['GOOGLE_CLIENT_API_SECRET'] : ENV['GOOGLE_API_SECRET']),
                               ENV['GOOGLE_API_KEY'],
-                              ENV['GOOGLE_API_SECRET'],
+                              session[:api] ? ENV['GOOGLE_CLIENT_API_SECRET'] : ENV['GOOGLE_API_SECRET'],
                               params[:token])
     sign_in_with_third_party(auth_hash)
   end

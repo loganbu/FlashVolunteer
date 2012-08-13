@@ -21,7 +21,7 @@
                 <%= form_tag search_url, :method=>:post, :id=>'search-form', :class=>"pull-left", :style=>"margin:0px;padding:0px" do |f| %>
                         <%= text_field_tag('search', '', :id=>"search-box") %>
                         <%= submit_tag("", :style=>"display:none") %>
-                        <a href="javascript:submitForm('search-form')"><span class="add-on pull-right"><i class="icon-white icon-search"></i></span></a>
+                        <a href="javascript:submitForm('search-form')"><span class="add-on"><i class="icon-white icon-search">&nbsp;</i></span></a>
                 <% end %>
                 </div>
             </div>

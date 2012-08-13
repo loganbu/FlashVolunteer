@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   validates_length_of       :password, :within => 6..128, :allow_blank => true, :message => "The password must be more than 6 characters"
 
   validates :name, :presence => { :message => "You must have a name" }
-  validates_acceptance_of :terms_of_service, :on => :create, :message => "must be accepted"
+  validates_acceptance_of :terms_of_service, :on => :create, :message => "Terms of Use must be accepted"
 
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills

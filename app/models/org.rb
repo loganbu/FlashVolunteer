@@ -11,4 +11,8 @@ class Org < User
     self.scope :has_follower, lambda { |u|
         includes(:followers).where("followers_users.id = ?", u.id)
     }
+
+    def self.xml(entity)
+        entity.to_xml(:methods => [:categories, :avatar_url])
+    end
 end

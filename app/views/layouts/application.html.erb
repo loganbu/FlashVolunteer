@@ -25,13 +25,13 @@
       <%= render"shared/header" %>
     </div>
     <div class="container">
-      <% if flash[:alert] %>
+      <% if flash[:alert] || flash[:error] %>
           <div class="alert alert-error">  
               <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Error!</h4>
               <p>
                   <ul>
-                      <li><%= flash[:alert] %></li>
+                      <li><%= flash[:alert] || flash[:error] %></li>
                   </ul>
               </p>
           </div>
