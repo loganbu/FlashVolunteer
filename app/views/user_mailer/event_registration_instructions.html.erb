@@ -1,0 +1,22 @@
+<% content_for :email_content do%>
+	<p>Welcome, <%= @resource.email %>,</p>
+
+	<p>You have taken a quick look around on Flash Volunteer, but there is a lot more to explore! We jotted down your name and email when you signed up for that event, and you can complete your profile by going to <%= link_to 'Flash Volunteer now and setting a password', edit_password_url(@resource, :reset_password_token => @resource.reset_password_token) %>. </p>
+
+	<p>With your free account on Flash Volunteer, you can search for or create events in your neighborhood, track your volunteer hours, and learn about new organizations that support the causes you care about.</p>
+
+	<p>Get started now: <%= link_to 'Signing up', edit_password_url(@resource, :reset_password_token => @resource.reset_password_token) %> takes just a few minutes, and it will help you find more relevant volunteer opportunities faster. </p>
+
+	<p>Have questions, comments or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%>.
+
+	<br />
+	<p>Happy volunteering!</p>
+
+
+	<p>Charlie X. Buttons</p>
+	<p>Flash Volunteer CEO (Cheerful Entree Officer) </p>
+	<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+
+	<p>This notification was sent to <%= @resource.email %> because it was entered on Flash Volunteer.  Email <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Please remove my account', :encode=>'hex')%> if you've like to remove yourself from out list. </p>
+<% end %>
+<%= render(:template => 'user_mailer/header')%>

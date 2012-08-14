@@ -1,5 +1,5 @@
 <% content_for :question do %>
-    a little more information...
+    To sign up, give your name and email address.
 <% end %>
 <% content_for :below_question do %>
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html=>{:name=>"signinform"}) do |f| %>
