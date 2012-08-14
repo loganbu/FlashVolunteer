@@ -65,9 +65,8 @@ class Users::SessionsController < Devise::SessionsController
 
   private
 
-  def get_auth_hash(strategy, code)
-    strategy.access_token = strategy.client.auth_code.get_token(code)
+  def get_auth_hash(strategy, token)
+    strategy.access_token = OAuth2::AccessToken.new(strategy.client, token, strategy.options.access_token_options || {})
     strategy.auth_hash
   end
-
 end
