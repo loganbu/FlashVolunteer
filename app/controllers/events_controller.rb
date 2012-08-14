@@ -235,7 +235,17 @@ class EventsController < ApplicationController
     
     id_array = params[:id] && params[:id].split(',') || []
     categories_array = params[:categories] && params[:categories].split(',') || []
-    hosted_by_org_user_array = params[:hosted_by_org_user] && params[:hosted_by_org_user].split(',') || []
+
+    if (params[:org] == "true")
+      if (current_user)
+        hosted_by_org_user_array = [current_user.id]
+      else
+        hosted_by_org_user_array = [0]
+      end
+    else
+      hosted_by_org_user_array = (params[:hosted_by_org_user] && params[:hosted_by_org_user].split(',')) || []
+    end
+
     created_by_array = params[:created_by] && params[:created_by].split(',') || []
     participated_by_array = params[:participated_by] && params[:participated_by].split(',') || []
     recommended_to = params[:recommended_to]

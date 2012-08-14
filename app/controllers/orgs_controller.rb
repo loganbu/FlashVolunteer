@@ -129,7 +129,7 @@ class OrgsController < ApplicationController
     # begin with an an association that's always true
     @orgs = Org.where("1=1")
     
-    @orgs = email_array.length > 0 ? @orgs.where{email.eq_any email_array} : @orgs
+    @orgs = email_array.length > 0 ? @orgs.has_admin(User.find_by_email(email_array[0])) : @orgs
     @orgs = categories_array.length > 0 ? @orgs.joins(:skills).where{skills.id.eq_any categories_array} : @orgs
     @orgs = name_array.length > 0 ? @orgs.where{name.matches_any name_array} : @orgs
     @orgs = @orgs.paginate(:page=>params[:page], :per_page => per_page)
