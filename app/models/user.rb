@@ -101,8 +101,8 @@ class User < ActiveRecord::Base
     return org.save
   end
 
-  def self.find_for_oauth(access_token)
-    data = access_token.extra.raw_info
+  def self.find_for_oauth(json_info)
+    data = json_info
     if !(user = User.where(:email => data.email).first)
       user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name)
       user.confirm!

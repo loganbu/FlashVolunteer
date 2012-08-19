@@ -34,17 +34,22 @@ class Users::SessionsController < Devise::SessionsController
 
   def facebook
     auth_hash = get_auth_hash(OmniAuth::Strategies::Facebook.new(ENV['FACEBOOK_API_KEY'], ENV['FACEBOOK_API_SECRET']), params[:token])
-    sign_in_with_third_party(auth_hash)
+    sign_in_with_third_party(auth_hash.extra.raw_info)
   end
 
   def google
-    auth_hash = get_auth_hash(OmniAuth::Strategies::GoogleOauth2.new(ENV['GOOGLE_API_KEY'], ENV['GOOGLE_API_SECRET']), params[:token])
-    sign_in_with_third_party(auth_hash)
+    uri = URI.parse("https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=#{params[:token]}")
+    http = Net::HTTP.new(uri.host, uri.port)
+    http.use_ssl = true
+    http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    request = Net::HTTP::Get.new(uri.request_uri)
+    response = Hashie::Mash.new(JSON.parse http.request(request).body)
+    sign_in_with_third_party(response)
   end
 
   def twitter
     auth_hash = get_auth_hash(OmniAuth::Strategies::Twitter.new(ENV['TWITTER_API_KEY'], ENV['TWITTER_API_SECRET']), params[:token])
-    sign_in_with_third_party(auth_hash)
+    sign_in_with_third_party(auth_hash.extra.raw_info)
   end
 
   # POST /resource/sign_in
