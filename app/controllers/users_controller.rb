@@ -42,11 +42,11 @@ class UsersController < ApplicationController
     @nHoursVolunteered = Participation.where("user_id = ?", @user.id).sum(:hours_volunteered)
 
     @events = { 
-                :upcoming => { :data => Event.includes(:skills).joins(:participants).involving(@user).upcoming.order("start ASC").limit(limit), :title => "Upcoming" },
-                :past => { :data => Event.includes(:skills).joins(:participants).involving(@user).past.order("start DESC").limit(limit), :title => "Past" }
+                :upcoming => { :data => Event.includes(:skills).involving(@user).upcoming.order("start ASC").limit(limit), :title => "Upcoming" },
+                :past => { :data => Event.includes(:skills).involving(@user).past.order("start DESC").limit(limit), :title => "Past" }
               }
-    @events[:past][:json] = @events[:past][:data].to_json
     @events[:upcoming][:json] = @events[:upcoming][:data].to_json
+    @events[:past][:json] = @events[:past][:data].to_json
 
     respond_to do |format|
       format.html # show.html.erb

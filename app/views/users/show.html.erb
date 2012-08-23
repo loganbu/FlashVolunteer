@@ -13,7 +13,7 @@ $(function () {
         <% end %>
 
         <% @events[k][:data].each_with_index do |event, i| %>
-            <% showSignUpButton = event.start > DateTime.now && !event.attending?(@user) %>
+            <% showSignUpButton = event.start > DateTime.now && !event.attending?(@user) && event.hosted_by_real_user && (!current_user || event.user != current_user) %>
             eventHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/event", :locals => { :event => event, :description => :medium, :sign_up_button => showSignUpButton }) %>';
         <% end %>
 
@@ -50,7 +50,7 @@ $(function () {
                     <% if @user.neighborhood %>
                         <div><h4>volunteers in <%= link_to(@user.neighborhood.name, (events_url.concat("/in/").concat(@user.neighborhood.name))) %></h4></div>
                     <% end %>
-                    <% if @user.type == "Org" %>
+                    <% if @user.type == "Org" && @user.website %>
                         <div><p>Visit <%= @user.name%> at <%= link_to(@user.website, "http://" + @user.website) %></p></div>
                     <% end %>
                      <div class="row-fluid bold">
