@@ -197,7 +197,7 @@ if Rails.env.development?
         event = Event.new
         event.name = e[:name]
         neighborhood_info = random_neighborhood
-        possible_participants = User.all + Org.all
+        possible_participants = User.all
         event.start = Time.now + about_a_month
         event.user = possible_participants.delete(possible_participants.sample)
         event.end = event.start + Random.rand(1..5)
