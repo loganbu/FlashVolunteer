@@ -13,7 +13,7 @@ $(function () {
         <% end %>
 
         <% @events[k][:data].each_with_index do |event, i| %>
-            <% showSignUpButton = event.start > DateTime.now && !event.attending?(@user) %>
+            <% showSignUpButton = event.start > DateTime.now && !event.attending?(@user) && event.hosted_by_real_user && (!current_user || event.user != current_user) %>
             eventHtmls[<%= i %>] = '<%=escape_javascript(render :partial => "events/event", :locals => { :event => event, :description => :medium, :sign_up_button => showSignUpButton }) %>';
         <% end %>
 
