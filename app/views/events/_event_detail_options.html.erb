@@ -1,4 +1,4 @@
-<% if (@event.user != current_user || @event.hosted_by != "") %>
+<% if (@event.user != current_user || !@event.hosted_by.blank?) %>
     <% if (@event.attending?(current_user)) %>
         <% if @event.past? %>
             <%= link_to("i couldn't participate : [", register_event_url(@event), :method=> :delete, :class => "btn btn-primary block")%>
