@@ -186,11 +186,18 @@ if Rails.env.development?
         u.save
     end
 
+    orgs = Org.create(config["orgs"])
+    orgs.each do |o|
+        o.admins = User.where("Type != ?", :Org).sample(Random.rand(1..3))
+        o.neighborhood = Neighborhood.all.sample
+        o.save
+    end
+
     $sample_event_names.each do |e|
         event = Event.new
         event.name = e[:name]
         neighborhood_info = random_neighborhood
-        possible_participants = User.all
+        possible_participants = User.all + Org.all
         event.start = Time.now + about_a_month
         event.user = possible_participants.delete(possible_participants.sample)
         event.end = event.start + Random.rand(1..5)

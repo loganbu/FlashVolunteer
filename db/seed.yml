@@ -72,3 +72,20 @@ users:
     -   name:     Unconfirmed user
         email:    unconfirmed@localhost.com
         password: <%= ENV['ADMIN_PASSWORD'] %>
+orgs:
+    -   name:     Flash Volunteer
+        email:    flash@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+    -   name:     HSDC
+        email:    hsdc@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+    -   name:     Bean Seattle
+        email:    bean@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
+    -   name:     United Way King County
+        email:    uwkc@localhost.com
+        confirmed_at: <%= DateTime.now %>
+        password: <%= ENV['ADMIN_PASSWORD'] %>
