@@ -114,10 +114,10 @@ class EventsController < ApplicationController
     # for the start date... this needs to be removed for the update_attributes call below.
     # Then, we need to update the year/month/date fields ourselves, as a string format.
     startdate = Date.strptime(startdate, '%m/%d/%Y')
-    hashSet["start(1i)"]=startdate.year.to_s
+    hashSet["start(1i)"]= startdate.year < 100 ? (startdate.year+2000).to_s : startdate.year.to_s
     hashSet["start(2i)"]=startdate.month.to_s
     hashSet["start(3i)"]=startdate.day.to_s
-    hashSet["end(1i)"]=startdate.year.to_s
+    hashSet["end(1i)"]=startdate.year < 100 ? (startdate.year+2000).to_s : startdate.year.to_s
     hashSet["end(2i)"]=startdate.month.to_s
     hashSet["end(3i)"]=startdate.day.to_s
     hashSet
