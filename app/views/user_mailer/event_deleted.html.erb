@@ -4,7 +4,7 @@
     <p>We sincerely thank you for signing up for <%= @event.name %>, but, unfortunately, the organizer has cancelled the event. With this time slot clear on your calendar, we hope you <%= link_to 'pencil in a new event',  events_url %>!</p>
 
     <% if @event.hosted_by.blank? %>
-    <p>If you have questions for the organizer, you can follow up with <%= link_to "mailto:#{@event.user.email}", @event.user.email %>.</p>
+    <p>If you have questions for the organizer, you can follow up with <%= link_to @event.user.email, "mailto:#{@event.user.email}" %>.</p>
     <% end %>
     <br />
     <p>Thanks again for volunteering!</p>
