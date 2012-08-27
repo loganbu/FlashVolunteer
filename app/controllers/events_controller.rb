@@ -208,6 +208,9 @@ class EventsController < ApplicationController
   # DELETE /events/1.xml
   def destroy
     @event = Event.find(params[:id])
+
+    flash[:info] = "#{@event.name} has been removed from our system."
+
     @event.destroy
 
     respond_to do |format|

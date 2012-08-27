@@ -36,12 +36,12 @@
               </p>
           </div>
       <% end %>
-      <% if flash[:notice] %>
+      <% if flash[:notice] || flash[:info] %>
           <div class="alert alert-success">  
               <a class="close" data-dismiss="alert" href="#">x</a>
               <p>
                   <ul>
-                      <li><%= flash[:notice] %></li>
+                      <li><%= flash[:notice] || flash[:info] %></li>
                   </ul>
               </p>
           </div>
