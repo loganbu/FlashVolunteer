@@ -1,5 +1,12 @@
 class UserMailer < ActionMailer::Base
     include ApplicationHelper
+    if self.included_modules.include?(AbstractController::Callbacks)
+        raise "You've already included AbstractController::Callbacks, remove this line."
+    else
+        include AbstractController::Callbacks
+    end
+    before_filter :add_inline_attachments!
+
 
     default :from => "charlie@flashvolunteer.org"
 
@@ -28,4 +35,17 @@ class UserMailer < ActionMailer::Base
              :subject => "New volunteer signup for #{@event.name}")
     end
 
+    def event_deleted(event, user)
+        @event = event
+        @user = user
+        mail(:to => @user.email,
+             :subject => "Event Cancellation: #{@event.name}")
+    end
+
+    private
+    
+    def add_inline_attachments!
+        attachments.inline["logo.jpg"] = File.read( File.join(Rails.root, 'app/assets/images/FV_Logo_420x420.jpg') )
+        attachments.inline["spacer.jpg"] = File.read( File.join(Rails.root, 'app/assets/images/spacer.jpg') )
+    end
 end
