@@ -173,7 +173,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(paramsToUse)
-        format.html { redirect_to(@event, :notice => 'Event was successfully updated.') }
+        format.html { redirect_to(@event, :notice => "Event was successfully updated. Consider <a href='javascript:revealModal(\"contact_users\")'>contacting the volunteers</a> if they need to be notified of the change.".html_safe) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
