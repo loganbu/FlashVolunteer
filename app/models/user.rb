@@ -104,7 +104,7 @@ class User < ActiveRecord::Base
   def self.find_for_oauth(json_info)
     data = json_info
     Rails.logger.info("JSON Token Information")
-    Rails.logger.info(json_info.inspect!)
+    Rails.logger.info(pp json_info)
     if !(user = User.where(:email => data.email).first)
       user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name)
       user.confirm!
