@@ -278,6 +278,7 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => Event.xml(@events) }
+      format.json { render :json => Event.json(@events) }
     end
   end
   

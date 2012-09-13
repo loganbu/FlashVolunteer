@@ -97,4 +97,8 @@ class Event < ActiveRecord::Base
     def self.xml(entity)
         entity.to_xml(:methods => [:attendees, :categories])
     end
+
+    def self.json(entity)
+        entity.to_json(:methods => [:attendees, :categories])
+    end
 end

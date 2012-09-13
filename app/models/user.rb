@@ -124,4 +124,7 @@ class User < ActiveRecord::Base
   def self.xml(entity)
     entity.to_xml(:methods => [:hours_volunteered, :categories, :props, :avatar_url, :team])
   end
+  def self.json(entity)
+    entity.to_json(:methods => [:hours_volunteered, :categories, :props, :avatar_url, :team])
+  end
 end

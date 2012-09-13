@@ -135,6 +135,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html
       format.xml  { render :xml => User.xml(@users)}
+      format.json  { render :json => User.json(@users)}
     end
   end
 
