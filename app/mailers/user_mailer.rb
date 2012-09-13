@@ -5,8 +5,6 @@ class UserMailer < ActionMailer::Base
     else
         include AbstractController::Callbacks
     end
-    before_filter :add_inline_attachments!
-
 
     default :from => "charlie@flashvolunteer.org"
 
