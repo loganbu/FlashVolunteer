@@ -35,9 +35,9 @@ class UsersController < ApplicationController
     limit = 20
     set_page_title
     # user calculations
-    @nEventsCreated = Event.created_by(@user).count
-    @nEventsComingUp = Event.involving(@user).upcoming.count
-    @nEventsInPast = Event.involving(@user).past.count
+    @nEventsCreated = @user.created_events_count
+    @nEventsComingUp = @user.upcoming_events_count
+    @nEventsInPast = @user.past_events_count
     # @nFollowers = @user.followers.count
     @nHoursVolunteered = Participation.where("user_id = ?", @user.id).sum(:hours_volunteered)
 

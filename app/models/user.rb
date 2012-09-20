@@ -60,6 +60,18 @@ class User < ActiveRecord::Base
     end
   end
 
+  def created_events_count()
+    Event.created_by(self).count
+  end
+
+  def upcoming_events_count()
+    Event.involving(self).upcoming.count
+  end
+
+  def past_events_count()
+    Event.involving(self).past.count
+  end
+
   # Comma-delimited string of skills, for the mobile API
   def categories
     skills.map{|s| s.id }.join(',')
@@ -122,9 +134,9 @@ class User < ActiveRecord::Base
 
 
   def self.xml(entity)
-    entity.to_xml(:methods => [:hours_volunteered, :categories, :props, :avatar_url, :team])
+    entity.to_xml(:methods => [:hours_volunteered, :created_events_count, :upcoming_events_count, :past_events_count, :categories, :props, :avatar_url, :team])
   end
   def self.json(entity)
-    entity.to_json(:methods => [:hours_volunteered, :categories, :props, :avatar_url, :team])
+    entity.to_json(:methods => [:hours_volunteered, :created_events_count, :upcoming_events_count, :past_events_count, :categories, :props, :avatar_url, :team])
   end
 end

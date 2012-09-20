@@ -265,6 +265,18 @@ class EventsController < ApplicationController
       @events = @events.past(num_days_past)
     end
 
+    # Show events that are participated by my team
+    if (current_user)
+      followers = current_user.followers
+      @events = params[:team] ? @events.joins(:participants).where{participations.user_id.eq_any followers} : @events
+    end
+
+    # Show events that are created by my orgs
+    if (current_user)
+      admin_of = current_user.admin_of
+      @events = params[:org] ? @events.where{creator_id.eq_any admin_of} : @events
+    end
+
     # begin with an an association that's always true
     @events = id_array.length > 0 ? @events.where{id.eq_any id_array} : @events
     @events = categories_array.length > 0 ? @events.joins(:skills).where{skills.id.eq_any categories_array} : @events
