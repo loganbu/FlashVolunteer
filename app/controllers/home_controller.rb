@@ -16,9 +16,15 @@ class HomeController < ApplicationController
   end
   def partners
     @title = "Flash Volunteer Partners"
-  	respond_to do |format|
-  		format.html
-  	end
+    respond_to do |format|
+      format.html
+    end
+  end
+  def jobs
+    @title = "Flash Volunteer Jobs"
+    respond_to do |format|
+      format.html
+    end
   end
   def newsletter
     @title = "Flash Volunteer Newsletter"

@@ -112,6 +112,7 @@ Flashvolunteer::Application.routes.draw do
 
     match "privacy" => "home#privacy"
     match "tou" => "home#tou"
+    match "jobs" => "home#jobs"
     match "about" => "home#about"
     match "partners" => "home#partners"
     match "help" => "help_articles#index", :as => "help_articles"
