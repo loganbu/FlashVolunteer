@@ -216,6 +216,24 @@
             <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>
         </div>
     </div>
+    <% if can? :manage, :rails_admin %>
+    <!-- 
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :featured, "Featured" %></div>
+        </div>
+        <div class="span10">
+            <div class="span6">
+                <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" <%= "checked='checked'" if @event.hosted_by_user %> />
+                <label for="hosted_by_me">&nbsp;use mine</label>
+            </div>
+            <div class="span6">
+                <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone" <%= "checked='checked'" if !@event.hosted_by_user %>/><label for="hosted_by_someone">&nbsp;use this instead</label>
+            </div>
+        </div>
+    </div>
+    -->
+    <% end %>
     <div class="row-fluid">
         <div class = "span2">&nbsp;</div>
         <div class = "span10">

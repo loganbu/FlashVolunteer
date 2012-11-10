@@ -24,7 +24,7 @@ gem 'nokogiri'
 # Advanced querying for records
 gem "squeel"
 # Good admin interface to the backend
-gem 'rails_admin', '~> 0.0.4'
+gem 'rails_admin'
 
 # Delayed Jobs
 gem 'delayed_job_active_record'

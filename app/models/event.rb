@@ -13,10 +13,49 @@ class Event < ActiveRecord::Base
     has_many :participants, :through => :participations, :source => :user
     has_and_belongs_to_many :skills, :join_table => "skills_events"
 
-
     geocoded_by :geocode_address
 
     after_validation :geocode
+
+    has_attached_file :photo_featured, :storage => :s3, :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :bucket => ENV['AWS_BUCKET']
+    }, :path => ":attachment/:id/:style.:extension",
+    :styles => { :featured => ["600x400#", :png], :large => ["350x250#", :png]},
+    :default_url => "/assets/default_event_:style.png"
+
+    has_attached_file :photo_2, :storage => :s3, :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :bucket => ENV['AWS_BUCKET']
+    }, :path => ":attachment/:id/:style.:extension",
+    :styles => { :large => ["350x250#", :png]},
+    :default_url => "/assets/default_event_:style.png"
+
+    has_attached_file :photo_3, :storage => :s3, :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :bucket => ENV['AWS_BUCKET']
+    }, :path => ":attachment/:id/:style.:extension",
+    :styles => { :large => ["350x250#", :png]},
+    :default_url => "/assets/default_event_:style.png"
+
+    has_attached_file :photo_4, :storage => :s3, :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :bucket => ENV['AWS_BUCKET']
+    }, :path => ":attachment/:id/:style.:extension",
+    :styles => { :large => ["350x250#", :png]},
+    :default_url => "/assets/default_event_:style.png"
+
+    has_attached_file :photo_5, :storage => :s3, :s3_credentials => {
+      :access_key_id => ENV['AWS_ACCESS_KEY'],
+      :secret_access_key => ENV['AWS_SECRET_KEY'],
+      :bucket => ENV['AWS_BUCKET']
+    }, :path => ":attachment/:id/:style.:extension",
+    :styles => { :large => ["350x250#", :png]},
+    :default_url => "/assets/default_event_:style.png"
 
     scope :upcoming, lambda { |days=false|
         end_time = Time.now + (days || 9001).days unless days == 0
