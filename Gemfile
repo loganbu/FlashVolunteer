@@ -33,7 +33,7 @@ gem 'hirefireapp'
 
 group :assets do
 	gem 'sass-rails', '~> 3.2.3'
-	gem 'bootstrap-sass'
+	gem 'sass-twitter-bootstrap'
 	gem 'compass'
 end
 
