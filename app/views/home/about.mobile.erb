@@ -8,11 +8,9 @@
     <% [
             Hash["name" => "holly wyrwich", "subtext" => "president", "image" => "board/holly_small.jpg"],
             Hash["name" => "hillary evans", "subtext" => "vice president", "image" => "board/hillary_small.jpg"],
-            Hash["name" => "adam hitch", "subtext" => "treasurer", "image" => "board/adam_small.jpg"],
             Hash["name" => "janis lee", "subtext" => "secretary", "image" => "board/janis_small.jpg"],
             Hash["name" => "jennifer atkinson", "subtext" => "director", "image" => "board/jennifer_small.jpg"],
             Hash["name" => "logan buesching", "subtext" => "director", "image" => "board/logan_small.jpg"],
-            Hash["name" => "melissa collett", "subtext" => "director", "image" => "board/melissa_small.jpg"],
             Hash["name" => "joy wilke graf", "subtext" => "director", "image" => "board/joy_small.jpg"],
             Hash["name" => "kenny lee", "subtext" => "director", "image" => "board/kenny_small.png"],
             Hash["name" => "brian nash", "subtext" => "director", "image" => "board/brian_small.png"],
@@ -53,7 +51,8 @@
 <div class="row">
     <% [
             Hash["name" => "holly wyrwich", "subtext" => "marketing director", "image" => "board/holly_small.jpg"],
-            Hash["name" => "melissa collett", "subtext" => "engagement director", "image" => "board/melissa_small.jpg"],
+            Hash["name" => "brian nash", "subtext" => "engagement co-director", "image" => "board/brian_small.jpg"],
+            Hash["name" => "deidra ross", "subtext" => "engagement co-director", "image" => "board/deidra_small.jpg"],
        ].each_with_index do |person, i| %>
         <% if (person) %>
          <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"] }) %>
