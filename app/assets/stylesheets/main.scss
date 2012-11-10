@@ -183,6 +183,7 @@ footer {
     background-color: $header_background;
     background-image: none;
     border: 1px solid $header_background;
+    filter: none;
     color: $header_text_color;
     .nav > li > a {
         text-shadow: none;
