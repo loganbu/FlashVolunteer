@@ -153,67 +153,67 @@ RailsAdmin.config do |config|
 
   ###  Event  ###
 
-  config.model 'Event' do
+  # config.model 'Event' do
 
   #   # You can copy this to a 'rails_admin do ... end' block inside your event.rb model definition
 
   #   # Found associations:
 
-      configure :neighborhood, :belongs_to_association 
-      configure :user, :belongs_to_association 
-      configure :participations, :has_many_association 
-      configure :participants, :has_many_association 
-      configure :skills, :has_and_belongs_to_many_association 
+  #     configure :neighborhood, :belongs_to_association 
+  #     configure :user, :belongs_to_association 
+  #     configure :participations, :has_many_association 
+  #     configure :participants, :has_many_association 
+  #     configure :skills, :has_and_belongs_to_many_association 
 
   #   # Found columns:
 
-      configure :id, :integer 
-      configure :name, :string 
-      configure :description, :text 
-      configure :created, :date 
-      configure :start, :datetime 
-      configure :end, :datetime 
+  #     configure :id, :integer 
+  #     configure :name, :string 
+  #     configure :description, :text 
+  #     configure :created, :date 
+  #     configure :start, :datetime 
+  #     configure :end, :datetime 
   #     configure :neighborhood_id, :integer         # Hidden 
   #     configure :creator_id, :integer         # Hidden 
-      configure :User_id, :integer 
-      configure :created_at, :datetime 
-      configure :updated_at, :datetime 
-      configure :street, :string 
-      configure :city, :string 
-      configure :zip, :integer 
-      configure :latitude, :float 
-      configure :longitude, :float 
-      configure :state, :string 
-      configure :website, :string 
-      configure :special_instructions, :text 
-      configure :twitter_hashtags, :string 
-      configure :hosted_by, :string 
+  #     configure :User_id, :integer 
+  #     configure :created_at, :datetime 
+  #     configure :updated_at, :datetime 
+  #     configure :street, :string 
+  #     configure :city, :string 
+  #     configure :zip, :integer 
+  #     configure :latitude, :float 
+  #     configure :longitude, :float 
+  #     configure :state, :string 
+  #     configure :website, :string 
+  #     configure :special_instructions, :text 
+  #     configure :twitter_hashtags, :string 
+  #     configure :hosted_by, :string 
   #     configure :photo_featured_file_name, :string         # Hidden 
   #     configure :photo_featured_content_type, :string         # Hidden 
   #     configure :photo_featured_file_size, :integer         # Hidden 
   #     configure :photo_featured_updated_at, :datetime         # Hidden 
-      configure :photo_featured, :paperclip 
+  #     configure :photo_featured, :paperclip 
   #     configure :photo_2_file_name, :string         # Hidden 
   #     configure :photo_2_content_type, :string         # Hidden 
   #     configure :photo_2_file_size, :integer         # Hidden 
   #     configure :photo_2_updated_at, :datetime         # Hidden 
-      configure :photo_2, :paperclip 
+  #     configure :photo_2, :paperclip 
   #     configure :photo_3_file_name, :string         # Hidden 
   #     configure :photo_3_content_type, :string         # Hidden 
   #     configure :photo_3_file_size, :integer         # Hidden 
   #     configure :photo_3_updated_at, :datetime         # Hidden 
-      configure :photo_3, :paperclip 
+  #     configure :photo_3, :paperclip 
   #     configure :photo_4_file_name, :string         # Hidden 
   #     configure :photo_4_content_type, :string         # Hidden 
   #     configure :photo_4_file_size, :integer         # Hidden 
   #     configure :photo_4_updated_at, :datetime         # Hidden 
-      configure :photo_4, :paperclip 
+  #     configure :photo_4, :paperclip 
   #     configure :photo_5_file_name, :string         # Hidden 
   #     configure :photo_5_content_type, :string         # Hidden 
   #     configure :photo_5_file_size, :integer         # Hidden 
   #     configure :photo_5_updated_at, :datetime         # Hidden 
-      configure :photo_5, :paperclip 
-      configure :featured, :boolean 
+  #     configure :photo_5, :paperclip 
+  #     configure :featured, :boolean 
 
   #   # Cross-section configuration:
 
