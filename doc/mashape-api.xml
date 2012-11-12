@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<api xmlns="http://mashape.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://mashape.com http://www.mashape.com/schema/mashape-4.0.xsd">
+    <endpoint name="Event Information" group="" http="GET">
+        <route>/events/{id}.json</route>
+        <description>Get information of a single event</description>
+        <parameters>
+            <parameter type="string" optional="false" name="id">
+                <description>Which ID to get the event information of</description>
+                <example>1</example>
+            </parameter>
+        </parameters>
+        <response type="Event"/>
+    </endpoint>
+    <endpoint name="List Neighborhoods" group="" http="GET">
+        <route>/neighborhoods.json</route>
+        <description>List all of the neighborhoods known to the system</description>
+        <parameters/>
+        <response type="List[Neighborhood]"/>
+    </endpoint>
+    <endpoint name="Search Events" group="Events" http="GET">
+        <route>/events/search.json</route>
+        <description>Search for an event</description>
+        <parameters>
+            <parameter type="string" optional="true" name="id">
+                <description>Comma separated list of event IDs</description>
+                <example></example>
+            </parameter>
+            <parameter type="string" optional="true" name="categories">
+                <description>Comma separated list of category IDs that the event must be part of</description>
+                <example></example>
+            </parameter>
+            <parameter type="number" optional="true" name="upcoming">
+                <description>How many days in the future the results should be limited to</description>
+                <example></example>
+            </parameter>
+            <parameter type="number" optional="true" name="past">
+                <description>How many days in the past the results should be limited to</description>
+                <example></example>
+            </parameter>
+            <parameter type="string" optional="true" name="created_by">
+                <description>Comma separated list of user IDs that created the events</description>
+                <example></example>
+            </parameter>
+            <parameter type="string" optional="true" name="participated_by">
+                <description>Comma separated list of user IDs that are attending the event</description>
+                <example></example>
+            </parameter>
+            <parameter type="number" optional="true" name="lat">
+                <description>Latitude to find events nearby</description>
+                <example></example>
+            </parameter>
+            <parameter type="number" optional="true" name="long">
+                <description>Longitude to find events nearby</description>
+                <example></example>
+            </parameter>
+            <parameter type="number" optional="true" name="proximity">
+                <description>Radius, in miles, around the lat/long parameters to find an event near</description>
+                <example></example>
+            </parameter>
+            <parameter type="number" optional="true" name="per_page">
+                <description>How many events to return in paginating the results</description>
+                <example></example>
+            </parameter>
+            <parameter type="number" optional="true" name="page">
+                <description>Which page of paginated results to return</description>
+                <example></example>
+            </parameter>
+        </parameters>
+        <response type="List[Event]"/>
+    </endpoint>
+    <endpoint name="Search Users" group="" http="GET">
+        <route>/users/search.json</route>
+        <description>Search for a user</description>
+        <parameters>
+            <parameter type="string" optional="true" name="id">
+                <description>Comma separated list of IDs</description>
+                <example></example>
+            </parameter>
+            <parameter type="string" optional="true" name="email">
+                <description>Comma separated list of e-mail addresses to get the user information of</description>
+                <example></example>
+            </parameter>
+            <parameter type="string" optional="true" name="categories">
+                <description>Comma separated list of categories to get users who are interested in that category</description>
+                <example></example>
+            </parameter>
+            <parameter type="string" optional="true" name="per_page">
+                <description>How many paginated results to return</description>
+                <example></example>
+            </parameter>
+            <parameter type="string" optional="true" name="page">
+                <description>Which page of results should be returned</description>
+                <example></example>
+            </parameter>
+        </parameters>
+        <response type="List[User]"/>
+    </endpoint>
+    <endpoint name="User Information" group="" http="GET">
+        <route>/users/{id}.json</route>
+        <description>Get information of a specific user</description>
+        <parameters>
+            <parameter type="number" optional="false" name="id">
+                <description>Which ID to get the user information of</description>
+                <example>1</example>
+            </parameter>
+        </parameters>
+        <response type="User"/>
+    </endpoint>
+    <model name="Event">
+        <description>A volunteering event</description>
+        <example>{
+    &quot;city&quot;: null,
+    &quot;created&quot;: null,
+    &quot;created_at&quot;: &quot;2012-11-11T14:30:22-08:00&quot;,
+    &quot;creator_id&quot;: 7,
+    &quot;description&quot;: &quot;Nulla a sodales felis. Donec ultricies massa nec orci congue feugiat.&quot;,
+    &quot;end&quot;: &quot;2012-12-13T14:30:25-08:00&quot;,
+    &quot;hosted_by&quot;: null,
+    &quot;id&quot;: 1,
+    &quot;latitude&quot;: 47.60839929999999,
+    &quot;longitude&quot;: -122.3268962,
+    &quot;name&quot;: &quot;Fremont Fair&quot;,
+    &quot;neighborhood_id&quot;: 24,
+    &quot;special_instructions&quot;: null,
+    &quot;start&quot;: &quot;2012-12-13T14:30:22-08:00&quot;,
+    &quot;state&quot;: &quot;WA&quot;,
+    &quot;street&quot;: &quot;901 Madison Street&quot;,
+    &quot;website&quot;: null,
+    &quot;zip&quot;: 98104
+}</example>
+        <fields>
+            <simple type="string" optional="false" name="created_at">
+                <description>The date and time that the event was created (in PST)</description>
+                <example>2012-11-11T14:30:22-08:00</example>
+            </simple>
+            <simple type="number" optional="false" name="creator_id">
+                <description>The user ID who created the event</description>
+                <example>7</example>
+            </simple>
+            <simple type="string" optional="false" name="description">
+                <description>The user-generated description of the event</description>
+                <example>Nulla a sodales felis. Donec ultricies massa nec orci congue feugiat.</example>
+            </simple>
+            <simple type="string" optional="false" name="end">
+                <description>The time the event ends (in PST)</description>
+                <example>2012-12-13T14:30:25-08:00</example>
+            </simple>
+            <simple type="number" optional="false" name="id">
+                <description>The ID of the event</description>
+                <example>1</example>
+            </simple>
+            <simple type="number" optional="false" name="latitude">
+                <description>The latitude of the event</description>
+                <example>47.60839929999999</example>
+            </simple>
+            <simple type="number" optional="false" name="longitude">
+                <description>The longitude of the event</description>
+                <example>-122.3268962</example>
+            </simple>
+            <simple type="string" optional="false" name="name">
+                <description>The title of the event</description>
+                <example>Fremont Fair</example>
+            </simple>
+            <simple type="number" optional="false" name="neighborhood_id">
+                <description>The neighborhood this event belongs in</description>
+                <example>24</example>
+            </simple>
+            <simple type="string" optional="false" name="start">
+                <description>The time this event starts</description>
+                <example>2012-12-13T14:30:22-08:00</example>
+            </simple>
+            <simple type="string" optional="false" name="state">
+                <description>The state this event is in</description>
+                <example>WA</example>
+            </simple>
+            <simple type="string" optional="false" name="street">
+                <description>The street address for the event</description>
+                <example>901 Madison Street</example>
+            </simple>
+            <simple type="string" optional="false" name="website">
+                <description>The website for more information about this event</description>
+                <example>http://www.example.com</example>
+            </simple>
+            <simple type="number" optional="false" name="zip">
+                <description>The zip code for this event</description>
+                <example>98104</example>
+            </simple>
+        </fields>
+    </model>
+    <model name="Neighborhood">
+        <description>A neighborhood within Flash Volunteer</description>
+        <example>{
+    &quot;id&quot;: 8,
+    &quot;latitude&quot;: 47.629244,
+    &quot;longitude&quot;: -122.507858,
+    &quot;name&quot;: &quot;Bainbridge Island&quot;,
+}</example>
+        <fields>
+            <simple type="number" optional="false" name="id">
+                <description>The neighborhood ID</description>
+                <example>8</example>
+            </simple>
+            <simple type="number" optional="false" name="latitude">
+                <description>The latitude of this neighborhood</description>
+                <example>47.629244</example>
+            </simple>
+            <simple type="number" optional="false" name="longitude">
+                <description>The longitude of this neighborhood</description>
+                <example>-122.507858</example>
+            </simple>
+            <simple type="string" optional="false" name="name">
+                <description>The name of the neighborhood</description>
+                <example>Bainbridge Island</example>
+            </simple>
+        </fields>
+    </model>
+    <model name="User">
+        <description>A user</description>
+        <example>{
+    &quot;email&quot;: &quot;admin@localhost.com&quot;,
+    &quot;id&quot;: 1,
+    &quot;name&quot;: &quot;Admin&quot;,
+    &quot;neighborhood_id&quot;: null,
+}</example>
+        <fields>
+            <simple type="string" optional="false" name="email">
+                <description>The e-mail address of the user</description>
+                <example>admin@localhost.com</example>
+            </simple>
+            <simple type="number" optional="false" name="id">
+                <description>The ID of the user</description>
+                <example>1</example>
+            </simple>
+            <simple type="string" optional="false" name="name">
+                <description>The name of the user</description>
+                <example>Admin</example>
+            </simple>
+            <simple type="string" optional="false" name="neighborhood_id">
+                <description>The neighborhood this user has preferred to volunteer in</description>
+                <example>1</example>
+            </simple>
+        </fields>
+    </model>
+</api>
