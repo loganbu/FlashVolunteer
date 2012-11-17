@@ -11,6 +11,10 @@ html, body {
     background: $background;
 }
 
+body {
+    padding-top: 60px;
+}
+
 /* Remove top padding when top navbar goes static in narrow viewports */
 @media (max-width: 979px) {
     body {
@@ -41,10 +45,6 @@ html, body {
 .navbar .nav > li > a {
     padding-left: 0px;
     padding-right: 30px;
-}
-
-.navbar .container {
-    width: $gridRowWidth;
 }
 
 .add-on {
@@ -492,53 +492,14 @@ input[type="checkbox"] {
 #create_string{
     margin-top:20px;
 }
-#neighborhood_list {   
-    margin: 0;
-    padding: 0;
-
-    h1{
-        padding-bottom:0px;
-    }
-    h1:hover {   
-        cursor: pointer;
-    }
-
-    a {   
-        display: block;
-        text-decoration: none;
-    }  
-      
-    li {   
-        float: left;
-        list-style: none;
-        
-        ul {   
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            visibility: hidden;
-            height: 300px;
-            overflow-y: scroll;
-
-            li {   
-                float: none;
-                display: inline;
-
-                a {   
-                    padding: 5px 12px;
-                    width: auto;
-                    background: $babyBlue;
-                    
-                    &:hover {   
-                        background: $Gray;
-                        color: $lightBlue;
-                    }
-                }
-            }
-        }
-    }
+.dropdown {
+    list-style: none;
 }
-
+.dropdown-menu {
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+}
 
 /**************
  Photo
