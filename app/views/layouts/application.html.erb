@@ -4,6 +4,7 @@
   <title><%= @title %></title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %> 
   <%= csrf_meta_tag %> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -53,7 +54,6 @@
       <%= render"shared/footer" %>
   </footer>
   <div class="clickeater">&nbsp;</div>
-  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %> 
   <!-- Analytics -->
   <script type="text/javascript">
     var _gaq = _gaq || [];
