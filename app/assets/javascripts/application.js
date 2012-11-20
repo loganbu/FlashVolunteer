@@ -6,8 +6,8 @@
 //
 //= require jquery
 //= require jquery-ui
-//= require jquery_ujs
 //= require bootstrap
+//= require jquery_ujs
 //= require map
 //= require utility
 //= require onload
