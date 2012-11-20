@@ -7,50 +7,59 @@
                 <span class="icon-bar"></span>
             </a>
             <a class="brand" href="<%= root_url %>"><%= image_tag('fv_logo_small.png', :width => "171px") %></a>
-            <div class="nav-collapse">
+            <div class="nav-collapse fixExpandMobile">
                 <ul class="nav">
-                    <li><a href="#featured">Featured</a></li>
+                    <li><%= link_to "Featured", featured_events_url %></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                           <li><%= link_to("All", events_path) %></li>
+                          <!-- 
                           <li><a href="#">My Categories</a></li>
                           <li class="divider"></li>
-                          <!-- <li class="nav-header">Timeframe</li> -->
+                          <li class="nav-header">Timeframe</li>
                           <li><a href="#">This Month</a></li>
                           <li><a href="#">This Week</a></li>
-                          <li><a href="#">Today</a></li>
+                          <li><a href="#">Today</a></li> -->
                         </ul>
                     </li>
                     <li><%= link_to("Map", events_path) %></li>
                 </ul>
+
                 <%= form_tag search_url, :method=>:post, :class=>"navbar-search pull-left" do |f| %>
                   <input type="text" class="search-query" placeholder="Search">
                   <%= submit_tag("", :style=>"display:none") %>
                 <% end %>
-                <form class="navbar-search pull-left">  
-                </form>
 
+                <ul class="nav">
+                <% if can? :manage, :rails_admin %>
+                  <li><%= link_to("Secret!", rails_admin_url) %></li>
+                  <li><%= link_to("AFGoodness", afg_opportunities_url) %></li>
+                <% end %>
+                </ul>
                 <ul class="nav pull-right">
+                    <% if !user_signed_in? %>
+                      <li>
+                      <%= link_to "sign in", new_user_session_path %>
+                      </li>
+                      <li>
+                      <%= link_to "create an account", new_user_registration_path %>
+                      </li>
+                    <% else %>
                     <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Kenny Lee <b class="caret"></b></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag current_user.avatar.url(:thumb), :class=>"photo-thumb" %> <%= current_user.name %><b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          <li><a href="#">Profile</a></li>
-                          <li><a href="#">Settings</a></li>
-                          <li><a href="#">Logout</a></li>
-                        </ul>
-                        </li>
-                        </ul>
-
-                        <ul class="nav pull-right">
-                        <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">SEATTLE <b class="caret"></b></a>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">Chicago</a></li>
-                          <li><a href="#">New York</a></li>
-                          <li><a href="#">Portland</a></li>
+                          <li><%= link_to "Profile", user_url(current_user) %></li>
+                          <% if current_user.type == "Org" %>
+                              <li><%= link_to "Settings", edit_org_url(current_user) %></li>
+                          <% else %>
+                              <li><%= link_to "Settings", edit_user_url(current_user) %></li>
+                          <% end %>
+                          <li><%= link_to "Logout", destroy_user_session_path, :method=>:delete %></li>
                         </ul>
                     </li>
+                  </ul>
+                    <% end %>
                 </ul>
             </div>
         </div>
