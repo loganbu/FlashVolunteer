@@ -108,7 +108,7 @@ body {
     /* Since these are floating left, adding the 1px black border will cause
        the items below to not clear left since there is 1px left.  Add a white
        pixeled border to non-selected items to ensure it clears left */
-    border: 1px solid white;
+    border: 1px solid transparent;
     &:active {
         border: 1px solid $lightBlue !important;
         background: none repeat scroll 0 0 0 0 darken($babyBlue, 15%) !important;
@@ -505,8 +505,8 @@ input[type="checkbox"] {
  Photo
  **************/
 .photo-thumb {
-    width: 32px;
-    height: 32px;
+    width: 25px;
+    height: 25px;
 }
 
 .photo-profile {
@@ -599,6 +599,9 @@ ul {
     }
  }
  
+li.unstyled {
+  list-style: none;
+}
 #link_list {
     a {
         color: $Gray;
@@ -611,4 +614,11 @@ ul {
 .defaultText {
     font-style: italic;
     color: $Gray;
+}
+
+.featured {
+    font-size: $baseFontSize * 1.5;
+    line-height: $baseLineHeight * 1.5;
+    max-height: 407px;    
+    overflow: hidden;
 }

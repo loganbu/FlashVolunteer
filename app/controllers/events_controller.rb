@@ -37,6 +37,19 @@ class EventsController < ApplicationController
       format.xml  { render :xml => Event.xml(@events) }
     end
   end
+
+  # GET /events/featured
+  def featured
+    @events = Event.featured.upcoming
+    if (@events.featured.count == 0)
+      @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=> 6)
+    end
+    @title = "Featured Volunteer Opportunities in King County"
+    
+    respond_to do |format|
+      format.html # featured.html.erb
+    end
+  end
   
   # GET /events/in/downtown
   # GET /events/in/downtown.xml
@@ -298,7 +311,7 @@ class EventsController < ApplicationController
     def see_splash
         if !cookies['splash'] && request.format == Mime::HTML
             cookies['splash'] = true
-            redirect_to neighborhoods_url
+            redirect_to featured_events_url
         end
     end
 end
