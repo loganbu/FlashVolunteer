@@ -31,6 +31,9 @@ gem 'delayed_job_active_record'
 gem 'foreman'
 gem 'hirefireapp'
 
+gem 'uglifier'
+gem 'yui-compressor'
+
 group :assets do
 	gem 'sass-rails', '~> 3.2.3'
 	gem 'sass-twitter-bootstrap'
