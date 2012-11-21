@@ -43,14 +43,6 @@ module UsersHelper
               redirect_to new_user_registration_url
             end
           end
-          format.mobile do
-            if @user.persisted?
-              store_original_user_logged_in(@user)
-              sign_in_and_redirect @user
-            else
-              redirect_to new_user_registration_url
-            end
-          end
           format.xml  do
             if @user.persisted?
               store_original_user_logged_in(@user)

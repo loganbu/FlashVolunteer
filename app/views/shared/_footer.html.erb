@@ -2,16 +2,13 @@
     <div class="navbar">
         <div class="footer-navbar-inner">
             <div class="container">
-                <div class="nav-collapse">
-                    <ul class="nav">
-                        <li><%= link_to("PARTNERS", partners_path) %></li>
-                        <li><%= link_to("PRIVACY", privacy_path) %></li>
-                        <li><%= link_to("TERMS OF USE", tou_path) %></li>
-                        <li><%= link_to("JOBS", jobs_path) %></li>
-                    </ul>
-                </div>
+                <ul class="nav">
+                    <li><%= link_to("PARTNERS", partners_path) %></li>
+                    <li><%= link_to("PRIVACY", privacy_path) %></li>
+                    <li><%= link_to("TERMS OF USE", tou_path) %></li>
+                    <li><%= link_to("JOBS", jobs_path) %></li>
+                </ul>
             </div>
-            <p><font color="#585858">.....................................................................................................................................................................................................................................................................</font> </p>
             <div class="row-fluid">
                 <div class="span3">
                     <%= render( :partial => 'shared/flash_share', :locals => {:size => :medium}) %>
