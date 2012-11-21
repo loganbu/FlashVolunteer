@@ -635,3 +635,9 @@ li.unstyled {
     max-height: 407px;    
     overflow: hidden;
 }
+
+#featured-carousel {
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
