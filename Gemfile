@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.0' 
+gem 'rails', '3.2.5' 
 
 
 # Pagination
@@ -25,6 +25,8 @@ gem 'nokogiri'
 gem "squeel"
 # Good admin interface to the backend
 gem 'rails_admin'
+# API
+gem 'grape'
 
 # Delayed Jobs
 gem 'delayed_job_active_record'
