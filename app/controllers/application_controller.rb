@@ -20,6 +20,11 @@ class ApplicationController < ActionController::Base
         render :file => "app/views/shared/authfail.html.erb"
     end
 
+    rescue_from ActiveRecord::RecordNotFound do |exception|
+        Rails.logger.debug "Record not found #{exception}"
+        render :file => "app/views/shared/authfail.html.erb"
+    end
+
     def csrf_protect
         self.allow_forgery_protection = false if session[:api]
     end
