@@ -179,18 +179,27 @@ body {
 .event-title {
     font-weight:bold;
 }
-.event-summary{
-    margin-bottom: 16px;
-}
 
 .event-summary form {
 	margin-bottom: 0px;
+}
+
+#neighborhood-list {
+    h1 {
+        padding-bottom: 0px;
+    }
 }
 
 /**************
  Footer
  **************/
 footer {
+    @media (max-width: 767px) {
+        display: none;
+    }
+    @media (min-width: 768px) {
+        display: block;
+    }
     height: 130px;
     margin: -130px auto 0 auto;
     background-color: $header_background;
@@ -353,6 +362,10 @@ label {
             }
         }
     }
+}
+
+.search-query {
+    margin-top: 3px;
 }
 
 /**************

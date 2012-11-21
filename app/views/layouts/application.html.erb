@@ -4,7 +4,6 @@
   <title><%= @title %></title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application" %>
-  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %> 
   <%= csrf_meta_tag %> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -67,5 +66,6 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
+  <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %> 
 </body>
 </html>

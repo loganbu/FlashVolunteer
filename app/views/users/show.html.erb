@@ -26,8 +26,7 @@ $(function () {
     <div class="span9">
         <% if can? :see_events, @user %>
             <div class="row-fluid tlh-toprow">
-                <div class ="span3">&nbsp;</div>
-                <div class="span9">
+                <div class="span9" id="tlh-name">
                     <span class="pull-left tlh-username">
                         <h1 class="h1-override"><%= @user.name %></h1>
                     </span> 

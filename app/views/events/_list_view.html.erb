@@ -15,7 +15,7 @@
      else
        neighborhood_name = @neighborhood.name
     end %>
-<li class="dropdown">
+<li class="dropdown" id="neighborhood-list">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><h1><%= neighborhood_name %> <b class="caret"></h1></b></a>
     <ul class="dropdown-menu">
         <% Neighborhood.order("name asc").each do |neighborhood| %>
