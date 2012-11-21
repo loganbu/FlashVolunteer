@@ -18,11 +18,9 @@ class Events::RegisterController < ApplicationController
       if true
         flash[:popup] = "We have successfully signed you up for " + @event.name + "! We'll send you an email reminder the day before and will notify the coordinator."
         format.html { redirect_to(@event) }
-        format.mobile { redirect_to(@event) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
-        format.mobile { render :action => "new" }
         format.xml  { render :xml => @event.errors, :status => :unprocessable_entity }
       end
     end
@@ -35,7 +33,6 @@ class Events::RegisterController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to(:back) }
-      format.mobile { redirect_to(:back) }
       format.xml  { head :ok }
     end
   end
