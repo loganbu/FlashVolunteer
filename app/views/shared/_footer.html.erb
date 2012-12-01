@@ -1,29 +1,28 @@
-<div class="container container-padding">
-    <div class="navbar">
-        <div class="footer-navbar-inner">
-            <div class="container">
-                <ul class="nav">
-                    <li><%= link_to("PARTNERS", partners_path) %></li>
-                    <li><%= link_to("PRIVACY", privacy_path) %></li>
-                    <li><%= link_to("TERMS OF USE", tou_path) %></li>
-                    <li><%= link_to("JOBS", jobs_path) %></li>
-                </ul>
+<div class="container">
+    <div class="navbar footer-navbar-inner">
+        <div class="container">
+            <ul class="nav">
+                <li><%= link_to("About Us", about_path) %></li>
+                <li><%= link_to("Partners", partners_path) %></li>
+                <li><%= link_to("Privacy", privacy_path) %></li>
+                <li><%= link_to("Terms of Use", tou_path) %></li>
+                <li><%= link_to("Jobs", jobs_path) %></li>
+            </ul>
+        </div>
+        <div class="row-fluid">
+            <div class="span3">
+                <%= render( :partial => 'shared/flash_share', :locals => {:size => :medium}) %>
             </div>
-            <div class="row-fluid">
-                <div class="span3">
-                    <%= render( :partial => 'shared/flash_share', :locals => {:size => :medium}) %>
-                </div>
-                <div class="span9 copy">
-                    <div class="row-fluid">
-                        <div class="span9">
-                            <p>built by volunteers, for volunteers <br/>
-                            Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit<br/></p>
-                        </div>
-                        <div class="span3">
-                            <a href="http://fundly.com/flashvolunteer2011" class="pull-left">
-                                <%= image_tag("donate_normal_110x25.png", :alt=>"Donate to Flash Volunteer!") %>                   
-                            </a>         
-                        </div>
+            <div class="span9 copy">
+                <div class="row-fluid">
+                    <div class="span9">
+                        <p>built by volunteers, for volunteers <br/>
+                        Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit<br/></p>
+                    </div>
+                    <div class="span3">
+                        <a href="http://fundly.com/flashvolunteer2011" class="pull-left">
+                            <%= image_tag("donate_normal_110x25.png", :alt=>"Donate to Flash Volunteer!") %>                   
+                        </a>         
                     </div>
                 </div>
             </div>
