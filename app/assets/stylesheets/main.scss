@@ -76,6 +76,10 @@ body {
   }
 }
 
+.carousel {
+    margin-bottom: 0;
+}
+
 /**************
  Badges
  **************/
@@ -137,6 +141,40 @@ body {
 .option_selected {
     border: 1px solid $lightBlue !important;
     background: none repeat scroll darken($babyBlue, 5%);
+}
+
+.featured_badges {
+    //padding-bottom: 0px;
+    margin-bottom: 60px;
+}
+
+/**************
+ Featured Events
+ **************/
+
+.countdown {
+    margin-top: 10px;
+    padding: 5px;
+    line-height: 125%;
+}
+
+.countdownTitle {
+    color: $darkGreen;
+    font-weight: bold;
+}
+
+.btn-large{
+    margin-left: 0px;
+    width: 260px;
+}
+
+.address {
+    margin-bottom: 10px;
+}
+
+.address > a:hover{
+    text-decoration: underline;
+    color: $badgeBlue;
 }
 
 /**************
@@ -626,8 +664,17 @@ li.unstyled {
     color: $Gray;
 }
 
+.featuredTitle {
+    padding: 20px 0px 10px 0px;
+    font-weight: bold;
+    font-size: $baseFontSize * 1.75;
+    line-height: 30px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
 .featured {
-    font-size: $baseFontSize * 1.5;
+    font-size: $baseFontSize * 1.15;
     line-height: $baseLineHeight * 1.5;
     max-height: 407px;    
     overflow: hidden;
