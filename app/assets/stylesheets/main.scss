@@ -43,8 +43,17 @@ body {
 }
 
 .navbar .nav > li > a {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 14px;
+}
+
+.navbar .nav > li:first-child > a {
     padding-left: 0px;
-    padding-right: 30px;
+}
+
+.nav-collapse .nav > li > a {
+    font-weight: normal;
 }
 
 .add-on {
@@ -288,13 +297,10 @@ body {
  Footer
  **************/
 footer {
+    color: black;
     @extend .navbar-inner;
-    background-color: $header_background;
-    //background-image: none;
-    border: 1px solid $header_background;
-    filter: none;
-    color: $header_text_color;
     box-shadow: 0px 1px 5px #555555;
+    border: none;
     .nav > li > a {
         text-shadow: none;
     }
@@ -303,7 +309,6 @@ footer {
 .followus {
     font-weight: bold;
     font-style: italic;
-    margin-left: 5px;
 }
 .copy {
     text-align: right;
