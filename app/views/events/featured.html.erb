@@ -1,11 +1,13 @@
+<% badge_size ||= "small" %>
+
+
 <div class="row" id="featured-carousel">
     <div class="span8">
         <div id="featured-events" class="carousel slide img-polaroid"><!-- class of slide for animation -->
             <div class="carousel-inner">
                 <% @events.each_with_index do |event, i| %>
                 <div class="item <%= "active" if i == 0 %>">
-                    <%= image_tag event.photo_featured.url(:featured), :style => "height: 524px" %>
-
+                    <%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %>
                 </div>
                 <% end %>
             </div> <!-- /.carousel-inner -->
@@ -13,17 +15,30 @@
             <a class="carousel-control left" href="#featured-events" data-slide="prev">&lsaquo;</a>
             <a class="carousel-control right" href="#featured-events" data-slide="next">&rsaquo;</a>
         </div> <!-- /.carousel -->
+            
+        <div class="featured_badges">
+            <% @events.each_with_index do |event, i| %>
+                <div class="item <%= "hide" if i != 0 %>" id="carousel-<%=i %>">
+                        <%= render :partial => "skills/strip", :locals => { :entity => event, :size => badge_size } %>
+                </div>
+            <% end %>
+        </div><!-- Badges under the main carousel -->
+            
     </div><!-- /.span8-->
 
     <div class="span4">
-
         <% @events.each_with_index do |event, i| %>
         <div class="item <%= "hide" if i != 0 %>" id="carousel-<%=i %>">
-            <h2><%= event.name %></h2>
-            <p class="featured"><%= event.description %></p>
-            <a href="<%= register_event_url(event) %>" data-method="post" rel="nofollow" class="btn btn-large btn-success span3">
+            <a href="<%= register_event_url(event) %>" data-method="post" rel="nofollow" class="btn btn-large btn-success">
                 <h2>Join Us!</h2>
+                <div class="countdown">
+                    <div class="countdownTitle">Countdown</div>
+                    1 week, 5 days, 01:12:50
+                </div>
             </a>
+            <div class="featuredTitle"><%= event.name %></div>
+            <div class="address"><a href="">1920 4th Ave, Seattle, WA 98101</a></div>
+            <p class="featured"><%= event.description %></p>
         </div>
         <% end %>
         <script type="text/javascript">
@@ -40,6 +55,7 @@
     </div>
 
 </div><!-- /.row-->
+
 <% @events.each_with_index do |event, i| %>
 <% if i % 3 == 0 %>
 <ul class="thumbnails clear">
@@ -48,7 +64,9 @@
         <%= link_to event_url(event) do %>
             <%= image_tag event.photo_featured.url(:large), :class => "img-polaroid pic", :style => "height: 200px; width: 290px" %>
         <% end %>
+        <div class = "clearfix"><%= render :partial => "skills/strip", :locals => { :entity => event, :size => badge_size } %></div>
         <h2><%= event.name %></h2>
+        <div class="address"><a href="">1920 4th Ave, Seattle, WA 98101</a></div>
         <p><%= event.description %></p>
         <p><%= link_to "View Details", event_url(event), :class => "btn" %></p>
     </li>

@@ -2,6 +2,7 @@
 /* Common */
 $white: #FEFEFE;
 $green: #66cc66;
+$darkGreen: #004900;
 $babyBlue: #E6F4F4;
 $lightBlue: #4EA0A7;
 $darkBlue: #31859C;
@@ -32,8 +33,8 @@ $linkColor: $lightBlue;
 $baseFontFamily: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
 $navbarBackground: $grayNav;
 $navbarBackgroundHighlight: $lightGrayNav;
-$navbarLinkColor: $offWhite;
-$navbarLinkColorHover: $badgeBlue;
+$navbarLinkColor: $lightGray;
+$navbarLinkColorHover: white;
 $btnPrimaryBackground: $green;
 $navbarText: $offWhite;
 $navbarLinkColorActive: $green;
