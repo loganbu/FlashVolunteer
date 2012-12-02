@@ -108,6 +108,9 @@ Flashvolunteer::Application.routes.draw do
             get :export
             get :print
         end
+        collection do 
+            get :featured
+        end
     end
     match "events/in/:neighborhood" => "events#in", :as => 'events_neighborhood', :via => :get
 

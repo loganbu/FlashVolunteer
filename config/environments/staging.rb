@@ -45,10 +45,8 @@ Flashvolunteer::Application.configure do
   
   config.log_level = :debug
 
-  # Do not compress assets
-  config.assets.compress = false
-
-  # Expands the lines which load the assets
-  config.assets.debug = true
+  # Compress both stylesheets and JavaScripts
+  config.assets.js_compressor  = :uglifier
+  config.assets.css_compressor = :scss
 end
 

@@ -16,7 +16,6 @@ class Users::SessionsController < Devise::SessionsController
   def third_party
     respond_to do |format|
       format.html
-      format.mobile
     end
   end
 

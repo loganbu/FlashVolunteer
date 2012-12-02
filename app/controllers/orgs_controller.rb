@@ -42,7 +42,6 @@ class OrgsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.mobile # show.html.erb
       format.xml  { render :xml => Org.xml(@org) }
     end
   end

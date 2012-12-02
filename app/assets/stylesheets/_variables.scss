@@ -1,18 +1,22 @@
 
 /* Common */
 $white: #FEFEFE;
-$green: #2FB002;
+$green: #66cc66;
+$darkGreen: #004900;
 $babyBlue: #E6F4F4;
 $lightBlue: #4EA0A7;
 $darkBlue: #31859C;
+$badgeBlue: #5795ae;
 $Gray: #555555;
-$lightGray: rgba(0, 0, 0, .15);
-
+$lightGray: #d8d8d8;
+$grayNav: #3b3b3b;
+$lightGrayNav: #5d5d5d;
+$offWhite: #e8e8e8;
 
 $heading_background: #777;
-$background_color: white;
+$background:  url(/assets/bg_cork.png) center top repeat;
 $baseLineHeight: 16px;
-$baseFontSize: 11px;
+$baseFontSize: 14px;
 
 /* Header/Footer */
 $header_background: #3B3B3B;
@@ -26,12 +30,14 @@ $content_alt_color: $darkBlue;
 $linkColor: $lightBlue;
 
 /* Bootstrap overrides */
-$baseFontFamily: "lucida grande", tahoma, verdana, arial, sans-serif;
-$navbarBackground: $green;
-$navbarLinkColor: white;
+$baseFontFamily: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+$navbarBackground: $grayNav;
+$navbarBackgroundHighlight: $lightGrayNav;
+$navbarLinkColor: $lightGray;
 $navbarLinkColorHover: white;
-$navbarBackgroundHighlight: $green;
 $btnPrimaryBackground: $green;
+$navbarText: $offWhite;
+$navbarLinkColorActive: $green;
 
 $iconSpritePath:          "/assets/glyphicons-halflings.png" !default;
 $iconWhiteSpritePath:     "/assets/glyphicons-halflings-white.png" !default;
