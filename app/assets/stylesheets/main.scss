@@ -48,7 +48,7 @@ body {
     padding-top: 14px;
 }
 
-.navbar .nav > li:first-child > a {
+.navbar-footer .nav > li:first-child > a {
     padding-left: 0px;
 }
 
@@ -240,6 +240,16 @@ body {
 /**************
  Navigation
  **************/
+
+.nav {
+    font-family: "Gafata";
+    font-size: 16px;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+
+.navbar-fixed-top .nav li:hover {
+    background-color: #2e2e2e;
+}
 
 .navbar-fixed-top {
     box-shadow: 0px 1px 5px #555555;
