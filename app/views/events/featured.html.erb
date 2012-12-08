@@ -15,7 +15,7 @@
             
         <div class="featured_badges">
             <% @events.each_with_index do |event, i| %>
-                <div class="item <%= "hide" if i != 0 %>" id="carousel-<%=i %>">
+                <div class="item <%= "hide" if i != 0 %>" id="carousel-badges-<%=i %>">
                         <%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %>
                 </div>
             <% end %>
@@ -47,12 +47,13 @@
         <% end %>
         <script type="text/javascript">
             $(function() {
-                var active = 0;
                 $('body').on('slide', function (e) {
                     var prevIndex = $('#featured-events .active').index('#featured-events .item');
                     var nextIndex = $(e.relatedTarget).index('#featured-events .item');
                     $("#carousel-" + prevIndex).hide();
+                    $("#carousel-badges-" + prevIndex).hide();
                     $("#carousel-" + nextIndex).show();
+                    $("#carousel-badges-" + nextIndex).show();
                 });
             });
         </script>
