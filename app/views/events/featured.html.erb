@@ -43,7 +43,7 @@
                     })
                 </script>
             </a>
-            <div class="address"><a href="">1920 4th Ave, Seattle, WA 98101</a></div>
+            <div class="address"><%= link_to event.geocode_address, "https://maps.google.com/?q=#{event.geocode_address}" %></div>
             <p class="featured"><%= event.description %></p>
         </div>
         <% end %>
@@ -73,7 +73,7 @@
         <% end %>
         <div class = "clearfix"><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></div>
         <h2><%= event.name %></h2>
-        <div class="address"><a href="">1920 4th Ave, Seattle, WA 98101</a></div>
+        <div class="address"><%= link_to event.geocode_address, "https://maps.google.com/?q=#{event.geocode_address}" %></div>
         <p><%= event.description %></p>
         <p><%= link_to "View Details", event_url(event), :class => "btn" %></p>
     </li>
