@@ -1,6 +1,3 @@
-<% badge_size ||= "small" %>
-
-
 <div class="row" id="featured-carousel">
     <div class="span8">
         <div id="featured-events" class="carousel slide img-polaroid"><!-- class of slide for animation -->
@@ -19,7 +16,7 @@
         <div class="featured_badges">
             <% @events.each_with_index do |event, i| %>
                 <div class="item <%= "hide" if i != 0 %>" id="carousel-<%=i %>">
-                        <%= render :partial => "skills/strip", :locals => { :entity => event, :size => badge_size } %>
+                        <%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %>
                 </div>
             <% end %>
         </div><!-- Badges under the main carousel -->
@@ -33,8 +30,15 @@
                 <h2>Join Us!</h2>
                 <div class="countdown">
                     <div class="countdownTitle">Countdown</div>
-                    1 week, 5 days, 01:12:50
+                    <p id="countdownTime-<%= i %>">&nbsp;</p>
                 </div>
+                <script type="text/javascript">
+                    $(window).load(function() {
+                        setInterval(function() {
+                            $("#countdownTime-<%= i %>").text(countdownString(new Date(<%= @events[i].start.strftime("%Y, %m, %d, %H, 0, 0, 0") %>)));
+                        }, 100);
+                    })
+                </script>
             </a>
             <div class="featuredTitle"><%= event.name %></div>
             <div class="address"><a href="">1920 4th Ave, Seattle, WA 98101</a></div>
@@ -64,7 +68,7 @@
         <%= link_to event_url(event) do %>
             <%= image_tag event.photo_featured.url(:large), :class => "img-polaroid pic", :style => "height: 200px; width: 290px" %>
         <% end %>
-        <div class = "clearfix"><%= render :partial => "skills/strip", :locals => { :entity => event, :size => badge_size } %></div>
+        <div class = "clearfix"><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></div>
         <h2><%= event.name %></h2>
         <div class="address"><a href="">1920 4th Ave, Seattle, WA 98101</a></div>
         <p><%= event.description %></p>

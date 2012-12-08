@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_KEY'],
       :bucket => ENV['AWS_BUCKET']
     }, :path => ":attachment/:id/:style.:extension",
-    :styles => { :featured => ["760x524#", :png], :large => ["290x200#", :png]},
+    :styles => { :featured => ["760x350#", :png], :large => ["290x200#", :png]},
     :default_url => "/assets/default_event_:style.png"
 
     has_attached_file :photo_2, :storage => :s3, :s3_credentials => {
