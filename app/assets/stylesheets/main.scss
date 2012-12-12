@@ -39,6 +39,14 @@ header, section, footer, aside, nav, article, figure, figcaption {
  Overwriting Twitter Bootstrap
  **************/
 
+.navbar .nav > li > a {
+  float: none;
+  padding: 12px 15px 12px;
+  color: #d8d8d8;
+  text-decoration: none;
+  text-shadow: -1px 0 0 #222;
+}
+
 .container{
     padding: 0px;
 }
@@ -50,15 +58,13 @@ header, section, footer, aside, nav, article, figure, figcaption {
 .navbar-inner {
     padding-left:  0px;
     padding-right: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
+    @include border-radius(0px);
 }
 
 .navbar .nav > li > a {
     padding-left: 15px;
     padding-right: 15px;
-    padding-top: 14px;
+    height: 20px;
 }
 
 .navbar-footer .nav > li:first-child > a {
@@ -77,16 +83,21 @@ header, section, footer, aside, nav, article, figure, figcaption {
 }
 
 /* Add logo in .navbar */
-.brand
+.navbar .brand
 {
-  position: relative;
-  height: 20px;
-  top: -4px;
-  a {
-    display: block;
-    width: 170px;
-    height: 30px;
-  }
+    position: relative;
+    top: 3px;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+    width: 200px; 
+    text-indent: -9999px;
+    background: url(fv_logo_small.png) left no-repeat;
+}
+
+.navbar .brand:hover{
+    @include transition(opacity 0.1s ease-in-out);
+    opacity: .75;
 }
 
 .carousel {
@@ -259,14 +270,16 @@ header, section, footer, aside, nav, article, figure, figcaption {
  Navigation
  **************/
 
-.nav {
+.nav > li > a {
     font-family: "Gafata";
     font-size: 16px;
-    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+    color: red;
+    text-shadow: 05px 5px 5px #fff;
 }
 
 .navbar-fixed-top .nav li:hover {
     background-color: #2e2e2e;
+    @include transition(all .2s ease-in-out);
 }
 
 .navbar-fixed-top {
@@ -568,7 +581,7 @@ input[type="checkbox"] {
  JQuery Dropdown styling
  **************/
 #create_string{
-    margin-top:20px;
+    margin-top:10px;
 }
 .dropdown {
     list-style: none;
@@ -577,6 +590,8 @@ input[type="checkbox"] {
     max-height: 400px;
     overflow: hidden;
     overflow-y: auto;
+    text-shadow: none;
+
 }
 
 /**************
@@ -655,7 +670,7 @@ h1 {
     }
 }
 a:link, a:visited, a:active, a:hover, a {
-    text-decoration: none;
+    //text-decoration: none;
 }
 ul {
     ul.unstyled {

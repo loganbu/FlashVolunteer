@@ -5295,6 +5295,13 @@ header, section, footer, aside, nav, article, figure, figcaption {
 /**************
  Overwriting Twitter Bootstrap
  **************/
+.navbar .nav > li > a {
+  float: none;
+  padding: 12px 15px 12px;
+  color: #d8d8d8;
+  text-decoration: none;
+  text-shadow: -1px 0 0 #222222; }
+
 .container {
   padding: 0px; }
 
@@ -5311,7 +5318,7 @@ header, section, footer, aside, nav, article, figure, figcaption {
 .navbar .nav > li > a {
   padding-left: 15px;
   padding-right: 15px;
-  padding-top: 14px; }
+  height: 20px; }
 
 .navbar-footer .nav > li:first-child > a {
   padding-left: 0px; }
@@ -5325,14 +5332,22 @@ header, section, footer, aside, nav, article, figure, figcaption {
     cursor: text; }
 
 /* Add logo in .navbar */
-.brand {
+.navbar .brand {
   position: relative;
-  height: 20px;
-  top: -4px; }
-  .brand a {
-    display: block;
-    width: 170px;
-    height: 30px; }
+  top: 3px;
+  padding: 0px;
+  margin: 0px;
+  height: 40px;
+  width: 200px;
+  text-indent: -9999px;
+  background: url(fv_logo_small.png) left no-repeat; }
+
+.navbar .brand:hover {
+  -webkit-transition: opacity 0.1s ease-in-out;
+  -moz-transition: opacity 0.1s ease-in-out;
+  -o-transition: opacity 0.1s ease-in-out;
+  transition: opacity 0.1s ease-in-out;
+  opacity: .75; }
 
 .carousel {
   margin-bottom: 0; }
@@ -5460,13 +5475,18 @@ header, section, footer, aside, nav, article, figure, figcaption {
 /**************
  Navigation
  **************/
-.nav {
+.nav > li > a {
   font-family: "Gafata";
   font-size: 16px;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5); }
+  color: red;
+  text-shadow: 05px 5px 5px #fff; }
 
 .navbar-fixed-top .nav li:hover {
-  background-color: #2e2e2e; }
+  background-color: #2e2e2e;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out; }
 
 .navbar-fixed-top {
   box-shadow: 0px 1px 5px #555555; }
@@ -5716,7 +5736,7 @@ input[type="checkbox"] {
  JQuery Dropdown styling
  **************/
 #create_string {
-  margin-top: 20px; }
+  margin-top: 10px; }
 
 .dropdown {
   list-style: none; }
@@ -5724,7 +5744,8 @@ input[type="checkbox"] {
 .dropdown-menu {
   max-height: 400px;
   overflow: hidden;
-  overflow-y: auto; }
+  overflow-y: auto;
+  text-shadow: none; }
 
 /**************
  Photo
@@ -5794,9 +5815,6 @@ h1 {
 .inline li {
   float: left;
   margin-right: 5px; }
-
-a:link, a:visited, a:active, a:hover, a {
-  text-decoration: none; }
 
 ul ul.unstyled {
   margin-left: 30px; }
