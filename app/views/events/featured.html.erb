@@ -1,32 +1,33 @@
+<div class="container">
 <section>
-    <article class="row" id="featured-carousel">
-        <div class="span8">
-            <figure id="featured-events" class="carousel slide img-polaroid"><!-- class of slide for animation -->
-                <div class="carousel-inner">
-                    <% @events.each_with_index do |event, i| %>
-                    <div class="item <%= "active" if i == 0 %>">
-                        <%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %>
-                        <div class="carousel-caption">
-                            <h2><%= event.name %></h2>
+    <article id="featured-carousel" class="row">
+        <div class="span8"
+            <figure>
+                <div id="featured-events" class="carousel slide img-polaroid"><!-- class of slide for animation -->
+                    <div class="carousel-inner">
+                        <% @events.each_with_index do |event, i| %>
+                        <div class="item <%= "active" if i == 0 %>">
+                            <%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %>
+                            <div class="carousel-caption">
+                                <h2><%= event.name %></h2>
+                            </div>
                         </div>
-                    </div>
+                        <% end %>
+                    </div> <!-- /.carousel-inner -->
+
+                    <a class="carousel-control left" href="#featured-events" data-slide="prev">&lsaquo;</a>
+                    <a class="carousel-control right" href="#featured-events" data-slide="next">&rsaquo;</a>
+                </div> <!-- /.carousel -->
+                    
+                <figcaption class="featured_badges">
+                    <% @events.each_with_index do |event, i| %>
+                        <div class="item <%= "hide" if i != 0 %>" id="carousel-badges-<%=i %>">
+                                <%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %>
+                        </div>
                     <% end %>
-                </div> <!-- /.carousel-inner -->
-
-                <a class="carousel-control left" href="#featured-events" data-slide="prev">&lsaquo;</a>
-                <a class="carousel-control right" href="#featured-events" data-slide="next">&rsaquo;</a>
-            </figure> <!-- /.carousel -->
-                
-            <figcaption class="featured_badges">
-                <% @events.each_with_index do |event, i| %>
-                    <div class="item <%= "hide" if i != 0 %>" id="carousel-badges-<%=i %>">
-                            <%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %>
-                    </div>
-                <% end %>
-            </figcaption><!-- Badges under the main carousel -->
-                
+                </figcaption><!-- Badges under the main carousel -->
+            </figure><!-- /.featured-carousel-->
         </div><!-- /.span8-->
-
         <div class="span4">
             <% @events.each_with_index do |event, i| %>
             <div class="item <%= "hide" if i != 0 %>" id="carousel-<%=i %>">
@@ -60,14 +61,14 @@
                     });
                 });
             </script>
-        </div>
-    </article><!-- /.article-->
+        </div><!-- /.span4-->
+    </article><!-- /#featued-carousel .class-->
 </section>
 <section>
     <% @events.each_with_index do |event, i| %>
     <% if i % 3 == 0 %>
-    <ul class="thumbnails clear">
-    <% end %>
+    <ul class="thumbnails">
+    <% end %>    
         <article>
             <li class="span4 unstyled">
                 <figure>
@@ -87,3 +88,4 @@
     <% end %>
     <% end %>
 </section>
+</div><!-- /.container -->
