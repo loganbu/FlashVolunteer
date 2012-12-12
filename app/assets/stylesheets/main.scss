@@ -2,18 +2,50 @@
     container to be min-height of 100%.  Then, then footer is below the page, so to
     bring it back up, margin it to -130px
 */
-#nonfooter {
+#wrapper {
     min-height: 100%;
-    color: $content_text_color;
 }
 html, body {
     height: 100%;
-    background-color: $background_color;
+    background: $background;
+    color: $content_text_color;
+}
+
+body {
+    padding-top: 60px;
+}
+
+/* Remove top padding when top navbar goes static in narrow viewports */
+@media (max-width: 979px) {
+    body {
+        padding-top: 0;
+    }
+}
+
+/**************
+Custom add-on set to Twitter Bootstrap (uses normalize.css)
+ **************/
+
+header, section, footer, aside, nav, article, figure, figcaption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 }
 
 /**************
  Overwriting Twitter Bootstrap
  **************/
+
+.navbar .nav > li > a {
+  float: none;
+  padding: 12px 15px 12px;
+  color: #d8d8d8;
+  text-decoration: none;
+  text-shadow: -1px 0 0 #222;
+}
 
 .container{
     padding: 0px;
@@ -26,18 +58,21 @@ html, body {
 .navbar-inner {
     padding-left:  0px;
     padding-right: 0px;
-    -webkit-border-radius: 0px;
-    -moz-border-radius: 0px;
-    border-radius: 0px;
+    @include border-radius(0px);
 }
 
 .navbar .nav > li > a {
-    padding-left: 0px;
-    padding-right: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 20px;
 }
 
-.navbar .container {
-    width: $gridRowWidth;
+.navbar-footer .nav > li:first-child > a {
+    padding-left: 0px;
+}
+
+.nav-collapse .nav > li > a {
+    font-weight: normal;
 }
 
 .add-on {
@@ -47,6 +82,32 @@ html, body {
     }
 }
 
+/* Add logo in .navbar */
+.navbar .brand
+{
+    position: relative;
+    top: 3px;
+    padding: 0px;
+    margin: 0px;
+    height: 40px;
+    width: 200px; 
+    text-indent: -9999px;
+    background: url(fv_logo_small.png) left no-repeat;
+}
+
+.navbar .brand:hover{
+    @include transition(opacity 0.1s ease-in-out);
+    opacity: .75;
+}
+
+.carousel {
+    margin-bottom: 0;
+    .carousel-caption {
+        h2 {
+            color: white;
+        }
+    }
+}
 
 /**************
  Badges
@@ -89,7 +150,7 @@ html, body {
     /* Since these are floating left, adding the 1px black border will cause
        the items below to not clear left since there is 1px left.  Add a white
        pixeled border to non-selected items to ensure it clears left */
-    border: 1px solid white;
+    border: 1px solid transparent;
     &:active {
         border: 1px solid $lightBlue !important;
         background: none repeat scroll 0 0 0 0 darken($babyBlue, 15%) !important;
@@ -109,6 +170,40 @@ html, body {
 .option_selected {
     border: 1px solid $lightBlue !important;
     background: none repeat scroll darken($babyBlue, 5%);
+}
+
+.featured_badges {
+    //padding-bottom: 0px;
+    margin-bottom: 60px;
+}
+
+/**************
+ Featured Events
+ **************/
+
+.countdown {
+    margin-top: 10px;
+    padding: 5px;
+    line-height: 125%;
+}
+
+.countdownTitle {
+    color: $darkGreen;
+    font-weight: bold;
+}
+
+.btn-large{
+    margin-left: 0px;
+    width: 260px;
+}
+
+.address {
+    margin-bottom: 10px;
+}
+
+.address > a:hover{
+    text-decoration: underline;
+    color: $badgeBlue;
 }
 
 /**************
@@ -160,45 +255,147 @@ html, body {
 .event-title {
     font-weight:bold;
 }
-.event-summary{
-    margin-bottom: 16px;
-}
 
 .event-summary form {
 	margin-bottom: 0px;
+}
+
+#neighborhood-list {
+    h1 {
+        padding-bottom: 0px;
+    }
+}
+
+/**************
+ Navigation
+ **************/
+
+.nav > li > a {
+    font-family: "Gafata";
+    font-size: 16px;
+    color: red;
+    text-shadow: 05px 5px 5px #fff;
+}
+
+.navbar-fixed-top .nav li:hover {
+    background-color: #2e2e2e;
+    @include transition(all .2s ease-in-out);
+}
+
+.navbar-fixed-top {
+    box-shadow: 0px 1px 5px #555555;
+}
+
+.clickeater {
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: 9000;
+}
+#search-box-container {
+    margin-top: 10px;
+}
+#search-box {
+    line-height: 12px;
+    height: 12px;
+    margin: 0px;
+    border-right: 5px;
+    width: 200px;
+}
+
+/**************
+ Header
+ **************/
+/* 
+.header {
+    background-color: $header_background;
+    margin-bottom: 20px;
+    color: $header_text_color;
+}
+*/
+
+.logo {
+    padding: 20px 5px;
+}
+
+#header_personal_text {
+    position: relative;
+    font-size: 125%;
+    margin-top: 25px;
+    text-align: right;
+    p {
+        font-size: 100%;
+        margin-right: 10px;
+    }
+}
+
+#account_pulldown {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 50px;
+    width: 250px;
+    background: white;
+    border: 1px solid black;
+    color: black;
+    text-align: left;
+    padding: 10px;
+    z-index: 9001; /* OVER 9,000! */
+    p {
+        margin-top: .3*$baseLineHeight;
+    }
+    .active_account {
+        &:hover {
+            background-color: $babyBlue;
+            cursor: pointer;
+        }
+    }
+    .active_account {
+        margin-top: 5px;
+    }
+    .inactive_account {
+        .row-fluid {
+            &:hover {
+                background-color: $babyBlue;
+                cursor: pointer;
+            }
+            padding-top: 5px;
+            &:first-child {
+                border-top: 1px solid $green;
+            }
+        }
+    }
+}
+
+.search-query {
+    margin-top: 3px;
 }
 
 /**************
  Footer
  **************/
 footer {
-    height: 130px;
-    margin: -130px auto 0 auto;
-    background-color: $header_background;
-    color: $header_text_color;
-    clear: both;
-}
-.footer-navbar-inner {
+    color: black;
     @extend .navbar-inner;
-    background-color: $header_background;
-    background-image: none;
-    border: 1px solid $header_background;
-    filter: none;
-    color: $header_text_color;
+    box-shadow: 0px 1px 5px #555555;
+    border: none;
     .nav > li > a {
         text-shadow: none;
     }
 }
+
 .followus {
     font-weight: bold;
     font-style: italic;
-    margin-left: 5px;
 }
 .copy {
     text-align: right;
 }
 #clearfooter {
-    height: 130px;
+    // height: 130px;
     margin-top: 20px;
     clear: both;
 }
@@ -275,68 +472,6 @@ label {
 }
 
 /**************
- Header
- **************/
-.header {
-    background-color: $header_background;
-    margin-bottom: 20px;
-    color: $header_text_color;
-}
-
-.logo {
-    padding: 20px 5px;
-}
-
-#header_personal_text {
-    position: relative;
-    font-size: 125%;
-    margin-top: 25px;
-    text-align: right;
-    p {
-        font-size: 100%;
-        margin-right: 10px;
-    }
-}
-
-#account_pulldown {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 50px;
-    width: 250px;
-    background: white;
-    border: 1px solid black;
-    color: black;
-    text-align: left;
-    padding: 10px;
-    z-index: 9001; /* OVER 9,000! */
-    p {
-        margin-top: .3*$baseLineHeight;
-    }
-    .active_account {
-        &:hover {
-            background-color: $babyBlue;
-            cursor: pointer;
-        }
-    }
-    .active_account {
-        margin-top: 5px;
-    }
-    .inactive_account {
-        .row-fluid {
-            &:hover {
-                background-color: $babyBlue;
-                cursor: pointer;
-            }
-            padding-top: 5px;
-            &:first-child {
-                border-top: 1px solid $green;
-            }
-        }
-    }
-}
-
-/**************
  Input
  **************/
 .block {
@@ -395,31 +530,7 @@ input[type="checkbox"] {
         background-color: $lightBlue;
     }
 }
-/**************
- Navigation
- **************/
-.navbar {
-    font-weight: bold;
-}
-.clickeater {
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: 9000;
-}
-#search-box-container {
-    margin-top: 10px;
-}
-#search-box {
-    line-height: 12px;
-    height: 12px;
-    margin: 0px;
-    border-right: 5px;
-    width: 200px;
-}
+
 /**************
  Pagination
  **************/
@@ -470,62 +581,25 @@ input[type="checkbox"] {
  JQuery Dropdown styling
  **************/
 #create_string{
-    margin-top:20px;
+    margin-top:10px;
 }
-#neighborhood_list {   
-    margin: 0;
-    padding: 0;
-
-    h1{
-        padding-bottom:0px;
-    }
-    h1:hover {   
-        cursor: pointer;
-    }
-
-    a {   
-        display: block;
-        text-decoration: none;
-    }  
-      
-    li {   
-        float: left;
-        list-style: none;
-        
-        ul {   
-            margin: 0;
-            padding: 0;
-            position: absolute;
-            visibility: hidden;
-            height: 300px;
-            overflow-y: scroll;
-
-            li {   
-                float: none;
-                display: inline;
-
-                a {   
-                    padding: 5px 12px;
-                    width: auto;
-                    background: $babyBlue;
-                    
-                    &:hover {   
-                        background: $Gray;
-                        color: $lightBlue;
-                    }
-                }
-            }
-        }
-    }
+.dropdown {
+    list-style: none;
 }
+.dropdown-menu {
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+    text-shadow: none;
 
+}
 
 /**************
  Photo
  **************/
 .photo-thumb {
-    width: 32px;
-    height: 32px;
+    width: 25px;
+    height: 25px;
 }
 
 .photo-profile {
@@ -537,7 +611,7 @@ input[type="checkbox"] {
  Splash Frame
  **************/
 #splash_frame {
-    background-color: $background_color;
+    background: $background;
     border: 5px solid $content_link_text_color;
     padding: 20px;
 }
@@ -596,7 +670,7 @@ h1 {
     }
 }
 a:link, a:visited, a:active, a:hover, a {
-    text-decoration: none;
+    //text-decoration: none;
 }
 ul {
     ul.unstyled {
@@ -618,6 +692,9 @@ ul {
     }
  }
  
+li.unstyled {
+  list-style: none;
+}
 #link_list {
     a {
         color: $Gray;
@@ -630,4 +707,26 @@ ul {
 .defaultText {
     font-style: italic;
     color: $Gray;
+}
+
+.featuredTitle {
+    padding: 20px 0px 10px 0px;
+    font-weight: bold;
+    font-size: $baseFontSize * 1.75;
+    line-height: 30px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
+.featured {
+    font-size: $baseFontSize * 1.15;
+    line-height: $baseLineHeight * 1.5;
+    max-height: 407px;    
+    overflow: hidden;
+}
+
+#featured-carousel {
+    @media (max-width: 767px) {
+        display: none;
+    }
 }

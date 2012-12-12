@@ -57,14 +57,61 @@ function setDefaultText(element, defaultText) {
     element.val(defaultText);
 }
 
-function revealModal(id)
-{
+function revealModal(id) {
     window.onscroll = function () { document.getElementById(id).style.top = document.body.scrollTop; };
     document.getElementById(id).style.display = "block";
     document.getElementById(id).style.top = document.body.scrollTop;
 }
  
-function hideModal(id)
-{
+function hideModal(id) {
     document.getElementById(id).style.display = "none";
+}
+
+function countdownString(dateTime) {
+    var second = 1000;
+    var minute = second*60;
+    var hour = minute*60;
+    var day = hour*24;
+    var week = day*7;
+
+    var diffObj = function()
+    {
+        this.value = 0;
+    }
+    var diff = new diffObj();
+    diff.value = dateTime - (new Date());
+
+    var next = function(cumulator, partition) {
+        var numPartitions = Math.floor(cumulator.value/partition) | 0;
+        cumulator.value -= partition*numPartitions;
+        return numPartitions;
+    }
+
+    var nextStr = function(total, totalStr) {
+        var str = "";
+        if (total) {
+            if (total > 1) {
+                totalStr += "s";
+            }
+            str = total + " " + totalStr;
+        }
+        return str;
+    }
+
+    var weeks = next(diff, week);
+    var days = next(diff, day);
+    var hours = next(diff, hour);
+    var minutes = next(diff, minute);
+    var seconds = next(diff, second);
+    var weeksStr = nextStr(weeks, "Week");
+    var daysStr = nextStr(days, "Day");
+
+    var combinedStr = "";
+    if (weeksStr && daysStr) {
+        combinedStr = weeksStr + ", " + daysStr;
+    } else {
+        combinedStr = weeksStr + daysStr;
+    }
+    
+    return combinedStr + " " + hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
 }

@@ -22,7 +22,7 @@ class Event < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_KEY'],
       :bucket => ENV['AWS_BUCKET']
     }, :path => ":attachment/:id/:style.:extension",
-    :styles => { :featured => ["600x400#", :png], :large => ["350x250#", :png]},
+    :styles => { :featured => ["760x350#", :png], :large => ["290x200#", :png]},
     :default_url => "/assets/default_event_:style.png"
 
     has_attached_file :photo_2, :storage => :s3, :s3_credentials => {
@@ -30,7 +30,7 @@ class Event < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_KEY'],
       :bucket => ENV['AWS_BUCKET']
     }, :path => ":attachment/:id/:style.:extension",
-    :styles => { :large => ["350x250#", :png]},
+    :styles => { :large => ["290x200#", :png]},
     :default_url => "/assets/default_event_:style.png"
 
     has_attached_file :photo_3, :storage => :s3, :s3_credentials => {
@@ -38,7 +38,7 @@ class Event < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_KEY'],
       :bucket => ENV['AWS_BUCKET']
     }, :path => ":attachment/:id/:style.:extension",
-    :styles => { :large => ["350x250#", :png]},
+    :styles => { :large => ["290x200#", :png]},
     :default_url => "/assets/default_event_:style.png"
 
     has_attached_file :photo_4, :storage => :s3, :s3_credentials => {
@@ -46,7 +46,7 @@ class Event < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_KEY'],
       :bucket => ENV['AWS_BUCKET']
     }, :path => ":attachment/:id/:style.:extension",
-    :styles => { :large => ["350x250#", :png]},
+    :styles => { :large => ["290x200#", :png]},
     :default_url => "/assets/default_event_:style.png"
 
     has_attached_file :photo_5, :storage => :s3, :s3_credentials => {
@@ -54,7 +54,7 @@ class Event < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_KEY'],
       :bucket => ENV['AWS_BUCKET']
     }, :path => ":attachment/:id/:style.:extension",
-    :styles => { :large => ["350x250#", :png]},
+    :styles => { :large => ["290x200#", :png]},
     :default_url => "/assets/default_event_:style.png"
 
     scope :upcoming, lambda { |days=false|
@@ -83,6 +83,9 @@ class Event < ActiveRecord::Base
     }
     scope :hosted_by_org_user, lambda { |user_list|
         where{creator_id.eq_any Org.joins(:admins).where{admins_users.id.eq_any user_list}.all}
+    }
+    scope :featured, lambda {
+        where("featured = ?", true)
     }
     scope :recommended_to, lambda { |user|
         if (user.skills.count > 0)

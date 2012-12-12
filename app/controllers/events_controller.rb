@@ -24,10 +24,10 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.xml
   def index
-    per_page = params[:per_page] || 5
+    per_page = params[:per_page] || 4
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown seattle")==0 }
-    @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
+    @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
     @title="Volunteer Opportunities in King County"
@@ -35,6 +35,19 @@ class EventsController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => Event.xml(@events) }
+    end
+  end
+
+  # GET /events/featured
+  def featured
+    @events = Event.featured.upcoming
+    if (@events.featured.count == 0)
+      @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=> 6)
+    end
+    @title = "Featured Volunteer Opportunities in King County"
+    
+    respond_to do |format|
+      format.html # featured.html.erb
     end
   end
   
@@ -298,7 +311,7 @@ class EventsController < ApplicationController
     def see_splash
         if !cookies['splash'] && request.format == Mime::HTML
             cookies['splash'] = true
-            redirect_to neighborhoods_url
+            redirect_to featured_events_url
         end
     end
 end

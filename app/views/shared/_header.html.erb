@@ -1,30 +1,67 @@
-<div class="container container-padding">
-    <%= render('shared/account_info') %>
-</div>
-<div class="navbar">
+<header class="navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <div class="nav-collapse">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            <a class="brand" href="<%= root_url %>">Flash Volunteer</a>
+            <nav class="nav-collapse fixExpandMobile">
                 <ul class="nav">
-                    <li><%= link_to("HOME", '/') %></li>
-                    <li><%= link_to("EVENTS", events_path) %></li>
-                    <!--<li><%= link_to("PEOPLE", people_path) %></li>-->
-                    <!--<li><%= link_to("NEIGHBORHOODS", neighborhoods_path) %></li>-->
-                    <li><%= link_to("ABOUT", about_path) %></li>
-                    <li><%= link_to("HELP", help_articles_path) %></li>
-                    <% if can? :manage, :rails_admin %>
-                    <li><%= link_to("O M GEE, SUPER SECRET!", rails_admin_url) %></li>
-                    <li><%= link_to("AFGoodness", afg_opportunities_url) %></li>
+                    <li><%= link_to "Featured", featured_events_url %></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><%= link_to("All", events_path) %></li>
+                          <!-- 
+                          <li><a href="#">My Categories</a></li>
+                          <li class="divider"></li>
+                          <li class="nav-header">Timeframe</li>
+                          <li><a href="#">This Month</a></li>
+                          <li><a href="#">This Week</a></li>
+                          <li><a href="#">Today</a></li> -->
+                        </ul>
+                    </li>
+                    <li><%= link_to("Map", events_path) %></li>
+                </ul>
+
+                <%= form_tag search_url, :method=>:post, :class=>"navbar-search pull-left" do |f| %>
+                  <input type="text" class="search-query" placeholder="Search">
+                  <%= submit_tag("", :style=>"display:none") %>
+                <% end %>
+
+                <ul class="nav">
+                <% if can? :manage, :rails_admin %>
+                  <li><%= link_to("Secret!", rails_admin_url) %></li>
+                  <li><%= link_to("AFGoodness", afg_opportunities_url) %></li>
+                <% end %>
+                </ul>
+                <ul class="nav pull-right">
+                    <% if !user_signed_in? %>
+                      <li>
+                      <%= link_to "Login", new_user_session_path %>
+                      </li>
+                      <li>
+                      <%= link_to "Signup", new_user_registration_path %>
+                      </li>
+                    <% else %>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= image_tag current_user.avatar.url(:thumb), :class=>"photo-thumb" %> <%= current_user.name %><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><%= link_to "Profile", user_url(current_user) %></li>
+                          <% if current_user.type == "Org" %>
+                              <li><%= link_to "Settings", edit_org_url(current_user) %></li>
+                          <% else %>
+                              <li><%= link_to "Settings", edit_user_url(current_user) %></li>
+                          <% end %>
+                          <li><%= link_to "Logout", destroy_user_session_path, :method=>:delete %></li>
+                        </ul>
+                    </li>
+                  </ul>
                     <% end %>
                 </ul>
-                <div class="pull-right" id="search-box-container">
-                <%= form_tag search_url, :method=>:post, :id=>'search-form', :class=>"pull-left", :style=>"margin:0px;padding:0px" do |f| %>
-                        <%= text_field_tag('search', '', :id=>"search-box") %>
-                        <%= submit_tag("", :style=>"display:none") %>
-                        <a href="javascript:submitForm('search-form')"><span class="add-on"><i class="icon-white icon-search">&nbsp;</i></span></a>
-                <% end %>
-                </div>
-            </div>
+            </nav>
         </div>
     </div>
-</div>
+</header>

@@ -481,7 +481,11 @@
 
       this.$element[dimension](0)
       this.transition('addClass', $.Event('show'), 'shown')
-      $.support.transition && this.$element[dimension](this.$element[0][scroll])
+      if (this.$element.hasClass('fixExpandMobile')) {
+        $.support.transition && this.$element[dimension]('auto')
+      } else {
+        $.support.transition && this.$element[dimension](this.$element[0][scroll])
+      }
     }
 
   , hide: function () {
