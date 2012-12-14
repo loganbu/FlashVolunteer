@@ -8,10 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-  <div id="nonfooter">
-    <div class="header">
-      <%= render"shared/header" %>
-    </div>
+  <div id="wrapper">
+    <%= render"shared/header" %>
     <div class="container">
       <% if flash[:alert] || flash[:error] %>
           <div class="alert alert-error">  
