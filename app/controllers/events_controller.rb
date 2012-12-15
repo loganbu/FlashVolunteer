@@ -38,6 +38,29 @@ class EventsController < ApplicationController
     end
   end
 
+  def this
+    end_date = params[:timeframe];
+
+    case end_date.downcase
+    when "hour", "day", "week", "month", "year"
+      end_date = Time.now + 1.send(end_date.downcase)
+    else
+      redirect_to events_url
+      return
+    end
+
+    Rails.logger.info(end_date)
+
+    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown seattle")==0 }
+    @events = Event.before(end_date).order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @zoom = 11
+
+    respond_to do |format|
+      format.html
+      format.xml { render :xml => Event.xml(@events) }
+    end
+  end
+
   # GET /events/featured
   def featured
     @events = Event.featured.upcoming

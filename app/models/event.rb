@@ -63,6 +63,9 @@ class Event < ActiveRecord::Base
         # Over 9000 days is probably long enough in the future. Otherwise, this app rocks, and I'll will "won't-fix" this bug.
         where("end >= ? AND end <= ?", Time.now, end_time)
     }
+    scope :before, lambda { |date|
+        where("end <= ?", date)
+    }
     scope :past, lambda { |days=false|
         end_time = Time.now - (days || 9001).days unless days == 0
         end_time = DateTime.now.beginning_of_day if days == 0
