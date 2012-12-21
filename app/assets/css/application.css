@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Gafata);
+@import url(http://fonts.googleapis.com/css?family=Delius);
 /* Common */
 /* Header/Footer */
 /* Container */
@@ -5271,7 +5272,7 @@ a.label:hover, a.badge:hover {
 
 html, body {
   height: 100%;
-  background: url(/assets/bg_cork.png) center top repeat;
+  background: url(/assets/bg_square.png) center top repeat;
   color: #555555; }
 
 body {
@@ -5365,6 +5366,12 @@ header, section, footer, aside, nav, article, figure, figcaption {
   width: 20px;
   height: 20px; }
 
+.small_badge:hover, .exsmall_badge:hover, .medium_badge:hover, .large_badge:hover {
+  background-color: red; }
+
+span .small_badge:hover, span .exsmall_badge:hover, span .medium_badge:hover, span .large_badge:hover {
+  background-color: red; }
+
 .exsmall_badge {
   margin-left: 1px;
   margin-right: 1px;
@@ -5426,14 +5433,66 @@ header, section, footer, aside, nav, article, figure, figcaption {
 
 .btn-large {
   margin-left: 0px;
-  width: 260px; }
+  width: 260px;
+  margin-bottom: 10px; }
 
 .address {
-  margin-bottom: 10px; }
+  margin: 10px 0; }
 
 .address > a:hover {
   text-decoration: underline;
   color: #5795ae; }
+
+.sponsor {
+  padding: 10px;
+  font-family: 'Delius';
+  background-color: white;
+  margin-bottom: 20px;
+  -moz-box-shadow: 1px 1px 10px #292929;
+  -webkit-box-shadow: 1px 1px 10px #292929;
+  box-shadow: 1px 1px 10px #292929;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px; }
+
+.sponsor h3 {
+  font-size: 16px;
+  background: #66cc66;
+  padding: 0px 20px;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-top: -14px;
+  position: relative;
+  -moz-box-shadow: 1px 1px 3px #292929;
+  -webkit-box-shadow: 1px 1px 3px #292929;
+  box-shadow: 1px 1px 3px #292929;
+  color: #004900;
+  text-shadow: 0 1px 0 white;
+  text-align: center; }
+
+.sponsor img {
+  float: left;
+  margin: 0 5px 5px 0; }
+
+.arrow-left {
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border-left: 10px solid transparent;
+  border-top: 10px solid #004900;
+  top: 100%;
+  left: 0;
+  position: absolute; }
+
+.arrow-right {
+  width: 0;
+  height: 0;
+  line-height: 0;
+  border-right: 10px solid transparent;
+  border-top: 10px solid #004900;
+  top: 100%;
+  right: 0;
+  position: absolute; }
 
 /**************
  Events
@@ -5762,7 +5821,7 @@ input[type="checkbox"] {
  Splash Frame
  **************/
 #splash_frame {
-  background: url(/assets/bg_cork.png) center top repeat;
+  background: url(/assets/bg_square.png) center top repeat;
   border: 5px solid #31859c;
   padding: 20px; }
 
@@ -5852,7 +5911,8 @@ li.unstyled {
   font-size: 16.1px;
   line-height: 24px;
   max-height: 407px;
-  overflow: hidden; }
+  overflow: hidden;
+  margin-bottom: 10px; }
 
 @media (max-width: 767px) {
   #featured-carousel {
