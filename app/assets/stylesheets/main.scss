@@ -192,6 +192,7 @@ span .small_badge:hover{
  **************/
 
 .countdown {
+    font-family: 'Delius';
     margin-top: 10px;
     padding: 5px;
     line-height: 125%;
@@ -269,6 +270,19 @@ span .small_badge:hover{
      position: absolute;  
 } 
 
+.thumbnails .img-polaroid:hover {
+    -moz-box-shadow: 1px 1px 10px #292929;  
+    -webkit-box-shadow: 1px 1px 10px #292929;  
+    box-shadow: 1px 1px 10px #292929; 
+    @include transition(all .2s ease-in-out);
+
+}
+
+.thumbnails h2 {
+    font-family: 'Helvetica Neue';
+    font-weight: bold;
+}
+
 /**************
  Events
  **************/
@@ -297,6 +311,7 @@ span .small_badge:hover{
 
  .event_with_marker {
     .marker {
+        margin-top: 10px;
         width: 30px;
         height: 30px;
     }
@@ -317,10 +332,18 @@ span .small_badge:hover{
 
 .event-title {
     font-weight:bold;
-}
+    font-size: 20px;
+    padding-bottom: 8px;
+}  
 
 .event-summary form {
 	margin-bottom: 0px;
+}
+
+.event-summary {
+    padding-top: 10px;
+    margin-top: 10px;
+    border-top: 1px solid lightGray;
 }
 
 #neighborhood-list {
@@ -333,7 +356,7 @@ span .small_badge:hover{
  Navigation
  **************/
 
-.nav > li > a {
+.navbar > .nav > li > a {
     font-family: "Gafata";
     font-size: 16px;
     color: red;
@@ -372,14 +395,6 @@ span .small_badge:hover{
 /**************
  Header
  **************/
-/* 
-.header {
-    background-color: $header_background;
-    margin-bottom: 20px;
-    color: $header_text_color;
-}
-*/
-
 .logo {
     padding: 20px 5px;
 }
@@ -452,10 +467,12 @@ footer {
 
 .followus {
     font-weight: bold;
-    font-style: italic;
+    font-family: 'Gafata';
 }
 .copy {
     text-align: right;
+    margin-right: 10px;
+    font-family: 'Gafata';
 }
 #clearfooter {
     // height: 130px;
@@ -758,7 +775,8 @@ ul {
 li.unstyled {
   list-style: none;
 }
-#link_list {
+
+ #link_list {
     a {
         color: $Gray;
     }

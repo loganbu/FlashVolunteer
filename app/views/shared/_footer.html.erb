@@ -15,17 +15,13 @@
             <div class="span3">
                 <%= render( :partial => 'shared/flash_share', :locals => {:size => :medium}) %>
             </div>
-            <div class="span9 copy">
-                <div class="row-fluid">
-                    <div class="span9">
-                        <p>built by volunteers, for volunteers <br/>
-                        Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit<br/></p>
-                    </div>
-                    <div class="span3">
-                        <a href="http://fundly.com/flashvolunteer2011" class="pull-left">
-                            <%= image_tag("donate_normal_110x25.png", :alt=>"Donate to Flash Volunteer!") %>      
-                        </a>         
-                    </div>
+            <div class="span9">
+                <a href="http://fundly.com/flashvolunteer2011" class="pull-right">
+                    <%= image_tag("donate_normal_110x25.png", :alt=>"Donate to Flash Volunteer!") %>      
+                </a>     
+                <div class="pull-right copy">
+                    built by volunteers, for volunteers <br/>
+                    Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit
                 </div>
             </div>
         </div>
