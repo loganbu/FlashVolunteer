@@ -31,7 +31,7 @@
         <div class="span4">
             <% @events.each_with_index do |event, i| %>
             <div class="item <%= "hide" if i != 0 %>" id="carousel-<%=i %>">
-                <a href="<%= register_event_url(event) %>" data-method="post" rel="nofollow" class="btn btn-large btn-success">
+                <a href="<%= register_event_url(event) %>" data-method="post" rel="nofollow" class="btn btn-large btn-warning">
                     <h2>Join Us!</h2>
                     <div class="countdown">
                         <div class="countdownTitle">Countdown</div>
@@ -47,7 +47,14 @@
                 </a>
                 <div class="address"><%= link_to event.geocode_address, "https://maps.google.com/?q=#{event.geocode_address}" %></div>
                 <p class="featured"><%= event.description %></p>
-            </div>
+                   <div class="sponsor">
+                        <h3>Sponsor<span class="arrow-left"></span><span class="arrow-right"></span></h3>
+                        <a href="http://www.cupcakeroyale.com/">
+                            <img src= "/assets/sponsors/cupcake_royale.png" alt="Cupcake Royale" height="50" width="50" />
+                        </a>
+                        <p>Cupcake Royale was founded in 2003 as Seattle's first cupcake bakery and café. In fact, Cupcake Royale is the nations first cupcake bakery to open outside of NYC! So you can imagine that many of our friends and neighbors didn't know quite what to expect.</p>
+                    </div><!-- /.sponsor -->          
+            </div><!-- /.item -->
             <% end %>
             <script type="text/javascript">
                 $(function() {
