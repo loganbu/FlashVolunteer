@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
       :secret_access_key => ENV['AWS_SECRET_KEY'],
       :bucket => ENV['AWS_BUCKET']
     }, :path => ":attachment/:id/:style.:extension",
-    :styles => { :thumb => ["32x32>", :png], :profile => ["128x128>", :png]},
+    :styles => { :thumb => ["32x32", :png], :profile => ["128x128", :png]},
     :default_url => "/assets/default_user_:style.png"
 
   has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :foreign_key => "user_id", :association_foreign_key => "follower_id", :uniq => true

@@ -15,7 +15,7 @@ set AWS_BUCKET=
 @REM ImageMagick information
 @REM see http://www.imagemagick.com/www/binary-releases.html#windows
 @REM and http://stackoverflow.com/questions/4451213/ruby-1-9-2-how-to-install-rmagick-on-windows
-set DFImageMagick=
+set DFImageMagick=c:\ImageMagick
 set PATH=%DFImageMagick%;%PATH%
 set CPATH=%DFImageMagick%\include;%CPATH%
 set LIBRARY_PATH=%DFImageMagick%\lib;%LIBRARY_PATH%
