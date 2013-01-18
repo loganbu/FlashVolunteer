@@ -19,6 +19,7 @@
                 <%= f.email_field :email %>
             </div>
         </div>
+        <%= f.hidden_field :signup_reason, :value => session[:signup_reason] %>
     <% end %>
 <% end %>
 <% content_for :button do %>
