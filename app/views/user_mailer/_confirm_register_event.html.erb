@@ -1,0 +1,16 @@
+<p>Dear <%= @resource.name %>,</p>
+
+<p>You signed up for an event on Flash Volunteer. Smooth move!</p>
+
+<p>Flash Volunteer does have a lot more to offer, including more event listings and tools to help you track your volunteer hours and share events with your social networks. But first you have to create your FV account.</p>
+
+<p><ol><li><%= link_to "Click here to complete your profile.", confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>.</li>
+<li>And ... that's it! Start searching Flash Volunteer for opportunities to make your community better.</li></p>
+
+<p>Happy volunteering!</p>
+
+<p>Charlie X. Buttons<br/>
+Flash Volunteer CEO (Captain of Event Orientation)<br/>
+<%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer')%></p>
+
+<p>This notification was sent to <%= @resource.email %> because it was entered on Flash Volunteer to sign up for an event.</p>
