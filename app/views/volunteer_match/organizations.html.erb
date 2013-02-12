@@ -1,0 +1,10 @@
+<h2>Organizations</h2>
+<table>
+<% @orgs.each do |o| %>
+    <tr>
+        <td><%= o["name"] %></td>
+        <td><%= o["url"] %></td>
+        <td><%= o["imageUrl"] %></td>
+    </tr>
+<% end %>
+</table>

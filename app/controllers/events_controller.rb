@@ -106,7 +106,6 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     set_page_title
-
   end
 
   def hackoutdatetime(startdate, hashSet)

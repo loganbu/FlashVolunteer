@@ -1,0 +1,92 @@
+<p>If you try to download too many events, Google will refuse to give address information, so try to limit your requests to less than 100 per day.</p>
+<%= form_tag(more_volunteer_match_index_url) do %>
+    <div class="row-fluid">
+      <div class="span2">
+        <label for="afg_count">Pages</label>
+      </div>
+      <div class="span1">
+        <%= text_field_tag(:vm_pages, 1) %>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+        <label for="afg_page">Page Offset</label>
+      </div>
+      <div class="span1">
+        <%= text_field_tag(:vm_offset, 1) %>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+        <%= submit_tag('Get More', :class=>"btn btn-primary") %>
+      </div>
+    </div>
+<% end %>
+<table class="table-striped" width="20%">
+  <tr>
+    <th>Symbol</th>
+    <th>Meaning</th>
+  </tr>
+  <tr>
+    <td><%= image_tag('no_time.png') %></td>
+    <td>This event has start/end time</td>
+  </tr>
+  <tr>
+    <td><%= image_tag('no_neighborhood.png') %></td>
+    <td>This event has some neighborhood information</td>
+  </tr>
+</table>
+<h2>Opportunities</h2>
+<table class="table-striped" width="100%">
+  <tr>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Neighborhood</th>
+    <th></th>
+    <th></th>
+    <th>Attributes</th>
+  </tr>
+  <% @opportunities.each do |o| %>
+      <tr>
+        <td><%= o.title %></td>
+        <td><%= o.start_time.strftime('%m/%d/%y') unless o.start_time == nil%></td>
+        <td><%= o.neighborhood_string %></td>
+        <td><%= link_to "Create", create_event_afg_opportunity_url(o), :class=>"btn btn-primary", :method=>:put %></td>
+        <td><%= link_to "Remove", hide_event_afg_opportunity_url(o), :class=>"btn btn-danger", :method=>:put %></td>
+        <td>
+          <label title="Time information available" class="pull-left"><%= image_tag('no_time.png', :alt => "Time information available") if (o.start_time != o.end_time) %></label>
+          <label title="Neighborhood information available" class="pull-left"><%= image_tag('no_neighborhood.png', :alt => "Neighborhood information available") if (o.neighborhood_string != nil) %></label>
+        </td>
+      </tr>
+  <% end %>
+</table>
+<div class="row-fluid">
+  <div class="span12">
+    <%= will_paginate(@opportunities, :page_links => false) %>
+  </div>
+</div>
+
+
+<%= form_tag(sign_up_volunteer_match_index_url) do %>
+    <div class="row-fluid">
+      <div class="span2">
+        <label for="Name">Email</label>
+      </div>
+      <div class="span1">
+        <%= text_field_tag(:email) %>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+        <label for="afg_page">Opportunity</label>
+      </div>
+      <div class="span1">
+        <%= text_field_tag(:opp) %>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+        <%= submit_tag('Sign Up', :class=>"btn btn-primary") %>
+      </div>
+    </div>
+<% end %>
