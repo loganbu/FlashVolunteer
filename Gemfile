@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.2.11' 
-
+gem 'json', '~> 1.7.7'
 
 # Pagination
 gem 'will_paginate', '~> 3.0'
