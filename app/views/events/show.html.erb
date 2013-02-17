@@ -38,7 +38,12 @@
         <div>
             <% if !@event.hosted_by_user %>
                 <h3>event contact</h3>
-                <%= @event.hosted_by %>
+                <p><%= @event.hosted_by %></p>
+
+              <div class="row-fluid">
+                <div class="span1"><%= image_tag "/assets/vm_logo_small.jpg"%></div>
+                <div class="span10">Provided by Volunteer Match</div>
+              </div>
             <% end %>
         </div>
         <div>
