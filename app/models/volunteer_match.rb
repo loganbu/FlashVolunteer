@@ -8,7 +8,7 @@ class VolunteerMatch < ActiveRecord::Base
 
   def self.update(pages_of_results, page_number=1)
     start_day = 1.week.ago
-    end_day = 3.months.from_now
+    end_day = 9.months.from_now
 
     (page_number..pages_of_results).each do |page|
       results = VolunteerMatch.search_opportunities({:fieldsToDisplay =>
@@ -74,6 +74,7 @@ class VolunteerMatch < ActiveRecord::Base
     self.minimum_age = json['minimumAge']
     self.num_referred = json['num_referred']
     self.requires_address = json['requiresAddress']
+    self.requirements = json['plaintextRequirements']
     self.skills_needed = json['plaintextSkillsNeeded']
     self.spaces_available = json['spaces_available']
     self.status = json['status']
@@ -85,8 +86,9 @@ class VolunteerMatch < ActiveRecord::Base
 
     Rails.logger.debug("#{json['availability']['startDate']} #{json['availability']['startTime'] || '08:00:00'}")
 
-    self.start_time = DateTime.strptime("#{json['availability']['startDate']} #{json['availability']['startTime'] || '08:00:00'}", "%Y-%m-%d %H:%M:%S")
-    self.end_time = DateTime.strptime("#{json['availability']['endDate']} #{json['availability']['endTime'] || '20:00:00'}", "%Y-%m-%d %H:%M:%S")
+
+    self.start_time = ActiveSupport::TimeZone["Pacific Time (US & Canada)"].parse "#{json['availability']['startDate']} #{json['availability']['startTime'] || '08:00:00'}"
+    self.end_time = ActiveSupport::TimeZone["Pacific Time (US & Canada)"].parse "#{json['availability']['endDate']} #{json['availability']['endTime'] || '20:00:00'}"
 
 
     self.street = (json['location']['street1'] || "") + " " + (json['location']['street2'] || "") + " " + (json['location']['street3'] || "")
@@ -205,7 +207,7 @@ class VolunteerMatch < ActiveRecord::Base
         req.add_field('X-WSSE', 'UsernameToken Username="' + account_name + '", PasswordDigest="' + password_digest + '", ' +
             'Nonce="' + nonce + '", Created="' + creation_time + '"')
 
-        res = Net::HTTP.new(url.host, url.port) { |http| http.request(req) }
+        res = Net::HTTP::Proxy('127.0.0.1', 8888).start(url.host, url.port) { |http| http.request(req) }
         raise "HTTP error code #{res.code} body #{res.body}" unless res.code == "200"
         OpenStruct.new(JSON.parse res.body)
     end

@@ -26,7 +26,7 @@ class VolunteerMatchController < ApplicationController
                        :end => @opportunity.end_time,
                        :hosted_by => @opportunity.contact_name,
                        :website => @opportunity.vm_url,
-                       :special_instructions => @opportunity.skills_needed,
+                       :special_instructions => [@opportunity.skills_needed, @opportunity.requirements].join("\r\n"),
                        :street => @opportunity.street,
                        :neighborhood => @opportunity.neighborhood,
                        :zip => @opportunity.zip,
