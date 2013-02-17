@@ -27,13 +27,15 @@ class VolunteerMatch < ActiveRecord::Base
                                                                          :startDate => start_day.strftime('%Y-%m-%d'),
                                                                          :endDate => end_day.strftime('%Y-%m-%d'),
                                                                          :singleDayOpps => true}],
-                                                     :location => "Seattle, WA",
+                                                     :location => "san francisco, CA",
                                                      :pageNumber => page.to_i})
 
       results.opportunities.each do |opportunity|
-        vm_opportunity = VolunteerMatch.find_or_initialize_by_vm_id(opportunity['id'])
-        vm_opportunity.update_event(opportunity)
-        vm_opportunity.save
+        if opportunity['referralFields'] == nil
+          vm_opportunity = VolunteerMatch.find_or_initialize_by_vm_id(opportunity['id'])
+          vm_opportunity.update_event(opportunity)
+          vm_opportunity.save
+        end
       end
     end
   end
@@ -151,11 +153,35 @@ class VolunteerMatch < ActiveRecord::Base
         call :searchMembers, query.to_json
     end
 
+    def self.create_or_update_user(user_id)
+      user = User.find(user_id)
+
+      query = {
+          :members => [
+              {
+                  :firstName => user.name,
+                  :email => user.email,
+                  :password => user.encrypted_password,
+                  :acceptsTermsOfUse => true,
+                  :location => {},
+                  :authentication => VolunteerMatch.authentication_query(user.email, user.encrypted_password)
+              }
+          ]
+      }
+
+      Rails.logger.debug(query)
+      VolunteerMatch.create_or_update_members(query)
+
+      user.email
+    end
+
     def self.create_or_update_members(query)
         call :createOrUpdateMembers, query.to_json, :post
     end
 
     def self.sign_up_for_opportunity(member_id, opportunity_id)
+
+
         self.create_or_update_referrals({:oppId => opportunity_id, :referrals => [:member => {:primaryKey => member_id}, :commitmentStartDate=>"2013-01-01", :commitmentEndDate=>"2013-01-31"]})
     end
 
