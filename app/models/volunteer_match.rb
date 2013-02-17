@@ -27,7 +27,7 @@ class VolunteerMatch < ActiveRecord::Base
                                                                          :startDate => start_day.strftime('%Y-%m-%d'),
                                                                          :endDate => end_day.strftime('%Y-%m-%d'),
                                                                          :singleDayOpps => true}],
-                                                     :location => "san francisco, CA",
+                                                     :location => "Seattle, WA",
                                                      :pageNumber => page.to_i})
 
       results.opportunities.each do |opportunity|
