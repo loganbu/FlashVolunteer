@@ -20,6 +20,7 @@ class AddVmEvents < ActiveRecord::Migration
       t.integer :minimum_age
       t.integer :num_referred
       t.boolean :requires_address
+      t.text :requirements
       t.text :skills_needed
       t.integer :spaces_available
       t.string :status
