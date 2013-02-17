@@ -233,7 +233,7 @@ class VolunteerMatch < ActiveRecord::Base
         req.add_field('X-WSSE', 'UsernameToken Username="' + account_name + '", PasswordDigest="' + password_digest + '", ' +
             'Nonce="' + nonce + '", Created="' + creation_time + '"')
 
-        res = Net::HTTP::Proxy('127.0.0.1', 8888).start(url.host, url.port) { |http| http.request(req) }
+        res = Net::HTTP.new(url.host, url.port).start { |http| http.request(req) }
         raise "HTTP error code #{res.code} body #{res.body}" unless res.code == "200"
         OpenStruct.new(JSON.parse res.body)
     end
