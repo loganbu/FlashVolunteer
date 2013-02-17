@@ -95,7 +95,7 @@ ActiveRecord::Schema.define(:version => 20130203053304) do
     t.integer  "photo_5_file_size"
     t.datetime "photo_5_updated_at"
     t.boolean  "featured",                    :default => false
-    t.boolean  "is_vm",                       :default => false
+    t.integer  "vm_id",                       :default => 0
   end
 
   create_table "help_articles", :force => true do |t|

@@ -45,6 +45,6 @@ class AddVmEvents < ActiveRecord::Migration
 
     end
 
-    add_column :events, :is_vm, :boolean, :default => false
+    add_column :events, :vm_id, :integer, :default => 0
   end
 end

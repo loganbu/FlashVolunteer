@@ -30,7 +30,7 @@ class VolunteerMatchController < ApplicationController
                        :street => @opportunity.street,
                        :neighborhood => @opportunity.neighborhood,
                        :zip => @opportunity.zip,
-                       :is_vm => true)
+                       :vm_id => @opportunity.vm_id)
 
     respond_to do |format|
       format.html { render 'events/edit', :action => "edit" }
