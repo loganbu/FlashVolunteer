@@ -32,12 +32,11 @@ Flashvolunteer::Application.routes.draw do
     end
 
     resources :volunteer_match, :only => [:index] do
+        member do
+          put :create_event
+          put :hide_event
+        end
         collection do
-            get :opportunities
-            get :organizations
-            get :users
-            post :update_user
-            post :sign_up
             post :more
         end
     end

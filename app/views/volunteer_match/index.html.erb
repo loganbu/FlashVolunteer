@@ -48,11 +48,11 @@
   </tr>
   <% @opportunities.each do |o| %>
       <tr>
-        <td><%= o.title %></td>
+        <td><%= link_to o.title, o.vm_url %></td>
         <td><%= o.start_time.strftime('%m/%d/%y') unless o.start_time == nil%></td>
         <td><%= o.neighborhood_string %></td>
-        <td><%= link_to "Create", create_event_afg_opportunity_url(o), :class=>"btn btn-primary", :method=>:put %></td>
-        <td><%= link_to "Remove", hide_event_afg_opportunity_url(o), :class=>"btn btn-danger", :method=>:put %></td>
+        <td><%= link_to "Create", create_event_volunteer_match_url(o), :class=>"btn btn-primary", :method=>:put %></td>
+        <td><%= link_to "Remove", hide_event_volunteer_match_url(o), :class=>"btn btn-danger", :method=>:put %></td>
         <td>
           <label title="Time information available" class="pull-left"><%= image_tag('no_time.png', :alt => "Time information available") if (o.start_time != o.end_time) %></label>
           <label title="Neighborhood information available" class="pull-left"><%= image_tag('no_neighborhood.png', :alt => "Neighborhood information available") if (o.neighborhood_string != nil) %></label>

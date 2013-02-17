@@ -2,10 +2,38 @@ class VolunteerMatchController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @opportunities = VolunteerMatchEvent.not_imported.order("start_time ASC").paginate(:page => params[:page], :per_page => params[:per_page]||20)
+    @opportunities = VolunteerMatch.not_imported.order("start_time ASC").paginate(:page => params[:page], :per_page => params[:per_page]||20)
 
     respond_to do |format|
       format.html
+    end
+  end
+
+
+  def create_event
+    @opportunity = VolunteerMatch.find(params[:id])
+
+    @opportunity.imported = true
+    @opportunity.save
+
+    if(@opportunity.neighborhood == nil && @opportunity.neighborhood_string != nil)
+      flash[:warning] = "I don't know the neighborhood '#{@opportunity.neighborhood_string}'"
+    end
+
+    @event = Event.new(:name => @opportunity.title,
+                       :description => @opportunity.description,
+                       :start => @opportunity.start_time,
+                       :end => @opportunity.end_time,
+                       :hosted_by => @opportunity.contact_name,
+                       :website => @opportunity.vm_url,
+                       :special_instructions => @opportunity.skills_needed,
+                       :street => @opportunity.street,
+                       :neighborhood => @opportunity.neighborhood,
+                       :zip => @opportunity.zip,
+                       :is_vm => true)
+
+    respond_to do |format|
+      format.html { render 'events/edit', :action => "edit" }
     end
   end
 
@@ -28,9 +56,9 @@ class VolunteerMatchController < ApplicationController
   def more
 
     if Rails.env.production?
-      VolunteerMatchEvent.delay.update(params[:vm_pages], params[:vm_offset])
+      VolunteerMatch.delay.update(params[:vm_pages], params[:vm_offset])
     else
-      VolunteerMatchEvent.update(params[:vm_pages], params[:vm_offset])
+      VolunteerMatch.update(params[:vm_pages], params[:vm_offset])
     end
 
     respond_to do |format|
@@ -90,8 +118,4 @@ class VolunteerMatchController < ApplicationController
 
     render :action => "users"
   end
-
-  def events
-  end
-
 end

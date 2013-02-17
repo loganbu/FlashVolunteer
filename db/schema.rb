@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(:version => 20130203053304) do
     t.integer  "photo_5_file_size"
     t.datetime "photo_5_updated_at"
     t.boolean  "featured",                    :default => false
+    t.boolean  "is_vm",                       :default => false
   end
 
   create_table "help_articles", :force => true do |t|
@@ -238,7 +239,10 @@ ActiveRecord::Schema.define(:version => 20130203053304) do
     t.integer "follower_id"
   end
 
-  create_table "volunteer_match_events", :force => true do |t|
+  create_table "volunteer_match_metadata", :force => true do |t|
+  end
+
+  create_table "volunteer_matches", :force => true do |t|
     t.integer  "vm_id"
     t.boolean  "imported",                :default => false
     t.boolean  "allow_group_invitations"
@@ -274,9 +278,6 @@ ActiveRecord::Schema.define(:version => 20130203053304) do
     t.string   "state"
     t.float    "latitude"
     t.float    "longitude"
-  end
-
-  create_table "volunteer_match_metadata", :force => true do |t|
   end
 
 end

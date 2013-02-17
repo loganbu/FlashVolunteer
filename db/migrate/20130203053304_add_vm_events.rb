@@ -1,6 +1,6 @@
 class AddVmEvents < ActiveRecord::Migration
   def change
-    create_table :volunteer_match_events do |t|
+    create_table :volunteer_matches do |t|
       t.integer :vm_id
       t.boolean :imported, :default => false
       t.boolean :allow_group_invitations
@@ -43,5 +43,7 @@ class AddVmEvents < ActiveRecord::Migration
     create_table :volunteer_match_metadata do |t|
 
     end
+
+    add_column :events, :is_vm, :boolean, :default => false
   end
 end
