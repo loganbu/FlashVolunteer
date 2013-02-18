@@ -29,7 +29,7 @@ gem 'rails_admin'
 gem 'grape'
 
 # Delayed Jobs
-gem 'delayed_job_active_record'
+gem 'delayed_job_active_record', '~> 0.4.1'
 gem 'foreman'
 gem 'hirefireapp'
 
