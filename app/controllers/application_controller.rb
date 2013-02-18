@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
     include Mobylette::RespondToMobileRequests
+    respond_to :html, :xml
 
     mobylette_config do |config|
         config[:skip_xhr_requests] = true
