@@ -139,6 +139,10 @@ class Event < ActiveRecord::Base
         self.end < Time.now
     end
 
+    def is_vm
+      !(vm_id == nil || vm_id == 0)
+    end
+
     def self.xml(entity)
         entity.to_xml(:methods => [:attendees, :categories])
     end

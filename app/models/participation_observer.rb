@@ -11,5 +11,9 @@ class ParticipationObserver < ActiveRecord::Observer
                 UserMailer.new_event_attendee(participation).deliver
             end
         end
+
+        if (participation.event.is_vm)
+            VolunteerMatch.sign_up_for_opportunity(VolunteerMatch.create_or_update_user(participation.user), participation.event.vm_id)
+        end
     end
 end

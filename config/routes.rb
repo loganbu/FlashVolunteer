@@ -31,6 +31,16 @@ Flashvolunteer::Application.routes.draw do
         end
     end
 
+    resources :volunteer_match, :only => [:index] do
+        member do
+          put :create_event
+          put :hide_event
+        end
+        collection do
+            post :more
+        end
+    end
+
     # 
     # Index - Show all users?
     # Show - Timeline

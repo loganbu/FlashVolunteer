@@ -50,6 +50,12 @@
 					</div>
 				</div>
 			<% end %>
+          <% if event.is_vm %>
+              <div class="row-fluid">
+                <div class="span1"><%= image_tag "/assets/vm_logo_small.jpg"%></div>
+                <div class="span10">Provided by Volunteer Match</div>
+              </div>
+          <% end %>
 			<% if show_links %>
 				<div class="row-fluid">
 					<div class="span12"><%= render(:partial => 'events/links', :locals => { :event => event }) %></div>
