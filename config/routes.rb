@@ -92,7 +92,7 @@ Flashvolunteer::Application.routes.draw do
             resource :stats, :only => [:show], :controller => "orgs/stats", :as => "org_stats"
         end
         # Show admins of the org
-        resources :users, :only => [:index, :update, :destroy], :controller => "orgs/users"
+        resources :users, :only => [:create, :index, :update, :destroy], :controller => "orgs/users"
         collection do
             post :register
         end

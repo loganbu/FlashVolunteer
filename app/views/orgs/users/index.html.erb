@@ -1,5 +1,5 @@
 <%= content_for :right_split do %>
-<p class="bold">Admins</p>
+    <h4>Admins</h4>
 	<% @org.admins.each do |admin| %>
     <div class="row-fluid">
         <div class="span1">
@@ -12,5 +12,17 @@
     </div>
 	<div class="row-fluid">&nbsp;</div>
 	<% end %>
+
+    <h4>Add An Admin</h4>
+    <%= form_for org_users_url(@org), :method=>:post do |f| %>
+    <div class="row-fluid">
+        <div class="span8">
+          <%= text_field_tag :email, "", :placeholder => "E-Mail Address" %>
+        </div>
+        <div class="span4">
+          <%= f.submit 'Add Admin', :class=>"btn btn-primary" %>
+        </div>
+    </div>
+    <% end %>
 <% end %>
 <%= render :partial => 'users/shared/me', :locals => { :links => "orgs/org_profile_links" } %>
