@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     include SessionsHelper
+    respond_to :html, :xml
 
     before_filter :remove_returns_to, :set_default_page_title, :csrf_protect
     protect_from_forgery

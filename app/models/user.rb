@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
   end
   
   def should_show_wizard?
-    !neighborhood_id || !skills.length
+    false
   end
 
   def password_match?

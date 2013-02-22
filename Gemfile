@@ -6,13 +6,13 @@ gem 'json', '~> 1.7.7'
 # Pagination
 gem 'will_paginate', '~> 3.0'
 # Authentication
-gem 'devise'
+gem 'devise', '~> 2.2'
 # Authorization
-gem 'cancan'
+gem 'cancan', '~> 1.6'
 # Geocoding
-gem 'geocoder' 
+gem 'geocoder', '~> 1.1'
 # JQuery
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.2'
 # Not sure why directly gem'd
 gem 'tlsmail'
 # DatePicker
@@ -20,7 +20,7 @@ gem 'jquery_datepicker'
 # Export to iCal
 gem 'icalendar'
 # Not sure why directly gem'd
-gem 'nokogiri'
+gem 'nokogiri', '~> 1.5'
 # Advanced querying for records
 gem "squeel"
 # Good admin interface to the backend
@@ -29,7 +29,7 @@ gem 'rails_admin'
 gem 'grape'
 
 # Delayed Jobs
-gem 'delayed_job_active_record'
+gem 'delayed_job_active_record', '~> 0.4.1'
 gem 'foreman'
 gem 'hirefireapp'
 
@@ -41,11 +41,9 @@ group :assets do
 	gem 'compass'
 end
 
-gem 'debugger', group: [:development, :test]
-
 gem 'aws-sdk'
 gem 'aws-s3'
-gem "paperclip"
+gem "paperclip", '~> 3.4'
 
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
