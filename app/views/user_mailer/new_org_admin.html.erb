@@ -12,7 +12,7 @@
         <p>Since this is a new Flash Volunteer account, please <%= link_to 'confirm this e-mail address', confirmation_url(@user, :confirmation_token => @user.confirmation_token) %> and create a password.</p>
     <% end %>
 
-    <p><%= link_to "Visit the page", org_url(@org) %>. You'll find that you can now post and manage events from the organization page, as well as edit the profile and settings for the page. It's like having super powers! Just use the dropdown in the upper right corner of any page to switch between your personal profile and the org page.</p>
+    <p><%= link_to "Visit the page", user_url(@org) %>. You'll find that you can now post and manage events from the organization page, as well as edit the profile and settings for the page. It's like having super powers! Just use the dropdown in the upper right corner of any page to switch between your personal profile and the org page.</p>
 
     <p>If you believe you have received this message in error, or you are not affiliated with this organization, please <%= link_to "contact us", "mailto:charlie@flashvolunteer.org" %>.</p>
 
