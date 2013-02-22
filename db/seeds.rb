@@ -207,7 +207,7 @@ if Rails.env.development?
         event.neighborhood = Neighborhood.find_by_name(neighborhood_info["name"])
         event.zip = neighborhood_info["zip"]
         event.street = neighborhood_info["address"]
-
+        event.featured = true if Random.rand(1..10) > 9
         event.save!
     end
 end

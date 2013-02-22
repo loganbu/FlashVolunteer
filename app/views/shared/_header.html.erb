@@ -54,6 +54,22 @@
                               <li><%= link_to "Settings", edit_user_url(current_user) %></li>
                           <% end %>
                           <li><%= link_to "Logout", destroy_user_session_path, :method=>:delete %></li>
+
+                          <% if original_user_logged_in != nil && (current_user.id != original_user_logged_in || current_user.admin_of.count > 0) %>
+
+                              <li class="divider"></li>
+                              <li class="nav-header">Other Accounts</li>
+                                <% if current_user.id != original_user_logged_in && original_user_logged_in != nil %>
+                                    <li><%= render(:partial => "users/shared/user", :locals => { :user => User.find(original_user_logged_in) }) %></li>
+                                <% end %>
+                                <% if current_user.admin_of.count > 0 %>
+                                    <% current_user.admin_of.each do |org| %>
+                                      <li>
+                                      <%= render(:partial => "users/shared/user", :locals => { :user => org }) %>
+                                      </li>
+                                      <% end %>
+                                <% end %>
+                          <% end %>
                         </ul>
                     </li>
                   </ul>
