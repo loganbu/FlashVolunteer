@@ -22,6 +22,16 @@
                         </ul>
                     </li>
                     <li><%= link_to("Map", events_path) %></li>
+
+                  <% if can? :manage, :rails_admin %>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
+                      <ul class="dropdown-menu">
+                        <li><%= link_to("Admin Panel", rails_admin_url) %></li>
+                        <li><%= link_to("Volunteer Match API", volunteer_match_index_url) %></li>
+                      </ul>
+                    </li>
+                  <% end %>
                 </ul>
 
                 <%= form_tag search_url, :method=>:post, :class=>"navbar-search pull-left" do |f| %>
@@ -29,12 +39,6 @@
                   <%= submit_tag("", :style=>"display:none") %>
                 <% end %>
 
-                <ul class="nav">
-                <% if can? :manage, :rails_admin %>
-                  <li><%= link_to("Admin", rails_admin_url) %></li>
-                  <li><%= link_to("AFG", afg_opportunities_url) %></li>
-                <% end %>
-                </ul>
                 <ul class="nav pull-right">
                     <% if !user_signed_in? %>
                       <li>
