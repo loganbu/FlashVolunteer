@@ -1,0 +1,28 @@
+<%
+   # @user = The user account that was recently added as an admin
+   # @org = The organization the user was signed up to be an admin of
+%>
+<% content_for :email_content do%>
+
+    <p>Dear <%=  @user.email %>,</p>
+
+    <p>You are getting the keys to the castle! You have been selected as an administrator on the Flash Volunteer page for <%= @org.name %>.</p>
+
+    <% if !@user.confirmed? %>
+        <p>Since this is a new Flash Volunteer account, please <%= link_to 'confirm this e-mail address', confirmation_url(@user, :confirmation_token => @user.confirmation_token) %> and create a password.</p>
+    <% end %>
+
+    <p><%= link_to "Visit the page", org_url(@org) %>. You'll find that you can now post and manage events from the organization page, as well as edit the profile and settings for the page. It's like having super powers! Just use the dropdown in the upper right corner of any page to switch between your personal profile and the org page.</p>
+
+    <p>If you believe you have received this message in error, or you are not affiliated with this organization, please <%= link_to "contact us", "mailto:charlie@flashvolunteer.org" %>.</p>
+
+    <p>Happy volunteering!</p>
+
+    <p>Charlie X. Buttons<br/>
+    Flash Volunteer CEO (Confirmation Excellence Officer)<br/>
+    <%= link_to "contact me", "mailto:charlie@flashvolunteer.org" %>
+    </p>
+
+    <p>This notification was sent to <%= @user.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences.</p>
+<% end %>
+<%= render(:template => 'user_mailer/header')%>

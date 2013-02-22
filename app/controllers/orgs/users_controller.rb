@@ -11,6 +11,33 @@ class Orgs::UsersController < ApplicationController
     end
   end
 
+  def create
+    @org = Org.find(current_user.id)
+    @user = User.find_or_create_by_email(:email => params[:email], :name => params[:email])
+
+    if (!@org.admins.include?(@user))
+      @org.admins << @user
+    end
+
+    if @user.save
+      flash[:notice] = "#{@user.email} now an admin of #{@org.name}."
+      if Rails.env.production?
+        # send the e-mail
+        UserMailer.delay.new_org_admin(@org, @user)
+      else
+        UserMailer.new_org_admin(@org, @user).deliver
+      end
+    else
+      @user.errors.each do |attr,msg|
+        flash[:error] = msg
+      end
+    end
+    respond_to do |format|
+      format.html { redirect_to :back}
+      format.xml  { render :xml => @org }
+    end
+  end
+
   def update
     @org = Org.find(params[:org_id])
     @admin = User.find(params[:id])
