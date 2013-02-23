@@ -46,14 +46,17 @@
                     </script>
                 </a>
                 <div class="address"><%= link_to event.geocode_address, "https://maps.google.com/?q=#{event.geocode_address}" %></div>
+
                 <p class="featured"><%= event.description %></p>
+              <% if @current_sponsor != nil %>
                    <div class="sponsor">
                         <h3>Sponsor<span class="arrow-left"></span><span class="arrow-right"></span></h3>
-                        <a href="http://www.cupcakeroyale.com/">
-                            <img src= "/assets/sponsors/cupcake_royale.png" alt="Cupcake Royale" height="50" width="50" />
+                        <a href="<%= @current_sponsor.url  %>">
+                          <%= image_tag @current_sponsor.logo.url(:small), :alt => @current_sponsor.name %>
                         </a>
-                        <p>Cupcake Royale was founded in 2003 as Seattle's first cupcake bakery and café. In fact, Cupcake Royale is the nations first cupcake bakery to open outside of NYC! So you can imagine that many of our friends and neighbors didn't know quite what to expect.</p>
-                    </div><!-- /.sponsor -->          
+                        <p><%= @current_sponsor.description %></p>
+                    </div><!-- /.sponsor -->
+              <% end %>
             </div><!-- /.item -->
             <% end %>
             <script type="text/javascript">
