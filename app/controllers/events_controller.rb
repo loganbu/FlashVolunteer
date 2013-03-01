@@ -64,6 +64,8 @@ class EventsController < ApplicationController
   # GET /events/featured
   def featured
     @events = Event.featured.upcoming
+    @current_sponsor = current_sponsor
+
     if (@events.featured.count == 0)
       @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=> 6)
     end

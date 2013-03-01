@@ -17,11 +17,7 @@ $(document).ready(function() {
     if (page) {
         pageUrlPart = '?page=' + page;
     }
-    <% if (@neighborhood == nil) %>
-        var baseUrl = "<%= events_url %>";
-    <% else %>
-        var baseUrl = "<%= events_neighborhood_url @neighborhood.name %>";
-    <% end %>
-    Map.addPoints(baseUrl + '.xml' + pageUrlPart, Map.showPopup);
+
+    Map.addPoints(eventUrl + '.xml' + pageUrlPart, Map.showPopup);
 });
 </script>

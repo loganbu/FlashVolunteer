@@ -75,6 +75,10 @@ class ApplicationController < ActionController::Base
         true
     end
 
+    def current_sponsor
+      Sponsor.running.all.sample
+    end
+
     private
         before_filter :create_action_and_controller
 
