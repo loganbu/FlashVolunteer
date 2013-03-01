@@ -6,12 +6,13 @@
                 <div id="featured-events" class="carousel slide img-polaroid"><!-- class of slide for animation -->
                     <div class="carousel-inner">
                         <% @events.each_with_index do |event, i| %>
-                        <div class="item <%= "active" if i == 0 %>">
-                            <%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %>
-                            <div class="carousel-caption">
-                                <h2><%= event.name %></h2>
+                            <div class="item <%= "active" if i == 0 %>">
+                                <%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %>
+                                <div class="carousel-caption">
+                                    <h2><%= event.name %></h2>
+                                    <p><%= event.start.strftime('%-m/%-d/%Y') %></p>
+                                </div>
                             </div>
-                        </div>
                         <% end %>
                     </div> <!-- /.carousel-inner -->
 
@@ -22,7 +23,8 @@
                 <figcaption class="featured_badges">
                     <% @events.each_with_index do |event, i| %>
                         <div class="item <%= "hide" if i != 0 %>" id="carousel-badges-<%=i %>">
-                                <%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %>
+                            <p class="featured"><%= event.description %></p>
+                            <div><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></div></br>
                         </div>
                     <% end %>
                 </figcaption><!-- Badges under the main carousel -->
@@ -46,7 +48,6 @@
                     </script>
                 </a>
                 <div class="address"><%= link_to event.geocode_address, "https://maps.google.com/?q=#{event.geocode_address}" %></div>
-                <p class="featured"><%= event.description %></p>
                    <div class="sponsor">
                         <h3>Sponsor<span class="arrow-left"></span><span class="arrow-right"></span></h3>
                         <a href="http://www.cupcakeroyale.com/">
@@ -82,9 +83,9 @@
                     <%= link_to event_url(event) do %>
                         <%= image_tag event.photo_featured.url(:large), :class => "img-polaroid pic", :style => "height: 200px; width: 290px" %>
                     <% end %>
+                <h2><%= event.name %></h2>
                     <figcaption class = "clearfix"><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></figcaption>
                 </figure>
-                <h2><%= event.name %></h2>
                 <div class="address"><%= link_to event.geocode_address, "https://maps.google.com/?q=#{event.geocode_address}" %></div>
                 <p><%= event.description %></p>
                 <p><%= link_to "View Details", event_url(event), :class => "btn" %></p>

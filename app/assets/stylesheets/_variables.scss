@@ -3,6 +3,7 @@
 $white: #FEFEFE;
 $green: #66cc66;
 $darkGreen: #004900;
+$shadowGray: #292929;
 $babyBlue: #E6F4F4;
 $lightBlue: #4EA0A7;
 $darkBlue: #31859C;
@@ -15,8 +16,8 @@ $offWhite: #e8e8e8;
 
 $heading_background: #777;
 $background:  url(/assets/bg_square.png) center top repeat;
-$baseLineHeight: 16px;
-$baseFontSize: 14px;
+$baseLineHeight: 22px;
+$baseFontSize: 16px;
 
 /* Header/Footer */
 $header_background: #3B3B3B;
@@ -30,11 +31,11 @@ $content_alt_color: $darkBlue;
 $linkColor: $lightBlue;
 
 /* Bootstrap overrides */
-$baseFontFamily: "HelveticaNeue", "Helvetica Neue", "HelveticaNeueRoman", "HelveticaNeue-Roman", "Helvetica Neue Roman", 'TeXGyreHerosRegular', "Helvetica", "Tahoma", "Geneva", "Arial", sans-serif;
+$baseFontFamily: 'Domine';
 $navbarBackground: $grayNav;
 $navbarBackgroundHighlight: $lightGrayNav;
 $navbarLinkColor: $lightGray;
-$navbarLinkColorHover: white;
+$navbarLinkColorHover: $white;
 $btnPrimaryBackground: $green;
 $navbarText: $offWhite;
 $navbarLinkColorActive: $green;
