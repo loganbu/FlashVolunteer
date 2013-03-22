@@ -1,0 +1,16 @@
+<div class="row-fluid">
+	<div class="span6">
+		<%= image_tag('graphic_404.png') %>
+	</div>
+	<div class="span6">
+		<h1>Hmm... something went wrong.</h1>
+		<p>You should go find more volunteer opportunities while I go look for your page... this might take a while...</p>
+		<p>Here's a little map that'll help you get back on track:</p>
+		<ul>
+            <li><%= link_to("EVENTS", events_path) %></li>
+            <li><%= link_to("NEIGHBORHOODS", neighborhoods_path) %></li>
+            <li><%= link_to("ABOUT", about_path) %></li>
+            <li><%= link_to("HELP", help_articles_path) %></li>
+        </ul>
+	</div>
+</div>
