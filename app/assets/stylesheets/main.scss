@@ -1,6 +1,6 @@
 /*  To get the footer to stick to the bottom, set the HTML and body to 100%, and the
     container to be min-height of 100%.  Then, then footer is below the page, so to
-    bring it back up, margin it to -130px
+    bring it back up, margin it to -(height of footer)px
 */
 #wrapper {
     min-height: 100%;
@@ -13,7 +13,6 @@ html, body {
 }
 
 body {
-    padding-top: 60px;
     font: inherit;
 }
 
@@ -22,6 +21,10 @@ body {
     body {
         padding-top: 0;
     }
+}
+
+#content {
+    margin-bottom: 100px;
 }
 
 /**************
@@ -36,6 +39,11 @@ header, section, footer, aside, nav, article, figure, figcaption {
     line-height: $baseLineHeight;
     vertical-align: baseline;
     font-family: $baseFontFamily;
+}
+
+footer {
+    min-height: 100px;
+    margin-top: -100px;
 }
 
 /**************
@@ -400,6 +408,12 @@ span .small_badge:hover{
  **************/
 .logo {
     padding: 20px 5px;
+}
+
+/*  Since the header is a fixed position, it floats on top of the container below it, hiding the top 75 pixels.
+    This div sits at the top of the page, to push the real content down */
+#headerPadding {
+    min-height: 75px;
 }
 
 #header_personal_text {
