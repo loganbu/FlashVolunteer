@@ -10,6 +10,7 @@
 <body>
   <div id="wrapper">
     <%= render"shared/header" %>
+    <div class="container" id="headerPadding">&nbsp;</div>
     <div class="container">
       <% if flash[:alert] || flash[:error] %>
           <div class="alert alert-error">  
@@ -42,9 +43,11 @@
               </p>
           </div>
       <% end %>
+      <div id="content">
       <%= yield %>
+      <%= render "shared/debug" if Rails.env.development? %>
+      </div>
     </div>
-    <%= render "shared/debug" if Rails.env.development? %>
     <div id="clearfooter">&nbsp;</div>
   </div>
   <footer>
