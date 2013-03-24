@@ -24,8 +24,8 @@
                 <figcaption class="featured_badges">
                     <% @events.each_with_index do |event, i| %>
                       <div class="item <%= "hide" if i != 0 %>" id="carousel-badges-<%=i %>">
-                        <div><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></div><br/>
-                        <p class="featured"><%= event.description %></p>
+                        <div class="row-fluid"><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></div>
+                        <div class="row-fluid"><p class="featured"><%= event.description %></p></div>
                       </div>
                     <% end %>
                 </figcaption><!-- Badges under the main carousel -->
