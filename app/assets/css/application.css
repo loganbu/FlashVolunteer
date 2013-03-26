@@ -5537,8 +5537,8 @@ h2.spotlight-title {
 
 h2.spotlight-title span {
   display: block;
-  background: #2BA735;
-  color: #fff;
+  background: #66cc66;
+  color: #fefefe;
   width: 300px;
   margin: -19px auto;
   text-align: center; }
@@ -5554,11 +5554,11 @@ h2.spotlight-title span {
   margin-right: 0px; }
 
 .news-title {
-  font-size: 16px;
+  font-size: 1.3em;
   width: 95%;
   position: relative;
-  background: #D5DDD5;
-  color: #08640B;
+  background: #d8d8d8;
+  color: #004900;
   text-align: center;
   padding: 10px;
   margin: 0 auto 10px; }

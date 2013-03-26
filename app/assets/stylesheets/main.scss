@@ -321,8 +321,8 @@ h2.spotlight-title {
 
 h2.spotlight-title span {
     display:block;
-    background:#2BA735; 
-    color: #fff; 
+    background: $green; 
+    color: $white; 
     width:300px; 
     margin:-19px auto; 
     text-align:center 
@@ -337,11 +337,11 @@ h2.spotlight-title span {
 .omega { margin-right: 0px; } //Removes right margin from Twitter span X
 
 .news-title {
-    font-size: 16px;
+    font-size: 1.3em;
     width: 95%;
     position: relative;
-    background: #D5DDD5;
-    color: #08640B;
+    background: $lightGray;
+    color: $darkGreen;
     text-align: center;
     padding: 10px;
     margin: 0 auto 10px;
@@ -877,11 +877,3 @@ li.unstyled {
     overflow: hidden;
     margin-bottom: 10px;
 }
-
-//Depreciated feature to hide the carousel and only show the smaller 3-grid events when they used to exist.
-
-// #featured-carousel {
-//     @media (max-width: 767px) {
-//         display: none;
-//     }
-// }
