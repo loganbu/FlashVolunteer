@@ -311,6 +311,54 @@ span .small_badge:hover{
 }
 
 /**************
+ News
+ **************/
+
+h2.spotlight-title {
+    border-top:1px solid #AAAAAA;
+    margin: 30px auto 50px;
+}
+
+h2.spotlight-title span {
+    display:block;
+    background: $green; 
+    color: $white; 
+    width:300px; 
+    margin:-19px auto; 
+    text-align:center 
+}
+
+.news {
+    margin-bottom: 2em;
+    display:block;
+}
+
+.alpha { margin-left: 0px; } //Removes left margin from Twitter span X
+.omega { margin-right: 0px; } //Removes right margin from Twitter span X
+
+.news-title {
+    font-size: 1.3em;
+    width: 95%;
+    position: relative;
+    background: $lightGray;
+    color: $darkGreen;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto 10px;
+}
+
+.news > img {
+    box-shadow: 1px 1px 5px #888888;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.news > a > img {
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+/**************
  Events
  **************/
  .map {
@@ -828,10 +876,4 @@ li.unstyled {
     max-height: 407px;    
     overflow: hidden;
     margin-bottom: 10px;
-}
-
-#featured-carousel {
-    @media (max-width: 767px) {
-        display: none;
-    }
 }
