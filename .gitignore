@@ -7,4 +7,4 @@ tmp/
 development/
 public/stylesheets
 public/assets
-application.css
+app/assets/css/application.css

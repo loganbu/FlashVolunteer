@@ -235,11 +235,12 @@ span .small_badge:hover{
     margin-bottom: 10px;
 }
 
-.address {
+.event-date-loc {
     margin: 10px 0;
+    font-size: 1.2em;
 }
 
-.address > a:hover{
+.event-date-loc > a:hover{
     text-decoration: underline;
     color: $badgeBlue;
 }
