@@ -21,7 +21,17 @@
                 <figcaption class="featured_badges">
                     <% @events.each_with_index do |event, i| %>
                       <div class="item <%= "hide" if i != 0 %>" id="carousel-badges-<%=i %>">
-                        <div><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></div><br/>
+                        <div class="row-fluid"><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></div>
+                        <div class="row-fluid">
+                            <p class="featured">
+                                <% if event.description.length > 450 %>
+                                    <%= truncate(event.description, :length=>450, :separator => ' ') %>
+                                    <%= link_to "Read More", event %>
+                                <% else %>
+                                    <%= event.description %>
+                                <% end %>
+                            </p>
+                        </div>
                       </div>
                     <% end %>
                 </figcaption><!-- Badges under the main carousel -->
@@ -50,9 +60,6 @@
                     <p><%= event.start.strftime('%-B %-d, %Y - %-A') %></p>
                     <%= link_to event.geocode_address, "https://maps.google.com/?q=#{event.geocode_address}" %>
                 </div>
-                <p>
-                        <%= truncate(event.description, :length=>400) %>
-                </p>
               <% if @current_sponsor != nil %>
                    <div class="sponsor">
                         <h3>Sponsor<span class="arrow-left"></span><span class="arrow-right"></span></h3>
