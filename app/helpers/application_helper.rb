@@ -16,9 +16,9 @@ def new_event_link
     if !user_signed_in?
         "<p>You need to #{link_to('sign in', new_user_session_url)} to create an event.</p>".html_safe
     elsif can? :create, Event
-    	"<p style='padding-bottom:10px'>#{link_to "Create new event", new_event_url}</p>".html_safe
+    	"#{link_to "Create New Event", new_event_url}".html_safe
     else
-    	"<p>You need to confirm your account before you can start adding events. Check your personal inbox for the confirmation email from Charlie X. Buttons.</p><p>#{link_to 'Resend the e-mail to '+current_user.email, new_user_confirmation_url+'?email='+current_user.email}</p>".html_safe
+    	"<p>You need to confirm your account before you can start adding events. Check your personal inbox for the confirmation email from 'charlie@flashvolunteer.org'.</p><p>#{link_to 'Resend the e-mail to '+current_user.email, new_user_confirmation_url+'?email='+current_user.email}</p>".html_safe
     end
 end
 

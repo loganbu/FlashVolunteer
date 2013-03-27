@@ -81,6 +81,11 @@ $(function () {
         <% end %>
     </div>
     <div class="span3 list_spacing bold" style="margin-top:28px">
+            <% if can? :create, Event %>
+                <div class="btn-create-new pull-right">
+                    <a href="<%= new_event_url %>" class="btn btn-large btn-success">Create New Event</a>
+                </div>
+            <% end %>  
         <ul class="unstyled">
             <%if current_user != @user%>
                 <li><%= link_to "GIVE PROPS", new_prop_url(@user) %></li>
@@ -89,10 +94,7 @@ $(function () {
                 <li><%= link_to "MAKE ADMIN OF THIS ORG", org_user_url(current_user, @user), :method=>:put %></li>
             <%end%>
             <li><%= link_to "UPCOMING EVENTS", events_user_url(@user) +"#upcoming" %></li>
-            <li><%= link_to "RECOMMENDED EVENTS", events_user_url(@user) + "#recommended" %></li>
-            <% if can? :create, Event %>
-                <li><%= link_to "CREATE NEW EVENT", new_event_url %></p>
-            <% end %>   
+            <li><%= link_to "RECOMMENDED EVENTS", events_user_url(@user) + "#recommended" %></li> 
         </ul>
     </div>
 </div>

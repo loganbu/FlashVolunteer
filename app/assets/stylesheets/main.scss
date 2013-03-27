@@ -14,7 +14,7 @@ html, body {
 
 body {
     font: inherit;
-    padding-top: 70px;
+    padding-top: 65px;
 }
 
 /* Remove top padding when top navbar goes static in narrow viewports */
@@ -22,7 +22,18 @@ body {
     body {
         padding-top: 0;
     }
+    .btn-create-new {
+        text-align: center;
+    }
 }
+
+@media (min-width: 980px) {
+    .btn-create-new {
+        float: right;
+    }
+}
+
+
 
 #content {
     margin-bottom: 100px;
@@ -125,7 +136,7 @@ footer {
  Common page elements
  **************/
 .page_header{
-    padding-bottom: $MPadding;
+    padding-bottom: $XSPadding;
 }
 
 .link_padding{
@@ -239,11 +250,6 @@ span .small_badge:hover{
 .event-date-loc {
     margin: 10px 0;
     font-size: 1.2em;
-}
-
-.event-date-loc > a:hover{
-    text-decoration: underline;
-    color: $badgeBlue;
 }
 
 .sponsor {
@@ -388,12 +394,14 @@ h2.spotlight-title span {
 
  .event_with_marker {
     .marker {
-        margin-top: 10px;
+        margin-top: 20px;
+        margin-left: -5px;
         width: 30px;
         height: 30px;
     }
     .details {
-        padding-left: 30px;    
+        padding-left: 30px;
+        border-top: 1px solid #D3D3D3   
     }
  }
  .share {
@@ -419,13 +427,10 @@ h2.spotlight-title span {
 .event-summary {
     padding-top: 10px;
     margin-top: 10px;
-    border-top: 1px solid lightGray;
 }
 
 #neighborhood-list {
-    h1 {
-        padding-bottom: 0px;
-    }
+    margin-bottom: 10px;
 }
 
 .map_title{
@@ -740,9 +745,6 @@ input[type="checkbox"] {
 /**************
  JQuery Dropdown styling
  **************/
-#create_string{
-    margin-top:10px;
-}
 .dropdown {
     list-style: none;
 }
@@ -751,7 +753,6 @@ input[type="checkbox"] {
     overflow: hidden;
     overflow-y: auto;
     text-shadow: none;
-
 }
 
 /**************
@@ -817,7 +818,7 @@ h1 {
     }
 }
 a:link, a:visited, a:active, a:hover, a {
-    //text-decoration: none;
+    text-decoration: none;
 }
 ul {
     ul.unstyled {
