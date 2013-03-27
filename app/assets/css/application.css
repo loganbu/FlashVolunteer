@@ -5279,7 +5279,8 @@ html, body {
   font-family: "Domine"; }
 
 body {
-  font: inherit; }
+  font: inherit;
+  padding-top: 70px; }
 
 /* Remove top padding when top navbar goes static in narrow viewports */
 @media (max-width: 979px) {
@@ -5460,10 +5461,11 @@ span .small_badge:hover, span .exsmall_badge:hover, span .medium_badge:hover, sp
   width: 260px;
   margin-bottom: 10px; }
 
-.address {
-  margin: 10px 0; }
+.event-date-loc {
+  margin: 10px 0;
+  font-size: 1.2em; }
 
-.address > a:hover {
+.event-date-loc > a:hover {
   text-decoration: underline;
   color: #5795ae; }
 
@@ -5664,11 +5666,6 @@ h2.spotlight-title span {
  **************/
 .logo {
   padding: 20px 5px; }
-
-/*  Since the header is a fixed position, it floats on top of the container below it, hiding the top 75 pixels.
-    This div sits at the top of the page, to push the real content down */
-#headerPadding {
-  min-height: 75px; }
 
 #header_personal_text {
   position: relative;
