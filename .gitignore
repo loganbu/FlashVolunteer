@@ -1,3 +1,4 @@
+.DS_Store
 .bundle
 .idea
 db/*.sqlite3
@@ -6,3 +7,4 @@ tmp/
 development/
 public/stylesheets
 public/assets
+app/assets/css/application.css

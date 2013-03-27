@@ -15,7 +15,9 @@ Role.create([
 
 User.delete_all()
 email = ENV['ADMIN_USERNAME'] && ENV['ADMIN_USERNAME'].dup
-admin = User.find_or_create_by_email(:email => email || "admin@localhost.com", :password => ENV['ADMIN_PASSWORD'], :password_confirmation => ENV['ADMIN_PASSWORD'], :name=>"Admin")
+password = ENV['ADMIN_PASSWORD'] && ENV['ADMIN_PASSWORD'].dup
+password ||= "password"
+admin = User.find_or_create_by_email(:email => email || "admin@localhost.com", :password => password, :password_confirmation => password, :name=>"Admin")
 admin.roles << Role.find_by_name("SuperAdmin")
 
 Skill.delete_all()
@@ -207,7 +209,7 @@ if Rails.env.development?
         event.neighborhood = Neighborhood.find_by_name(neighborhood_info["name"])
         event.zip = neighborhood_info["zip"]
         event.street = neighborhood_info["address"]
-
+        event.featured = true if Random.rand(1..10) > 9
         event.save!
     end
 end

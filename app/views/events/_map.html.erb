@@ -1,8 +1,27 @@
+<div class="page_header">
+    <% if (@neighborhood == nil)
+       neighborhood_name = "King County"
+     else
+       neighborhood_name = @neighborhood.name
+    end %>
+    <li class="dropdown" id="neighborhood-list">
+        <span class="map_subtitle">events near</span> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="map_title"><%= neighborhood_name %></span><b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <% Neighborhood.order("name asc").each do |neighborhood| %>
+                <li><%=link_to(neighborhood.name, events_neighborhood_url(neighborhood.name))%></li>
+            <% end %>
+        </ul>
+    </li>
+</div>
+<div style = "clear:both"></div>
+<div id="create_string">
+    <%= new_event_link %>
+</div>
 <div class="row">
-    <div class="span3">
+    <div class="span4">
         <%= render(:partial => 'list_view')%>
     </div>
-    <div class="span9">
+    <div class="span8">
         <div class="map">
             <div id="map" class="big"></div>
         </div>
@@ -17,11 +36,7 @@ $(document).ready(function() {
     if (page) {
         pageUrlPart = '?page=' + page;
     }
-    <% if (@neighborhood == nil) %>
-        var baseUrl = "<%= events_url %>";
-    <% else %>
-        var baseUrl = "<%= events_neighborhood_url @neighborhood.name %>";
-    <% end %>
-    Map.addPoints(baseUrl + '.xml' + pageUrlPart, Map.showPopup);
+
+    Map.addPoints(eventUrl + '.xml' + pageUrlPart, Map.showPopup);
 });
 </script>

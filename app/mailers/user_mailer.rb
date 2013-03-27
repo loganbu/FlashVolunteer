@@ -33,6 +33,14 @@ class UserMailer < ActionMailer::Base
              :subject => "New volunteer signup for #{@event.name}")
     end
 
+    def new_org_admin(org, user)
+      @org = org
+      @user = user
+
+      mail(:to => user.email,
+           :subject => "You are now an admin of a Flash Volunteer page")
+    end
+
     def event_deleted(event, user)
         @event = event
         @user = user

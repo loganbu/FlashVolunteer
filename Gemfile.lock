@@ -38,13 +38,14 @@ GEM
       builder
       mime-types
       xml-simple
-    aws-sdk (1.8.2)
+    aws-sdk (1.8.3)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
       uuidtools (~> 2.1)
     backports (2.6.7)
+    bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
-    bootstrap-sass (2.3.0.0)
+    bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
     builder (3.0.4)
     cancan (1.6.9)
@@ -96,7 +97,7 @@ GEM
       win32console (~> 1.3.0)
     fssm (0.2.10)
     geocoder (1.1.6)
-    grape (0.2.6)
+    grape (0.3.0)
       activesupport
       builder
       hashie (~> 1.2)
@@ -122,8 +123,6 @@ GEM
       jquery-rails
       railties (>= 3.1.0)
     jquery_datepicker (0.4)
-    jquery_mobile_rails (1.2.0)
-      rails (>= 3.1.0)
     json (1.7.7)
     jwt (0.1.5)
       multi_json (>= 1.0)
@@ -135,17 +134,17 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
-    mobylette (2.3)
-      actionpack (>= 3.0)
     multi_json (1.6.1)
     multi_xml (0.5.3)
     multipart-post (1.1.5)
+    mysql2 (0.3.11)
     mysql2 (0.3.11-x86-mingw32)
     nested_form (0.3.1)
-    newrelic_rpm (3.5.6.55)
+    newrelic_rpm (3.5.7.59)
+    nokogiri (1.5.6)
     nokogiri (1.5.6-x86-mingw32)
     oauth (0.4.7)
-    oauth2 (0.8.0)
+    oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
       jwt (~> 0.1.4)
@@ -230,14 +229,12 @@ GEM
       json (~> 1.4)
     remotipart (1.0.5)
     rmagick (2.13.2)
-    safe_yaml (0.7.1)
+    safe_yaml (0.8.3)
     sass (3.2.5)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    sass-twitter-bootstrap (2.2.2.1)
-      sass
     sinatra (1.0)
       rack (>= 1.0)
     sprockets (2.2.2)
@@ -245,6 +242,7 @@ GEM
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.7)
     sqlite3 (1.3.7-x86-mingw32)
     squeel (1.0.16)
       activerecord (~> 3.0)
@@ -276,6 +274,7 @@ GEM
       POpen4 (>= 0.1.4)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
@@ -295,9 +294,7 @@ DEPENDENCIES
   icalendar
   jquery-rails (~> 2.2)
   jquery_datepicker
-  jquery_mobile_rails
   json (~> 1.7.7)
-  mobylette (~> 2.3)
   mysql2
   newrelic_rpm
   nokogiri (~> 1.5)
@@ -310,7 +307,6 @@ DEPENDENCIES
   rails_admin
   rmagick
   sass-rails (~> 3.2.3)
-  sass-twitter-bootstrap
   sinatra (= 1.0)
   sqlite3
   squeel

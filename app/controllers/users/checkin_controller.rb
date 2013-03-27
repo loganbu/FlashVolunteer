@@ -13,11 +13,9 @@ class Users::CheckinController < ApplicationController
         respond_to do |format|
           if @checkin.save
             format.html { redirect_to(@checkin.event, :notice => 'You have been checked in to this event') }
-            format.mobile { redirect_to(@checkin.event, :notice => 'You have been checked in to this event') }
             format.xml  { render :xml => @checkin, :status => :created }
           else
             format.html { redirect_to(@checkin.event) }
-            format.mobile { redirect_to(@checkin.event) }
             format.xml  { render :xml => @checkin.errors, :status => :unprocessable_entity }
           end
         end

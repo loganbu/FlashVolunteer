@@ -102,7 +102,7 @@ Flashvolunteer::Application.routes.draw do
             resource :stats, :only => [:show], :controller => "orgs/stats", :as => "org_stats"
         end
         # Show admins of the org
-        resources :users, :only => [:index, :update, :destroy], :controller => "orgs/users"
+        resources :users, :only => [:create, :index, :update, :destroy], :controller => "orgs/users"
         collection do
             post :register
         end
@@ -118,8 +118,12 @@ Flashvolunteer::Application.routes.draw do
             get :export
             get :print
         end
+        collection do 
+            get :featured
+        end
     end
     match "events/in/:neighborhood" => "events#in", :as => 'events_neighborhood', :via => :get
+    match "events/this/:timeframe" => "events#this", :as => 'this_events', :via => :get
 
     post "search" => "search#show", :as => "search"
 

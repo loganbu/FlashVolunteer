@@ -1,0 +1,39 @@
+<p>Welcome, <%= @resource.name %>,</p>
+<br />
+<%#########################
+  # @resource.unconfirmed_email != nil
+  # means that the user changed their e-mail address, and we are confirming that they own the new address.
+  #########################
+  %>
+<p>Our spider senses tell us that you
+<% if @resource.unconfirmed_email != nil %>
+ changed your e-mail address.
+<% else %>
+ created an account with Flash Volunteer. Congratulations on an excellent decision!
+<% end %>
+
+<% if @resource.unconfirmed_email != nil %>
+    Before you can sign in with this new e-mail address, we just need to make sure we got your information down right (our handwriting is kind of messy).
+<% end %>
+<% if !@resource.confirmed? %>
+    Before you can create an event or sign up for one, we just need to make sure we got your information down right (our handwriting is kind of messy). 
+<% end %>
+</p>
+
+<% if !@resource.confirmed? || @resource.unconfirmed_email != nil %>
+    <p><%= link_to 'Yep, you got me', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>! </p>
+    <p> Once you've <%= link_to 'confirmed with us', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>, 
+<% else %>
+<p> Now
+<% end %>
+you're ready to search for events in your neighborhood, coordinate with friends to create a Flash Volunteer team, or follow organizations you care about.</p>
+
+<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+<br />
+
+<p>Happy Volunteering!</p>
+<p>Charlie X. Buttons</p>
+<p>Flash Volunteer CEO (Confirmation Excellence Owner)</p>
+<p><%= mail_to('charlie@flashvolunteer.org', 'Contact me', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
+
+<p>This notification was sent to <%= @resource.email %> because it is associated with a Flash Volunteer account. Visit account setup to change your communications preferences. </p>

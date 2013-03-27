@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index    
     if current_user == nil
-      redirect_to events_url
+      redirect_to featured_events_url
     elsif current_user.type == "Org"
       redirect_to events_org_url(current_user)
     else
@@ -77,7 +77,6 @@ class UsersController < ApplicationController
           notice.concat("  You need to confirm your new e-mail address before you can use it.  Instructions have been e-mailed to #{params[:user][:email]}")
         end
         format.html { redirect_to(@user, :notice => notice) }
-        format.mobile { redirect_to(@user, :notice => notice) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -110,7 +109,6 @@ class UsersController < ApplicationController
     @user.save!
     respond_to do |format|
       format.html { redirect_to(:back, :notice => 'Your photo was removed') }
-      format.mobile { redirect_to(:back, :notice => 'Your photo was removed') }
       format.xml { head :ok }
     end
   end

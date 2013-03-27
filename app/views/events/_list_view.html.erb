@@ -9,28 +9,6 @@
     dimension = 16%>
 <% end %>
 
-
-<div id = "neighborhood_list">
-    <li>
-        <% if (@neighborhood == nil) %>
-            <h2>events near </h2>
-            <h1><%= link_to("King County", "#", :id => "list_link") %></h1>               
-        <% else %>
-            <h2>events near</h2>
-            <h1><%= link_to(@neighborhood.name, "#", :id => "list_link") %></h1>
-        <% end %>
-        <ul>
-            <% Neighborhood.order("name asc").each do |neighborhood| %>
-                <li><%=link_to(neighborhood.name, events_neighborhood_url(neighborhood.name))%></li>
-            <% end %>
-        </ul>
-    </li>
-</div>
-<div style = "clear:both"></div>
-<div id="create_string">
-    <%= new_event_link %>
-</div>
-
 <% if (@events.count == 0) %>
     <p>There are no events in this location.  Try <%= link_to("broadening your search", "/events") %>.</p>
 <% else %>

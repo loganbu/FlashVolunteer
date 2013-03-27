@@ -38,7 +38,6 @@ gem 'yui-compressor'
 
 group :assets do
 	gem 'sass-rails', '~> 3.2.3'
-	gem 'sass-twitter-bootstrap'
 	gem 'compass'
 end
 
@@ -51,8 +50,6 @@ gem "omniauth-google-oauth2"
 gem "omniauth-twitter"
 
 gem 'wicked'
-gem 'mobylette', '~> 2.3'
-gem 'jquery_mobile_rails'
 gem 'classy_enum', '~> 2.0.3'
 
 source :gemcutter
