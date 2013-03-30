@@ -5,6 +5,7 @@
                 <ul class="nav">
                     <li><%= link_to("About Us", about_path) %></li>
                     <li><%= link_to("Help", help_articles_path) %></li>
+                    <li><%= link_to("Partners", partners_path) %></li>
                     <li><%= link_to("Privacy", privacy_path) %></li>
                     <li><%= link_to("Terms of Use", tou_path) %></li>
                     <li><%= link_to("Jobs", jobs_path) %></li>
@@ -16,9 +17,6 @@
                 <%= render( :partial => 'shared/flash_share', :locals => {:size => :medium}) %>
             </div>
             <div class="span9">
-                <a href="http://fundly.com/flashvolunteer2011" class="pull-right">
-                    <%= image_tag("donate_normal_110x25.png", :alt=>"Donate to Flash Volunteer!") %>      
-                </a>     
                 <div class="pull-right copy">
                     built by volunteers, for volunteers <br/>
                     Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit
