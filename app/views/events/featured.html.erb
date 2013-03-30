@@ -7,7 +7,7 @@
                     <div class="carousel-inner">
                         <% @events.each_with_index do |event, i| %>
                           <div class="item <%= "active" if i == 0 %>">
-                            <%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %>
+                            <a href="<%= event_path(event) %>"><%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %></a>
                             <div class="carousel-caption">
                               <h2><%= event.name %></h2>
                               <p><%= event.start.strftime('%-B %-d, %Y - %-A') %></p>
@@ -92,7 +92,7 @@
 <section class = "news">
     <article class = "span4 alpha news">
         <div class = "news-title">In the News</div>
-        <img src="/assets/spotlight/brad.png">
+        <a href="http://web.bus52.com//profiles/flash-volunteer/#" target="_blank"><img src="/assets/spotlight/brad.png"></a>
         <p>
             We were featured on <a href="http://web.bus52.com//profiles/flash-volunteer/#" target="_blank">Bus52!</a> Click here to see the <a href="http://youtu.be/JwNmdp5sv4Y" target="_blank">video interview</a>.
 
@@ -117,7 +117,7 @@
     </article>
     <article class = "span4 omega news">
         <div class = "news-title">Connect With Us</div>
-        <img src="/assets/spotlight/blog.png">
+        <a href="http://blog.flashvolunteer.org" target="_blank"><img src="/assets/spotlight/blog.png"></a>
         <p>
             Stay connected with the latest news and volunteer stories through our <a href="http://blog.flashvolunteer.org" target="_blank">blog</a>, <a href="https://www.facebook.com/flashvolunteer" target="_blank">facebook</a>, and <a href="https://twitter.com/flashvolunteer" target="_blank">twitter</a>!
         </p>

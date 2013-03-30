@@ -220,8 +220,7 @@ span .small_badge:hover{
 }
 
 .featured_badges {
-    //padding-bottom: 0px;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 
 
@@ -316,6 +315,10 @@ span .small_badge:hover{
 .thumbnails h2 {
     font-family: 'Helvetica Neue';
     font-weight: bold;
+}
+
+figcaption.featured_badges {
+    min-height: 200px;
 }
 
 /**************
