@@ -26,37 +26,3 @@
 <div id="page">
     <%= will_paginate @events, :page_links => false %>
 </div>
-
-<script type="text/javascript">
-    var timeout    = 300;
-    var closetimer = 0;
-    var ddmenuitem = 0;
-
-    function dropdown_menu_open() {  
-        dropdown_menu_canceltimer();
-        dropdown_menu_close();
-        ddmenuitem = $(this).find('ul').css('visibility', 'visible');
-    }
-
-    function dropdown_menu_close() {
-        if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');
-    }
-
-    function dropdown_menu_timer() {  
-        closetimer = window.setTimeout(dropdown_menu_close, timeout);
-    }
-
-    function dropdown_menu_canceltimer() {
-        if(closetimer) {
-            window.clearTimeout(closetimer);
-            closetimer = null;
-        }
-    }
-
-    $(document).ready(function() {
-        $('#neighborhood_list > li').bind('mouseover', dropdown_menu_open);
-        $('#neighborhood_list > li').bind('mouseout',  dropdown_menu_timer);
-    });
-
-    document.onclick = dropdown_menu_close;
-</script>
