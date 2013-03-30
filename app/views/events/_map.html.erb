@@ -16,11 +16,10 @@ $(document).ready(function() {
     var pageUrlPart = '';
     if (page) {
         pageUrlPart = '?page=' + page;
-    } else {
-        page = 1;
     }
 
-    Map.addPoints(eventUrl + '.xml?page=' + page + '&per_page=100', false, Map.showPopup);
-    Map.addPoints(eventUrl + '.xml' + pageUrlPart, true, Map.showPopup);
+    Map.addPoints(eventUrl + '.xml?per_page=100', false, Map.showPopup, function() {
+        Map.addPoints(eventUrl + '.xml' + pageUrlPart, true, Map.showPopup, null);
+    });
 });
 </script>

@@ -62,7 +62,7 @@ Map.showMapFromElement = function(element, i, onPage, eventCallback) {
     }
 }
 
-Map.addPoints = function (urlSource, onPage, eventCallback) {
+Map.addPoints = function (urlSource, onPage, eventCallback, completeCallback) {
     $.ajax({
         url: urlSource,
         dataType: 'xml'
@@ -70,6 +70,10 @@ Map.addPoints = function (urlSource, onPage, eventCallback) {
         $(data).find('event').each(function(i) {
             Map.showMapFromElement($(this), i, onPage, eventCallback)
         });
+        if (completeCallback != null)
+        {
+            completeCallback();
+        }
     });
 };
 
