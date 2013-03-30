@@ -16,7 +16,7 @@ Map.setMap = function (div, mapLatitude, mapLongitude, zoom) {
 };
 
 
-Map.showMapFromElement = function(element, i, onPage, eventCallback) {
+Map.showMapFromElement = function(element, i, eventCallback) {
     var latitude = 0;
     var longitude = 0;
     var iconSize = 30;
@@ -26,12 +26,8 @@ Map.showMapFromElement = function(element, i, onPage, eventCallback) {
     longitude = element.find('longitude').text();
     name = element.find('name').text();
     var attending=element.find('user-participates').text();
-
-
-    var imageStrip = onPage ?  "mapStrip" : "mapNoPage";
-    imageStrip += attending == "true" ? "_signedUp" : "_avail";
-    imageStrip = "/assets/" + imageStrip + ".png"
-
+    var imageStrip = attending == "true" ? "/assets/mapStripSignedUp_medium.png" : 
+        "/assets/mapStripAvail_medium.png"; 
     var latLng = new google.maps.LatLng(latitude, longitude);
 
     // Create a custom marker icon
@@ -60,13 +56,13 @@ Map.showMapFromElement = function(element, i, onPage, eventCallback) {
     }
 }
 
-Map.addPoints = function (urlSource, onPage, eventCallback) {
+Map.addPoints = function (urlSource, eventCallback) {
     $.ajax({
         url: urlSource,
         dataType: 'xml'
     }).success(function (data) {
         $(data).find('event').each(function(i) {
-            Map.showMapFromElement($(this), i, onPage, eventCallback)
+            Map.showMapFromElement($(this), i, eventCallback)
         });
     });
 };

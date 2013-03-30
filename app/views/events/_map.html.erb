@@ -16,11 +16,12 @@ $(document).ready(function() {
     var pageUrlPart = '';
     if (page) {
         pageUrlPart = '?page=' + page;
-    } else {
-        page = 1;
     }
-
-    Map.addPoints(eventUrl + '.xml?page=' + page + '&per_page=100', false, Map.showPopup);
-    Map.addPoints(eventUrl + '.xml' + pageUrlPart, true, Map.showPopup);
+    <% if (@neighborhood == nil) %>
+        var baseUrl = "<%= events_url %>";
+    <% else %>
+        var baseUrl = "<%= events_neighborhood_url @neighborhood.name %>";
+    <% end %>
+    Map.addPoints(baseUrl + '.xml' + pageUrlPart, Map.showPopup);
 });
 </script>

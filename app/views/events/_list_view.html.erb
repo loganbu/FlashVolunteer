@@ -1,10 +1,12 @@
 <%
     mobile ||= false
+    markerSize ||= "medium"
     dimension ||= 30
 %>
 
 <%if (mobile == true)
-    dimension = 30%>
+    markerSize = "small"
+    dimension = 16%>
 <% end %>
 
 
@@ -35,7 +37,7 @@
     <% @events.each_with_index do |event, i| %>
     <div class="event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
         <div class="pull-left marker"
-             style="background: url(<%= event.attending?(current_user) ? "/assets/mapStrip_signedUp.png" : "/assets/mapStrip_avail.png" %>) 0px <%= -i*dimension %>px">&nbsp;
+             style="background: url(<%= event.attending?(current_user) ? "/assets/mapStripSignedUp_#{markerSize}.png" : "/assets/mapStripAvail_#{markerSize}.png" %>) 0px <%= -i*dimension %>px">&nbsp;
         </div>
         <div class="details">
             <%= render :partial => "events/event", :locals => { :event => event, :description => true, :show_links => true, :is_mobile => mobile } %>
