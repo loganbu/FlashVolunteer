@@ -30,11 +30,13 @@ Map.showMapFromElement = function(element, i, eventCallback) {
         "/assets/mapStripAvail_medium.png"; 
     var latLng = new google.maps.LatLng(latitude, longitude);
 
+    var iconLocation = onPage ? iconSize*i : 0;
+
     // Create a custom marker icon
     var icon = new google.maps.MarkerImage(
         imageStrip,
         new google.maps.Size(iconSize, iconSize), // Image size
-        new google.maps.Point(0, i*iconSize), // Sprite origin
+        new google.maps.Point(0, iconLocation), // Sprite origin
         new google.maps.Point(iconHalfSize, iconHalfSize) // Mark the item in the middle
         );
     var marker = new google.maps.Marker({
