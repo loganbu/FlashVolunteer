@@ -34,11 +34,13 @@ Map.showMapFromElement = function(element, i, onPage, eventCallback) {
 
     var latLng = new google.maps.LatLng(latitude, longitude);
 
+    var iconLocation = onPage ? iconSize*i : 0;
+
     // Create a custom marker icon
     var icon = new google.maps.MarkerImage(
         imageStrip,
         new google.maps.Size(iconSize, iconSize), // Image size
-        new google.maps.Point(0, i*iconSize), // Sprite origin
+        new google.maps.Point(0, iconLocation), // Sprite origin
         new google.maps.Point(iconHalfSize, iconHalfSize) // Mark the item in the middle
         );
     var marker = new google.maps.Marker({
@@ -60,7 +62,7 @@ Map.showMapFromElement = function(element, i, onPage, eventCallback) {
     }
 }
 
-Map.addPoints = function (urlSource, onPage, eventCallback) {
+Map.addPoints = function (urlSource, onPage, eventCallback, completeCallback) {
     $.ajax({
         url: urlSource,
         dataType: 'xml'
@@ -68,6 +70,10 @@ Map.addPoints = function (urlSource, onPage, eventCallback) {
         $(data).find('event').each(function(i) {
             Map.showMapFromElement($(this), i, onPage, eventCallback)
         });
+        if (completeCallback != null)
+        {
+            completeCallback();
+        }
     });
 };
 
