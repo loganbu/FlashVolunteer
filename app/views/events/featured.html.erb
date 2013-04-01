@@ -40,7 +40,7 @@
         <div class="span4">
             <% @events.each_with_index do |event, i| %>
             <div class="item <%= "hide" if i != 0 %>" id="carousel-<%=i %>">
-                <a href="<%= register_event_url(event) %>" data-method="post" rel="nofollow" class="btn btn-large btn-warning">
+                <a href="<%= event_url(event) %>" class="btn btn-large btn-warning">
                     <h2>Sign Up Now!</h2>
                     <div class="countdown">
                         <div class="countdownTitle">Countdown</div>
