@@ -871,9 +871,8 @@ li.unstyled {
 }
 
 .featured {
+    margin-top: 20px;
     font-size: $baseFontSize * 1.15;
-    line-height: $baseLineHeight * 1.5;
-    max-height: 407px;    
+    line-height: $baseLineHeight * 1.5;    
     overflow: hidden;
-    margin-bottom: 10px;
 }
