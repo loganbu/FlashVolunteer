@@ -10,7 +10,7 @@
                             <a href="<%= event_path(event) %>"><%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %></a>
                             <div class="carousel-caption">
                               <h2><%= event.name %></h2>
-                              <p><%= event.start.strftime('%-B %-d, %Y - %-A') %></p>
+                              <p><%= event.start.strftime('%-B %-d, %Y (%-A)') %></p>
                             </div>
                           </div>
                         <% end %>
@@ -40,8 +40,8 @@
         <div class="span4">
             <% @events.each_with_index do |event, i| %>
             <div class="item <%= "hide" if i != 0 %>" id="carousel-<%=i %>">
-                <a href="<%= register_event_url(event) %>" data-method="post" rel="nofollow" class="btn btn-large btn-warning">
-                    <h2>Join Us!</h2>
+                <a href="<%= event_url(event) %>" class="btn btn-large btn-warning">
+                    <h2>Sign Up Now!</h2>
                     <div class="countdown">
                         <div class="countdownTitle">Countdown</div>
                         <p id="countdownTime-<%= i %>">&nbsp;</p>
@@ -53,11 +53,13 @@
                             }, 100);
                         })
                     </script>
-                </a> <!-- This is the big "Join Us" button -->
+                </a> <!-- This is the big "Sign Up Now!" button -->
 
-                <!--Section under 'Join Us' button that has date, address, and description -->
+                <!--Section under 'Sign Up Now!' button that has date, address, and description -->
                 <div class="event-date-loc">
-                    <p><%= event.start.strftime('%-B %-d, %Y - %-A') %></p>
+                    <p><%= event.start.strftime('%-I:%M%P') %> - <%= event.end.strftime('%-I:%M%P') %></p>
+                    <p><%= event.start.strftime('%-A, %-B %-d, %Y') %></p>
+
                     <%= link_to event.geocode_address, "https://maps.google.com/?q=#{event.geocode_address}" %>
                 </div>
               <% if @current_sponsor != nil %>
@@ -98,21 +100,21 @@
 
         </p>
         <p>
-            Geekwire also interviewed us as part of their Startup Spotlight series.  <a href="http://www.geekwire.com/2012/startup-spotlight-flash-volunteer-leverages-fun-flash-mobs-social-good/" target="_blank">Read the interview.</a>
+            Geekwire <a href="http://www.geekwire.com/2012/startup-spotlight-flash-volunteer-leverages-fun-flash-mobs-social-good/" target="_blank">interviewed us</a> as part of their Startup Spotlight series.
         </p>
         <p>
-            Listen to our interview on Seattle's KOMO News radio! <a href="http://youtu.be/W3Bh-qYzbTc" target="_blank">Listen to the interview.</a>
+            <a href="http://youtu.be/W3Bh-qYzbTc" target="_blank">Listen to our interview</a> on Seattle's KOMO News radio!
         </p>
 
     </article>
     <article class = "span4 news">
         <div class = "news-title">iPhone App</div>
         <p>
-            We created an iPhone app that you can use to create, search, and signup for volunteer events in your own neighborhood!
+            Check out our <a href="https://itunes.apple.com/us/app/flash-volunteer/id353017547?mt=8" target="_blank">iPhone app</a> that you can use to create, search, and signup for volunteer events in your own neighborhood!
         </p>
             <a href="https://itunes.apple.com/us/app/flash-volunteer/id353017547?mt=8" target="_blank"><img src="/assets/spotlight/FViphoneapp.png"></a>
         <p>
-            Get off the couch and change the world! <a href="https://itunes.apple.com/us/app/flash-volunteer/id353017547?mt=8" target="_blank">iPhone app</a> 
+            Get off the couch and change the world! 
         </p>
     </article>
     <article class = "span4 omega news">
