@@ -2,9 +2,7 @@
     container to be min-height of 100%.  Then, then footer is below the page, so to
     bring it back up, margin it to -(height of footer)px
 */
-#wrapper {
-    min-height: 100%;
-}
+
 html, body {
     height: 100%;
     background: $background;
@@ -15,6 +13,14 @@ html, body {
 body {
     font: inherit;
     padding-top: 65px;
+}
+
+#wrapper {
+    min-height: 100%;
+}
+
+#content {
+    margin-bottom: 100px;
 }
 
 /* Remove top padding when top navbar goes static in narrow viewports */
@@ -31,12 +37,6 @@ body {
     .btn-create-new {
         float: right;
     }
-}
-
-
-
-#content {
-    margin-bottom: 100px;
 }
 
 /**************
@@ -346,6 +346,7 @@ h2.spotlight-title span {
 
 .news-title {
     font-size: 1.3em;
+    height: 20px;
     width: 95%;
     position: relative;
     background: $lightGray;
@@ -438,6 +439,11 @@ h2.spotlight-title span {
 }
 .map_subtitle{
     font-size: $baseFontSize * 1.5;
+}
+
+.event-calendar-export{
+    text-align: right;
+    margin-bottom: 3em;
 }
 
 /**************
@@ -575,6 +581,10 @@ footer {
     padding-top: 5px;
 }
 
+.image-alignment{
+    text-align: center;
+}
+
 /**************
  Errors
  **************/
@@ -585,10 +595,17 @@ footer {
 
 
 /**************
- Static pages
+ About Us
  **************/
-.image-alignment{
+.team-name {
+    font-size: 1.3em;
+    width: 95%;
+    position: relative;
+    background: $lightGray;
+    color: $darkGreen;
     text-align: center;
+    padding: 10px;
+    margin: 0 auto 10px;
 }
 
 /**************
