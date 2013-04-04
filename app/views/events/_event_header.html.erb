@@ -36,9 +36,5 @@
         	<%= render(:partial => 'share', :locals => { :event => @event, :size => :large }) %>
     	<% end %>
     </div>
-
-    <div class="span5">
-        <div class="pull-right"><%= link_to("add to my calendar", export_event_url(@event)) %></div>
-    </div>
 </div>
 <% end %>
