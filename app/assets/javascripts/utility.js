@@ -109,9 +109,11 @@ function countdownString(dateTime) {
     var combinedStr = "";
     if (weeksStr && daysStr) {
         combinedStr = weeksStr + ", " + daysStr;
-    } else {
+    } else if (weeksStr || daysStr) {
         combinedStr = weeksStr + daysStr;
+    } else {
+
     }
     
-    return combinedStr + " " + hours + ":" + (minutes < 10 ? "0" : "") + minutes + ":" + (seconds < 10 ? "0" : "") + seconds;
+    return combinedStr + " " + hours + " Hours " + (minutes < 10 ? "0" : "") + minutes + " Minutes";
 }

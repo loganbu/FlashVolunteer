@@ -48,7 +48,7 @@
                     <script type="text/javascript">
                         $(window).load(function() {
                             setInterval(function() {
-                                $("#countdownTime-<%= i %>").text(countdownString(new Date(<%= @events[i].start.strftime("%Y, %m, %d, %H, 0, 0, 0") %>)));
+                                $("#countdownTime-<%= i %>").text(countdownString(new Date("<%= @events[i].start %>")));
                             }, 100);
                         })
                     </script>
@@ -80,8 +80,8 @@
                         $("#carousel-" + prevIndex).hide();
                         $("#carousel-badges-" + prevIndex).hide();
                         $("#carousel-" + nextIndex).show();
-                        $("#carousel-badges-" + nextIndex).show();
-                    });
+                        $("#carousel-badges-" + nextIndex).show()
+;                    });
                 });
             </script>
         </div><!-- /.span4-->
