@@ -3,7 +3,10 @@
     badge_size ||= "small"
 %>
 
+<%=  image_tag @event.photo_featured.url(:featured) if @event.photo_featured? %>
+
 <h1><%= @event.name %></h1>
+
 <% if @event.is_vm %>
 <div class="row-fluid" style="margin-top: -20px;margin-bottom: 20px">
 <div class="span1"><%= image_tag "/assets/vm_logo_small.jpg"%></div>
