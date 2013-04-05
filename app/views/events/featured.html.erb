@@ -47,7 +47,7 @@
                     <script type="text/javascript">
                         $(window).load(function() {
                             setInterval(function() {
-                                $("#countdownTime-<%= i %>").text(countdownString(new Date("<%= @events[i].start %>")));
+                                $("#countdownTime-<%= i %>").text(countdownString(new Date(<%= @events[i].start.to_i*1000 %>)));
                             }, 100);
                         })
                     </script>
