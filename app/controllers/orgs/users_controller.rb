@@ -13,23 +13,27 @@ class Orgs::UsersController < ApplicationController
 
   def create
     @org = Org.find(current_user.id)
-    @user = User.find_or_create_by_email(:email => params[:email], :name => params[:email])
+    @user = User.find(:first, :conditions => [ "lower(email) = ?", params[:email].downcase ])
 
-    if (!@org.admins.include?(@user))
-      @org.admins << @user
-    end
-
-    if @user.save
-      flash[:notice] = "#{@user.email} now an admin of #{@org.name}."
-      if Rails.env.production?
-        # send the e-mail
-        UserMailer.delay.new_org_admin(@org, @user)
-      else
-        UserMailer.new_org_admin(@org, @user).deliver
-      end
+    if (@user == nil)
+      flash[:error] = "That email address does not match any Flash Volunteer users. Please try again."
     else
-      @user.errors.each do |attr,msg|
-        flash[:error] = msg
+      if (!@org.admins.include?(@user))
+        @org.admins << @user
+      end
+
+      if @user.save
+        flash[:notice] = "#{@user.email} now an admin of #{@org.name}."
+        if Rails.env.production?
+          # send the e-mail
+          UserMailer.delay.new_org_admin(@org, @user)
+        else
+          UserMailer.new_org_admin(@org, @user).deliver
+        end
+      else
+        @user.errors.each do |attr,msg|
+          flash[:error] = msg
+        end
       end
     end
     respond_to do |format|
