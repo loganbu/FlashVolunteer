@@ -66,6 +66,9 @@ class Event < ActiveRecord::Base
     scope :before, lambda { |date|
         where("end <= ?", date)
     }
+    scope :after, lambda { |date|
+        where("end >= ?", date)
+    }
     scope :past, lambda { |days=false|
         end_time = Time.now - (days || 9001).days unless days == 0
         end_time = DateTime.now.beginning_of_day if days == 0

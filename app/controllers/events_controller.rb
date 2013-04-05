@@ -49,10 +49,11 @@ class EventsController < ApplicationController
       return
     end
 
+    Rails.logger.info("End Date")
     Rails.logger.info(end_date)
 
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown seattle")==0 }
-    @events = Event.before(end_date).order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @events = Event.before(end_date).after(DateTime.now).order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
     respond_to do |format|
