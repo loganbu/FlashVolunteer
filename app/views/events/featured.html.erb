@@ -9,7 +9,7 @@
                             <%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %>
                             <div class="carousel-caption">
                               <h2><%= link_to event.name, event %></h2>
-                              <p><%= event.start.strftime('%-B %-d, %Y (%-A)') %></p>
+                              <p><%= event.start.strftime("%-B #{event.start.day.ordinalize}") %> in <%=  event.neighborhood.name %></p>
                             </div>
                           </div>
                         <% end %>
@@ -20,7 +20,6 @@
                 <figcaption class="featured_badges">
                     <% @events.each_with_index do |event, i| %>
                       <div class="item <%= "hide" if i != 0 %>" id="carousel-badges-<%=i %>">
-                        <div class="row-fluid"><%= render :partial => "skills/strip", :locals => { :entity => event, :size => "small" } %></div>
                         <div class="row-fluid">
                             <p class="featured">
                                 <% if event.description.length > 450 %>
