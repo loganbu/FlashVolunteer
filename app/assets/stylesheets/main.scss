@@ -128,6 +128,18 @@ footer {
     .carousel-caption {
         h2 {
             color: $white;
+            font-size: 2em;
+            margin-top: 0;
+            letter-spacing: -2px;
+        }
+
+        .carousel-date {
+            font-size: 1.3em;
+        }
+
+        .carousel-neighborhood {
+            font-style: italic;
+            font-size: 1.3em;
         }
     }
 }
@@ -228,6 +240,21 @@ span .small_badge:hover{
  Featured Events
  **************/
 
+figure {
+    position: relative;
+}
+
+ .featured-banner {
+    height: 125px;
+    width: 125px;
+    background-image:url(bannerFeatured.png);
+    z-index: 1;
+    position: absolute;
+    left: -2px;
+    top: -1px;
+    text-indent: -9999px;
+}
+
 .countdown {
     margin-top: 10px;
     padding: 5px;
@@ -326,17 +353,18 @@ figcaption.featured_badges {
  **************/
 
 h2.spotlight-title {
-    border-top:1px solid #AAAAAA;
+    border-top:1px solid $lightGray;
     margin: 30px auto 50px;
 }
 
 h2.spotlight-title span {
-    display:block;
-    background: $green; 
-    color: $white; 
-    width:300px; 
-    margin:-19px auto; 
-    text-align:center 
+    background-image:url(bannerSpotlight.png);
+    color: $white;
+    height: 50px;
+    width:268px; 
+    margin:-22px auto; 
+    text-indent: -9999px;
+    display: block;
 }
 
 .news {
