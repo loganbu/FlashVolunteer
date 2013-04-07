@@ -54,7 +54,10 @@ $(function () {
                         <div><h4>volunteers in <%= link_to(@user.neighborhood.name, (events_url.concat("/in/").concat(@user.neighborhood.name))) %></h4></div>
                     <% end %>
                     <% if @user.type == "Org" && @user.website %>
-                        <div><p>Visit <%= @user.name%> at <%= link_to(@user.website, "http://" + @user.website) %></p></div>
+                        <%
+                            website = @user.website.match(/^http:/)? @user.website : "http://" + @user.website
+                        %>
+                        <div><p>Visit <%= @user.name%> at <%= link_to(@user.website, website) %></p></div>
                     <% end %>
                      <div class="row-fluid bold">
                         <div class = "span2 t1h-stats">
