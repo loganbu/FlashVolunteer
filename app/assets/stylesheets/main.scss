@@ -40,7 +40,7 @@ body {
 }
 
 /**************
-Custom add-on set to Twitter Bootstrap (uses normalize.css)
+=Custom add-on set to Twitter Bootstrap (uses normalize.css)
  **************/
 
 header, section, footer, aside, nav, article, figure, figcaption {
@@ -59,7 +59,7 @@ footer {
 }
 
 /**************
- Overwriting Twitter Bootstrap
+ =Overwriting Twitter Bootstrap
  **************/
 
 .navbar .nav > li > a {
@@ -128,12 +128,32 @@ footer {
     .carousel-caption {
         h2 {
             color: $white;
+            font-size: 2em;
+            margin-top: 0;
+            letter-spacing: -2px;
+
+            a {
+                color: #8cc42f;
+            }
+
+            a:hover{
+                color: $orange;
+            }
+        }
+
+        .carousel-date, .carousel-neighborhood {
+            font-size: 1.4em;
+            color: $lightGray;
+        }
+
+        .carousel-neighborhood {
+            font-style: italic;
         }
     }
 }
 
 /**************
- Common page elements
+ =Common page elements
  **************/
 .page_header{
     padding-bottom: $XSPadding;
@@ -148,7 +168,7 @@ footer {
 }
 
 /**************
- Badges
+ =Badges
  **************/
 .small_badge {
     display: block;
@@ -225,8 +245,23 @@ span .small_badge:hover{
 
 
 /**************
- Featured Events
+ =Featured Events
  **************/
+
+figure {
+    position: relative;
+}
+
+ .featured-banner {
+    height: 125px;
+    width: 125px;
+    background-image:url(bannerFeatured.png);
+    z-index: 1;
+    position: absolute;
+    left: -2px;
+    top: -1px;
+    text-indent: -9999px;
+}
 
 .countdown {
     margin-top: 10px;
@@ -322,21 +357,22 @@ figcaption.featured_badges {
 }
 
 /**************
- News
+ =News
  **************/
 
 h2.spotlight-title {
-    border-top:1px solid #AAAAAA;
+    border-top:1px solid $lightGray;
     margin: 30px auto 50px;
 }
 
 h2.spotlight-title span {
-    display:block;
-    background: $green; 
-    color: $white; 
-    width:300px; 
-    margin:-19px auto; 
-    text-align:center 
+    background-image:url(bannerSpotlight.png);
+    color: $white;
+    height: 50px;
+    width:268px; 
+    margin:-22px auto; 
+    text-indent: -9999px;
+    display: block;
 }
 
 .news {
@@ -371,7 +407,16 @@ h2.spotlight-title span {
 }
 
 /**************
- Events
+ =Events Details Page
+ **************/
+
+.event-name {
+    letter-spacing: -2px;
+    line-height: 1.2em;
+ }
+
+/**************
+ =Events Map View
  **************/
  .map {
     width: 100%;
@@ -450,7 +495,7 @@ h2.spotlight-title span {
 }
 
 /**************
- Navigation
+ =Navigation
  **************/
 
 .navbar > .nav > li > a {
@@ -489,7 +534,7 @@ h2.spotlight-title span {
 }
 
 /**************
- Header
+ =Header
  **************/
 .logo {
     padding: 20px 5px;
@@ -549,7 +594,7 @@ h2.spotlight-title span {
 }
 
 /**************
- Footer
+ =Footer
  **************/
 footer {
     color: black;
@@ -575,7 +620,7 @@ footer {
 }
 
 /**************
- Static pages
+ =Static pages
  **************/
 .board_padding_right{
     padding-right: 10px;
@@ -589,7 +634,7 @@ footer {
 }
 
 /**************
- Errors
+ =Errors
  **************/
 .alert {
   text-shadow: 1px 1px 0 rgba(255,255,255,.5);
@@ -598,7 +643,7 @@ footer {
 
 
 /**************
- About Us
+ =About Us
  **************/
 .team-name {
     font-size: 1.3em;
@@ -612,14 +657,14 @@ footer {
 }
 
 /**************
- Forms
+ =Forms
  **************/
 label {
     padding-top: 5px;
 }
 
 /**************
- Help
+ =Help
  **************/
 #help_content_layout{
 }
@@ -631,7 +676,7 @@ label {
 }
 
 /**************
- Scoreboard
+ =Scoreboard
  **************/
 .scoreboard{
     background-color: $lightGray;
@@ -657,7 +702,7 @@ label {
 }
 
 /**************
- Input
+ =Input
  **************/
 .block {
     display: block;
@@ -683,7 +728,7 @@ input[type="checkbox"] {
     margin-top: .4*$baseLineHeight;
 }
 /**************
- JQuery
+ =JQuery
  **************/
 .ui-datepicker {
     background-color:$babyBlue;
@@ -717,7 +762,7 @@ input[type="checkbox"] {
 }
 
 /**************
- Pagination
+ =Pagination
  **************/
 .pagination {
     text-align: center;
@@ -763,7 +808,7 @@ input[type="checkbox"] {
 }
 
 /**************
- JQuery Dropdown styling
+ =JQuery Dropdown styling
  **************/
 .dropdown {
     list-style: none;
@@ -776,7 +821,7 @@ input[type="checkbox"] {
 }
 
 /**************
- Splash Frame
+ =Splash Frame
  **************/
 #splash_frame {
     background: $background;
@@ -791,7 +836,7 @@ input[type="checkbox"] {
 }
 
 /**************
- Print Screen
+ =Print Screen
  **************/
 #print_screen_container{
     margin: 0 40px 40px 40px;
@@ -799,7 +844,7 @@ input[type="checkbox"] {
 }
 
 /**************
- Typeography
+ =Typeography
  **************/
 .title{
     font-size: 450%;
