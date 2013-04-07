@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.11' 
+gem 'rails', '3.2.13' 
 gem 'json', '~> 1.7.7'
 
 # Pagination
@@ -29,7 +29,7 @@ gem 'rails_admin'
 gem 'grape'
 
 # Delayed Jobs
-gem 'delayed_job_active_record', '~> 0.4.1'
+gem 'delayed_job_active_record', '~> 0.4'
 gem 'foreman'
 gem 'hirefireapp'
 
@@ -37,7 +37,7 @@ gem 'uglifier'
 gem 'yui-compressor'
 
 group :assets do
-	gem 'sass-rails', '~> 3.2.3'
+	gem 'sass-rails', '~> 3.2'
 	gem 'compass'
 end
 
@@ -52,7 +52,6 @@ gem "omniauth-twitter"
 gem 'wicked'
 gem 'classy_enum', '~> 2.0.3'
 
-source :gemcutter
 gem 'sinatra', '1.0'
 gem 'date_validator'
 
