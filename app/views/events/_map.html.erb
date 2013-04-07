@@ -5,8 +5,8 @@
        neighborhood_name = @neighborhood.name
     end %>
     <div class="dropdown pull-left" id="neighborhood-list">
-        <span class="map_subtitle">events near</span> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="map_title"><%= neighborhood_name %></span><b class="caret"></b></a>
-        <div class="dropdown-menu">
+        <span class="map_subtitle">events near</span> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="map_title"><%= neighborhood_name %></span><b class="caret" id="map-caret"></b></a>
+        <div class="dropdown-menu" id="neighborhood-selection">
             <% Neighborhood.order("name asc").each do |neighborhood| %>
                 <li><%=link_to(neighborhood.name, events_neighborhood_url(neighborhood.name))%></li>
             <% end %>

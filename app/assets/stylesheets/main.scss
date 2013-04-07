@@ -494,6 +494,17 @@ h2.spotlight-title span {
     margin-bottom: 3em;
 }
 
+#map-caret {
+    border-top: 8px solid $gray;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    margin-top: 13px;
+}
+
+#neighborhood-selection {
+    width: 300px;
+}
+
 /**************
  =Navigation
  **************/
