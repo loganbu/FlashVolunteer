@@ -5,7 +5,7 @@
 
 <%=  image_tag @event.photo_featured.url(:featured) if @event.photo_featured? %>
 
-<h1><%= @event.name %></h1>
+<h1 class="event-name"><%= @event.name %></h1>
 
 <% if @event.is_vm %>
 <div class="row-fluid" style="margin-top: -20px;margin-bottom: 20px">

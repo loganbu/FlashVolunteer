@@ -2,6 +2,7 @@
     <article id="featured-carousel" class="row-fluid">
         <div class="span8">
             <figure>
+                <div class="featured-banner">Featured</div>
                 <div id="featured-events" class="carousel slide img-polaroid"><!-- class of slide for animation -->
                     <div class="carousel-inner">
                         <% @events.each_with_index do |event, i| %>
@@ -9,7 +10,7 @@
                             <a href="<%= event_path(event) %>"><%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %></a>
                             <div class="carousel-caption">
                               <h2><%= link_to event.name, event %></h2>
-                              <p><%= event.start.strftime("%-B #{event.start.day.ordinalize}") %> in <%=  event.neighborhood.name %></p>
+                              <p><span class="carousel-date"><%= event.start.strftime("%-B #{event.start.day.ordinalize}") %> </span> in <span class="carousel-neighborhood"><%=  event.neighborhood.name %></span></p>
                             </div>
                           </div>
                         <% end %>
@@ -92,7 +93,7 @@
 <section class = "news">
     <article class = "span4 alpha news">
         <div class = "news-title">In the News</div>
-        <a href="http://web.bus52.com//profiles/flash-volunteer/#" target="_blank"><img src="/assets/spotlight/brad.png"></a>
+        <a href="http://web.bus52.com//profiles/flash-volunteer/#" target="_blank"><img src="/assets/spotlight/brad.jpg"></a>
         <p>
             We were featured on <a href="http://web.bus52.com//profiles/flash-volunteer/#" target="_blank">Bus52!</a> Click here to see the <a href="http://youtu.be/JwNmdp5sv4Y" target="_blank">video interview</a>.
 
@@ -107,7 +108,7 @@
     </article>
     <article class = "span4 news">
         <div class = "news-title">iPhone App</div>
-        <a href="https://itunes.apple.com/us/app/flash-volunteer/id353017547?mt=8" target="_blank"><img src="/assets/spotlight/FViphoneapp.png"></a>
+        <a href="https://itunes.apple.com/us/app/flash-volunteer/id353017547?mt=8" target="_blank"><img src="/assets/spotlight/fv_iPhone.jpg"></a>
         <p>
             Check out our <a href="https://itunes.apple.com/us/app/flash-volunteer/id353017547?mt=8" target="_blank">iPhone app</a> that you can use to create, search, and signup for volunteer events in your own neighborhood!
         </p>
@@ -118,7 +119,7 @@
     </article>
     <article class = "span4 omega news">
         <div class = "news-title">Connect With Us</div>
-        <a href="http://blog.flashvolunteer.org" target="_blank"><img src="/assets/spotlight/blog.png"></a>
+        <a href="http://blog.flashvolunteer.org" target="_blank"><img src="/assets/spotlight/blog.jpg"></a>
         <p>
             Stay connected with the latest news and volunteer stories through our <a href="http://blog.flashvolunteer.org" target="_blank">blog</a>, <a href="https://www.facebook.com/flashvolunteer" target="_blank">facebook</a>, and <a href="https://twitter.com/flashvolunteer" target="_blank">twitter</a>!
         </p>
