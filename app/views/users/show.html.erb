@@ -60,19 +60,19 @@ $(function () {
                         <div><p>Visit <%= @user.name%> at <%= link_to(@user.website, website) %></p></div>
                     <% end %>
                      <div class="row-fluid bold">
-                        <div class = "span2 t1h-stats">
+                        <div class = "span3 t1h-stats">
                             <p>hours</p>
                             <h4><%= @nHoursVolunteered %></h4>
                         </div>
-                        <div class = "span2 t1h-stats">
+                        <div class = "span3 t1h-stats">
                             <p>created</p>
                             <h4><%= @nEventsCreated %></h4>
                         </div>
-                        <div class = "span2 t1h-stats">
+                        <div class = "span3 t1h-stats">
                             <p>upcoming</p>
                             <h4><%= @nEventsComingUp %></h4>
                         </div>
-                        <div class = "span2 t1h-stats">
+                        <div class = "span3 t1h-stats">
                             <p>past</p>
                             <h4><%= @nEventsInPast %></h4>
                         </div>
@@ -86,7 +86,7 @@ $(function () {
     <div class="span3 list_spacing bold" style="margin-top:28px">
             <% if can? :create, Event %>
                 <div class="btn-create-new pull-right">
-                    <a href="<%= new_event_url %>" class="btn btn-large btn-success">Create New Event</a>
+                    <a href="<%= new_event_url %>" class="btn btn-medium btn-success">Create New Event</a>
                 </div>
             <% end %>  
         <ul class="unstyled">
