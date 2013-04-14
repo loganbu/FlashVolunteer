@@ -1,15 +1,17 @@
-<% if @event.errors.any? %>
-    <div class="alert alert-error">  
-        <a class="close" data-dismiss="alert" href="#">×</a>
-        <h4 class="alert-heading">Error!</h4>
-        <p>
-            <ul>
-            <% @event.errors.each do |attr,msg| %>
-                <li><%= msg %></li>
-            <% end %>
-            </ul>
-        </p>
-    </div>
-<% end %>
-<h3>create an event</h3>
-<%= render 'form' %>
+<div class="container">
+    <% if @event.errors.any? %>
+        <div class="alert alert-error">  
+            <a class="close" data-dismiss="alert" href="#">×</a>
+            <h4 class="alert-heading">Error!</h4>
+            <p>
+                <ul>
+                <% @event.errors.each do |attr,msg| %>
+                    <li><%= msg %></li>
+                <% end %>
+                </ul>
+            </p>
+        </div>
+    <% end %>
+    <h3>create an event</h3>
+    <%= render 'form' %>
+</div>

@@ -11,45 +11,43 @@
 <body>
   <div id="wrapper">
     <%= render"shared/header" %>
-    <div class="container">
-      <% if flash[:alert] || flash[:error] %>
-          <div class="alert alert-error">  
-              <a class="close" data-dismiss="alert" href="#">x</a>
-              <h4 class="alert-heading">Error!</h4>
-              <p>
-                  <ul>
-                      <li><%= flash[:alert] || flash[:error] %></li>
-                  </ul>
-              </p>
-          </div>
-      <% end %>
-      <% if flash[:notice] || flash[:info] %>
-          <div class="alert alert-success">  
-              <a class="close" data-dismiss="alert" href="#">x</a>
-              <p>
-                  <ul>
-                      <li><%= flash[:notice] || flash[:info] %></li>
-                  </ul>
-              </p>
-          </div>
-      <% end %>
-      <% if flash[:warning] %>
-          <div class="alert">  
-              <a class="close" data-dismiss="alert" href="#">x</a>
-              <p>
-                  <ul>
-                      <li><%= flash[:warning] %></li>
-                  </ul>
-              </p>
-          </div>
-      <% end %>
-      <div id="content">
-      <%= yield %>
-      <%= render "shared/debug" if Rails.env.development? %>
-      </div>
+    <% if flash[:alert] || flash[:error] %>
+        <div class="alert alert-error">  
+            <a class="close" data-dismiss="alert" href="#">x</a>
+            <h4 class="alert-heading">Error!</h4>
+            <p>
+                <ul>
+                    <li><%= flash[:alert] || flash[:error] %></li>
+                </ul>
+            </p>
+        </div>
+    <% end %>
+    <% if flash[:notice] || flash[:info] %>
+        <div class="alert alert-success">  
+            <a class="close" data-dismiss="alert" href="#">x</a>
+            <p>
+                <ul>
+                    <li><%= flash[:notice] || flash[:info] %></li>
+                </ul>
+            </p>
+        </div>
+    <% end %>
+    <% if flash[:warning] %>
+        <div class="alert">  
+            <a class="close" data-dismiss="alert" href="#">x</a>
+            <p>
+                <ul>
+                    <li><%= flash[:warning] %></li>
+                </ul>
+            </p>
+        </div>
+    <% end %>
+    <div id="content">
+    <%= yield %>
+    <%= render "shared/debug" if Rails.env.development? %>
     </div>
     <div id="clearfooter">&nbsp;</div>
-  </div><!-- .container -->
+  </div><!-- .wrapper - forces height to be 100% and push footer to the bottom -->
   <footer>
       <%= render"shared/footer" %>
   </footer>

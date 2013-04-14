@@ -1,30 +1,32 @@
-<h3>Events: Bulk upload</h3>
-<b>Use this feature to save time when creating multiple events on Flash Volunteer.</b>
+<div class="container">
+	<h3>Events: Bulk upload</h3>
+	<b>Use this feature to save time when creating multiple events on Flash Volunteer.</b>
 
-<p>1. Open the <%= link_to("submission spreadsheet", "https://docs.google.com/spreadsheet/ccc?key=0Ao5K4W67RyC1dER1NXZEdjVWYi1QWVFSbHF6UGVNUlE#gid=0") %> and enter your event information. <br/>
-	Tip: Use this spreadsheet to track your volunteer events going forward, and you'll be ready to post to Flash Volunteer at any time!<br/>
-	The spreadsheet includes tips on how to get started and who to contact if you get stuck (us, of course!).</p>
-<div class="image-alignment"><%= image_tag("instructions2.png", :id => "instructions1", :alt=>"step 1") %></div>
+	<p>1. Open the <%= link_to("submission spreadsheet", "https://docs.google.com/spreadsheet/ccc?key=0Ao5K4W67RyC1dER1NXZEdjVWYi1QWVFSbHF6UGVNUlE#gid=0") %> and enter your event information. <br/>
+		Tip: Use this spreadsheet to track your volunteer events going forward, and you'll be ready to post to Flash Volunteer at any time!<br/>
+		The spreadsheet includes tips on how to get started and who to contact if you get stuck (us, of course!).</p>
+	<div class="image-alignment"><%= image_tag("instructions2.png", :id => "instructions1", :alt=>"step 1") %></div>
 
-<p>2. You need to save this file under your Google account.  To do so, go to the menu and click File -> Make a Copy </p>
-<div class="image-alignment"><%= image_tag("instructions1.png", :id => "instructions2", :alt=>"step 2") %></div>
+	<p>2. You need to save this file under your Google account.  To do so, go to the menu and click File -> Make a Copy </p>
+	<div class="image-alignment"><%= image_tag("instructions1.png", :id => "instructions2", :alt=>"step 2") %></div>
 
-<p>3. Create a distinctive name for your document (we suggest including your organization name and today's date), select Also Copy Document Collaborators, then click OK.</p>
-<div class="image-alignment"><%= image_tag("instructions3.png", :id => "instructions3", :alt=>"step 3") %></div>
+	<p>3. Create a distinctive name for your document (we suggest including your organization name and today's date), select Also Copy Document Collaborators, then click OK.</p>
+	<div class="image-alignment"><%= image_tag("instructions3.png", :id => "instructions3", :alt=>"step 3") %></div>
 
-<p>4. In the new spreadsheet you've created, fill out the fields for each event; the shaded fields are required. (Hover over the column headings for extra help.)</p>
-<div class="image-alignment"><%= image_tag("instructions4.png", :id => "instructions4", :alt=>"step 4") %></div>
+	<p>4. In the new spreadsheet you've created, fill out the fields for each event; the shaded fields are required. (Hover over the column headings for extra help.)</p>
+	<div class="image-alignment"><%= image_tag("instructions4.png", :id => "instructions4", :alt=>"step 4") %></div>
 
-<p>5. Once your information is complete in the form, <%= link_to("open the bulk upload tool", "https://docs.google.com/spreadsheet/viewform?formkey=dEljVVdSanYwdkRLR2JLUDlyWGM3T0E6MQ") %> in a new window.</p>   
-<div class="image-alignment"><%= image_tag("instructions5.png", :id => "instructions5", :alt=>"step 5") %></div>
+	<p>5. Once your information is complete in the form, <%= link_to("open the bulk upload tool", "https://docs.google.com/spreadsheet/viewform?formkey=dEljVVdSanYwdkRLR2JLUDlyWGM3T0E6MQ") %> in a new window.</p>   
+	<div class="image-alignment"><%= image_tag("instructions5.png", :id => "instructions5", :alt=>"step 5") %></div>
 
-<p>6. Complete the contact fields in the form (there are only three!). </p>
-<div class="image-alignment"><%= image_tag("instructions6.png", :id => "instructions6", :alt=>"step 6") %></div>
+	<p>6. Complete the contact fields in the form (there are only three!). </p>
+	<div class="image-alignment"><%= image_tag("instructions6.png", :id => "instructions6", :alt=>"step 6") %></div>
 
-<p>7. Return momentarily to your submission spreadsheet and copy the URL, then paste it into the correct field in the bulk upload tool.</p>
-<div class="image-alignment"><%= image_tag("instructions7.png", :id => "instructions7", :alt=>"step 7") %></div>
+	<p>7. Return momentarily to your submission spreadsheet and copy the URL, then paste it into the correct field in the bulk upload tool.</p>
+	<div class="image-alignment"><%= image_tag("instructions7.png", :id => "instructions7", :alt=>"step 7") %></div>
 
-<p>8. In the bulk upload tool, click “I agree” if you accept the terms and policies, then click Submit.<br/>
-Tip: Review the <%= link_to("Terms of Use", tou_path) %> and <%= link_to("Privacy Policy", tou_path) %>. <!--and Content Licensing Agreement ahead of time.--></p>
+	<p>8. In the bulk upload tool, click “I agree” if you accept the terms and policies, then click Submit.<br/>
+	Tip: Review the <%= link_to("Terms of Use", tou_path) %> and <%= link_to("Privacy Policy", tou_path) %>. <!--and Content Licensing Agreement ahead of time.--></p>
 
-<p>That's it! You can expect to see your events posted on Flash Volunteer within 48 hours. Email us at <%= mail_to("support@flashvolunteer.org", "support@flashvolunteer.org", :subject => "Questions regarding bulk event updates", :encode=>"hex")%> if you have any additional questions.</p>
+	<p>That's it! You can expect to see your events posted on Flash Volunteer within 48 hours. Email us at <%= mail_to("support@flashvolunteer.org", "support@flashvolunteer.org", :subject => "Questions regarding bulk event updates", :encode=>"hex")%> if you have any additional questions.</p>
+</div>

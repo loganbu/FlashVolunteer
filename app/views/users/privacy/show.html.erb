@@ -1,43 +1,45 @@
-<% content_for :right_split do %>
-<h3>privacy</h3>
-<p>Who can see your upcoming events?</p>
-<%= form_for(user_privacy_settings_url(current_user), :method=>:put) do |f|%>
-	<% ["upcoming_events"].each do |setting| %>
+<div class="container">
+	<% content_for :right_split do %>
+	<h3>privacy</h3>
+	<p>Who can see your upcoming events?</p>
+	<%= form_for(user_privacy_settings_url(current_user), :method=>:put) do |f|%>
+		<% ["upcoming_events"].each do |setting| %>
+			<div class="row-fluid">
+				<% ["everyone", "self"].each do |level| %>
+					<div class="span6" id="options_<%= setting %>">
+						<div style="display: inline">
+				        <label 
+				        	class="selectable_option <%= "option_selected" if @privacy.send(setting).send(level+'?') %>" 
+				        	id="<%= level %>_<%= setting %>" 
+				        	style= "cursor:pointer"
+				        	onclick="toggleImage(<%= level %>_<%= setting %>, 'options_<%= setting %>')"
+				        	for="privacy_<%= setting%>_<%= level %>">
+	        				<%= image_tag(level + ".png") %><br/>
+							<%= level %>
+							<%= radio_button("privacy", setting, level, :style=>"display: none") %>
+	        			</label>
+	        			</div>
+					</div>
+				<% end %>
+			</div>
+		<% end %>
 		<div class="row-fluid">
-			<% ["everyone", "self"].each do |level| %>
-				<div class="span6" id="options_<%= setting %>">
-					<div style="display: inline">
-			        <label 
-			        	class="selectable_option <%= "option_selected" if @privacy.send(setting).send(level+'?') %>" 
-			        	id="<%= level %>_<%= setting %>" 
-			        	style= "cursor:pointer"
-			        	onclick="toggleImage(<%= level %>_<%= setting %>, 'options_<%= setting %>')"
-			        	for="privacy_<%= setting%>_<%= level %>">
-        				<%= image_tag(level + ".png") %><br/>
-						<%= level %>
-						<%= radio_button("privacy", setting, level, :style=>"display: none") %>
-        			</label>
-        			</div>
-				</div>
-			<% end %>
+		    <div class = "span2">&nbsp;</div>
+		    <div class = "span10">
+		        <button type="submit" class="btn btn-primary pull-right">save</button>   
+		    </div>
 		</div>
 	<% end %>
-	<div class="row-fluid">
-	    <div class = "span2">&nbsp;</div>
-	    <div class = "span10">
-	        <button type="submit" class="btn btn-primary pull-right">save</button>   
-	    </div>
-	</div>
-<% end %>
-<% end %>
+	<% end %>
 
-<script type="text/javascript">
-    function toggleImage(id, group) {
-    	$("#" + group + " label").each(function() {
-    		$(this).removeClass('option_selected');
-    	});
-        $(id).toggleClass('option_selected');
-    }
-</script>
+	<script type="text/javascript">
+	    function toggleImage(id, group) {
+	    	$("#" + group + " label").each(function() {
+	    		$(this).removeClass('option_selected');
+	    	});
+	        $(id).toggleClass('option_selected');
+	    }
+	</script>
 
-<%= render(:partial => "users/shared/me_settings") %>
+	<%= render(:partial => "users/shared/me_settings") %>
+</div>

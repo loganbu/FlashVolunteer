@@ -1,56 +1,58 @@
-<%= content_for :right_split do %>
-<% if flash[:error] %>
-    <div class="alert alert-error">  
-        <a class="close" data-dismiss="alert" href="#">x</a>
-        <h4 class="alert-heading">Error!</h4>
-        <p>
-            <ul>
-                <li><%= flash[:error] %></li>
-            </ul>
-        </p>
-    </div>
-<% end %>
-
-
-<!--add NEIGHBORHOOD SCOREBOARD HERE: BUG 370-->
-
-<div class="clearfix">
-    <h2 class="pull-left">My Events</h2>
-    <% if can? :create, Event %>
-        <div class="btn-create-new">
-            <a href="<%= new_event_url %>" class="btn btn-large btn-success">Create New Event</a>
+<div class="container">
+    <%= content_for :right_split do %>
+    <% if flash[:error] %>
+        <div class="alert alert-error">  
+            <a class="close" data-dismiss="alert" href="#">x</a>
+            <h4 class="alert-heading">Error!</h4>
+            <p>
+                <ul>
+                    <li><%= flash[:error] %></li>
+                </ul>
+            </p>
         </div>
     <% end %>
-</div>
-<div class="tabs bold">
-    <ul class="unstyled inline" id="link_list">
-        <li><a class="link_active" href="#past" id="past_link">PAST (<%= @past.count %>)</a></li>
-        <li><a href="#upcoming" id="upcoming_link">UPCOMING (<%= @upcoming.count %>)</a></li>
-        <li><a href="#recommended" id="recommended_link">RECOMMENDED (<%= [@recommended.count, 5].min %>)</a></li>
-    </ul>
-</div>
-<div class="clear">&nbsp;</div>
-<div id="content_sections">
-    <div id="past_content">
-        <% if(@past.count == 0) %>
-            You have not yet attended any events. <a href="#recommended" onclick="activateContentSection('#recommended')">Let us recommend something for you.</a>
-        <% else %>
-            <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :past }) %>
+
+
+    <!--add NEIGHBORHOOD SCOREBOARD HERE: BUG 370-->
+
+    <div class="clearfix">
+        <h2 class="pull-left">My Events</h2>
+        <% if can? :create, Event %>
+            <div class="btn-create-new">
+                <a href="<%= new_event_url %>" class="btn btn-large btn-success">Create New Event</a>
+            </div>
         <% end %>
     </div>
-    <div class="hide" id="upcoming_content">
-        <% if(@upcoming.count == 0) %>
-            You have no upcoming events. <a href="#recommended" onclick="activateContentSection('#recommended')">Let us recommend something for you.</a>
-        <% else %>
-            <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :upcoming }) %>
-        <% end %>
+    <div class="tabs bold">
+        <ul class="unstyled inline" id="link_list">
+            <li><a class="link_active" href="#past" id="past_link">PAST (<%= @past.count %>)</a></li>
+            <li><a href="#upcoming" id="upcoming_link">UPCOMING (<%= @upcoming.count %>)</a></li>
+            <li><a href="#recommended" id="recommended_link">RECOMMENDED (<%= [@recommended.count, 5].min %>)</a></li>
+        </ul>
     </div>
-    <div class="hide" id="recommended_content">
-        <%= render(:partial => "events/event", :collection => @recommended, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :recommended }) || "We have no recommended events for you." %>
+    <div class="clear">&nbsp;</div>
+    <div id="content_sections">
+        <div id="past_content">
+            <% if(@past.count == 0) %>
+                You have not yet attended any events. <a href="#recommended" onclick="activateContentSection('#recommended')">Let us recommend something for you.</a>
+            <% else %>
+                <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :past }) %>
+            <% end %>
+        </div>
+        <div class="hide" id="upcoming_content">
+            <% if(@upcoming.count == 0) %>
+                You have no upcoming events. <a href="#recommended" onclick="activateContentSection('#recommended')">Let us recommend something for you.</a>
+            <% else %>
+                <%= render(:partial => "events/event", :collection => @upcoming, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :upcoming }) %>
+            <% end %>
+        </div>
+        <div class="hide" id="recommended_content">
+            <%= render(:partial => "events/event", :collection => @recommended, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :recommended }) || "We have no recommended events for you." %>
+        </div>
     </div>
+    <% end %>
+    <script type="text/javascript">
+        $(document).ready(function () { addContentHandlers(); });
+    </script>
+    <%= render :partial => 'users/shared/me' %>
 </div>
-<% end %>
-<script type="text/javascript">
-    $(document).ready(function () { addContentHandlers(); });
-</script>
-<%= render :partial => 'users/shared/me' %>
