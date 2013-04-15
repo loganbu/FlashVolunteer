@@ -1,6 +1,10 @@
 class Neighborhood < ActiveRecord::Base  
     reverse_geocoded_by :latitude, :longitude
 
+    def self.contains(point)
+        self.find_by_sql("SELECT * FROM neighborhoods WHERE MBRContains(region, GeomFromText('#{point}'))").first
+    end
+
     def participations(focus)
 		participations_source(focus).includes(:participations).map(&:participations).flatten
     end
