@@ -15,11 +15,11 @@
         <div class="span3">
             <div class="row-fluid">
                 <div class="span6">
-                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" <%= "checked='checked'" if @event.hosted_by_user %> />
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_me" <%= "checked" if @event.hosted_by_user %> />
                     <label for="hosted_by_me">&nbsp;use mine</label>
                 </div>
                 <div class="span6">
-                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone" <%= "checked='checked'" if !@event.hosted_by_user %>/><label for="hosted_by_someone">&nbsp;use this instead</label>
+                    <input type="radio" name="hosted" class="pull-left" id="hosted_by_someone" <%= "checked" if !@event.hosted_by_user %>/><label for="hosted_by_someone">&nbsp;use this instead</label>
                 </div>
             </div>
         </div>

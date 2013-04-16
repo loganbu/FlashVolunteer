@@ -73,7 +73,7 @@ class EventsController < ApplicationController
     @title = "Featured Volunteer Opportunities in King County"
     
     respond_to do |format|
-      format.html # featured.html.erb
+      format.html { render 'featured.html.erb', :layout => 'alt_layout.html.erb' }
     end
   end
   
