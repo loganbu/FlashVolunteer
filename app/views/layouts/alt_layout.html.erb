@@ -11,7 +11,6 @@
 <body>
   <div id="wrapper">
     <%= render"shared/header" %>
-    <div class="container">
       <% if flash[:alert] || flash[:error] %>
           <div class="alert alert-error">  
               <a class="close" data-dismiss="alert" href="#">x</a>
@@ -47,9 +46,8 @@
       <%= yield %>
       <%= render "shared/debug" if Rails.env.development? %>
       </div>
-    </div>
     <div id="clearfooter">&nbsp;</div>
-  </div><!-- .container -->
+  </div><!-- .wrapper -->
   <footer>
       <%= render"shared/footer" %>
   </footer>

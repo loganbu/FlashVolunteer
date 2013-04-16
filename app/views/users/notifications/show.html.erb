@@ -1,25 +1,23 @@
-<div class="container">
-    <% content_for :right_split do %>
-    <h3>Notifications</h3>
-    <%= form_for(@user, :url => user_notification_settings_url(@user), :html => {:id => "form", :name => "user_form"}) do |f| %>
-        <table class="table table-striped table-bordered" summary="Reasons for collection of all personal information.">
+<% content_for :right_split do %>
+<h3>Notifications</h3>
+<%= form_for(@user, :url => user_notification_settings_url(@user), :html => {:id => "form", :name => "user_form"}) do |f| %>
+    <table class="table table-striped table-bordered" summary="Reasons for collection of all personal information.">
+        <tr>
+            <th>How we will notify you about Flash Volunteer...</th><th><%= image_tag("email_icon_20x20.png", 
+                                    :alt=>"How do you want to be emailed?") %></th>
+        </tr>
+        <% Notification.order("description asc").all.each_with_index do |n, i| %>
             <tr>
-                <th>How we will notify you about Flash Volunteer...</th><th><%= image_tag("email_icon_20x20.png", 
-                                        :alt=>"How do you want to be emailed?") %></th>
+                <td><label for="user_notification_preference_ids_<%= i %>"><%= n.description %></label></td>
+                <td><%= check_box_tag("user[notification_preference_ids][#{i}]", n.id, @user.notification_preferences.include?(n), :name=>"user[notification_preference_ids][]") %></td>
             </tr>
-            <% Notification.order("description asc").all.each_with_index do |n, i| %>
-                <tr>
-                    <td><label for="user_notification_preference_ids_<%= i %>"><%= n.description %></label></td>
-                    <td><%= check_box_tag("user[notification_preference_ids][#{i}]", n.id, @user.notification_preferences.include?(n), :name=>"user[notification_preference_ids][]") %></td>
-                </tr>
-            <% end %>
-        </table>
-        <div class="row-fluid">
-            <div class = "span12">
-                <%= f.submit("save", :class=>"btn btn-primary pull-right") %>
-            </div>
+        <% end %>
+    </table>
+    <div class="row-fluid">
+        <div class = "span12">
+            <%= f.submit("save", :class=>"btn btn-primary pull-right") %>
         </div>
-    <% end %>
-    <% end %>
-    <%= render(:partial => "users/shared/me_settings") %>
-</div>
+    </div>
+<% end %>
+<% end %>
+<%= render(:partial => "users/shared/me_settings") %>

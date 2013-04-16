@@ -1,12 +1,10 @@
-<div class="container">
-	<h2>Resend unlock instructions</h2>
+<h2>Resend unlock instructions</h2>
 
-	<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
-	  <div><%= f.label :email %><br />
-	  <%= f.email_field :email %></div>
+<%= form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f| %>
+  <div><%= f.label :email %><br />
+  <%= f.email_field :email %></div>
 
-	  <div><%= f.submit "Resend unlock instructions" %></div>
-	<% end %>
+  <div><%= f.submit "Resend unlock instructions" %></div>
+<% end %>
 
-	<%= render :partial => "devise/shared/links" %>
-</div>
+<%= render :partial => "devise/shared/links" %>
