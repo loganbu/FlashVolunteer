@@ -1,1 +1,5 @@
-<%= render :partial => "events/event", :locals => { :event => @event , :description => @event.description , :show_links => true } %>
+<div class="row">
+    <div class="span5">
+        <%= render :partial => "events/event", :locals => { :event => @event , :description => @event.description , :show_links => true } %>
+    </div>
+</div>

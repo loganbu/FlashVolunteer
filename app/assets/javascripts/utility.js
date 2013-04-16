@@ -72,7 +72,6 @@ function countdownString(dateTime) {
     var minute = second*60;
     var hour = minute*60;
     var day = hour*24;
-    var week = day*7;
 
     var diffObj = function()
     {
@@ -98,22 +97,13 @@ function countdownString(dateTime) {
         return str;
     }
 
-    var weeks = next(diff, week);
     var days = next(diff, day);
     var hours = next(diff, hour);
     var minutes = next(diff, minute);
     var seconds = next(diff, second);
-    var weeksStr = nextStr(weeks, "Week");
     var daysStr = nextStr(days, "Day");
+    var hoursStr = nextStr(hours, "Hour");
+    var minutesStr = nextStr(minutes, "Minute");
 
-    var combinedStr = "";
-    if (weeksStr && daysStr) {
-        combinedStr = weeksStr + ", " + daysStr;
-    } else if (weeksStr || daysStr) {
-        combinedStr = weeksStr + daysStr;
-    } else {
-
-    }
-    
-    return combinedStr + " " + hours + " Hours " + (minutes < 10 ? "0" : "") + minutes + " Minutes";
+    return daysStr + " " + hoursStr + " " + minutesStr;
 }

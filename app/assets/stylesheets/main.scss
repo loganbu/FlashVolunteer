@@ -281,6 +281,12 @@ figure {
     margin-bottom: 10px;
 }
 
+.btn-medium{
+    margin-left: 0px;
+    width: 200px;
+    margin-bottom: 10px;
+}
+
 .event-date-loc {
     margin: 10px 0;
     font-size: 1.2em;
@@ -494,6 +500,17 @@ h2.spotlight-title span {
     margin-bottom: 3em;
 }
 
+#map-caret {
+    border-top: 8px solid $gray;
+    border-right: 8px solid transparent;
+    border-left: 8px solid transparent;
+    margin-top: 13px;
+}
+
+#neighborhood-selection {
+    width: 300px;
+}
+
 /**************
  =Navigation
  **************/
@@ -587,6 +604,23 @@ h2.spotlight-title span {
             }
         }
     }
+}
+
+.user-partial-image {
+    margin-top: 5px; 
+    margin-bottom: 5px; 
+    padding-left: 7px;
+}
+.user-partial-name-switch {
+    margin-top: 10px; 
+    margin-left: 5px;
+}
+.user-header {
+    margin-top: -5px;
+    margin-bottom: 5px;
+}
+#user-caret {
+    margin-top: 12px;
 }
 
 .search-query {
