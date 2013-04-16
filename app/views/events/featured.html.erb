@@ -5,6 +5,11 @@
             <figure>
                 <div class="featured-banner">Featured</div>
                 <div id="featured-events" class="carousel slide img-polaroid"><!-- class of slide for animation -->
+                    <ol class="carousel-indicators">
+                      <li data-target="#featured-events" data-slide-to="0" class="active"></li>
+                      <li data-target="#featured-events" data-slide-to="1"></li>
+                      <li data-target="#featured-events" data-slide-to="2"></li>
+                    </ol>
                     <div class="carousel-inner">
                         <% @events.each_with_index do |event, i| %>
                           <div class="item <%= "active" if i == 0 %>">
