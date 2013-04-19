@@ -16,7 +16,7 @@ Map.setMap = function (div, mapLatitude, mapLongitude, zoom) {
 };
 
 
-Map.showMapFromElement = function(element, i, onPage, eventCallback) {
+Map.showMapFromElement = function(element, i, onPage, eventCallback, draggable) {
     var latitude = 0;
     var longitude = 0;
     var iconSize = 30;
@@ -47,6 +47,7 @@ Map.showMapFromElement = function(element, i, onPage, eventCallback) {
         position: latLng,
         map: gMap,
         title: name,
+        draggable: draggable,
         animation: google.maps.Animation.DROP,
         icon: icon
         });
@@ -55,11 +56,29 @@ Map.showMapFromElement = function(element, i, onPage, eventCallback) {
     var eventId = eventXml.find('id').text();
     eventMarkers[eventId] = marker;
 
+    if (draggable) {
+        google.maps.event.addListener(marker, 'drag', function (event) 
+        {
+            gMap.panTo (marker.getPosition());
+        });
+    }
+
     if (eventCallback) {
         google.maps.event.addListener(marker, 'click', function () {
             eventCallback(eventId);
         });
     }
+}
+
+Map.addMoveablePoints = function(urlSource) {
+    $.ajax({
+        url: urlSource,
+        dataType: 'xml'
+    }).success(function (data) {
+        $(data).find('event').each(function(i) {
+            Map.showMapFromElement($(this), i, false, null, true)
+        });
+    });    
 }
 
 Map.addPoints = function (urlSource, onPage, eventCallback, completeCallback) {
