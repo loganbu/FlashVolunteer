@@ -29,11 +29,11 @@
         <script type="text/javascript">
             $(document).ready(function() {
                 $("#hosted_by_me").click(function() {
-                    $("#someone_else").hide();
+                    $("#someone_else").addClass("hidden");
                     $("#someone_else").val("");
                 })
                 $("#hosted_by_someone").click(function() {
-                    $("#someone_else").show();
+                    $("#someone_else").removeClass("hidden");
                 })
             })
         </script>
@@ -65,7 +65,7 @@
             <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
             <div class="field_with_errors">
             <% end %>
-                <input id="startdate" class="full" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
+                <input id="startdate" type="text" class="full" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
             <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
             </div>
             <% end %>

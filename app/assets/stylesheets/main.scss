@@ -764,35 +764,11 @@ input[type="checkbox"] {
 /**************
  =JQuery
  **************/
-.ui-datepicker {
-    background-color:$babyBlue;
-}
-
 .ui-slider {
     $progressBarHeight: 1em;
     position: relative;
     text-align: left;
     height: $progressBarHeight; 
-    .ui-slider-handle {
-        @include border-radius(4px);
-        margin-top: -$progressBarHeight*.25;
-        position: absolute; 
-        z-index: 2; 
-        width: .5em; 
-        height: $progressBarHeight*1.5; 
-        cursor: default;
-        background-color: $green;
-    }
-    .ui-slider-range { 
-        position: absolute;
-        margin-left: 5px;
-        z-index: 1; 
-        display: block; 
-        height: $progressBarHeight; 
-        border: 0; 
-        background-position: 0 0;
-        background-color: $lightBlue;
-    }
 }
 
 /**************
