@@ -16,7 +16,8 @@
                             <a href="<%= event_path(event) %>"><%= image_tag event.photo_featured.url(:featured), :style => "height: 350px" %></a>
                             <div class="carousel-caption">
                               <h2><%= link_to event.name, event %></h2>
-                              <p><span class="carousel-date"><%= event.start.strftime("%-B #{event.start.day.ordinalize}") %> </span> in <span class="carousel-neighborhood"><%=  event.neighborhood.name %></span></p>
+                              <p><span class="carousel-date"><%= event.start.strftime("%-B #{event.start.day.ordinalize}") %> </span>
+                              <% if event.neighborhood %> in <span class="carousel-neighborhood"><%=  event.neighborhood.name %></span><% end %></p>
                             </div>
                           </div>
                         <% end %>

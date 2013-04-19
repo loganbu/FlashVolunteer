@@ -1,8 +1,11 @@
 class Neighborhood < ActiveRecord::Base  
-    reverse_geocoded_by :latitude, :longitude
 
     def self.contains(point)
         self.find_by_sql("SELECT * FROM neighborhoods WHERE MBRContains(region, GeomFromText('#{point}'))").first
+    end
+
+    def self.has_events()
+        self.find_by_sql("SELECT DISTINCT neighborhoods.* FROM neighborhoods JOIN events WHERE MBRContains(region, events.lonlat) ORDER BY neighborhoods.name asc")
     end
 
     def participations(focus)

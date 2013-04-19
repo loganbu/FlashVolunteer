@@ -25,7 +25,7 @@ class EventsController < ApplicationController
   def index
     per_page = params[:per_page] || 4
     
-    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown seattle")==0 }
+    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 && neighborhood.city.casecmp("seattle")==0 }
     @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
@@ -88,7 +88,7 @@ class EventsController < ApplicationController
       cookies['preferred_neighborhood'] = @neighborhood.id
       @title = "Volunteer Opportunities in " + @neighborhood.name
       @zoom = 15
-      @events = Event.where(:neighborhood_id => @neighborhood.id).upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
+      @events = Event.in_neighborhood(@neighborhood).upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
       @mapCenter = @neighborhood
     end
 

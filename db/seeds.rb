@@ -53,7 +53,8 @@ Neighborhood.delete_all()
         county = neighborhood.properties["COUNTY"]
         city = neighborhood.properties["CITY"]
         name = neighborhood.properties["NAME"]
-        Neighborhood.create(:state => state, :county => county, :city => city, :name => name, :region => neighborhood.geometry)
+        neighborhood = Neighborhood.create(:state => state, :county => county, :city => city, :name => name, :region => neighborhood.geometry)
+        ActiveRecord::Base.connection.execute("UPDATE Neighborhoods SET center=Centroid(region) WHERE id=#{neighborhood.id}");
     end
 end
 

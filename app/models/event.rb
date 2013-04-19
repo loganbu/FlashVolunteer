@@ -99,6 +99,9 @@ class Event < ActiveRecord::Base
             not_attended_by(user).upcoming
         end
     }
+    scope :in_neighborhood, lambda { |neighborhood|
+        joins("INNER JOIN neighborhoods ON MBRContains(neighborhoods.region, events.lonlat)").where("neighborhoods.id = ?", neighborhood)
+    }
 
     def hosted_by_real_user
         !self.hosted_by.blank?
@@ -146,10 +149,10 @@ class Event < ActiveRecord::Base
     end
 
     def self.xml(entity)
-        entity.to_xml(:methods => [:attendees, :categories])
+        entity.to_xml(:methods => [:attendees, :categories, :latitude, :longitude])
     end
 
     def self.json(entity)
-        entity.to_json(:methods => [:attendees, :categories])
+        entity.to_json(:methods => [:attendees, :categories, :latitude, :longitude])
     end
 end
