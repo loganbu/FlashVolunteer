@@ -22,5 +22,7 @@
     <% end %>
 <% end %>
 <div id="page">
-    <%= will_paginate @events, :page_links => false %>
+    <div class="prev-next clearfix">
+        <%= will_paginate @events, :page_links => false %>
+    </div>
 </div>
