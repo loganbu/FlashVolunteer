@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html class=“no-js”>
 <head>
   <meta charset="utf-8">
   <title><%= @title %></title>
   <%= stylesheet_link_tag "application" %>
-  <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application", "modernizr" %>
   <%= csrf_meta_tag %> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/assets/favicon.ico"/>
