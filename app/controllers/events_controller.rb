@@ -1,5 +1,4 @@
 class EventsController < ApplicationController
-  before_filter :see_splash, :only => [:index]
   load_and_authorize_resource
     
   def export
@@ -330,13 +329,5 @@ class EventsController < ApplicationController
       format.xml  { render :xml => Event.xml(@events) }
       format.json { render :json => Event.json(@events) }
     end
-  end
-  
-  private
-    def see_splash
-        if !cookies['splash'] && request.format == Mime::HTML
-            cookies['splash'] = true
-            redirect_to featured_events_url
-        end
-    end
+  end  
 end
