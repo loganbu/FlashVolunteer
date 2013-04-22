@@ -1,25 +1,21 @@
-<div class="container">
-    <div class="navbar navbar-footer">
-        <div class="container">
-            <nav>
-                <ul class="nav">
-                    <li><%= link_to("About Us", about_path) %></li>
-                    <li><%= link_to("Help", help_articles_path) %></li>
-                    <li><%= link_to("Privacy", privacy_path) %></li>
-                    <li><%= link_to("Terms of Use", tou_path) %></li>
-                    <li><%= link_to("Jobs", jobs_path) %></li>
-                </ul>
-            </nav>
+<div class="navbar navbar-footer container">
+        <nav class="clearfix">
+            <ul class="nav">
+                <li><%= link_to("About Us", about_path) %></li>
+                <li><%= link_to("Help", help_articles_path) %></li>
+                <li><%= link_to("Privacy", privacy_path) %></li>
+                <li><%= link_to("Terms of Use", tou_path) %></li>
+                <li><%= link_to("Jobs", jobs_path) %></li>
+            </ul>
+        </nav>
+    <div class="row-fluid">
+        <div class="span6">
+            <%= render( :partial => 'shared/flash_share', :locals => {:size => :medium}) %>
         </div>
-        <div class="row-fluid">
-            <div class="span3">
-                <%= render( :partial => 'shared/flash_share', :locals => {:size => :medium}) %>
-            </div>
-            <div class="span9">
-                <div class="pull-right copy">
-                    built by volunteers, for volunteers <br/>
-                    Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit
-                </div>
+        <div class="span6">
+            <div class="pull-right copy">
+                built by volunteers, for volunteers <br/>
+                Flash Volunteer &copy; 2009-2012, a 501(c)3 nonprofit
             </div>
         </div>
     </div>
