@@ -65,7 +65,7 @@ Map.showMapFromElement = function(element, i, useLetters, eventCallback) {
     eventMarkers[eventId] = Map.createMarker(latLng, name, null, imageStrip, iconLocation);
 
     if (eventCallback) {
-        google.maps.event.addListener(marker, 'click', function () {
+        google.maps.event.addListener(eventMarkers[eventId], 'click', function () {
             eventCallback(eventId);
         });
     }

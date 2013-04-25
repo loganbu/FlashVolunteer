@@ -79,7 +79,7 @@
         };
 
         $(document).ready(function() { 
-            <% if (@event.geocode_address) %>
+            <% if (@event.street.to_s.strip.length != 0) %>
                 $("#maprow").removeClass("hidden");
                 Map.setMap('eventmap', originalLat, originalLong, 15); 
                 addMarkerFunction();
