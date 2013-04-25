@@ -1,7 +1,5 @@
-class SeedZillowOrWaNeighborhoods < ActiveRecord::Migration
-
-
-  class Event < ActiveRecord::Base
+class SeedNeighborhoods < ActiveRecord::Migration
+  class Neighborhood < ActiveRecord::Base
   end
 
   def change
