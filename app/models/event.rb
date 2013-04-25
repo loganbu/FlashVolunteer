@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
 
     geocoded_by :geocode_address
 
-    after_validation :geocode
+    after_validation :geocode_if_necessary
 
     has_attached_file :photo_featured, :storage => :s3, :s3_credentials => {
       :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -130,6 +130,14 @@ class Event < ActiveRecord::Base
 
     def geocode_address
        return "#{self.street} #{self.city}, #{self.zip} #{self.state}"
+    end
+
+    def should_geocode?
+        !moved_marker
+    end
+
+    def geocode_if_necessary
+        geocode if should_geocode?
     end
 
     def attending?(user)

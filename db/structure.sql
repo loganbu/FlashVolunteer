@@ -88,6 +88,7 @@ CREATE TABLE `events` (
   `featured` tinyint(1) DEFAULT '0',
   `vm_id` int(11) DEFAULT '0',
   `lonlat` point DEFAULT NULL,
+  `moved_marker` tinyint(1) DEFAULT '1',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -110,14 +111,14 @@ CREATE TABLE `neighborhoods` (
   `center` point DEFAULT NULL,
   PRIMARY KEY (`id`),
   SPATIAL KEY `index_neighborhoods_on_region` (`region`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `orgs_admins` (
   `user_id` int(11) DEFAULT NULL,
@@ -201,7 +202,7 @@ CREATE TABLE `skills` (
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `offset` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `skills_events` (
   `skill_id` int(11) DEFAULT NULL,
@@ -430,3 +431,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130223231803');
 INSERT INTO schema_migrations (version) VALUES ('20130415042629');
 
 INSERT INTO schema_migrations (version) VALUES ('20130416015940');
+
+INSERT INTO schema_migrations (version) VALUES ('20130423021634');

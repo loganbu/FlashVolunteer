@@ -29,6 +29,8 @@ class VolunteerMatchController < ApplicationController
                        :special_instructions => [@opportunity.skills_needed, @opportunity.requirements].join("\r\n"),
                        :street => @opportunity.street,
                        :neighborhood => @opportunity.neighborhood,
+                       :latitude => @opportunity.latitude,
+                       :longitude => @opportunity.longitude,
                        :zip => @opportunity.zip,
                        :vm_id => @opportunity.vm_id)
 
