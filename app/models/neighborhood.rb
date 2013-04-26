@@ -5,7 +5,7 @@ class Neighborhood < ActiveRecord::Base
     end
 
     def self.has_events()
-        self.find_by_sql("SELECT DISTINCT neighborhoods.* FROM neighborhoods JOIN events WHERE MBRContains(region, events.lonlat) ORDER BY neighborhoods.name asc")
+        self.find_by_sql("SELECT DISTINCT neighborhoods.* FROM neighborhoods JOIN events WHERE MBRContains(region, events.lonlat) AND events.start > NOW() ORDER BY neighborhoods.name asc")
     end
 
     def participations(focus)
@@ -18,6 +18,13 @@ class Neighborhood < ActiveRecord::Base
 
     def volunteers(focus)
     	participations(focus).map(&:user)
+    end
+    scope :supported, lambda {
+        where("state = ?", :wa)
+    }
+
+    def full_name
+        "#{name}, #{city}"
     end
 
     def score(focus)

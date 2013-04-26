@@ -3,7 +3,7 @@
 		<div class="span8">
 			<div class="title"><%= @event.name %></div>
 			<h2><%= @event.start.to_date.to_formatted_s(:rfc822) %>  |  <%= @event.start.strftime('%l:%M%p') %> - <%= @event.end.strftime('%l:%M%p') %></h2>		
-			<h2><%= @event.street %>, <%= link_to(@event.neighborhood.name, (events_url.concat("/in/").concat(@event.neighborhood.name))) %></h2>
+			<h2><%= @event.geocode_address %></h2>
 		</div>
 		<div class="span4">
 			<%= qr_code(event_url(@event), "alt-text", 220) %><br>
