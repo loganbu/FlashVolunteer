@@ -7,7 +7,19 @@
   <%= javascript_include_tag "application", "modernizr" %>
   <%= csrf_meta_tag %> 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="/assets/favicon.ico"/>
+  <link rel="shortcut icon" href="/assets/favicon.ico"/>  <!-- Analytics -->
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-10613308-2']);
+    _gaq.push(['_setDomainName', 'flashvolunteer.org']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 </head>
 <body>
   <div id="wrapper">
@@ -53,19 +65,7 @@
       <%= render"shared/footer" %>
   </footer>
   <div class="clickeater">&nbsp;</div>
-  <!-- Analytics -->
-  <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-10613308-2']);
-    _gaq.push(['_setDomainName', 'flashvolunteer.org']);
-    _gaq.push(['_trackPageview']);
 
-    (function() {
-      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-  </script>
   <%= javascript_include_tag 'http://maps.googleapis.com/maps/api/js?sensor=false' %> 
 </body>
 </html>
