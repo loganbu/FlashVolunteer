@@ -133,7 +133,7 @@ class Event < ActiveRecord::Base
     end
 
     def should_geocode?
-        !moved_marker
+        latitude == 0 || latitude == nil || longitude == nil || longitude == 0 || !moved_marker
     end
 
     def geocode_if_necessary
