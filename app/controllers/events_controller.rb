@@ -79,7 +79,9 @@ class EventsController < ApplicationController
   # GET /events/in/downtown
   # GET /events/in/downtown.xml
   def in
-    @neighborhood = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp(params[:neighborhood])==0 }
+    @neighborhood = Neighborhood.all.find do |neighborhood| 
+      neighborhood.name.casecmp(params[:neighborhood])==0 && neighborhood.city.casecmp(params[:city])==0 
+    end
 
     if !@neighborhood
       redirect_to events_url

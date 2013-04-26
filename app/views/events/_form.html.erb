@@ -85,17 +85,20 @@
                 addMarkerFunction();
             <% end %>
             $("#address").blur(function() {
-                if ($("#maprow").hasClass("hidden")) {
-                    $("#maprow").removeClass("hidden");
-                    Map.setMap('eventmap', originalLat, originalLong, 15);
+                if ($("#address").val())
+                {
+                    if ($("#maprow").hasClass("hidden")) {
+                        $("#maprow").removeClass("hidden");
+                        Map.setMap('eventmap', originalLat, originalLong, 15);
+                    }
+                    Map.geocodeMarker(marker, $("#address").val(), function(latLng)  {
+                        originalLat = latLng.lat();
+                        originalLong = latLng.lng();
+                        $("#latitude").val(originalLat);
+                        $("#longitude").val(originalLong);
+                        addMarkerFunction();
+                    });
                 }
-                Map.geocodeMarker(marker, $("#address").val(), function(latLng)  {
-                    originalLat = latLng.lat();
-                    originalLong = latLng.lng();
-                    $("#latitude").val(originalLat);
-                    $("#longitude").val(originalLong);
-                    addMarkerFunction();
-                });
             });
         });
 
