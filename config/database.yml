@@ -1,10 +1,14 @@
 # SQLite version 3.x
-#   gem install sqlite3
+#   gem install mysql2
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: mysql2spatial
+  encoding: utf8
+  reconnect: false
+  database: flash
   pool: 5
-  timeout: 5000
+  username: root
+  password: 4epmdvnz
+  host: localhost
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

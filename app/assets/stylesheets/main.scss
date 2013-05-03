@@ -520,6 +520,20 @@ h2.spotlight-title span {
     margin-bottom: 20px;
 }
 
+
+/**************
+ =Event Edit Form
+ **************/
+ #geocoded-address {
+    font-weight: bold;
+    font-style: italic;
+ }
+
+ #eventmap {
+    height: 300px; 
+    margin-bottom: 10px;
+ }
+
 /**************
  =Navigation
  **************/
@@ -767,7 +781,7 @@ input.full, textarea.full {
 }
 
 textarea {
-    height: 50px;
+    height: 150px;
 }
 
 /* Otherwise the radio buttons are not vertically aligned with the text */

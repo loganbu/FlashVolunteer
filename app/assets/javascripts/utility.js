@@ -1,6 +1,6 @@
 function gotoNeighborhood(selection) {
     var form = document.getElementById(selection);
-    window.location = "/events/in/" + form[form.selectedIndex].text;
+    window.location = "/events/in/" + form[form.selectedIndex].text.replace(", ", "/");
 }
 
 function submitForm(id) {

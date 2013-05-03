@@ -10,4 +10,8 @@ class EventObserver < ActiveRecord::Observer
             end
         end
     end
+
+    def before_save(event)
+        event.lonlat = "POINT(#{event.longitude} #{event.latitude})"
+    end
 end

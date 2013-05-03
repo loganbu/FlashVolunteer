@@ -43,20 +43,80 @@
             <div class="pull-right"><%= f.label :address, "address", :for=>"event_street" %></div>
         </div>
         <div class="span10">
-            <%= f.text_field :street, :class=>"full" %>
+            <%= f.text_field :street, :class=>"full", :id => "address" %>
         </div>
     </div>
-    <div class="row-fluid">
-        <div class="span2">
-            <div class="pull-right"><%= f.label :zip, "zip code"%></div>
-        </div>
-        <div class="span5">
-            <%= f.text_field :zip, :class=>"full" %>
-        </div>
-        <div class="span5">
-            <%= f.collection_select(:neighborhood_id, Neighborhood.order("name asc"), :id, :name, {:include_blank => "choose a neighborhood" }) %>
+    <div class="row-fluid hidden" id="maprow">
+        <div class="span2"><div class="pull-right"><label>map</label></div></div>
+        <div class="span10">
+            <div class="row-fluid hidden" id="moved-marker-text">
+                <div class="span12"><p>You moved the location of the event! <br> Is <span id="geocoded-address">&nbsp;</span> a better address for this event? <ul><li><a href="javascript:changeAddress()">Yes, change the address</a></li><li><a href="javascript:hideMoveMarkerText()">No, keep the address as-is</a></li><li><a href="javascript:resetMarker()">Whoops! Reset marker location</li></a></ul></p></div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12" id="eventmap" class="small"></div>
+            </div>
+            <%= f.hidden_field :latitude, :id => "latitude" %>
+            <%= f.hidden_field :longitude, :id => "longitude" %>
+            <%= f.hidden_field :moved_marker, :id => "moved_marker", :value => true %>
         </div>
     </div>
+    <script type="text/javascript">
+        var originalLat = <%= @event.latitude || 47.610901 %>;
+        var originalLong = <%= @event.longitude || -122.346494 %>;
+        var marker = null;
+        var addMarkerFunction = function() {
+            if (marker == null) {
+                marker = Map.addMoveableMarker(originalLat, originalLong, function(marker) {
+                        $("#longitude").val(marker.getPosition().lng());
+                        $("#latitude").val(marker.getPosition().lat());
+                    }, function(marker) {
+                        Map.reverseGeocode(marker.getPosition(), function(address) {
+                            $("#moved-marker-text").removeClass("hidden");
+                            $("#geocoded-address").text(address);
+                        });
+                    });
+            }
+        };
+
+        $(document).ready(function() { 
+            <% if (@event.street.to_s.strip.length != 0) %>
+                $("#maprow").removeClass("hidden");
+                Map.setMap('eventmap', originalLat, originalLong, 15); 
+                addMarkerFunction();
+            <% end %>
+            $("#address").blur(function() {
+                if ($("#address").val())
+                {
+                    if ($("#maprow").hasClass("hidden")) {
+                        $("#maprow").removeClass("hidden");
+                        Map.setMap('eventmap', originalLat, originalLong, 15);
+                    }
+                    Map.geocodeMarker(marker, $("#address").val(), function(latLng)  {
+                        originalLat = latLng.lat();
+                        originalLong = latLng.lng();
+                        $("#latitude").val(originalLat);
+                        $("#longitude").val(originalLong);
+                        addMarkerFunction();
+                    });
+                }
+            });
+        });
+
+        function changeAddress() {
+            $("#address").val($("#geocoded-address").text());
+            hideMoveMarkerText();
+        }
+
+        function resetMarker() {
+            hideMoveMarkerText();
+            marker.setPosition(new google.maps.LatLng(originalLat, originalLong));
+            Map.centerOnMarker(marker);
+        }
+
+        function hideMoveMarkerText() {
+            $("#moved-marker-text").addClass("hidden");
+        }
+    </script>
     <div class="row-fluid">
         <div class="span2">
             <div class="pull-right"><%= f.label :start, "event date"%></div>
@@ -71,7 +131,7 @@
             <% end %>
             
             <script type="text/javascript">
-            $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
+                $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
             </script>
         </div>
         <div class="span5">
@@ -180,7 +240,7 @@
             <div class="pull-right"><%= f.label :description, "description" %></div>
         </div>
         <div class="span10">
-            <%= f.text_area :description, :class=>"full" %>
+            <%= f.text_area :description, :class=>"full", :rows => 10 %>
         </div>
     </div>
     <div class="row-fluid">
