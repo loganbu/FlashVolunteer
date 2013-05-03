@@ -31,6 +31,17 @@ body {
     .btn-create-new {
         text-align: center;
     }
+    footer {
+    margin-left: -20px;
+    margin-right: -20px;
+    padding-left: 20px;
+    }
+    footer .navbar .nav li a {
+        padding: 10px 15px 10px 0px;
+    }
+    .followus, .copy {
+        font-size: .8em;
+    }
 }
 
 @media (min-width: 980px) {
@@ -43,7 +54,7 @@ body {
 =Custom add-on set to Twitter Bootstrap (uses normalize.css)
  **************/
 
-header, section, footer, aside, nav, article, figure, figcaption {
+header, section, aside, nav, article, figure, figcaption {
     margin: 0;
     padding: 0;
     border: 0;
@@ -76,12 +87,6 @@ footer {
 
 .container-padding{
     padding: 0 5px;
-}
-
-.navbar-inner {
-    padding-left:  0px;
-    padding-right: 0px;
-    @include border-radius(0px);
 }
 
 .navbar .nav > li > a {
@@ -637,6 +642,7 @@ h2.spotlight-title span {
 footer {
     color: $lightGray;
     @extend .navbar-inner;
+    @include border-radius(0px);
     box-shadow: 0px 1px 5px $Gray;
     border: none;
     .nav > li > a {
