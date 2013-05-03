@@ -7,7 +7,7 @@ development:
   database: flash
   pool: 5
   username: root
-  password: 4epmdvnz
+  password: password
   host: localhost
 
 # Warning: The database defined as "test" will be erased and
