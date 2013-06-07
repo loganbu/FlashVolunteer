@@ -122,7 +122,7 @@ Flashvolunteer::Application.routes.draw do
             get :featured
         end
     end
-    match "events/in/:neighborhood" => "events#in", :as => 'events_neighborhood', :via => :get
+    match "events/in/:neighborhood/:city" => "events#in", :as => 'events_neighborhood', :via => :get
     match "events/this/:timeframe" => "events#this", :as => 'this_events', :via => :get
 
     post "search" => "search#show", :as => "search"

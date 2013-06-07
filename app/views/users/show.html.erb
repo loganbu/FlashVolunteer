@@ -51,7 +51,7 @@ $(function () {
                 </div>
                 <div class="span9">
                     <% if @user.neighborhood %>
-                        <div><h4>volunteers in <%= link_to(@user.neighborhood.name, (events_url.concat("/in/").concat(@user.neighborhood.name))) %></h4></div>
+                        <div><h4>volunteers in <%= link_to(@user.neighborhood.name, events_neighborhood_url(@user.neighborhood.name, @user.neighborhood.city)) %></h4></div>
                     <% end %>
                     <% if @user.type == "Org" && @user.website %>
                         <%

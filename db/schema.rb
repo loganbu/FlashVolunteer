@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223231803) do
+ActiveRecord::Schema.define(:version => 20130415042629) do
 
   create_table "afg_opportunities", :force => true do |t|
     t.string   "key"
@@ -103,13 +103,8 @@ ActiveRecord::Schema.define(:version => 20130223231803) do
     t.text   "description"
   end
 
-  create_table "neighborhoods", :force => true do |t|
-    t.string   "name"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+# Could not dump table "neighborhoods" because of following StandardError
+#   Unknown type 'polygon' for column 'region'
 
   create_table "notifications", :force => true do |t|
     t.string "name"
@@ -151,7 +146,7 @@ ActiveRecord::Schema.define(:version => 20130223231803) do
     t.integer  "item"
     t.string   "table"
     t.integer  "month",      :limit => 2
-    t.integer  "year",       :limit => 5
+    t.integer  "year",       :limit => 8
     t.datetime "created_at",              :null => false
     t.datetime "updated_at",              :null => false
   end

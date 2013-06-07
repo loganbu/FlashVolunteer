@@ -2,7 +2,6 @@ class Event < ActiveRecord::Base
     belongs_to :neighborhood, :foreign_key => "neighborhood_id"
     belongs_to :user, :foreign_key => "creator_id"
     validates :creator_id, :presence => { :message => "Somebody must create this event" }
-    validates :neighborhood_id, :presence => { :message => "The event must have a neighborhood" }
     validates :name, :presence => { :message => "The event must have a title" }
     validates :street, :presence => { :message => "The event must have an address" }
     validates :start, :presence => { :message => "The event must have a start time" }
@@ -15,7 +14,7 @@ class Event < ActiveRecord::Base
 
     geocoded_by :geocode_address
 
-    after_validation :geocode
+    after_validation :geocode_if_necessary
 
     has_attached_file :photo_featured, :storage => :s3, :s3_credentials => {
       :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -100,6 +99,9 @@ class Event < ActiveRecord::Base
             not_attended_by(user).upcoming
         end
     }
+    scope :in_neighborhood, lambda { |neighborhood|
+        joins("INNER JOIN neighborhoods ON MBRContains(neighborhoods.region, events.lonlat)").where("neighborhoods.id = ?", neighborhood)
+    }
 
     def hosted_by_real_user
         !self.hosted_by.blank?
@@ -128,6 +130,14 @@ class Event < ActiveRecord::Base
 
     def geocode_address
        return "#{self.street} #{self.city}, #{self.zip} #{self.state}"
+    end
+
+    def should_geocode?
+        latitude == 0 || latitude == nil || longitude == nil || longitude == 0 || !moved_marker
+    end
+
+    def geocode_if_necessary
+        geocode if should_geocode?
     end
 
     def attending?(user)

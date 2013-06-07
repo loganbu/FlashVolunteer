@@ -31,6 +31,22 @@ body {
     .btn-create-new {
         text-align: center;
     }
+    .featured-middle{
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+    }
+    footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+    }
+    footer .navbar .nav li a {
+        padding: 10px 15px 10px 0px;
+    }
+    .followus, .copy {
+        font-size: .8em;
+    }
 }
 
 @media (min-width: 980px) {
@@ -43,7 +59,7 @@ body {
 =Custom add-on set to Twitter Bootstrap (uses normalize.css)
  **************/
 
-header, section, footer, aside, nav, article, figure, figcaption {
+header, section, aside, nav, article, figure, figcaption {
     margin: 0;
     padding: 0;
     border: 0;
@@ -76,12 +92,6 @@ footer {
 
 .container-padding{
     padding: 0 5px;
-}
-
-.navbar-inner {
-    padding-left:  0px;
-    padding-right: 0px;
-    @include border-radius(0px);
 }
 
 .navbar .nav > li > a {
@@ -127,13 +137,12 @@ footer {
     margin-bottom: 0;
     .carousel-caption {
         h2 {
-            color: $white;
             font-size: 2em;
             margin-top: 0;
             letter-spacing: -2px;
 
             a {
-                color: #8cc42f;
+                color: $green;
             }
 
             a:hover{
@@ -362,6 +371,58 @@ figcaption.featured_badges {
     min-height: 200px;
 }
 
+.featured-middle {
+    text-align: center;
+    background-color: $green;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    -webkit-box-shadow: 0px 3px 10px rgba(50, 50, 50, 0.5);
+    -moz-box-shadow:    0px 3px 10px rgba(50, 50, 50, 0.5);
+    box-shadow:         0px 3px 10px rgba(50, 50, 50, 0.5);
+    margin-bottom: 50px;
+    h2{
+        font-size: 3em;
+        line-height: 2em;
+        color: white;
+        & a {
+            color: $darkGreen;
+        }
+        & a:hover {
+            color: #FFEE00;
+        }
+    }
+}
+
+.bigNumEvents {
+    font-size: $big_num;
+}
+
+.bigNumVolunteers {
+    font-size: 1.2em;
+    color: #FFEE00;
+}
+
+@media (max-width: 979px) {
+    .featured-middle {
+        padding-top: 30px;
+        padding-bottom: 30px;
+        margin-bottom: 30px;
+        h2{
+            font-size: 2em;
+            line-height: 2em;
+        }
+    }
+
+    .bigNumEvents {
+        font-size: 1.4em;
+    }
+
+    .bigNumVolunteers {
+        font-size: 1.4em;
+    }
+
+}
+
 /**************
  =News
  **************/
@@ -515,6 +576,20 @@ h2.spotlight-title span {
     margin-bottom: 20px;
 }
 
+
+/**************
+ =Event Edit Form
+ **************/
+ #geocoded-address {
+    font-weight: bold;
+    font-style: italic;
+ }
+
+ #eventmap {
+    height: 300px; 
+    margin-bottom: 10px;
+ }
+
 /**************
  =Navigation
  **************/
@@ -637,6 +712,7 @@ h2.spotlight-title span {
 footer {
     color: $lightGray;
     @extend .navbar-inner;
+    @include border-radius(0px);
     box-shadow: 0px 1px 5px $Gray;
     border: none;
     .nav > li > a {
@@ -761,7 +837,7 @@ input.full, textarea.full {
 }
 
 textarea {
-    height: 50px;
+    height: 150px;
 }
 
 /* Otherwise the radio buttons are not vertically aligned with the text */

@@ -54,6 +54,11 @@ gem 'classy_enum', '~> 2.0.3'
 
 gem 'sinatra', '1.0'
 gem 'date_validator'
+gem 'mysql2'
+
+gem 'rgeo'
+gem 'rgeo-geojson'
+gem 'activerecord-mysql2spatial-adapter'
 
 group :development do
     gem 'factory_girl_rails'
@@ -62,7 +67,6 @@ group :development do
 end
 
 group :production do
-    gem 'mysql2'
     gem 'newrelic_rpm'
     # http://www.imagemagick.com/www/binary-releases.html#windows
     # http://stackoverflow.com/questions/4451213/ruby-1-9-2-how-to-install-rmagick-on-windows
