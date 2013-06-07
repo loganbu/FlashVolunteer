@@ -95,7 +95,18 @@
     </article><!-- /#featued-carousel .class-->
 </div>
 </section>
-<h2 class="spotlight-title"><span>SPOTLIGHT</span></h2>
+
+<!-- Middle section with other event data -->
+<section class="featured-middle">
+    <div class="container">
+        <h2>
+            <span class="bigNumEvents"><%= link_to Event.after(DateTime.now).count, events_path%></span> events available. <%= link_to "Click to browse!", events_path%><br>
+            Join community of over <span class="bigNumVolunteers"><%= User.count %></span> volunteers!
+        </h2>
+    </div>
+</section>
+<!-- 
+<h2 class="spotlight-title"><span>SPOTLIGHT</span></h2> -->
 <section class = "news">
 <div class="container">
     <article class = "span4 alpha news">
