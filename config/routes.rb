@@ -117,6 +117,7 @@ Flashvolunteer::Application.routes.draw do
             post :broadcast
             get :export
             get :print
+            get :clone
         end
         collection do 
             get :featured
