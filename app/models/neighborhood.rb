@@ -1,5 +1,12 @@
 class Neighborhood < ActiveRecord::Base  
-    reverse_geocoded_by :latitude, :longitude
+
+    def self.contains(point)
+        self.find_by_sql("SELECT * FROM neighborhoods WHERE MBRContains(region, GeomFromText('#{point}'))").first
+    end
+
+    def self.has_events()
+        self.find_by_sql("SELECT DISTINCT neighborhoods.* FROM neighborhoods JOIN events WHERE MBRContains(region, events.lonlat) AND events.start > NOW() ORDER BY neighborhoods.name asc")
+    end
 
     def participations(focus)
 		participations_source(focus).includes(:participations).map(&:participations).flatten
@@ -11,6 +18,13 @@ class Neighborhood < ActiveRecord::Base
 
     def volunteers(focus)
     	participations(focus).map(&:user)
+    end
+    scope :supported, lambda {
+        where("state = ?", :wa)
+    }
+
+    def full_name
+        "#{name}, #{city}"
     end
 
     def score(focus)

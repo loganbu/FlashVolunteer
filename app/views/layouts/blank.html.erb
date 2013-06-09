@@ -5,10 +5,7 @@
   <%= stylesheet_link_tag "application" %>
   <%= stylesheet_link_tag "application", :media => "print" %>
   <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tag %>
-</head>
-<body>
-  <%= yield %>
+  <%= csrf_meta_tag %>  
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-10613308-2']);
@@ -21,5 +18,8 @@
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
   </script>
+</head>
+<body>
+  <%= yield %>
 </body>
 </html>

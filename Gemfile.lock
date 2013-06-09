@@ -26,6 +26,9 @@ GEM
       activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-mysql2spatial-adapter (0.4.3)
+      mysql2 (>= 0.2.13)
+      rgeo-activerecord (~> 0.4.5)
     activeresource (3.2.13)
       activemodel (= 3.2.13)
       activesupport (= 3.2.13)
@@ -230,6 +233,13 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     remotipart (1.0.5)
+    rgeo (0.3.20)
+    rgeo-activerecord (0.4.6)
+      activerecord (>= 3.0.3)
+      arel (>= 2.0.6)
+      rgeo (>= 0.3.20)
+    rgeo-geojson (0.2.3)
+      rgeo (>= 0.3.7)
     rmagick (2.13.2)
     safe_yaml (0.9.0)
     sass (3.2.7)
@@ -270,6 +280,7 @@ GEM
       activesupport (>= 3.0.7)
       rails (>= 3.0.7)
     will_paginate (3.0.4)
+    win32console (1.3.2)
     win32console (1.3.2-x86-mingw32)
     xml-simple (1.1.2)
     yui-compressor (0.9.6)
@@ -280,6 +291,7 @@ PLATFORMS
   x86-mingw32
 
 DEPENDENCIES
+  activerecord-mysql2spatial-adapter
   aws-s3
   aws-sdk
   cancan (~> 1.6)
@@ -307,6 +319,8 @@ DEPENDENCIES
   rails (= 3.2.13)
   rails-footnotes
   rails_admin
+  rgeo
+  rgeo-geojson
   rmagick
   sass-rails (~> 3.2)
   sinatra (= 1.0)
