@@ -33,7 +33,7 @@
                 </ul>
 
                 <%= form_tag search_url, :method=>:post, :class=>"navbar-search pull-left" do |f| %>
-                  <input type="text" class="search-query" placeholder="Search">
+                  <input type="text" name="search" class="search-query" placeholder="Search">
                   <%= submit_tag("", :style=>"display:none") %>
                 <% end %>
 

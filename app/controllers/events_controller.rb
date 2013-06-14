@@ -148,6 +148,29 @@ class EventsController < ApplicationController
     set_page_title
   end
 
+
+  # GET /events/new
+  # GET /events/new.xml
+  def clone
+    old_event = Event.find(params[:id])
+
+    @event = Event.new(old_event.attributes)
+    @event.skills = old_event.skills
+
+    set_page_title
+
+    respond_to do |format|
+      format.html { render 'events/edit', :action => "edit" }
+    end
+  end
+
+  # GET /events/1/edit
+  def edit
+    @event = Event.find(params[:id])
+
+    set_page_title
+  end
+
   def hackoutdatetime(startdate, hashSet)
     # Because there is no good DateTime picker, we are using a stupid field in the :params
     # for the start date... this needs to be removed for the update_attributes call below.

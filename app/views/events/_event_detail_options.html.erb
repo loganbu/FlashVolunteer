@@ -1,6 +1,7 @@
 <!-- If have access, Edit/Delete Events -->
 <% if can? :edit, @event %>
     <%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_event_url, :class => "btn" %>
+    <%= link_to '<i class="icon-plus"></i> Clone'.html_safe, clone_event_url, :class => "btn" %>
     <%= link_to '<i class="icon-white icon-trash"></i> Delete'.html_safe, event_url(@event), :confirm => "Are you sure you want to delete this event?", :method=>"delete", :class => "btn btn-danger" %>
     <div class="row-fluid">&nbsp;</div>
 <% end %>
