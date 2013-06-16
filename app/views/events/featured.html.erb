@@ -100,8 +100,8 @@
 <section class="featured-middle">
     <div class="container">
         <h2>
-            <span class="bigNumEvents"><%= link_to Event.after(DateTime.now).count, events_path%></span> events available. <%= link_to "Click to browse!", events_path%><br>
-            Join community of over <span class="bigNumVolunteers"><%= User.count %></span> volunteers!
+            <span class="bigNumEvents"><%= link_to number_with_delimiter(Event.after(DateTime.now).count), events_path%></span> events available. <%= link_to "Click to browse!", events_path%><br>
+            Join community of over <span class="bigNumVolunteers"><%= number_with_delimiter(User.count)  %></span> volunteers!
         </h2>
     </div>
 </section>
