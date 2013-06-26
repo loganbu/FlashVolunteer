@@ -16,10 +16,6 @@ class VolunteerMatchController < ApplicationController
     @opportunity.imported = true
     @opportunity.save
 
-    if(@opportunity.neighborhood == nil && @opportunity.neighborhood_string != nil)
-      flash[:warning] = "I don't know the neighborhood '#{@opportunity.neighborhood_string}'"
-    end
-
     @event = Event.new(:name => @opportunity.title,
                        :description => @opportunity.description,
                        :start => @opportunity.start_time,
