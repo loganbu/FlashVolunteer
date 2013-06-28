@@ -12,12 +12,12 @@ class ApplicationController < ActionController::Base
     end
 
     rescue_from CanCan::AccessDenied do |exception|
-        Rails.logger.debug "Access denied on #{exception.action} #{exception.subject.inspect}"
+        Rails.logger.info "Access denied on #{exception.action} #{exception.subject.inspect}"
         render :file => "app/views/shared/authfail.html.erb"
     end
 
     rescue_from ActiveRecord::RecordNotFound do |exception|
-        Rails.logger.debug "Record not found #{exception}"
+        Rails.logger.info "Record not found #{exception}"
         render :file => "app/views/shared/authfail.html.erb"
     end
 
