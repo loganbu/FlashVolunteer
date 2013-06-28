@@ -14,7 +14,7 @@ class NeighborhoodsController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @neighborhoods }
+      format.xml  { render :xml => Neighborhood.all.first }
     end
   end
 
