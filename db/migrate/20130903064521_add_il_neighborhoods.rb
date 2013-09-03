@@ -1,11 +1,11 @@
-class SeedNeighborhoods < ActiveRecord::Migration
+class AddIlNeighborhoods < ActiveRecord::Migration
   class Neighborhood < ActiveRecord::Base
   end
 
   def change
     Neighborhood.delete_all()
 
-    ["wa", "or"].each do |state|
+    ["il"].each do |state|
         contents = File.read("#{Rails.root}/db/data/neighborhoods/#{state}.json")
         geom = RGeo::GeoJSON.decode(contents, :json_parser => :json)
         geom.each do |neighborhood|
