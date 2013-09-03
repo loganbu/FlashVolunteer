@@ -1,11 +1,16 @@
 class Neighborhood < ActiveRecord::Base  
 
-    def self.contains(point)
-        self.find_by_sql("SELECT * FROM neighborhoods WHERE MBRContains(region, GeomFromText('#{point}'))").first
+    # Notice: uses cartesian coordinates, instead of world coordinates. 
+    def self.closest(point)
+        self.find_by_sql("SELECT *, (GLength(LineString(GeomFromText('#{point}'), center))) AS distance FROM neighborhoods ORDER BY distance ASC LIMIT 1").first
     end
 
-    def self.has_events()
-        self.find_by_sql("SELECT DISTINCT neighborhoods.* FROM neighborhoods JOIN events WHERE MBRContains(region, events.lonlat) AND events.start > NOW() ORDER BY neighborhoods.name asc")
+    def self.contains(point)
+        self.find_by_sql("SELECT * FROM neighborhoods WHERE MBRContains(region, GeomFromText('#{point}')) LIMIT 1").first
+    end
+
+    def self.has_events(wkb)
+        self.find_by_sql("SELECT DISTINCT neighborhoods.*, (GLength(LineString(GeomFromText('#{wkb}'), center))) AS distance FROM neighborhoods JOIN events WHERE MBRContains(region, events.lonlat) AND events.start > NOW() HAVING distance < 2 ORDER BY neighborhoods.name asc")
     end
 
     def participations(focus)

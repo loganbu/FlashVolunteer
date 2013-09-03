@@ -25,8 +25,9 @@ class EventsController < ApplicationController
   def index
     per_page = params[:per_page] || 4
     
-    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 && neighborhood.city.casecmp("seattle")==0 }
-    @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @mapCenter = Neighborhood.closest(location_to_wkb(user_location))
+    Rails.logger.info("Location: " + @mapCenter.center.to_s)
+    @events = Event.upcoming.near_user(user_location).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
     @title="Volunteer Opportunities in King County"
@@ -48,11 +49,8 @@ class EventsController < ApplicationController
       return
     end
 
-    Rails.logger.info("End Date")
-    Rails.logger.info(end_date)
-
-    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 && neighborhood.city.casecmp("seattle")==0 }
-    @events = Event.before(end_date).after(DateTime.now).order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @mapCenter = Neighborhood.closest(location_to_wkb(user_location))
+    @events = Event.near_user(user_location).before(end_date).after(DateTime.now).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
     respond_to do |format|
@@ -63,11 +61,11 @@ class EventsController < ApplicationController
 
   # GET /events/featured
   def featured
-    @events = Event.featured.upcoming
+    @events = Event.near_user(user_location).featured.upcoming
     @current_sponsor = current_sponsor
 
     if (@events.featured.count == 0)
-      @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=> 6)
+      @events = Event.near_user(user_location).upcoming.paginate(:page => params[:page], :per_page=> 6)
     end
     @title = "Featured Volunteer Opportunities in King County"
     

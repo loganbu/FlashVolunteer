@@ -1,14 +1,14 @@
 <div class="page_header">
     <% if (@neighborhood == nil)
-       neighborhood_name = "King County"
+       neighborhood_name = default_location
      else
        neighborhood_name = @neighborhood.name
     end %>
     <div class="dropdown pull-left" id="neighborhood-list">
         <span class="map_subtitle">events near</span> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="map_title"><%= neighborhood_name %></span><b class="caret" id="map-caret"></b></a>
         <div class="dropdown-menu" id="neighborhood-selection">
-            <li><%=link_to("King County", events_url)%></li>
-            <% Neighborhood.has_events.each do |neighborhood| %>
+            <li><%=link_to(default_location, events_url)%></li>
+            <% Neighborhood.has_events(location_to_wkb(user_location)).each do |neighborhood| %>
                 <li><%=link_to("#{neighborhood.name}, #{neighborhood.city}", events_neighborhood_url(neighborhood.name, neighborhood.city))%></li>
             <% end %>
         </div>

@@ -1,1 +1,10 @@
 <div id="footnotes_holder" class="container" style="clear:both"></div>
+<div id="other_debug" class="container" style="clear:both">
+	<dd>
+		<dt>Your Location</dt>
+		<dl><%= user_location.latitude %>, <%= user_location.longitude %></dl>
+		<dt>Closest Neighborhood to Request</dt>
+		<% closest = Neighborhood.closest(location_to_wkb(user_location)) %>
+		<dl><%= closest.name %>, <%= closest.city %></dl>
+	</dd>
+</div>
