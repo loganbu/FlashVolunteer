@@ -45,7 +45,7 @@ Skill.create([
 
 Neighborhood.delete_all()
 
-["wa", "or"].each do |state|
+["wa", "or", "il"].each do |state|
     contents = File.read("#{Rails.root}/db/data/neighborhoods/#{state}.json")
     geom = RGeo::GeoJSON.decode(contents, :json_parser => :json)
     geom.each do |neighborhood|
