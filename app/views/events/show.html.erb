@@ -59,7 +59,7 @@
     <div class="span12">
         <div id="disqus_thread"></div>
         <script type="text/javascript">
-            var disqus_shortname = 'flashvolunteer-latest'; 
+            var disqus_shortname = "<%= ENV['DISQUS_IDENTITY'] || 'flashvolunteer-latest' %>"; 
             var disqus_identifier = "<%= "event-#{@event.id}" %>"; 
             var disqus_title = "<%= @event.name %>"; 
             var disqus_url = "<%= "#{event_url(@event)}" %>"; 
