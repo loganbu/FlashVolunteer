@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   load_and_authorize_resource
-    
   def export
       @event = Event.find(params[:id])
       @calendar = Icalendar::Calendar.new
@@ -25,9 +24,9 @@ class EventsController < ApplicationController
   def index
     per_page = params[:per_page] || 4
     
-    @mapCenter = Neighborhood.closest(location_to_wkb(user_location))
+    @mapCenter = Neighborhood.closest(location_to_wkb(current_location))
     Rails.logger.info("Location: " + @mapCenter.center.to_s)
-    @events = Event.upcoming.near_user(user_location).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @events = Event.upcoming.near_user(current_location).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
     @title="Volunteer Opportunities in King County"
@@ -45,12 +44,12 @@ class EventsController < ApplicationController
     when "hour", "day", "week", "month", "year"
       end_date = Time.now + 1.send(end_date.downcase)
     else
-      redirect_to events_url
+      redirect_to events_url(current_location_name)
       return
     end
 
-    @mapCenter = Neighborhood.closest(location_to_wkb(user_location))
-    @events = Event.near_user(user_location).before(end_date).after(DateTime.now).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @mapCenter = Neighborhood.closest(location_to_wkb(current_location))
+    @events = Event.near_user(current_location).before(end_date).after(DateTime.now).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
     respond_to do |format|
@@ -61,11 +60,11 @@ class EventsController < ApplicationController
 
   # GET /events/featured
   def featured
-    @events = Event.near_user(user_location).featured.upcoming
+    @events = Event.near_user(current_location).featured.upcoming
     @current_sponsor = current_sponsor
 
     if (@events.featured.count == 0)
-      @events = Event.near_user(user_location).upcoming.paginate(:page => params[:page], :per_page=> 6)
+      @events = Event.near_user(current_location).upcoming.paginate(:page => params[:page], :per_page=> 6)
     end
     @title = "Featured Volunteer Opportunities in King County"
     
@@ -82,7 +81,7 @@ class EventsController < ApplicationController
     end
 
     if !@neighborhood
-      redirect_to events_url
+      redirect_to events_url(current_location_name)
       return
     else
       cookies['preferred_neighborhood'] = @neighborhood.id

@@ -45,38 +45,8 @@ def location_to_wkb(point)
     return "POINT(#{point.longitude} #{point.latitude})"
 end
 
-def default_location
-    if (request.host.downcase.include?("chicago"))
-        "Chicago"
-    elsif (request.host.downcase.include?("seattle"))
-        "Seattle"
-    elsif (request.location)
-        request.location.city
-    else
-        return "Your Location"
-    end
+def current_location_name
+  params[:location] || cookies['location'] || request.location.city
 end
 
-def user_location
-    location = Hashie::Mash.new
-    if (request.host.downcase.include?("chicago"))
-        location.latitude = 41.883632
-        location.longitude = -87.650467
-    elsif (request.host.downcase.include?("seattle"))
-        location.latitude = 47.605496
-        location.longitude = -122.337105
-    elsif (request.location)
-        location.latitude = request.location.latitude
-        location.longitude = request.location.longitude
-    else
-        location.latitude = 47.605496
-        location.longitude = -122.337105
-    end
-
-    if (!session[:location])
-        session[:location] = location
-    end
-
-    location
-end
 end

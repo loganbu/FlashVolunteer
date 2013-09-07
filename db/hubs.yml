@@ -1,0 +1,9 @@
+hubs:
+    -   center: POINT (-122.346197 47.611406)
+        zoom:   15
+        radius: 50
+        name:   Seattle
+    -   center: POINT (-87.631717 41.877651)
+        zoom:   15
+        radius: 50
+        name:   Chicago

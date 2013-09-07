@@ -13,13 +13,18 @@ class ApplicationController < ActionController::Base
     end
 
     rescue_from CanCan::AccessDenied do |exception|
-        Rails.logger.info "Access denied on #{exception.action} #{exception.subject.inspect}"
-        render :file => "app/views/shared/authfail.html.erb"
+      Rails.logger.info "Access denied on #{exception.action} #{exception.subject.inspect}"
+      render :file => 'app/views/shared/authfail.html.erb'
+    end
+
+    rescue_from LocationNotFound do |exception|
+      Rails.logger.info "Could not find location #{exception.location}"
+      render :file => 'app/views/shared/location_not_found.html.erb'
     end
 
     rescue_from ActiveRecord::RecordNotFound do |exception|
         Rails.logger.info "Record not found #{exception}"
-        render :file => "app/views/shared/authfail.html.erb"
+        render :file => 'app/views/shared/authfail.html.erb'
     end
 
     def csrf_protect
@@ -31,31 +36,25 @@ class ApplicationController < ActionController::Base
     end
 
     def authorize_user_profile(entity)
-        if (!entity || entity.type == "Org")
+        if !entity || entity.type == "Org"
             raise CanCan::AccessDenied
         end
         authorize! :profile, entity
     end
 
     def authorize_org_profile(entity)
-        if (!entity || entity.type != "Org")
+        if !entity || entity.type != "Org"
             raise CanCan::AccessDenied
         end
         authorize! :profile, entity
     end
 
     def set_default_page_title
-        @title = "Flash Volunteer"
+        @title = 'Flash Volunteer'
     end
 
     def after_sign_in_path_for(resource_or_scope)
-        # The wicked gem will do an HTTP get for each step in the flow (even if skipped)
-        # to optimize, only show a wizard for users that need it to be shown
-        if (current_user.should_show_wizard?)
-            new_user_wizard_path(:choose_neighborhood)
-        else
-            returns_to_url
-        end
+      returns_to_url
     end
 
     def returns_to_url
@@ -80,11 +79,29 @@ class ApplicationController < ActionController::Base
       Sponsor.running.all.sample
     end
 
+    def default_url_options
+      { :location => nil }
+    end
+
+    def set_current_location_name
+      cookies['location'] ||= params[:location] unless params[:location] == nil
+    end
+
+    def current_location
+      hub = Hub.find_or_initialize_by_name(current_location_name)
+      raise LocationNotFound.new(params[:location]) if params[:location] != nil && hub.new_record?
+      hub.radius ||= 50
+      hub.zoom ||= 15
+      hub.center ||= "POINT(#{request.location.longitude} #{request.location.latitude})"
+      hub
+    end
+
     private
-        before_filter :create_action_and_controller
+        before_filter :create_action_and_controller, :set_current_location_name
 
         def create_action_and_controller
             @current_action = action_name
             @current_controller = controller_name
+            @current_location = current_location
         end
 end

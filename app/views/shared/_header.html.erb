@@ -9,16 +9,16 @@
             <a class="brand" href="<%= root_url %>">Flash Volunteer</a>
             <nav class="nav-collapse fixExpandMobile">
                 <ul class="nav">
-                    <li><%= link_to "Featured", featured_events_url %></li>
+                    <li><%= link_to "Featured", featured_events_url(current_location_name) %></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                          <li><%= link_to("All", events_path) %></li>
+                          <li><%= link_to("All", events_url(current_location_name)) %></li>
                           <li class="divider"></li>
                           <li class="nav-header">Timeframe</li>
-                          <li><%= link_to("Today", this_events_path("day")) %></li>
-                          <li><%= link_to("This week", this_events_path("week")) %></li>
-                          <li><%= link_to("This month", this_events_path("month")) %></li>
+                          <li><%= link_to("Today", this_events_url(current_location_name, "day")) %></li>
+                          <li><%= link_to("This week", this_events_url(current_location_name, "week")) %></li>
+                          <li><%= link_to("This month", this_events_url(current_location_name, "month")) %></li>
                         </ul>
                     </li>
                   <% if can? :manage, :rails_admin %>

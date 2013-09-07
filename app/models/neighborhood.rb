@@ -14,7 +14,7 @@ class Neighborhood < ActiveRecord::Base
     end
 
     def participations(focus)
-		participations_source(focus).includes(:participations).map(&:participations).flatten
+		  participations_source(focus).includes(:participations).map(&:participations).flatten
     end
 
     def volunteer_hours(focus)

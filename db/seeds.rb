@@ -133,6 +133,7 @@ if Rails.env.development?
     Random.new
     Org.delete_all()
     Event.delete_all()
+    Hub.delete_all()
 
     config = YAML::load(ERB.new(File.read("#{Rails.root}/db/seed.yml")).result)
 
@@ -148,6 +149,9 @@ if Rails.env.development?
         o.neighborhood = Neighborhood.all.sample
         o.save
     end
+
+    hubs = YAML::load(ERB.new(File.read("#{Rails.root}/db/hubs.yml")).result)
+    Hub.create(hubs['hubs'])
 
     $sample_event_names.each do |e|
         event = Event.new

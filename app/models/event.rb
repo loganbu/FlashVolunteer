@@ -103,8 +103,8 @@ class Event < ActiveRecord::Base
         joins("INNER JOIN neighborhoods ON MBRContains(neighborhoods.region, events.lonlat)").where("neighborhoods.id = ?", neighborhood)
     }
 
-    scope :near_user, lambda { |point|
-        near([point.latitude, point.longitude], 100)
+    scope :near_user, lambda { |hub|
+        near([hub.latitude, hub.longitude], 100)
     }
 
     def hosted_by_real_user

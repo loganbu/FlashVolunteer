@@ -16,7 +16,7 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
       sign_in_and_redirect(@user)
     else
       flash[:warning] = "This account is already confirmed. Please sign in to access your account. Lost the e-mail? You can #{self.class.helpers.link_to 'resend the instructions', new_user_confirmation_url}.".html_safe
-      redirect_to(events_url)
+      redirect_to(events_url(current_location_name))
     end
   end
 
