@@ -1,4 +1,5 @@
-class Neighborhood < ActiveRecord::Base  
+class Neighborhood < ActiveRecord::Base
+  include ApplicationHelper
 
     # Notice: uses cartesian coordinates, instead of world coordinates. 
     def self.closest(point)
@@ -27,6 +28,26 @@ class Neighborhood < ActiveRecord::Base
     scope :supported, lambda {
         where("state = ?", :wa)
     }
+
+    def latitude
+      center.y
+    end
+
+    def longitude
+      center.x
+    end
+
+    def city_friendly
+      friendly_name(city)
+    end
+
+    def name_friendly
+      friendly_name(name)
+    end
+
+    def zoom
+      13
+    end
 
     def full_name
         "#{name}, #{city}"

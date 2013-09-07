@@ -23,11 +23,10 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     per_page = params[:per_page] || 4
-    
-    @mapCenter = Neighborhood.closest(location_to_wkb(current_location))
-    Rails.logger.info("Location: " + @mapCenter.center.to_s)
-    @events = Event.upcoming.near_user(current_location).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
-    @zoom = 11
+
+    Rails.logger.info("Location: #{@current_location.center.to_s}")
+    @events = Event.upcoming.near_user(@current_location).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @map_center = current_location
 
     @title="Volunteer Opportunities in King County"
     
@@ -38,7 +37,7 @@ class EventsController < ApplicationController
   end
 
   def this
-    end_date = params[:timeframe];
+    end_date = params[:timeframe]
 
     case end_date.downcase
     when "hour", "day", "week", "month", "year"
@@ -48,7 +47,7 @@ class EventsController < ApplicationController
       return
     end
 
-    @mapCenter = Neighborhood.closest(location_to_wkb(current_location))
+    @map_center = current_location
     @events = Event.near_user(current_location).before(end_date).after(DateTime.now).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
@@ -76,8 +75,9 @@ class EventsController < ApplicationController
   # GET /events/in/downtown
   # GET /events/in/downtown.xml
   def in
-    @neighborhood = Neighborhood.all.find do |neighborhood| 
-      neighborhood.name.casecmp(params[:neighborhood])==0 && neighborhood.city.casecmp(params[:city])==0 
+    @neighborhood = Neighborhood.all.find do |neighborhood|
+      (neighborhood.name_friendly.casecmp(params[:neighborhood])==0 && neighborhood.city_friendly.casecmp(params[:city])==0) ||
+          (neighborhood.name.casecmp(params[:neighborhood])==0 && neighborhood.city.casecmp(params[:city])==0) #back-compat urls
     end
 
     if !@neighborhood
@@ -88,7 +88,7 @@ class EventsController < ApplicationController
       @title = "Volunteer Opportunities in " + @neighborhood.name
       @zoom = 15
       @events = Event.in_neighborhood(@neighborhood).upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
-      @mapCenter = @neighborhood
+      @map_center = @neighborhood
     end
 
     respond_to do |format|

@@ -1,9 +1,21 @@
 hubs:
-    -   center: POINT (-122.346197 47.611406)
-        zoom:   15
+    -   name:   Chicago
+        center: POINT (-87.631717 41.877651)
+        zoom:   9
         radius: 50
-        name:   Seattle
-    -   center: POINT (-87.631717 41.877651)
-        zoom:   15
-        radius: 50
-        name:   Chicago
+
+    -   name:   Indianapolis
+        center: POINT (-86.160851 39.770776)
+        zoom:   10
+        radius: 25
+
+    -   name:   Seattle
+        center: POINT (-122.346197 47.611406)
+        zoom:   11
+        radius: 25
+
+
+    -   name:   Tacoma
+        center: POINT (-122.430976 47.234610)
+        zoom:   10
+        radius: 15

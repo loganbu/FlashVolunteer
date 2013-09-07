@@ -104,7 +104,7 @@ class Event < ActiveRecord::Base
     }
 
     scope :near_user, lambda { |hub|
-        near([hub.latitude, hub.longitude], 100)
+        near([hub.latitude, hub.longitude], hub.radius)
     }
 
     def hosted_by_real_user

@@ -9,7 +9,7 @@
         <div class="dropdown-menu" id="neighborhood-selection">
             <li><%= link_to(@current_location.name, events_url(current_location_name)) %></li>
             <% Neighborhood.has_events(location_to_wkb(@current_location)).each do |neighborhood| %>
-                <li><%=link_to("#{neighborhood.name}, #{neighborhood.city}", neighborhood_events_url(current_location_name, neighborhood.name, neighborhood.city))%></li>
+                <li><%=link_to("#{neighborhood.name}, #{neighborhood.city}", neighborhood_events_url(current_location_name, neighborhood.name_friendly, neighborhood.city_friendly))%></li>
             <% end %>
         </div>
     </div>
@@ -32,7 +32,7 @@
 </div>
 <script>
 $(document).ready(function() { 
-    Map.setMap('map', <%= @mapCenter.center.y %>, <%= @mapCenter.center.x %>, <%= @zoom %>); 
+    Map.setMap('map', <%= @map_center.latitude %>, <%= @map_center.longitude %>, <%= @map_center.zoom %>);
     var eventUrl = location.href.split("?")[0];
     var page = getParameterByName('page');
     var pageUrlPart = '';

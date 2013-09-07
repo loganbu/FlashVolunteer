@@ -147,4 +147,6 @@ Flashvolunteer::Application.routes.draw do
     match "leaderboard" => "neighborhoods#leaderboard"
 
     match '/:location' => 'events#featured', :as => 'hub'
+
+    match '*' => 'home#error'
 end

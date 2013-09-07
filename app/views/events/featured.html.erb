@@ -100,7 +100,7 @@
 <section class="featured-middle">
     <div class="container">
         <h2>
-            <span class="bigNumEvents"><%= link_to number_with_delimiter(Event.after(DateTime.now).count), events_url(current_location_name)%></span> events available. <%= link_to "Click to browse!", events_url(current_location_name)%><br>
+            <span class="bigNumEvents"><%= link_to number_with_delimiter(Event.near_user(@current_location).after(DateTime.now).count), events_url(current_location_name)%></span> events available. <%= link_to "Click to browse!", events_url(current_location_name)%><br>
             Join community of over <span class="bigNumVolunteers"><%= number_with_delimiter(User.count)  %></span> volunteers!
         </h2>
     </div>
