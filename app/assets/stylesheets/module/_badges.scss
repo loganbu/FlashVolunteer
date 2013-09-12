@@ -1,0 +1,75 @@
+/**************
+ =Badges
+ **************/
+.small_badge {
+    display: block;
+    float: left;
+    margin-left: 2px;
+    margin-right: 2px;
+    width: 20px;
+    height: 20px;
+}
+
+.small_badge:hover {
+    background-color: red;
+}
+
+span .small_badge:hover{
+    background-color: red;
+}
+
+.exsmall_badge {
+    @extend .small_badge;
+    margin-left: 1px;
+    margin-right: 1px;
+    width: 16px;
+    height: 16px;
+}
+.medium_badge {
+    @extend .small_badge;
+    margin: 0px;
+    width: 36px;
+    height: 36px;
+    margin-left: 18px;
+}
+.large_badge {
+    @extend .small_badge;
+    width: 64px;
+    height: 64px;
+    margin-left: 32px;
+}
+.selectable_option {
+    float: left;
+    padding: 7px;
+    margin: 0px 5px 5px 0;
+    width: 128px;
+    height: 110px;
+    text-align: center;
+    /* Since these are floating left, adding the 1px black border will cause
+       the items below to not clear left since there is 1px left.  Add a white
+       pixeled border to non-selected items to ensure it clears left */
+    border: 1px solid transparent;
+    &:active {
+        border: 1px solid $lightBlue !important;
+        background: none repeat scroll 0 0 0 0 darken($lightBlue, 15%) !important;
+    }
+    label {
+        cursor: pointer;
+    }
+}
+.selectable_option_med {
+    @extend .selectable_option;
+    padding: 5px;
+}
+.selectable_option_small {
+    @extend .selectable_option;
+    padding: 2px;
+}
+.option_selected {
+    border: 1px solid $lightBlue !important;
+    background: none repeat scroll darken($lightBlue, 5%);
+}
+
+.featured_badges {
+    margin-bottom: 40px;
+}

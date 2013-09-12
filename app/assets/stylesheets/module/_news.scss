@@ -1,0 +1,49 @@
+/**************
+ =News
+ **************/
+
+h2.spotlight-title {
+    border-top:1px solid $lightGray;
+    margin: 30px auto 50px;
+}
+
+h2.spotlight-title span {
+    background-image:url(bannerSpotlight.png);
+    color: $white;
+    height: 50px;
+    width:268px; 
+    margin:-22px auto; 
+    text-indent: -9999px;
+    display: block;
+}
+
+.news {
+    margin-bottom: 2em;
+    display:block;
+}
+
+.alpha { margin-left: 0px; } //Removes left margin from Twitter span X
+.omega { margin-right: 0px; } //Removes right margin from Twitter span X
+
+.news-title {
+    font-size: 1.3em;
+    height: 20px;
+    width: 95%;
+    position: relative;
+    background: $lightGray;
+    color: $darkGreen;
+    text-align: center;
+    padding: 10px;
+    margin: 0 auto 10px;
+}
+
+.news > img {
+    box-shadow: 1px 1px 5px #888888;
+    display: block;
+    margin: 0 auto 10px auto;
+}
+
+.news > a > img {
+    display: block;
+    margin: 0 auto 10px auto;
+}
