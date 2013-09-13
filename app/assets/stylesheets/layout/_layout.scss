@@ -1,0 +1,39 @@
+#wrapper {
+    min-height: 100%;
+}
+
+#content {
+    margin-bottom: 100px;
+}
+
+/* Remove top padding when top navbar goes static in narrow viewports */
+@media (max-width: 979px) {
+    body {
+        padding-top: 0;
+    }
+    .btn-create-new {
+        text-align: center;
+    }
+    .featured-middle{
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+    }
+    footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+    }
+    footer .navbar .nav li a {
+        padding: 10px 15px 10px 0px;
+    }
+    .followus, .copy {
+        font-size: .8em;
+    }
+}
+
+@media (min-width: 980px) {
+    .btn-create-new {
+        float: right;
+    }
+}

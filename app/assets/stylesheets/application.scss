@@ -1,8 +1,22 @@
-@import "variables.scss";
-@import "twitter/bootstrap.scss";
-@import "fv_responsive.scss";
-@import "main.scss";
-@import "modal.scss";
-@import "helpers.scss";
-@import "jquery-ui.scss";
-@import url(http://fonts.googleapis.com/css?family=Domine);
+//Base
+@import "base/variables.scss";
+@import "base/bootstrapCustom.scss";
+@import "base/bootstrap/bootstrap.scss";
+@import "base/jquery-ui.scss";
+@import "base/base.scss";
+@import "base/main.scss"; // Still needs to be refactored.
+
+//Module
+@import "module/header.scss";
+@import "module/footer.scss";
+@import "module/featured.scss";
+@import "module/badges.scss";
+@import "module/common.scss";
+@import "module/events.scss";
+@import "module/helpers.scss";
+@import "module/modal.scss";
+@import "module/news.scss";
+
+//Layout
+@import "layout/fv_responsive.scss";
+@import "layout/layout.scss";
