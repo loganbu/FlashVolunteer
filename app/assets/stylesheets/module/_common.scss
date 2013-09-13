@@ -12,3 +12,62 @@
 .divider_margin{
     margin-left: $LPadding;
 }
+
+.title{
+    font-size: 450%;
+    line-height: 4*$baseLineHeight;
+    padding: 0px 0px 10px 0px;
+    margin: 20px 0 20px 0;
+}
+.bold{
+    font-weight: bold;
+}
+.hidden {
+    display: none;
+}
+.inline {
+    li {
+        float: left;
+        margin-right: 5px;
+    }
+}
+a:link, a:visited, a:active, a:hover, a {
+    text-decoration: none;
+}
+ul {
+    ul.unstyled {
+        margin-left: 30px;
+    }
+}
+
+.border{
+    border-left: 1px solid $green;
+    padding: 0px 10px 0px 10px;
+}
+
+.list_spacing{
+    padding: 5px 0px 5px 0px;
+    ul{
+        li{
+            margin-bottom: 10px;
+        }
+    }
+ }
+ 
+li.unstyled {
+  list-style: none;
+}
+
+ #link_list {
+    a {
+        color: $gray;
+    }
+    .link_active {
+        color: $green;
+    }
+}
+
+.defaultText {
+    font-style: italic;
+    color: $gray;
+}

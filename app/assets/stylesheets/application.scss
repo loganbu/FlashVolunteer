@@ -1,17 +1,18 @@
 //Base
-@import "base/variables.scss";
+@import "base/colors.scss";
 @import "base/bootstrapCustom.scss";
 @import "base/bootstrap/bootstrap.scss";
 @import "base/jquery-ui.scss";
-@import "base/base.scss";
-@import "base/main.scss"; // Still needs to be refactored.
+@import "base/main.scss"; // Needs to be refactored.
+@import "base/elements.scss";
+@import "base/typography.scss";
 
 //Module
 @import "module/header.scss";
 @import "module/footer.scss";
 @import "module/featured.scss";
 @import "module/badges.scss";
-@import "module/common.scss";
+@import "module/common.scss";  // Needs to be refactored.
 @import "module/events.scss";
 @import "module/helpers.scss";
 @import "module/modal.scss";

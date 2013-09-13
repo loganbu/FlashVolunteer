@@ -6351,125 +6351,6 @@ body .ui-tooltip {
   filter: Alpha(Opacity=30);
   border-radius: 8px; }
 
-/*  To get the footer to stick to the bottom, set the HTML and body to 100%, and the
-    container to be min-height of 100%.  Then, then footer is below the page, so to
-    bring it back up, margin it to -(height of footer)px
-*/
-html, body {
-  height: 100%;
-  background: url(/assets/bg_square.png) repeat;
-  color: #555555;
-  font-family: "Domine"; }
-
-body {
-  font: inherit;
-  padding-top: 65px; }
-
-footer {
-  color: #d8d8d8;
-  -webkit-border-radius: 0px;
-  -moz-border-radius: 0px;
-  border-radius: 0px;
-  box-shadow: 0px 1px 5px #555555;
-  border: none; }
-  footer .nav > li > a {
-    text-shadow: none; }
-
-/**************
-=Custom add-on set to Twitter Bootstrap (uses normalize.css)
- **************/
-header, section, aside, nav, article, figure, figcaption {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 14px;
-  line-height: 18px;
-  vertical-align: baseline;
-  font-family: "Domine"; }
-
-footer {
-  min-height: 100px;
-  margin-top: -100px; }
-
-/**************
- =Typeography
- **************/
-.title {
-  font-size: 450%;
-  line-height: 72px;
-  padding: 0px 0px 10px 0px;
-  margin: 20px 0 20px 0; }
-
-h3 {
-  color: white;
-  background-color: #555555;
-  padding: 2px 0px 2px 5px;
-  margin-bottom: 10px;
-  font-size: 125%;
-  -webkit-border-radius: 2px;
-  -moz-border-radius: 2px;
-  border-radius: 2px; }
-
-h2 {
-  font-size: 150%; }
-
-.h2-padding {
-  padding-bottom: 20px; }
-
-h1 {
-  padding-bottom: 20px; }
-
-.bold {
-  font-weight: bold; }
-
-.hidden {
-  display: none; }
-
-.inline li {
-  float: left;
-  margin-right: 5px; }
-
-a:link, a:visited, a:active, a:hover, a {
-  text-decoration: none; }
-
-ul ul.unstyled {
-  margin-left: 30px; }
-
-.border {
-  border-left: 1px solid #66cc66;
-  padding: 0px 10px 0px 10px; }
-
-.list_spacing {
-  padding: 5px 0px 5px 0px; }
-  .list_spacing ul li {
-    margin-bottom: 10px; }
-
-li.unstyled {
-  list-style: none; }
-
-#link_list a {
-  color: #555555; }
-#link_list .link_active {
-  color: #66cc66; }
-
-.defaultText {
-  font-style: italic;
-  color: #555555; }
-
-.featuredTitle {
-  padding: 20px 0px 10px 0px;
-  font-weight: bold;
-  font-size: 24.5px;
-  line-height: 30px;
-  color: inherit;
-  text-rendering: optimizelegibility; }
-
-.featured {
-  margin-top: 20px;
-  font-size: 16.1px;
-  line-height: 27px;
-  overflow: hidden; }
-
 /**************
  =Static pages
  **************/
@@ -6481,29 +6362,6 @@ li.unstyled {
 
 .image-alignment {
   text-align: center; }
-
-/**************
- =Errors
- **************/
-.alert {
-  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
-  font-weight: bold; }
-
-/**************
- =About Us
- **************/
-.team-name {
-  font-size: 1.3em;
-  width: 95%;
-  position: relative;
-  background: #d8d8d8;
-  color: #004900;
-  text-align: center;
-  padding: 10px;
-  margin: 10px 0; }
-
-.team-join {
-  margin-top: 30px; }
 
 /**************
  =Forms
@@ -6640,6 +6498,71 @@ input[type="checkbox"] {
   margin: 0 40px 40px 40px;
   width: 800px; }
 
+/*  To get the footer to stick to the bottom, set the HTML and body to 100%, and the
+    container to be min-height of 100%.  Then, then footer is below the page, so to
+    bring it back up, margin it to -(height of footer)px
+*/
+html, body {
+  height: 100%;
+  background: url(/assets/bg_square.png) repeat;
+  color: #555555;
+  font-family: "Domine"; }
+
+body {
+  font: inherit;
+  padding-top: 65px; }
+
+footer {
+  color: #d8d8d8;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  box-shadow: 0px 1px 5px #555555;
+  border: none; }
+  footer .nav > li > a {
+    text-shadow: none; }
+
+/**************
+=Custom add-on set to Twitter Bootstrap (uses normalize.css)
+ **************/
+header, section, aside, nav, article, figure, figcaption {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 14px;
+  line-height: 18px;
+  vertical-align: baseline;
+  font-family: "Domine"; }
+
+footer {
+  min-height: 100px;
+  margin-top: -100px; }
+
+/**************
+=Heading
+ **************/
+h3 {
+  color: white;
+  background-color: #555555;
+  padding: 2px 0px 2px 5px;
+  margin-bottom: 10px;
+  font-size: 125%;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px; }
+
+h2 {
+  font-size: 150%; }
+
+.h2-padding {
+  padding-bottom: 20px; }
+
+h1 {
+  padding-bottom: 20px; }
+
+/**************
+ =Typography
+ **************/
 /**************
  =Navigation
  **************/
@@ -6825,6 +6748,20 @@ input[type="checkbox"] {
  **************/
 figure {
   position: relative; }
+
+.featuredTitle {
+  padding: 20px 0px 10px 0px;
+  font-weight: bold;
+  font-size: 24.5px;
+  line-height: 30px;
+  color: inherit;
+  text-rendering: optimizelegibility; }
+
+.featured {
+  margin-top: 20px;
+  font-size: 16.1px;
+  line-height: 27px;
+  overflow: hidden; }
 
 .featured-banner {
   height: 125px;
@@ -7039,6 +6976,49 @@ span .small_badge:hover, span .exsmall_badge:hover, span .medium_badge:hover, sp
 .divider_margin {
   margin-left: 20px; }
 
+.title {
+  font-size: 450%;
+  line-height: 72px;
+  padding: 0px 0px 10px 0px;
+  margin: 20px 0 20px 0; }
+
+.bold {
+  font-weight: bold; }
+
+.hidden {
+  display: none; }
+
+.inline li {
+  float: left;
+  margin-right: 5px; }
+
+a:link, a:visited, a:active, a:hover, a {
+  text-decoration: none; }
+
+ul ul.unstyled {
+  margin-left: 30px; }
+
+.border {
+  border-left: 1px solid #66cc66;
+  padding: 0px 10px 0px 10px; }
+
+.list_spacing {
+  padding: 5px 0px 5px 0px; }
+  .list_spacing ul li {
+    margin-bottom: 10px; }
+
+li.unstyled {
+  list-style: none; }
+
+#link_list a {
+  color: #555555; }
+#link_list .link_active {
+  color: #66cc66; }
+
+.defaultText {
+  font-style: italic;
+  color: #555555; }
+
 /**************
  =Events Details Page
  **************/
@@ -7182,6 +7162,16 @@ span .small_badge:hover, span .exsmall_badge:hover, span .medium_badge:hover, sp
   clear: both;
   height: 0px; }
 
+/**************
+ =Errors
+ **************/
+.alert {
+  text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5);
+  font-weight: bold; }
+
+/**************
+ =Other
+ **************/
 .modalDialog {
   display: none;
   position: absolute;
