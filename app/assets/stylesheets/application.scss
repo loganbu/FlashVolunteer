@@ -1,11 +1,16 @@
 //Base
-@import "base/colors.scss";
-@import "base/bootstrapCustom.scss";
+@import "base/colors.scss"; //Refactor complete
+@import "base/bootstrapCustom.scss"; //
 @import "base/bootstrap/bootstrap.scss";
 @import "base/jquery-ui.scss";
 @import "base/main.scss"; // Needs to be refactored.
 @import "base/elements.scss";
 @import "base/typography.scss";
+@import "base/padding.scss";
+
+//Layout
+@import "layout/fv_responsive.scss";
+@import "layout/layout.scss";
 
 //Module
 @import "module/header.scss";
@@ -18,6 +23,35 @@
 @import "module/modal.scss";
 @import "module/news.scss";
 
-//Layout
-@import "layout/fv_responsive.scss";
-@import "layout/layout.scss";
+@import "module/static.scss";
+@import "module/forms.scss";
+@import "module/help.scss";
+@import "module/scoreboard.scss";
+@import "module/input.scss";
+@import "module/jQueryUI.scss";
+@import "module/pagination.scss";
+@import "module/splashFrame.scss";
+@import "module/printScreen.scss";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

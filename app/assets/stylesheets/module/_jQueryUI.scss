@@ -1,0 +1,23 @@
+/**************
+ =JQuery
+ **************/
+.ui-slider {
+    $progressBarHeight: 1em;
+    position: relative;
+    text-align: left;
+    height: $progressBarHeight; 
+}
+
+/**************
+ =JQuery Dropdown styling
+ **************/
+.dropdown {
+    list-style: none;
+}
+
+.dropdown-menu {
+    max-height: 400px;
+    overflow: hidden;
+    overflow-y: auto;
+    text-shadow: none;
+}
