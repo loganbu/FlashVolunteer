@@ -41,6 +41,8 @@ Flashvolunteer::Application.routes.draw do
         end
     end
 
+    resources :affiliates
+
     # 
     # Index - Show all users?
     # Show - Timeline

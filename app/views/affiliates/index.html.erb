@@ -1,0 +1,18 @@
+<h2>Affiliations</h2>
+<table class="table-striped" width="100%">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Notes</th>
+    <th></th>
+  </tr>
+  <% @affiliates.each do |a| %>
+      <tr>
+        <td><%= image_tag a.logo(:thumb) %>&nbsp;<%= a.name %></td>
+        <td><%= a.description %></td>
+        <td><%= a.notes %></td>
+        <td><%= link_to 'Edit', edit_affiliate_url(a) %></td>
+      </tr>
+  <% end %>
+</table>
+<td><%= link_to 'Create', new_affiliate_url, :class=>'btn' %></td>

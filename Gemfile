@@ -62,9 +62,10 @@ gem 'rgeo-geojson'
 gem 'activerecord-mysql2spatial-adapter'
 
 group :development do
-    gem 'factory_girl_rails'
-    gem 'rails-footnotes'
-    gem 'sqlite3'
+  gem 'factory_girl_rails'
+  gem 'rails-footnotes'
+  gem 'sqlite3'
+  gem 'bullet'
 end
 
 group :production do

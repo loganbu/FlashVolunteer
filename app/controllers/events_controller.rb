@@ -26,7 +26,7 @@ class EventsController < ApplicationController
     per_page = params[:per_page] || 4
     
     @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 && neighborhood.city.casecmp("seattle")==0 }
-    @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @events = Event.includes(participants: [{participations: :user}]).includes(:skills, :user, :affiliates).upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
     @title="Volunteer Opportunities in King County"
@@ -63,7 +63,7 @@ class EventsController < ApplicationController
 
   # GET /events/featured
   def featured
-    @events = Event.featured.upcoming
+    @events = Event.includes(:neighborhood).featured.upcoming
     @current_sponsor = current_sponsor
 
     if (@events.featured.count == 0)
@@ -114,7 +114,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.xml
   def show
-    @event = Event.find(params[:id])
+    @event = Event.includes(:affiliates).find(params[:id])
     
     set_page_title
 
@@ -132,6 +132,7 @@ class EventsController < ApplicationController
   # GET /events/new.xml
   def new
     @event = Event.new
+    @event.affiliates << current_user.affiliates
     
     set_page_title
 
@@ -140,14 +141,6 @@ class EventsController < ApplicationController
       format.xml  { render :xml => Event.xml(@event) }
     end
   end
-
-  # GET /events/1/edit
-  def edit
-    @event = Event.find(params[:id])
-
-    set_page_title
-  end
-
 
   # GET /events/new
   # GET /events/new.xml
@@ -166,7 +159,7 @@ class EventsController < ApplicationController
 
   # GET /events/1/edit
   def edit
-    @event = Event.find(params[:id])
+    @event = Event.includes(:skills, :affiliates).find(params[:id])
 
     set_page_title
   end

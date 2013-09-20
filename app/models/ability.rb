@@ -26,6 +26,14 @@ class Ability
         event.try(:user) == user
       end
 
+      can :manage, [Affiliate] do |affiliate|
+        user.roles.includes(:affiliate).where('affiliate_id = :affiliate AND roles.name = :role_name', affiliate: affiliate.id, role_name: 'AffiliateModerator').any?
+      end
+
+      can :read, [Affiliate] do |affiliate|
+        user.affiliated_with(affiliate)
+      end
+
       can :see_events, [User] do |other|
         privacy_settings = Privacy.find_by_user_id(other.id)
         other == user || privacy_settings == nil || privacy_settings.upcoming_events.everyone?

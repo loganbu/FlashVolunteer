@@ -11,6 +11,7 @@ class Event < ActiveRecord::Base
     has_many :participations
     has_many :participants, :through => :participations, :source => :user
     has_and_belongs_to_many :skills, :join_table => "skills_events"
+    has_and_belongs_to_many :affiliates, :join_table => 'affiliate_events'
 
     geocoded_by :geocode_address
 
@@ -103,6 +104,11 @@ class Event < ActiveRecord::Base
         joins("INNER JOIN neighborhoods ON MBRContains(neighborhoods.region, events.lonlat)").where("neighborhoods.id = ?", neighborhood)
     }
 
+    # Events that are affiliated with the same user
+    scope :affiliated_with, lambda { |user|
+      where{affiliates.in(user.affiliates)}
+    }
+
     def hosted_by_real_user
         !self.hosted_by.blank?
     end
@@ -141,11 +147,15 @@ class Event < ActiveRecord::Base
     end
 
     def attending?(user)
-        user == nil ? false : self.participants.exists?(user)
+        participants.where('user_id = ?', user.id) unless user == nil
+    end
+
+    def affiliated_with?(user)
+      affiliates.where{id.eq_any user.affiliates} unless user == nil || user.affiliates == nil
     end
 
     def upcoming?
-        self.end > Time.now
+      self.end > Time.now
     end
 
     def past?

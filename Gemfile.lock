@@ -50,6 +50,8 @@ GEM
     bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     builder (3.0.4)
+    bullet (4.6.0)
+      uniform_notifier
     cancan (1.6.9)
     chunky_png (1.2.8)
     classy_enum (2.0.3)
@@ -277,6 +279,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    uniform_notifier (1.3.0)
     uuidtools (2.1.4)
     virtus (0.5.5)
       backports (~> 3.3)
@@ -287,6 +290,7 @@ GEM
       activesupport (>= 3.0.7)
       rails (>= 3.0.7)
     will_paginate (3.0.4)
+    win32console (1.3.2)
     win32console (1.3.2-x86-mingw32)
     xml-simple (1.1.2)
     yui-compressor (0.9.6)
@@ -300,6 +304,7 @@ DEPENDENCIES
   activerecord-mysql2spatial-adapter
   aws-s3
   aws-sdk
+  bullet
   cancan (= 1.6.9)
   classy_enum (~> 2.0.3)
   compass
