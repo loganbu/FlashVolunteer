@@ -59,11 +59,7 @@ class EventsController < ApplicationController
 
   # GET /events/featured
   def featured
-<<<<<<< HEAD
-    @events = Event.includes(:neighborhood).featured.upcoming
-=======
-    @events = Event.near_user(current_location).featured.upcoming
->>>>>>> chicago
+    @events = Event.includes(:neighborhood).near_user(current_location).featured.upcoming
     @current_sponsor = current_sponsor
 
     if (@events.featured.count == 0)
