@@ -55,7 +55,7 @@ gem 'classy_enum', '~> 2.0.3'
 
 gem 'sinatra', '1.0'
 gem 'date_validator'
-gem 'mysql2'
+gem 'mysql2', '=0.3.11'
 
 gem 'rgeo'
 gem 'rgeo-geojson'

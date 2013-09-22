@@ -45,7 +45,7 @@ Skill.create([
 
 Neighborhood.delete_all()
 
-["wa", "or"].each do |state|
+["wa", "or", "il"].each do |state|
     contents = File.read("#{Rails.root}/db/data/neighborhoods/#{state}.json")
     geom = RGeo::GeoJSON.decode(contents, :json_parser => :json)
     geom.each do |neighborhood|
@@ -133,7 +133,11 @@ if Rails.env.development?
     Random.new
     Org.delete_all()
     Event.delete_all()
+<<<<<<< HEAD
     Affiliate.delete_all()
+=======
+    Hub.delete_all()
+>>>>>>> chicago
 
     config = YAML::load(ERB.new(File.read("#{Rails.root}/db/seed.yml")).result)
 
@@ -149,6 +153,7 @@ if Rails.env.development?
         o.neighborhood = Neighborhood.all.sample
         o.save
     end
+
 
     affiliates = Affiliate.create(config['affiliates']);
 
@@ -168,6 +173,9 @@ if Rails.env.development?
       affiliation.moderator = relation['moderator']
       affiliation.save
     end
+
+    hubs = YAML::load(ERB.new(File.read("#{Rails.root}/db/hubs.yml")).result)
+    Hub.create(hubs['hubs'])
 
     $sample_event_names.each do |e|
         event = Event.new

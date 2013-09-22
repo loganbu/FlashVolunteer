@@ -15,18 +15,12 @@ Flashvolunteer::Application.routes.draw do
         post "users/sign_in/:provider", :to => "users/sessions#mobile"
     end
 
-    get "users/search", :to => "users#search"
-    get "neighborhoods/search", :to => "neighborhoods#search"
-    get "orgs/search", :to => "orgs#search"
-    get "events/search", :to => "events#search"
-    get "events/instructions", :to => "events#instructions"
-
-    resources :afg_opportunities, :only => [:index] do 
+    resources :afg_opportunities, :only => [:index] do
         member do
             put :create_event
             put :hide_event
         end
-        collection do 
+        collection do
             post :more
         end
     end
@@ -45,7 +39,8 @@ Flashvolunteer::Application.routes.draw do
       resources :users, :only => [:create, :destroy], :controller => 'affiliates/users'
     end
 
-    # 
+    #
+    #
     # Index - Show all users?
     # Show - Timeline
     # Edit - Change profile
@@ -63,33 +58,39 @@ Flashvolunteer::Application.routes.draw do
             resource :notifications, :only => [:show, :update], :controller => "users/notifications", :as => "user_notification_settings"
 
             # Prop this user
-            resources :props, :controller => "users/props" 
-
+            resources :props, :controller => "users/props"
 
             delete :photo
 
             # Switch user login
             get :switch
 
-
             put "checkin/:event_id" => "users/checkin#create", :as => "checkin"
         end
 
         resources :followers, :only => [:update, :destroy], :controller => "users/followers"
-        
-        # 
+
+        #
         # Show - List organizations you're part of
         # Update - Remove?
         resources :orgs, :only => [:index, :update], :controller => "users/organizations"
+
+      collection do
+        get :search
+      end
     end
 
     resources :new_user_wizard, :only => [:show, :update], :controller => "users/new_user_wizard"
     resources :new_org_wizard, :only => [:show, :update], :controller => "orgs/new_org_wizard"
     root :to => "users#index"
 
-    resources :neighborhoods, :only => [:index]
+    resources :neighborhoods, :only => [:index] do
+      collection do
+        get :search
+      end
+    end
 
-    # POST 
+    # POST
     resources :participations, :only => [:update, :destroy]
 
     resources :user_affiliations, :only => [:create, :destroy]
@@ -112,26 +113,31 @@ Flashvolunteer::Application.routes.draw do
         resources :users, :only => [:create, :index, :update, :destroy], :controller => "orgs/users"
         collection do
             post :register
+            get :search
         end
     end
-   
+
     # Search for people
     resources :people, :only => [:index]
 
-    resources :events do
-        member do
-            resource :register, :only => [:create, :destroy], :controller => "events/register", :as => "register_event"
-            post :broadcast
-            get :export
-            get :print
-            get :clone
-        end
-        collection do 
-            get :featured
+    scope '(:location)' do
+      resources :events do
+          member do
+              resource :register, :only => [:create, :destroy], :controller => "events/register", :as => "register_event"
+              post :broadcast
+              get :export
+              get :print
+              get :clone
+          end
+          collection do
+              get :featured
+              get 'in/:neighborhood/:city' => 'events#in', :as => 'neighborhood'
+              get 'this/:timeframe' => 'events#this', :as => 'this'
+              get :search
+              get :instructions
+          end
         end
     end
-    match "events/in/:neighborhood/:city" => "events#in", :as => 'events_neighborhood', :via => :get
-    match "events/this/:timeframe" => "events#this", :as => 'this_events', :via => :get
 
     post "search" => "search#show", :as => "search"
 
@@ -146,5 +152,6 @@ Flashvolunteer::Application.routes.draw do
     match "sadface" => "home#sadface"
     match "error" => "home#error"
     match "leaderboard" => "neighborhoods#leaderboard"
-    
+
+    match '/:location' => 'events#featured', :as => 'hub'
 end

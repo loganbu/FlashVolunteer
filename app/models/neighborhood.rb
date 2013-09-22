@@ -1,15 +1,21 @@
-class Neighborhood < ActiveRecord::Base  
+class Neighborhood < ActiveRecord::Base
+  include ApplicationHelper
 
-    def self.contains(point)
-        self.find_by_sql("SELECT * FROM neighborhoods WHERE MBRContains(region, GeomFromText('#{point}'))").first
+    # Notice: uses cartesian coordinates, instead of world coordinates. 
+    def self.closest(point)
+        self.find_by_sql("SELECT *, (GLength(LineString(GeomFromText('#{point}'), center))) AS distance FROM neighborhoods ORDER BY distance ASC LIMIT 1").first
     end
 
-    def self.has_events()
-        self.find_by_sql("SELECT DISTINCT neighborhoods.* FROM neighborhoods JOIN events WHERE MBRContains(region, events.lonlat) AND events.start > NOW() ORDER BY neighborhoods.name asc")
+    def self.contains(point)
+        self.find_by_sql("SELECT * FROM neighborhoods WHERE MBRContains(region, GeomFromText('#{point}')) LIMIT 1").first
+    end
+
+    def self.has_events(wkb)
+        self.find_by_sql("SELECT DISTINCT neighborhoods.*, (GLength(LineString(GeomFromText('#{wkb}'), center))) AS distance FROM neighborhoods JOIN events WHERE MBRContains(region, events.lonlat) AND events.start > NOW() HAVING distance < 2 ORDER BY neighborhoods.name asc")
     end
 
     def participations(focus)
-		participations_source(focus).includes(:participations).map(&:participations).flatten
+		  participations_source(focus).includes(:participations).map(&:participations).flatten
     end
 
     def volunteer_hours(focus)
@@ -22,6 +28,26 @@ class Neighborhood < ActiveRecord::Base
     scope :supported, lambda {
         where("state = ?", :wa)
     }
+
+    def latitude
+      center.y
+    end
+
+    def longitude
+      center.x
+    end
+
+    def city_friendly
+      friendly_name(city)
+    end
+
+    def name_friendly
+      friendly_name(name)
+    end
+
+    def zoom
+      13
+    end
 
     def full_name
         "#{name}, #{city}"

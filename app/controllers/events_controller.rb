@@ -1,6 +1,5 @@
 class EventsController < ApplicationController
   load_and_authorize_resource
-    
   def export
       @event = Event.find(params[:id])
       @calendar = Icalendar::Calendar.new
@@ -24,10 +23,10 @@ class EventsController < ApplicationController
   # GET /events.xml
   def index
     per_page = params[:per_page] || 4
-    
-    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 && neighborhood.city.casecmp("seattle")==0 }
-    @events = Event.includes(participants: [{participations: :user}]).includes(:skills, :user, :affiliates).upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
-    @zoom = 11
+
+    Rails.logger.info("Location: #{@current_location.center.to_s}")
+    @events = Event.includes(participants: [{participations: :user}]).includes(:skills, :user, :affiliates).upcoming.near_user(@current_location).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @map_center = current_location
 
     @title="Volunteer Opportunities in King County"
     
@@ -38,21 +37,18 @@ class EventsController < ApplicationController
   end
 
   def this
-    end_date = params[:timeframe];
+    end_date = params[:timeframe]
 
     case end_date.downcase
     when "hour", "day", "week", "month", "year"
       end_date = Time.now + 1.send(end_date.downcase)
     else
-      redirect_to events_url
+      redirect_to events_url(current_location_name)
       return
     end
 
-    Rails.logger.info("End Date")
-    Rails.logger.info(end_date)
-
-    @mapCenter = Neighborhood.all.find { |neighborhood| neighborhood.name.casecmp("downtown")==0 && neighborhood.city.casecmp("seattle")==0 }
-    @events = Event.before(end_date).after(DateTime.now).order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
+    @map_center = current_location
+    @events = Event.near_user(current_location).before(end_date).after(DateTime.now).paginate(:page => params[:page], :per_page=>params[:per_page] || 4)
     @zoom = 11
 
     respond_to do |format|
@@ -63,11 +59,15 @@ class EventsController < ApplicationController
 
   # GET /events/featured
   def featured
+<<<<<<< HEAD
     @events = Event.includes(:neighborhood).featured.upcoming
+=======
+    @events = Event.near_user(current_location).featured.upcoming
+>>>>>>> chicago
     @current_sponsor = current_sponsor
 
     if (@events.featured.count == 0)
-      @events = Event.upcoming.order("start asc").paginate(:page => params[:page], :per_page=> 6)
+      @events = Event.near_user(current_location).upcoming.paginate(:page => params[:page], :per_page=> 6)
     end
     @title = "Featured Volunteer Opportunities in King County"
     
@@ -79,19 +79,20 @@ class EventsController < ApplicationController
   # GET /events/in/downtown
   # GET /events/in/downtown.xml
   def in
-    @neighborhood = Neighborhood.all.find do |neighborhood| 
-      neighborhood.name.casecmp(params[:neighborhood])==0 && neighborhood.city.casecmp(params[:city])==0 
+    @neighborhood = Neighborhood.all.find do |neighborhood|
+      (neighborhood.name_friendly.casecmp(params[:neighborhood])==0 && neighborhood.city_friendly.casecmp(params[:city])==0) ||
+          (neighborhood.name.casecmp(params[:neighborhood])==0 && neighborhood.city.casecmp(params[:city])==0) #back-compat urls
     end
 
     if !@neighborhood
-      redirect_to events_url
+      redirect_to events_url(current_location_name)
       return
     else
       cookies['preferred_neighborhood'] = @neighborhood.id
       @title = "Volunteer Opportunities in " + @neighborhood.name
       @zoom = 15
       @events = Event.in_neighborhood(@neighborhood).upcoming.order("start asc").paginate(:page => params[:page], :per_page=>params[:per_page] || 5)
-      @mapCenter = @neighborhood
+      @map_center = @neighborhood
     end
 
     respond_to do |format|
@@ -288,7 +289,7 @@ class EventsController < ApplicationController
     per_page = params[:per_page] || 5
     proximity = params[:proximity] || ((params[:lat] || params[:long]) ? 5 : 100)
     
-    lat_long = (params[:lat] && params[:long]) ? [params[:lat].to_f, params[:long].to_f] : [47.618777, -122.33139]
+    lat_long = (params[:latitude] && params[:longitude]) ? [params[:latitude].to_f, params[:longitude].to_f] : [47.618777, -122.33139]
     @events = Event.where("1=1").near(lat_long, proximity)
     
     id_array = params[:id] && params[:id].split(',') || []

@@ -125,7 +125,7 @@ CREATE TABLE `hubs` (
   `radius` int(11) DEFAULT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `neighborhoods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -485,3 +485,5 @@ INSERT INTO schema_migrations (version) VALUES ('20130903064521');
 INSERT INTO schema_migrations (version) VALUES ('20130906234916');
 
 INSERT INTO schema_migrations (version) VALUES ('20130918021924');
+=======
+INSERT INTO schema_migrations (version) VALUES ('20130906234916');

@@ -41,4 +41,12 @@ def display_text_field_safe(text)
     text.gsub(/\n/, '<br/>').html_safe
 end
 
+def location_to_wkb(point)
+    return "POINT(#{point.longitude} #{point.latitude})"
+end
+
+def current_location_name
+  params[:location] || cookies['location'] || request.location.city
+end
+
 end

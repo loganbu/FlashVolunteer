@@ -1,5 +1,4 @@
 class Events::RegisterController < ApplicationController
-  include SessionsHelper
   skip_authorization_check
 
   # POST /events/1/register
@@ -18,7 +17,7 @@ class Events::RegisterController < ApplicationController
     respond_to do |format|
       if true
         flash[:popup] = "We have successfully signed you up for " + @event.name + "! We'll send you an email reminder the day before and will notify the coordinator."
-        format.html { redirect_to(@event) }
+        format.html { redirect_to(event_url(@event)) }
         format.xml  { render :xml => @event, :status => :created, :location => @event }
       else
         format.html { render :action => "new" }
