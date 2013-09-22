@@ -41,7 +41,9 @@ Flashvolunteer::Application.routes.draw do
         end
     end
 
-    resources :affiliates
+    resources :affiliates do
+      resources :users, :only => [:create, :destroy], :controller => 'affiliates/users'
+    end
 
     # 
     # Index - Show all users?
@@ -89,6 +91,9 @@ Flashvolunteer::Application.routes.draw do
 
     # POST 
     resources :participations, :only => [:update, :destroy]
+
+    resources :user_affiliations, :only => [:create, :destroy]
+
     #
     # Index - Show all orgs?
     # Show - Timeline

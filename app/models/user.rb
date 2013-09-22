@@ -14,7 +14,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
   has_and_belongs_to_many :admin_of, :class_name => "Org", :join_table => "orgs_admins", :uniq => true
-  has_and_belongs_to_many :affiliates, :join_table => 'affiliate_users'
+  has_many :user_affiliations
+  has_many :affiliates, :through => :user_affiliations
 
   has_attached_file :avatar, :storage => :s3, :s3_credentials => {
       :access_key_id => ENV['AWS_ACCESS_KEY'],
@@ -100,8 +101,14 @@ class User < ActiveRecord::Base
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
 
-  def affiliated_with(affiliate)
-    affiliates.where('affiliate_id = :affiliate', affiliate: affiliate.id).any?
+  def is_moderator?
+    affiliates.where('moderator = true').any?
+  end
+
+  def moderator_of?(affiliate)
+    affiliation = user_affiliations.find_by_affiliate_id(affiliate.id)
+
+    affiliation.moderator if affiliation
   end
   
   def should_show_wizard?

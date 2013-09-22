@@ -22,16 +22,17 @@ class Ability
       can :manage, Org do |other|
         other == user && user.type == "Org"
       end
+
       can :manage, Event do |event|
-        event.try(:user) == user
+        event.try(:user) == user || event.affiliates.select{|a| user.moderator_of?(a)}.any?
       end
 
       can :manage, [Affiliate] do |affiliate|
-        user.roles.includes(:affiliate).where('affiliate_id = :affiliate AND roles.name = :role_name', affiliate: affiliate.id, role_name: 'AffiliateModerator').any?
+        user.moderator_of?(affiliate)
       end
 
       can :read, [Affiliate] do |affiliate|
-        user.affiliated_with(affiliate)
+        user.affiliates.include?(affiliate)
       end
 
       can :see_events, [User] do |other|
@@ -41,10 +42,6 @@ class Ability
 
       cannot :create, [Event, Org]
       can :create, [Event, Org] if user.confirmed?
-
-
-
     end
-
   end
 end

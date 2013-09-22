@@ -5,7 +5,7 @@
 
 %>
 <% Skill.order("offset asc").all.each_with_index do |s, i| %>
-    <%= check_box_tag("#{entity}[skill_ids][#{i}]", s.id, skills.include?(s), :name=>"#{entity}[skill_ids][]", :class=>"hide") %> 
+    <%= check_box_tag("#{entity}[skill_ids][#{i}]", s.id, skills.include?(s), :name=>"#{entity}[skill_ids][]", :class=>"hide") %>
     <%
 		button_pixels = 0
 		image_location = ''

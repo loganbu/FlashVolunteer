@@ -1,3 +1,10 @@
+affiliates:
+    -   name: Human Resources
+        description: Yay, human resources
+
+    -   name: Conostco
+        description: Fake corp
+
 users:
     -   name:     Confirmed user
         email:    confirmed@localhost.com
@@ -72,6 +79,7 @@ users:
     -   name:     Unconfirmed user
         email:    unconfirmed@localhost.com
         password: <%= ENV['ADMIN_PASSWORD'] %>
+
 orgs:
     -   name:     Flash Volunteer
         email:    flash@localhost.com
@@ -89,3 +97,22 @@ orgs:
         email:    uwkc@localhost.com
         confirmed_at: <%= DateTime.now %>
         password: <%= ENV['ADMIN_PASSWORD'] %>
+
+user_orgs:
+    -   email: alice@localhost.com
+        org_email: flash@localhost.com
+
+    -   email: alice@localhost.com
+        org_email: hsdc@localhost.com
+
+    -   email: Lori@localhost.com
+        org_email: hsdc@localhost.com
+
+user_affiliations:
+    -   email: alice@localhost.com
+        affiliate: Human Resources
+        moderator: true
+
+    -   email: James@localhost.com
+        affiliate: Human Resources
+        moderator: false

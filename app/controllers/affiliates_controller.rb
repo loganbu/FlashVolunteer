@@ -2,7 +2,7 @@ class AffiliatesController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @affiliates = Affiliate.all
+    @affiliates = Affiliate.all.select{|a| can? :manage, a}
 
     respond_to do |format|
       format.html
@@ -42,7 +42,17 @@ class AffiliatesController < ApplicationController
   end
 
   def edit
-    @event = Affiliate.find(params[:id])
+    @affiliate = Affiliate.find(params[:id])
+
+    respond_to do |format|
+      format.html
+    end
+  end
+
+  def show
+    @affiliation = UserAffiliation.new
+    @affiliate = Affiliate.find(params[:id])
+    @affiliation.affiliate = @affiliate
 
     respond_to do |format|
       format.html

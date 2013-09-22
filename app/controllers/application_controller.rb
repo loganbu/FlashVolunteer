@@ -80,10 +80,10 @@ class ApplicationController < ActionController::Base
     end
 
     private
-        before_filter :create_action_and_controller
+      before_filter :create_action_and_controller
 
-        def create_action_and_controller
-            @current_action = action_name
-            @current_controller = controller_name
-        end
+      def create_action_and_controller
+          @current_action = action_name
+          @current_controller = controller_name
+      end
 end

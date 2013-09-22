@@ -46,7 +46,7 @@
 					</div>
 				</div>
 			<% end %>
-          <% if event.affiliates.any? && event.affiliated_with?(current_user) %>
+          <% if event.affiliates.any? && event.affiliates.map{|a| a.users}.flatten.include?(current_user) %>
               <ul class="inline">
               <% event.affiliates.select{|a| can? :read, a}.each do |affiliate| %>
                     <li><%= image_tag affiliate.logo(:thumb), :title => affiliate.description %></li>

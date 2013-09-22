@@ -133,6 +133,7 @@ if Rails.env.development?
     Random.new
     Org.delete_all()
     Event.delete_all()
+    Affiliate.delete_all()
 
     config = YAML::load(ERB.new(File.read("#{Rails.root}/db/seed.yml")).result)
 
@@ -147,6 +148,25 @@ if Rails.env.development?
         o.admins = User.where("Type != ?", :Org).sample(Random.rand(1..3))
         o.neighborhood = Neighborhood.all.sample
         o.save
+    end
+
+    affiliates = Affiliate.create(config['affiliates']);
+
+    config['user_orgs'].each do |relation|
+      user = User.find_by_email(relation['email'])
+      org = Org.find_by_email(relation['org_email'])
+      if (!org.admins.include?(user))
+        org.admins << user
+      end
+      org.save
+    end
+
+    config['user_affiliations'].each do |relation|
+      affiliation = UserAffiliation.new()
+      affiliation.user = User.find_by_email(relation['email'])
+      affiliation.affiliate = Affiliate.find_by_name(relation['affiliate'])
+      affiliation.moderator = relation['moderator']
+      affiliation.save
     end
 
     $sample_event_names.each do |e|

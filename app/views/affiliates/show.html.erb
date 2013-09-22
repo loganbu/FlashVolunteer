@@ -1,0 +1,49 @@
+<h2><%= image_tag @affiliate.logo(:large) %> <%= @affiliate.name %></h2>
+<h3>Users</h3>
+
+<h4>Add User to Affiliation</h4>
+<%= form_for @affiliation do |f| %>
+    <div class="row-fluid">
+      <div class="span8">
+        <%= text_field_tag :user, '', :placeholder => 'E-Mail Address' %>
+      </div>
+      <div class="span2">
+        <%= f.check_box :moderator %>&nbsp;Moderator
+      </div>
+      <div class="span2">
+        <%= f.submit 'Add User', :class=>'btn btn-primary' %>
+      </div>
+      <%= f.hidden_field :affiliate_id %>
+    </div>
+<% end %>
+
+<table class="table-striped" width="100%">
+  <tr>
+    <th>Name</th>
+    <th>E-Mail</th>
+    <th>Is Moderator?</th>
+    <th></th>
+  </tr>
+  <% UserAffiliation.includes(:user, :affiliate).where('affiliate_id = ?', @affiliate.id).order('moderator desc').each do |affiliation| %>
+      <tr>
+        <td><%= affiliation.user.name if affiliation.user %></td>
+        <td><%= affiliation.user.email if affiliation.user %></td>
+        <td><%= '<i class="icon-ok"></i>'.html_safe if affiliation.moderator %></td>
+        <td><%= link_to 'Remove Affiliation', user_affiliation_url(affiliation), :method => :delete, :class => 'btn btn-primary' %></td>
+      </tr>
+  <% end %>
+</table>
+<br><br>
+<h3>Events</h3>
+<table class="table-striped" width="100%">
+  <tr>
+    <th>Name</th>
+    <th></th>
+  </tr>
+  <% @affiliate.events.order('end desc').each do |event| %>
+      <tr>
+        <td><%= event.name %></td>
+        <td><%= link_to 'Edit Event', edit_event_url(event), :class => 'btn btn-primary' %></td>
+      </tr>
+  <% end %>
+</table>
