@@ -2,7 +2,6 @@
 /**************
  =Overwriting Twitter Bootstrap
  **************/
-/* Bootstrap Font overrides */
 /*!
  * Bootstrap v2.3.1
  *
@@ -6394,6 +6393,15 @@ footer {
 /**************
 =Heading
  **************/
+h1 {
+  padding-bottom: 20px; }
+
+h2 {
+  font-size: 150%; }
+
+.h2-padding {
+  padding-bottom: 20px; }
+
 h3 {
   color: white;
   background-color: #555555;
@@ -6403,15 +6411,6 @@ h3 {
   -webkit-border-radius: 2px;
   -moz-border-radius: 2px;
   border-radius: 2px; }
-
-h2 {
-  font-size: 150%; }
-
-.h2-padding {
-  padding-bottom: 20px; }
-
-h1 {
-  padding-bottom: 20px; }
 
 /**************
  =Typography
@@ -7125,7 +7124,7 @@ h1 {
   padding: 12px 15px 12px;
   color: #d8d8d8;
   text-decoration: none;
-  text-shadow: -1px 0 0 #222; }
+  text-shadow: -1px 0 0 #292929; }
 
 .container {
   padding: 0px; }
@@ -7431,14 +7430,14 @@ figcaption.featured_badges {
     .featured-middle h2 a {
       color: #004900; }
     .featured-middle h2 a:hover {
-      color: #FFEE00; }
+      color: #ffee00; }
 
 .bigNumEvents {
   font-size: 1.6em; }
 
 .bigNumVolunteers {
   font-size: 1.2em;
-  color: #FFEE00; }
+  color: #ffee00; }
 
 @media (max-width: 979px) {
   .featured-middle {
@@ -7604,7 +7603,7 @@ li.unstyled {
   height: 30px; }
 .event_with_marker .details {
   padding-left: 30px;
-  border-top: 1px solid lightgrey; }
+  border-top: 1px solid #d8d8d8; }
 
 .share {
   display: table; }
@@ -7740,7 +7739,7 @@ li.unstyled {
   opacity: 0.4;
   width: 100%;
   height: 100%;
-  background-color: #999999;
+  background-color: #555555;
   position: absolute;
   z-index: 500;
   top: 0px;
@@ -7768,11 +7767,11 @@ li.unstyled {
   width: 592px;
   background-color: #66cc66;
   padding: 4px;
-  color: #ffffff;
+  color: #fefefe;
   text-align: right; }
 
 .modalTop a, .modalTop a:visited {
-  color: #ffffff; }
+  color: #fefefe; }
 
 .modalBody {
   padding: 10px; }
@@ -7815,7 +7814,7 @@ h2.spotlight-title span {
   margin: 0 auto 10px; }
 
 .news > img {
-  box-shadow: 1px 1px 5px #888888;
+  box-shadow: 1px 1px 5px #555555;
   display: block;
   margin: 0 auto 10px auto; }
 
@@ -7924,7 +7923,7 @@ input[type="checkbox"] {
   .pagination a, .pagination span, .pagination em {
     padding: 0.2em 0.5em; }
   .pagination .disabled {
-    color: #aaaaaa;
+    color: #d8d8d8;
     border: 2px solid white; }
   .pagination .current {
     font-style: normal;
@@ -7932,14 +7931,14 @@ input[type="checkbox"] {
     color: #ff0084; }
   .pagination a {
     line-height: 18px;
-    border: 1px solid #dddddd;
+    border: 1px solid #d8d8d8;
     color: #31859c;
     text-decoration: none; }
     .pagination a:hover, .pagination a:focus {
       border-color: #31859c;
       background: #4ea0a7; }
   .pagination .page_info {
-    color: #aaaaaa;
+    color: #d8d8d8;
     padding-top: 0.8em; }
   .pagination .previous_page, .pagination .next_page {
     border-width: 2px; }

@@ -148,7 +148,7 @@ figcaption.featured_badges {
             color: $darkGreen;
         }
         & a:hover {
-            color: #FFEE00;
+            color: $yellow;
         }
     }
 }
@@ -159,7 +159,7 @@ figcaption.featured_badges {
 
 .bigNumVolunteers {
     font-size: 1.2em;
-    color: #FFEE00;
+    color: $yellow;
 }
 
 @media (max-width: 979px) {

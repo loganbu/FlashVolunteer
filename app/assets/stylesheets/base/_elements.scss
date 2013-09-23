@@ -48,21 +48,23 @@ footer {
 /**************
 =Heading
  **************/
+h1 {
+    padding-bottom: 20px;
+}
+
+h2 {
+    font-size: 150%;
+}
+
+.h2-padding{
+    padding-bottom: 20px; 
+}
 
 h3 {
     color: white;
-    background-color: $heading_background;
+    background-color: $gray;
     padding: 2px 0px 2px 5px;
     margin-bottom: 10px;
     font-size: 125%;
     @include border-radius(2px);
-}
-h2 {
-    font-size: 150%;
-}
-.h2-padding{
-    padding-bottom: 20px; 
-}
-h1 {
-    padding-bottom: 20px;
 }
