@@ -6,19 +6,19 @@ class Orgs::UsersController < ApplicationController
     authorize_org_profile(@org)
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html
       format.xml  { render :xml => @org }
     end
   end
 
   def create
     @org = Org.find(current_user.id)
-    @user = User.find(:first, :conditions => [ "lower(email) = ?", params[:email].downcase ])
+    @user = User.first(:conditions => [ 'lower(email) = ?', params[:email].downcase ])
 
-    if (@user == nil)
-      flash[:error] = "That email address does not match any Flash Volunteer users. Please try again."
+    if @user == nil
+      flash[:error] = 'That email address does not match any Flash Volunteer users. Please try again.'
     else
-      if (!@org.admins.include?(@user))
+      unless @org.admins.include?(@user)
         @org.admins << @user
       end
 
@@ -46,7 +46,7 @@ class Orgs::UsersController < ApplicationController
     @org = Org.find(params[:org_id])
     @admin = User.find(params[:id])
 
-    if (!@org.admins.include?(@admin))
+    unless @org.admins.include?(@admin)
       @org.admins << @admin
     end
     respond_to do |format|
@@ -59,11 +59,11 @@ class Orgs::UsersController < ApplicationController
     @org = Org.find(params[:org_id])
     @admin = User.find(params[:id])
 
-    if (@org.admins.count > 1)
+    if @org.admins.count > 1
       @org.admins.delete(@admin)
       flash[:notice] = "#{@admin.name} is no longer an admin of #{@org.name}."
     else
-      flash[:alert] = "You cannot remove your last admin"
+      flash[:alert] = 'You cannot remove your last admin'
     end
     
     respond_to do |format|

@@ -34,7 +34,7 @@ class AffiliatesController < ApplicationController
 
     respond_to do |format|
       if @affiliate.update_attributes(params[:affiliate])
-        format.html { redirect_to(affiliates_url, :notice => "Affiliate was successfully updated.") }
+        format.html { redirect_to(affiliates_url, :notice => 'Affiliate was successfully updated.') }
       else
         format.html { render :action => 'edit' }
       end

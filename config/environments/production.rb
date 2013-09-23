@@ -1,18 +1,18 @@
 Flashvolunteer::Application.configure do
   
-		ActionMailer::Base.delivery_method = :smtp 
-		ActionMailer::Base.perform_deliveries = true 
-		ActionMailer::Base.raise_delivery_errors = true 
-		ActionMailer::Base.smtp_settings = { 
-				:address => ENV['MAILER_ADDRESS'], 
-				:port => "587", 
-				:domain => "flashvolunteer.org", 
-				:authentication => "plain",
-				:user_name => ENV['MAILER_USERNAME'], 
-				:password => ENV['MAILER_PASSWORD']
-		} 
-	config.action_mailer.default_url_options = { :host => "www.flashvolunteer.org" }
-		
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.perform_deliveries = true
+  ActionMailer::Base.raise_delivery_errors = true
+  ActionMailer::Base.smtp_settings = {
+      :address => ENV['MAILER_ADDRESS'],
+      :port => "587",
+      :domain => "flashvolunteer.org",
+      :authentication => "plain",
+      :user_name => ENV['MAILER_USERNAME'],
+      :password => ENV['MAILER_PASSWORD']
+  }
+  config.action_mailer.default_url_options = { :host => "www.flashvolunteer.org" }
+
   # Settings specified here will take precedence over those in config/application.rb
 
   # The production environment is meant for finished, "live" apps.

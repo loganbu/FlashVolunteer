@@ -1,9 +1,8 @@
 class VolunteerMatch < ActiveRecord::Base
-
   attr_accessor :geocoder_result
 
   scope :not_imported, lambda {
-    where("imported = ?", false)
+    where('imported = ?', false)
   }
 
   def self.update(pages_of_results, page_number=1)
@@ -11,7 +10,7 @@ class VolunteerMatch < ActiveRecord::Base
     end_day = 9.months.from_now
 
     (page_number..pages_of_results).each do |page|
-      results = VolunteerMatch.search_opportunities({:fieldsToDisplay =>
+      results = VolunteerMatch.search_opportunities({fieldsToDisplay:
                                                          [:allowGroupInvitations, :allowGroupReservation,
                                                           :availability, :beneficiary, :categoryIds, :contact,
                                                           :created, :currentPage, :description, :greatFor,
@@ -23,12 +22,12 @@ class VolunteerMatch < ActiveRecord::Base
                                                           :skillsNeeded, :spacesAvailable, :status, :tags,
                                                           :title, :type, :updated, :virtual, :vmUrl,
                                                           :volunteersNeeded],
-                                                     :dateRanges => [{
-                                                                         :startDate => start_day.strftime('%Y-%m-%d'),
-                                                                         :endDate => end_day.strftime('%Y-%m-%d'),
-                                                                         :singleDayOpps => true}],
-                                                     :location => "Seattle, WA",
-                                                     :pageNumber => page.to_i})
+                                                     dateRanges: [{
+                                                                     startDate: start_day.strftime('%Y-%m-%d'),
+                                                                     endDate: end_day.strftime('%Y-%m-%d'),
+                                                                     singleDayOpps: true}],
+                                                     location: 'Seattle, WA',
+                                                     pageNumber: page.to_i})
 
       results.opportunities.each do |opportunity|
         if opportunity['referralFields'] == nil
@@ -46,7 +45,7 @@ class VolunteerMatch < ActiveRecord::Base
     end
 
     if json == nil
-      response = VolunteerMatch.search_opportunities({:fieldsToDisplay =>
+      response = VolunteerMatch.search_opportunities({fieldsToDisplay:
                                                           [:allowGroupInvitations, :allowGroupReservation,
                                                            :availability, :beneficiary, :categoryIds, :contact,
                                                            :created, :currentPage, :description, :greatFor,
@@ -58,10 +57,10 @@ class VolunteerMatch < ActiveRecord::Base
                                                            :skillsNeeded, :spacesAvailable, :status, :tags,
                                                            :title, :type, :updated, :virtual, :vmUrl,
                                                            :volunteersNeeded],
-                                                      :ids => [vm_id]})
+                                                      ids: [vm_id]})
       json = response.opportunities[0]
     end
-    Rails.logger.debug "JSON"
+    Rails.logger.debug 'JSON'
     Rails.logger.debug json.inspect
 
     self.allow_group_invitations = json['allowGroupInvitations']
@@ -89,18 +88,18 @@ class VolunteerMatch < ActiveRecord::Base
     Rails.logger.debug("#{json['availability']['startDate']} #{json['availability']['startTime'] || '08:00:00'}")
 
 
-    self.start_time = ActiveSupport::TimeZone["Pacific Time (US & Canada)"].parse "#{json['availability']['startDate']} #{json['availability']['startTime'] || '08:00:00'}"
-    self.end_time = ActiveSupport::TimeZone["Pacific Time (US & Canada)"].parse "#{json['availability']['endDate']} #{json['availability']['endTime'] || '20:00:00'}"
+    self.start_time = ActiveSupport::TimeZone['Pacific Time (US & Canada)'].parse "#{json['availability']['startDate']} #{json['availability']['startTime'] || '08:00:00'}"
+    self.end_time = ActiveSupport::TimeZone['Pacific Time (US & Canada)'].parse "#{json['availability']['endDate']} #{json['availability']['endTime'] || '20:00:00'}"
 
 
-    self.street = (json['location']['street1'] || "") + " " + (json['location']['street2'] || "") + " " + (json['location']['street3'] || "")
+    self.street = "#{(json['location']['street1'] || '')} #{(json['location']['street2'] || '')} #{(json['location']['street3'] || '')}"
 
     self.city = json['location']['city']
     self.state = json['location']['region']
     self.zip = json['location']['postalCode']
 
-    address = street + ' ' + city + ', ' + state + ' ' + zip
-    Rails.logger.debug("Address " + address)
+    address = "#{street} #{city}, #{state} #{zip}"
+    Rails.logger.debug("Address #{address}")
 
     if json['location']['geoLocation']
       self.latitude = json['location']['geoLocation']['latitude']
@@ -112,7 +111,7 @@ class VolunteerMatch < ActiveRecord::Base
   end
 
   def parse_address
-    street + ' ' + city + ', ' + state + ' ' + zip
+    "#{street} #{city}, #{state} #{zip}"
   end
 
   def neighborhood
@@ -129,112 +128,108 @@ class VolunteerMatch < ActiveRecord::Base
     end
   end
 
-    def self.hello_world(name)
-        call :helloWorld, {:name => name}.to_json
+  def self.hello_world(name)
+    call :helloWorld, {name: name}.to_json
+  end
+
+  def self.get_key_status
+    call :getKeyStatus, nil
+  end
+
+  def self.get_opportunity_referrals(query)
+    call :getOpportunityReferrals, query.to_json
+  end
+
+  def self.search_organizations(query)
+    call :searchOrganizations, query.to_json
+  end
+
+  def self.search_opportunities(query)
+    call :searchOpportunities, query.to_json
+  end
+
+  def self.search_members(query)
+    call :searchMembers, query.to_json
+  end
+
+  def self.create_or_update_user(user_id)
+    user = User.find(user_id)
+
+    query = {
+        members: [
+            {
+                firstName: user.name,
+                email: user.email,
+                password: user.encrypted_password,
+                acceptsTermsOfUse: true,
+                location: {},
+                authentication: VolunteerMatch.authentication_query(user.email, user.encrypted_password)
+            }
+        ]
+    }
+
+    Rails.logger.debug(query)
+    VolunteerMatch.create_or_update_members(query)
+
+    user.email
+  end
+
+  def self.create_or_update_members(query)
+    call :createOrUpdateMembers, query.to_json, :post
+  end
+
+  def self.sign_up_for_opportunity(member_id, opportunity_id)
+    self.create_or_update_referrals({oppId: opportunity_id, referrals: [member: {primaryKey: member_id}, commitmentStartDate: '2013-01-01', commitmentEndDate: '2013-12-31']})
+  end
+
+  def self.create_or_update_referrals(query)
+    call :createOrUpdateReferrals, query.to_json, :post
+  end
+
+  def self.authentication_query(primary_key, password)
+    nonce           = Digest::SHA2.hexdigest(rand.to_s)[0, 20]
+    creation_time   = Time.now.utc.strftime('%Y-%m-%dT%H:%M:%S%z')
+    password_digest = Base64.encode64(Digest::SHA2.digest(nonce + creation_time + password)).chomp
+    {primary_key: primary_key, nonce: nonce, creation_time: creation_time, password_digest: password_digest}
+  end
+
+  protected
+
+  def self.api_key
+    ENV['VM_API_KEY']
+  end
+
+  def self.account_name
+    ENV['VM_API_SECRET']
+  end
+
+  def self.endpoint
+    ENV['VM_API_ENDPOINT']
+  end
+
+  def self.call(action, json_query, method=nil)
+    nonce           = Digest::SHA2.hexdigest(rand.to_s)[0, 20]
+    creation_time   = Time.now.utc.strftime('%Y-%m-%dT%H:%M:%S%z')
+    password_digest = Base64.encode64(Digest::SHA2.digest(nonce + creation_time + api_key)).chomp
+    endpoint        = self.endpoint
+    url_s           = "http://#{endpoint}/api/call?action=#{action.to_s}"
+    url_s           = json_query != nil ? "#{url_s}&query=#{URI.encode(json_query)}" : url_s
+    url             = URI.parse(url_s)
+
+    case method
+    when :post
+      req = Net::HTTP::Post.new(url.request_uri)
+    else
+      req = Net::HTTP::Get.new(url.request_uri)
     end
 
-    def self.get_key_status
-        call :getKeyStatus, nil
-    end
+    req.add_field('Content-Type', 'application/json')
+    req.add_field('Authorization', 'WSSE profile="UsernameToken"')
+    req.add_field('X-WSSE', 'UsernameToken Username="' + account_name + '", PasswordDigest="' + password_digest + '", ' +
+        'Nonce="' + nonce + '", Created="' + creation_time + '"')
 
-    def self.get_opportunity_referrals(query)
-        call :getOpportunityReferrals, query.to_json
-    end
-
-    def self.search_organizations(query)
-        call :searchOrganizations, query.to_json
-    end
-
-    def self.search_opportunities(query)
-        call :searchOpportunities, query.to_json
-    end
-
-    def self.search_members(query)
-        call :searchMembers, query.to_json
-    end
-
-    def self.create_or_update_user(user_id)
-      user = User.find(user_id)
-
-      query = {
-          :members => [
-              {
-                  :firstName => user.name,
-                  :email => user.email,
-                  :password => user.encrypted_password,
-                  :acceptsTermsOfUse => true,
-                  :location => {},
-                  :authentication => VolunteerMatch.authentication_query(user.email, user.encrypted_password)
-              }
-          ]
-      }
-
-      Rails.logger.debug(query)
-      VolunteerMatch.create_or_update_members(query)
-
-      user.email
-    end
-
-    def self.create_or_update_members(query)
-        call :createOrUpdateMembers, query.to_json, :post
-    end
-
-    def self.sign_up_for_opportunity(member_id, opportunity_id)
-
-
-        self.create_or_update_referrals({:oppId => opportunity_id, :referrals => [:member => {:primaryKey => member_id}, :commitmentStartDate=>"2013-01-01", :commitmentEndDate=>"2013-01-31"]})
-    end
-
-    def self.create_or_update_referrals(query)
-        call :createOrUpdateReferrals, query.to_json, :post
-    end
-
-    def self.authentication_query(primary_key, password)
-        nonce           = Digest::SHA2.hexdigest(rand.to_s)[0, 20]
-        creation_time   = Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S%z")
-        password_digest = Base64.encode64(Digest::SHA2.digest(nonce + creation_time + password)).chomp
-        {:primary_key => primary_key, :nonce => nonce, :creation_time => creation_time, :password_digest => password_digest}
-    end
-
-    protected
-
-    def self.api_key
-      ENV['VM_API_KEY']
-    end
-
-    def self.account_name
-        ENV['VM_API_SECRET']
-    end
-
-    def self.endpoint
-      ENV['VM_API_ENDPOINT']
-    end
-
-    def self.call(action, json_query, method=nil)
-        nonce           = Digest::SHA2.hexdigest(rand.to_s)[0, 20]
-        creation_time   = Time.now.utc.strftime("%Y-%m-%dT%H:%M:%S%z")
-        password_digest = Base64.encode64(Digest::SHA2.digest(nonce + creation_time + api_key)).chomp
-        endpoint        = self.endpoint
-        url_s           = "http://#{endpoint}/api/call?action=#{action.to_s}"
-        url_s           = json_query != nil ? url_s + "&query=" + URI.encode(json_query) : url_s
-        url             = URI.parse(url_s)
-
-        req = nil
-
-        case method
-        when :post
-            req = Net::HTTP::Post.new(url.request_uri)
-        else
-            req = Net::HTTP::Get.new(url.request_uri)
-        end
-
-        req.add_field('Content-Type', 'application/json')
-        req.add_field('Authorization', 'WSSE profile="UsernameToken"')
-        req.add_field('X-WSSE', 'UsernameToken Username="' + account_name + '", PasswordDigest="' + password_digest + '", ' +
-            'Nonce="' + nonce + '", Created="' + creation_time + '"')
-
-        res = Net::HTTP.new(url.host, url.port).start { |http| http.request(req) }
-        raise "HTTP error code #{res.code} body #{res.body}" unless res.code == "200"
-        OpenStruct.new(JSON.parse res.body)
-    end
+    res = Net::HTTP.new(url.host, url.port).start { |http| http.request(req) }
+    raise "HTTP error code #{res.code} body #{res.body}" unless res.code == '200'
+    OpenStruct.new(JSON.parse res.body)
+  end
 end

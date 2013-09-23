@@ -3,15 +3,15 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
 
   def create
     super
-    flash[:alert] = "You should receive an e-mail from Charlie soon"
+    flash[:alert] = 'You should receive an e-mail from Charlie soon'
   end
 
   def show
-    @user = User.find_by_confirmation_token(params[:confirmation_token])
+    @user = User.find_by_confirmation_token(params[:confirmation_token]) || nil
     # If the user entered a password through the 'create an account', then the encrypted password is set, and their e-mail is confirmed
-    if (@user != nil)
+    if @user != nil
       @user = User.confirm_by_token(@user.confirmation_token)
-      @user.roles << Role.find_by_name("Volunteer")
+      @user.roles << Role.find_by_name('Volunteer')
       set_flash_message :notice, :confirmed
       sign_in_and_redirect(@user)
     else
@@ -24,11 +24,11 @@ class Users::ConfirmationsController < Devise::ConfirmationsController
     @user = User.find_by_confirmation_token(params[:user][:confirmation_token])
     if @user.update_attributes(params[:user]) and @user.password_match?
       @user = User.confirm_by_token(@user.confirmation_token)
-      @user.roles << Role.find_by_name("Volunteer")
+      @user.roles << Role.find_by_name('Volunteer')
       set_flash_message :notice, :confirmed      
       sign_in_and_redirect(@user)
     else
-      render :action => "show"
+      render :action => 'show'
     end
   end
 end

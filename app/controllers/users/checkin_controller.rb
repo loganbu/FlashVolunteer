@@ -5,9 +5,9 @@ class Users::CheckinController < ApplicationController
     def create
         @checkin = Checkin.new
         @checkin.user = User.find_by_id(params[:id])
-        @checkin.errors.add("You must be signed in to check in") if @checkin.user == nil
+        @checkin.errors.add('You must be signed in to check in') if @checkin.user == nil
         @checkin.event = Event.find_by_id(params[:event_id])
-        @checkin.errors.add("Cannot find the specified event") if @checkin.event == nil
+        @checkin.errors.add('Cannot find the specified event') if @checkin.event == nil
 
 
         respond_to do |format|

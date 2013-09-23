@@ -1,15 +1,15 @@
 class User < ActiveRecord::Base
   include ActiveModel::Validations
-  validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?, :message => "This e-mail address is already taken"
-  validates_format_of     :email, :with  => /\A[^@]+@[^@]+\z/, :allow_blank => true, :if => :email_changed?, :message => "You must specify a valid e-mail address"
-  validates               :email, :presence => { :message => "You must specify an e-mail address" }
+  validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?, :message => 'This e-mail address is already taken'
+  validates_format_of     :email, :with  => /\A[^@]+@[^@]+\z/, :allow_blank => true, :if => :email_changed?, :message => 'You must specify a valid e-mail address'
+  validates               :email, :presence => { message: 'You must specify an e-mail address' }
 
-  validates_presence_of     :password, :if => :password_required?, :message => "You must specify a password"
-  validates_confirmation_of :password, :if => :password_required?, :message => "Your passwords do not match"
-  validates_length_of       :password, :within => 6..128, :allow_blank => true, :message => "The password must be more than 6 characters"
+  validates_presence_of     :password, :if => :password_required?, :message => 'You must specify a password'
+  validates_confirmation_of :password, :if => :password_required?, :message => 'Your passwords do not match'
+  validates_length_of       :password, :within => 6..128, :allow_blank => true, :message => 'The password must be more than 6 characters'
 
-  validates :name, :presence => { :message => "You must have a name" }
-  validates_acceptance_of :terms_of_service, :on => :create, :message => "Terms of Use must be accepted"
+  validates :name, :presence => { message: 'You must have a name' }
+  validates_acceptance_of :terms_of_service, :on => :create, :message => 'Terms of Use must be accepted'
 
   has_and_belongs_to_many :roles
   has_and_belongs_to_many :skills
@@ -18,15 +18,15 @@ class User < ActiveRecord::Base
   has_many :affiliates, :through => :user_affiliations
 
   has_attached_file :avatar, :storage => :s3, :s3_credentials => {
-      :access_key_id => ENV['AWS_ACCESS_KEY'],
-      :secret_access_key => ENV['AWS_SECRET_KEY'],
-      :bucket => ENV['AWS_BUCKET']
-    }, :path => ":attachment/:id/:style.:extension",
-    :styles => { :thumb => ["32x32", :png], :profile => ["128x128", :png]},
-    :default_url => "/assets/default_user_:style.png"
+      access_key_id: ENV['AWS_ACCESS_KEY'],
+      secret_access_key: ENV['AWS_SECRET_KEY'],
+      bucket: ENV['AWS_BUCKET']
+    }, :path => ':attachment/:id/:style.:extension',
+    :styles => { thumb: ['32x32', :png], profile: ['128x128', :png]},
+    :default_url => '/assets/default_user_:style.png'
 
-  has_and_belongs_to_many :followers, :class_name => "User", :join_table => "users_followers", :foreign_key => "user_id", :association_foreign_key => "follower_id", :uniq => true
-  has_and_belongs_to_many :following, :class_name => "User", :join_table => "users_followers", :foreign_key => "follower_id", :association_foreign_key => "user_id", :uniq => true
+  has_and_belongs_to_many :followers, :class_name => 'User', :join_table => 'users_followers', :foreign_key => 'user_id', :association_foreign_key => 'follower_id', :uniq => true
+  has_and_belongs_to_many :following, :class_name => 'User', :join_table => 'users_followers', :foreign_key => 'follower_id', :association_foreign_key => 'user_id', :uniq => true
 
   has_many :participations
   has_many :events_participated, :through => :participations, :source => :event
@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
 
 
   scope :in_neighborhood, lambda { |neighborhood|
-    includes(:neighborhood).where("neighborhood_id = ?", neighborhood.id)
+    includes(:neighborhood).where('neighborhood_id = ?', neighborhood.id)
   }
 
   def score
@@ -57,22 +57,22 @@ class User < ActiveRecord::Base
   end
 
   def hours_volunteered(event=nil)
-    if (event != nil)
-      Participation.where("user_id = ? AND event_id = ?", self.id, event.id).sum(:hours_volunteered)
+    if event != nil
+      Participation.where('user_id = ? AND event_id = ?', self.id, event.id).sum(:hours_volunteered)
     else
-      Participation.where("user_id = ?", self.id).sum(:hours_volunteered)
+      Participation.where('user_id = ?', self.id).sum(:hours_volunteered)
     end
   end
 
-  def created_events_count()
+  def created_events_count
     Event.created_by(self).count
   end
 
-  def upcoming_events_count()
+  def upcoming_events_count
     Event.involving(self).upcoming.count
   end
 
-  def past_events_count()
+  def past_events_count
     Event.involving(self).past.count
   end
 
@@ -98,7 +98,7 @@ class User < ActiveRecord::Base
   end
 
   def role?(role)
-    return !!self.roles.find_by_name(role.to_s.camelize)
+    !!self.roles.find_by_name(role.to_s.camelize)
   end
 
   def is_moderator?
@@ -124,14 +124,15 @@ class User < ActiveRecord::Base
   def create_associated_org(org_email, org_name)
     org = Org.new(:email => org_email, :password => Devise.friendly_token[0,20], :name =>org_name)
     org.admins << self
-    return org.save
+    org.save
   end
 
   def self.find_for_oauth(json_info)
     data = json_info
     Rails.logger.info("JSON Token Information")
     Rails.logger.info(json_info.inspect)
-    if !(user = User.where(:email => data.email).first)
+    user = User.where(:email => data.email).first
+    unless user
       user = User.create!(:email => data.email, :password => Devise.friendly_token[0,20], :name => data.name)
       user.confirm!
     end
@@ -139,13 +140,12 @@ class User < ActiveRecord::Base
   end
   
   def password_required?
-    if (password.nil? && password_confirmation.nil?)
-      return false
+    if password.nil? && password_confirmation.nil?
+      false
     else
-      return true
+      true
     end
   end
-
 
   def self.xml(entity)
     entity.to_xml(:methods => [:hours_volunteered, :created_events_count, :upcoming_events_count, :past_events_count, :categories, :props, :avatar_url, :team])

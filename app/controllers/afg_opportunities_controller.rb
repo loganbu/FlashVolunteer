@@ -15,7 +15,7 @@ class AfgOpportunitiesController < ApplicationController
     @opportunity.imported = true
     @opportunity.save
 
-    if(@opportunity.neighborhood == nil && @opportunity.neighborhood_string != nil)
+    if @opportunity.neighborhood == nil && @opportunity.neighborhood_string != nil
       flash[:warning] = "I don't know the neighborhood '#{@opportunity.neighborhood_string}'"
     end
 
@@ -32,7 +32,7 @@ class AfgOpportunitiesController < ApplicationController
                        )
 
     respond_to do |format|
-      format.html { render 'events/edit', :action => "edit" }
+      format.html { render 'events/edit', :action => 'edit' }
     end
   end
 
@@ -46,9 +46,8 @@ class AfgOpportunitiesController < ApplicationController
     end
   end
 
-  # POST /opportunities/more
   def more
-    if(Rails.env.production?)
+    if Rails.env.production?
       AfgOpportunity.delay.download_new_data(params[:afg_count], params[:afg_page])
     else
       AfgOpportunity.download_new_data(params[:afg_count], params[:afg_page])

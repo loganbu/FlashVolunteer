@@ -17,10 +17,10 @@ class Ability
 
       # Only the owning user is allowed to manager their own org/user profile
       can :manage, User do |other|
-        other == user && user.type != "Org"
+        other == user && user.type != 'Org'
       end
       can :manage, Org do |other|
-        other == user && user.type == "Org"
+        other == user && user.type == 'Org'
       end
 
       can :manage, Event do |event|
