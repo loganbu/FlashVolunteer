@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   include ActiveModel::Validations
+  delegate :can?, :cannot?, :to => :ability
+
   validates_uniqueness_of :email, :allow_blank => true, :if => :email_changed?, :message => 'This e-mail address is already taken'
   validates_format_of     :email, :with  => /\A[^@]+@[^@]+\z/, :allow_blank => true, :if => :email_changed?, :message => 'You must specify a valid e-mail address'
   validates               :email, :presence => { message: 'You must specify an e-mail address' }
@@ -51,6 +53,10 @@ class User < ActiveRecord::Base
   scope :in_neighborhood, lambda { |neighborhood|
     includes(:neighborhood).where('neighborhood_id = ?', neighborhood.id)
   }
+
+  def ability
+    @ability ||= Ability.new(self)
+  end
 
   def score
     participations.sum(&:hours_volunteered)*(0.3*participations.count)*(0.7*Event.includes(:user).created_by(self).count)

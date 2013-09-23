@@ -173,6 +173,11 @@ class Event < ActiveRecord::Base
     !(vm_id == nil || vm_id == 0)
   end
 
+  def visible_affiliates(user)
+    aff = (affiliates || [])
+    aff.select{|a| user.can? :read, a}
+  end
+
   def self.xml(entity)
     entity.to_xml(:methods => [:attendees, :categories])
   end

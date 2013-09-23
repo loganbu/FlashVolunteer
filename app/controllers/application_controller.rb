@@ -12,6 +12,10 @@ class ApplicationController < ActionController::Base
     session[:api] || super
   end
 
+  def current_ability
+    current_user.ability
+  end
+
   rescue_from CanCan::AccessDenied do |exception|
     Rails.logger.info "Access denied on #{exception.action} #{exception.subject.inspect}"
     render :file => 'app/views/shared/authfail.html.erb'

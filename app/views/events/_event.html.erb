@@ -46,13 +46,6 @@
 					</div>
 				</div>
 			<% end %>
-          <% if event.affiliates.any? && event.affiliates.map{|a| a.users}.flatten.include?(current_user) %>
-              <ul class="inline">
-              <% event.affiliates.select{|a| can? :read, a}.each do |affiliate| %>
-                    <li><%= image_tag affiliate.logo(:thumb), :title => affiliate.description %></li>
-              <% end %>
-              </ul>
-          <% end %>
           <% if event.is_vm %>
               <div class="row-fluid">
                 <div class="span2"><%= image_tag "/assets/vm_logo_small.jpg"%></div>
