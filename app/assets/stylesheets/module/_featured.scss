@@ -5,6 +5,22 @@ figure {
     position: relative;
 }
 
+.featuredTitle {
+    padding: 20px 0px 10px 0px;
+    font-weight: bold;
+    font-size: $baseFontSize * 1.75;
+    line-height: 30px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
+.featured {
+    margin-top: 20px;
+    font-size: $baseFontSize * 1.15;
+    line-height: $baseLineHeight * 1.5;    
+    overflow: hidden;
+}
+
  .featured-banner {
     height: 125px;
     width: 125px;
@@ -132,7 +148,7 @@ figcaption.featured_badges {
             color: $darkGreen;
         }
         & a:hover {
-            color: #FFEE00;
+            color: $yellow;
         }
     }
 }
@@ -143,7 +159,7 @@ figcaption.featured_badges {
 
 .bigNumVolunteers {
     font-size: 1.2em;
-    color: #FFEE00;
+    color: $yellow;
 }
 
 @media (max-width: 979px) {

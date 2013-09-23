@@ -1,0 +1,70 @@
+/*  To get the footer to stick to the bottom, set the HTML and body to 100%, and the
+    container to be min-height of 100%.  Then, then footer is below the page, so to
+    bring it back up, margin it to -(height of footer)px
+*/
+
+html, body {
+    height: 100%;
+    background: $background;
+    color: $gray;
+    font-family: $baseFontFamily;
+}
+
+body {
+    font: inherit;
+    padding-top: 65px;
+}
+
+footer {
+    color: $lightGray;
+    @extend .navbar-inner;
+    @include border-radius(0px);
+    box-shadow: 0px 1px 5px $gray;
+    border: none;
+    .nav > li > a {
+        text-shadow: none;
+    }
+}
+
+/**************
+=Custom add-on set to Twitter Bootstrap (uses normalize.css)
+ **************/
+
+header, section, aside, nav, article, figure, figcaption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    vertical-align: baseline;
+    font-family: $baseFontFamily;
+}
+
+footer {
+    min-height: 100px;
+    margin-top: -100px;
+}
+
+/**************
+=Heading
+ **************/
+h1 {
+    padding-bottom: 20px;
+}
+
+h2 {
+    font-size: 150%;
+}
+
+.h2-padding{
+    padding-bottom: 20px; 
+}
+
+h3 {
+    color: white;
+    background-color: $gray;
+    padding: 2px 0px 2px 5px;
+    margin-bottom: 10px;
+    font-size: 125%;
+    @include border-radius(2px);
+}

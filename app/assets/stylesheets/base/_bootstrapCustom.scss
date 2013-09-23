@@ -1,33 +1,19 @@
 /**************
  =Overwriting Twitter Bootstrap
  **************/
+$background:  url(/assets/bg_square.png) repeat;
+$baseLineHeight: 18px;
+$baseFontSize: 14px;
 $linkColor: $lightBlue;
-$navbarText: $offWhite;
+
+//Navbar
 $navbarBackground: $gray;
 $navbarBackgroundHighlight: $gray;
 $navbarLinkColor: $offWhite;
 $navbarLinkColorHover: $white;
-$btnPrimaryBackground: $green;
 $navbarLinkColorActive: $green;
-$heading_background: $gray;
+$navbarText: $offWhite;
 
-/* Bootstrap Font overrides */
+$btnPrimaryBackground: $green;
+
 $baseFontFamily: 'Domine';
-
-$background:  url(/assets/bg_square.png) repeat;
-$baseLineHeight: 18px;
-$baseFontSize: 14px;
-
-$iconSpritePath:          "/assets/glyphicons-halflings.png" !default;
-$iconWhiteSpritePath:     "/assets/glyphicons-halflings-white.png" !default;
-
-
-//Font Size
-$big_num: 1.6em;
-
-//Padding
-$XSPadding: 4px;
-$SPadding: 8px;
-$MPadding: 10px;
-$LPadding: 20px;
-$XLPadding: 40px;
