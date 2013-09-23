@@ -10,7 +10,7 @@
 	<p>You're on your way to a great event!</p>
 	<p><%= @user_signed_up.name %> just signed up for your event.</p>
 
-	<p>Go to <%= link_to("the event page", event_url(@event)) %> to view all the volunteers who have signed up, to send a message to your volunteers, or to update the event details.</p>
+	<p>Go to <%= link_to("the event page", event_url(nil, @event)) %> to view all the volunteers who have signed up, to send a message to your volunteers, or to update the event details.</p>
 
 	<p>Have questions, comments, or suggestions? Email me at <%= mail_to('charlie@flashvolunteer.org', 'charlie@flashvolunteer.org', :subject => 'Questions regarding Flash Volunteer', :encode=>'hex')%></p>
 	<br />

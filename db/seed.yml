@@ -1,91 +1,118 @@
+affiliates:
+    -   name: Human Resources
+        description: Yay, human resources
+
+    -   name: Conostco
+        description: Fake corp
+
 users:
     -   name:     Confirmed user
         email:    confirmed@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Techy Person
         email:    techuser@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Alice
         email:    alice@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Brandon
         email:    brandon@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Charlie
         email:    charlie@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Diedra
         email:    diedra@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Elliott
         email:    Elliott@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Frank
         email:    Frank@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Greg
         email:    Greg@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Helen
         email:    Helen@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Ike
         email:    Ike@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    James
         email:    James@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Karen
         email:    Karen@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:    Lori
         email:    Lori@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
 
     -   name:     Unconfirmed user
         email:    unconfirmed@localhost.com
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
+
 orgs:
     -   name:     Flash Volunteer
         email:    flash@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
     -   name:     HSDC
         email:    hsdc@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
     -   name:     Bean Seattle
         email:    bean@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
     -   name:     United Way King County
         email:    uwkc@localhost.com
         confirmed_at: <%= DateTime.now %>
-        password: <%= ENV['ADMIN_PASSWORD'] %>
+        password: <%= ENV['ADMIN_PASSWORD'] || 'password' %>
+
+user_orgs:
+    -   email: alice@localhost.com
+        org_email: flash@localhost.com
+
+    -   email: alice@localhost.com
+        org_email: hsdc@localhost.com
+
+    -   email: Lori@localhost.com
+        org_email: hsdc@localhost.com
+
+user_affiliations:
+    -   email: alice@localhost.com
+        affiliate: Human Resources
+        moderator: true
+
+    -   email: James@localhost.com
+        affiliate: Human Resources
+        moderator: false

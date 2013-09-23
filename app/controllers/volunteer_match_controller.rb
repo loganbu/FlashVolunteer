@@ -9,7 +9,6 @@ class VolunteerMatchController < ApplicationController
     end
   end
 
-
   def create_event
     @opportunity = VolunteerMatch.find(params[:id])
 
@@ -31,12 +30,12 @@ class VolunteerMatchController < ApplicationController
                        :vm_id => @opportunity.vm_id)
 
     respond_to do |format|
-      format.html { render 'events/edit', :action => "edit" }
+      format.html { render 'events/edit', :action => 'edit' }
     end
   end
 
   def organizations
-    @response = VolunteerMatch.search_organizations({:fieldsToDisplay => [:name, :url, :imageUrl], :location => "Seattle, WA"})
+    @response = VolunteerMatch.search_organizations({fieldsToDisplay: [:name, :url, :imageUrl], location: 'Seattle, WA'})
     @orgs = @response.organizations
     respond_to do |format|
       format.html
@@ -44,7 +43,7 @@ class VolunteerMatchController < ApplicationController
   end
 
   def opportunities
-    @opportunities = VolunteerMatchEvent.not_imported.order("start_time ASC").paginate(:page => params[:page], :per_page => params[:per_page]||20)
+    @opportunities = VolunteerMatchEvent.not_imported.order('start_time ASC').paginate(:page => params[:page], :per_page => params[:per_page]||20)
 
     respond_to do |format|
       format.html
@@ -60,7 +59,7 @@ class VolunteerMatchController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to(:back, :notice => "More items requested, they should show up within the next minute or two. If not, try changing the page of results.") }
+      format.html { redirect_to(:back, :notice => 'More items requested, they should show up within the next minute or two. If not, try changing the page of results.') }
     end
   end
 
@@ -70,20 +69,20 @@ class VolunteerMatchController < ApplicationController
 
     VolunteerMatch.sign_up_for_opportunity(email, opp)
 
-    @response = VolunteerMatch.search_opportunities({:fieldsToDisplay =>
+    @response = VolunteerMatch.search_opportunities({fieldsToDisplay:
                                                      [:availability, :title, :volunteersNeeded, :referralFields, :type, :contact],
-                                                     :dateRanges => [{:startDate => "2013-01-27", :endDate=> "2013-03-31"}],
-                                                     :location => "Seattle, WA"})
+                                                     dateRanges: [{startDate: '2013-01-27', endDate: '2013-12-31'}],
+                                                     location: 'Seattle, WA'})
     @opportunities = @response.opportunities
 
     respond_to do |format|
       format.html
     end
-    render :action => "opportunities"
+    render :action => 'opportunities'
   end
 
   def users
-    @response = VolunteerMatch.search_members({:fieldsToDisplay => [:firstName, :lastName, :email, :primaryKey], :location => "Seattle, WA"})
+    @response = VolunteerMatch.search_members({fieldsToDisplay: [:firstName, :lastName, :email, :primaryKey], location: 'Seattle, WA'})
     @users = @response.members
     respond_to do |format|
       format.html
@@ -96,14 +95,14 @@ class VolunteerMatchController < ApplicationController
     password = params[:password]
     
     query = { 
-              :members => [
+              members: [
               {
-                :firstName => params[:name], 
-                :email => params[:email], 
-                :password => params[:password],
-                :acceptsTermsOfUse => true,
-                :location => {},
-                :authentication => VolunteerMatch.authentication_query(params[:email], params[:password])                
+                firstName: name,
+                email: email,
+                password: password,
+                acceptsTermsOfUse: true,
+                location: {},
+                authentication: VolunteerMatch.authentication_query(params[:email], params[:password])
               }
               ]
             }
@@ -111,9 +110,9 @@ class VolunteerMatchController < ApplicationController
     Rails.logger.debug(query)
     VolunteerMatch.create_or_update_members(query)
 
-    @response = VolunteerMatch.search_members({:fieldsToDisplay => [:firstName, :lastName, :email, :primaryKey], :location => "Seattle, WA"})
+    @response = VolunteerMatch.search_members({fieldsToDisplay: [:firstName, :lastName, :email, :primaryKey], location: 'Seattle, WA'})
     @users = @response.members
 
-    render :action => "users"
+    render :action => 'users'
   end
 end

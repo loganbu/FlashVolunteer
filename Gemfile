@@ -55,16 +55,17 @@ gem 'classy_enum', '~> 2.0.3'
 
 gem 'sinatra', '1.0'
 gem 'date_validator'
-gem 'mysql2'
+gem 'mysql2', '=0.3.11'
 
 gem 'rgeo'
 gem 'rgeo-geojson'
 gem 'activerecord-mysql2spatial-adapter'
 
 group :development do
-    gem 'factory_girl_rails'
-    gem 'rails-footnotes'
-    gem 'sqlite3'
+  gem 'factory_girl_rails'
+  gem 'rails-footnotes'
+  gem 'sqlite3'
+  gem 'bullet'
 end
 
 group :production do

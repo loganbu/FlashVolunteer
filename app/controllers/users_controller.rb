@@ -4,20 +4,19 @@ class UsersController < ApplicationController
 
   def index    
     if current_user == nil
-      redirect_to featured_events_url
-    elsif current_user.type == "Org"
+      redirect_to featured_events_url(current_location_name)
+    elsif current_user.type == 'Org'
       redirect_to events_org_url(current_user)
     else
       redirect_to events_user_url(current_user)
     end
   end
 
-  # GET /users/1/switch
   def switch
     @user = User.find(params[:id])
     @original_user = User.find(original_user_logged_in)
 
-    if @user == @original_user || (@user.type == "Org" && Org.has_admin(@original_user).include?(@user))
+    if @user == @original_user || (@user.type == 'Org' && Org.has_admin(@original_user).include?(@user))
       sign_in_and_redirect @user
     else
       raise CanCan::AccessDenied
@@ -25,11 +24,9 @@ class UsersController < ApplicationController
   end
 
   def set_page_title
-    @title = @user.name + "'s Flash Volunteer Profile" if @user
+    @title = "#{@user.name}'s Flash Volunteer Profile" if @user
   end
 
-  # GET /users/1
-  # GET /users/1.xml
   def show
     @user = User.includes(:neighborhood).find(params[:id])
     limit = 20
@@ -39,11 +36,11 @@ class UsersController < ApplicationController
     @nEventsComingUp = @user.upcoming_events_count
     @nEventsInPast = @user.past_events_count
     # @nFollowers = @user.followers.count
-    @nHoursVolunteered = Participation.where("user_id = ?", @user.id).sum(:hours_volunteered)
+    @nHoursVolunteered = Participation.where('user_id = ?', @user.id).sum(:hours_volunteered)
 
     @events = { 
-                :upcoming => { :data => Event.includes(:skills).involving(@user).upcoming.order("start ASC").limit(limit), :title => "Upcoming" },
-                :past => { :data => Event.includes(:skills).involving(@user).past.order("start DESC").limit(limit), :title => "Past" }
+                upcoming: { data: Event.upcoming.involving_user(@user).limit(limit), title: 'Upcoming' },
+                past: { data: Event.past.involving_user(@user).limit(limit), title: 'Past' }
               }
     @events[:upcoming][:json] = @events[:upcoming][:data].to_json
     @events[:past][:json] = @events[:past][:data].to_json
@@ -54,32 +51,30 @@ class UsersController < ApplicationController
     end
   end
 
-  # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
     authorize_user_profile(@user)
     set_page_title
   end
 
-  # PUT /events/1
-  # PUT /events/1.xml
   def update
     @user = User.find(params[:id])
 
-    if (!params[:user][:skill_ids])
+    unless params[:user][:skill_ids]
       @user.skills = []
     end
+
     set_page_title
     respond_to do |format|
       if @user.update_attributes(params[:user])
-        notice = "Your profile was successfully updated."
-        if (params[:user] && params[:user][:email] != @user.email)
+        notice = 'Your profile was successfully updated.'
+        if params[:user] && params[:user][:email] != @user.email
           notice.concat("  You need to confirm your new e-mail address before you can use it.  Instructions have been e-mailed to #{params[:user][:email]}")
         end
         format.html { redirect_to(@user, :notice => notice) }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => 'edit' }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end
@@ -102,7 +97,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # DELETE /user/:id/photo
   def photo
     @user = User.find(params[:id])
     @user.avatar = nil
@@ -122,7 +116,7 @@ class UsersController < ApplicationController
     team_array = params[:on_team] && params[:on_team].split(',') || []
 
     # begin with an an association that's always true
-    @users = User.where("1=1")
+    @users = User.where('1=1')
     
     @users = id_array.length > 0 ? @users.where{id.eq_any id_array} : @users
     @users = email_array.length > 0 ? @users.where{email.eq_any email_array} : @users
@@ -136,5 +130,4 @@ class UsersController < ApplicationController
       format.json  { render :json => User.json(@users)}
     end
   end
-
 end

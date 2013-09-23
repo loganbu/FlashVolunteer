@@ -1,3 +1,15 @@
+CREATE TABLE `affiliates` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `logo_file_name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `logo_content_type` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `logo_file_size` int(11) DEFAULT NULL,
+  `logo_updated_at` datetime DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `public` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `afg_opportunities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `key` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -42,6 +54,13 @@ CREATE TABLE `delayed_jobs` (
   PRIMARY KEY (`id`),
   KEY `delayed_jobs_priority` (`priority`,`run_at`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `event_affiliations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `affiliate_id` int(11) DEFAULT NULL,
+  `event_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -89,8 +108,9 @@ CREATE TABLE `events` (
   `vm_id` int(11) DEFAULT '0',
   `lonlat` point DEFAULT NULL,
   `moved_marker` tinyint(1) DEFAULT '1',
+  `private` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=429 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `help_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -98,6 +118,15 @@ CREATE TABLE `help_articles` (
   `description` text COLLATE utf8_unicode_ci,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `hubs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `center` point DEFAULT NULL,
+  `zoom` int(11) DEFAULT NULL,
+  `radius` int(11) DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `neighborhoods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -111,13 +140,28 @@ CREATE TABLE `neighborhoods` (
   `center` point DEFAULT NULL,
   PRIMARY KEY (`id`),
   SPATIAL KEY `index_neighborhoods_on_region` (`region`)
+<<<<<<< HEAD
 ) ENGINE=MyISAM AUTO_INCREMENT=2110 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+=======
+) ENGINE=MyISAM AUTO_INCREMENT=4980 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+>>>>>>> upstream/affiliation_chicago
 
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+CREATE TABLE `orgs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+>>>>>>> upstream/affiliation_chicago
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `orgs_admins` (
@@ -136,7 +180,7 @@ CREATE TABLE `participations` (
   `hours_volunteered` int(11) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1063 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `privacies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -175,7 +219,11 @@ CREATE TABLE `roles` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+>>>>>>> upstream/affiliation_chicago
 
 CREATE TABLE `roles_users` (
   `role_id` int(11) DEFAULT NULL,
@@ -202,7 +250,11 @@ CREATE TABLE `skills` (
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `offset` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=154 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+>>>>>>> upstream/affiliation_chicago
 
 CREATE TABLE `skills_events` (
   `skill_id` int(11) DEFAULT NULL,
@@ -228,12 +280,20 @@ CREATE TABLE `sponsors` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+CREATE TABLE `user_affiliations` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `affiliate_id` int(11) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `moderator` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 CREATE TABLE `user_notifications` (
   `notification_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=487 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -271,7 +331,11 @@ CREATE TABLE `users` (
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`),
   UNIQUE KEY `index_users_on_confirmation_token` (`confirmation_token`)
+<<<<<<< HEAD
 ) ENGINE=InnoDB AUTO_INCREMENT=83 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+=======
+) ENGINE=InnoDB AUTO_INCREMENT=164 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+>>>>>>> upstream/affiliation_chicago
 
 CREATE TABLE `users_followers` (
   `user_id` int(11) DEFAULT NULL,
@@ -437,3 +501,9 @@ INSERT INTO schema_migrations (version) VALUES ('20130423021634');
 INSERT INTO schema_migrations (version) VALUES ('20130425040744');
 
 INSERT INTO schema_migrations (version) VALUES ('20130903064521');
+
+INSERT INTO schema_migrations (version) VALUES ('20130906234916');
+
+INSERT INTO schema_migrations (version) VALUES ('20130918021924');
+
+INSERT INTO schema_migrations (version) VALUES ('20130923062946');

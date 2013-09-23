@@ -7,7 +7,7 @@
 		<p>You should go find more volunteer opportunities while I go look for your page... this might take a while...</p>
 		<p>Here's a little map that'll help you get back on track:</p>
 		<ul>
-            <li><%= link_to("EVENTS", events_path) %></li>
+            <li><%= link_to("EVENTS", events_path(current_location_name)) %></li>
             <li><%= link_to("ABOUT", about_path) %></li>
             <li><%= link_to("HELP", help_articles_path) %></li>
         </ul>

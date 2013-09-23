@@ -1,0 +1,19 @@
+<h2>Affiliations</h2>
+<table class="table-striped" width="100%">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Public?</th>
+    <th></th>
+  </tr>
+  <% @affiliates.each do |a| %>
+      <tr>
+        <td><%= image_tag a.logo(:thumb) %>&nbsp;<%= a.name %></td>
+        <td><%= a.description %></td>
+        <% icon = a.public ? 'ok' : 'remove' %>
+        <td><div class="row-fluid"><div class="offset5"><i class="icon-<%= icon %>"></i></div></div></td>
+        <td><%= link_to 'Manage', affiliate_url(a), :class => 'btn btn-primary' %><br><%= link_to 'Edit', edit_affiliate_url(a), :class => 'btn btn-primary' if current_user.role?(:super_admin) %></td>
+      </tr>
+  <% end %>
+</table>
+<td><%= link_to 'Create', new_affiliate_url, :class=>'btn' %></td>

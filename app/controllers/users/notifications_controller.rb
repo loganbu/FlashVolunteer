@@ -7,7 +7,7 @@ class Users::NotificationsController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if (params[:user] == nil)
+    if params[:user] == nil
       @user.notification_preferences = []
     end
     respond_to do |format|
@@ -15,7 +15,7 @@ class Users::NotificationsController < ApplicationController
         format.html { redirect_to(@user, :notice => 'Your profile was successfully updated.') }
         format.xml  { head :ok }
       else
-        format.html { render :action => "edit" }
+        format.html { render :action => 'show' }
         format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
       end
     end

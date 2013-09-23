@@ -1,5 +1,4 @@
 module SessionsHelper
-
   def store_url(url)
     session[:return_to] = url
   end
@@ -38,5 +37,4 @@ module SessionsHelper
     def store_location(url)
       session[:return_to] = url || request.fullpath
     end
-
 end

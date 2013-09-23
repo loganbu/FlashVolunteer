@@ -3,23 +3,26 @@
     dimension ||= 30
 %>
 
-<%if (mobile == true)
-    dimension = 30%>
-<% end %>
-
-<% if (@events.count == 0) %>
-    <p>There are no events in this location.  Try <%= link_to("broadening your search", "/events") %>.</p>
-<% else %>
+<% if @events.any? %>
     <% @events.each_with_index do |event, i| %>
     <div class="event_with_marker event" onclick="Map.showPopup(<%= event.id %>);">
         <div class="pull-left marker"
-             style="background: url(<%= event.attending?(current_user) ? "/assets/mapStrip_signedUp.png" : "/assets/mapStrip_avail.png" %>) 0px <%= -i*dimension %>px">&nbsp;
+             style="background: url(<%= event.attending?(current_user) ? '/assets/mapStrip_signedUp.png' : '/assets/mapStrip_avail.png' %>) 0px <%= -i*dimension %>px">
+          <% if event.visible_affiliates(current_user).any? %>
+              <ul class="unstyled">
+                <% event.visible_affiliates(current_user).take(3).each do |affiliate| %>
+                    <li><%= image_tag affiliate.logo(:thumb), :title => affiliate.description %></li>
+                <% end %>
+              </ul>
+          <% end %>
         </div>
         <div class="details">
             <%= render :partial => "events/event", :locals => { :event => event, :description => true, :show_links => true, :is_mobile => mobile } %>
         </div>
     </div>
     <% end %>
+<% else %>
+      <p>There are no events in this location.  Try <%= link_to("broadening your search", "/events") %>.</p>
 <% end %>
 <div id="page">
     <div class="prev-next clearfix">

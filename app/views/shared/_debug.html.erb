@@ -1,1 +1,13 @@
 <div id="footnotes_holder" class="container" style="clear:both"></div>
+<div id="other_debug" class="container" style="clear:both">
+	<dd>
+		<dt>Your Location</dt>
+        <% name = @current_location == nil ? 'Unknown' : @current_location.name %>
+        <% latitude = @current_location == nil ? 0 : @current_location.latitude %>
+        <% longitude = @current_location == nil ? 0 : @current_location.longitude %>
+		<dl><%= name %> (<%= "#{latitude} #{longitude}" %>)</dl>
+		<dt>Closest Neighborhood to Request</dt>
+		<% closest = Neighborhood.closest("POINT(#{longitude} #{latitude})") %>
+		<dl><%= closest.name %>, <%= closest.city %></dl>
+	</dd>
+</div>
