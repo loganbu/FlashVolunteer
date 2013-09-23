@@ -32,7 +32,7 @@ class Ability
       end
 
       can :read, [Affiliate] do |affiliate|
-        user.affiliates.include?(affiliate)
+        affiliate.public? || user.affiliates.include?(affiliate)
       end
 
       can :see_events, [User] do |other|

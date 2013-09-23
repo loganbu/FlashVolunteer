@@ -174,8 +174,8 @@ class Event < ActiveRecord::Base
   end
 
   def visible_affiliates(user)
-    aff = (affiliates || [])
-    aff.select{|a| user.can? :read, a}
+    user ||= User.new
+    (affiliates || []).select{|a| user.can? :read, a}
   end
 
   def self.xml(entity)

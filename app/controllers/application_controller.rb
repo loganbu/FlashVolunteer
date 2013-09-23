@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_ability
-    current_user.ability
+    (current_user || User.new).ability
   end
 
   rescue_from CanCan::AccessDenied do |exception|

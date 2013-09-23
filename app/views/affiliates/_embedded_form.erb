@@ -1,10 +1,8 @@
 <%
-	entity ||= 'user'
-	affiliates ||= []
-
+    entity ||= 'user'
+    affiliates ||= []
 %>
 <% Affiliate.all.select{|a| can? :read, a}.each_with_index do |affiliate, i| %>
-
     <%= check_box_tag("#{entity}[affiliate_ids][#{i}]", affiliate.id, affiliates.include?(affiliate), :name=>"#{entity}[affiliate_ids][]", :class=>'hide') %>
     <div class="selectable_option <%= 'option_selected' if affiliates.include?(affiliate) %>" id="affiliation_<%= affiliate.id %>">
         <label onclick="toggleAffiliationImage(<%= affiliate.id %>)" for="<%= "#{entity}_affiliate_ids_#{i}"%>" title="<%= affiliate.name %>">
