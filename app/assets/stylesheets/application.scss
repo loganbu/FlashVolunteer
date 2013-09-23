@@ -1,22 +1,33 @@
+@import
 //Base
-@import "base/variables.scss";
-@import "base/bootstrapCustom.scss";
-@import "base/bootstrap/bootstrap.scss";
-@import "base/jquery-ui.scss";
-@import "base/base.scss";
-@import "base/main.scss"; // Still needs to be refactored.
-
-//Module
-@import "module/header.scss";
-@import "module/footer.scss";
-@import "module/featured.scss";
-@import "module/badges.scss";
-@import "module/common.scss";
-@import "module/events.scss";
-@import "module/helpers.scss";
-@import "module/modal.scss";
-@import "module/news.scss";
+	"base/variables.scss", //Refactor complete
+	"base/bootstrapCustom.scss", //Refactor complete
+	"base/bootstrap/bootstrap.scss", //DO NOT CHANGE
+	"base/jquery-ui.scss", //DO NOT CHANGE
+	"base/elements.scss",  //Main elements
+	"base/typography.scss", //Must be online to use the font
+	"base/padding.scss",
 
 //Layout
-@import "layout/fv_responsive.scss";
-@import "layout/layout.scss";
+	"layout/fv_responsive.scss",
+	"layout/layout.scss",
+
+//Module
+	"module/header.scss",
+	"module/footer.scss",
+	"module/featured.scss",
+	"module/badges.scss",
+	"module/common.scss",  // Needs to be refactored.
+	"module/events.scss",
+	"module/helpers.scss",
+	"module/modal.scss",
+	"module/news.scss",
+	"module/static.scss",
+	"module/forms.scss",
+	"module/help.scss",
+	"module/scoreboard.scss",
+	"module/input.scss",
+	"module/jQueryUI.scss",
+	"module/pagination.scss",
+	"module/splashFrame.scss",
+	"module/printScreen.scss";

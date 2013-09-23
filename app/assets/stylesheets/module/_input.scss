@@ -1,0 +1,26 @@
+/**************
+ =Input
+ **************/
+.block {
+    display: block;
+}
+.full {
+    margin-right: 0px;
+    padding-right: 0px;
+    width: 100%;
+}
+input.full, textarea.full {
+    margin-left: -3px;
+}
+
+textarea {
+    height: 150px;
+}
+
+/* Otherwise the radio buttons are not vertically aligned with the text */
+input[type="radio"] {
+    margin-top: .5*$baseLineHeight;
+}
+input[type="checkbox"] {
+    margin-top: .4*$baseLineHeight;
+}
