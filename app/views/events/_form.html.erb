@@ -194,7 +194,7 @@
                             var minuteStep = 15;
                             var maxValue = 24*4;
                             var startHour = <%= @event.start ? @event.start.hour : 9 %>;
-                            var startMinute =  parseInt(<%= @event.start ? @event.start.min : 0 %> / minuteStep);
+                            var startMinute =  parseInt(<%= @event.start ? @event.start.min : 0 %>) / minuteStep;
                             <% 
                                 end_hour = 15
                                 if @event.end && @event.start
@@ -213,7 +213,7 @@
                                     end_minute = @event.end.min
                                 end
                             %>
-                            var endMinute = parseInt(<%= end_minute %> / minuteStep);
+                            var endMinute = parseInt(<%= end_minute %>) / minuteStep;
 
                             var initialValues = [startHour*4+startMinute, endHour*4+endMinute];
 

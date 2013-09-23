@@ -31,7 +31,7 @@ class Orgs::UsersController < ApplicationController
           UserMailer.new_org_admin(@org, @user).deliver
         end
       else
-        @user.errors.each do |attr,msg|
+        @user.errors.each do |_,msg|
           flash[:error] = msg
         end
       end

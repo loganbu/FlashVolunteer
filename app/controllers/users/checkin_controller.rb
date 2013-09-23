@@ -9,7 +9,6 @@ class Users::CheckinController < ApplicationController
         @checkin.event = Event.find_by_id(params[:event_id])
         @checkin.errors.add('Cannot find the specified event') if @checkin.event == nil
 
-
         respond_to do |format|
           if @checkin.save
             format.html { redirect_to(@checkin.event, :notice => 'You have been checked in to this event') }
