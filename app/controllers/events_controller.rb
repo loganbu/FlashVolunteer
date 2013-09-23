@@ -27,8 +27,7 @@ class EventsController < ApplicationController
     @events = Event.includes(participants: [{participations: :user}]).includes(:skills, :user, :affiliates).upcoming.near_user(@current_location).paginate(:page => params[:page], :per_page=>per_page)
     @map_center = current_location
 
-    #TODO Name this something better for more neighborhoods
-    @title = 'Volunteer Opportunities in King County'
+    @title = "Volunteer Opportunities in #{current_location.name}"
     
     respond_to do |format|
       format.html
@@ -65,8 +64,7 @@ class EventsController < ApplicationController
       @events = Event.near_user(current_location).upcoming.paginate(:page => params[:page], :per_page=> 6)
     end
 
-    #TODO Change name
-    @title = 'Featured Volunteer Opportunities in King County'
+    @title = "Featured Volunteer Opportunities in #{current_location.name}"
     
     respond_to do |format|
       format.html { render 'featured.html.erb', :layout => 'alt_layout.html.erb' }

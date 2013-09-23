@@ -3,7 +3,7 @@ class SearchController < ApplicationController
 
   def show
     search_term = "%#{params[:search]}%"
-    @events = Event.where('name LIKE ? or street LIKE ? or city LIKE ?', search_term, search_term).limit(10)
+    @events = Event.where('name LIKE ? or street LIKE ? or city LIKE ?', search_term, search_term, search_term).limit(10)
     @orgs = Org.where('name LIKE ? or email LIKE ?', search_term, search_term).limit(10)
     @users = User.where('name LIKE ? or email LIKE ?', search_term, search_term).limit(10)
     @help_articles = HelpArticle.where('title LIKE ? or description LIKE ?', search_term, search_term).limit(10)

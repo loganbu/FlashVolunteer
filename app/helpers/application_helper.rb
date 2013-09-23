@@ -46,7 +46,7 @@ def location_to_wkb(point)
 end
 
 def current_location_name
-  params[:location] || cookies['location'] || request.location.city
+  params[:location] || cookies['location'] || Hub.closest(current_location_point).name
 end
 
 end
