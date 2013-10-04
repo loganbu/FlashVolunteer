@@ -13,9 +13,3 @@ hubs:
         center: POINT (-122.346197 47.611406)
         zoom:   11
         radius: 25
-
-
-    -   name:   Tacoma
-        center: POINT (-122.430976 47.234610)
-        zoom:   10
-        radius: 15

@@ -11,7 +11,7 @@
           <% if event.visible_affiliates(current_user).any? %>
               <ul class="unstyled">
                 <% event.visible_affiliates(current_user).take(3).each do |affiliate| %>
-                    <li><%= image_tag affiliate.logo(:thumb), :title => affiliate.description %></li>
+                    <li><a href="<%= affiliate.link %>"><%= image_tag affiliate.logo(:thumb), :title => affiliate.description %></a></li>
                 <% end %>
               </ul>
           <% end %>

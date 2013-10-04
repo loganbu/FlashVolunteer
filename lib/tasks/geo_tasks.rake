@@ -9,7 +9,7 @@ namespace :fv do
     desc 'Update the neighborhoods in the SQL database'
     task :update_neighborhoods => :environment do
       Neighborhood.delete_all
-      %w(wa or il).each do |state|
+      %w(wa or il in).each do |state|
         contents = File.read("#{Rails.root}/db/data/neighborhoods/#{state}.json")
         geom = RGeo::GeoJSON.decode(contents, :json_parser => :json)
         geom.each do |neighborhood|

@@ -88,7 +88,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_current_location_name
-    cookies['location'] ||= params[:location] unless params[:location] == nil
+    cookies['location'] = params[:location] unless params[:location] == nil
   end
 
   def current_location_point
