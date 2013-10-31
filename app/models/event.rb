@@ -24,7 +24,7 @@ class Event < ActiveRecord::Base
       bucket: ENV['AWS_BUCKET']
   }, :path => ':attachment/:id/:style.:extension',
   :styles => { featured: ['760x350#', :png], large: ['290x200#', :png]},
-  :default_url =>' "/assets/default_event_:style.png"'
+  :default_url => '/assets/default_event_:style.png'
 
   has_attached_file :photo_2, :storage => :s3, :s3_credentials => {
     access_key_id: ENV['AWS_ACCESS_KEY'],
