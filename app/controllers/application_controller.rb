@@ -91,10 +91,6 @@ class ApplicationController < ActionController::Base
     cookies['location'] = params[:location] unless params[:location] == nil
   end
 
-  def current_location_point
-    "POINT(#{request.location.longitude} #{request.location.latitude})"
-  end
-
   def current_location
     hub = Hub.find_or_initialize_by_name(current_location_name)
     raise LocationNotFound.new(params[:location]) if params[:location] != nil && hub.new_record?

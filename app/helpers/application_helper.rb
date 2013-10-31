@@ -41,6 +41,10 @@ def display_text_field_safe(text)
   text.gsub(/\n/, '<br/>').html_safe
 end
 
+def current_location_point
+  "POINT(#{request.location.longitude} #{request.location.latitude})"
+end
+
 def location_to_wkb(point)
   "POINT(#{point.longitude} #{point.latitude})"
 end
