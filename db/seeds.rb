@@ -40,7 +40,8 @@ Skill.create([
 { name: 'Justice | Legal',                   offset: 15 },
 { name: 'Media | Broadcasting',              offset: 16 },
 { name: 'Politics',                          offset: 17 },
-{ name: 'Sports | Recreation',               offset: 18 }
+{ name: 'Sports | Recreation',               offset: 18 },
+{ name: 'Anti-Bullying',                     offset: 19 }
 ])
 
 Neighborhood.delete_all()
