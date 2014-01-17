@@ -5,7 +5,7 @@ class VolunteerMatch < ActiveRecord::Base
     where('imported = ?', false)
   }
 
-  def self.update(pages_of_results, page_number=1)
+  def self.update(pages_of_results, page_number=1, location='Seattle, WA')
     start_day = 1.week.ago
     end_day = 9.months.from_now
 
@@ -26,13 +26,32 @@ class VolunteerMatch < ActiveRecord::Base
                                                                      startDate: start_day.strftime('%Y-%m-%d'),
                                                                      endDate: end_day.strftime('%Y-%m-%d'),
                                                                      singleDayOpps: true}],
-                                                     location: 'Seattle, WA',
+                                                     location: location,
                                                      pageNumber: page.to_i})
 
       results.opportunities.each do |opportunity|
         if opportunity['referralFields'] == nil
           vm_opportunity = VolunteerMatch.find_or_initialize_by_vm_id(opportunity['id'])
           vm_opportunity.update_event(opportunity)
+          vm_opportunity.save
+
+          event = Event.find_or_initialize_by_vm_id(vm_opportunity.id)
+          event.name = vm_opportunity.title
+          event.description = vm_opportunity.description
+          event.start = vm_opportunity.start_time
+          event.end = vm_opportunity.end_time
+          event.hosted_by = vm_opportunity.contact_name
+          event.website = vm_opportunity.vm_url
+          event.special_instructions = [vm_opportunity.skills_needed, vm_opportunity.requirements].join("\r\n")
+          event.street = vm_opportunity.street
+          event.neighborhood = vm_opportunity.neighborhood
+          event.latitude = vm_opportunity.latitude
+          event.longitude = vm_opportunity.longitude
+          event.zip = vm_opportunity.zip
+          event.user = User.first
+          event.save!
+
+          vm_opportunity.imported = true
           vm_opportunity.save
         end
       end

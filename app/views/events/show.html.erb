@@ -55,6 +55,8 @@
         <%= render ('event_volunteer') %>
     </div>
 </div>
+
+<% unless @event.is_vm %>
 <div class="row-fluid">
     <div class="span12">
         <div id="disqus_thread"></div>
@@ -76,6 +78,7 @@
         
     </div>
 </div>
+<% end %>
 
 <script type="text/javascript">
 $(document).ready(function() { 

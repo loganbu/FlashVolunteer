@@ -1,6 +1,6 @@
 <% can_contact_organizer = can? :contact, Event %>
 <% if current_user != event.user%>
-	<% if !event.attending?(current_user) %>
+	<% if !event.attending?(current_user) && !event.is_vm %>
 	    <%= link_to("sign up", register_event_url(event), :method => :post) %>
 	<% end %>
 	<% if !event.attending?(current_user) && event.hosted_by_user %>

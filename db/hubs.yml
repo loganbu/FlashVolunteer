@@ -1,15 +1,294 @@
 hubs:
     -   name:   Chicago
+        city_state: Chicago, IL
         center: POINT (-87.631717 41.877651)
         zoom:   9
         radius: 50
 
     -   name:   Indianapolis
+        city_state: Indianapolis, IL
         center: POINT (-86.160851 39.770776)
         zoom:   10
         radius: 25
 
     -   name:   Seattle
+        city_state: Seattle, WA
         center: POINT (-122.346197 47.611406)
         zoom:   11
+        radius: 25
+
+    -   name: Arlington
+        city_state: Arlington, TX
+        center: POINT (-97.107719 32.735600)
+        zoom: 10
+        radius: 25
+
+    -   name: Wichita
+        city_state:  Wichita, KS
+        center: POINT (-97.335579 37.686981)
+        zoom: 10
+        radius: 25
+
+    -   name: Cleveland
+        city_state: Cleveland, OH
+        center: POINT (-81.690720 41.504749)
+        zoom: 10
+        radius: 25
+
+    -   name:   Tulsa
+        city_state: Tulsa, OK
+        center: POINT (-95.993332 36.149738)
+        zoom: 10
+        radius: 25
+
+    -   name:   Oakland
+        city_state: Oakland, CA
+        center: POINT (-122.273071 37.805080)
+        zoom: 10
+        radius: 25
+
+    -   name:   Miami
+        city_state: Miami, FL
+        center: POINT (-80.197731 25.774811)
+        zoom: 10
+        radius: 25
+
+    -   name:   Omaha
+        city_state: Omaha, NE
+        center: POINT (-95.940590 41.260689)
+        zoom: 10
+        radius: 25
+
+    -   name:   Raleigh
+        city_state: Raleigh, NC
+        center: POINT (-78.642670 35.785511)
+        zoom: 10
+        radius: 25
+
+    -   name:   Baltimore
+        city_state: Baltimore, MD
+        center: POINT (-76.609261 39.290581)
+        zoom: 10
+        radius: 25
+
+    -   name:   Louisville
+        city_state: Louisville, KY
+        center: POINT (-85.766403 38.254860)
+        zoom: 10
+        radius: 25
+
+    -   name:   Portland
+        city_state: Portland, OR
+        center: POINT (-122.675629 45.511791)
+        zoom: 10
+        radius: 25
+
+    -   name:   Oklahoma City
+        city_state: Oklahoma City, OK
+        center: POINT (-97.521072 35.472031)
+        zoom: 10
+        radius: 25
+
+    -   name:   Milwaukee
+        city_state: Milwaukee, WI
+        center: POINT (-87.906837 43.041809)
+        zoom: 10
+        radius: 25
+
+    -   name:   Las Vegas
+        city_state: Las Vegas, NV
+        center: POINT (-115.139969 36.171909)
+        zoom: 10
+        radius: 25
+
+    -   name:   Albuquerque
+        city_state: Albuquerque, NM
+        center: POINT (-106.648643 35.084179)
+        zoom: 10
+        radius: 25
+
+    -   name:   Tucson
+        city_state: Tucson, AZ
+        center: POINT (-110.969757 32.221550)
+        zoom: 10
+        radius: 25
+
+    -   name:   Fresno
+        city_state: Fresno, CA
+        center: POINT (-119.785728 36.740681)
+        zoom: 10
+        radius: 25
+
+    -   name:   Sacramento
+        city_state: Sacramento, CA
+        center: POINT (-121.490898 38.579330)
+        zoom: 10
+        radius: 25
+
+    -   name:   Long Beach
+        city_state: Long Beach, CA
+        center: POINT (-118.192398 33.766720)
+        zoom: 10
+        radius: 25
+
+    -   name:   KS City
+        city_state: KS City, KS
+        center: POINT (-94.626823 39.113522)
+        zoom: 10
+        radius: 25
+
+    -   name:   Mesa
+        city_state: Mesa, AZ
+        center: POINT (-111.831459 33.417042)
+        zoom: 10
+        radius: 25
+
+    -   name:   Virginia Beach
+        city_state: Virginia Beach, VA
+        center: POINT (-76.059196 36.755020)
+        zoom: 10
+        radius: 25
+
+    -   name:   Atlanta
+        city_state: Atlanta, GA
+        center: POINT (-84.391113 33.748310)
+        zoom: 10
+        radius: 25
+
+    -   name:   Colorado Springs
+        city_state: Colorado Springs, CO
+        center: POINT (-104.821808 38.833431)
+        zoom: 10
+        radius: 25
+
+    -   name: New York
+        city_state: New York, NY
+        center: POINT (-73.832703 40.782001)
+        zoom: 9
+        radius: 50
+
+    -   name: Los Angeles
+        city_state: Los Angeles, CA
+        center: POINT (-118.245323 34.053490)
+        zoom: 9
+        radius: 50
+
+    -   name: Houston
+        city_state: Houston, TX
+        center: POINT (-95.369781 29.760450)
+        zoom: 9
+        radius: 45
+
+    -   name: Philadelphia
+        city_state: Philadelphia, PA
+        center: POINT (-75.162453 39.952278)
+        zoom: 9
+        radius: 40
+
+    -   name: Phoenix
+        city_state: Phoenix, AZ
+        center: POINT (-112.075768 33.448261)
+        zoom: 9
+        radius: 40
+
+    -   name: San Antonio
+        city_state: San Antonio, TX
+        center: POINT (-98.494614 29.424580)
+        zoom: 10
+        radius: 30
+
+    -   name: San Diego
+        city_state: San Diego, CA
+        center: POINT (-117.161720 32.715691)
+        zoom: 10
+        radius: 30
+
+    -   name: Dallas
+        city_state: Dallas, TX
+        center: POINT (-96.795403 32.778149)
+        zoom: 10
+        radius: 25
+
+    -   name: San Jose
+        city_state: San Jose, CA
+        center: POINT (-121.885567 37.338581)
+        zoom: 10
+        radius: 25
+
+    -   name: Austin
+        city_state: Austin, TX
+        center: POINT (-97.742981 30.267599)
+        zoom: 10
+        radius: 25
+
+    -   name: Jacksonville
+        city_state: Jacksonville, FL
+        center: POINT (-81.656219 30.331470)
+        zoom: 10
+        radius: 25
+
+    -   name: San Francisco
+        city_state: San Francisco, CA
+        center: POINT (-122.419640 37.777119)
+        zoom: 10
+        radius: 25
+
+    -   name: Columbus
+        city_state: Columbus, OH
+        center: POINT (-83.002747 39.961990)
+        zoom: 10
+        radius: 25
+
+    -   name: Fort Worth
+        city_state: Fort Worth, TX
+        center: POINT (-97.330856 32.750950)
+        zoom: 10
+        radius: 25
+
+    -   name: Charlotte
+        city_state: Charlotte, NC
+        center: POINT (-80.837959 35.222858)
+        zoom: 10
+        radius: 25
+
+    -   name: Detroit
+        city_state: Detroit, MI
+        center: POINT (-83.047920 42.331680)
+        zoom: 10
+        radius: 25
+
+    -   name: El Paso
+        city_state: El Paso, TX
+        center: POINT (-106.487488 31.759159)
+        zoom: 10
+        radius: 25
+
+    -   name: Memphis
+        city_state: Memphis, TN
+        center: POINT (-90.049248 35.149761)
+        zoom: 10
+        radius: 25
+
+    -   name: Boston
+        city_state: Boston, MA
+        center: POINT (-71.056740 42.358662)
+        zoom: 10
+        radius: 25
+
+    -   name: Denver
+        city_state: Denver, CO
+        center: POINT (-104.992302 39.740009)
+        zoom: 10
+        radius: 25
+
+    -   name: Washington
+        city_state: Washington, DC
+        center: POINT (-77.031960 38.890369)
+        zoom: 10
+        radius: 25
+
+    -   name: Nashville
+        city_state: Nashville, TN
+        center: POINT (-86.778160 36.167839)
+        zoom: 10
         radius: 25
