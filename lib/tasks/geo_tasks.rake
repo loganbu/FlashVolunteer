@@ -7,8 +7,8 @@ namespace :fv do
     end
 
     desc 'Update the neighborhoods in the SQL database'
-    task :update_neighborhoods, [:slice, :size] => :environment do |t, args|
-      Dir.glob("#{Rails.root}/db/data/neighborhoods/*").slice(args[:slice].to_i, args[:size].to_i).each do |filename|
+    task :update_neighborhoods, [:state] => :environment do |t, args|
+      Dir.glob("#{Rails.root}/db/data/neighborhoods/#{args[:state]}*").each do |filename|
         contents = File.read(filename)
         geom = RGeo::GeoJSON.decode(contents, :json_parser => :json)
         geom.each do |neighborhood|
