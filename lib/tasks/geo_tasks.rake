@@ -28,4 +28,10 @@ namespace :fv do
         VolunteerMatch.update(5, 1, hub.city_state)
       end
     end
+
+    desc 'Import VM events'
+    task :import_vm_manual, [:city] => :environment do |t, args|
+      hub = Hub.where("name = ?", args[:city]).first
+      VolunteerMatch.update(5, 1, hub.city_state)
+    end
 end
