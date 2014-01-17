@@ -49,7 +49,7 @@ class VolunteerMatch < ActiveRecord::Base
           event.longitude = vm_opportunity.longitude
           event.zip = vm_opportunity.zip
           event.user = User.first
-          event.save!
+          event.save
 
           vm_opportunity.imported = true
           vm_opportunity.save
@@ -88,7 +88,7 @@ class VolunteerMatch < ActiveRecord::Base
     self.description = json['plaintextDescription']
     self.great_for = json['greatFor']
     self.contact_email = json['contact']['email']
-    self.contact_name = json['contact']['firstName'] + ' ' + json['contact']['lastName']
+    self.contact_name = (json['contact']['firstName']||'') + ' ' + (json['contact']['lastName']||'')
     self.contact_phone = json['contact']['phone']
     self.has_wait_list = json['hasWaitList']
     self.minimum_age = json['minimumAge']

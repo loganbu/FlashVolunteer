@@ -6,8 +6,8 @@
 		<h1>Hmm... I can't find that city!</h1>
 		<p>You should go find more volunteer opportunities in one of the cities below:</p>
 		<ul>
-          <% Hub.all.each do |hub| %>
-             <li><%= link_to hub.name, hub_url(hub.name) %></li>
+          <% Hub.all.sort_by{|hub| hub.city_state}.each do |hub| %>
+             <li><%= link_to hub.city_state, hub_url(hub.name) %></li>
           <% end %>
         </ul>
 	</div>

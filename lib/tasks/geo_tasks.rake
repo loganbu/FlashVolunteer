@@ -24,7 +24,7 @@ namespace :fv do
 
     desc 'Import VM events'
     task :import_vm => :environment do
-      Hub.all.each do |hub|
+      Hub.all.sample(5).each do |hub|
         VolunteerMatch.update(5, 1, hub.city_state)
       end
     end
