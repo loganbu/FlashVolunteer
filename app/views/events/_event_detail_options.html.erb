@@ -16,7 +16,7 @@
         <%end%>
     <% else %>
         <% if @event.is_vm %>
-            <%= link_to '<br><i class="icon-white icon-ok"></i>&nbsp;&nbsp;Sign Me Up!<br>&nbsp;'.html_safe, @event.vm_url, :class => "btn btn-success btn-large" %>
+            <%= link_to '<br><i class="icon-white icon-ok"></i>&nbsp;&nbsp;Sign Me Up!<br>&nbsp;'.html_safe, @event.website, :class => "btn btn-success btn-large" %>
         <% else %>
             <%= link_to '<br><i class="icon-white icon-ok"></i>&nbsp;&nbsp;Sign Me Up!<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :post, :class => "btn btn-success btn-large" %>
         <% end %>
