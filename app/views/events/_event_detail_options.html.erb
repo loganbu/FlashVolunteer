@@ -15,7 +15,11 @@
             <%= link_to '<br><i class="icon-white icon-remove"></i>&nbsp;&nbsp;I Can\'t Participate<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :delete, :class => "btn btn-warning btn-large" %>
         <%end%>
     <% else %>
-        <%= link_to '<br><i class="icon-white icon-ok"></i>&nbsp;&nbsp;Sign Me Up!<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :post, :class => "btn btn-success btn-large" %>
+        <% if @event.is_vm %>
+            <%= link_to '<br><i class="icon-white icon-ok"></i>&nbsp;&nbsp;Sign Me Up!<br>&nbsp;'.html_safe, @event.vm_url, :class => "btn btn-success btn-large" %>
+        <% else %>
+            <%= link_to '<br><i class="icon-white icon-ok"></i>&nbsp;&nbsp;Sign Me Up!<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :post, :class => "btn btn-success btn-large" %>
+        <% end %>
     <% end %>
     <% if (@event.near_happening) && current_user %>
         <%= link_to '<br><i class="icon-white icon-thumbs-up"></i>&nbsp;&nbsp;Check In<br>&nbsp;'.html_safe, checkin_user_url(current_user, @event), :method=>:put, :class => "btn btn-primary btn-large" %>
