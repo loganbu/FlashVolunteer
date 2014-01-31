@@ -1,7 +1,17 @@
 
 
 <section class="hero">
+
 <div class="container">
+  <div class="dropdown pull-left" id="neighborhood-list">
+    <span class="map_subtitle">events near</span> <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="map_title"><%= @current_location.name %></span><b class="caret" id="map-caret"></b></a>
+    <div class="dropdown-menu" id="neighborhood-selection">
+      <% Hub.all.sort_by(&:name).each do |hub| %>
+          <li><%=link_to("#{hub.name}", "/#{hub.name}/events/featured")%></li>
+      <% end %>
+    </div>
+  </div>
+  <div class="clearfix"></div>
     <article id="featured-carousel" class="row-fluid">
         <div class="span8">
             <figure>
