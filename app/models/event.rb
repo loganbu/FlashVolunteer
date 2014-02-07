@@ -165,6 +165,25 @@ class Event < ActiveRecord::Base
     self.end > Time.now
   end
 
+  def full?
+    self.limited_spots? && self.open_spots == 0
+  end
+
+  def limited_spots?
+    (self.max_users||0) > 0
+  end
+
+  def open_spots
+    (self.max_users||0) - self.participants.count
+  end
+
+  def can_register?
+    if (self.limited_spots?)
+      return self.open_spots > 0
+    end
+    true
+  end
+
   def past?
       self.end < Time.now
   end

@@ -23,8 +23,14 @@
         <% if @event.user == current_user %>
             there are no volunteers signed up yet
         <% else %>
-            there are no volunteers signed up yet, but you can be the first!
-            <%= link_to("sign up now!", register_event_url(@event), :method => :post) %>
+            <% if @event.limited_spots? && !@event.full? %>
+                there only <%= @event.open_spots %> spots left,
+                <%= link_to("sign up now!", register_event_url(@event), :method => :post) %>
+            <% elsif  @event.full? %>
+                this event is full, maybe next time?
+            <% else %>
+                <%= link_to("sign up now!", register_event_url(@event), :method => :post) %>
+            <% end %>
         <% end %>
     <% end %>
 <% end %>

@@ -11,10 +11,14 @@ class Events::RegisterController < ApplicationController
       return
     end
 
-    @event.participants << current_user if !@event.participants.include?(current_user)
-    
+    if (@event.can_register?)
+        @event.participants << current_user if !@event.participants.include?(current_user)
+        flash[:popup] = "We have successfully signed you up for #{@event.name}! We'll send you an email reminder the day before and will notify the coordinator."
+    else
+        flash[:error] = 'Sorry, the event is full, try again next time!'
+    end
+
     respond_to do |format|
-      flash[:popup] = "We have successfully signed you up for #{@event.name}! We'll send you an email reminder the day before and will notify the coordinator."
       format.html { redirect_to(event_url(@event)) }
       format.xml  { render :xml => @event, :status => :created, :location => @event }
     end
