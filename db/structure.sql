@@ -61,7 +61,7 @@ CREATE TABLE `event_affiliations` (
   `affiliate_id` int(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `events` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -110,8 +110,9 @@ CREATE TABLE `events` (
   `lonlat` point DEFAULT NULL,
   `moved_marker` tinyint(1) DEFAULT '1',
   `private` tinyint(1) DEFAULT NULL,
+  `max_users` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=565 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1096 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `help_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -128,7 +129,7 @@ CREATE TABLE `hubs` (
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `city_state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `neighborhoods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -142,7 +143,7 @@ CREATE TABLE `neighborhoods` (
   `center` point DEFAULT NULL,
   PRIMARY KEY (`id`),
   SPATIAL KEY `index_neighborhoods_on_region` (`region`)
-) ENGINE=MyISAM AUTO_INCREMENT=6630 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12393 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -175,7 +176,7 @@ CREATE TABLE `participations` (
   `hours_volunteered` int(11) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1383 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1382 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `privacies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -234,7 +235,7 @@ CREATE TABLE `searches` (
   `events_found` int(11) DEFAULT '0',
   `help_articles_found` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `skills` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -369,7 +370,7 @@ CREATE TABLE `volunteer_matches` (
   `latitude` float DEFAULT NULL,
   `longitude` float DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=550 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO schema_migrations (version) VALUES ('20110724194133');
 
@@ -496,3 +497,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131004231118');
 INSERT INTO schema_migrations (version) VALUES ('20131129');
 
 INSERT INTO schema_migrations (version) VALUES ('20140117050509');
+
+INSERT INTO schema_migrations (version) VALUES ('20140207041648');
