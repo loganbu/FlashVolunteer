@@ -288,7 +288,7 @@
                       step: 1,
                       create: function(ev, ui) {
                           $("#max_users").css("left", "0%");
-                          var max_users = <%= @event.max_users %>;
+                          var max_users = <%= @event.max_users || 0 %>;
                           if (max_users > 0) {
                               $("#max_users").text(max_users);
                           } else {
