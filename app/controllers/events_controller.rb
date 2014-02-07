@@ -320,6 +320,7 @@ class EventsController < ApplicationController
     @events = created_by_array.length > 0 ? @events.where{creator_id.eq_any created_by_array} : @events
     @events = participated_by_array.length > 0 ? @events.joins(:participants).where{participations.user_id.eq_any participated_by_array} : @events
     @events = recommended_to != nil ? @events.recommended_to(User.find_by_id(recommended_to)) : @events
+    @events = @events.where(vm_id: 0)
     @events = @events.paginate(:page=>params[:page], :per_page => per_page)
 
     respond_to do |format|
