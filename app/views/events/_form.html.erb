@@ -279,7 +279,7 @@
             <div style="position: relative">
                 <div id="max_users" style="position: absolute; width: 55px"></div>
             </div>
-            <%= f.hidden_field :max_users, :id => "event_max_users", :value => 0 %>
+            <%= f.hidden_field :max_users, :id => "event_max_users", :value => @event.max_users || 0 %>
             <script type="text/javascript">
               $(document).ready(function() {
                   $('#max_users_slider').slider({
