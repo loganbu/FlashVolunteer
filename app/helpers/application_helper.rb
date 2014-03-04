@@ -41,8 +41,18 @@ def display_text_field_safe(text)
   text.gsub(/\n/, '<br/>').html_safe
 end
 
+def geocoded_location_latitude
+  return request.location.latitude if request.location
+  return 47.613183
+end
+
+def geocoded_location_longitude
+  return request.location.longitude if request.location
+  return -122.346983
+end
+
 def current_location_point
-  "POINT(#{request.location.longitude} #{request.location.latitude})"
+  "POINT(#{geocoded_location_longitude} #{geocoded_location_latitude})"
 end
 
 def location_to_wkb(point)
