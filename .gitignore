@@ -1,6 +1,7 @@
 .DS_Store
 .bundle
 .idea
+.project
 config/database.yml
 db/*.sqlite3
 log/*.log
