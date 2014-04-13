@@ -39,7 +39,7 @@
                              "urltext" => "who is charlie?", "url" => "http://blog.flashvolunteer.org/post/49490365908/if-you-have-ever-received-an-email-from-flash"],
                    ].each_with_index do |person, i| %>
                    <div class="clearfix">
-                           <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
+                       <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
                                                                                          :url => person["url"], :urltext => person["urltext"] }) %>
                    </div>
                 <% end %>
