@@ -2,7 +2,7 @@
     <%=image_tag(image, :class => "pull-left board_padding_right")%>
     <div>
         <h4><%= name %></h4>
-	<p><i><%= subtext %></i></p>
-	<p><a href="<%= url %>"><%= urltext %></a></p>
+        <p><i><%= subtext %></i></p>
+        <%=link_to_unless(url.nil?, urltext, url)%>
     </div>
 </div>
