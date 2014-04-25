@@ -78,7 +78,6 @@ $sample_event_names = [
   {name: 'North King County Little League Mid Season Party'},
   {name: 'Study Zone at the Shoreline Library'},
   {name: 'Neighborhood House annual breakfast'},
-  {name: 'Neighborhood House annual breakfast'},
   {name: 'Stuff the Bus at Street Fair'},
   {name: 'Flash Volunteer Spring Reception'},
   {name: 'Pioneer Square Spring Clean'},

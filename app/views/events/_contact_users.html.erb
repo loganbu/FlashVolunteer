@@ -1,20 +1,13 @@
-<% content_for :dialog do %>
+<% content_for :body_and_footer do %>
     <%= form_for(@event, :method=>:post, :url => broadcast_event_url(@event)) do |f| %>
-        <div class="row-fluid">
-            <div class="span12">
-                <label for="message">Message:</label>
-            </div>
+        <div class="modal-body">
+          <textarea name="message"></textarea>
         </div>
-        <div class="row-fluid">
-            <div class="span12">
-                <textarea class="full" name="message"></textarea>
-            </div>
-        </div>
-        <div class="row-fluid">
-            <div class="span12">
-                <%= f.submit("Send Message", :class=>"btn btn-primary pull-right") %>
-            </div>
+
+        <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          <%= f.submit('Send Message', :class=>'btn btn-primary') %>
         </div>
     <% end %>
 <% end %>
-<%= render(:template => "shared/modal", :locals => { :id => "contact_users"}) %>
+<%= render(:template => 'shared/modal', :locals => { :title => 'Send a message', :id => 'contact_users_dialog'}) %>

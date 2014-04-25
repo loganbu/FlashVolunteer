@@ -18,7 +18,7 @@ Flashvolunteer::Application.configure do
             :password => ENV['MAILER_PASSWORD']
     }
 
-  config.action_mailer.default_url_options = { :host => ENV['SITE_DOMAIN'] }
+  config.action_mailer.default_url_options = { :host => ENV['SITE_DOMAIN'], :location => nil }
 
   config.action_mailer.raise_delivery_errors = true
         

@@ -16,7 +16,7 @@ Flashvolunteer::Application.configure do
               :password => ENV['MAILER_PASSWORD']
       }
 
-  config.action_mailer.default_url_options = { :host => ENV['SITE_DOMAIN'] || "localhost:3000" }
+  config.action_mailer.default_url_options = { :host => ENV['SITE_DOMAIN'] || "localhost:3000", :location => nil }
 
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :file

@@ -211,7 +211,7 @@ class EventsController < ApplicationController
 
     respond_to do |format|
       if @event.update_attributes(params_to_use)
-        format.html { redirect_to(@event, :notice => "Event was successfully updated. Consider <a href='javascript:revealModal(\"contact_users\")'>contacting the volunteers</a> if they need to be notified of the change.".html_safe) }
+        format.html { redirect_to(@event, :notice => 'Event was successfully updated. Consider contacting the volunteers if they need to be notified of the change.') }
         format.xml  { head :ok }
       else
         format.html { render :action => 'edit' }
@@ -225,7 +225,7 @@ class EventsController < ApplicationController
     @event = Event.includes(:participants).find(params[:id])
     message = params[:message]
 
-    @event.participants.includes(:notification_preferences).each do |p|
+    @event.participants.each do |p|
       if p.notification_preferences.where(:name => 'organizer_broadcast').count > 0
         if Rails.env.production?
           # send the e-mail

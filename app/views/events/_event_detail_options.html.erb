@@ -35,7 +35,7 @@
 <!-- If have access, Edit/Delete Events -->
 <% if can? :edit, @event %>
     <%= link_to '<i class="icon-print"></i>&nbsp;&nbsp;Sign-in Sheet'.html_safe, print_event_url(@event), :method=>"get", :class => "btn btn-large" %>
-    <a href="javascript:revealModal('contact_users')" class="btn btn-info btn-large"><i class="icon-white icon-envelope"></i> Contact Attendees</a>
+    <a href="#contact_users_dialog" role="button" class="btn btn-info btn-large" data-toggle="modal"><i class="icon-white icon-envelope"></i> Contact Attendees</a>
     <%= render(:partial => "contact_users") %>
 <% end %>
 

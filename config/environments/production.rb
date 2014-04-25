@@ -11,7 +11,7 @@ Flashvolunteer::Application.configure do
       :user_name => ENV['MAILER_USERNAME'],
       :password => ENV['MAILER_PASSWORD']
   }
-  config.action_mailer.default_url_options = { :host => "www.flashvolunteer.org" }
+  config.action_mailer.default_url_options = { :host => "www.flashvolunteer.org", :location => nil }
 
   # Settings specified here will take precedence over those in config/application.rb
 

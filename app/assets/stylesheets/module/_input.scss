@@ -13,6 +13,13 @@ input.full, textarea.full {
     margin-left: -3px;
 }
 
+/* Bootstrap adds padding to textareas, which cause horizontal scrollbars to modals when using "full" */
+.modal-body {
+  textarea {
+    width: 515px;
+  }
+}
+
 textarea {
     height: 150px;
 }
