@@ -106,8 +106,8 @@ Flashvolunteer::Application.routes.draw do
       # Show organization past/upcoming events
       resource :events, :only => [:show], :controller => 'orgs/events', :as => 'events_org'
 
-      # Show admins of the org
-      resource :stats, :only => [:show], :controller => 'orgs/stats', :as => 'org_stats'
+      # Show stats of the org
+      resource :dashboard, :only => [:show], :controller => 'orgs/dashboard', :as => 'org_dashboard'
     end
 
     # Show admins of the org
