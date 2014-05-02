@@ -13,6 +13,10 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                          <% if user_signed_in? %>
+                          	<li><%= link_to("Create new", new_event_url)%></li>
+                          	<li class="divider"></li>
+                          <% end %>	
                           <li><%= link_to("All", events_url(current_location_name)) %></li>
                           <li class="divider"></li>
                           <li class="nav-header">Timeframe</li>
