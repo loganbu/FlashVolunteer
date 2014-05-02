@@ -36,7 +36,7 @@
             You have not yet attended any events. <a href="#recommended" onclick="activateContentSection('#recommended')">Let us recommend something for you.</a>
         <% else %>
             <%= render(:partial => "events/event", :collection => @past, :as => :event, :locals => { :show_links => true, :description => :medium, :type => :past }) %>
- 			<%= will_paginate @past, :param_name => :past_page, :params => {:anchor=>:past} %>       
+            <%= will_paginate @past, :param_name => :past_page, :params => {:anchor=>:past} %>       
         <% end %>
     </div>
     <div class="hide" id="upcoming_content">
