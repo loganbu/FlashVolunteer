@@ -1,5 +1,5 @@
 <%
-	page_type ||= :webpage
+    page_type ||= :webpage
     badge_size ||= "small"
 %>
 
@@ -33,11 +33,11 @@
 <% if @event.upcoming? %>
 <div class="row-fluid">
     <div class="span7">
-    	<% if page_type != :webpage %>
-        	<%= render(:partial => 'share', :locals => { :event => @event, :size => :small }) %>
-		<% else %>
-        	<%= render(:partial => 'share', :locals => { :event => @event, :size => :large }) %>
-    	<% end %>
+        <% if page_type != :webpage %>
+            <%= render(:partial => 'share', :locals => { :event => @event, :size => :small }) %>
+        <% else %>
+            <%= render(:partial => 'share', :locals => { :event => @event, :size => :large }) %>
+        <% end %>
     </div>
 </div>
 <% end %>

@@ -1,4 +1,4 @@
-<% content_for :body_and_footer do %>
+<% content_for :body_and_footer, flush: true do %>
     <%= form_for(@event, :method=>:post, :url => broadcast_event_url(@event)) do |f| %>
         <div class="modal-body">
           <textarea name="message"></textarea>

@@ -1,0 +1,51 @@
+<% content_for :body_and_footer do %>
+    <%= form_for(@event) do |f| %>
+        <div class="modal-body">
+
+          <table class="table table-striped" id="add_hours_table">
+            <col style="width:65%">
+            <col style="width:25%">
+            <col style="width:10%">
+            <thead>
+              <tr>
+                <th>User</th>
+                <th>Attended <input type="checkbox" id="check_all_hours" style="margin-top: -1px"  /></th>
+                <th>Hours</th>
+              </tr>
+            </thead>
+              <% @event.participations.each do |p| %>
+                <%= f.fields_for :participations, p do |pf| %>
+                    <tr>
+                      <td><%= photo_link(p.user.avatar, :thumb, user_url(p.user)) %> <%= link_to(p.user.name, user_url(p.user)) %></td>
+                      <td><input type="checkbox" class="element_checkbox" id="attended_<%= p.user.id %>" <%= 'checked="checked"' if (p.hours_volunteered || 0) > 0 %> /></td>
+                      <td><%= pf.text_field :hours_volunteered,  style: 'width: 30px', id: "hours_#{p.user.id}" %></td>
+                    </tr>
+                <% end %>
+              <% end %>
+             <script type="text/javascript">
+                $(document).ready(function() {
+                    $('#check_all_hours').change(function() {
+                        $('.element_checkbox').prop('checked', $(this).prop("checked")).trigger('change');
+                    });
+
+                    $('.element_checkbox').change(function () {
+                        var id = $(this).attr('id').split("_")[1];
+                        if (this.checked) {
+                            $("#hours_"+id).val("<%= '%.2f' % (@event.duration / 3600) %>");
+                        } else {
+                            $("#hours_"+id).val("0");
+                        }
+                    });
+                });
+
+             </script>
+          </table>
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+          <%= f.submit('Save', :class=>'btn btn-primary') %>
+        </div>
+    <% end %>
+<% end %>
+<%= render(:template => 'shared/modal', :locals => { :title => 'Add Hours', :id => 'modify_hours_dialog'}) %>
