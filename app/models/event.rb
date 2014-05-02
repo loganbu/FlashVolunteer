@@ -9,6 +9,8 @@ class Event < ActiveRecord::Base
   validates :end, :presence => { message: 'The event must have an end time' }, :date  => { after: :start, message: 'The event must end after the start time' }
   validates :description, :presence => { message: 'The event must have a description' }
   has_many :participations
+  accepts_nested_attributes_for :participations
+
   has_many :participants, :through => :participations, :source => :user
   has_and_belongs_to_many :skills, :join_table => 'skills_events'
   has_many :event_affiliations

@@ -153,6 +153,7 @@ class EventsController < ApplicationController
   end
 
   def hackoutdatetime(start_date, hashSet)
+    return hashSet if start_date == nil
     # Because there is no good DateTime picker, we are using a stupid field in the :params
     # for the start date... this needs to be removed for the update_attributes call below.
     # Then, we need to update the year/month/date fields ourselves, as a string format.
@@ -205,7 +206,7 @@ class EventsController < ApplicationController
 
     set_page_title
 
-    if params[:event][:website] != '' && !(params[:event][:website].starts_with?('http://') || params[:event][:website].starts_with?('https://'))
+    if params[:event][:website] != nil &&  params[:event][:website] != '' && !(params[:event][:website].starts_with?('http://') || params[:event][:website].starts_with?('https://'))
       params[:event][:website] = "http://#{params[:event][:website]}"
     end
 

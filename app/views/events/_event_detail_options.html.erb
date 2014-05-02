@@ -1,32 +1,32 @@
 <!-- If have access, Edit/Delete Events -->
 <% if can? :edit, @event %>
-    <%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_event_url, :class => "btn" %>
-    <%= link_to '<i class="icon-plus"></i> Clone'.html_safe, clone_event_url, :class => "btn" %>
-    <%= link_to '<i class="icon-white icon-trash"></i> Delete'.html_safe, event_url(@event), :confirm => "Are you sure you want to delete this event?", :method=>"delete", :class => "btn btn-danger" %>
+    <%= link_to '<i class="icon-pencil"></i> Edit'.html_safe, edit_event_url, :class => 'btn' %>
+    <%= link_to '<i class="icon-plus"></i> Clone'.html_safe, clone_event_url, :class => 'btn' %>
+    <%= link_to '<i class="icon-white icon-trash"></i> Delete'.html_safe, event_url(@event), :confirm => 'Are you sure you want to delete this event?', :method=>'delete', :class => 'btn btn-danger' %>
     <div class="row-fluid">&nbsp;</div>
 <% end %>
 
 <!-- Signup/Cancel/Signin Events -->
-<% if (@event.user != current_user || !@event.hosted_by.blank?) %>
-    <% if (@event.attending?(current_user)) %>
+<% if @event.user != current_user || !@event.hosted_by.blank? %>
+    <% if @event.attending?(current_user) %>
         <% if @event.past? %>
-            <%= link_to '<br><i class="icon-white icon-remove"></i>&nbsp;&nbsp;Missed the Event<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :delete, :class => "btn btn-warning btn-large" %>
+            <%= link_to '<br><i class="icon-white icon-remove"></i>&nbsp;&nbsp;Missed the Event<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :delete, :class => 'btn btn-warning btn-large' %>
         <% else %>
-            <%= link_to '<br><i class="icon-white icon-remove"></i>&nbsp;&nbsp;I Can\'t Participate<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :delete, :class => "btn btn-warning btn-large" %>
+            <%= link_to '<br><i class="icon-white icon-remove"></i>&nbsp;&nbsp;I Can\'t Participate<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :delete, :class => 'btn btn-warning btn-large' %>
         <%end%>
     <% else %>
         <% if @event.can_register? %>
             <% if @event.is_vm %>
-                <%= link_to '<br>Learn More!<br>&nbsp;'.html_safe, @event.website, :class => "btn btn-info btn-success btn-large" %>
+                <%= link_to '<br>Learn More!<br>&nbsp;'.html_safe, @event.website, :class => 'btn btn-info btn-success btn-large' %>
             <% else %>
-                <%= link_to '<br><i class="icon-white icon-ok"></i>&nbsp;&nbsp;Sign Me Up!<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :post, :class => "btn btn-success btn-large" %>
+                <%= link_to '<br><i class="icon-white icon-ok"></i>&nbsp;&nbsp;Sign Me Up!<br>&nbsp;'.html_safe, register_event_url(@event), :method=> :post, :class => 'btn btn-success btn-large' %>
             <% end %>
         <% else %>
             <a class="btn btn-danger btn-large" href="#"><br><i class="icon-white icon-remove"></i>&nbsp;&nbsp;Sorry, the event is full<br>&nbsp;</a>
         <% end %>
     <% end %>
     <% if (@event.near_happening) && current_user %>
-        <%= link_to '<br><i class="icon-white icon-thumbs-up"></i>&nbsp;&nbsp;Check In<br>&nbsp;'.html_safe, checkin_user_url(current_user, @event), :method=>:put, :class => "btn btn-primary btn-large" %>
+        <%= link_to '<br><i class="icon-white icon-thumbs-up"></i>&nbsp;&nbsp;Check In<br>&nbsp;'.html_safe, checkin_user_url(current_user, @event), :method=>:put, :class => 'btn btn-primary btn-large' %>
     <% end %>
     <div class="event-calendar-export"><p><%=link_to '<i class="icon-calendar"></i>&nbsp;&nbsp;Export to Calendar'.html_safe, export_event_url(@event) %></p>
     </div>
@@ -34,8 +34,10 @@
 
 <!-- If have access, Edit/Delete Events -->
 <% if can? :edit, @event %>
-    <%= link_to '<i class="icon-print"></i>&nbsp;&nbsp;Sign-in Sheet'.html_safe, print_event_url(@event), :method=>"get", :class => "btn btn-large" %>
+    <%= link_to '<i class="icon-print"></i>&nbsp;&nbsp;Sign-in Sheet'.html_safe, print_event_url(@event), :method=> 'get', :class => 'btn btn-large' %>
     <a href="#contact_users_dialog" role="button" class="btn btn-info btn-large" data-toggle="modal"><i class="icon-white icon-envelope"></i> Contact Attendees</a>
-    <%= render(:partial => "contact_users") %>
+    <%= render(:partial => 'contact_users') %>
+    <a href="#modify_hours_dialog" role="button" class="btn btn-info btn-large" data-toggle="modal"><i class="icon-white icon-plus"></i> Enter Hours</a>
+    <%= render(:partial => 'enter_hours') %>
 <% end %>
 
