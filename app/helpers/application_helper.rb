@@ -42,17 +42,29 @@ def display_text_field_safe(text)
 end
 
 def geocoded_location_latitude
-  return request.location.latitude if request.location
+  begin
+    return request.location.latitude if request.location
+  rescue
+    return 47.613183
+  end
+  
   return 47.613183
 end
 
 def geocoded_location_longitude
-  return request.location.longitude if request.location
+  begin
+    return request.location.longitude if request.location
+  rescue
+    return -122.346983
+  end
+
   return -122.346983
 end
 
 def current_location_point
-  "POINT(#{geocoded_location_longitude} #{geocoded_location_latitude})"
+  current_position_wkb = "POINT(#{geocoded_location_longitude} #{geocoded_location_latitude})"
+  Rails.logger.info "User Position WKB #{current_position_wkb}"
+  current_position_wkb
 end
 
 def location_to_wkb(point)
