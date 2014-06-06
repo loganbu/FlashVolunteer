@@ -9,7 +9,7 @@ CREATE TABLE `affiliates` (
   `public` tinyint(1) DEFAULT NULL,
   `link` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `afg_opportunities` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -36,7 +36,8 @@ CREATE TABLE `checkins` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `event_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_checkins_on_event_id_and_user_id` (`event_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `delayed_jobs` (
@@ -60,7 +61,8 @@ CREATE TABLE `event_affiliations` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `affiliate_id` int(11) DEFAULT NULL,
   `event_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_event_affiliations_on_affiliate_id_and_event_id` (`affiliate_id`,`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `events` (
@@ -111,8 +113,11 @@ CREATE TABLE `events` (
   `moved_marker` tinyint(1) DEFAULT '1',
   `private` tinyint(1) DEFAULT NULL,
   `max_users` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=122 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `index_events_on_neighborhood_id` (`neighborhood_id`),
+  KEY `index_events_on_creator_id` (`creator_id`),
+  KEY `index_events_on_User_id` (`User_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=62 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `help_articles` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -129,7 +134,7 @@ CREATE TABLE `hubs` (
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `city_state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=148 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=99 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `neighborhoods` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -143,23 +148,25 @@ CREATE TABLE `neighborhoods` (
   `center` point DEFAULT NULL,
   PRIMARY KEY (`id`),
   SPATIAL KEY `index_neighborhoods_on_region` (`region`)
-) ENGINE=MyISAM AUTO_INCREMENT=2131 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=1306 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `notifications` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `description` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `orgs_admins` (
   `user_id` int(11) DEFAULT NULL,
-  `org_id` int(11) DEFAULT NULL
+  `org_id` int(11) DEFAULT NULL,
+  KEY `index_orgs_admins_on_user_id_and_org_id` (`user_id`,`org_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `orgs_followers` (
   `user_id` int(11) DEFAULT NULL,
-  `org_id` int(11) DEFAULT NULL
+  `org_id` int(11) DEFAULT NULL,
+  KEY `index_orgs_followers_on_user_id_and_org_id` (`user_id`,`org_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `participations` (
@@ -167,14 +174,16 @@ CREATE TABLE `participations` (
   `event_id` int(11) DEFAULT NULL,
   `hours_volunteered` int(11) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=288 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `index_participations_on_user_id_and_event_id` (`user_id`,`event_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=167 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `privacies` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `user_id` int(11) DEFAULT NULL,
   `upcoming_events` varchar(255) COLLATE utf8_unicode_ci DEFAULT 'everyone',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_privacies_on_user_id` (`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `props` (
@@ -184,7 +193,8 @@ CREATE TABLE `props` (
   `message` text COLLATE utf8_unicode_ci,
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_props_on_giver_id_and_receiver_id` (`giver_id`,`receiver_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `rails_admin_histories` (
@@ -207,11 +217,12 @@ CREATE TABLE `roles` (
   `created_at` datetime NOT NULL,
   `updated_at` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `roles_users` (
   `role_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL
+  `user_id` int(11) DEFAULT NULL,
+  KEY `index_roles_users_on_role_id_and_user_id` (`role_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `schema_migrations` (
@@ -234,16 +245,18 @@ CREATE TABLE `skills` (
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `offset` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `skills_events` (
   `skill_id` int(11) DEFAULT NULL,
-  `event_id` int(11) DEFAULT NULL
+  `event_id` int(11) DEFAULT NULL,
+  KEY `index_skills_events_on_skill_id_and_event_id` (`skill_id`,`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `skills_users` (
   `skill_id` int(11) DEFAULT NULL,
-  `user_id` int(11) DEFAULT NULL
+  `user_id` int(11) DEFAULT NULL,
+  KEY `index_skills_users_on_skill_id_and_user_id` (`skill_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `sponsors` (
@@ -265,15 +278,17 @@ CREATE TABLE `user_affiliations` (
   `affiliate_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `moderator` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `index_user_affiliations_on_affiliate_id_and_user_id` (`affiliate_id`,`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `user_notifications` (
   `notification_id` int(11) DEFAULT NULL,
   `user_id` int(11) DEFAULT NULL,
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=115 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  PRIMARY KEY (`id`),
+  KEY `index_user_notifications_on_notification_id_and_user_id` (`notification_id`,`user_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -310,12 +325,14 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `index_users_on_email` (`email`),
   UNIQUE KEY `index_users_on_reset_password_token` (`reset_password_token`),
-  UNIQUE KEY `index_users_on_confirmation_token` (`confirmation_token`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+  UNIQUE KEY `index_users_on_confirmation_token` (`confirmation_token`),
+  KEY `index_users_on_neighborhood_id_and_org_id` (`neighborhood_id`,`org_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `users_followers` (
   `user_id` int(11) DEFAULT NULL,
-  `follower_id` int(11) DEFAULT NULL
+  `follower_id` int(11) DEFAULT NULL,
+  KEY `index_users_followers_on_user_id_and_follower_id` (`user_id`,`follower_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `volunteer_match_metadata` (
@@ -361,7 +378,8 @@ CREATE TABLE `volunteer_matches` (
   `state` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `latitude` float DEFAULT NULL,
   `longitude` float DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `index_volunteer_matches_on_vm_id` (`vm_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO schema_migrations (version) VALUES ('20110724194133');
@@ -485,3 +503,5 @@ INSERT INTO schema_migrations (version) VALUES ('20131129000000');
 INSERT INTO schema_migrations (version) VALUES ('20140117050509');
 
 INSERT INTO schema_migrations (version) VALUES ('20140207041648');
+
+INSERT INTO schema_migrations (version) VALUES ('20140606032047');
