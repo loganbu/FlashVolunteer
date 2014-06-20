@@ -8,12 +8,11 @@ namespace :fv do
 
     desc "Make city names friendly"
     task :friendly_names => :environment do
-      Neighborhood.all.each do |n|
-        if (n.city_friendly == nil || n.name_friendly == nil)
+      Neighborhood.where('city_friendly=? or name_friendly=?', nil, nil).limit(100).each do |n|
+          Rails.logger.info("Updating #{n.name}")
           n.city_friendly = friendly_name(n.city)
           n.name_friendly = friendly_name(n.name)
           n.save!
-        end
       end
     end
 end
