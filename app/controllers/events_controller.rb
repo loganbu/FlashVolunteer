@@ -72,7 +72,7 @@ class EventsController < ApplicationController
   end
 
   def in
-    @neighborhood = Neighborhood.where('(name_friendly=? and city_friendly=?) or (name=? and city=?)', params[:neighborhood], params[:city], params[:neighborhood], params[:city])
+    @neighborhood = Neighborhood.where('(name_friendly=? and city_friendly=?) or (name=? and city=?)', params[:neighborhood], params[:city], params[:neighborhood], params[:city]).first
 
     if @neighborhood
       cookies['preferred_neighborhood'] = @neighborhood.id
