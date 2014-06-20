@@ -38,14 +38,6 @@ class Neighborhood < ActiveRecord::Base
     center.x
   end
 
-  def city_friendly
-    friendly_name(city)
-  end
-
-  def name_friendly
-    friendly_name(name)
-  end
-
   def zoom
     13
   end

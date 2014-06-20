@@ -146,6 +146,8 @@ CREATE TABLE `neighborhoods` (
   `city` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `county` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `center` point DEFAULT NULL,
+  `name_friendly` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `city_friendly` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   SPATIAL KEY `index_neighborhoods_on_region` (`region`)
 ) ENGINE=MyISAM AUTO_INCREMENT=1306 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -505,3 +507,7 @@ INSERT INTO schema_migrations (version) VALUES ('20140117050509');
 INSERT INTO schema_migrations (version) VALUES ('20140207041648');
 
 INSERT INTO schema_migrations (version) VALUES ('20140606032047');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620033947');
+
+INSERT INTO schema_migrations (version) VALUES ('20140620034741');

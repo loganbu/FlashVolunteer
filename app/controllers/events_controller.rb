@@ -72,10 +72,7 @@ class EventsController < ApplicationController
   end
 
   def in
-    @neighborhood = Neighborhood.all.find do |neighborhood|
-      (neighborhood.name_friendly.casecmp(params[:neighborhood])==0 && neighborhood.city_friendly.casecmp(params[:city])==0) ||
-          (neighborhood.name.casecmp(params[:neighborhood])==0 && neighborhood.city.casecmp(params[:city])==0) #back-compat urls
-    end
+    @neighborhood = Neighborhood.where('(name_friendly=? and city_friendly=?) or (name=? and city=?)', params[:neighborhood], params[:city], params[:neighborhood], params[:city])
 
     if @neighborhood
       cookies['preferred_neighborhood'] = @neighborhood.id
