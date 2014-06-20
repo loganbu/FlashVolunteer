@@ -1,4 +1,11 @@
 namespace :fv do
+
+    def friendly_name(str)
+      str.gsub(/[^\w\s_-]+/, '')
+      .gsub(/(^|\b\s)\s+($|\s?\b)/, '\\1\\2')
+      .gsub(/\s+/, '_')
+    end
+
     desc "Make city names friendly"
     task :friendly_names => :environment do
       Neighborhood.all.each do |n|
