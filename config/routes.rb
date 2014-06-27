@@ -153,6 +153,8 @@ Flashvolunteer::Application.routes.draw do
   match 'sadface' => 'home#sadface'
   match 'error' => 'home#error'
   match 'leaderboard' => 'neighborhoods#leaderboard'
+  match 'managers' => 'home#volunteer_managers'
+  match 'faq_managers' => 'home#volunteer_managers_faq'
 
   match '/:location' => 'events#featured', :as => 'hub'
 end
