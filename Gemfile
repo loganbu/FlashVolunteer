@@ -20,7 +20,7 @@ gem 'tlsmail'
 # DatePicker
 gem 'jquery_datepicker'
 # Export to iCal
-gem 'icalendar'
+gem 'icalendar', '~> 1.5'
 # Not sure why directly gem'd
 gem 'nokogiri', '= 1.5.9'
 # Advanced querying for records
