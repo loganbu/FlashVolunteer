@@ -72,10 +72,7 @@ class EventsController < ApplicationController
   end
 
   def in
-    @neighborhood = Neighborhood.all.find do |neighborhood|
-      (neighborhood.name_friendly.casecmp(params[:neighborhood])==0 && neighborhood.city_friendly.casecmp(params[:city])==0) ||
-          (neighborhood.name.casecmp(params[:neighborhood])==0 && neighborhood.city.casecmp(params[:city])==0) #back-compat urls
-    end
+    @neighborhood = Neighborhood.where('(name_friendly=? and city_friendly=?) or (name=? and city=?)', params[:neighborhood], params[:city], params[:neighborhood], params[:city]).first
 
     if @neighborhood
       cookies['preferred_neighborhood'] = @neighborhood.id
@@ -153,6 +150,7 @@ class EventsController < ApplicationController
   end
 
   def hackoutdatetime(start_date, hashSet)
+    return hashSet if start_date == nil
     # Because there is no good DateTime picker, we are using a stupid field in the :params
     # for the start date... this needs to be removed for the update_attributes call below.
     # Then, we need to update the year/month/date fields ourselves, as a string format.
@@ -205,13 +203,13 @@ class EventsController < ApplicationController
 
     set_page_title
 
-    if params[:event][:website] != '' && !(params[:event][:website].starts_with?('http://') || params[:event][:website].starts_with?('https://'))
+    if params[:event][:website] != nil &&  params[:event][:website] != '' && !(params[:event][:website].starts_with?('http://') || params[:event][:website].starts_with?('https://'))
       params[:event][:website] = "http://#{params[:event][:website]}"
     end
 
     respond_to do |format|
       if @event.update_attributes(params_to_use)
-        format.html { redirect_to(@event, :notice => "Event was successfully updated. Consider <a href='javascript:revealModal(\"contact_users\")'>contacting the volunteers</a> if they need to be notified of the change.".html_safe) }
+        format.html { redirect_to(@event, :notice => 'Event was successfully updated. Consider contacting the volunteers if they need to be notified of the change.') }
         format.xml  { head :ok }
       else
         format.html { render :action => 'edit' }
@@ -225,7 +223,7 @@ class EventsController < ApplicationController
     @event = Event.includes(:participants).find(params[:id])
     message = params[:message]
 
-    @event.participants.includes(:notification_preferences).each do |p|
+    @event.participants.each do |p|
       if p.notification_preferences.where(:name => 'organizer_broadcast').count > 0
         if Rails.env.production?
           # send the e-mail

@@ -19,6 +19,21 @@
       ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
       var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
     })();
+    <!-- UserVoice JavaScript SDK (only needed once on a page) -->
+    (function(){var uv=document.createElement('script');uv.type='text/javascript';uv.async=true;uv.src='//widget.uservoice.com/lXYSV5w6ft8zTkgrphrRg.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(uv,s)})()
+
+    UserVoice = window.UserVoice || [];
+    UserVoice.push(['showTab', 'classic_widget', {
+        mode: 'feedback',
+        primary_color: '#cc6d00',
+        link_color: '#007dbf',
+        forum_id: 249043,
+        tab_label: 'feedback',
+        tab_color: '#00cc52',
+        tab_position: 'middle-left',
+        tab_inverted: false
+    }]);
+
   </script>
 </head>
 <body>

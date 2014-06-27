@@ -1,11 +1,10 @@
-<div class="modalDialog" id="<%= id %>">
-     <div class="modalBackground">&nbsp;</div>
-     <div class="modalContainer">
-         <div class="modal">
-             <div class="modalTop"><a href="javascript:hideModal('<%= id %>')">[X]</a></div>
-             <div class="modalBody">
-                 <%= yield :dialog %>
-             </div>
-         </div>
-     </div>
+<div class="modal hide fade" role="dialog" id="<%= id %>">
+   <div class="modal-header">
+     <h3><%= title %></h3>
+   </div>
+
+  <%= yield :body_and_footer %>
+
+  <% # TODO: RAILS 4.0 - content_for :body_and_footer, flush: true do ... %>
+  <% @view_flow.set(:body_and_footer, "") %>
  </div>

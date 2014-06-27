@@ -68,3 +68,7 @@ h3 {
     font-size: 125%;
     @include border-radius(2px);
 }
+
+img.medium_space {
+  padding: 30px;
+}
