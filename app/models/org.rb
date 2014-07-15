@@ -15,4 +15,20 @@ class Org < User
   def self.xml(entity)
     entity.to_xml(:methods => [:categories, :avatar_url])
   end
+
+  def admin?(user)
+    (admins.where{id == user.id}.length > 0)
+  end
+
+  def participations
+    Participation.joins(:event).where('events.creator_id = ?', self.id)
+  end
+
+  def hours_volunteered_for_org
+    participations.sum(:hours_volunteered)
+  end
+
+  def past_volunteers
+    participations.map(&:user).uniq(&:id)
+  end
 end

@@ -20,11 +20,8 @@ class Ability
         other == user && user.type != 'Org'
       end
       can :manage, Org do |other|
-        # Allow the org user to manage itself
-        (other == user && user.type == 'Org' ||
-         # Allow the org's admins to manage the org
-         other.admins.where{id == user.id}.length > 0
-	)
+        # Allow the org login AND the org's admins to manage the org
+        other == user || other.admin?(user)
       end
 
       can :manage, Event do |event|
