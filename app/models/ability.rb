@@ -15,12 +15,13 @@ class Ability
 
       cannot :see_profile, [User, Org] # Assume the user isn't the same, the :manage below takes care of overriding this
 
-      # Only the owning user is allowed to manager their own org/user profile
       can :manage, User do |other|
+        # Only the owning user is allowed to manager their own user profile
         other == user && user.type != 'Org'
       end
       can :manage, Org do |other|
-        other == user && user.type == 'Org'
+        # Allow the org login AND the org's admins to manage the org
+        other == user || other.admin?(user)
       end
 
       can :manage, Event do |event|
