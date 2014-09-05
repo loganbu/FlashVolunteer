@@ -180,11 +180,12 @@ if Rails.env.development?
     event.name = e[:name]
     neighborhood_info = random_neighborhood
     possible_participants = User.all
+    possible_org_owners = Org.all
     event.start = Time.now + about_a_month
-    event.user = possible_participants.delete(possible_participants.sample)
+    event.user = possible_org_owners.sample
     event.end = event.start + Random.rand(1..5)
     event.description = random_description
-    event.participants = possible_participants.sample(Random.rand(0..5))
+    event.participants = possible_participants.sample(Random.rand(1..5))
     event.skills = Skill.all.sample(Random.rand(1..10))
     event.neighborhood = Neighborhood.contains(neighborhood_info['WKT'])
     event.zip = neighborhood_info['zip']
