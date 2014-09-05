@@ -3,8 +3,8 @@ class Orgs::DashboardController < ApplicationController
 
   def show
     @org = Org.find(params[:id])
-    @totalhours = @org.hours_volunteered_for_org;
-    @totalvolunteersthismonth = @org.past_volunteers.count;
+    @total_hours = @org.hours_volunteered_for_org
+    @total_volunteers = @org.past_volunteers.count
     authorize_org_profile(@org)
 
     respond_to do |format|

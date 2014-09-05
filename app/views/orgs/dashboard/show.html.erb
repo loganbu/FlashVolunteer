@@ -1,6 +1,6 @@
 <%= content_for :right_split do %>
 <p class="bold">DASHBOARD</p>
-<p><%= h(@totalhours) %></p>
-<p>That's <%= (@totalhours.to_f/@totalvolunteersthismonth).round(1) =%> hours per volunteer!</p>
+<p><%= @total_hours %> hours have been volunteered</p>
+<p>That's <%= (@total_hours.to_f/@total_volunteers).round(1) %> hours per volunteer!</p>
 <% end %>
 <%= render :partial => 'users/shared/me', :locals => { :links => "orgs/org_profile_links" } %>
