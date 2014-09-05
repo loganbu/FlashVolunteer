@@ -26,7 +26,7 @@ gem 'nokogiri', '= 1.5.9'
 # Advanced querying for records
 gem "squeel"
 # Good admin interface to the backend
-gem 'rails_admin'
+gem 'rails_admin', '= 0.4.9'
 # API
 gem 'grape'
 
