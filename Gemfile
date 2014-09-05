@@ -39,8 +39,9 @@ gem 'uglifier'
 gem 'yui-compressor'
 
 group :assets do
+    gem 'sass', '~> 3.2'
     gem 'sass-rails', '~> 3.2'
-    gem 'compass'
+    gem 'compass', '~> 0.12'
 end
 
 gem 'aws-sdk'
