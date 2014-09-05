@@ -83,7 +83,7 @@ Devise.setup do |config|
   # able to access the website for two days without confirming his account,
   # access will be blocked just in the third day. Default is 0.days, meaning
   # the user cannot access the website without confirming his account.
-  config.allow_unconfirmed_access_for = 2.weeks
+  config.allow_unconfirmed_access_for = 0.days
   config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
@@ -91,7 +91,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :rememberable
   # The time the user will be remembered without asking for credentials again.
-  config.remember_for = 6.weeks
+  config.remember_for = 6.months
 
   # If true, a valid remember token can be re-used between multiple browsers.
   # config.remember_across_browsers = true
