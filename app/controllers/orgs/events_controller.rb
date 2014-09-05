@@ -6,7 +6,7 @@ class Orgs::EventsController < ApplicationController
     authorize_org_profile(@org)
 
     @past = Event.past.created_by_user(@org).paginate(:page => params[:page], :per_page => params[:per_page] || 5)
-    @upcoming =  Event.past.created_by_user(@org).paginate(:page => params[:page], :per_page => params[:per_page] || 5)
+    @upcoming =  Event.upcoming.created_by_user(@org).paginate(:page => params[:page], :per_page => params[:per_page] || 5)
 
     respond_to do |format|
       format.html # show.html.erb
