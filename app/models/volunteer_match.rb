@@ -248,7 +248,7 @@ class VolunteerMatch < ActiveRecord::Base
         'Nonce="' + nonce + '", Created="' + creation_time + '"')
 
     res = Net::HTTP.new(url.host, url.port).start { |http| http.request(req) }
-    raise "HTTP error code #{res.code} body #{res.body}" unless res.code == '200'
+    raise "HTTP error code #{res.code} body #{res.body} headers #{res.to_hash.inspect}" unless res.code == '200'
     OpenStruct.new(JSON.parse res.body)
   end
 end
