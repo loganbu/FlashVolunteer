@@ -1,3 +1,5 @@
+require 'newrelic_rpm'
+
 namespace :fv do
     desc 'Update the hubs in the SQL database'
     task :update_hubs => :environment do
@@ -8,6 +10,9 @@ namespace :fv do
 
     desc 'Update the neighborhoods in the SQL database'
     task :update_neighborhoods, [:state] => :environment do |t, args|
+      ::NewRelic::Agent.manual_start
+      include ::NewRelic::Agent::Instrumentation::ControllerInstrumentation
+
       Dir.glob("#{Rails.root}/db/data/neighborhoods/#{args[:state]}*").each do |filename|
         contents = File.read(filename)
         geom = RGeo::GeoJSON.decode(contents, :json_parser => :json)
@@ -25,7 +30,7 @@ namespace :fv do
     desc 'Import VM events'
     task :import_vm => :environment do
       Hub.all.sample(5).each do |hub|
-        VolunteerMatch.update(5, 1, hub.city_state)
+        VolunteerMatch.delay.update(5, 1, hub.city_state)
       end
     end
 
