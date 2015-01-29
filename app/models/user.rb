@@ -116,7 +116,7 @@ class User < ActiveRecord::Base
 
     affiliation.moderator if affiliation
   end
-  
+
   def should_show_wizard?
     false
   end
@@ -124,7 +124,7 @@ class User < ActiveRecord::Base
   def password_match?
     self.errors[:password] << 'password not match' if password != password_confirmation
     self.errors[:password] << 'you must provide a password' if password.blank?
-    password == password_confirmation and !password.blank?  
+    password == password_confirmation and !password.blank?
   end
 
   def create_associated_org(org_email, org_name)
@@ -144,9 +144,9 @@ class User < ActiveRecord::Base
     end
     user
   end
-  
+
   def password_required?
-    if password.nil? && password_confirmation.nil?
+    if password.to_s.empty? && password_confirmation.to_s.empty?
       false
     else
       true
