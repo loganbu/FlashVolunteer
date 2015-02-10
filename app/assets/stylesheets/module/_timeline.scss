@@ -1,8 +1,8 @@
 /* Bootstrap overrides */
 
-.container .row-fluid > [class*="span"] {
+/*.container .row-fluid > [class*="span"] {
   margin-left: 0px;
-}
+}*/
 
 .tl-item .span1 {
     width: 5.333333333%;
@@ -17,7 +17,7 @@
 }
 
 /********************
- frame 
+ frame
  ********************/
 
 .tl-rightcol, .tl-leftcol {
@@ -56,7 +56,7 @@
 }
 
 /***********************
- Separator 
+ Separator
  ***********************/
 
 .tl-separator {
@@ -75,8 +75,8 @@
     height: 3px;
 }
 
-/******************** 
- beak 
+/********************
+ beak
  ********************/
 
 .tl-item-beak
@@ -96,7 +96,7 @@
 }
 
 /****************
- header 
+ header
  ****************/
 .h1-override{
     padding-bottom:5px;
