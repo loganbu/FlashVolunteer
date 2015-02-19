@@ -1,3 +1,12 @@
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link type="text/css" href="css/bootstrap.min.css" />
+    <link type="text/css" href="css/bootstrap-timepicker.min.css" />
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-2.2.2.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
+</head>
+
 <%= form_for(@event, :html => {:id => "form", :name => "event_form"}) do |f| %>
     <% if can? :manage, :rails_admin %>
         <div class="row-fluid">
@@ -67,7 +76,7 @@
             })
         </script>
     </div>
-    <!--
+
     <div class="row-fluid">
         <div class="span2">
             <div class="pull-right"><%= f.label :address, "address", :for=>"event_street" %></div>
@@ -159,12 +168,70 @@
             $("#moved-marker-text").addClass("hidden");
         }
     </script>
-  -->
     <div class="row-fluid">
         <div class="span2">
-            <div class="pull-right"><%= f.label :start, "event date"%></div>
+            <div class="pull-right"><%= f.label :start, "start date"%></div>
         </div>
-        <div class="span5">
+        <div class="span3">
+          <!-- Day Start -->
+            <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+            <div class="field_with_errors">
+            <% end %>
+                <input id="startdate" type="text" class="full" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
+            <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+            </div>
+            <% end %>
+
+            <script type="text/javascript">70%
+                $(document).ready(function() { $('#enddate').datepicker({dateFormat: 'm/d/yy'})});
+            </script>
+        </div>
+        <div class="span3">
+          <!-- Time Start -->
+          <div class="input-append bootstrap-timepicker">
+              <input id="timepicker2" type="text" class="input-small">
+              <span class="add-on">
+                  <i class="icon-time"></i>
+              </span>
+          </div>
+
+          <script type="text/javascript">
+              $('#timepicker2').timepicker({
+                  minuteStep: 1,
+                  template: 'modal',
+                  appendWidgetTo: 'body',
+                  showSeconds: false,
+                  showMeridian: false,
+                  defaultTime: false
+              });
+          </script>
+
+          </div>
+        <div class="span4">
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+              Dropdown
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">repeat everyday</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">repeat every weekday</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">repeat every Wednesday</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">repeast every 14th</a></li>
+              <li role="presentation"><a role="menuitem" tabindex="-1" href="#">repeast every 2nd Wednesday</a></li>
+            </ul>
+          </div>
+        </div>
+
+    </div>
+    <div class="row-fluid">
+        <div class="span2">
+            <div class="pull-right"><%= f.label :max_users, "end date" %>
+
+            </div>
+        </div>
+        <div class="span3">
+        <!-- Day End -->
             <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
             <div class="field_with_errors">
             <% end %>
@@ -174,142 +241,31 @@
             <% end %>
 
             <script type="text/javascript">
-                $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
+                $(document).ready(function() { $('#enddate').datepicker({dateFormat: 'm/d/yy'})});
             </script>
         </div>
-        <div class="span5">
-            <div class="row-fluid">
-                <div class="span12">
-                    <div id="time_slider"></div>
-                    <div style="position: relative">
-                        <div id="time_start" style="position: absolute; width: 55px"></div>
-                        <div id="time_end" style="position: absolute; width: 55px"></div>
-                    </div>
-
-                    <input id="event_start_1i" type="hidden" name="event[start(1i)]" value="2012" />
-                    <input id="event_start_2i" type="hidden" name="event[start(2i)]" value="1" />
-                    <input id="event_start_3i" type="hidden" name="event[start(3i)]" value="1" />
-                    <input id="event_start_4i" type="hidden" name="event[start(4i)]" value="<%= @event.start ? @event.start.hour : 9 %>" />
-                    <input id="event_start_5i" type="hidden" name="event[start(5i)]" value="<%= @event.start ? @event.start.min : 0 %>" />
-
-                    <input id="event_end_1i" type="hidden" name="event[end(1i)]" value="2012" />
-                    <input id="event_end_2i" type="hidden" name="event[end(2i)]" value="1" />
-                    <input id="event_end_3i" type="hidden" name="event[end(3i)]" value="1" />
-                    <input id="event_end_4i" type="hidden" name="event[end(4i)]" value="<%= @event.end && @event.start ? @event.end > @event.start ? 24 : @event.end.hour : 15 %>" />
-                    <input id="event_end_5i" type="hidden" name="event[end(5i)]" value="<%= @event.end ? @event.end.min : 0 %>" />
-
-
-                    <script type="text/javascript">
-                        $(document).ready(function() {
-                            var minuteStep = 15;
-                            var maxValue = 24*4;
-                            var startHour = <%= @event.start ? @event.start.hour : 9 %>;
-                            var startMinute =  parseInt(<%= @event.start ? @event.start.min : 0 %>) / minuteStep;
-                            <%
-                                end_hour = 15
-                                if @event.end && @event.start
-                                    if @event.end.day != @event.start.day
-                                        end_hour = 24
-                                    else
-                                        end_hour = @event.end.hour
-                                    end
-                                end
-                            %>
-
-                            var endHour = <%= end_hour %>;
-                            <%
-                                end_minute = 0
-                                if @event.end && end_hour != 24
-                                    end_minute = @event.end.min
-                                end
-                            %>
-                            var endMinute = parseInt(<%= end_minute %>) / minuteStep;
-
-                            var initialValues = [startHour*4+startMinute, endHour*4+endMinute];
-
-                            var percentOffset = 9;
-                            var setTimes = function(ui) {
-                                var getValueOfHandle = function(displayElement, hourElement, minuteElement, index) {
-                                    var ampm = (ui.values[index] < 48) ? "AM" : "PM";
-                                    var saveHour = parseInt(ui.values[index]/4);
-                                    var displayHour = saveHour%12 || 12;
-                                    var saveMinute = (ui.values[index]%(60/minuteStep))*minuteStep;
-                                    var displayMinute = (saveMinute < 10) ? "0" + saveMinute : saveMinute;
-                                    displayElement.text(displayHour + ":" + displayMinute + " " + ampm);
-
-                                    hourElement.attr('value', saveHour);
-                                    minuteElement.attr('value', saveMinute);
-                                }
-                                getValueOfHandle($("#time_start"), $("#event_start_4i"), $("#event_start_5i"), 0);
-                                getValueOfHandle($("#time_end"), $("#event_end_4i"),  $("#event_end_5i"), 1);
-                            }
-
-                            $('#time_slider').slider({
-                                max: maxValue,
-                                min: 0,
-                                range: true,
-                                values: initialValues,
-                                slide: function(ev, ui) {
-                                    var whichElement = (ui.value == ui.values[0]) ? $("#time_start") : $("#time_end");
-                                    var offset = percentOffset;
-                                    if (ui.value != ui.values[0]) {
-                                        offset = 0;
-                                    }
-                                    setTimes(ui);
-                                    whichElement.css("left", ((ui.value/maxValue)*100-offset) + "%");
-                                },
-                                create: function(event, ui) {
-                                    setTimes({values: initialValues});
-                                    $("#time_start").css("left", (initialValues[0]/maxValue)*100-percentOffset + "%");
-                                    $("#time_end").css("left", (initialValues[1]/maxValue)*100+"%");
-                                }
-                            });
-                        });
-                    </script>
-                </div>
-            </div>
+        <div class="span3">
+        <!-- Time End -->
+        <div class="input-append bootstrap-timepicker">
+            <input id="timepicker2" type="text" class="input-small">
+            <span class="add-on">
+                <i class="icon-time"></i>
+            </span>
         </div>
-    </div>
-    <div class="row-fluid">
-        <div class="span2">
-            <div class="pull-right"><%= f.label :max_users, "max users" %></div>
+
+        <script type="text/javascript">
+            $('#timepicker2').timepicker({
+                minuteStep: 1,
+                template: 'modal',
+                appendWidgetTo: 'body',
+                showSeconds: true,
+                showMeridian: false,
+                defaultTime: false
+            });
+        </script>
         </div>
-        <div class="span10">
-            <div id="max_users_slider">
+        <div class="span4">
 
-            </div>
-            <div style="position: relative">
-                <div id="max_users" style="position: absolute; width: 55px"></div>
-            </div>
-            <%= f.hidden_field :max_users, :id => "event_max_users", :value => @event.max_users || 0 %>
-            <script type="text/javascript">
-              $(document).ready(function() {
-                  $('#max_users_slider').slider({
-                      min: 0,
-                      max: 100,
-                      step: 1,
-                      create: function(ev, ui) {
-                          $("#max_users").css("left", "0%");
-                          var max_users = <%= @event.max_users || 0 %>;
-                          if (max_users > 0) {
-                              $("#max_users").text(max_users);
-                          } else {
-                              $("#max_users").text("Unlimted");
-                          }
-                      },
-
-                      slide: function(ev, ui) {
-                          $("#max_users").css("left", ui.value + "%");
-                          if (ui.value > 0) {
-                              $("#max_users").text(ui.value);
-                          } else {
-                              $("#max_users").text("Unlimted");
-                          }
-                          $("#event_max_users").val(ui.value);
-                      }
-                  });
-              });
-            </script>
         </div>
     </div>
     <div class="row-fluid">
@@ -332,8 +288,32 @@
       <div class="span2">
         <div class="pull-right"><%= f.label :skills, "categories" %></div>
       </div>
-      <div class="span10">
-        <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>
+      <div class="span5">
+        <select style="width: 100%; height: 100px;" multiple class="form-control">
+          <option>Advocacy | Human Rights</option>
+          <option>Animals</option>
+          <option>Anti-Bullying</option>
+          <option>Arts | Culture</option>
+          <option>Children | Youth</option>
+          <option>Community</option>
+          <option>Computers | Technology</option>
+          <option>Disabled</option>
+          <option>Disaster Relief</option>
+          <option>Education | Literacy</option>
+          <option>Environment</option>
+          <option>LGBT+</option>
+          <option>Health | Medicine</option>
+          <option>Homeless | Housing</option>
+          <option>Hunger</option>
+          <option>Immigrants | Refugees</option>
+          <option>Justice | Legal</option>
+          <option>Media | Brodcasting</option>
+          <option>Politics</option>
+          <option>Sports | Recreation</option>
+      </select>
+      </div>
+      <div class="span5">
+        <button type="submit" href="#" style="width:100%; height:50px" class="btn btn-primary" formnovalidate><%= @event.new_record? ? "create event" : "save" %></button>
       </div>
     </div>
     <% if current_user.affiliates.any? || (can? :manage, :affiliates) %>
@@ -346,10 +326,4 @@
       </div>
     </div>
     <% end %>
-    <div class="row-fluid">
-        <div class = "span2">&nbsp;</div>
-        <div class = "span10">
-            <button type="submit" href="#" class="btn btn-primary pull-right" formnovalidate><%= @event.new_record? ? "create event" : "save" %></button>
-        </div>
-    </div>
 <% end %>
