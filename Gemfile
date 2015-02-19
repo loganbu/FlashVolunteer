@@ -44,7 +44,7 @@ group :assets do
     gem 'compass', '~> 0.12'
 end
 
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem "paperclip", '~> 3.4'
 
 gem "omniauth", '=1.1.3'
