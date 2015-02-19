@@ -1,12 +1,3 @@
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <link type="text/css" href="css/bootstrap.min.css" />
-    <link type="text/css" href="css/bootstrap-timepicker.min.css" />
-    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-2.2.2.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap-timepicker.min.js"></script>
-</head>
-
 <%= form_for(@event, :html => {:id => "form", :name => "event_form"}) do |f| %>
     <% if can? :manage, :rails_admin %>
         <div class="row-fluid">
@@ -182,21 +173,21 @@
             </div>
             <% end %>
 
-            <script type="text/javascript">70%
-                $(document).ready(function() { $('#enddate').datepicker({dateFormat: 'm/d/yy'})});
+            <script type="text/javascript">
+                $(document).ready(function() { $('#startdate').datepicker({dateFormat: 'm/d/yy'})});
             </script>
         </div>
         <div class="span3">
           <!-- Time Start -->
           <div class="input-append bootstrap-timepicker">
-              <input id="timepicker2" type="text" class="input-small">
+              <input id="starttime" type="text" class="input-small">
               <span class="add-on">
                   <i class="icon-time"></i>
               </span>
           </div>
 
           <script type="text/javascript">
-              $('#timepicker2').timepicker({
+              $('#starttime').timepicker({
                   minuteStep: 1,
                   template: 'modal',
                   appendWidgetTo: 'body',
@@ -229,7 +220,7 @@
             <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
             <div class="field_with_errors">
             <% end %>
-                <input id="enddate" type="text" class="full" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
+                <input id="enddate" type="text" class="full" name="enddate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
             <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
             </div>
             <% end %>
@@ -241,14 +232,14 @@
         <div class="span3">
         <!-- Time End -->
         <div class="input-append bootstrap-timepicker">
-            <input id="timepicker2" type="text" class="input-small">
+            <input id="endtime" type="text" class="input-small">
             <span class="add-on">
                 <i class="icon-time"></i>
             </span>
         </div>
 
         <script type="text/javascript">
-            $('#timepicker2').timepicker({
+            $('#endtime').timepicker({
                 minuteStep: 1,
                 template: 'modal',
                 appendWidgetTo: 'body',
