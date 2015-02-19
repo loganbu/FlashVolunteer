@@ -196,7 +196,7 @@
           </div>
 
           <script type="text/javascript">
-              $('#timepicker3').timepicker({
+              $('#timepicker2').timepicker({
                   minuteStep: 1,
                   template: 'modal',
                   appendWidgetTo: 'body',
@@ -229,7 +229,7 @@
             <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
             <div class="field_with_errors">
             <% end %>
-                <input id="startdate" type="text" class="full" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
+                <input id="enddate" type="text" class="full" name="startdate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
             <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
             </div>
             <% end %>
