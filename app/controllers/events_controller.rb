@@ -15,7 +15,7 @@ class EventsController < ApplicationController
     headers['Content-Type'] = 'text/calendar; charset=UTF-8'
     render :text => @calendar.to_ical
   end
- 
+
   def set_page_title
     @title = @event.name if @event
   end
@@ -28,7 +28,7 @@ class EventsController < ApplicationController
     @map_center = current_location
 
     @title = "Volunteer Opportunities in #{current_location.name}"
-    
+
     respond_to do |format|
       format.html
       format.xml  { render :xml => Event.xml(@events) }
@@ -65,7 +65,7 @@ class EventsController < ApplicationController
     end
 
     @title = "Featured Volunteer Opportunities in #{current_location.name}"
-    
+
     respond_to do |format|
       format.html { render 'featured.html.erb', :layout => 'alt_layout.html.erb' }
     end
@@ -93,10 +93,10 @@ class EventsController < ApplicationController
 
   def print
     @event = Event.find(params[:id])
-    
+
     respond_to do |format|
       format.html { render 'print.html.erb', :layout => 'blank' }
-      format.pdf do 
+      format.pdf do
         render :pdf => @event.name
       end
     end
@@ -104,7 +104,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.includes(:affiliates).find(params[:id])
-    
+
     set_page_title
 
     respond_to do |format|
@@ -120,7 +120,7 @@ class EventsController < ApplicationController
   def new
     @event = Event.new
     @event.affiliates << current_user.affiliates
-    
+
     set_page_title
 
     respond_to do |format|
@@ -149,18 +149,19 @@ class EventsController < ApplicationController
     set_page_title
   end
 
-  def hackoutdatetime(start_date, hashSet)
+  def hackoutdatetime(start_date, end_date, hashSet)
     return hashSet if start_date == nil
     # Because there is no good DateTime picker, we are using a stupid field in the :params
     # for the start date... this needs to be removed for the update_attributes call below.
     # Then, we need to update the year/month/date fields ourselves, as a string format.
     start_date = Date.strptime(start_date, '%m/%d/%Y')
+    end_date = Date.strptime(end_date, '%m/%d/%Y')
     hashSet['start(1i)']= start_date.year < 100 ? (start_date.year+2000).to_s : start_date.year.to_s
     hashSet['start(2i)']=start_date.month.to_s
     hashSet['start(3i)']=start_date.day.to_s
-    hashSet['end(1i)']=start_date.year < 100 ? (start_date.year+2000).to_s : start_date.year.to_s
-    hashSet['end(2i)']=start_date.month.to_s
-    hashSet['end(3i)']=start_date.day.to_s
+    hashSet['end(1i)']=end_date.year < 100 ? (end_date.year+2000).to_s : end_date.year.to_s
+    hashSet['end(2i)']=end_date.month.to_s
+    hashSet['end(3i)']=end_date.day.to_s
     hashSet
   end
 
@@ -170,7 +171,7 @@ class EventsController < ApplicationController
     end
 
     begin
-      params_to_use = hackoutdatetime(params[:startdate], params[:event])
+      params_to_use = hackoutdatetime(params[:startdate], params[:enddate], params[:event])
       @event = Event.new(params_to_use)
     rescue ArgumentError
       params[:event].delete('startdate')
@@ -195,7 +196,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     begin
-      params_to_use = hackoutdatetime(params[:startdate], params[:event])
+      params_to_use = hackoutdatetime(params[:startdate], params[:enddate], params[:event])
     rescue ArgumentError
       params_to_use = params[:event].delete('startdate')
       @event.start = nil
@@ -265,10 +266,10 @@ class EventsController < ApplicationController
   def search
     per_page = params[:per_page] || 5
     proximity = params[:proximity] || ((params[:lat] || params[:long]) ? 5 : 100)
-    
+
     lat_long = (params[:latitude] && params[:longitude]) ? [params[:latitude].to_f, params[:longitude].to_f] : [47.618777, -122.33139]
     @events = Event.where('1=1').near(lat_long, proximity)
-    
+
     id_array = params[:id] && params[:id].split(',') || []
     categories_array = params[:categories] && params[:categories].split(',') || []
 
@@ -326,5 +327,5 @@ class EventsController < ApplicationController
       format.xml  { render :xml => Event.xml(@events) }
       format.json { render :json => Event.json(@events) }
     end
-  end  
+  end
 end
