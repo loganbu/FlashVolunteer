@@ -217,11 +217,11 @@
         </div>
         <div class="span3">
         <!-- Day End -->
-            <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+            <% if (!@event.errors.empty? && (@event.errors.include?(:end) || @event.errors.include?(:end))) %>
             <div class="field_with_errors">
             <% end %>
-                <input id="enddate" type="text" class="full" name="enddate" value="<%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %>" />
-            <% if (!@event.errors.empty? && (@event.errors.include?(:start) || @event.errors.include?(:end))) %>
+                <input id="enddate" type="text" class="full" name="enddate" value="<%= @event.end.strftime('%-m/%-d/%Y') unless !@event.end %>" />
+            <% if (!@event.errors.empty? && (@event.errors.include?(:end) || @event.errors.include?(:end))) %>
             </div>
             <% end %>
 
