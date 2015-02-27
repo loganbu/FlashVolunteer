@@ -149,19 +149,27 @@ class EventsController < ApplicationController
     set_page_title
   end
 
-  def hackoutdatetime(start_date, end_date, hashSet)
+  def hackoutdatetime(start_date, end_date, start_time, end_time, hashSet)
     return hashSet if start_date == nil
     # Because there is no good DateTime picker, we are using a stupid field in the :params
     # for the start date... this needs to be removed for the update_attributes call below.
     # Then, we need to update the year/month/date fields ourselves, as a string format.
     start_date = Date.strptime(start_date, '%m/%d/%Y')
     end_date = Date.strptime(end_date, '%m/%d/%Y')
+
+    start_time = DateTime.strptime(start_time,'%l:%M%P')
+    end_time = DateTime.strptime(end_time,'%l:%M%P')
+
     hashSet['start(1i)']= start_date.year < 100 ? (start_date.year+2000).to_s : start_date.year.to_s
     hashSet['start(2i)']=start_date.month.to_s
     hashSet['start(3i)']=start_date.day.to_s
+    hashSet['start(4i)']= start_time.hour.to_s
+    hashSet['start(5i)']= start_time.minute.to_s
     hashSet['end(1i)']=end_date.year < 100 ? (end_date.year+2000).to_s : end_date.year.to_s
     hashSet['end(2i)']=end_date.month.to_s
     hashSet['end(3i)']=end_date.day.to_s
+    hashSet['end(4i)']=end_time.hour.to_s
+    hashSet['end(5i)']=end_time.minute.to_s
     hashSet
   end
 
@@ -171,7 +179,7 @@ class EventsController < ApplicationController
     end
 
     begin
-      params_to_use = hackoutdatetime(params[:startdate], params[:enddate], params[:event])
+      params_to_use = hackoutdatetime(params[:startdate], params[:enddate], params[:starttime], params[:endtime], params[:event])
       @event = Event.new(params_to_use)
     rescue ArgumentError
       params[:event].delete('startdate')
@@ -196,7 +204,7 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
 
     begin
-      params_to_use = hackoutdatetime(params[:startdate], params[:enddate], params[:event])
+      params_to_use = hackoutdatetime(params[:startdate], params[:enddate], params[:starttime], params[:endtime], params[:event])
     rescue ArgumentError
       params_to_use = params[:event].delete('startdate')
       @event.start = nil
