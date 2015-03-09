@@ -3,6 +3,6 @@
 	skills ||= []
 %>
 
-<% skills_array = Skill.order("offset asc").all.map { |s| [s.name, s.offset] } %>
+<% skills_array = Skill.order("offset asc").all.map { |s| [s.name, s.id] } %>
 
 <%= f.select(:skill_ids, options_for_select(skills_array, skills.map(&:offset)), {}, {:multiple => true, class: "form-control", :style => "width:100%; height:100px;"}) %>
