@@ -288,28 +288,7 @@
         <div class="pull-right"><%= f.label :skills, "categories" %></div>
       </div>
       <div class="span5">
-        <select style="width: 100%; height: 100px;" multiple class="form-control">
-          <option>Advocacy | Human Rights</option>
-          <option>Animals</option>
-          <option>Anti-Bullying</option>
-          <option>Arts | Culture</option>
-          <option>Children | Youth</option>
-          <option>Community</option>
-          <option>Computers | Technology</option>
-          <option>Disabled</option>
-          <option>Disaster Relief</option>
-          <option>Education | Literacy</option>
-          <option>Environment</option>
-          <option>LGBT+</option>
-          <option>Health | Medicine</option>
-          <option>Homeless | Housing</option>
-          <option>Hunger</option>
-          <option>Immigrants | Refugees</option>
-          <option>Justice | Legal</option>
-          <option>Media | Brodcasting</option>
-          <option>Politics</option>
-          <option>Sports | Recreation</option>
-      </select>
+        <%= render(:partial => 'skills/form', :locals => { :entity => "event", :f => f, :skills => @event.skills }) %>
       </div>
       <div class="span5">
         <button type="submit" href="#" style="width:100%; height:50px" class="btn btn-primary" formnovalidate><%= @event.new_record? ? "create event" : "save" %></button>
