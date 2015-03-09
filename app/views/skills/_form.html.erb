@@ -1,41 +1,8 @@
 <%
 	entity ||= "user"
 	skills ||= []
-	button_size ||= :large
-
 %>
-<% Skill.order("offset asc").all.each_with_index do |s, i| %>
-    <%= check_box_tag("#{entity}[skill_ids][#{i}]", s.id, skills.include?(s), :name=>"#{entity}[skill_ids][]", :class=>"hide") %>
-    <%
-		button_pixels = 0
-		image_location = ''
-		button_class_type = ''
-		selected_class_type = ''
 
-		case button_size
-			when :medium
-    			button_pixels = 36
-    			image_location = '/assets/badges_medium.png'
-    			button_class_type = "medium_badge"
-    			selected_class_type = "selectable_option_med"
-    		when :large
-    			button_pixels = 64
-    			image_location = '/assets/badges_large.png'
-    			button_class_type = "large_badge"
-    			selected_class_type = "selectable_option"
-    	end
-    %>
-    <div class="<%=selected_class_type %> <%= "option_selected" if skills.include?(s) %>" id="skill_<%= s.id %>">
-        <label onclick="toggleImage(<%= s.id %>)" for="<%= "#{entity}_skill_ids_#{i}"%>" title="<%= s.name %>">	
-            <span class="<%=button_class_type%>" style="background:url(<%=image_location%>) 0px <%= -button_pixels*s.offset %>px;">&nbsp;</span>
-        </label>
-        <div style="clear: left">
-            <%= s.name %>
-        </div>
-    </div>
-<% end %>
-<script type="text/javascript">
-    function toggleImage(id) {
-        $('#skill_'+id).toggleClass('option_selected');
-    }
-</script>
+<% skills_array = Skill.order("offset asc").all.map { |s| [s.name, s.offset] } %>
+
+<%= f.select(:skill_ids, options_for_select(skills_array, skills.map(&:offset)), {}, {:multiple => true, class: "form-control", :style => "width:100%; height:100px;"}) %>
