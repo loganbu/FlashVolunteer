@@ -44,8 +44,7 @@ group :assets do
     gem 'compass', '~> 0.12'
 end
 
-gem 'aws-sdk'
-gem 'aws-s3'
+gem 'aws-sdk', '< 2.0'
 gem "paperclip", '~> 3.4'
 
 gem "omniauth", '=1.1.3'
@@ -74,6 +73,9 @@ end
 group :production do
     gem 'newrelic_rpm'
     # http://www.imagemagick.com/www/binary-releases.html#windows
+    # https://github.com/rmagick/rmagick/wiki/Installing-on-Windows
+    # LKG is 6.7.9.9 - http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/binaries/
+    # http://ftp.sunet.se/pub/multimedia/graphics/ImageMagick/binaries/ImageMagick-6.7.7-0-Q16-windows-dll.exe
     # http://stackoverflow.com/questions/4451213/ruby-1-9-2-how-to-install-rmagick-on-windows
     gem "rmagick" 
     gem "unicorn"
