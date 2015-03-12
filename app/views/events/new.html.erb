@@ -1,5 +1,5 @@
 <% if @event.errors.any? %>
-    <div class="alert alert-error">  
+    <div class="alert alert-error">
         <a class="close" data-dismiss="alert" href="#">×</a>
         <h4 class="alert-heading">Error!</h4>
         <p>
@@ -11,5 +11,7 @@
         </p>
     </div>
 <% end %>
-<h3>create an event</h3>
+<div class="span12">
+  <h3>create an event</h3>
+</div>
 <%= render 'form' %>
