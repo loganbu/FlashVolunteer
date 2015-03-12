@@ -3,6 +3,7 @@ class Event < ActiveRecord::Base
   belongs_to :user, :foreign_key => 'creator_id'
   validates :creator_id, :presence => { message: 'Somebody must create this event' }
   validates :name, :presence => { message: 'The event must have a title' }
+  validates_length_of :name, :maximum => 255, :message => 'The event title must be less than 255 characters'
   validates :street, :presence => { message: 'The event must have an address' }
   validates :start, :presence => { message: 'The event must have a start time' }
   validates :start, :date => { after: Time.now, message: 'The event must begin in the future' }, :on => :create
