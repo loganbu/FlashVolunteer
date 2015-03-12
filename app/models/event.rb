@@ -9,6 +9,7 @@ class Event < ActiveRecord::Base
   validates :start, :date => { after: Time.now, message: 'The event must begin in the future' }, :on => :create
   validates :end, :presence => { message: 'The event must have an end time' }, :date  => { after: :start, message: 'The event must end after the start time' }
   validates :description, :presence => { message: 'The event must have a description' }
+  validates_length_of :description, :maximum => 1200, :message => 'The event description must be less than 1200 characters'
   has_many :participations
   accepts_nested_attributes_for :participations
 
