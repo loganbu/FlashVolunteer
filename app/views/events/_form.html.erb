@@ -254,7 +254,7 @@
         </div>
         <div class="span2">
           <div class="pull-left">
-            <input type="checkbox" name="check" id="check" onClick="validate()" <%= "checked" if @event.max_users > 0 unless !@event.max_users %>/>
+            <input type="checkbox" name="check" id="check" onClick="validate()" <%= "checked" if @event.max_users > 0 unless !@event.max_users %>/>&nbsp;
             <script type="text/javascript">
               document.addEventListener("DOMContentLoaded", function() {
                 if (document.getElementById('check').checked) {
