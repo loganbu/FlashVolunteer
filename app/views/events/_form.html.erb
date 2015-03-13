@@ -290,6 +290,12 @@
       </div>
     </div>
     <div class="row-fluid">
+      <div class="span2"></div>
+      <div class="span10">
+          <span class="pull-right">You have <span id="description_words_left">2000</span> words left in the description text area.</span>
+      </div>
+    </div>
+    <div class="row-fluid">
         <div class="span2">
             <div class="pull-right"><%= f.label :special_instructions, "special instructions" %></div>
         </div>
@@ -298,24 +304,44 @@
         </div>
         <script>
         $(document).ready(function() {
-          $("#event_special_instructions").on('keyup', function() {
-            var words = this.value.match(/\S+/g).length;
-
+          $("#event_special_instructions").on('change keyup paste', function() {
+            var words = 0;
+            if (this.value != null && this.value.length > 1) {
+              words = this.value.match(/\S+/g).length;
+            }
             if (words > 2000) {
               var trimmed = $(this).val().split(/\s+/, 2000).join(" ");
               $(this).val(trimmed + " ");
             }
+            // Prevents having a -1 show up
+            if (this.value != null && this.value.length > 1) {
+              words = this.value.match(/\S+/g).length;
+            }
+            $("#si_words_left").text(2000-words);
           });
-          $("#event_description").on('keyup', function() {
-            var words = this.value.match(/\S+/g).length;
-
+          $("#event_description").on('change keyup paste', function() {
+            var words = 0;
+            if (this.value != null && this.value.length > 1) {
+              words = this.value.match(/\S+/g).length;
+            }
             if (words > 2000) {
               var trimmed = $(this).val().split(/\s+/, 2000).join(" ");
               $(this).val(trimmed + " ");
             }
+            // Prevents having a -1 show up
+            if (this.value != null && this.value.length > 1) {
+              words = this.value.match(/\S+/g).length;
+            }
+            $("#description_words_left").text(2000-words);
           });
         });
         </script>
+    </div>
+    <div class="row-fluid">
+      <div class="span2"></div>
+      <div class="span10">
+          <span class="pull-right">You have <span id="si_words_left">2000</span> words left in the special instructions text area.</span>
+      </div>
     </div>
     <div class="row-fluid">
       <div class="span2">
