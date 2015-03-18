@@ -1,8 +1,8 @@
 <h3>our vision</h3>
-<p>Everyone engaged in volunteer service.</p>          
-<h3>our mission</h3>              
-<p>Flash Volunteer seeks to build community and increase volunteerism through the creation of a sustainable, user-friendly online platform to connect, inspire and mobilize volunteers to effect meaningful change on a neighborhood level. </p>            
-<p>We are a 501(c)3 nonprofit organization and the code we are developing is open source.</p>         
+<p>Everyone engaged in volunteer service.</p>
+<h3>our mission</h3>
+<p>Flash Volunteer seeks to build community and increase volunteerism through the creation of a sustainable, user-friendly online platform to connect, inspire and mobilize volunteers to effect meaningful change on a neighborhood level. </p>
+<p>We are a 501(c)3 nonprofit organization and the code we are developing is open source.</p>
 <h3>board of directors</h3>
 <div class="row">
     <% [
@@ -36,10 +36,10 @@
 					                                               		  :url => person["url"], :urltext => person["urltext"] }) %>
 		</div>
 	<% if(i%3 == 2) %>
-		<div class="clearfix"></div>				
+		<div class="clearfix"></div>
 	<% end %>
 	<% end %>
-</div> 
+</div>
 
 
 
@@ -77,13 +77,13 @@
             Hash["name" => "janis lee", "subtext" => "design director", "image" => "board/janis.jpg"],
             Hash["name" => "kenny lee", "subtext" => "product management director", "image" => "board/kenny.png"],
             Hash["name" => "philip ries", "subtext" => "developer", "image" => "board/phillip.png"],
-			Hash["name" => "tony he", "subtext" => "developer", "image" => "board/tony.png"],
-			Hash["name" => "tyler walker", "subtext" => "developer", "image" => "default_user_profile.png"],
-			Hash["name" => "conner brennick", "subtext" => "developer", "image" => "default_user_profile.png"],
-			Hash["name" => "des marks", "subtext" => "developer", "image" => "default_user_profile.png"],
-			Hash["name" => "taryn burns", "subtext" => "developer", "image" => "default_user_profile.png"],
-			Hash["name" => "tucker wilde", "subtext" => "developer", "image" => "default_user_profile.png"],
-			Hash["name" => "mark aldham", "subtext" => "developer", "image" => "default_user_profile.png"],
+			      Hash["name" => "tony he", "subtext" => "developer", "image" => "board/tony.png"],
+			      Hash["name" => "tyler walker", "subtext" => "developer", "image" => "default_user_profile.png"],
+			      Hash["name" => "conner brennick", "subtext" => "developer", "image" => "board/conner.jpg"],
+			      Hash["name" => "des marks", "subtext" => "developer", "image" => "board/des.jpg"],
+			      Hash["name" => "taryn burns", "subtext" => "developer", "image" => "board/taryn.jpg"],
+			      Hash["name" => "tucker wilde", "subtext" => "developer", "image" => "board/tucker.jpg"],
+			      Hash["name" => "mark aldham", "subtext" => "developer", "image" => "default_user_profile.png"],
                ].each_with_index do |person, i| %>
                 <div class="clearfix">
                  <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
