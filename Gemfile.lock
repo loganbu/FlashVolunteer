@@ -301,7 +301,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-mysql2spatial-adapter
-  aws-sdk
+  aws-sdk (< 2.0)
   bullet
   cancan (= 1.6.9)
   classy_enum (~> 2.0.3)
