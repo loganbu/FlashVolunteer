@@ -92,10 +92,9 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_empty_password
-    if session[:original_user] and session[:"warden.user.user.key"]
-      @user = User.find(session[:original_user])
-      if @user.encrypted_password == ""
-        flash[:password] = @user.id
+    if current_user
+      if current_user.encrypted_password == ""
+        flash[:password] = current_user.id
       end
     end
   end
