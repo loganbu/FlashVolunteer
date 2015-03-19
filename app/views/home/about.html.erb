@@ -11,7 +11,7 @@
             Hash["name" => "holly wyrwich", "subtext" => "secretary", "image" => "board/holly.jpg"],
             Hash["name" => "alex sunell", "subtext" => "treasurer", "image" => "board/alex.png"],
             Hash["name" => "logan bueshcing", "subtext" => "director", "image" => "board/logan.jpg"],
-            Hash["name" => "tyler walker", "subtext" => "director", "image" => "default_user_profile.png"],
+            Hash["name" => "tyler walker", "subtext" => "director", "image" => "board/tyler.jpg"],
        ].each_with_index do |person, i| %>
         <div class="span4 clearfix">
             <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
