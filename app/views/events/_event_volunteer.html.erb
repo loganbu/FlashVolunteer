@@ -7,14 +7,13 @@
     <% if @event.participants.count > 0 %>
         <ul class="unstyled">
         <% @event.participants.each do |p| %>
-        <% hoursVolunteered = Participation.where('user_id = ?', p.id).where('event_id = ?', @event.id).sum(:hours_volunteered) %>
             <li>
                 <div class="row-fluid">
                     <div class="span1">
                         <%= photo_link(p.avatar, :thumb, user_url(p)) %>
                     </div>
                     <div class="span11">
-                        <%= link_to(p.name, user_url(p)) %> - <%= hoursVolunteered %> hours logged
+                        <%= link_to(p.name, user_url(p)) %> - <%= p.hours_volunteered(@event) %> hours logged
                     </div>
                 </div>
             </li>
