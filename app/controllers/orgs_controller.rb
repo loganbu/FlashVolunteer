@@ -12,7 +12,7 @@ class OrgsController < ApplicationController
 
   def dashboard
     @test = "hello"
-    
+    @dashboard_view = params[:dashboard_view] ||= "overview"
     respond_to do |format|
       format.html
       format.xml  { render :xml => @org }
