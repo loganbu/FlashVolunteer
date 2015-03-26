@@ -84,4 +84,22 @@
             </nav>
         </div>
     </div>
+    <% if current_user.type == "Org" %>
+      <div style="background-color:green;">
+          <div class="container">
+              <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </a>
+              <nav class="nav-collapse fixExpandMobile">
+                  <ul class="nav">
+                      <li><%= link_to "PAGE", '#' %></li>
+                      <li><%= link_to "DASHBOARD", '#' %></li>
+                      <li><%= link_to "SETTINGS", '#' %></li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+    <% end %>
 </header>
