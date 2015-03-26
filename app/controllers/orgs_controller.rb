@@ -10,6 +10,15 @@ class OrgsController < ApplicationController
     end
   end
 
+  def dashboard
+    @test = "hello"
+    
+    respond_to do |format|
+      format.html
+      format.xml  { render :xml => @org }
+    end
+  end
+
   def set_page_title
     @title = ("#{@org.name} | Flash Volunteer") if (@org && @org.name)
   end
