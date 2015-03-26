@@ -84,7 +84,7 @@
             </nav>
         </div>
     </div>
-    <% if current_user.type == "Org" %>
+    <% if current_user.present? and current_user.type == "Org" %>
       <div style="background-color:green;">
           <div class="container">
               <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
