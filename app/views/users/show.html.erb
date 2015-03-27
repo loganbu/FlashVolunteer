@@ -57,27 +57,27 @@ $(function () {
                         <%
                             website = @user.website.match(/^http:/)? @user.website : "http://" + @user.website
                         %>
-                        <div><p><%= @user.vision%></p></div>
-                        <div><p><%= @user.mission%></p></div>
-                        <div><p><%= link_to(@user.website, website) %></p></div>
+                        <div><p>Visit <%= @user.name%> at <%= link_to(@user.website, website) %></p></div>
                     <% end %>
                      <div class="row-fluid bold">
-                        <div class = "span2 t1h-stats">
-                            <h4><%= @nHoursVolunteered %></h4>
+                        <div class = "span3 t1h-stats">
                             <p>hours</p>
+                            <h4><%= @nHoursVolunteered %></h4>
                         </div>
-                        <div class = "span2 t1h-stats">
-                            <h4><%= @nEventsCreated %></h4>
+                        <div class = "span3 t1h-stats">
                             <p>created</p>
+                            <h4><%= @nEventsCreated %></h4>
                         </div>
-                        <div class = "span2 t1h-stats">
-                            <h4><%= @nEventsComingUp %></h4>
+                        <div class = "span3 t1h-stats">
                             <p>upcoming</p>
+                            <h4><%= @nEventsComingUp %></h4>
                         </div>
-                        <div class = "span2 t1h-stats">
-                            <h4><%= @nEventsInPast %></h4>
+                      <div class="row-fluid bold">
+                        <div class = "span3 t1h-stats">
                             <p>past</p>
+                            <h4><%= @nEventsInPast %></h4>
                         </div>
+                      </div>
                     </div>
                 </div>
             </div>

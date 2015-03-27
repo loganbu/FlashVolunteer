@@ -12,18 +12,6 @@ def friendly_name(str)
      .gsub(/\s+/, '_')
 end 
 
-def page_body_type
-  if !user_signed_in?
-    ' style=padding-top:65px;'
-  else
-    if current_user.type == "Org"
-      ' style=padding-top:105px;'
-    else current_user.type == "User"
-      ' style=padding-top:65px;'
-    end
-  end
-end
-
 def new_event_link
   if !user_signed_in?
     "<p>You need to #{link_to('sign in', new_user_session_url)} to create an event.</p>".html_safe
