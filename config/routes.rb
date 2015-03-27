@@ -3,6 +3,7 @@ require_dependency 'api_v1'
 Flashvolunteer::Application.routes.draw do
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   mount Api_v1::API => '/'
+
   devise_for :users, :module => 'users'
 
   devise_scope :user do
@@ -13,11 +14,6 @@ Flashvolunteer::Application.routes.draw do
     get 'users/sign_in/third_party', :to => 'users/sessions#third_party', :as => 'third_party_sign_in'
     post 'users/sign_in/:provider', :to => 'users/sessions#mobile'
   end
-  
-  # Org VM Routes
-  # This will allow /orgs/dashboard, /orgs/dashboard/events, /orgs/dashboard/export,
-  # /orgs/dashboard/help, /orgs/dashboard/import, /orgs/dashboard/overview, /orgs/dashboard/volunteers
-  get '/orgs/dashboard/(:dashboard_view)', :to => 'orgs#dashboard', :as => 'org_dashboard'
 
   resources :afg_opportunities, :only => [:index] do
     member do
