@@ -16,10 +16,10 @@
 
 <%= form_for(@org) do |f| %>
   <div class="row-fluid">
-      <div class="span1">
+      <div class="span2">
           <div class="pull-right"><%= f.label :name, "name"%></div>
       </div>
-      <div class="span5">
+      <div class="span4">
           <%= f.text_field :name, :class=>"full"  %>
       </div>
       <div class="span1">&nbsp;</div>
@@ -30,63 +30,64 @@
           <%= f.file_field :avatar %>
       </div>
   </div>
+  <br>
   <div class="row-fluid">
-      <div class="span1">
+      <div class="span2">
           <div class="pull-right"><%= f.label :email, "email"%></div>
       </div>
-      <div class="span5">
+      <div class="span4">
           <%= f.text_field :email, :class=>"full"  %>
       </div>
       <div class="span1">
           <div class="pull-right"><%= f.label :neighborhood, "based in" %></div>
       </div>
-      <div class="span5">
+      <div class="span4">
           <%= f.collection_select(:neighborhood_id, Neighborhood.order("name asc"), :id, :name, {:include_blank => "anywhere in king county" },  :class=>"full") %>
       </div>
   </div>
   <div class="row-fluid">
-      <div class="span1">
+      <div class="span2">
           <div class="pull-right"><%= f.label :mission, "mission"%></div>
       </div>
-      <div class="span11">
+      <div class="span9">
           <%= f.text_field :mission, :class=>"full" %>
       </div>
   </div>
   <div class="row-fluid">
-      <div class="span1">
+      <div class="span2">
           <div class="pull-right"><%= f.label :vision, "vision"%></div>
       </div>
-      <div class="span11">
+      <div class="span9">
           <%= f.text_field :vision, :class=>"full"  %>
       </div>
   </div>
   <div class="row-fluid">
-      <div class="span1">
+      <div class="span2">
           <div class="pull-right"><%= f.label :website, "website" %></div>
       </div>
-      <div class="span11">
+      <div class="span9">
           <%= f.text_field :website, :class=>"full" %>
       </div>
   </div>
   <div class="row-fluid">
-      <div class="span1">
+      <div class="span2">
           <div class="pull-right"><%= f.label :description, "description" %></div>
       </div>
-      <div class="span11">
+      <div class="span9">
           <%= f.text_area :description, :class=>"full" %>
       </div>
   </div>
   <div class="row-fluid">
-      <div class="span1">
+      <div class="span2">
           <div class="pull-right"><%= f.label :categories, "categories", :for=>"email" %></div>
       </div>
-      <div class="span11">
+      <div class="span9">
           <%= render(:partial => 'skills/form', :locals => { :entity => "org", :f => f, :skills => @org.skills }) %>
       </div>
   </div>
   <div class="row-fluid">
     <div class = "span1">&nbsp;</div>
-    <div class = "span11">
+    <div class = "span10">
         <button type="submit" href="#" class="btn btn-primary pull-right"><%= yield :button %></button>  
     </div>
   </div>
