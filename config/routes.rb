@@ -1,7 +1,6 @@
 require_dependency 'api_v1'
 
 Flashvolunteer::Application.routes.draw do
-  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   mount Api_v1::API => '/'
 
   devise_for :users, :module => 'users'
