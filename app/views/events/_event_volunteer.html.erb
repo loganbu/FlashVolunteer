@@ -1,7 +1,7 @@
 <% unless @event.is_vm %>
     <div class="row-fluid">
         <div class="span12">
-            <h3>event volunteers (<%= @event.participants.count %>) </h3>
+            <h3>event volunteers (<%= @event.participants.count %>)</h3>
         </div>
     </div>
     <% if @event.participants.count > 0 %>
@@ -9,11 +9,11 @@
         <% @event.participants.each do |p| %>
             <li>
                 <div class="row-fluid">
-                    <div class="span2">
+                    <div class="span1">
                         <%= photo_link(p.avatar, :thumb, user_url(p)) %>
                     </div>
-                    <div class="span10" style="padding-top:6px">
-                        <%= link_to(p.name, user_url(p)) %>
+                    <div class="span11">
+                        <%= link_to(p.name, user_url(p)) %> - <%= p.hours_volunteered(@event) %> hours logged
                     </div>
                 </div>
             </li>

@@ -14,7 +14,14 @@
 </div>
 <% end  %>
 <p>
-    <%= @event.start.strftime('%-m/%-d/%Y') unless !@event.start %> | <%= @event.start.strftime('%l:%M%p') unless !@event.start %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
+    <% if @event.start and @event.end %>
+      <% if @event.start.strftime('%-m/%-d/%Y') != @event.end.strftime('%-m/%-d/%Y') %>
+        <%= @event.start.strftime('%-m/%-d/%Y') %> - <%= @event.end.strftime('%-m/%-d/%Y') %>
+      <% else %>
+        <%= @event.start.strftime('%-m/%-d/%Y') %>
+      <% end %>
+      | <%= @event.start.strftime('%l:%M%p') %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
+    <% end %>
 </p>
 <div class="row-fluid">
     <div class="span12">

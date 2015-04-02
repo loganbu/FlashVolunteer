@@ -17,9 +17,14 @@
 			<div class="event-title">
 				<%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
 			</div>
+			<% if current_user.type == "Org" %>
+				<div class="pull-right">
+					<%= Participation.where('event_id = ?', event.id).sum(:hours_volunteered) %> total hours volunteered
+				</div>
+			<% end %>
 
 			<div class="row-fluid">
-				<div class="span12">
+				<div class="span8">
 					<span><%= event.start.to_date.to_formatted_s(:rfc822) %>   |</span>
 					<span class="pull-center"><%= event.start.strftime('%l:%M%p') %> - <%= event.end.strftime('%l:%M%p') %></span>
 				</div>
