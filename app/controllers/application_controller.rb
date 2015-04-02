@@ -91,6 +91,14 @@ class ApplicationController < ActionController::Base
     cookies['location'] = params[:location] unless params[:location] == nil
   end
 
+  def check_for_empty_password
+    if current_user
+      if current_user.encrypted_password == ""
+        flash[:password] = current_user.id
+      end
+    end
+  end
+
   def current_location
     hub = Hub.find_or_initialize_by_name(current_location_name)
     raise LocationNotFound.new(params[:location]) if params[:location] != nil && hub.new_record?
@@ -101,7 +109,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-    before_filter :create_action_and_controller, :set_current_location_name
+    before_filter :create_action_and_controller, :set_current_location_name, :check_for_empty_password
 
     def create_action_and_controller
       @current_action = action_name
