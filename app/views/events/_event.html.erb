@@ -17,7 +17,7 @@
 			<div class="event-title">
 				<%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
 			</div>
-			<% if current_user.type == "Org" %>
+			<% if user_signed_in? and current_user.type == "Org" %>
 				<div class="pull-right">
 					<%= Participation.where('event_id = ?', event.id).sum(:hours_volunteered) %> total hours volunteered
 				</div>
