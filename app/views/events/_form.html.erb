@@ -312,8 +312,8 @@
           var cs = $(this).val().length;
           $('#description_chars_left').text(2000 - cs);
           if(cs > 2000) {
-				  $(this).css("border", "1px solid red");
-				  document.getElementById("description_chars_left").style.color = 'red';
+			$(this).css("border", "1px solid red");
+		    document.getElementById("description_chars_left").style.color = 'red';
           } else {
 		  	$(this).css("border", "");
 			document.getElementById("description_chars_left").style.color = 'black';
