@@ -46,6 +46,22 @@
       </div>
   </div>
   <div class="row-fluid">
+    <div class="span2">
+        <div class="pull-right"><%= f.label :password, "password" %></div>
+    </div>
+    <div class="span9">
+      <%= f.password_field :password, :class=>"full" %>
+    </div>
+  </div>
+  <div class="row-fluid">
+    <div class="span2">
+        <div class="pull-right"><%= f.label :password_confirmation, "confirm password" %></div>
+    </div>
+    <div class="span9">
+      <%= f.password_field :password_confirmation, :class=>"full" %>
+    </div>
+  </div>
+  <div class="row-fluid">
       <div class="span2">
           <div class="pull-right"><%= f.label :mission, "mission"%></div>
       </div>
