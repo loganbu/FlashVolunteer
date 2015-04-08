@@ -57,9 +57,9 @@
             <%= f.text_field :hosted_by, :class=>"full ".concat(@event.hosted_by_user ? "hidden" : ""), :id => "someone_else"%>
         </div>
         <script type="text/javascript">
-            $(document).ready(function() {
-                $("#hosted_by_me").click(function() {
-                    $("#someone_else").addClass("hidden");
+           $(document).ready(function() {
+               $("#hosted_by_me").click(function() {
+                   $("#someone_else").addClass("hidden");
                     $("#someone_else").val("");
                 })
                 $("#hosted_by_someone").click(function() {
@@ -302,21 +302,22 @@
           $('#si_chars_left').text(2000 - cs);
           if(cs > 2000) {
             $(this).css("border", "1px solid red");
-			document.getElementById("si_chars_left").style.color = 'red';
-		  } else {
-		  	$(this).css("border", "");
-		  	document.getElementById("si_chars_left").style.color = 'black';
+            document.getElementById("si_chars_left").style.color = 'red';}
+          else {
+            $(this).css("border", "");
+            document.getElementById("si_chars_left").style.color = 'black';
           }
       });
       $("#event_description").on('change keyup paste', function() {
           var cs = $(this).val().length;
           $('#description_chars_left').text(2000 - cs);
           if(cs > 2000) {
-			$(this).css("border", "1px solid red");
-		    document.getElementById("description_chars_left").style.color = 'red';
-          } else {
-		  	$(this).css("border", "");
-			document.getElementById("description_chars_left").style.color = 'black';
+				    $(this).css("border", "1px solid red");
+				    document.getElementById("description_chars_left").style.color = 'red';
+          }
+          else {
+		  	    $(this).css("border", "");
+			      document.getElementById("description_chars_left").style.color = 'black';
           }
       });
       $("#event_special_instructions").change();
