@@ -29,8 +29,8 @@
 <h3>advisory board</h3>
  <div class="row">
 	 <% [
-			  Hash["name" => "brad wilke", "subtext" => "Flash Volunteer co-founder", "image" => "board/Brad.png"],
-			  Hash["name" => "kenny lee", "subtext" => "Flash Volunteer co-founder", "image" => "board/kenny.png"],
+        Hash["name" => "brad wilke", "subtext" => "Flash Volunteer co-founder", "image" => "board/Brad.png"],
+        Hash["name" => "kenny lee", "subtext" => "Flash Volunteer co-founder", "image" => "board/kenny.png"],
 		].each_with_index do |person, i| %>
 		<div class="span4 clearfix">
 			<%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
@@ -51,7 +51,7 @@
     <div class="span4">
         <div class="team-name"></div>
                 <% [
-                        Hash["name" => "charlie", "subtext" => "communications", "image" => "board/charlie.png",
+                       Hash["name" => "charlie", "subtext" => "communications", "image" => "board/charlie.png",
                              "urltext" => "who is charlie?", "url" => "http://blog.flashvolunteer.org/post/49490365908/if-you-have-ever-received-an-email-from-flash"],
                    ].each_with_index do |person, i| %>
                    <div class="clearfix">
@@ -66,8 +66,8 @@
 					Hash["name" => "brad wilke", "subtext" => "outreach", "image" => "board/Brad.png"],
                ].each_with_index do |person, i| %>
                 <div class="clearfix">
-						<%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
-                                                                               :url => person["url"], :urltext => person["urltext"] }) %>
+                  <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
+                                                                                :url => person["url"], :urltext => person["urltext"] }) %>
                 </div>
             <% end %>
     </div>
@@ -90,7 +90,7 @@
     Hash["name" => "mark aldham", "subtext" => "developer", "image" => "default_user_profile.png"],
        ].each_with_index do |person, i| %>
         <div class="span4 clearfix">
-            <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
+          <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
                                                                           :url => person["url"], :urltext => person["urltext"] }) %>
         </div>
      <% if(i%3 == 2) %>
