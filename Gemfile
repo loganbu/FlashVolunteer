@@ -38,6 +38,11 @@ gem 'hirefire-resource'
 gem 'uglifier'
 gem 'yui-compressor'
 
+
+# gems required to be exact version for ruby <2.0
+gem 'execjs', '<= 2.2'
+gem 'coffee-script-source', '<= 1.8'
+
 group :assets do
     gem 'sass', '~> 3.2'
     gem 'sass-rails', '~> 3.2'
