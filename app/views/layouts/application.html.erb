@@ -77,21 +77,6 @@
       <% if flash[:password] %>
         <% if current_user != nil %>
           <div class="alert alert-error">
-            <% if current_user.type == "Org" %>
-              <h4 class="alert-heading">Your organization has no password!</h4>
-              <p>
-                  <ul>
-                      <li>It appears that you have no password for your organization.
-                        If you don't create one, you will not be able to sign into your
-                        organization with it's email. Click 
-                        <% if current_user.type == "Org" %>
-                            <%= link_to "here", edit_org_url(current_user) %>
-                        <% else %>
-                            <%= link_to "here", edit_user_url(current_user) %>
-                        <% end %> to set your password!</li>
-                  </ul>
-              </p>
-            <% else %>
               <h4 class="alert-heading">You need to set your account password!</h4>
               <p>
                   <ul>
@@ -105,7 +90,6 @@
                         <% end %> to set your password!</li>
                   </ul>
               </p>
-            <% end %>
           </div>
         <% end %>
       <% end %>
