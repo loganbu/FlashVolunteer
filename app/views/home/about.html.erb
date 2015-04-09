@@ -6,17 +6,17 @@
 <h3>board of directors</h3>
 <div class="row">
     <% [
-            Hash["name" => "janis buesching", "subtext" => "president", "image" => "board/janis.jpg"],
-            Hash["name" => "ayesha ghaffar", "subtext" => "vice president", "image" => "board/ayesha.jpg"],
-            Hash["name" => "holly wyrwich", "subtext" => "secretary", "image" => "board/holly.jpg"],
-            Hash["name" => "alex sunell", "subtext" => "treasurer", "image" => "board/alex.png"],
-            Hash["name" => "brian nash", "subtext" => "director", "image" => "board/brian.png"],
-            Hash["name" => "logan buesching", "subtext" => "director", "image" => "board/logan.jpg"],
-            Hash["name" => "tyler walker", "subtext" => "director", "image" => "board/tyler.jpg"],
+          Hash["name" => "janis buesching", "subtext" => "president", "image" => "board/janis.jpg", "myurl" => "http://www.flashvolunteer.org/about"],
+          Hash["name" => "ayesha ghaffar", "subtext" => "vice president", "image" => "board/ayesha.jpg", "myurl" => "http://www.flashvolunteer.org/users/30373"],
+          Hash["name" => "holly wyrwich", "subtext" => "secretary", "image" => "board/holly.jpg", "myurl" => "http://www.flashvolunteer.org/users/31"],
+          Hash["name" => "alex sunell", "subtext" => "treasurer", "image" => "board/alex.png", "myurl" => "http://www.flashvolunteer.org/about"],
+          Hash["name" => "brian nash", "subtext" => "director", "image" => "board/brian.png", "myurl" => "http://www.flashvolunteer.org/users/41"],
+          Hash["name" => "logan buesching", "subtext" => "director", "image" => "board/logan.jpg", "myurl" => "http://www.flashvolunteer.org/users/1"],
+          Hash["name" => "tyler walker", "subtext" => "director", "image" => "board/tyler.jpg", "myurl" => "http://www.flashvolunteer.org/users/38231"],
        ].each_with_index do |person, i| %>
         <div class="span4 clearfix">
-            <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
-                                                                          :url => person["url"], :urltext => person["urltext"] }) %>
+            <%= link_to render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
+                                                                          :url => person["url"], :urltext => person["urltext"] }), person["myurl"] %>
         </div>
      <% if(i%3 == 2) %>
         <div class="clearfix"></div>
@@ -29,12 +29,12 @@
 <h3>advisory board</h3>
  <div class="row">
 	 <% [
-        Hash["name" => "brad wilke", "subtext" => "Flash Volunteer co-founder", "image" => "board/Brad.png"],
-        Hash["name" => "kenny lee", "subtext" => "Flash Volunteer co-founder", "image" => "board/kenny.png"],
-		].each_with_index do |person, i| %>
+             Hash["name" => "brad wilke", "subtext" => "Flash Volunteer co-founder", "image" => "board/Brad.png", "myurl" => "http://www.flashvolunteer.org/users/21"],
+             Hash["name" => "kenny lee", "subtext" => "Flash Volunteer co-founder", "image" => "board/kenny.png", "myurl" => "http://www.flashvolunteer.org/users/11"],
+	    ].each_with_index do |person, i| %>
 		<div class="span4 clearfix">
-			<%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
-					                                               		  :url => person["url"], :urltext => person["urltext"] }) %>
+			<%= link_to render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
+					                                               		  :url => person["url"], :urltext => person["urltext"] }), person["myurl"] %>
 		</div>
 	<% if(i%3 == 2) %>
 		<div class="clearfix"></div>
@@ -51,23 +51,23 @@
     <div class="span4">
         <div class="team-name"></div>
                 <% [
-                       Hash["name" => "charlie", "subtext" => "communications", "image" => "board/charlie.png",
-                             "urltext" => "who is charlie?", "url" => "http://blog.flashvolunteer.org/post/49490365908/if-you-have-ever-received-an-email-from-flash"],
+                        Hash["name" => "charlie", "subtext" => "communications", "image" => "board/charlie.png",
+								"urltext" => "who is charlie?", "url" => "http://blog.flashvolunteer.org/post/49490365908/if-you-have-ever-received-an-email-from-flash", "myurl" => "http://www.flashvolunteer.org/about"],
                    ].each_with_index do |person, i| %>
                    <div class="clearfix">
-                       <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
-                                                                                         :url => person["url"], :urltext => person["urltext"] }) %>
+                       <%=link_to render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
+                                                                                         :url => person["url"], :urltext => person["urltext"] }), person["myurl"] %>
                    </div>
                 <% end %>
     </div>
     <div class="span4">
         <div class="team-name"></div>
             <% [
-					Hash["name" => "brad wilke", "subtext" => "outreach", "image" => "board/Brad.png"],
+					Hash["name" => "brad wilke", "subtext" => "outreach", "image" => "board/Brad.png", "myurl" => "http://www.flashvolunteer.org/users/21"],
                ].each_with_index do |person, i| %>
                 <div class="clearfix">
-                  <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
-                                                                                :url => person["url"], :urltext => person["urltext"] }) %>
+						<%=link_to render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
+                                                                               :url => person["url"], :urltext => person["urltext"] }), person["myurl"]%>
                 </div>
             <% end %>
     </div>
@@ -76,22 +76,22 @@
 <h3>technical team</h3>
 <div class="row">
     <% [
-    Hash["name" => "logan buesching", "subtext" => "development director", "image" => "board/logan.jpg"],
-    Hash["name" => "janis buesching", "subtext" => "design director", "image" => "board/janis.jpg"],
-    Hash["name" => "ayesha ghaffar", "subtext" => "interaction designer", "image" => "board/ayesha.jpg"],
-    Hash["name" => "holly wyrwich", "subtext" => "content publisher", "image" => "board/holly.jpg"],
-    Hash["name" => "philip ries", "subtext" => "developer", "image" => "board/phillip.png"],
-    Hash["name" => "tony he", "subtext" => "developer", "image" => "board/tony.png"],
-    Hash["name" => "tyler walker", "subtext" => "developer", "image" => "board/tyler.jpg"],
-    Hash["name" => "conner brennick", "subtext" => "developer", "image" => "board/conner.jpg"],
-    Hash["name" => "des marks", "subtext" => "developer", "image" => "board/des.jpg"],
-    Hash["name" => "taryn burns", "subtext" => "developer", "image" => "board/taryn.jpg"],
-    Hash["name" => "tucker wilde", "subtext" => "developer", "image" => "board/tucker.jpg"],
-    Hash["name" => "mark aldham", "subtext" => "developer", "image" => "default_user_profile.png"],
+		Hash["name" => "logan buesching", "subtext" => "development director", "image" => "board/logan.jpg", "myurl" => "http://www.flashvolunteer.org/users/1"],
+		Hash["name" => "janis buesching", "subtext" => "design director", "image" => "board/janis.jpg", "myurl" => "http://www.flashvolunteer.org/users/about"],
+		Hash["name" => "ayesha ghaffar", "subtext" => "interaction designer", "image" => "board/ayesha.jpg","myurl" => "http://www.flashvolunteer.org/users/30373"],
+		Hash["name" => "holly wyrwich", "subtext" => "content publisher", "image" => "board/holly.jpg","myurl" => "http://www.flashvolunteer.org/users/31"],
+		Hash["name" => "philip ries", "subtext" => "developer", "image" => "board/phillip.png","myurl" => "http://www.flashvolunteer.org/users/28483"],
+		Hash["name" => "tony he", "subtext" => "developer", "image" => "board/tony.png","myurl" => "http://www.flashvolunteer.org/users/28153"],
+		Hash["name" => "tyler walker", "subtext" => "developer", "image" => "board/tyler.jpg","myurl" => "http://www.flashvolunteer.org/users/38231"],
+		Hash["name" => "conner brennick", "subtext" => "developer", "image" => "board/conner.jpg","myurl" => "http://www.flashvolunteer.org/users/39171"],
+		Hash["name" => "des marks", "subtext" => "developer", "image" => "board/des.jpg","myurl" => "http://www.flashvolunteer.org/users/40771"],
+		Hash["name" => "taryn burns", "subtext" => "developer", "image" => "board/taryn.jpg","myurl" => "http://www.flashvolunteer.org/users/39401"],
+		Hash["name" => "tucker wilde", "subtext" => "developer", "image" => "board/tucker.jpg","myurl" => "http://www.flashvolunteer.org/users/39691"],
+		Hash["name" => "mark aldham", "subtext" => "developer", "image" => "default_user_profile.png","myurl" => "http://www.flashvolunteer.org/about"],
        ].each_with_index do |person, i| %>
         <div class="span4 clearfix">
-          <%= render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
-                                                                          :url => person["url"], :urltext => person["urltext"] }) %>
+            <%=link_to render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
+                                                                          :url => person["url"], :urltext => person["urltext"] }), person["myurl"]%>
         </div>
      <% if(i%3 == 2) %>
         <div class="clearfix"></div>
