@@ -183,6 +183,9 @@
           </div>
 
           <script type="text/javascript">
+            $('#startdate').on('change', function() {
+              $('#enddate').val($(this).val()); // Sets end date to start date on start date change
+            });
             $(document).ready(function() {
               $('#starttime').timepicker({
                   minuteStep: 1,
@@ -194,6 +197,7 @@
               });
               $('#starttime').on('changeTime', function() {
                 $('#starttime').val($(this).val());
+                $('#endtime').val($(this).val()); // Sets end time to start time on start time change
               });
             });
           </script>
@@ -244,7 +248,7 @@
         });
         </script>
         </div>
-        <div class="span2">
+        <div class="span3">
           <div class="pull-left">
             <input type="checkbox" name="check" id="check" onClick="validate()" <%= "checked" if @event.max_users > 0 unless !@event.max_users %>/>&nbsp;
             <script type="text/javascript">
@@ -265,10 +269,10 @@
             </script>
           </div>
           <div>
-            <%= f.label :max_users, "limit users?" %>
+            <%= f.label :max_users, "limit volunteer sign-ups?" %>
           </div>
         </div>
-        <div class="span2">
+        <div class="span1">
           <%= f.number_field :max_users, :class=>"full hidden", :id=>"max_users"%>
         </div>
     </div>
