@@ -1,14 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require 'bootstrap-sass'
 
 
 if defined?(Bundler)
-  # If you precompile assets before deploying to production, use this line
-  # Bundler.require *Rails.groups(:assets => %w(development test))
-  # If you want your assets lazily compiled in production, use this line
-  Bundler.require(:default, :assets, Rails.env)
+  # Require the gems listed in Gemfile, including any gems
+  # you've limited to :test, :development, or :production.
+  Bundler.require(*Rails.groups)
 end
 
 module Flashvolunteer
@@ -29,7 +27,7 @@ module Flashvolunteer
     # config.plugins = [ :exception_notification, :ssl_requirement, :all ]
 
     # Activate observers that should always be running.
-    config.active_record.observers = :user_observer, :prop_observer, :participation_observer, :checkin_observer, :event_observer
+    # config.active_record.observers = :user_observer, :prop_observer, :participation_observer, :checkin_observer, :event_observer
 
     config.active_record.schema_format = :sql
 
