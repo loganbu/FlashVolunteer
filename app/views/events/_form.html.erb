@@ -183,6 +183,7 @@
           </div>
 
           <script type="text/javascript">
+          $(document).ready(function() {
             $('#startdate').on('change', function() {
               $('#enddate').val($(this).val()); // Sets end date to start date on start date change
             });
@@ -200,6 +201,7 @@
                 $('#endtime').val($(this).val()); // Sets end time to start time on start time change
               });
             });
+          });
           </script>
 
           </div>
