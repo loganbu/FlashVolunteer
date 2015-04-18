@@ -60,7 +60,7 @@ class EventsController < ApplicationController
     @events = Event.includes(:neighborhood).near_user(current_location).featured.upcoming
     @current_sponsor = current_sponsor
 
-    if @events.featured.count == 0
+    if @events.featured.count(:all) == 0
       @events = Event.near_user(current_location).upcoming.paginate(:page => params[:page], :per_page=> 6)
     end
 
