@@ -1,53 +1,53 @@
 ruby '1.9.3'
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.18'
+gem 'rails', '4.2.1'
 gem 'json', '~> 1.7.7'
 
 # Pagination
 gem 'will_paginate', '~> 3.0'
 # Authentication
-gem 'devise', '= 2.2.3'
+gem 'devise', '~> 3.4'
 # Authorization
 gem 'cancan', '= 1.6.9'
 # Geocoding
 gem 'geocoder', '~> 1.2'
 gem 'geoip', '~> 1.4'
 # JQuery
-gem 'jquery-rails', '~> 2.2'
+gem 'jquery-rails', '~> 4.0' 
 # Not sure why directly gem'd
 gem 'tlsmail'
 # DatePicker
-gem 'jquery_datepicker'
+# gem 'jquery_datepicker'
 # Export to iCal
 gem 'icalendar', '~> 1.5'
 # Not sure why directly gem'd
-gem 'nokogiri', '= 1.5.9'
+gem 'nokogiri', '~> 1.6'
 # Advanced querying for records
 gem "squeel"
 # Good admin interface to the backend
-gem 'rails_admin', '= 0.4.9'
+gem 'rails_admin', '~> 0.6'
 # API
 gem 'grape'
 
 # Delayed Jobs
-gem 'delayed_job_active_record', '~> 0.4'
+gem 'delayed_job_active_record', '~> 4.0'
 gem 'foreman'
 gem 'hirefire-resource'
 
 gem 'uglifier'
 gem 'yui-compressor'
 
+gem 'tzinfo-data'
+
 
 # gems required to be exact version for ruby <2.0
 gem 'execjs', '<= 2.2'
 gem 'coffee-script-source', '<= 1.8'
 
-group :assets do
-    gem 'sass', '~> 3.2'
-    gem 'sass-rails', '~> 3.2'
-    gem 'compass', '~> 0.12'
-end
+gem 'sass', '~> 3.4'
+gem 'sass-rails', '~> 5.0'
+gem 'compass', '~> 1.0'
 
 gem 'aws-sdk', '< 2.0'
 gem "paperclip", '~> 3.4'
@@ -62,11 +62,16 @@ gem 'classy_enum', '~> 2.0.3'
 
 gem 'sinatra', '1.0'
 gem 'date_validator'
-gem 'mysql2', '=0.3.11'
+gem 'mysql2'
 
 gem 'rgeo'
 gem 'rgeo-geojson'
-gem 'activerecord-mysql2spatial-adapter'
+
+# 3.2 -> 4.0 upgrade, fix attr_accessible
+gem 'protected_attributes'
+
+# Source'd because this is the only repository which contains fixes for Rails 4.
+gem 'activerecord-mysql2spatial-adapter', :git => "https://github.com/fjl82/activerecord-mysql2spatial-adapter"
 
 gem 'newrelic_rpm'
 
