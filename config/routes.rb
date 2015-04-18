@@ -82,7 +82,6 @@ Flashvolunteer::Application.routes.draw do
 
   resources :new_user_wizard, :only => [:show, :update], :controller => 'users/new_user_wizard'
   resources :new_org_wizard, :only => [:show, :update], :controller => 'orgs/new_org_wizard'
-  root :to => 'users#index'
 
   resources :neighborhoods, :only => [:index] do
     collection do
@@ -142,19 +141,19 @@ Flashvolunteer::Application.routes.draw do
 
   post 'search' => 'search#show', :as => 'search'
 
-  match 'privacy' => 'home#privacy'
-  match 'tou' => 'home#tou'
-  match 'jobs' => 'home#jobs'
-  match 'about' => 'home#about'
-  match 'partners' => 'home#partners'
-  match 'help' => 'help_articles#index', :as => 'help_articles'
-  match 'donate' => 'home#donate'
-  match 'newsletter' => 'home#newsletter'
-  match 'sadface' => 'home#sadface'
-  match 'error' => 'home#error'
-  match 'leaderboard' => 'neighborhoods#leaderboard'
-  match 'managers' => 'home#volunteer_managers'
-  match 'faq_managers' => 'home#volunteer_managers_faq'
+  get 'privacy' => 'home#privacy'
+  get 'tou' => 'home#tou'
+  get 'jobs' => 'home#jobs'
+  get 'about' => 'home#about'
+  get 'partners' => 'home#partners'
+  get 'help' => 'help_articles#index', :as => 'help_articles'
+  get 'donate' => 'home#donate'
+  get 'newsletter' => 'home#newsletter'
+  get 'sadface' => 'home#sadface'
+  get 'error' => 'home#error'
+  get 'leaderboard' => 'neighborhoods#leaderboard'
+  get 'managers' => 'home#volunteer_managers'
+  get 'faq_managers' => 'home#volunteer_managers_faq'
 
-  match '/:location' => 'events#featured', :as => 'hub'
+  get '/:location' => 'events#featured', :as => 'hub'
 end
