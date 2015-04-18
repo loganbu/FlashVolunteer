@@ -100,7 +100,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_location
-    hub = Hub.find_or_initialize_by_name(current_location_name)
+    hub = Hub.find_or_initialize_by(:name => current_location_name)
     raise LocationNotFound.new(params[:location]) if params[:location] != nil && hub.new_record?
     hub.radius ||= 50
     hub.zoom ||= 15
