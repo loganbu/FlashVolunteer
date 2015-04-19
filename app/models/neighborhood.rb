@@ -1,6 +1,8 @@
 class Neighborhood < ActiveRecord::Base
   include ApplicationHelper
 
+  attr_accessible :state, :county, :city, :name, :region
+
   # Notice: uses cartesian coordinates, instead of world coordinates.
   def self.closest(point)
     self.find_by_sql("SELECT *, (GLength(LineString(GeomFromText('#{point}'), center))) AS distance FROM neighborhoods ORDER BY distance ASC LIMIT 1").first
