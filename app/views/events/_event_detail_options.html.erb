@@ -37,7 +37,12 @@
     <%= link_to '<i class="icon-print"></i>&nbsp;&nbsp;Sign-in Sheet'.html_safe, print_event_url(@event), :method=> 'get', :class => 'btn btn-large' %>
     <a href="#contact_users_dialog" role="button" class="btn btn-info btn-large" data-toggle="modal"><i class="icon-white icon-envelope"></i> Contact Attendees</a>
     <%= render(:partial => 'contact_users') %>
-    <a href="#modify_hours_dialog" role="button" class="btn btn-info btn-large" data-toggle="modal"><i class="icon-white icon-plus"></i> Enter Hours</a>
-    <%= render(:partial => 'enter_hours') %>
-<% end %>
+	<% if (@event.start) <= DateTime.now%>
+		<a href="#modify_hours_dialog" role="button" class="btn btn-info btn-large" data-toggle="modal"><i class="icon-white icon-plus"></i> Enter Volunteer Hours</a>
+		<%= render(:partial => 'enter_hours') %>
+	<% else %>
+		<a role="button" class="btn btn-info btn-large" disabled="disabled" data-toggle="modal"><i class="icon-white icon-plus"></i> Enter Volunteer Hours</a>
+		<%= render(:partial => 'enter_hours') %>
+ 	<% end %>
+ <% end %>
 
