@@ -49,7 +49,7 @@ class Neighborhood < ActiveRecord::Base
   end
 
   def score(focus)
-    if User.in_neighborhood(self).count == 0
+    if User.in_neighborhood(self).empty?
       0
     else
       (volunteers(focus).count/User.in_neighborhood(self).count)*volunteer_hours(focus)
