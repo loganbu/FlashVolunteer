@@ -17,7 +17,6 @@ body {
 
 footer {
     color: $lightGray;
-    @extend .navbar-inner;
     border-radius: 2px;
     box-shadow: 0px 1px 5px $gray;
     border: none;
