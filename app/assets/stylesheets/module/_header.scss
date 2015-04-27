@@ -2,7 +2,7 @@
  =Navigation
  **************/
 
-.navbar .nav > li > a {
+.navbar-nav > li > a {
   float: none;
   padding: 12px 15px 12px;
   color: $lightGray;
@@ -18,7 +18,7 @@
     padding: 0 5px;
 }
 
-.navbar .nav > li > a {
+.navbar-nav > li > a {
     padding-left: 15px;
     padding-right: 15px;
     height: 20px;
@@ -28,31 +28,31 @@
     padding-left: 0px;
 }
 
-.nav-collapse .nav > li > a {
+.navbar-collapse .nav > li > a {
     font-weight: normal;
 }
 
 .add-on {
     margin-left: 5px;
     a {
-        cursor:text;    
+        cursor:text;
     }
 }
 
 /* Add logo in .navbar */
-.navbar .brand
+.navbar-brand
 {
     position: relative;
     top: 3px;
     padding: 0px;
     margin: 0px;
     height: 40px;
-    width: 200px; 
+    width: 200px;
     text-indent: -9999px;
     background: url(fv_logo_small.png) left no-repeat;
 }
 
-.navbar .brand:hover{
+.navbar-nav .navbar-brand:hover{
     @include transition(opacity 0.1s ease-in-out);
     opacity: .75;
 }
@@ -89,7 +89,7 @@
  =Navigation (Need to refactor)
  **************/
 
-.navbar > .nav > li > a {
+.navbar-nav > .nav > li > a {
     font-size: 16px;
     color: red;
     text-shadow: 05px 5px 5px $white;
@@ -181,12 +181,12 @@
 }
 
 .user-partial-image {
-    margin-top: 5px; 
-    margin-bottom: 5px; 
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding-left: 7px;
 }
 .user-partial-name-switch {
-    margin-top: 10px; 
+    margin-top: 10px;
     margin-left: 5px;
 }
 .user-header {

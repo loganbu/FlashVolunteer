@@ -45,7 +45,7 @@ gem 'tzinfo-data'
 gem 'execjs', '<= 2.2'
 gem 'coffee-script-source', '<= 1.8'
 
-gem 'sprocket-rails', '>= 2.1.4'
+gem 'sprockets-rails', '>= 2.1.4'
 gem 'bootstrap-sass', '~> 3.3.4'
 gem 'sass-rails', '>= 3.2'
 gem 'compass', '~> 1.0'

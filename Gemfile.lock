@@ -365,6 +365,7 @@ DEPENDENCIES
   rmagick
   sass-rails (>= 3.2)
   sinatra (= 1.0)
+  sprockets-rails (>= 2.1.4)
   sqlite3
   squeel
   tlsmail
