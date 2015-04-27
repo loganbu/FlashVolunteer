@@ -1,1 +1,1 @@
-start server
+rails server
