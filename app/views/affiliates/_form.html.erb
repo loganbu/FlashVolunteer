@@ -1,47 +1,47 @@
 <%= form_for(@affiliate) do |f| %>
-    <div class="row-fluid">
-      <div class="span2">
+    <div class="row">
+      <div class="col-md-2">
         <div class="pull-right"><%= f.label :logo, 'logo'%></div>
       </div>
-      <div class="span10">
+      <div class="col-md-10">
         <%= f.file_field :logo %>
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span2">
+    <div class="row">
+      <div class="col-md-2">
         <div class="pull-right"><%= f.label :name, 'name'%></div>
       </div>
-      <div class="span10">
+      <div class="col-md-10">
         <%= f.text_field :name, :class=>'full'%>
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span2">
+    <div class="row">
+      <div class="col-md-2">
         <div class="pull-right"><%= f.label :link, 'website'%></div>
       </div>
-      <div class="span10">
+      <div class="col-md-10">
         <%= f.text_field :link, :class=>'full'%>
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span2">
+    <div class="row">
+      <div class="col-md-2">
         <div class="pull-right"><%= f.label :description, 'description'%></div>
       </div>
-      <div class="span10">
+      <div class="col-md-10">
         <%= f.text_field :description, :class=>'full'%>
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span2">
+    <div class="row">
+      <div class="col-md-2">
       </div>
-      <div class="span10">
+      <div class="col-md-10">
         <%= f.check_box :public, :class => 'pull-left' %>&nbsp;<%= f.label :public, 'public affiliate', :class => 'pull-left', :style => 'padding-left: 5px'%>
         <p style="clear: left">The logo for the affiliate will always be shown for public affiliates</p>
       </div>
     </div>
-    <div class="row-fluid">
-      <div class = "span2">&nbsp;</div>
-      <div class = "span10">
+    <div class="row">
+      <div class = "col-md-2">&nbsp;</div>
+      <div class = "col-md-10">
         <button type="submit" href="#" class="btn btn-primary pull-right" formnovalidate><%= @affiliate.new_record? ? 'create' : 'save' %></button>
       </div>
     </div>

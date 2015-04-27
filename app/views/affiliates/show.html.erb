@@ -3,14 +3,14 @@
 
 <h4>Add User to Affiliation</h4>
 <%= form_for @affiliation do |f| %>
-    <div class="row-fluid">
-      <div class="span3">
+    <div class="row">
+      <div class="col-md-3">
         <%= text_field_tag :user, '', :placeholder => 'E-Mail Address' %>
       </div>
-      <div class="span7">
+      <div class="col-md-7">
         <%= f.check_box :moderator, :class => 'pull-left' %> <%= f.label :moderator, 'moderator', :class => 'pull-left', :style => 'padding-left: 5px'%>
       </div>
-      <div class="span2">
+      <div class="col-md-2">
         <%= f.submit 'Add User', :class=>'btn btn-primary' %>
       </div>
       <%= f.hidden_field :affiliate_id %>
@@ -28,7 +28,7 @@
       <tr>
         <td><%= affiliation.user.name if affiliation.user %></td>
         <td><%= affiliation.user.email if affiliation.user %></td>
-        <td><div class="row-fluid"><div class="offset5"><%= '<i class="icon-ok"></i>'.html_safe if affiliation.moderator %></div></div></td>
+        <td><div class="row"><div class="col-md-offset-5"><%= '<i class="icon-ok"></i>'.html_safe if affiliation.moderator %></div></div></td>
         <td><%= link_to 'Remove Affiliation', user_affiliation_url(affiliation), :method => :delete, :class => 'btn btn-primary' %></td>
       </tr>
   <% end %>
