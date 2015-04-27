@@ -1,10 +1,10 @@
 <% unless @event.is_vm %>
+
     <div class="row">
         <div class="col-md-12">
-            <h3>event volunteers (<%= @event.participants.count %>)</h3>
-        </div>
+            <h3>event volunteers (<%= @event.participants.count(:all) %>)</h3>
     </div>
-    <% if @event.participants.count > 0 %>
+    <% if !@event.participants.empty? %>
         <ul class="unstyled">
         <% @event.participants.each do |p| %>
             <li>

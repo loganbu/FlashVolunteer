@@ -1,6 +1,6 @@
 class ParticipationObserver < ActiveRecord::Observer
   def after_create(participation)
-    if participation.event.hosted_by_user && participation.event.user.notification_preferences.where(:name => 'new_event_attendee').count > 0
+    if !participation.event.hosted_by_user && participation.event.user.notification_preferences.where(:name => 'new_event_attendee').empty?
       if Rails.env.production?
         UserMailer.delay.new_event_attendee(participation)
       else

@@ -72,7 +72,8 @@ gem 'rgeo-geojson'
 gem 'protected_attributes'
 
 # Source'd because this is the only repository which contains fixes for Rails 4.
-gem 'activerecord-mysql2spatial-adapter', :git => "https://github.com/fjl82/activerecord-mysql2spatial-adapter"
+# See https://github.com/rgeo/activerecord-mysql2spatial-adapter/issues/12
+gem 'activerecord-mysql2spatial-adapter', :git => "https://github.com/agoln/activerecord-mysql2spatial-adapter/", :branch => "reorder_map_initialization"
 
 gem 'newrelic_rpm'
 

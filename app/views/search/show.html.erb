@@ -1,36 +1,36 @@
 <%
     active = :events
-    active = :users if @events.count == 0
-    active = :orgs if @events.count == 0 && @users.count == 0
-    active = :help_articles if @events.count == 0 && @users.count == 0 && @orgs.count == 0
+    active = :users if @events.empty?
+    active = :orgs if @events.emtpy? && @users.empty?
+    active = :help_articles if @events.empty? && @users.empty? && @orgs.empty?
     %>
 <div class="tabs bold">
     <ul class="unstyled inline" id="link_list">
-        <% if @events.count > 0 %>
-        <li><a class="link_active" href="#events" id="events_link">EVENTS (<%= @events.count %>)</a></li>
+        <% if !@events.empty? %>
+        <li><a class="link_active" href="#events" id="events_link">EVENTS (<%= @events.count(:all) %>)</a></li>
         <% end %>
-        <% if @users.count > 0 %>
-        <li><a <%= 'class="link_active"'.html_safe if active == :users %> href="#users" id="users_link">USERS (<%= @users.count %>)</a></li>
+        <% if !@users.empty? %>
+        <li><a <%= 'class="link_active"'.html_safe if active == :users %> href="#users" id="users_link">USERS (<%= @users.count(:all) %>)</a></li>
         <% end %>
-        <% if @orgs.count > 0 %>
-        <li><a <%= 'class="link_active"'.html_safe if active == :orgs %> href="#orgs" id="orgs_link">ORGANIZATIONS (<%= @orgs.count %>)</a></li>
+        <% if !@orgs.empty? %>
+        <li><a <%= 'class="link_active"'.html_safe if active == :orgs %> href="#orgs" id="orgs_link">ORGANIZATIONS (<%= @orgs.count(:all) %>)</a></li>
         <% end %>
-        <% if @help_articles.count > 0 %>
-        <li><a <%= 'class="link_active"'.html_safe if active == :help_articles %> href="#help_articles" id="help_articles_link">HELP ARTICLES (<%= @help_articles.count %>)</a></li>
+        <% if !@help_articles.empty? %>
+        <li><a <%= 'class="link_active"'.html_safe if active == :help_articles %> href="#help_articles" id="help_articles_link">HELP ARTICLES (<%= @help_articles.count(:all) %>)</a></li>
         <% end %>
     </ul>
 </div>
 <div class="clear">&nbsp;</div>
 <div id="content_sections">
-    <% if @events.count == 0 && @users.count == 0 && @orgs.count == 0 && @help_articles.count == 0 %>
+    <% if @events.empty? && @users.empty? && @orgs.empty? && @help_articles.empty? %>
         Sorry, there are no results that match your term. Hot tip: You might find more results if you search a single word.
     <% end %>
-    <% if @events.count > 0 %>
+    <% if !@events.empty? %>
         <div <%= 'class="hide"'.html_safe if active != :events %> id="events_content">
             <%= render(:partial => "events/event", :collection => @events, :as => :event, :locals => { :show_links => false, :description => :medium, :type => :recommended }) %>
         </div>
     <% end %>
-    <% if @users.count > 0 %>
+    <% if !@users.empty? %>
         <div <%= 'class="hide"'.html_safe if active != :users %> id="users_content">
             <div class="row">
                 <div class="col-md-3">
@@ -39,7 +39,7 @@
             </div>
         </div>
     <% end %>
-    <% if @orgs.count > 0 %>
+    <% if !@orgs.empty? %>
         <div <%= 'class="hide"'.html_safe if active != :orgs %> id="orgs_content">
             <div class="row">
                 <div class="col-md-7">
@@ -48,7 +48,7 @@
             </div>
         </div>
     <% end %>
-    <% if @help_articles.count > 0 %>
+    <% if !@help_articles.empty? %>
         <div <%= 'class="hide"'.html_safe if active != :help_articles %> id="help_articles_content">
             <div class="row">
                 <div class="col-md-7">

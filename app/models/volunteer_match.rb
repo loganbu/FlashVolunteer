@@ -140,7 +140,7 @@ class VolunteerMatch < ActiveRecord::Base
   def reverse_geocode
     unless self.reverse_geocoded
       self.geocoder_result = Geocoder.search(self.parse_address)[0]
-      if self.geocoder_result && self.geocoder_result.address_components_of_type(:neighborhood).count > 0
+      if !self.geocoder_result && self.geocoder_result.address_components_of_type(:neighborhood).empty?
         self.neighborhood_string = self.geocoder_result.address_components_of_type(:neighborhood)[0]['long_name']
       end
       self.reverse_geocoded = true

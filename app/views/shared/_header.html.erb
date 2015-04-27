@@ -74,7 +74,7 @@
                         <% if current_user.admin_of.count > 0 %>
                             <% current_user.admin_of.each do |org| %>
                               <li>
-                                <%= render(:partial => "users/shared/user", :locals => { :user => org }) %>
+                                <li><%= render(:partial => "users/shared/user", :locals => { :user => User.find(original_user_logged_in) }) %></li>
                               </li>
                               <% end %>
                         <% end %>
@@ -83,7 +83,6 @@
             </li>
             <% end %>
         </ul>
-
     </div><!--/.nav-collapse -->
   </div>
 </nav>

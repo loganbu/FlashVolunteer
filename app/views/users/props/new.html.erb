@@ -1,6 +1,4 @@
-
-
-<% if @prop.errors.count > 0 %>
+<% if !@prop.errors.empty? %>
     <div class="alert alert-error">
         <a class="close" data-dismiss="alert" href="#">x</a>
         <h4 class="alert-heading">Error!</h4>

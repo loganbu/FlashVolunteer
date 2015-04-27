@@ -59,7 +59,7 @@ class Orgs::UsersController < ApplicationController
     @org = Org.find(params[:org_id])
     @admin = User.find(params[:id])
 
-    if @org.admins.count > 1
+    if @org.admins.count(:all) > 1
       @org.admins.delete(@admin)
       flash[:notice] = "#{@admin.name} is no longer an admin of #{@org.name}."
     else

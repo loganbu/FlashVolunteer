@@ -22,7 +22,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<% if @event.participants.count > 0 %>
+			<% if !@event.participants.empty? %>
 		    	<% @event.participants.each do |p| %>
 					<tr>
 						<td><h2><%= p.name %></h2></td>

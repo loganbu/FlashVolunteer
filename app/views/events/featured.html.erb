@@ -1,4 +1,4 @@
-<% if @events.count == 0 %>
+<% if @events.count(:all) == 0 %>
     <%= render('getinvolved') %>
 <% else %>
     <%= render('featured_events') %>
