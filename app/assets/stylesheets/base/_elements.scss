@@ -18,7 +18,7 @@ body {
 footer {
     color: $lightGray;
     @extend .navbar-inner;
-    @include border-radius(0px);
+    border-radius: 2px;
     box-shadow: 0px 1px 5px $gray;
     border: none;
     .nav > li > a {
@@ -57,7 +57,7 @@ h2 {
 }
 
 .h2-padding{
-    padding-bottom: 20px; 
+    padding-bottom: 20px;
 }
 
 h3 {
@@ -66,7 +66,7 @@ h3 {
     padding: 2px 0px 2px 5px;
     margin-bottom: 10px;
     font-size: 125%;
-    @include border-radius(2px);
+    border-radius: 2px;
 }
 
 img.medium_space {
