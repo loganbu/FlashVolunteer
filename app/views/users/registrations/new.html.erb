@@ -1,23 +1,23 @@
 <% content_for :main_action do %>
 sign up
 <% end %>
-<% content_for :link_action do 
+<% content_for :link_action do
 link_to("sign in", new_user_session_url)
 end %>
 <%= content_for :form_content do %>
         <h4>create a Flash account: </h4>
-        <div class="row-fluid">
-            <div class="span2">&nbsp;</div>
-            <div class="span10">
-                <div class="row-fluid">
-                    <div class="span6">
-                        <input name="user[account_type]" class="pull-left radio" id="for_individual_radio" type="radio" value="organization" checked="checked"/> <label for="for_individual_radio">for me</label> 
+        <div class="row">
+            <div class="col-md-2">&nbsp;</div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input name="user[account_type]" class="pull-left radio" id="for_individual_radio" type="radio" value="organization" checked="checked"/> <label for="for_individual_radio">for me</label>
                     </div>
-                    <div class="span6">
+                    <div class="col-md-6">
                         <input name="user[account_type]" class="pull-left radio" id="for_org_radio" type="radio" value="user" />
-                        <label for="for_org_radio">for my org</label> 
+                        <label for="for_org_radio">for my org</label>
                     </div>
-                </div>        
+                </div>
             </div>
         </div>
         <div id="for_individual">
@@ -34,12 +34,12 @@ end %>
         $(document).ready(function() {
             $("#for_org").hide();
             $("#for_individual_radio").click(function() {
-                $("#for_org").hide(); 
-                $("#for_individual").show(); 
+                $("#for_org").hide();
+                $("#for_individual").show();
             });
 
-            $("#for_org_radio").click(function() { 
-                $("#for_individual").hide(); 
+            $("#for_org_radio").click(function() {
+                $("#for_individual").hide();
                 $("#for_org").show();
             });
         });
