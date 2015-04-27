@@ -20,7 +20,7 @@
                 </p>
                 <div class="pull-right" id="user_greeting_picture">
                     <%= photo_link(current_user.avatar, :thumb, user_url(current_user)) %>
-                    <%= if original_user_logged_in != nil && (current_user.id != original_user_logged_in || current_user.admin_of.count > 0)
+                    <%= if original_user_logged_in != nil && (current_user.id != original_user_logged_in || current_user.admin_of.count(:all) > 0)
                             link_to("#", :id=>"account_pulldown_link") do  
                                 image_tag("dropDownMenu_button.png", 
                                     :alt=>"Switch accounts")
@@ -28,7 +28,7 @@
                         end
                         %>
                 </div>
-                <%= render(:partial => "shared/account_pulldown") if (current_user.id != original_user_logged_in || current_user.admin_of.count > 0) %>
+                <%= render(:partial => "shared/account_pulldown") if (current_user.id != original_user_logged_in || current_user.admin_of.count(:all) > 0) %>
             <% end %>
         </div>
     </div>

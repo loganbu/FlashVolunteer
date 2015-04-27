@@ -1,6 +1,7 @@
 GIT
-  remote: https://github.com/fjl82/activerecord-mysql2spatial-adapter
-  revision: e1b0c5a3b645b94ab11a0a458a29efeb2a63dc27
+  remote: https://github.com/agoln/activerecord-mysql2spatial-adapter/
+  revision: 41cfd512673b93df38a76141ee9aefc5bed1ab3a
+  branch: reorder_map_initialization
   specs:
     activerecord-mysql2spatial-adapter (0.5.0.nonrelease)
       mysql2 (>= 0.2.13)

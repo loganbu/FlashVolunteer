@@ -112,10 +112,10 @@ class Event < ActiveRecord::Base
     where('featured = ?', true)
   }
   scope :recommended_to, lambda { |user|
-    if user.skills.count > 0
-      includes(:affiliates, :skills, :user).not_attended_by(user).upcoming.joins(:skills).where{skills.id.eq_any user.skills}.order('start asc')
-    else
+    if user.skills.empty?
       includes(:affiliates, :skills, :user).not_attended_by(user).upcoming.order('start asc')
+    else
+      includes(:affiliates, :skills, :user).not_attended_by(user).upcoming.joins(:skills).where{skills.id.eq_any user.skills}.order('start asc')
     end
   }
   scope :in_neighborhood, lambda { |neighborhood|
