@@ -2,7 +2,7 @@
     First, we need an account for you ...
 <% end %>
 <% content_for :below_question do %>
-    <div class="row-fluid">
+    <div class="row">
         <p>Use a connected account to sign in to Flash Volunteer. By connecting, you are accepting the <%= link_to("Terms of Use", tou_path, :target => "_blank") %> and <%= link_to("Privacy Policy", privacy_path, :target => "_blank") %>.</p>
         <%= render(:partial => "users/shared/external_auth_strip") %>
     </div>
