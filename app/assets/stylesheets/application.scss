@@ -1,8 +1,9 @@
 @import
 //Base
+	"bootstrap-sprockets",
 	"base/variables.scss", //Refactor complete
 	"base/bootstrapCustom.scss", //Refactor complete
-	"base/bootstrap/bootstrap.scss", //DO NOT CHANGE
+  "bootstrap",
 	"base/jquery-ui.scss", //DO NOT CHANGE
 	"base/elements.scss",  //Main elements
 	"base/typography.scss", //Must be online to use the font
