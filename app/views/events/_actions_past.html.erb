@@ -3,24 +3,24 @@
     <% if current_user.hours_volunteered(event) != 0 %>
         <p>i volunteered for <%= current_user.hours_volunteered(event) %> hrs.</p>
     <% else %>
-        <div class="row-fluid" id="remove_div<%= event.id %>">
-            <div class="span12">
+        <div class="row" id="remove_div<%= event.id %>">
+            <div class="col-md-12">
                <%= link_to("i couldn't go", register_event_url(event), :id=>"remove#{event.id}", :method=> :delete, :class => "btn block") %>
             </div>
         </div>
-        <div class="row-fluid" id="hours_div<%= event.id %>" style="display:none">
-            <div class="span12">
+        <div class="row" id="hours_div<%= event.id %>" style="display:none">
+            <div class="col-md-12">
                 i volunteered for <%= text_field_tag :hours_volunteered, event.participations.find_by_user_id(current_user.id).hours_volunteered, :class=>"full", :style => "margin-bottom: 0px" %> hrs.
             </div>
         </div>
-        <div class="row-fluid">&nbsp;</div>
-        <div class="row-fluid" id="record_div<%= event.id %>">
-            <div class="span12">
+        <div class="row">&nbsp;</div>
+        <div class="row" id="record_div<%= event.id %>">
+            <div class="col-md-12">
                 <a href="#" id="record<%= event.id %>" class="btn btn-primary block ">i attended the event</a>
             </div>
         </div>
-        <div class="row-fluid" id="save_div<%= event.id %>" style="display:none">
-            <div class="span12">
+        <div class="row" id="save_div<%= event.id %>" style="display:none">
+            <div class="col-md-12">
                 <a href="#" id="submit_hours<%= event.id %>" class="btn btn-primary block">because i'm a superstar</a>
                 <script type="text/javascript">
                     $(document).ready(function() {
@@ -35,7 +35,7 @@
     <% end %>
 <% end %>
 <script type="text/javascript">
-    $(document).ready(function() { 
+    $(document).ready(function() {
         $("#record<%= event.id %>").click(function() {
             $("#remove_div<%= event.id %>").toggle();
             $("#record_div<%= event.id %>").toggle();

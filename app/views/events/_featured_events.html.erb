@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="clearfix"></div>
-    <article id="featured-carousel" class="row-fluid">
+    <article id="featured-carousel" class="row">
         <div class="span8">
             <figure>
                 <div class="featured-banner">Featured</div>
@@ -40,7 +40,7 @@
                 <figcaption class="featured_badges">
                     <% @events.each_with_index do |event, i| %>
                       <div class="item <%= "hide" if i != 0 %>" id="carousel-badges-<%=i %>">
-                        <div class="row-fluid">
+                        <div class="row">
                             <p class="featured">
                                 <% if event.description.length > 450 %>
                                     <%= truncate(event.description, :length=>450, :separator => ' ') %>
@@ -54,8 +54,8 @@
                     <% end %>
                 </figcaption><!-- Badges under the main carousel -->
             </figure><!-- /.featured-carousel-->
-        </div><!-- /.span8-->
-        <div class="span4">
+        </div><!-- /.col-md-8-->
+        <div class="col-md-4">
             <% @events.each_with_index do |event, i| %>
             <div class="item <%= "hide" if i != 0 %>" id="carousel-<%=i %>">
                 <a href="<%= event_url(event) %>" class="btn btn-large btn-warning">

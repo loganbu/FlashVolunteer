@@ -1,4 +1,4 @@
-<% 
+<%
 	description ||= :none
 	show_links ||= false
 	type ||= :display
@@ -12,8 +12,8 @@
 <%end%>
 
 <div class="event-summary">
-	<div class="row-fluid">
-		<div class="<%= type == :display ? "span12" : "span9" %>">
+	<div class="row">
+		<div class="<%= type == :display ? "col-md-12" : "col-md-9" %>">
 			<div class="event-title">
 				<%= link_to(truncate(event.name, :length=>30, :separator=>' '), event) %><br/>
 			</div>
@@ -23,21 +23,21 @@
 				</div>
 			<% end %>
 
-			<div class="row-fluid">
-				<div class="span8">
+			<div class="row">
+				<div class="col-md-8">
 					<span><%= event.start.to_date.to_formatted_s(:rfc822) %>   |</span>
 					<span class="pull-center"><%= event.start.strftime('%l:%M%p') %> - <%= event.end.strftime('%l:%M%p') %></span>
 				</div>
 			</div>
-			<div class="row-fluid">
-				<div class="span12">
+			<div class="row">
+				<div class="col-md-12">
 					<span><%= render :partial => "skills/strip", :locals => { :entity => event, :size => badge_size } %></span>
 				</div>
 			</div>
 			<% if description != :none %>
-				<div class="row-fluid">
-					<div class="span12">
-						<%= 
+				<div class="row">
+					<div class="col-md-12">
+						<%=
 							length = 100;
 						    # Use this switch to support more sizes
 							case description
@@ -52,20 +52,20 @@
 				</div>
 			<% end %>
           <% if event.is_vm %>
-              <div class="row-fluid">
-                <div class="span2"><%= image_tag "/assets/vm_logo_small.jpg"%></div>
-                <div class="span10">This event provided by VolunteerMatch</div>
+              <div class="row">
+                <div class="col-md-2"><%= image_tag "/assets/vm_logo_small.jpg"%></div>
+                <div class="col-md-10">This event provided by VolunteerMatch</div>
               </div>
           <% end %>
 			<% if show_links %>
-				<div class="link_padding row-fluid">
-					<div class="span12"><%= render(:partial => 'events/links', :locals => { :event => event }) %></div>
+				<div class="link_padding row">
+					<div class="col-md-12"><%= render(:partial => 'events/links', :locals => { :event => event }) %></div>
 				</div>
 			<% end %>
 		</div>
 		<% if type != :display %>
-		<div class="span3">
-			<%= 
+		<div class="col-md-3">
+			<%=
 				case type
 					when :past
 						render(:partial => "events/actions_past", :locals => { :event => event })

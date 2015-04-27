@@ -1,15 +1,15 @@
 <% if @event.hosted_by_user %>
-<div class="row-fluid">
-	<div class="span12">
+<div class="row">
+	<div class="col-md-12">
 		<h3>event organizers (1)</h3>
 	</div>
 </div>
 <p>
-    <div class="row-fluid">
-        <div class="span2">
+    <div class="row">
+        <div class="col-md-2">
             <%= photo_link(@event.user.avatar, :thumb, user_url(@event.user)) %>
         </div>
-        <div class="span10" style="padding-top:6px">
+        <div class="col-md-10" style="padding-top:6px">
             <%= link_to(@event.user.name, user_url(@event.user)) %>
         </div>
     </div>
