@@ -11,7 +11,7 @@
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#about">Featured</a></li>
+        <li><%= link_to "Featured", featured_events_url(current_location_name) %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Events <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
@@ -29,7 +29,7 @@
         </li>
       </ul>
       <% if current_user && (current_user.is_moderator? || current_user.role?(:super_admin)) %>
-        <li class="dropdown">
+        <li class="dropdown" >
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Admin <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <% if current_user.is_moderator? || current_user.role?(:super_admin) %>
@@ -54,7 +54,7 @@
               </li>
             <% else %>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle user-header" data-toggle="dropdown"><%= image_tag current_user.avatar.url(:thumb), :class=>"photo-thumb" %> <%= current_user.name %><b class="caret" id="user-caret"></b></a>
+                <a href="#" class="dropdown-toggle user-header" data-toggle="dropdown"><%= current_user.name %><b class="caret" id="user-caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><%= link_to "my events", root_url %></li>
                   <li><%= link_to "profile", user_url(current_user) %></li>

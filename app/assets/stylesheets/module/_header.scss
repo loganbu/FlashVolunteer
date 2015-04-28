@@ -5,7 +5,7 @@ $colHighlight       : $white;
 .navbar-default {
   background-color: $bgDefault;
   border-color: $bgHighlight;
-  height: 51px;
+  height: 40px;
   .navbar-brand {
     color: $colDefault;
     background: url(fv_logo_small.png) left no-repeat;
@@ -30,6 +30,7 @@ $colHighlight       : $white;
         color: $lightGray;
         text-decoration: none;
         text-shadow: -1px 0 0 $darkGray;
+        margin-bottom: 0px;
         &:hover,  &:focus {
           color: $colHighlight;
           background-color: $darkGray}}}
@@ -43,6 +44,8 @@ $colHighlight       : $white;
         background-color: $bgHighlight; }}}
   .navbar-toggle {
     border-color: $bgHighlight;
+    background-color: $gray;
+
     &:hover, &:focus {
       background-color: $bgHighlight; }
     .icon-bar {
@@ -58,10 +61,11 @@ $colHighlight       : $white;
   .navbar-default .navbar-nav .open .dropdown-menu {
     > li > a {
       color: $colDefault;
+      background-color: $gray;
       &:hover, &:focus {
         color: $colHighlight; }}
     > .active {
       > a, > a:hover, > a:focus, {
         color: $colHighlight;
-        background-color: $bgHighlight; }}}
+        background-color: $gray; }}}
 }

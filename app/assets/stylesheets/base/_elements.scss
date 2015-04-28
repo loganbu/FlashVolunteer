@@ -11,7 +11,8 @@ html, body {
 }
 
 body {
-    font: inherit;
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
     padding-top: 65px;
 }
 
