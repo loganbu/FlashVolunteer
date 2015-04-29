@@ -5,7 +5,7 @@
   <title><%= @title %></title>
   <%= stylesheet_link_tag "application" %>
   <%= javascript_include_tag "application", "modernizr" %>
-  <%= csrf_meta_tag %> 
+  <%= csrf_meta_tag %>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="/assets/favicon.ico"/>  <!-- Analytics -->
   <script type="text/javascript">
@@ -40,7 +40,7 @@
   <div id="wrapper">
     <%= render"shared/header" %>
       <% if flash[:alert] || flash[:error] %>
-          <div class="alert alert-error">  
+          <div class="alert alert-error">
               <a class="close" data-dismiss="alert" href="#">x</a>
               <h4 class="alert-heading">Error!</h4>
               <p>
@@ -51,7 +51,7 @@
           </div>
       <% end %>
       <% if flash[:notice] || flash[:info] %>
-          <div class="alert alert-success">  
+          <div class="alert alert-success">
               <a class="close" data-dismiss="alert" href="#">x</a>
               <p>
                   <ul>
@@ -61,7 +61,7 @@
           </div>
       <% end %>
       <% if flash[:warning] %>
-          <div class="alert">  
+          <div class="alert">
               <a class="close" data-dismiss="alert" href="#">x</a>
               <p>
                   <ul>
@@ -76,7 +76,7 @@
       </div>
     <div id="clearfooter">&nbsp;</div>
   </div><!-- .wrapper -->
-  <footer>
+  <footer class="footer">
       <%= render"shared/footer" %>
   </footer>
   <div class="clickeater">&nbsp;</div>
