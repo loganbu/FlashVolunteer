@@ -1,23 +1,23 @@
 <p>If you try to download too many events, Google will refuse to give address information, so try to limit your requests to less than 100 per day.</p>
 <%= form_tag(more_volunteer_match_index_url) do %>
-    <div class="row-fluid">
-      <div class="span2">
+    <div class="row">
+      <div class="col-md-2">
         <label for="afg_count">Pages</label>
       </div>
-      <div class="span1">
+      <div class="col-md-1">
         <%= text_field_tag(:vm_pages, 1) %>
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span2">
+    <div class="row">
+      <div class="col-md-2">
         <label for="afg_page">Page Offset</label>
       </div>
-      <div class="span1">
+      <div class="col-md-1">
         <%= text_field_tag(:vm_offset, 1) %>
       </div>
     </div>
-    <div class="row-fluid">
-      <div class="span2">
+    <div class="row">
+      <div class="col-md-2">
         <%= submit_tag('Get More', :class=>"btn btn-primary") %>
       </div>
     </div>
@@ -60,8 +60,8 @@
       </tr>
   <% end %>
 </table>
-<div class="row-fluid">
-  <div class="span12">
+<div class="row">
+  <div class="col-md-12">
     <%= will_paginate(@opportunities, :page_links => false) %>
   </div>
 </div>

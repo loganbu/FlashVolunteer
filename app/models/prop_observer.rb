@@ -1,6 +1,6 @@
 class PropObserver < ActiveRecord::Observer
   def after_create(prop)
-    if prop.receiver.notification_preferences.where(:name => 'prop_received').count > 0
+    if prop.receiver.notification_preferences.count(:name => 'prop_received') > 0
       if Rails.env.production?
         UserMailer.delay.prop_received(prop)
       else

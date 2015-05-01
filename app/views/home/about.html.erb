@@ -14,7 +14,7 @@
           Hash["name" => "logan buesching", "subtext" => "director", "image" => "board/logan.jpg", "myurl" => "http://www.flashvolunteer.org/users/1"],
           Hash["name" => "tyler walker", "subtext" => "director", "image" => "board/tyler.jpg", "myurl" => "http://www.flashvolunteer.org/users/38231"],
        ].each_with_index do |person, i| %>
-        <div class="span4 clearfix">
+        <div class="col-md-4 clearfix">
             <%= link_to render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
                                                                           :url => person["url"], :urltext => person["urltext"] }), person["myurl"] %>
         </div>
@@ -30,7 +30,7 @@
   <% [  Hash["name" => "brad wilke", "subtext" => "Flash Volunteer co-founder", "image" => "board/Brad.png", "myurl" => "http://www.flashvolunteer.org/users/21"],
         Hash["name" => "kenny lee", "subtext" => "Flash Volunteer co-founder", "image" => "board/kenny.png", "myurl" => "http://www.flashvolunteer.org/users/11"],
      ].each_with_index do |person, i| %>
-  <div class="span4 clearfix">
+  <div class="col-md-4 clearfix">
     <%= link_to render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
                                                                           :url => person["url"], :urltext => person["urltext"] }), person["myurl"] %>
   </div>
@@ -46,7 +46,7 @@
 <div class="row">&nbsp;</div>
 <h3>operations</h3>
 <div class="row">
-    <div class="span4">
+    <div class="col-md-4">
         <div class="team-name"></div>
                 <% [  Hash["name" => "charlie", "subtext" => "communications", "image" => "board/charlie.png",
                            "urltext" => "who is charlie?", "url" => "http://blog.flashvolunteer.org/post/49490365908/if-you-have-ever-received-an-email-from-flash",
@@ -58,7 +58,7 @@
                    </div>
                 <% end %>
     </div>
-    <div class="span4">
+    <div class="col-md-4">
         <div class="team-name"></div>
             <% [  Hash["name" => "brad wilke", "subtext" => "outreach", "image" => "board/Brad.png", "myurl" => "http://www.flashvolunteer.org/users/21"],
                ].each_with_index do |person, i| %>
@@ -85,7 +85,7 @@
                 Hash["name" => "taryn burns", "subtext" => "developer", "image" => "board/taryn.jpg","myurl" => "http://www.flashvolunteer.org/users/39401"],
                 Hash["name" => "mark aldham", "subtext" => "developer", "image" => "board/mark.jpg","myurl" => "http://www.flashvolunteer.org/about"],
        ].each_with_index do |person, i| %>
-        <div class="span4 clearfix">
+        <div class="col-md-4 clearfix">
             <%=link_to render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],
                                                                                  :url => person["url"], :urltext => person["urltext"] }), person["myurl"]%>
         </div>

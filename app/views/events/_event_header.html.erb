@@ -8,9 +8,9 @@
 <h1 class="event-name"><%= @event.name %></h1>
 
 <% if @event.is_vm %>
-<div class="row-fluid" style="margin-top: -20px;margin-bottom: 20px">
-<div class="span1"><%= image_tag "/assets/vm_logo_small.jpg"%></div>
-<div class="span10" style="margin-top:7px; margin-left: -5px">This event provided by VolunteerMatch</div>
+<div class="row" style="margin-top: -20px;margin-bottom: 20px">
+<div class="col-md-1"><%= image_tag "/assets/vm_logo_small.jpg"%></div>
+<div class="col-md-10" style="margin-top:7px; margin-left: -5px">This event provided by VolunteerMatch</div>
 </div>
 <% end  %>
 <p>
@@ -23,8 +23,8 @@
       | <%= @event.start.strftime('%l:%M%p') %>-<%= @event.end.strftime('%l:%M%p') unless !@event.end %><br/>
     <% end %>
 </p>
-<div class="row-fluid">
-    <div class="span12">
+<div class="row">
+    <div class="col-md-12">
         <span><%= render :partial => "skills/strip", :locals => { :entity => @event, :size => badge_size } %></span>
     </div>
 </div>
@@ -32,14 +32,14 @@
     <%= @event.street %>, <%= link_to(@event.neighborhood.name, neighborhood_events_url(current_location_name, @event.neighborhood.name, @event.neighborhood.city, :use_defaults)) unless !@event.neighborhood %><br/>
     <%= render(:partial => 'links', :locals => { :event => @event }) %>
 <% if @event.website != '' %>
-<div class="row-fluid">
+<div class="row">
     <div class="pull-left"><%= link_to("visit event website", @event.website, :target=>"_blank") %></div>
 </div>
 <% end %>
 </p>
 <% if @event.upcoming? %>
-<div class="row-fluid">
-    <div class="span7">
+<div class="row">
+    <div class="col-md-7">
         <% if page_type != :webpage %>
             <%= render(:partial => 'share', :locals => { :event => @event, :size => :small }) %>
         <% else %>

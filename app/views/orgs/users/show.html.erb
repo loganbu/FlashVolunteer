@@ -1,10 +1,10 @@
 <%= content_for :right_split do %>
 <p class="bold">Admins</p>
 	<% @org.admins.each do |admin| %>
-	<div class="row-fluid">
-		<div class="span8"><%= admin.name %></div>
+	<div class="row">
+		<div class="col-md-8"><%= admin.name %></div>
 		<% if admin.id != original_user_logged_in %>
-			<div class="span4"><%= link_to 'Remove Admin', org_admin(@org, admin), :method=>:delete %></div>
+			<div class="col-md-4"><%= link_to 'Remove Admin', org_admin(@org, admin), :method=>:delete %></div>
 		<% end %>
 	</div>
 	<% end %>

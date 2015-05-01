@@ -8,15 +8,15 @@
             entity = prop.receiver
     end
 %>
-<div class="row-fluid">
-    <div class="span1">
+<div class="row">
+    <div class="col-md-1">
         <%= image_tag entity.avatar.url(:profile) %>
     </div>
-    <div class="span11">
+    <div class="col-md-11">
         <% if entity %>
             <p><%= direction_text %> <%= link_to entity.name, user_url(entity) %> on <%= prop.created_at.strftime("%m/%d/%y") %></p>
             <i>"<%= prop.message %>"</i>
         <% end %>
     </div>
 </div>
-<div class="row-fluid">&nbsp;</div>
+<div class="row">&nbsp;</div>

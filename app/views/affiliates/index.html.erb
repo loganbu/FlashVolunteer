@@ -11,7 +11,7 @@
         <td><%= image_tag a.logo(:thumb) %>&nbsp;<%= a.name %></td>
         <td><%= a.description %></td>
         <% icon = a.public ? 'ok' : 'remove' %>
-        <td><div class="row-fluid"><div class="offset5"><i class="icon-<%= icon %>"></i></div></div></td>
+        <td><div class="row"><div class="col-md-offset-5"><i class="icon-<%= icon %>"></i></div></div></td>
         <td><%= link_to 'Manage', affiliate_url(a), :class => 'btn btn-primary' %><br><%= link_to 'Edit', edit_affiliate_url(a), :class => 'btn btn-primary' if current_user.role?(:super_admin) %></td>
       </tr>
   <% end %>

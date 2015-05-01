@@ -1,10 +1,10 @@
-<div class="row-fluid">
-    <div class="span4">
+<div class="row">
+    <div class="col-md-4">
         <div class="logo">
             <a href="/"><label title="Home" style="cursor:pointer"><%= image_tag('logo-smaller.png') %></label></a>
         </div>
     </div>
-    <div class="span8">
+    <div class="col-md-8">
         <div id="header_personal_text" class="pull-right">
             <% if !user_signed_in? %>
                 <%= link_to "sign in", new_user_session_path %> or <%= link_to "create an account", new_user_registration_path %>
@@ -20,15 +20,15 @@
                 </p>
                 <div class="pull-right" id="user_greeting_picture">
                     <%= photo_link(current_user.avatar, :thumb, user_url(current_user)) %>
-                    <%= if original_user_logged_in != nil && (current_user.id != original_user_logged_in || current_user.admin_of.count > 0)
-                            link_to("#", :id=>"account_pulldown_link") do  
-                                image_tag("dropDownMenu_button.png", 
+                    <%= if original_user_logged_in != nil && (current_user.id != original_user_logged_in || current_user.admin_of.count(:all) > 0)
+                            link_to("#", :id=>"account_pulldown_link") do
+                                image_tag("dropDownMenu_button.png",
                                     :alt=>"Switch accounts")
                             end
                         end
                         %>
                 </div>
-                <%= render(:partial => "shared/account_pulldown") if (current_user.id != original_user_logged_in || current_user.admin_of.count > 0) %>
+                <%= render(:partial => "shared/account_pulldown") if (current_user.id != original_user_logged_in || current_user.admin_of.count(:all) > 0) %>
             <% end %>
         </div>
     </div>

@@ -17,7 +17,7 @@ figure {
 .featured {
     margin-top: 20px;
     font-size: $baseFontSize * 1.15;
-    line-height: $baseLineHeight * 1.5;    
+    line-height: $baseLineHeight * 1.5;
     overflow: hidden;
 }
 
@@ -65,26 +65,26 @@ figure {
     padding: 10px;
     background-color: white;
     margin-bottom: 20px;
-    -moz-box-shadow: 1px 1px 10px $darkGray;  
-    -webkit-box-shadow: 1px 1px 10px $darkGray;  
-    box-shadow: 1px 1px 10px $darkGray; 
-    @include border-radius(10px);
+    -moz-box-shadow: 1px 1px 10px $darkGray;
+    -webkit-box-shadow: 1px 1px 10px $darkGray;
+    box-shadow: 1px 1px 10px $darkGray;
+    border-radiu: 10px;
     font-family: $baseFontFamily;
 }
 
 .sponsor h3 {
     font-size: $baseFontSize;
     line-height: $baseLineHeight;
-    background: $green;  
-    padding: 0px 20px;  
+    background: $green;
+    padding: 0px 20px;
     margin-left: -20px;
     margin-right: -20px;
-    margin-top: -14px;  
+    margin-top: -14px;
     position: relative;
-    -moz-box-shadow: 1px 1px 3px $darkGray;  
-    -webkit-box-shadow: 1px 1px 3px $darkGray;  
-    box-shadow: 1px 1px 3px $darkGray;  
-    color: $darkGreen;  
+    -moz-box-shadow: 1px 1px 3px $darkGray;
+    -webkit-box-shadow: 1px 1px 3px $darkGray;
+    box-shadow: 1px 1px 3px $darkGray;
+    color: $darkGreen;
     text-shadow: 0 1px 0 white;
     text-align: center;
 }
@@ -95,29 +95,29 @@ figure {
 }
 
 .arrow {
-    width: 0; height: 0;  
-    line-height: 0;  
-    border-top: 10px solid $darkGreen;  
-    top: 100%;  
-    position: absolute;  
+    width: 0; height: 0;
+    line-height: 0;
+    border-top: 10px solid $darkGreen;
+    top: 100%;
+    position: absolute;
 }
 
-.arrow-left {  
+.arrow-left {
     @extend .arrow;
-    border-left: 10px solid transparent;  
-    left: 0;  
-} 
+    border-left: 10px solid transparent;
+    left: 0;
+}
 
-.arrow-right { 
+.arrow-right {
     @extend .arrow;
-    border-right: 10px solid transparent;  
-    right: 0;  
-} 
+    border-right: 10px solid transparent;
+    right: 0;
+}
 
 .thumbnails .img-polaroid:hover {
-    -moz-box-shadow: 1px 1px 10px $darkGray;  
-    -webkit-box-shadow: 1px 1px 10px $darkGray;  
-    box-shadow: 1px 1px 10px $darkGray; 
+    -moz-box-shadow: 1px 1px 10px $darkGray;
+    -webkit-box-shadow: 1px 1px 10px $darkGray;
+    box-shadow: 1px 1px 10px $darkGray;
     @include transition(all .2s ease-in-out);
 
 }

@@ -5,10 +5,12 @@ class Hub < ActiveRecord::Base
 
   # Fix center not having a X/Y. mysql2 spatial adapter isn't working propertly
   def latitude
-    1 || center.y
+    center.y
   end
 
   def longitude
-    1 || center.x
+    center.x
   end
+
+  attr_accessible :name, :city_state, :center, :zoom, :radius
 end

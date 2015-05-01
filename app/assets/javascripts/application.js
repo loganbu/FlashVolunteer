@@ -8,6 +8,6 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require jquery.timepicker
-//= require bootstrap
+//= require bootstrap-sprockets
 //= require map
 //= require utility

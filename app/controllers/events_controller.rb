@@ -233,7 +233,7 @@ class EventsController < ApplicationController
     message = params[:message]
 
     @event.participants.each do |p|
-      if p.notification_preferences.where(:name => 'organizer_broadcast').count > 0
+      if p.notification_preferences.count(:name => 'organizer_broadcast') > 0
         if Rails.env.production?
           # send the e-mail
           UserMailer.delay.organizer_broadcast(@event, p, message)

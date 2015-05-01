@@ -1,202 +1,73 @@
-/**************
- =Navigation
- **************/
-
-.navbar .nav > li > a {
-  float: none;
-  padding: 12px 15px 12px;
-  color: $lightGray;
-  text-decoration: none;
-  text-shadow: -1px 0 0 $darkGray;
-}
-
-.container{
-    padding: 0px;
-}
-
-.container-padding{
-    padding: 0 5px;
-}
-
-.navbar .nav > li > a {
-    padding-left: 15px;
-    padding-right: 15px;
-    height: 20px;
-}
-
-.navbar-footer .nav > li:first-child > a {
-    padding-left: 0px;
-}
-
-.nav-collapse .nav > li > a {
-    font-weight: normal;
-}
-
-.add-on {
-    margin-left: 5px;
-    a {
-        cursor:text;    
-    }
-}
-
-/* Add logo in .navbar */
-.navbar .brand
-{
+$bgDefault      : $gray;
+$bgHighlight    : $gray;
+$colDefault     : $offWhite;
+$colHighlight       : $white;
+.navbar-default {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  height: 40px;
+  .navbar-brand {
+    color: $colDefault;
+    background: url(fv_logo_small.png) left no-repeat;
     position: relative;
-    top: 3px;
+    top: 5px;
     padding: 0px;
     margin: 0px;
     height: 40px;
-    width: 200px; 
-    text-indent: -9999px;
-    background: url(fv_logo_small.png) left no-repeat;
-}
-
-.navbar .brand:hover{
-    @include transition(opacity 0.1s ease-in-out);
-    opacity: .75;
-}
-
-.carousel {
-    margin-bottom: 0;
-    .carousel-caption {
-        h2 {
-            font-size: 2em;
-            margin-top: 0;
-            letter-spacing: -2px;
-
-            a {
-                color: $green;
-            }
-
-            a:hover{
-                color: $orange;
-            }
-        }
-
-        .carousel-date, .carousel-neighborhood {
-            font-size: 1.4em;
-            color: $lightGray;
-        }
-
-        .carousel-neighborhood {
-            font-style: italic;
-        }
-    }
-}
-
-/**************
- =Navigation (Need to refactor)
- **************/
-
-.navbar > .nav > li > a {
-    font-size: 16px;
-    color: red;
-    text-shadow: 05px 5px 5px $white;
-}
-
-.navbar-fixed-top .nav li:hover {
-    background-color: $darkGray;
-    @include transition(all .2s ease-in-out);
-}
-
-.navbar-fixed-top {
-    box-shadow: 0px 1px 5px $gray;
-}
-
-.clickeater {
-    display: none;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    position: absolute;
-    z-index: 9000;
-}
-#search-box-container {
-    margin-top: 10px;
-}
-#search-box {
-    line-height: 12px;
-    height: 12px;
-    margin: 0px;
-    border-right: 5px;
     width: 200px;
-}
+    text-indent: -9999px;
+    &:hover, &:focus {
+      color: $colHighlight;
+      @include transition(opacity 0.1s ease-in-out);
+      opacity: .75;}}
 
-/**************
- =Header
- **************/
-.logo {
-    padding: 20px 5px;
-}
+  .navbar-text {
+    color: $colDefault; }
+  .navbar-nav {
+    > li {
+      > a {
+        float: none;
+        color: $lightGray;
+        text-decoration: none;
+        text-shadow: -1px 0 0 $darkGray;
+        margin-bottom: 0px;
+        &:hover,  &:focus {
+          color: $colHighlight;
+          background-color: $darkGray}}}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    background-color: $gray;
 
-#header_personal_text {
-    position: relative;
-    font-size: 125%;
-    margin-top: 25px;
-    text-align: right;
-    p {
-        font-size: 100%;
-        margin-right: 10px;
-    }
-}
-
-#account_pulldown {
-    display: none;
-    position: absolute;
-    right: 0;
-    top: 50px;
-    width: 250px;
-    background: white;
-    border: 1px solid black;
-    color: black;
-    text-align: left;
-    padding: 10px;
-    z-index: 9001; /* OVER 9,000! */
-    p {
-        margin-top: .3*$baseLineHeight;
-    }
-    .active_account {
-        &:hover {
-            background-color: $lightBlue;
-            cursor: pointer;
-        }
-    }
-    .active_account {
-        margin-top: 5px;
-    }
-    .inactive_account {
-        .row-fluid {
-            &:hover {
-                background-color: $lightBlue;
-                cursor: pointer;
-            }
-            padding-top: 5px;
-            &:first-child {
-                border-top: 1px solid $green;
-            }
-        }
-    }
-}
-
-.user-partial-image {
-    margin-top: 5px; 
-    margin-bottom: 5px; 
-    padding-left: 7px;
-}
-.user-partial-name-switch {
-    margin-top: 10px; 
-    margin-left: 5px;
-}
-.user-header {
-    margin-top: -5px;
-    margin-bottom: 5px;
-}
-#user-caret {
-    margin-top: 12px;
-}
-
-.search-query {
-    margin-top: 3px;
+    &:hover, &:focus {
+      background-color: $bgHighlight; }
+    .icon-bar {
+      background-color: $colDefault; }}
+  .navbar-collapse {
+    background-color: $gray;
+  }
+  .navbar-form {
+    border-color: $colDefault; }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight; }}}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      background-color: $gray;
+      &:hover, &:focus {
+        color: $colHighlight; }}
+    > .active {
+      > a, > a:hover, > a:focus, {
+        color: $colHighlight;
+        background-color: $gray; }}}
 }

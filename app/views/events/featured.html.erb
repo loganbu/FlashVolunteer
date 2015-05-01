@@ -1,14 +1,14 @@
-<% if @events.count == 0 %>
+<% if @events.count(:all) == 0 %>
     <%= render('getinvolved') %>
 <% else %>
     <%= render('featured_events') %>
 <% end %>
 
-<!-- 
+<!--
 <h2 class="spotlight-title"><span>SPOTLIGHT</span></h2> -->
 <section class = "news">
 <div class="container">
-    <article class = "span4 alpha news">
+    <article class = "col-md-4 alpha news">
         <div class = "news-title">In the News</div>
         <a href="http://web.bus52.com//profiles/flash-volunteer/#" target="_blank"><img src="/assets/spotlight/brad.jpg" alt="brad"></a>
         <p>
@@ -23,7 +23,7 @@
         </p>
 
     </article>
-    <article class = "span4 news">
+    <article class = "col-md-4 news">
         <div class = "news-title">iPhone App</div>
         <a href="https://itunes.apple.com/us/app/flash-volunteer/id353017547?mt=8" target="_blank"><img src="/assets/spotlight/fv_iPhone.jpg" alt="FlashVolunteer iPhone"></a>
         <p>
@@ -31,10 +31,10 @@
         </p>
 
         <p>
-            Get off the couch and change the world! 
+            Get off the couch and change the world!
         </p>
     </article>
-    <article class = "span4 omega news">
+    <article class = "col-md-4 omega news">
         <div class = "news-title">Connect With Us</div>
         <a href="http://blog.flashvolunteer.org" target="_blank"><img src="/assets/spotlight/blog.jpg" alt="blog"></a>
         <p>

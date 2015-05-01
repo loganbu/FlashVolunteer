@@ -9,4 +9,7 @@ class Affiliate < ActiveRecord::Base
   },
   :styles => { thumb: ['32x32#', :png], large: ['64X64#', :png]},
   :path => 'affiliates/:attachment/:id_:style.:extension', :default_url => '/assets/default_user_thumb.png'
+  
+  
+  attr_accessible :name, :description
 end
