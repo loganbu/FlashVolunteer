@@ -21,17 +21,17 @@
 </div>
 <div class="clearfix"></div>
 <div class="row">
-    <div class="span4">
+    <div class="col-md-4">
         <%= render(:partial => 'list_view')%>
     </div>
-    <div class="span8">
+    <div class="col-md-8">
         <div class="map">
             <div id="map" class="big"></div>
         </div>
     </div>
 </div>
 <script>
-$(document).ready(function() { 
+$(document).ready(function() {
     Map.setMap('map', <%= @map_center.latitude %>, <%= @map_center.longitude %>, <%= @map_center.zoom %>);
     var eventUrl = location.href.split("?")[0];
     var page = getParameterByName('page');

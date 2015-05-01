@@ -23,7 +23,7 @@
 <div class="clear">&nbsp;</div>
 <div id="content_sections">
     <% if @events.empty? && @users.empty? && @orgs.empty? && @help_articles.empty? %>
-        Sorry, there are no results that match your term. Hot tip: You might find more results if you search a single word. 
+        Sorry, there are no results that match your term. Hot tip: You might find more results if you search a single word.
     <% end %>
     <% if !@events.empty? %>
         <div <%= 'class="hide"'.html_safe if active != :events %> id="events_content">
@@ -32,8 +32,8 @@
     <% end %>
     <% if !@users.empty? %>
         <div <%= 'class="hide"'.html_safe if active != :users %> id="users_content">
-            <div class="row-fluid">
-                <div class="span3">
+            <div class="row">
+                <div class="col-md-3">
                     <%= render(:partial => "users/shared/user", :collection => @users, :as => :user, :locals => { :switch => :false }) %>
                 </div>
             </div>
@@ -41,8 +41,8 @@
     <% end %>
     <% if !@orgs.empty? %>
         <div <%= 'class="hide"'.html_safe if active != :orgs %> id="orgs_content">
-            <div class="row-fluid">
-                <div class="span7">
+            <div class="row">
+                <div class="col-md-7">
                     <%= render(:partial => "orgs/org", :collection => @orgs, :as => :org, :locals => { :is_switcher => :false }) %>
                 </div>
             </div>
@@ -50,8 +50,8 @@
     <% end %>
     <% if !@help_articles.empty? %>
         <div <%= 'class="hide"'.html_safe if active != :help_articles %> id="help_articles_content">
-            <div class="row-fluid">
-                <div class="span7">
+            <div class="row">
+                <div class="col-md-7">
                     <%= render(:partial => "help_articles/help_article", :collection => @help_articles, :as => :help_article) %>
                 </div>
             </div>

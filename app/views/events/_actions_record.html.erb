@@ -2,17 +2,17 @@
     <% if current_user.hours_volunteered(@event) != 0 %>
         <p>i volunteered for <%= current_user.hours_volunteered(@event) %> hrs.</p>
     <% else %>
-        <div class="row-fluid">
-            <div class="span4">
+        <div class="row">
+            <div class="col-md-4">
                 <p>i volunteered for </p>
             </div>
-            <div class="span2">
+            <div class="col-md-2">
                 <%= text_field_tag :hours_volunteered, @event.participations.find_by_user_id(current_user.id).hours_volunteered, :style => "margin-bottom: 0px", :class => "full" %>
             </div>
-            <div class="span2">
+            <div class="col-md-2">
                 <p> hrs. </p>
             </div>
-            <div class="span4">
+            <div class="col-md-4">
                 <button type="submit" href="#" class="btn btn-primary full">submit hours</button>
             </div>
     <% end %>

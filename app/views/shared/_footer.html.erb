@@ -1,26 +1,26 @@
-<div class="navbar navbar-footer container">
-        <nav class="clearfix">
-            <ul class="nav">
-                <li><%= link_to("About Us", about_path) %></li>
-                <li><%= link_to("Help", help_articles_path) %></li>
-                <li><%= link_to("Privacy", privacy_path) %></li>
-                <li><%= link_to("Terms of Use", tou_path) %></li>
-                <li><%= link_to("Volunteer Managers", managers_path) %></li>
-            </ul>
-        </nav>
-    <div class="row-fluid">
-        <div class="span6">
-            <div class="pull-left">
-                This product includes GeoLite2 data created by MaxMind, available from
-<a href="http://www.maxmind.com">http://www.maxmind.com</a>.            
-            </div>
-        </div>
-        <div class="span6">
-            <div class="pull-right copy">
-                built by volunteers, for volunteers <br>
-                Flash Volunteer &copy; 2009-2014, a 501(c)3 nonprofit <br>
-                <a href="http://www.zillow.com/howto/api/neighborhood-boundaries.htm"><img src="http://www.zillowstatic.com/vstatic/ab0070e0b702ec0820aa0388637dcc68/static/logos/Zillow_Logo_HoodsProvided_RightAligned.gif" /></a>
-            </div>
-        </div>
+<div class="container">
+  <div class="col-md-6 pull-left">
+    <div class="row">
+      <ul class="navbar-nav nav">
+          <li><%= link_to("About Us", about_path) %></li>
+          <li><%= link_to("Help", help_articles_path) %></li>
+          <li><%= link_to("Privacy", privacy_path) %></li>
+          <li><%= link_to("Terms of Use", tou_path) %></li>
+          <li><%= link_to("Volunteer Managers", managers_path) %></li>
+      </ul>
+
     </div>
+    <div class="row">
+      <div class="pull-left">
+        This product includes GeoLite2 data created by MaxMind, available from <a href="http://www.maxmind.com">http://www.maxmind.com</a>.
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 pull-right">
+    <div class="pull-right copy" style="padding: 10px;">
+        built by volunteers, for volunteers <br>
+        Flash Volunteer &copy; 2009-2014, a 501(c)3 nonprofit <br>
+        <a href="http://www.zillow.com/howto/api/neighborhood-boundaries.htm"><img src="http://www.zillowstatic.com/vstatic/ab0070e0b702ec0820aa0388637dcc68/static/logos/Zillow_Logo_HoodsProvided_RightAligned.gif" /></a>
+    </div>
+  </div>
 </div>

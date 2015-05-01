@@ -14,7 +14,7 @@ gem 'cancan', '= 1.6.9'
 gem 'geocoder', '~> 1.2'
 gem 'geoip', '~> 1.4'
 # JQuery
-gem 'jquery-rails', '~> 4.0' 
+gem 'jquery-rails', '~> 4.0'
 # Not sure why directly gem'd
 gem 'tlsmail'
 # DatePicker
@@ -45,8 +45,9 @@ gem 'tzinfo-data'
 gem 'execjs', '<= 2.2'
 gem 'coffee-script-source', '<= 1.8'
 
-gem 'sass', '~> 3.4'
-gem 'sass-rails', '~> 5.0'
+gem 'sprockets-rails', '>= 2.1.4'
+gem 'bootstrap-sass', '~> 3.3.4'
+gem 'sass-rails', '>= 3.2'
 gem 'compass', '~> 1.0'
 
 gem 'aws-sdk', '< 2.0'

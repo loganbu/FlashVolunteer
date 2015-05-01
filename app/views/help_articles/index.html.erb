@@ -6,8 +6,8 @@
 <p>Check out the <%= link_to('Getting Started', managers_url) %> or <%= link_to('FAQ', faq_managers_url) %> pages for volunteer managers.</p>
 <br />
 <h3>faq</h3>
-<div class="row-fluid">
-	<div class="span4" id="link_list">
+<div class="row">
+	<div class="col-md-4" id="link_list">
 		<ul class="unstyled" id="help_nav_layout">
 			<% @articles.each_with_index do |a,i| %>
 			<li>
@@ -16,12 +16,12 @@
 			<% end %>
 		</ul>
 	</div>
-	<div class="span8" id="content_sections">
+	<div class="col-md-8" id="content_sections">
 		<% @articles.each_with_index do |a,i| %>
 		<div <%= "class='hide'" if i >0 %> id="<%= friendly_name(a.title) %>_content">
 			<h4><%= a.title %></h4>
 			<p>
-				<%= display_text_field_safe(ERB.new(a.description).result(binding)) %> 
+				<%= display_text_field_safe(ERB.new(a.description).result(binding)) %>
 			</p>
 		</div>
 		<% end %>

@@ -17,7 +17,8 @@ Devise.setup do |config|
   # available as additional gems.
   require 'devise/orm/active_record'
 
-  config.secret_key = ENV['DEVISE_SECRET_KEY']
+  config.secret_key = ENV['DEVISE_SECRET_KEY'] || 'd9483a28fc0628c55b50f4d1c6a730a66b74e08051726e0c6398c34d5d0e24190fdaa4b81d285893846ab3046d6dadf4f
+92f6dd7441233dc74030c4cb530eb3b'
 
   # ==> Configuration for any authentication mechanism
   # Configure which keys are used when authenticating a user. The default is
@@ -55,7 +56,7 @@ Devise.setup do |config|
   # If http headers should be returned for AJAX requests. True by default.
   # changed from default of config.http_authenticatable_on_xhr = true because of mobile
   config.http_authenticatable_on_xhr = false
-  
+
   # added for mobile to recognize format
   config.navigational_formats = [:"*/*", "*/*", :html, :mobile]
 
