@@ -50,7 +50,9 @@ $colHighlight       : $white;
       background-color: $bgHighlight; }
     .icon-bar {
       background-color: $colDefault; }}
-  .navbar-collapse,
+  .navbar-collapse {
+    background-color: $gray;
+  }
   .navbar-form {
     border-color: $colDefault; }
   .navbar-link {
