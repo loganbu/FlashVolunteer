@@ -4,6 +4,7 @@
 <p>Flash Volunteer seeks to build community and increase volunteerism through the creation of a sustainable, user-friendly online platform to connect, inspire and mobilize volunteers to effect meaningful change on a neighborhood level. </p>
 <p>We are a 501(c)3 nonprofit organization and the code we are developing is open source.</p>
 <h3>board of directors</h3>
+
 <div class="row">
     <% [
           Hash["name" => "janis buesching", "subtext" => "president", "image" => "board/janis.jpg", "myurl" => "http://www.flashvolunteer.org/about"],
@@ -83,8 +84,7 @@
                 Hash["name" => "conner brennick", "subtext" => "developer", "image" => "board/conner.jpg","myurl" => "http://www.flashvolunteer.org/users/39171"],
                 Hash["name" => "des marks", "subtext" => "developer", "image" => "board/des.jpg","myurl" => "http://www.flashvolunteer.org/users/40771"],
                 Hash["name" => "taryn burns", "subtext" => "developer", "image" => "board/taryn.jpg","myurl" => "http://www.flashvolunteer.org/users/39401"],
-                Hash["name" => "tucker wilde", "subtext" => "developer", "image" => "board/tucker.jpg","myurl" => "http://www.flashvolunteer.org/users/39691"],
-                Hash["name" => "mark aldham", "subtext" => "developer", "image" => "default_user_profile.png","myurl" => "http://www.flashvolunteer.org/about"],
+                Hash["name" => "mark aldham", "subtext" => "developer", "image" => "board/mark.jpg","myurl" => "http://www.flashvolunteer.org/about"],
        ].each_with_index do |person, i| %>
         <div class="col-md-4 clearfix">
             <%=link_to render(:partial => "users/shared/user_span", :locals => { :name => person["name"], :subtext => person["subtext"], :image => person["image"],

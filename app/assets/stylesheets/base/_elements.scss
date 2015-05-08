@@ -71,3 +71,9 @@ h3 {
 img.medium_space {
   padding: 30px;
 }
+
+@media (min-width: 811px) {
+    .container{
+        width:960px;
+    }
+}

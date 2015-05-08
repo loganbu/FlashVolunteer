@@ -40,11 +40,8 @@
 <div class="row">
     <div class="col-md-2">&nbsp;</div>
     <div class="col-md-10">
-        <div class="pull-left">
-            <%= f.check_box(:terms_of_service) %>
-        </div>
-        <div style="padding-left: 20px">
-            <label for="user_terms_of_service" style="float: none;">I accept the <%= link_to("Terms of Use", tou_url, :target => "_blank") %> and <%= link_to("Privacy Policy", privacy_url, :target => "_blank") %></label>
+        <div style="padding-left: 5px">
+            By signing up, I agree to the <%= link_to("Terms of Use", tou_url, :target => "_blank") %> and <%= link_to("Privacy Policy", privacy_url, :target => "_blank") %>
         </div>
     </div>
 </div>

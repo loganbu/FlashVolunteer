@@ -183,6 +183,10 @@
           </div>
 
           <script type="text/javascript">
+          $(document).ready(function() {
+            $('#startdate').on('change', function() {
+              $('#enddate').val($(this).val()); // Sets end date to start date on start date change
+            });
             $(document).ready(function() {
               $('#starttime').timepicker({
                   minuteStep: 1,
@@ -194,8 +198,10 @@
               });
               $('#starttime').on('changeTime', function() {
                 $('#starttime').val($(this).val());
+                $('#endtime').val($(this).val()); // Sets end time to start time on start time change
               });
             });
+          });
           </script>
 
           </div>
@@ -265,9 +271,10 @@
             </script>
           </div>
           <div>
-            <%= f.label :max_users, "limit users?" %>
+            <%= f.label :max_users, "limit volunteer sign-ups?" %>
           </div>
         </div>
+
         <div class="col-md-2">
           <%= f.number_field :max_users, :class=>"full hidden", :id=>"max_users"%>
         </div>
