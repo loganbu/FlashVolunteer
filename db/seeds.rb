@@ -22,6 +22,7 @@ admin.password = password
 admin.password_confirmation = password
 admin.name = 'Admin'
 admin.save
+admin.confirm!
 admin.roles << Role.find_by_name('SuperAdmin')
 
 Skill.delete_all()
@@ -146,6 +147,7 @@ if Rails.env.development?
   users = User.create(config['users'])
   users.each do |u|
     u.neighborhood = Neighborhood.all.sample
+    u.confirm!
     u.save
   end
 
