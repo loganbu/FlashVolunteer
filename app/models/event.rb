@@ -15,6 +15,11 @@ class Event < ActiveRecord::Base
   has_many :participations
   accepts_nested_attributes_for :participations
 
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :featured, :vm_id, :name, :website, :hosted_by, :street, :latitude, :longitude, :moved_marker, :max_users, :description, :special_instructions, :skill_ids, :affiliate_ids, :start, :end
+
+
   has_many :participants, :through => :participations, :source => :user
   has_and_belongs_to_many :skills, :join_table => 'skills_events'
   has_many :event_affiliations
