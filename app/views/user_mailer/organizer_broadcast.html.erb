@@ -7,7 +7,7 @@
 <% content_for :email_content do%>
     <p>Hello, <%= @attendee.name %>,</p>
 
-    <p>Just playing telephone here! This is a message from the organizer of <%= link_to @event.name, @event %></p>
+    <p>Just playing telephone here! This is a message from the organizer of <%= link_to @event.name, event_url(nil, @event) %></p>
 
     <p style="font-style: italic;">
         <%= @message %>
