@@ -14,7 +14,7 @@ gem 'cancan', '= 1.6.9'
 gem 'geocoder', '~> 1.2'
 gem 'geoip', '~> 1.4'
 # JQuery
-gem 'jquery-rails', '~> 2.2'
+gem 'jquery-rails', '~> 3.1'
 # Not sure why directly gem'd
 gem 'tlsmail'
 # DatePicker
