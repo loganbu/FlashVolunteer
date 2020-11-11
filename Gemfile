@@ -52,7 +52,7 @@ end
 gem 'aws-sdk', '< 2.0'
 gem "paperclip", '~> 3.4'
 
-gem "omniauth", '=1.1.3'
+gem "omniauth", '1.4.2'
 gem "omniauth-facebook"
 gem "omniauth-google-oauth2"
 gem "omniauth-twitter"
