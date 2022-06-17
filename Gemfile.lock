@@ -74,6 +74,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.2.19)
+    concurrent-ruby (1.1.9)
     date_validator (0.7.1)
       activemodel
     delayed_job (3.0.5)
@@ -121,7 +122,8 @@ GEM
     hike (1.2.3)
     hirefire-resource (0.3.5)
     httpauth (0.2.1)
-    i18n (0.7.0)
+    i18n (0.9.5)
+      concurrent-ruby (~> 1.0)
     icalendar (1.5.4)
     ice_nine (0.11.1)
     journey (1.0.4)
@@ -303,7 +305,7 @@ DEPENDENCIES
   classy_enum (~> 2.0.3)
   coffee-script-source (<= 1.8)
   compass (~> 0.12)
-  date_validator
+  date_validator (= 0.7.1)
   delayed_job_active_record (~> 0.4)
   devise (= 2.2.3)
   execjs (<= 2.2)
