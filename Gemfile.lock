@@ -270,7 +270,7 @@ GEM
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
-    tzinfo (0.3.43)
+    tzinfo (0.3.61)
     uglifier (2.2.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
@@ -303,7 +303,7 @@ DEPENDENCIES
   classy_enum (~> 2.0.3)
   coffee-script-source (<= 1.8)
   compass (~> 0.12)
-  date_validator
+  date_validator (= 0.7.1)
   delayed_job_active_record (~> 0.4)
   devise (= 2.2.3)
   execjs (<= 2.2)
